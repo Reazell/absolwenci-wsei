@@ -30,6 +30,12 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             return await _context.Users.AsNoTracking ().SingleOrDefaultAsync (x => x.IndexNumber == indexNumber);
         }
 
+        public async Task<User> GetByEmailAsync (string email, bool isTracking = true) {
+            if (isTracking)
+                return await _context.Users.AsTracking ().SingleOrDefaultAsync (x => x.Email == email);
+            return await _context.Users.AsNoTracking ().SingleOrDefaultAsync (x => x.Email == email);
+        }
+
         public Task<IEnumerable<User>> BrowseAsync () {
             throw new System.NotImplementedException ();
         }

@@ -7,6 +7,7 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces {
         Task AddAsync (User user);
         Task<User> GetByIdAsync (int id, bool isTracking = true);
         Task<User> GetByIndexNumberAsync (int indexNumber, bool isTracking = true);
+        Task<User> GetByEmailAsync (string email, bool isTracking = true);
         Task<IEnumerable<User>> BrowseAsync ();
         Task UpdateAsync (User user);
         Task DeleteAsync (User user);
