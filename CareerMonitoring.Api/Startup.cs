@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
+using CareerMonitoring.Infrastructure.Services;
+using CareerMonitoring.Infrastructure.Services.Interfaces;
+using CareerMonitoring.Infrastructure.Validators.User;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,14 +34,28 @@ namespace CareerMonitoring.Api {
             services.AddMvc ();
 
             #region DbContextAndSettings
+
             services.AddCors ();
             services.AddDbContext<CareerMonitoringContext> (options =>
                 options.UseSqlServer (Configuration.GetConnectionString ("CareerMonitoringDatabase"),
-                    b => b.MigrationsAssembly ("EGrower.Api")));
-            #endregion
+                    b => b.MigrationsAssembly ("CareerMonitoring.Api")));
 
+            #endregion
             #region Repositories
+
             services.AddScoped<IUserRepository, UserRepository> ();
+
+            #endregion
+            #region Services 
+
+            services.AddScoped<IAuthService, AuthService> ();
+            services.AddScoped<IUserService, UserService> ();
+
+            #endregion
+            #region Validations
+
+            services.AddTransient<IValidator<RegisterUser>, RegisterUserValidator> ();
+
             #endregion
         }
 
@@ -43,13 +65,27 @@ namespace CareerMonitoring.Api {
                 app.UseDeveloperExceptionPage ();
             }
 
-            // using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory> ().CreateScope ()) {
-            //     if (!serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().AllMigrationsApplied ()) {
-            //         serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().Database.Migrate ();
-            //     }
+            // else {
+            //     app.UseExceptionHandler (builder => {
+            //         builder.Run (async context => {
+            //             context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+            //             var error = context.Features.Get<IExceptionHandlerFeature> ();
+            //             if (error != null) {
+            //                 context.Response.AddApplicationError (error.Error.Message);
+            //                 await context.Response.WriteAsync (error.Error.Message);
+            //             }
+            //         });
+            //     });
             // }
 
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory> ().CreateScope ()) {
+                if (!serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().AllMigrationsApplied ()) {
+                    serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().Database.Migrate ();
+                }
+            }
+
             app.UseCors (x => x.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ().AllowCredentials ());
+            app.UseAuthentication ();
             app.UseMvc ();
         }
     }
