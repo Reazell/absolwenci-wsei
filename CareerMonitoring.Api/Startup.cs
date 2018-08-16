@@ -78,11 +78,11 @@ namespace CareerMonitoring.Api {
             //     });
             // }
 
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory> ().CreateScope ()) {
-                if (!serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().AllMigrationsApplied ()) {
-                    serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().Database.Migrate ();
-                }
-            }
+            // using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory> ().CreateScope ()) {
+            //     if (!serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().AllMigrationsApplied ()) {
+            //         serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().Database.Migrate ();
+            //     }
+            // }
 
             app.UseCors (x => x.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ().AllowCredentials ());
             app.UseAuthentication ();
