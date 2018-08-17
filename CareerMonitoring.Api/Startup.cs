@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using CareerMonitoring.Api.ActionFilters;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories;
@@ -11,6 +12,7 @@ using CareerMonitoring.Infrastructure.Services;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +33,10 @@ namespace CareerMonitoring.Api {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
-            services.AddMvc ();
+            services.AddMvc (opt => {
+                    opt.Filters.Add (typeof (ValidatorActionFilter));
+                }).AddFluentValidation ()
+                .AddJsonOptions (options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             #region DbContextAndSettings
 
