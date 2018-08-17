@@ -15,17 +15,32 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task<User> LoginAsync (string email, string password) {
-            throw new System.NotImplementedException ();
+            var user = await _userRepository.GetByEmailAsync (email, false);
+            if (user == null || !user.Activated || user.Deleted)
+                throw new Exception ("User of given email and password does not exist!");
+            if (!VerifyPasswordHash (password, user.PasswordHash, user.PasswordSalt))
+                throw new Exception ("Given email or password are incorrect!");
+            return user;
         }
 
         public async Task RegisterAsync (string name, string surname, string email, int indexNumber, string password) {
-            if (await _userService.UserExistByEmailAsync (email.ToLowerInvariant()))
+            if (await _userService.UserExistByEmailAsync (email.ToLowerInvariant ()))
                 throw new Exception ("User of given email already exist.");
-            if (!await _userService.UserExistByIndexNumberAsync (indexNumber))
-                throw new Exception ("Given index number does not exist.");
+            // if (!await _userService.UserExistByIndexNumberAsync (indexNumber))
+            //     throw new Exception ("Given index number does not exist.");
 
             var user = new User (name, surname, email, indexNumber, password);
             await _userRepository.AddAsync (user);
+        }
+
+        private bool VerifyPasswordHash (string password, byte[] passwordHash, byte[] passwordSalt) {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512 (passwordSalt)) {
+                var computedHash = hmac.ComputeHash (System.Text.Encoding.UTF8.GetBytes (password));
+                for (int i = 0; i < computedHash.Length; i++) {
+                    if (computedHash[i] != passwordHash[i]) return false;
+                }
+                return true;
+            }
         }
     }
 }

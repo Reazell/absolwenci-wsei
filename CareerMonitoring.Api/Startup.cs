@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Api.ActionFilters;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
+using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
@@ -13,6 +15,7 @@ using CareerMonitoring.Infrastructure.Services.Interfaces;
 using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +25,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using static CareerMonitoring.Infrastructure.Extension.Exception.ExceptionsHelper;
 
 namespace CareerMonitoring.Api {
     public class Startup {
@@ -44,6 +49,18 @@ namespace CareerMonitoring.Api {
             services.AddDbContext<CareerMonitoringContext> (options =>
                 options.UseSqlServer (Configuration.GetConnectionString ("CareerMonitoringDatabase"),
                     b => b.MigrationsAssembly ("CareerMonitoring.Api")));
+            var key = Encoding.ASCII.GetBytes (Configuration.GetSection ("JWTSettings:Key").Value);
+            services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer (options => {
+                    options.TokenValidationParameters = new TokenValidationParameters {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey (key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+
+                    };
+                });
+            services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
 
             #endregion
             #region Repositories
@@ -68,26 +85,18 @@ namespace CareerMonitoring.Api {
         public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
+            } else {
+                app.UseExceptionHandler (builder => {
+                    builder.Run (async context => {
+                        context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                        var error = context.Features.Get<IExceptionHandlerFeature> ();
+                        if (error != null) {
+                            context.Response.AddApplicationError (error.Error.Message);
+                            await context.Response.WriteAsync (error.Error.Message);
+                        }
+                    });
+                });
             }
-
-            // else {
-            //     app.UseExceptionHandler (builder => {
-            //         builder.Run (async context => {
-            //             context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
-            //             var error = context.Features.Get<IExceptionHandlerFeature> ();
-            //             if (error != null) {
-            //                 context.Response.AddApplicationError (error.Error.Message);
-            //                 await context.Response.WriteAsync (error.Error.Message);
-            //             }
-            //         });
-            //     });
-            // }
-
-            // using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory> ().CreateScope ()) {
-            //     if (!serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().AllMigrationsApplied ()) {
-            //         serviceScope.ServiceProvider.GetService<CareerMonitoringContext> ().Database.Migrate ();
-            //     }
-            // }
 
             app.UseCors (x => x.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ().AllowCredentials ());
             app.UseAuthentication ();
