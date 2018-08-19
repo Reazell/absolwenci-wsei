@@ -3,4 +3,5 @@ namespace CareerMonitoring.Infrastructure.Extension.JWT {
         public string Key { get; set; }
         public int ExpiryDays { get; set; }
     }
+
 }

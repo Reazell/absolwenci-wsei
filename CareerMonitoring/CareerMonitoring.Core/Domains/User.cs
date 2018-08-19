@@ -1,6 +1,7 @@
 using System;
 
-namespace CareerMonitoring.Core.Domains {
+namespace CareerMonitoring.Core.Domains
+{
     public class User {
         public int Id { get; private set; }
         public string Name { get; private set; }

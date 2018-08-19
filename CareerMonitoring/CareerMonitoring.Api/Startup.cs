@@ -77,6 +77,7 @@ namespace CareerMonitoring.Api {
             #region Validations
 
             services.AddTransient<IValidator<RegisterUser>, RegisterUserValidator> ();
+            services.AddTransient<IValidator<SignInUser>, SignInUserValidator> ();
 
             #endregion
         }

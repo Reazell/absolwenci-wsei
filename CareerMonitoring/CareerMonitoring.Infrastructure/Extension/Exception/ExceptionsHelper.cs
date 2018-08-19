@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Http;
-
 namespace CareerMonitoring.Infrastructure.Extension.Exception {
     public static class ExceptionsHelper {
         public static void AddApplicationError (this HttpResponse response, string message) {

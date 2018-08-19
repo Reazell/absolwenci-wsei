@@ -9,7 +9,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         private readonly IUserRepository _userRepository;
         private readonly IUserService _userService;
 
-        public AuthService (IUserRepository userRepository, UserService userService) {
+        public AuthService (IUserRepository userRepository, IUserService userService) {
             _userRepository = userRepository;
             _userService = userService;
         }

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CareerMonitoring.Api.ActionFilters {
     public class ValidatorActionFilter : IActionFilter {
-
         public void OnActionExecuting (ActionExecutingContext filterContext) {
             if (!filterContext.ModelState.IsValid) {
                 filterContext.Result = new BadRequestObjectResult (filterContext.ModelState);
@@ -11,6 +10,5 @@ namespace CareerMonitoring.Api.ActionFilters {
         }
 
         public void OnActionExecuted (ActionExecutedContext context) { }
-
     }
 }
