@@ -1,0 +1,44 @@
+@import "./colors.scss";
+@import "./material-theme.scss";
+
+.formWindow {
+  padding: 0;
+
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $header;
+
+    mat-card-title {
+      color: $white;
+      font-size: 2em;
+      padding: 17px;
+    }
+  }
+
+  mat-card-title {
+    display: block;
+    font-weight: 700;
+  }
+
+  mat-form-field {
+    margin: 10px;
+  }
+
+  mat-card-content {
+    padding: 20px;
+  }
+
+  .btnBox {
+    display: flex;
+    flex-direction: row-reverse;
+
+    button
+    {
+      margin: 5px;
+    }
+
+  }
+}
