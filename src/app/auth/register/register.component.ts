@@ -9,25 +9,14 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material';
-import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
-
 import { AuthenticationService } from './../services/authentication.service';
 
-/**
- * Sign in user.
- *
- * @export
- * @class LoginComponent
- * @implements {OnInit} Reset login status (log out), get last url, init login form.
- *
- */
 @Component({
-  moduleId: module.id,
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   logForm: FormGroup;
   email: AbstractControl;
   password: AbstractControl;
@@ -144,22 +133,4 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  /**
-   * Show dialog to recover password and show message about send new password.
-   *
-   * @memberof LoginComponent
-   */
-  runPasswordRecovery() {
-    const dialogRef = this.dialog.open(PasswordRecoveryComponent, {
-      data: { email: this.email.value }
-    });
-
-    // dialogRef.afterClosed().subscribe(mailToReset => {
-    //   if (mailToReset) {
-    //     this.dialog.open(InfoDialogComponent, {
-    //       data: { message: 'New password has been sent on ' + mailToReset }
-    //     });
-    //   }
-    // });
-  }
 }

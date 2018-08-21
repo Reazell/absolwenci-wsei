@@ -2,7 +2,7 @@
   <div id="centered-container">
     <div id="header">
       <span>
-        Zaloguj się</span>
+        Zarejestruj się</span>
     </div>
     <div id="form-container">
       <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="logForm">
@@ -21,10 +21,9 @@
           <mat-error *ngIf=loginError>{{loginErrorMessage}}</mat-error>
         </div>
         <div class="btnBox">
-          <button class="white" mat-raised-button color="accent" type="submit">Logowanie</button>
-          <button mat-raised-button type="button" [routerLink]="['/auth/register']" >Rejestracja</button>
+          <button class="white" mat-raised-button color="accent" type="submit">Rejestracja</button>
         </div>
-        <div class="additionalLink" (click)="runPasswordRecovery()">Zapomniałeś hasła?</div>
+        <div class="additionalLink" [routerLink]="['/auth/login']">Posiadasz już konto?</div>
       </form>
     </div>
   </div>
