@@ -1,5 +1,4 @@
 @import '../../../styles/colors.scss';
-<<<<<<< HEAD
 :host {
   display: block;
 }
@@ -52,51 +51,3 @@
     color: white;
   }
 }
-=======
-
-#login-container {
-    margin: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    #centered-container {
-        #header {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-            span {
-                font-size: 28px;
-                color: #666;
-            }
-        }
-        #form-container {
-            width: 400px;
-            form {
-                display: flex;
-                flex-direction: column;
-                mat-form-field {
-                    margin-bottom: 7px;
-                }
-                .btnBox {
-                    display: flex;
-                    justify-content: center;
-                    button {
-                        margin: 0px 3px;
-                        font-weight: 600;
-                    }
-                }
-            }
-        }
-        .additionalLink {
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-            color: $primary-light;
-            cursor: pointer;
-        }
-    }
-    .white{
-        color: white;
-    }
-}
->>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59

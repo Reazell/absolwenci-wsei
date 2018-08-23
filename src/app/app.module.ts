@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import { JwtInterceptor } from './auth/other/jwt.interceptor';
-=======
->>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
 import { UserService } from './auth/services/user.service';
 import { AuthenticationService } from './auth/services/authentication.service';
 import { SharedModule } from './shared/shared.module';

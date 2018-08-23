@@ -7,7 +7,6 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-<<<<<<< HEAD
 import { MatDialog } from '@angular/material';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { AuthenticationService } from './../services/authentication.service';
@@ -22,22 +21,7 @@ import { AuthenticationService } from './../services/authentication.service';
  */
 
 
-=======
->>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
 
-import { MatDialog } from '@angular/material';
-import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
-
-import { AuthenticationService } from './../services/authentication.service';
-
-/**
- * Sign in user.
- *
- * @export
- * @class LoginComponent
- * @implements {OnInit} Reset login status (log out), get last url, init login form.
- *
- */
 @Component({
   moduleId: module.id,
   selector: 'app-login',
@@ -122,7 +106,6 @@ export class LoginComponent implements OnInit {
           }
         );
     }
-<<<<<<< HEAD
   }
 
   /**
@@ -163,48 +146,6 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-=======
-  }
-
-  /**
-   * Handle error in template and add appropriate error message.
-   *
-   * @param {AbstractControl} control Control from template
-   * @returns {boolean} Returns true if error occurs and is ready to display.
-   * @memberof LoginComponent
-   */
-  inputError(control: AbstractControl): boolean {
-    let errorStr: string;
-    let controlName: string;
-    // retrieve controls names into array to show errors for user
-    const parent = control['_parent'];
-    if (parent instanceof FormGroup) {
-      Object.keys(parent.controls).forEach(name => {
-        if (control === parent.controls[name]) {
-          controlName = name;
-        }
-      });
-    }
-    if (control.errors !== null && control.touched) {
-      if (control.value.length === 0) {
-        errorStr = 'Enter your ' + controlName;
-      } else {
-        errorStr = 'Enter valid ' + controlName;
-      }
-      switch (controlName) {
-        case 'email':
-          this.emailErrorStr = errorStr;
-          break;
-        case 'password':
-          this.passwordErrorStr = errorStr;
-          break;
-      }
-      return true;
-    }
-  }
-
-  /**
->>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
    * Show dialog to recover password and show message about send new password.
    *
    * @memberof LoginComponent
