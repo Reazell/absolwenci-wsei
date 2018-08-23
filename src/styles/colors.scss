@@ -1,8 +1,8 @@
 @import './material-theme.scss';
 @import '~@angular/material/theming';
 
-// $primary: mat-color($my-app-primary, 500);
-// $primary-light: $primary * 1.2;
+ $primary: mat-color($my-app-primary, 500);
+ $primary-light: $primary * 1.2;
 // $primary-ultra-light: $primary * 1.4;
 
 // $accent: rgb(22, 128, 214);

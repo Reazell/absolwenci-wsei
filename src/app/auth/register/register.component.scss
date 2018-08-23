@@ -16,9 +16,22 @@
       display: flex;
       justify-content: center;
       margin-bottom: 15px;
+      align-items: center;
+      flex-direction: column;
       span {
         font-size: 28px;
         color: #666;
+        margin-bottom: 15px;
+      }
+      #profiles {
+        .block {
+          background: #eee;
+          float: left;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          margin: 5px;
+        }
       }
     }
     #form-container {
@@ -45,6 +58,7 @@
       padding: 10px;
       color: $primary-light;
       cursor: pointer;
+      outline: none;
     }
   }
   .white {

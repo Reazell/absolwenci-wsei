@@ -7,12 +7,12 @@ import { RequestOptions } from '@angular/http';
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient, private config: AppConfig) {}
+  constructor(private http: HttpClient, private config: AppConfig) { }
 
   subject$ = new BehaviorSubject<any>(null);
   user$: Observable<any> = this.subject$.asObservable();
   isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
+  transitAnimation$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   // create new user
   // create(user: User) {
   //   const Email = user.email;

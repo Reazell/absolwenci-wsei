@@ -7,6 +7,24 @@
       height: 100%;
       width: 100%;
       background: rgba(58, 61, 65, 0.8);
+      font-weight: 700;
+      color: #fff;
+      line-height: normal;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Raleway', sans-serif;
+      font-size: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        margin-left: 25px;
+        margin-bottom: 30px;
+      }
     }
   }
+}
+:host {
+  display: block;
 }

@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialsModule } from './../materials/materials.module';
 import { AuthComponent } from './auth.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -20,4 +21,4 @@ import { AuthComponent } from './auth.component';
   declarations: [AuthComponent],
   exports: [AuthComponent]
 })
-export class AuthModule {}
+export class AuthModule { }

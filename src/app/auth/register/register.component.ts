@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { profilesTransition } from './../other/profiles.animations';
+import { UserService } from './../services/user.service';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import {
   FormGroup,
   NgForm,
@@ -7,28 +9,18 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { MatDialog } from '@angular/material';
-import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { AuthenticationService } from './../services/authentication.service';
 
-/**
- * Sign in user.
- *
- * @export
- * @class LoginComponent
- * @implements {OnInit} Reset login status (log out), get last url, init login form.
- *
- */
-
-
-
 @Component({
-  moduleId: module.id,
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
+  animations: [profilesTransition]
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
+  @HostBinding('@profilesTransition') profilesTransition;
   logForm: FormGroup;
   email: AbstractControl;
   password: AbstractControl;
@@ -47,8 +39,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
     // reset login status
@@ -93,17 +86,17 @@ export class LoginComponent implements OnInit {
         // login with credentials from form
         .login(this.email.value, this.password.value)
         .subscribe(
-          data => {
-            // if login is successful redirect to previous url if was, if not go to /
-            this.router.navigate([this.returnUrl]);
-          },
-          error => {
-            // set error message from api to loginErrorMessage
-            this.loginError = true;
-            console.log(error);
-            this.loginErrorMessage = 'Email or password is incorrect';
-            this.loading = false;
-          }
+        data => {
+          // if login is successful redirect to previous url if was, if not go to /
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          // set error message from api to loginErrorMessage
+          this.loginError = true;
+          console.log(error);
+          this.loginErrorMessage = 'Email or password is incorrect';
+          this.loading = false;
+        }
         );
     }
   }
@@ -145,22 +138,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  /**
-   * Show dialog to recover password and show message about send new password.
-   *
-   * @memberof LoginComponent
-   */
-  runPasswordRecovery() {
-    const dialogRef = this.dialog.open(PasswordRecoveryComponent, {
-      data: { email: this.email.value }
-    });
-
-    // dialogRef.afterClosed().subscribe(mailToReset => {
-    //   if (mailToReset) {
-    //     this.dialog.open(InfoDialogComponent, {
-    //       data: { message: 'New password has been sent on ' + mailToReset }
-    //     });
-    //   }
-    // });
+  transitAnimation() {
+    this.userService.transitAnimation$.next(0);
   }
 }
