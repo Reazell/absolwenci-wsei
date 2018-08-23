@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import { profilesTransition } from './../other/profiles.animations';
 import { UserService } from './../services/user.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
 import {
   FormGroup,
   NgForm,
@@ -16,11 +20,17 @@ import { AuthenticationService } from './../services/authentication.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
+<<<<<<< HEAD
   styleUrls: ['./register.component.scss'],
   animations: [profilesTransition]
 })
 export class RegisterComponent implements OnInit {
   @HostBinding('@profilesTransition') profilesTransition;
+=======
+  styleUrls: ['./register.component.scss']
+})
+export class RegisterComponent implements OnInit {
+>>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
   logForm: FormGroup;
   email: AbstractControl;
   password: AbstractControl;
@@ -39,9 +49,14 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
+<<<<<<< HEAD
     public dialog: MatDialog,
     private userService: UserService
   ) { }
+=======
+    public dialog: MatDialog
+  ) {}
+>>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
 
   ngOnInit() {
     // reset login status
@@ -86,6 +101,7 @@ export class RegisterComponent implements OnInit {
         // login with credentials from form
         .login(this.email.value, this.password.value)
         .subscribe(
+<<<<<<< HEAD
         data => {
           // if login is successful redirect to previous url if was, if not go to /
           this.router.navigate([this.returnUrl]);
@@ -97,6 +113,19 @@ export class RegisterComponent implements OnInit {
           this.loginErrorMessage = 'Email or password is incorrect';
           this.loading = false;
         }
+=======
+          data => {
+            // if login is successful redirect to previous url if was, if not go to /
+            this.router.navigate([this.returnUrl]);
+          },
+          error => {
+            // set error message from api to loginErrorMessage
+            this.loginError = true;
+            console.log(error);
+            this.loginErrorMessage = 'Email or password is incorrect';
+            this.loading = false;
+          }
+>>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
         );
     }
   }
@@ -138,7 +167,10 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   transitAnimation() {
     this.userService.transitAnimation$.next(0);
   }
+=======
+>>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
 }

@@ -13,6 +13,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+<<<<<<< HEAD
       font-family: 'Raleway', sans-serif;
       font-size: 36px;
       display: flex;
@@ -22,6 +23,14 @@
         margin-left: 25px;
         margin-bottom: 30px;
       }
+=======
+      font-family: 'Raleway',sans-serif;
+      font-size: 36px;
+           display: flex;
+      align-items: center;
+      justify-content: center;
+      span{ margin-left: 25px;margin-bottom: 30px}
+>>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
     }
   }
 }

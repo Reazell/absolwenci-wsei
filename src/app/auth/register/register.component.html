@@ -3,11 +3,15 @@
     <div id="header">
       <span>
         Zarejestruj się</span>
+<<<<<<< HEAD
         <div id="profiles">
         <div class="block">&nbsp;</div>
         <div class="block">&nbsp;</div>
         <div class="block">&nbsp;</div>
     </div></div>
+=======
+    </div>
+>>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
     <div id="form-container">
       <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="logForm">
 
@@ -27,8 +31,16 @@
         <div class="btnBox">
           <button class="white" mat-raised-button color="accent" type="submit">Rejestracja</button>
         </div>
+<<<<<<< HEAD
         <div class="additionalLink" [routerLink]="['/auth/login']" routerLinkActive="active" (click)="transitAnimation()">Posiadasz już konto?</div>
       </form>
     </div>
   </div>
 </div>
+=======
+        <div class="additionalLink" [routerLink]="['/auth/login']">Posiadasz już konto?</div>
+      </form>
+    </div>
+  </div>
+</div>
+>>>>>>> e5a83696b9d68f0bd234e3a6166f53f02db52b59
