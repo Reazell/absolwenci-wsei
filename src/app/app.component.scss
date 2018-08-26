@@ -17,7 +17,11 @@
 }
 
 #mainContainer {
-  flex: 1 1 auto;
-  z-index: 50;
-  position: relative;
+  // flex: 1 1 auto;
+  // z-index: 50;
+  // position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+
 }

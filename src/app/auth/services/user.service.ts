@@ -4,32 +4,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppConfig } from '../../app.config';
 import { RequestOptions } from '@angular/http';
+import { User } from '../../models/user.model';
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient, private config: AppConfig) { }
+  constructor(private http: HttpClient, private config: AppConfig) {}
 
   subject$ = new BehaviorSubject<any>(null);
   user$: Observable<any> = this.subject$.asObservable();
   isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   transitAnimation$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   // create new user
-  // create(user: User) {
-  //   const Email = user.email;
-  //   const Password = user.password;
-  //   const Name = user.firstName;
-  //   const Surname = user.lastName;
-  //   const Country = user.country;
-  //   const ProfileName = user.profileName;
-  //   return this.http.post(this.config.apiUrl + '/auth/register', {
-  //     Email,
-  //     Password,
-  //     Name,
-  //     Surname,
-  //     Country,
-  //     ProfileName
-  //   });
-  // }
+  create(user: User) {
+    console.log(user);
+
+    const IndexNumber = user.albumID;
+    const Email = user.email;
+    const Password = user.password;
+    const Name = user.firstName;
+    const Surname = user.lastName;
+    const ProfileName = user.profileName;
+    return this.http.post(this.config.apiUrl + '/auth/register', {
+      IndexNumber,
+      Email,
+      Password,
+      Name,
+      Surname,
+      // ProfileName
+    });
+  }
 
   // // change password
   // changePassword(OldPassword, NewPassword) {

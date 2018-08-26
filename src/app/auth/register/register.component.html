@@ -1,34 +1,75 @@
-<div id="login-container">
-  <div id="centered-container">
+<div id="container">
+  <p-progressBar mode="indeterminate" *ngIf="loading === true"></p-progressBar>
+  <form #reg="ngForm" (ngSubmit)=onSubmit(reg) [formGroup]="regForm">
     <div id="header">
-      <span>
+      <span id="signup">
         Zarejestruj się</span>
+      <div id="profiles-container">
+        <span id="profile-info">Wybierz swój profil</span>
         <div id="profiles">
-        <div class="block">&nbsp;</div>
-        <div class="block">&nbsp;</div>
-        <div class="block">&nbsp;</div>
-    </div></div>
-    <div id="form-container">
-      <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="logForm">
-
-        <mat-form-field>
-          <input matInput autocomplete="email" placeholder="Email" type="email" id="email" formControlName="email">
-          <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput autocomplete="current-password" placeholder="Password" type="password" id="password" formControlName="password">
-          <mat-error *ngIf="inputError(password)">{{passwordErrorStr}}</mat-error>
-        </mat-form-field>
-
-        <div class="logErr">
-          <mat-error *ngIf=loginError>{{loginErrorMessage}}</mat-error>
+          <div class="profile" *ngFor="let profile of profiles" class=" cc-selector">
+            <input id="{{profile.value}}" type="radio" formControlName="profileName" value="{{profile.value}}">
+            <label for="{{profile.value}}" class="{{profile.value}} card-cc" matTooltip="{{profile.message}}" matTooltipPosition="below"></label>
+          </div>
         </div>
-        <div class="btnBox">
-          <button class="white" mat-raised-button color="accent" type="submit">Rejestracja</button>
-        </div>
-        <div class="additionalLink" [routerLink]="['/auth/login']" routerLinkActive="active" (click)="transitAnimation()">Posiadasz już konto?</div>
-      </form>
+      </div>
     </div>
-  </div>
+    <div id="form-container">
+
+      <div class="group">
+        <div class="field right">
+          <mat-form-field>
+            <input matInput autocomplete="first-name" placeholder="Name" type="text" id="name" formControlName="name" (focus)="onFocus(name)"
+              (blur)="onBlur(name)" autofocus>
+            <mat-error *ngIf="inputError(name)">{{nameErrorStr}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="field">
+          <mat-form-field>
+            <input matInput autocomplete="last-name" placeholder="Last name" type="text" id="lastName" formControlName="lastName" (focus)="onFocus(lastName)"
+              (blur)="onBlur(lastName)">
+            <mat-error *ngIf="inputError(lastName)">{{lastNameErrorStr}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="group">
+        <div class="field right">
+          <mat-form-field>
+            <input matInput autocomplete="email" placeholder="E-mail" type="email" id="email" formControlName="email" (focus)="onFocus(email)"
+              (blur)="onBlur(email)">
+            <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="field">
+          <mat-form-field>
+            <input matInput placeholder="Nr Albumu" type="text" id="albumID" formControlName="albumID" (focus)="onFocus(albumID)" (blur)="onBlur(albumID)">
+            <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="group">
+        <div class="field right">
+          <mat-form-field>
+            <input matInput autocomplete="new-password" placeholder="Password" type="password" id="password" formControlName="password"
+              (focus)="onFocus(password)" (blur)="onBlur(password)" (keydown)="clearPasswordConfirm()">
+            <mat-error *ngIf="inputError(password)">{{passwordErrorStr}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="field">
+          <mat-form-field>
+            <input matInput autocomplete="new-password" placeholder="Confirm password" type="password" id="passwordConfirm" formControlName="passwordConfirm"
+              (focus)="onFocus(passwordConfirm)" (blur)="onBlur(passwordConfirm)">
+            <mat-error *ngIf="passwordNoMatch(reg) || inputError(passwordConfirm)">{{passwordConfirmErrorStr}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="btnBox">
+        <button class="white" mat-raised-button color="primary" type="submit">Rejestracja</button>
+      </div>
+      <div class="additionalLink" [routerLink]="['/auth/login']" routerLinkActive="active">Posiadasz już konto?</div>
+
+    </div>
+  </form>
 </div>
+<!-- </div>
+</div> -->

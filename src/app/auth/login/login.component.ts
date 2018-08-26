@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import {
   FormGroup,
   NgForm,
@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { AuthenticationService } from './../services/authentication.service';
+import { basicTransition } from '../other/router.animations';
 
 /**
  * Sign in user.
@@ -20,15 +21,16 @@ import { AuthenticationService } from './../services/authentication.service';
  *
  */
 
-
-
 @Component({
   moduleId: module.id,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  // animations: [trigtrans]
 })
 export class LoginComponent implements OnInit {
+  // @HostBinding('@trigtrans')
+  basicTransition;
   logForm: FormGroup;
   email: AbstractControl;
   password: AbstractControl;
@@ -75,13 +77,6 @@ export class LoginComponent implements OnInit {
     this.password = this.logForm.controls['password'];
   }
 
-  /**
-   * Method to get all values from form, make request and handle result.
-   * If error occurs display error message and if success redirect to login page.
-   *
-   * @param {NgForm} form Form with direct values from template.
-   * @memberof LoginComponent
-   */
   onSubmit(form: NgForm) {
     // showing possible errors
     this.email.markAsTouched();

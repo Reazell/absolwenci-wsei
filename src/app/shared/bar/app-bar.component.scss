@@ -1,3 +1,4 @@
+@import '../../../styles/colors.scss';
 #bar-container {
   height: 70px;
   display: flex;
@@ -20,12 +21,14 @@
       display: inline-block;
       margin: 0px 10px;
       font-size: 15px;
-      color: #666;
+      color: $grey;
       cursor: pointer;
       padding: 15px 5px;
+      border-radius: 3px;
+      outline: none;
     }
     .menu-item:hover {
-      background-color: rgba(127, 194, 65, 1);
+      background-color: $primary;
       color: white;
     }
   }

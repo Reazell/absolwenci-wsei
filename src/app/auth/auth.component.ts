@@ -1,5 +1,5 @@
 import { UserService } from './services/user.service';
-import { routerTransition } from './other/router.animations';
+import { routerTransition, basicTransition } from './other/router.animations';
 import {
   Component,
   OnInit,
@@ -12,7 +12,7 @@ import {
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  animations: [routerTransition]
+  animations: [basicTransition]
 })
 export class AuthComponent implements OnInit {
   constructor(private userService: UserService) {}

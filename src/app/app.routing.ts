@@ -10,7 +10,7 @@ const appRoutes: Routes = [
   //   canActivate: [AuthGuard]
   // },
 
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
   // {
   //   path: 'register',

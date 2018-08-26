@@ -4,6 +4,7 @@ import {
   FormGroup,
   FormBuilder,
   AbstractControl,
+  NgForm
 } from '@angular/forms';
 import { UserService } from './../../services/user.service';
 
@@ -22,27 +23,25 @@ import { UserService } from './../../services/user.service';
   styleUrls: ['./password-recovery.component.scss']
 })
 export class PasswordRecoveryComponent implements OnInit {
-
+  loading = false;
+  passForm: NgForm;
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<PasswordRecoveryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private userService: UserService
-  ) { }
+  ) {}
 
   configurationForm: FormGroup;
   email: AbstractControl;
 
   ngOnInit() {
     this.configurationForm = this.fb.group({
-      email: [
-        this.data.email
-      ]
+      email: [this.data.email]
     });
 
     this.email = this.configurationForm.controls['email'];
   }
-
 
   /**
    * Make request and handle result for password recovery.
@@ -73,5 +72,4 @@ export class PasswordRecoveryComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
-
 }
