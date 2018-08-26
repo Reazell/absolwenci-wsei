@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using CareerMonitoring.Api.ActionFilters;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
+using CareerMonitoring.Infrastructure.Email;
+using CareerMonitoring.Infrastructure.Email.Interfaces;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
@@ -72,6 +74,7 @@ namespace CareerMonitoring.Api {
 
             services.AddScoped<IAuthService, AuthService> ();
             services.AddScoped<IUserService, UserService> ();
+            services.AddScoped<IEmailSender, EmailSender> ();
 
             #endregion
             #region Validations
