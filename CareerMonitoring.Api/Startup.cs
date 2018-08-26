@@ -63,6 +63,7 @@ namespace CareerMonitoring.Api {
                     };
                 });
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
+            services.AddSingleton<IEmailConfig> (Configuration.GetSection ("EmailSettings").Get<EmailConfig> ());
 
             #endregion
             #region Repositories
@@ -75,6 +76,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IAuthService, AuthService> ();
             services.AddScoped<IUserService, UserService> ();
             services.AddScoped<IEmailSender, EmailSender> ();
+            services.AddScoped<IEmailConfig, EmailConfig> ();
 
             #endregion
             #region Validations

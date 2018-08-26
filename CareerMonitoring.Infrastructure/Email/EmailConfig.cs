@@ -1,6 +1,8 @@
+using CareerMonitoring.Infrastructure.Email.Interfaces;
+
 namespace CareerMonitoring.Infrastructure.Email
 {
-    public class EmailConfig
+    public class EmailConfig : IEmailConfig
     {
         public string SmtpServer { get; set; }
         public int SmtpPort { get; set; }
