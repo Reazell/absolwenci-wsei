@@ -1,22 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   AbstractControl,
-  NgForm
+  Validators
 } from '@angular/forms';
-import { UserService } from './../../services/user.service';
+import { UserService } from '../../services/user.service';
 
-/**
- * Password recovery component (when user forgot password).
- *
- * @export
- * @class PasswordRecoveryComponent
- * @implements {OnInit}
- * Init form.
- *
- */
 @Component({
   selector: 'app-password-recovery',
   templateUrl: './password-recovery.component.html',
@@ -24,32 +14,29 @@ import { UserService } from './../../services/user.service';
 })
 export class PasswordRecoveryComponent implements OnInit {
   loading = false;
-  passForm: NgForm;
-  constructor(
-    private fb: FormBuilder,
-    public dialogRef: MatDialogRef<PasswordRecoveryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private userService: UserService
-  ) {}
-
-  configurationForm: FormGroup;
+  mail: string;
+  passForm: FormGroup;
   email: AbstractControl;
+  emailErrorStr: string;
+  // tslint:disable-next-line:max-line-length
+  emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit() {
-    this.configurationForm = this.fb.group({
-      email: [this.data.email]
+    this.mail = this.userService.getMailData();
+    this.passForm = this.fb.group({
+      email: [
+        this.mail,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(this.emailPattern)
+        ])
+      ]
     });
-
-    this.email = this.configurationForm.controls['email'];
+    this.email = this.passForm.controls['email'];
   }
 
-  /**
-   * Make request and handle result for password recovery.
-   * On success: close dialog and take typed email for sign in.
-   * On error: console log error.
-   *
-   * @memberof PasswordRecoveryComponent
-   */
   onSubmit() {
     // this.userService.sendRestorePasswordEmail(this.email.value).subscribe(
     //   data => {
@@ -62,14 +49,30 @@ export class PasswordRecoveryComponent implements OnInit {
     // );
   }
 
-  /**
-   * Close dialog - it takes parameter:
-   * - false if there is no email to get from recovery
-   * - email that is injected to login component's aprropriate input
-   *
-   * @memberof PasswordRecoveryComponent
-   */
-  closeDialog() {
-    this.dialogRef.close();
+  inputError(control: AbstractControl): boolean {
+    let errorStr: string;
+    let controlName: string;
+    // retrieve controls names into array to show errors for user
+    const parent = control['_parent'];
+    if (parent instanceof FormGroup) {
+      Object.keys(parent.controls).forEach(name => {
+        if (control === parent.controls[name]) {
+          controlName = name;
+        }
+      });
+    }
+    if (control.errors !== null && control.touched) {
+      if (control.value.length === 0) {
+        errorStr = 'Enter your ' + controlName;
+      } else {
+        errorStr = 'Enter valid ' + controlName;
+      }
+      switch (controlName) {
+        case 'email':
+          this.emailErrorStr = errorStr;
+          break;
+      }
+      return true;
+    }
   }
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-// import { DashboardComponent } from './dashboard/dashboard.component';
-import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/other/guard.auth';
 
 const appRoutes: Routes = [
   // {
@@ -11,7 +10,16 @@ const appRoutes: Routes = [
   // },
 
   { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
-  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
+  {
+    path: 'app',
+    loadChildren: './main-view/main-view.module#MainViewModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'info',
+    loadChildren: './info/info.module#InfoModule'
+  },
   // {
   //   path: 'register',
   //   loadChildren: './auth/registration/registration.module#RegistrationModule'
@@ -36,12 +44,8 @@ const appRoutes: Routes = [
   //   loadChildren: './contacts/contacts.module#ContactsModule',
   //   canActivate: [AuthGuard]
   // },
-  // {
-  //   path: 'webMail',
-  //   loadChildren: './webmail/webmail.module#WebmailModule',
-  //   canActivate: [AuthGuard]
-  // },
-  // { path: '**', redirectTo: '' }
+
+  // { path: '**', redirectTo: '/auth/login' }
 ];
 
 @NgModule({

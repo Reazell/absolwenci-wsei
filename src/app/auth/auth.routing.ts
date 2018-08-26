@@ -12,13 +12,17 @@ const authRoutes: Routes = [
       {
         path: 'register',
         loadChildren: './register/register.module#RegisterModule'
+      },
+      {
+        path: 'recovery',
+        loadChildren:
+          './login/password-recovery/password-recovery.module#PasswordRecoveryModule'
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(authRoutes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(authRoutes)]
 })
 export class AuthRoutingModule {}

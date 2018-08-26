@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/other/guard.auth';
 import { JwtInterceptor } from './auth/other/jwt.interceptor';
 import { UserService } from './auth/services/user.service';
 import { AuthenticationService } from './auth/services/authentication.service';
@@ -9,13 +10,13 @@ import { AppConfig } from './app.config';
 import {
   HTTP_INTERCEPTORS,
   HttpClientModule
-} from '../../node_modules/@angular/common/http';
+} from '@angular/common/http';
 import { MaterialsModule } from './materials/materials.module';
 import {
   FormsModule,
   ReactiveFormsModule
-} from '../../node_modules/@angular/forms';
-import { HttpModule } from '../../node_modules/@angular/http';
+} from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -30,11 +31,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthenticationService,
     UserService,
+    AuthGuard,
     AppConfig,
     {
       provide: HTTP_INTERCEPTORS,

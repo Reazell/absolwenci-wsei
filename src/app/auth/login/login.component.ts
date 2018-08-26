@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, OnDestroy } from '@angular/core';
 import {
   FormGroup,
   NgForm,
@@ -9,8 +9,8 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
-import { AuthenticationService } from './../services/authentication.service';
-import { basicTransition } from '../other/router.animations';
+import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
 
 /**
  * Sign in user.
@@ -25,10 +25,10 @@ import { basicTransition } from '../other/router.animations';
   moduleId: module.id,
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
   // animations: [trigtrans]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   // @HostBinding('@trigtrans')
   basicTransition;
   logForm: FormGroup;
@@ -49,9 +49,13 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userService: UserService
   ) {}
 
+  ngOnDestroy() {
+    this.userService.passMailData(this.email.value);
+  }
   ngOnInit() {
     // reset login status
     this.authenticationService.logout();
@@ -90,13 +94,13 @@ export class LoginComponent implements OnInit {
         .subscribe(
           data => {
             // if login is successful redirect to previous url if was, if not go to /
-            this.router.navigate([this.returnUrl]);
+            this.router.navigateByUrl(`/app`);
           },
           error => {
             // set error message from api to loginErrorMessage
             this.loginError = true;
             console.log(error);
-            this.loginErrorMessage = 'Email or password is incorrect';
+            this.loginErrorMessage = 'Nieprawidłowy mail lub hasło';
             this.loading = false;
           }
         );
@@ -138,24 +142,5 @@ export class LoginComponent implements OnInit {
       }
       return true;
     }
-  }
-
-  /**
-   * Show dialog to recover password and show message about send new password.
-   *
-   * @memberof LoginComponent
-   */
-  runPasswordRecovery() {
-    const dialogRef = this.dialog.open(PasswordRecoveryComponent, {
-      data: { email: this.email.value }
-    });
-
-    // dialogRef.afterClosed().subscribe(mailToReset => {
-    //   if (mailToReset) {
-    //     this.dialog.open(InfoDialogComponent, {
-    //       data: { message: 'New password has been sent on ' + mailToReset }
-    //     });
-    //   }
-    // });
   }
 }

@@ -1,5 +1,5 @@
-import { profilesTransition } from './../other/profiles.animations';
-import { UserService } from './../services/user.service';
+import { profilesTransition } from '../other/profiles.animations';
+import { UserService } from '../services/user.service';
 import {
   Component,
   OnInit,
@@ -242,9 +242,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
           break;
         case 'last name':
           this.lastNameErrorStr = errorStr;
-          break;
-        case 'country':
-          this.countryErrorStr = errorStr;
           break;
         case 'email':
           this.emailErrorStr = errorStr;

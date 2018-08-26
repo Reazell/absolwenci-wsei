@@ -1,11 +1,7 @@
-import { UserService } from './services/user.service';
-import { routerTransition, basicTransition } from './other/router.animations';
+import { basicTransition } from './other/router.animations';
 import {
   Component,
-  OnInit,
-  ElementRef,
-  ViewChild,
-  HostBinding
+  OnInit
 } from '@angular/core';
 
 @Component({
@@ -15,7 +11,7 @@ import {
   animations: [basicTransition]
 })
 export class AuthComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor() {}
 
   ngOnInit() {
   }

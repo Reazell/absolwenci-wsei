@@ -8,12 +8,11 @@ import { User } from '../../models/user.model';
 
 @Injectable()
 export class UserService {
+  mail: string;
+  isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient, private config: AppConfig) {}
 
-  subject$ = new BehaviorSubject<any>(null);
-  user$: Observable<any> = this.subject$.asObservable();
-  isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  transitAnimation$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   // create new user
   create(user: User) {
     console.log(user);
@@ -29,7 +28,7 @@ export class UserService {
       Email,
       Password,
       Name,
-      Surname,
+      Surname
       // ProfileName
     });
   }
@@ -90,4 +89,12 @@ export class UserService {
   //     return headers;
   //   }
   // }
+  passMailData(mail) {
+    this.mail = mail;
+  }
+  getMailData() {
+    const mail = this.mail;
+    this.mail = undefined;
+    return mail;
+  }
 }
