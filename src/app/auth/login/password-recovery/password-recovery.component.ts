@@ -1,3 +1,4 @@
+import { SharedService } from './../../../services/shared.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -13,18 +14,30 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./password-recovery.component.scss']
 })
 export class PasswordRecoveryComponent implements OnInit {
+  // loader
   loading = false;
+
+  // string mail from login component
   mail: string;
+
+  // declare form
   passForm: FormGroup;
   email: AbstractControl;
   emailErrorStr: string;
   // tslint:disable-next-line:max-line-length
   emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private sharedService: SharedService
+  ) {}
 
   ngOnInit() {
+    // get mail string
     this.mail = this.userService.getMailData();
+
+    // form declaring
     this.passForm = this.fb.group({
       email: [
         this.mail,
@@ -34,10 +47,12 @@ export class PasswordRecoveryComponent implements OnInit {
         ])
       ]
     });
+
+    // connecting controls with form inputs
     this.email = this.passForm.controls['email'];
   }
 
-  onSubmit() {
+  onSubmit(): void {
     // this.userService.sendRestorePasswordEmail(this.email.value).subscribe(
     //   data => {
     //     this.dialogRef.close(this.email.value);
@@ -50,26 +65,14 @@ export class PasswordRecoveryComponent implements OnInit {
   }
 
   inputError(control: AbstractControl): boolean {
-    let errorStr: string;
-    let controlName: string;
-    // retrieve controls names into array to show errors for user
-    const parent = control['_parent'];
-    if (parent instanceof FormGroup) {
-      Object.keys(parent.controls).forEach(name => {
-        if (control === parent.controls[name]) {
-          controlName = name;
-        }
-      });
-    }
-    if (control.errors !== null && control.touched) {
-      if (control.value.length === 0) {
-        errorStr = 'Enter your ' + controlName;
-      } else {
-        errorStr = 'Enter valid ' + controlName;
-      }
-      switch (controlName) {
+    // get error message and control name in string
+    const errorObj = this.sharedService.inputError(control);
+
+    // assign error to input
+    if (errorObj) {
+      switch (errorObj.controlName) {
         case 'email':
-          this.emailErrorStr = errorStr;
+          this.emailErrorStr = errorObj.errorStr;
           break;
       }
       return true;

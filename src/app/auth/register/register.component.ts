@@ -1,12 +1,5 @@
-import { profilesTransition } from '../other/profiles.animations';
 import { UserService } from '../services/user.service';
-import {
-  Component,
-  OnInit,
-  HostBinding,
-  OnChanges,
-  OnDestroy
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormGroup,
   NgForm,
@@ -15,7 +8,7 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-register',
@@ -25,8 +18,9 @@ import { MatDialog } from '@angular/material';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   // @HostBinding('@profilesTransition')
-  expand;
-  profilesTransition;
+  // profilesTransition;
+
+  // declare form
   regForm: FormGroup;
   name: AbstractControl;
   lastName: AbstractControl;
@@ -36,6 +30,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   profileName: AbstractControl;
   albumID: AbstractControl;
 
+  // error handlers
   nameErrorStr: string;
   lastNameErrorStr: string;
   countryErrorStr: string;
@@ -43,12 +38,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
   passwordErrorStr: string;
   passwordConfirmErrorStr: string;
   albumIDErrorStr: string;
-
-  user: any = {};
-  loading = false;
   registrationError = false;
   registrationErrorMessage: Array<string>;
 
+  // user object sent to API
+  user: any = {};
+  // loader
+  loading = false;
+  // profiles tooltip
   profiles = [
     { value: 'Student', message: 'Student' },
     {
@@ -56,7 +53,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       message: 'Absolwent'
     },
     { value: 'Employer', message: 'Pracodawca' }
-    // { value: 'Company', message: 'Pick if you represent company.' }
   ];
 
   // tslint:disable-next-line:max-line-length
@@ -68,20 +64,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private sharedService: SharedService
   ) {}
 
   ngOnDestroy() {
-    // this.loading = true;
+    this.sharedService.deleteControlArray();
   }
   ngOnInit() {
-    // this.updateHeight();
     // reset login status
     if (localStorage.getItem('currentUser')) {
       this.router.navigateByUrl('');
     }
 
+    // form declaration
     this.regForm = this.fb.group({
       name: [
         '',
@@ -118,6 +114,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       profileName: ['Student', Validators.required],
       albumID: ['', Validators.required]
     });
+
     // connecting controls with form inputs
     this.name = this.regForm.controls['name'];
     this.lastName = this.regForm.controls['lastName'];
@@ -128,32 +125,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.albumID = this.regForm.controls['albumID'];
   }
 
-  // updateHeight() {
-  //   const el = this.expand.nativeElement;
-  //     const prevHeight = el.style.height;
-  //     el.style.height = 'auto';
-  //     const newHeight = el.scrollHeight + 100 + 'px';
-  //     el.style.height = prevHeight;
-  //     console.log(newHeight);
-  //       el.style.height = newHeight;
-  // }
-
-  /**
-   * Method to get all values from form, make request and handle result.
-   * If error occurs display error message and if success redirect to login page.
-   *
-   * @param {NgForm} form Form with direct values from template.
-   * @memberof LoginComponent
-   */
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm): void {
     if (!form.valid) {
       // showing possible errors
-      this.name.markAsTouched();
-      this.lastName.markAsTouched();
-      this.email.markAsTouched();
-      this.password.markAsTouched();
-      this.passwordConfirm.markAsTouched();
-      this.albumID.markAsTouched();
+      this.setAllAsTouched();
     } else {
       this.loading = true;
       this.user.firstName = this.name.value;
@@ -165,39 +140,51 @@ export class RegisterComponent implements OnInit, OnDestroy {
       // create new user
       this.userService.create(this.user).subscribe(
         data => {
-          //  this.showActivationInfo(true);
           this.router.navigateByUrl('/auth/login');
         },
         error => {
           this.loading = false;
           this.registrationError = true;
+          // set error message from api to loginErrorMessage
+          this.registrationErrorMessage = error;
         }
       );
     }
   }
 
-  onFocus(control: AbstractControl) {
-    /*hide possible errors*/
+  setAllAsTouched(): void {
+    this.name.markAsTouched();
+    this.lastName.markAsTouched();
+    this.email.markAsTouched();
+    this.password.markAsTouched();
+    this.passwordConfirm.markAsTouched();
+    this.albumID.markAsTouched();
+  }
+
+  onFocus(control: AbstractControl): void {
+    // hide possible errors
     if (control.touched) {
       control.markAsUntouched();
     }
     this.registrationError = false;
   }
-  onBlur(control: AbstractControl) {
+
+  onBlur(control: AbstractControl): void {
+    // hide possible errors
     if (control.dirty === false) {
       control.markAsUntouched();
       this.registrationError = false;
     }
   }
 
-  clearPasswordConfirm() {
-    /*clear confirm password input after changing password input*/
+  clearPasswordConfirm(): void {
+    // clear confirm password input after changing password input
     this.passwordConfirm.setValue('');
     this.passwordConfirm.markAsUntouched();
   }
 
   matchPassword(control: AbstractControl): { [s: string]: boolean } {
-    /*check if inputs have same values*/
+    // check if inputs have same values
     if (control.parent !== undefined) {
       const password = control.parent.get('password').value;
       const passwordConfirm = control.parent.get('passwordConfirm').value;
@@ -208,46 +195,23 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   inputError(control: AbstractControl): boolean {
-    let errorStr: string;
-    let controlName: string;
-    // retrieve controls names into array to show errors for user
-    const parent = control['_parent'];
-    const parentArray = Object.keys(parent.controls);
-    if (parent instanceof FormGroup) {
-      for (let i = 0; i < parentArray.length; i++) {
-        if (control === parent.controls[parentArray[i]]) {
-          controlName = parentArray[i];
-          break;
-        }
-      }
-    }
-    if (control.errors !== null && control.touched) {
-      if (controlName === 'lastName') {
-        controlName = 'last name';
-      }
-      if (control.value.length === 0) {
-        errorStr = 'Enter your ' + controlName;
-      } else {
-        if (controlName === 'password') {
-          errorStr =
-            // tslint:disable-next-line:max-line-length
-            'Użyj co najmniej ośmiu znaków, w tym jednocześnie liter, cyfr i symboli: !#$%&?';
-        } else {
-          errorStr = 'Enter valid ' + controlName;
-        }
-      }
-      switch (controlName) {
+    // get error message and control name in string
+    const errorObj = this.sharedService.inputError(control);
+
+    // assign error to input
+    if (errorObj) {
+      switch (errorObj.controlName) {
         case 'name':
-          this.nameErrorStr = errorStr;
+          this.nameErrorStr = errorObj.errorStr;
           break;
         case 'last name':
-          this.lastNameErrorStr = errorStr;
+          this.lastNameErrorStr = errorObj.errorStr;
           break;
         case 'email':
-          this.emailErrorStr = errorStr;
+          this.emailErrorStr = errorObj.errorStr;
           break;
         case 'password':
-          this.passwordErrorStr = errorStr;
+          this.passwordErrorStr = errorObj.errorStr;
           break;
       }
       return true;

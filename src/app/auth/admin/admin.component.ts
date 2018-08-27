@@ -11,22 +11,12 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
-/**
- * Sign in user.
- *
- * @export
- * @class LoginComponent
- * @implements {OnInit} Reset login status (log out), get last url, init login form.
- *
- */
-
 @Component({
-  moduleId: module.id,
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class AdminComponent implements OnInit, OnDestroy {
   // declare form
   logForm: FormGroup;
   email: AbstractControl;
@@ -94,7 +84,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         .subscribe(
           data => {
             // if login is successful, redirect to app
-            this.router.navigateByUrl(`/app`);
+            this.router.navigateByUrl(`/app/admin`);
           },
           error => {
             console.log(error);

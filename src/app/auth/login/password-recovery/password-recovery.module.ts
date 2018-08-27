@@ -5,8 +5,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialsModule } from '../../../materials/materials.module';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { SharedService } from '../../../services/shared.service';
 
-export const routes: Routes = [{ path: '', component: PasswordRecoveryComponent }];
+export const routes: Routes = [
+  { path: '', component: PasswordRecoveryComponent }
+];
 
 @NgModule({
   imports: [
@@ -16,6 +19,7 @@ export const routes: Routes = [{ path: '', component: PasswordRecoveryComponent 
     CommonModule,
     ProgressBarModule
   ],
+  providers: [SharedService],
   declarations: [PasswordRecoveryComponent],
   exports: [PasswordRecoveryComponent]
 })

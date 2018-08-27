@@ -1,3 +1,4 @@
+import { SharedService } from './../../services/shared.service';
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialsModule } from '../../materials/materials.module';
@@ -18,6 +19,7 @@ export const routes: Routes = [{ path: '', component: RegisterComponent }];
     MatRadioModule,
     ProgressBarModule
   ],
+  providers: [SharedService],
   declarations: [RegisterComponent],
   exports: [RegisterComponent]
 })

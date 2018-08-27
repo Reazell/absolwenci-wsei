@@ -17,6 +17,10 @@ const authRoutes: Routes = [
         path: 'recovery',
         loadChildren:
           './login/password-recovery/password-recovery.module#PasswordRecoveryModule'
+      },
+      {
+        path: 'admin',
+        loadChildren: './admin/admin.module#AdminModule'
       }
     ]
   }
