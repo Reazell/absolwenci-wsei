@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -9,10 +10,14 @@ namespace CareerMonitoring.Infrastructure.Services {
     public class AuthService : IAuthService {
         private readonly IStudentRepository _studentRepository;
         private readonly IStudentService _studentService;
+        private readonly IAccountEmailFactory _accountEmailFactory;
 
-        public AuthService (IStudentRepository studentRepository, IStudentService studentService) {
+        public AuthService (IStudentRepository studentRepository,
+            IStudentService studentService,
+            IAccountEmailFactory accountEmailFactory) {
             _studentRepository = studentRepository;
             _studentService = studentService;
+            _accountEmailFactory = accountEmailFactory;
         }
 
         public async Task<Account> LoginAsync (string email, string password) {
@@ -25,13 +30,15 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task RegisterAsync (string name, string surname, string email, int indexNumber, string password) {
-            if (await _studentService.UserExistByEmailAsync (email.ToLowerInvariant ()))
+            if (await _studentService.ExistByEmailAsync (email.ToLowerInvariant ()))
                 throw new Exception ("User of given email already exist.");
             // if (!await _studentService.UserExistByIndexNumberAsync (indexNumber))
             //     throw new Exception ("Given index number does not exist.");
-
             var student = new Student (name, surname, email, indexNumber, password);
+            var activationKey = Guid.NewGuid ();
+            student.AddAccountActivation (new AccountActivation (activationKey));
             await _studentRepository.AddAsync (student);
+            await _accountEmailFactory.SendActivationEmailAsync (student, activationKey);
         }
 
         private bool VerifyPasswordHash (string password, byte[] passwordHash, byte[] passwordSalt) {

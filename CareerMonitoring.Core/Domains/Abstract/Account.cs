@@ -13,6 +13,7 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         public DateTime UpdatedAt { get; protected set; }
         public bool Deleted { get; protected set; }
         public bool Activated { get; protected set; }
+        public AccountActivation AccountActivation { get; protected set; }
 
         protected Account () { }
 
@@ -33,6 +34,14 @@ namespace CareerMonitoring.Core.Domains.Abstract {
             UpdatedAt = DateTime.UtcNow;
         }
 
+        public void Activate (AccountActivation accountActivation) {
+            if (!accountActivation.Active) {
+                Activated = true;
+                UpdatedAt = DateTime.UtcNow;
+                accountActivation.Activate ();
+            }
+        }
+
         public void Delete () {
             if (Deleted == false) {
                 Deleted = true;
@@ -45,6 +54,10 @@ namespace CareerMonitoring.Core.Domains.Abstract {
                 PasswordSalt = hmac.Key;
                 PasswordHash = hmac.ComputeHash (System.Text.Encoding.UTF8.GetBytes (password));
             }
+        }
+
+        public void AddAccountActivation (AccountActivation accountActivation) {
+            AccountActivation = accountActivation;
         }
     }
 }

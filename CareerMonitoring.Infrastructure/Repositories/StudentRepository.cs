@@ -36,7 +36,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             return await _context.Students.AsNoTracking ().SingleOrDefaultAsync (x => x.Email == email);
         }
 
-        public Task<IEnumerable<Student>> BrowseAsync () {
+        public Task<IEnumerable<Student>> GetAllAsync () {
             throw new System.NotImplementedException ();
         }
 
