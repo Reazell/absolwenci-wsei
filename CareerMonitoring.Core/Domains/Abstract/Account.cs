@@ -1,29 +1,25 @@
 using System;
 
-namespace CareerMonitoring.Core.Domains
-{
-    public class User {
+namespace CareerMonitoring.Core.Domains.Abstract {
+    public abstract class Account {
         public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public string Email { get; private set; }
-        public int IndexNumber { get; private set; }
-        public byte[] PasswordHash { get; private set; }
-        public byte[] PasswordSalt { get; private set; }
-        public string Role { get; private set; }
-        public DateTime CreatedAt { get; private set; }
-        public DateTime UpdatedAt { get; private set; }
-        public bool Deleted { get; private set; }
-        public bool Activated { get; private set; }
+        public string Name { get; protected set; }
+        public string Surname { get; protected set; }
+        public string Email { get; protected set; }
+        public byte[] PasswordHash { get; protected set; }
+        public byte[] PasswordSalt { get; protected set; }
+        public string Role { get; protected set; }
+        public DateTime CreatedAt { get; protected set; }
+        public DateTime UpdatedAt { get; protected set; }
+        public bool Deleted { get; protected set; }
+        public bool Activated { get; protected set; }
 
-        protected User () { }
+        protected Account () { }
 
-        public User (string name, string surname, string email, int indexNumber, string password) {
+        public Account (string name, string surname, string email, string password) {
             Name = name;
             Surname = surname;
             Email = email;
-            Role = "user";
-            IndexNumber = indexNumber;
             CreatePasswordHash (password);
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
@@ -50,6 +46,5 @@ namespace CareerMonitoring.Core.Domains
                 PasswordHash = hmac.ComputeHash (System.Text.Encoding.UTF8.GetBytes (password));
             }
         }
-
     }
 }

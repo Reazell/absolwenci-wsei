@@ -2,8 +2,8 @@ using CareerMonitoring.Infrastructure.Commands.User;
 using FluentValidation;
 
 namespace CareerMonitoring.Infrastructure.Validators.User {
-    public class SignInUserValidator : AbstractValidator<SignInUser> {
-        public SignInUserValidator () {
+    public class SignInValidator : AbstractValidator<SignIn> {
+        public SignInValidator () {
             RuleFor (reg => reg.Email)
                 .NotNull ()
                 .EmailAddress ()

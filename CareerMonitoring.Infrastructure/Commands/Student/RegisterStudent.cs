@@ -1,5 +1,5 @@
 namespace CareerMonitoring.Infrastructure.Commands.User {
-    public class RegisterUser {
+    public class RegisterStudent {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

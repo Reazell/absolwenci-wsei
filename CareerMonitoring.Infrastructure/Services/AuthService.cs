@@ -1,36 +1,37 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
+using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
 namespace CareerMonitoring.Infrastructure.Services {
     public class AuthService : IAuthService {
-        private readonly IUserRepository _userRepository;
-        private readonly IUserService _userService;
+        private readonly IStudentRepository _studentRepository;
+        private readonly IStudentService _studentService;
 
-        public AuthService (IUserRepository userRepository, IUserService userService) {
-            _userRepository = userRepository;
-            _userService = userService;
+        public AuthService (IStudentRepository studentRepository, IStudentService studentService) {
+            _studentRepository = studentRepository;
+            _studentService = studentService;
         }
 
-        public async Task<User> LoginAsync (string email, string password) {
-            var user = await _userRepository.GetByEmailAsync (email, false);
-            if (user == null || !user.Activated || user.Deleted)
+        public async Task<Account> LoginAsync (string email, string password) {
+            var student = await _studentRepository.GetByEmailAsync (email, false);
+            if (student == null || !student.Activated || student.Deleted)
                 throw new Exception ("User of given email and password does not exist!");
-            if (!VerifyPasswordHash (password, user.PasswordHash, user.PasswordSalt))
+            if (!VerifyPasswordHash (password, student.PasswordHash, student.PasswordSalt))
                 throw new Exception ("Given email or password are incorrect!");
-            return user;
+            return student;
         }
 
         public async Task RegisterAsync (string name, string surname, string email, int indexNumber, string password) {
-            if (await _userService.UserExistByEmailAsync (email.ToLowerInvariant ()))
+            if (await _studentService.UserExistByEmailAsync (email.ToLowerInvariant ()))
                 throw new Exception ("User of given email already exist.");
-            // if (!await _userService.UserExistByIndexNumberAsync (indexNumber))
+            // if (!await _studentService.UserExistByIndexNumberAsync (indexNumber))
             //     throw new Exception ("Given index number does not exist.");
 
-            var user = new User (name, surname, email, indexNumber, password);
-            await _userRepository.AddAsync (user);
+            var student = new Student (name, surname, email, indexNumber, password);
+            await _studentRepository.AddAsync (student);
         }
 
         private bool VerifyPasswordHash (string password, byte[] passwordHash, byte[] passwordSalt) {

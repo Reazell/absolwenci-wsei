@@ -2,8 +2,8 @@ using CareerMonitoring.Infrastructure.Commands.User;
 using FluentValidation;
 
 namespace CareerMonitoring.Infrastructure.Validators.User {
-    public class RegisterUserValidator : AbstractValidator<RegisterUser> {
-        public RegisterUserValidator () {
+    public class RegisterStudentValidator : AbstractValidator<RegisterStudent> {
+        public RegisterStudentValidator () {
             RuleFor (reg => reg.Name)
                 .NotNull ()
                 .MinimumLength (3)

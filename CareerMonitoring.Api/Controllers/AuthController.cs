@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
+using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
@@ -22,7 +23,7 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [HttpPost ("register")]
-        public async Task<IActionResult> Register ([FromBody] RegisterUser command) {
+        public async Task<IActionResult> Register ([FromBody] RegisterStudent command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
@@ -33,14 +34,14 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        private async Task<string> GenerateToken (User user, IJWTSettings jwtSettings) {
+        private async Task<string> GenerateToken (Account account, IJWTSettings jwtSettings) {
             var tokenHandler = new JwtSecurityTokenHandler ();
             var key = Encoding.ASCII.GetBytes (jwtSettings.Key);
             var tokenDescriptor = new SecurityTokenDescriptor {
                 Subject = new ClaimsIdentity (new Claim[] {
-                new Claim (ClaimTypes.NameIdentifier, user.Id.ToString ()),
-                new Claim (ClaimTypes.Name, user.Email),
-                new Claim (ClaimTypes.Role, user.Role)
+                new Claim (ClaimTypes.NameIdentifier, account.Id.ToString ()),
+                new Claim (ClaimTypes.Name, account.Email),
+                new Claim (ClaimTypes.Role, account.Role)
                 }),
                 Issuer = "",
                 Expires = DateTime.Now.AddDays (jwtSettings.ExpiryDays),
@@ -52,13 +53,13 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [HttpPost ("login")]
-        public async Task<IActionResult> Login ([FromBody] SignInUser command) {
+        public async Task<IActionResult> Login ([FromBody] SignIn command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                var user = await _authService.LoginAsync (command.Email, command.Password);
+                var account = await _authService.LoginAsync (command.Email, command.Password);
                 var token = new TokenDto {
-                    Token = await GenerateToken (user, _jwtSettings)
+                    Token = await GenerateToken (account, _jwtSettings)
                 };
                 return Ok (token);
             } catch (Exception e) {

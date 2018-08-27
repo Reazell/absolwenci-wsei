@@ -65,19 +65,19 @@ namespace CareerMonitoring.Api {
             #endregion
             #region Repositories
 
-            services.AddScoped<IUserRepository, UserRepository> ();
+            services.AddScoped<IStudentRepository, StudentRepository> ();
 
             #endregion
             #region Services 
 
             services.AddScoped<IAuthService, AuthService> ();
-            services.AddScoped<IUserService, UserService> ();
+            services.AddScoped<IStudentService, StudentService> ();
 
             #endregion
             #region Validations
 
-            services.AddTransient<IValidator<RegisterUser>, RegisterUserValidator> ();
-            services.AddTransient<IValidator<SignInUser>, SignInUserValidator> ();
+            services.AddTransient<IValidator<RegisterStudent>, RegisterStudentValidator> ();
+            services.AddTransient<IValidator<SignIn>, SignInValidator> ();
 
             #endregion
         }
