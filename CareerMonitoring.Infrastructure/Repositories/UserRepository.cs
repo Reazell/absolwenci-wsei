@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
@@ -22,6 +23,12 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             if (isTracking)
                 return await _context.Users.AsTracking ().SingleOrDefaultAsync (x => x.Id == id);
             return await _context.Users.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
+        }
+        public async Task<User> GetByActivationKeyAsync (Guid activationKey, bool isTracking = true)
+        {
+            if (isTracking)
+                return await _context.Users.AsTracking ().SingleOrDefaultAsync (x => x.ActivationKey == activationKey);
+            return await _context.Users.AsNoTracking ().SingleOrDefaultAsync (x => x.ActivationKey == activationKey);
         }
 
         public async Task<User> GetByIndexNumberAsync (int indexNumber, bool isTracking = true) {

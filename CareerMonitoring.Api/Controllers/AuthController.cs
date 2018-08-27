@@ -14,11 +14,13 @@ namespace CareerMonitoring.Api.Controllers {
     public class AuthController : ApiUserController {
         private readonly IAuthService _authService;
         private readonly IJWTSettings _jwtSettings;
+        private readonly IUserService _userService;
 
         public AuthController (IAuthService authService,
-            IJWTSettings jwtSettings) {
+            IJWTSettings jwtSettings, IUserService userService) {
             _authService = authService;
             _jwtSettings = jwtSettings;
+            _userService = userService;
         }
 
         [HttpPost ("register")]
@@ -63,6 +65,18 @@ namespace CareerMonitoring.Api.Controllers {
                 return Ok (token);
             } catch (Exception e) {
                 return BadRequest (e.Message);
+            }
+        }
+        [HttpGet ("activation/{activationKey}")]
+        public async Task<IActionResult> Activation (Guid activationKey) {
+            if (!ModelState.IsValid) {
+                return BadRequest (new { errorMessage = "Value of activation key is invalid" });
+            }
+            try {
+                await _userService.ActivateAsync (activationKey);
+                return Ok (new { message = "Account was activated" });
+            } catch (Exception e) {
+                return NotFound (new { message = e.Message });
             }
         }
     }

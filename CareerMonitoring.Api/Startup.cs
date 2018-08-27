@@ -77,6 +77,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IUserService, UserService> ();
             services.AddScoped<IEmailSender, EmailSender> ();
             services.AddScoped<IEmailConfig, EmailConfig> ();
+            services.AddScoped<IActivationEmailSender, ActivationEmailSender> ();
 
             #endregion
             #region Validations

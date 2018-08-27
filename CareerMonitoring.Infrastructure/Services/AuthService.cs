@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
+using CareerMonitoring.Infrastructure.Email.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -8,10 +9,12 @@ namespace CareerMonitoring.Infrastructure.Services {
     public class AuthService : IAuthService {
         private readonly IUserRepository _userRepository;
         private readonly IUserService _userService;
+        private readonly IActivationEmailSender _activationEmailSender;
 
-        public AuthService (IUserRepository userRepository, IUserService userService) {
+        public AuthService (IUserRepository userRepository, IUserService userService, IActivationEmailSender activationEmailSender) {
             _userRepository = userRepository;
             _userService = userService;
+            _activationEmailSender = activationEmailSender;
         }
 
         public async Task<User> LoginAsync (string email, string password) {
@@ -30,6 +33,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             //     throw new Exception ("Given index number does not exist.");
 
             var user = new User (name, surname, email, indexNumber, password);
+            await _activationEmailSender.SendActivationEmailAsync(user, user.ActivationKey);
             await _userRepository.AddAsync (user);
         }
 

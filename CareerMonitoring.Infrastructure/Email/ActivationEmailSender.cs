@@ -23,7 +23,7 @@ namespace CareerMonitoring.Infrastructure.Email
             message.From.Add(new MailboxAddress(_emailConfig.Name, _emailConfig.SmtpUsername));
             message.To.Add(new MailboxAddress(user.Name.ToString(), user.Email.ToString()));
             message.Subject = "Aktywacja w systemie CareerMonitoring";
-            message.Body = new TextPart("html") {Text = "Oto email aktywacyjny dla systemu CareerMonitoring. Aby aktywować swoje konto w serwisie kliknij w link aktywacyjny"};
+            message.Body = new TextPart("html") {Text = $"Oto email aktywacyjny dla systemu <b>CareerMonitoring</b><br/>. Aby aktywować swoje konto w serwisie kliknij w <a href=\"http://localhost:5000/api/auth/activation/{activationKey}\">link aktywacyjny</a>"};
             await _emailSender.SendEmailAsync(message);
         }
     }

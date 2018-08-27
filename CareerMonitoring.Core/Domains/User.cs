@@ -15,6 +15,7 @@ namespace CareerMonitoring.Core.Domains
         public DateTime UpdatedAt { get; private set; }
         public bool Deleted { get; private set; }
         public bool Activated { get; private set; }
+        public Guid ActivationKey { get; private set; }
 
         protected User () { }
 
@@ -28,7 +29,13 @@ namespace CareerMonitoring.Core.Domains
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Deleted = false;
-            Activated = true;
+            ActivationKey = Guid.NewGuid();
+            Activated = false;
+        }
+        public void Activate (Guid activationKey)
+        {
+            if(this.ActivationKey == activationKey)
+                Activated = true;
         }
 
         public void Update (string name, string surname) {
