@@ -25,13 +25,7 @@ namespace CareerMonitoring.Core.Domains.Abstract {
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Deleted = false;
-            Activated = true;
-        }
-
-        public void Update (string name, string surname) {
-            Name = name;
-            Surname = surname;
-            UpdatedAt = DateTime.UtcNow;
+            Activated = false;
         }
 
         public void Activate (AccountActivation accountActivation) {

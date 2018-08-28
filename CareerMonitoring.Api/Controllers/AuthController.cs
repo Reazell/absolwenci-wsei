@@ -27,7 +27,7 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _authService.RegisterAsync (command.Name, command.Surname, command.Email, command.IndexNumber, command.Password);
+                await _authService.RegisterStudentAsync (command.Name, command.Surname, command.Email, command.IndexNumber, command.Password);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);

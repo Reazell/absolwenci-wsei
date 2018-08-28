@@ -8,6 +8,8 @@ using CareerMonitoring.Api.ActionFilters;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Extension.JWT;
+using CareerMonitoring.Infrastructure.Extensions.Factories;
+using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
@@ -61,15 +63,22 @@ namespace CareerMonitoring.Api {
                     };
                 });
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
+            services.AddSingleton<IEmailConfiguration> (Configuration.GetSection ("EmailConfiguration").Get<EmailConfiguration> ());
+            services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
+            services.AddAuthorization (options => options.AddPolicy ("graduate", policy => policy.RequireRole ("graduate")));
+            services.AddAuthorization (options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
+            services.AddAuthorization (options => options.AddPolicy ("careerOffice", policy => policy.RequireRole ("careerOffice")));
 
             #endregion
             #region Repositories
 
+            services.AddScoped<IAccountRepository, AccountRepository> ();
             services.AddScoped<IStudentRepository, StudentRepository> ();
 
             #endregion
             #region Services 
 
+            services.AddScoped<IAccountService, AccountService> ();
             services.AddScoped<IAuthService, AuthService> ();
             services.AddScoped<IStudentService, StudentService> ();
 
@@ -78,6 +87,12 @@ namespace CareerMonitoring.Api {
 
             services.AddTransient<IValidator<RegisterStudent>, RegisterStudentValidator> ();
             services.AddTransient<IValidator<SignIn>, SignInValidator> ();
+
+            #endregion
+            #region Factories
+
+            services.AddScoped<IEmailFactory, EmailFactory> ();
+            services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
 
             #endregion
         }
