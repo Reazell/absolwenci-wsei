@@ -1,3 +1,8 @@
-<p>
-  pooling-search works!
-</p>
+<div id="searchBar">
+  <mat-toolbar>
+    <div (click)="search(aaa.value)">
+      <span class="fa fa-search icon"></span>
+    </div>
+    <input id="search" #aaa type="tekst" placeholder="Search in mail" class="textField" (keyup.enter)="search(aaa.value)">
+  </mat-toolbar>
+</div>

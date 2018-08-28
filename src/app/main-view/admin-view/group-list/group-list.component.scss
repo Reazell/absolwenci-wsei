@@ -1,0 +1,188 @@
+@import './../../../../styles/colors.scss';
+
+#catalogs {
+  height: 100%;
+  mat-toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    background-color: #ffffff !important;
+    margin: 0;
+    padding: 0;
+    box-shadow: inset -18px 0 20px -14px rgba(0, 0, 0, 0.05);
+    user-select: none;
+    .catalogsBox {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      height: auto;
+      margin-top: 2px;
+    }
+
+    .boxName,
+    .boxExpander {
+      font-size: 0.6em;
+      font-weight: 600;
+      text-align: center;
+      line-height: 20px;
+      width: 100%;
+
+    //   color: $grey * 0.9;
+
+      background-color: rgba(#000, 0.04);
+    }
+
+    .boxName {
+    //   border-top: 1px solid $grey-light;
+    }
+
+    .boxExpander {
+    //   border-bottom: 1px solid $grey-light;
+    }
+
+    .boxExpander:hover .icon {
+    //   color: $black;
+    }
+
+    .catalog {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 100%;
+      max-width: 100%;
+
+      height: auto;
+
+    //   color: $grey;
+      font-size: 0.7em;
+      box-sizing: border-box;
+
+      border: none;
+      text-align: left;
+      background-color: rgba(#000000, 0);
+
+      white-space: normal;
+
+      cursor: pointer;
+
+      padding: 2px;
+      padding-left: 7%;
+      padding-right: 7%;
+
+      .unreaded {
+        // color: rgba($accent, 0.8);
+        font-weight: 600;
+        min-width: 10px;
+      }
+
+      .name {
+        flex: 1 1 auto;
+        margin-left: 8px;
+        margin-right: 8px;
+        text-overflow: clip;
+      }
+
+      .icon {
+        // color: $accent;
+        font-size: 1em;
+      }
+
+      .name:first-child {
+        margin-left: 18px;
+      }
+      .redo {
+        padding: 0px 3px;
+      }
+      .redo:hover {
+        color: rgba(72, 72, 71, 1);
+      }
+      input.name {
+        display: none;
+        width: inherit;
+      }
+
+      .optionsBtn {
+        opacity: 0;
+        // color: $grey-dark;
+        padding-left: 2px;
+        padding-right: 2px;
+        height: 100%;
+        cursor: pointer;
+
+        border: 0;
+        background-color: rgba(#000000, 0);
+      }
+
+      .optionsBtn:hover {
+        // color: $black;
+      }
+
+      .optionsBtn:focus {
+        outline-color: rgba(#000000, 0);
+      }
+    }
+
+    .catalog.edit,
+    .catalog.new {
+      .name {
+        display: none;
+      }
+      input.name {
+        display: block;
+      }
+    }
+
+    .addNew::before {
+      content: '+';
+      font-weight: 600;
+      font-size: 1.2em;
+      margin-right: 8px;
+    }
+
+    .catalog.active,
+    .catalog:hover {
+    //   background-color: rgba($accent, 0.1);
+    //   color: $grey * 0.7;
+
+      .unreaded {
+        // color: $accent;
+      }
+    }
+
+    .catalog.active {
+      font-weight: 600;
+    }
+
+    .catalog:hover {
+      .optionsBtn {
+        opacity: 1;
+      }
+    }
+
+    .catalog:focus {
+    //   outline-color: rgba($accent, 0.3);
+      outline-width: 5px;
+    }
+
+    .catalogsBox.expanded {
+      .icon {
+        transform: scaleY(-1);
+      }
+
+      .catalog {
+        display: none;
+      }
+    }
+  }
+
+  z-index: 10;
+
+  mat-toolbar {
+    height: 100%;
+    // background-color: $grey-ultra-light;
+  }
+}

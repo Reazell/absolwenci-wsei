@@ -1,3 +1,9 @@
-<p>
-  group-list works!
-</p>
+<div id="catalogs">
+  <mat-toolbar>
+    <div *ngFor="let group of groupList">
+      <div class="name">
+        {{group.name}}
+      </div>
+    </div>
+  </mat-toolbar>
+</div>

@@ -6,7 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./group-list.component.scss']
 })
 export class GroupListComponent implements OnInit {
-
+  groupList = [{
+    name: 'studenci'
+  },
+  {
+    name: 'pracodawcy'
+  },
+  {
+    name: 'absolewnci'
+  }
+  ];
   constructor() { }
 
   ngOnInit() {
