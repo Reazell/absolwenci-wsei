@@ -1,58 +1,71 @@
 @import '../../../styles/colors.scss';
 #bar {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-   padding: 0px 5px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
-  #container {
-    // display: flex;
-    // align-items: center;
-    // justify-content: space-between;
+    height: 70px;
     display: flex;
     align-items: center;
-    #sidenavToggler {
-      color: $primary;
-      height: 50px;
-      width: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      cursor: pointer;
-      font-family: FontAwesome;
-      i {
-        font-style: normal !important;
-      }
+    justify-content: space-between;
+    padding: 0px 5px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    #container {
+        display: flex;
+        align-items: center;
+        #sidenavToggler {
+            color: $primary;
+            height: 50px;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            cursor: pointer;
+            font-family: FontAwesome;
+            i {
+                font-style: normal !important;
+            }
+        }
+        #logo {
+            width: 200px;
+            height: 60px;
+            margin: 0px 25px;
+            img {
+                width: 200px;
+                height: 60px;
+            }
+        }
     }
-    #logo {
-      width: 200px;
-      height: 60px;
-      margin: 0px 50px;
-      img {
-        width: 200px;
-        height: 60px;
-      }
+    #menu {
+        white-space: nowrap;
+        list-style: none;
+        padding-right: 15px;
+        .menu-item {
+            display: inline-block;
+            margin: 0px 10px;
+            font-size: 15px;
+            color: $grey;
+            cursor: pointer;
+            padding: 15px 5px;
+            border-radius: 3px;
+            outline: none;
+        }
+        .menu-item:hover {
+            background-color: $primary;
+            color: white;
+        }
     }
-  }
+}
 
-  #menu {
-    white-space: nowrap;
-    list-style: none;
-    .menu-item {
-      display: inline-block;
-      margin: 0px 10px;
-      font-size: 15px;
-      color: $grey;
-      cursor: pointer;
-      padding: 15px 5px;
-      border-radius: 3px;
-      outline: none;
+@media (max-width: 800px) {
+    #bar {
+        #container {
+            #logo {
+                margin-left: 20px;
+            }
+        }
+        #menu {
+            .menu-item {
+                font-size: 13px;
+                margin: 5px;
+            }
+        }
     }
-    .menu-item:hover {
-      background-color: $primary;
-      color: white;
-    }
-  }
 }

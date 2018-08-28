@@ -1,16 +1,21 @@
+import { AdminViewComponent } from './admin-view.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const adminRoutes: Routes = [
   {
     path: '',
-    // component: WebmailComponent,
+    component: AdminViewComponent,
     children: [
       // {
       //   path: '',
-      //   loadChildren: './mail-space/mail-space.module#MailSpaceModule',
-      //   // canActivate: [AuthGuard]
+      //   redirectTo: '/pooling',
+      //   pathMatch: 'full'
       // },
+      {
+        path: '',
+        loadChildren: './pooling-space/pooling-space.module#PoolingSpaceModule'
+      }
       // {
       //   path: 'newMail',
       //   loadChildren: './mail-space/mail-space.module#MailSpaceModule',
@@ -41,4 +46,4 @@ const adminRoutes: Routes = [
   imports: [RouterModule.forChild(adminRoutes)],
   exports: [RouterModule]
 })
-export class AdminViewRoutingModule {}
+export class AdminViewRoutingModule { }
