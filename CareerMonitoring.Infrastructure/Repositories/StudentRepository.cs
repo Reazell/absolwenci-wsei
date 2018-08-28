@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Infrastructure.Data;
@@ -36,8 +37,10 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             return await _context.Students.AsNoTracking ().SingleOrDefaultAsync (x => x.Email == email);
         }
 
-        public Task<IEnumerable<Student>> GetAllAsync () {
-            throw new System.NotImplementedException ();
+        public async Task<IEnumerable<Student>> GetAllAsync (bool isTracking = true) {
+            if (isTracking)
+                return await Task.FromResult (_context.Students.AsTracking ().AsEnumerable ());
+            return await Task.FromResult (_context.Students.AsNoTracking ().AsEnumerable ());
         }
 
         public async Task UpdateAsync (Student student) {

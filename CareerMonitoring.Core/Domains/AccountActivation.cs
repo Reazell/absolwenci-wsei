@@ -7,7 +7,7 @@ namespace CareerMonitoring.Core.Domains {
         public Guid ActivationKey { get; private set; }
         public bool Active { get; private set; }
         public DateTime ActivatedAt { get; private set; }
-        public int UserId { get; private set; }
+        public int AccountId { get; private set; }
         public Account Account { get; private set; }
 
         protected AccountActivation () {

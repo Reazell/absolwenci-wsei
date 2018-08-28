@@ -12,6 +12,11 @@ namespace CareerMonitoring.Infrastructure.Data {
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 
-        protected override void OnModelCreating (ModelBuilder modelBuilder) { }
+        protected override void OnModelCreating (ModelBuilder modelBuilder) {
+            modelBuilder.Entity<Account> ()
+                .HasOne (a => a.AccountActivation)
+                .WithOne (b => b.Account)
+                .HasForeignKey<AccountActivation> (b => b.AccountId);
+        }
     }
 }
