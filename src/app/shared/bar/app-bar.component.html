@@ -1,7 +1,12 @@
-<div id="bar-container">
-  <div id="logo">
-    <img src="./../../../assets/logo-wsei.png" alt="logo WSEI">
+<div id="bar">
+  <div id="container">
+    <div id="sidenavToggler" class="catalogListToggler" (click)="openSidebar()"> <i class="fas fa-bars"></i> </div>
+    <div id="logo">
+      <img src="./../../../assets/logo-wsei.png" alt="logo WSEI">
+    </div>
   </div>
+  <!-- *ngIf="isModuleOpened === true" -->
+
   <ul id="menu">
     <!-- <li class="menu-item">Strona główna</li> -->
     <li class="menu-item" [routerLink]="['/auth/login']">Logowanie</li>

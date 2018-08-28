@@ -3,9 +3,12 @@ import {
   AbstractControl,
   FormGroup
 } from '../../../node_modules/@angular/forms';
+import { BehaviorSubject } from '../../../node_modules/rxjs';
 
 @Injectable()
 export class SharedService {
+  toggleSidebar: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
   controlArray: string[];
   constructor() {}
 
@@ -58,5 +61,9 @@ export class SharedService {
 
   deleteControlArray() {
     this.controlArray = undefined;
+  }
+
+  public toggleSideNav() {
+    this.toggleSidebar.next(0);
   }
 }

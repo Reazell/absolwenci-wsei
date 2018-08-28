@@ -1,19 +1,42 @@
 @import '../../../styles/colors.scss';
-#bar-container {
+#bar {
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 50px;
+   padding: 0px 5px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
-  #logo {
-    width: 200px;
-    height: 60px;
-    img {
+  #container {
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    display: flex;
+    align-items: center;
+    #sidenavToggler {
+      color: $primary;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
+      font-family: FontAwesome;
+      i {
+        font-style: normal !important;
+      }
+    }
+    #logo {
       width: 200px;
       height: 60px;
+      margin: 0px 50px;
+      img {
+        width: 200px;
+        height: 60px;
+      }
     }
   }
+
   #menu {
     white-space: nowrap;
     list-style: none;

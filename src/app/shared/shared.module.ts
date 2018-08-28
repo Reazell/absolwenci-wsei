@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialsModule } from '../materials/materials.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedService } from '../services/shared.service';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: [AppBarComponent],
   exports: [AppBarComponent],
-  providers: [],
+  providers: [SharedService],
   entryComponents: []
 })
 export class SharedModule {}

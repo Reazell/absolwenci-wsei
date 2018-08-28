@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-bar',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-bar.component.scss']
 })
 export class AppBarComponent implements OnInit {
+  constructor(private sharedService: SharedService) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  openSidebar() {
+    this.sharedService.toggleSideNav();
   }
-
 }

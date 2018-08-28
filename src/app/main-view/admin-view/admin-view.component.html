@@ -1,3 +1,15 @@
-<p>
-  admin-view works!
-</p>
+<div id="webmail">
+  <mat-sidenav id="sidenav" #sidenav [mode]="'side'" [(opened)]="isSidebarOpened">
+    <!-- [mode]="isLargeScreen() ? 'side': 'over'" [(opened)]="isSidebarOpened" -->
+    <!-- <app-search-mail [class.show]="show"></app-search-mail> -->
+    <!-- <app-catalogs-list [class.show]="show"></app-catalogs-list> -->
+    <span>osiem</span>
+  </mat-sidenav>
+  <mat-sidenav-content id="content">
+    <!-- <app-manage-bar></app-manage-bar> -->
+    <!-- <app-mail-list></app-mail-list> -->
+    <div id="mailSpace" *ngIf="showMailDetails() === true">
+      <!-- <router-outlet></router-outlet> -->
+    </div>
+  </mat-sidenav-content>
+</div>

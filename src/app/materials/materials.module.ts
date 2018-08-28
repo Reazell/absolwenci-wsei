@@ -1,5 +1,3 @@
-import { AppModule } from '../app.module';
-
 import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
