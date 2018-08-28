@@ -4,16 +4,16 @@ using CareerMonitoring.Core.Domains.Abstract;
 namespace CareerMonitoring.Core.Domains {
     public class Graduate : Account {
         public string ProfileLink { get; private set; }
-        public ICollection<Education> Education { get; private set; }
-        public ICollection<Experience> Experience { get; private set; }
-        public ICollection<Certificate> Certificate { get; private set; }
-        public ICollection<Skill> Skill { get; private set; }
-        public ICollection<Course> Course { get; private set; }
-        public ICollection<Language> Language { get; private set; }
+        public ICollection<Education> Educations { get; private set; }
+        public ICollection<Experience> Experiences { get; private set; }
+        public ICollection<Certificate> Certificates { get; private set; }
+        public ICollection<Skill> Skills { get; private set; }
+        public ICollection<Course> Courses { get; private set; }
+        public ICollection<Language> Languages { get; private set; }
 
         protected Graduate () { }
 
-        public Graduate (string name, string surname, string email, string password) : base (name, surname, email, password) {
+        public Graduate (string name, string surname, string email, string phoneNumber, string password) : base (name, surname, email, phoneNumber, password) {
             Role = "graduate";
         }
 
@@ -28,22 +28,22 @@ namespace CareerMonitoring.Core.Domains {
         }
 
         public void AddEducation (Education education) {
-            Education.Add (education);
+            Educations.Add (education);
         }
         public void AddExperience (Experience experience) {
-            Experience.Add (experience);
+            Experiences.Add (experience);
         }
         public void AddCertificate (Certificate certificate) {
-            Certificate.Add (certificate);
+            Certificates.Add (certificate);
         }
         public void AddSkill (Skill skill) {
-            Skill.Add (skill);
+            Skills.Add (skill);
         }
         public void AddCourse (Course course) {
-            Course.Add (course);
+            Courses.Add (course);
         }
         public void AddLanguage (Language language) {
-            Language.Add (language);
+            Languages.Add (language);
         }
     }
 }

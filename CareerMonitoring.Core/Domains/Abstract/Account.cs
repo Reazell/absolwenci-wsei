@@ -6,6 +6,7 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         public string Name { get; protected set; }
         public string Surname { get; protected set; }
         public string Email { get; protected set; }
+        public string PhoneNumber { get; protected set; }
         public byte[] PasswordHash { get; protected set; }
         public byte[] PasswordSalt { get; protected set; }
         public string Role { get; protected set; }
@@ -17,10 +18,11 @@ namespace CareerMonitoring.Core.Domains.Abstract {
 
         protected Account () { }
 
-        public Account (string name, string surname, string email, string password) {
+        public Account (string name, string surname, string email, string phoneNumber, string password) {
             Name = name;
             Surname = surname;
             Email = email;
+            PhoneNumber = phoneNumber;
             CreatePasswordHash (password);
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
