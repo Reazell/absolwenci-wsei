@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Infrastructure.Commands.CareerOffice;
+using CareerMonitoring.Infrastructure.Commands.Employer;
+using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
@@ -15,23 +18,14 @@ namespace CareerMonitoring.Api.Controllers {
     public class AuthController : ApiUserController {
         private readonly IAuthService _authService;
         private readonly IJWTSettings _jwtSettings;
+        private readonly IAccountService _accountService;
 
         public AuthController (IAuthService authService,
-            IJWTSettings jwtSettings) {
+            IJWTSettings jwtSettings,
+            IAccountService accountService) {
             _authService = authService;
             _jwtSettings = jwtSettings;
-        }
-
-        [HttpPost ("register")]
-        public async Task<IActionResult> Register ([FromBody] RegisterStudent command) {
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
-            try {
-                await _authService.RegisterStudentAsync (command.Name, command.Surname, command.Email, command.IndexNumber, command.PhoneNumber, command.Password);
-                return StatusCode (201);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
+            _accountService = accountService;
         }
 
         private async Task<string> GenerateToken (Account account, IJWTSettings jwtSettings) {
@@ -56,15 +50,85 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> Login ([FromBody] SignIn command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
+            var account = await _authService.LoginAsync (command.Email, command.Password);
+            if (account == null)
+                return Unauthorized ();
+            var token = new TokenDto {
+                Token = await GenerateToken (account, _jwtSettings)
+            };
+            return Ok (token);
+        }
+
+        [HttpPost ("students")]
+        public async Task<IActionResult> RegisterStudent ([FromBody] RegisterStudent command) {
+            if (await _accountService.ExistsByEmailAsync (command.Email.ToLowerInvariant ()))
+                ModelState.AddModelError ("Email", "Email is already taken.");
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
             try {
-                var account = await _authService.LoginAsync (command.Email, command.Password);
-                var token = new TokenDto {
-                    Token = await GenerateToken (account, _jwtSettings)
-                };
-                return Ok (token);
+                await _authService.RegisterStudentAsync (command.Name, command.Surname, command.Email, command.IndexNumber, command.PhoneNumber, command.Password);
+                return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
         }
+
+        [HttpPost ("employers")]
+        public async Task<IActionResult> RegisterEmployer ([FromBody] RegisterEmployer command) {
+            if (await _accountService.ExistsByEmailAsync (command.Email.ToLowerInvariant ()))
+                ModelState.AddModelError ("Email", "Email is already taken.");
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _authService.RegisterEmployerAsync (command.Name, command.Surname, command.Email, command.PhoneNumber, command.Password,
+                    command.CompanyName, command.Location, command.CompanyDescription);
+                return StatusCode (201);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpPost ("graduates")]
+        public async Task<IActionResult> RegisterGraduate ([FromBody] RegisterGraduate command) {
+            if (await _accountService.ExistsByEmailAsync (command.Email.ToLowerInvariant ()))
+                ModelState.AddModelError ("Email", "Email is already taken.");
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _authService.RegisterGraduateAsync (command.Name, command.Surname, command.Email, command.PhoneNumber, command.Password);
+                return StatusCode (201);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpPost ("careeroffices")]
+        public async Task<IActionResult> RegisterCareerOffice ([FromBody] RegisterCareerOffice command) {
+            if (await _accountService.ExistsByEmailAsync (command.Email.ToLowerInvariant ()))
+                ModelState.AddModelError ("Email", "Email is already taken.");
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _authService.RegisterCareerOfficeAsync (command.Name, command.Surname, command.Email, command.PhoneNumber, command.Password);
+                return StatusCode (201);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpGet ("accountActivation/{activationKey}")]
+        public async Task<IActionResult> AccountActivation (Guid activationKey) {
+            if (!ModelState.IsValid) {
+                ModelState.AddModelError ("activationKey", "Value of activation key is invalid.");
+                return BadRequest (ModelState);
+            }
+            try {
+                await _accountService.ActivateAsync (activationKey);
+                return Ok (new { message = "Account was activated" });
+            } catch (Exception e) {
+                return NotFound (new { message = e.Message });
+            }
+        }
+
     }
 }

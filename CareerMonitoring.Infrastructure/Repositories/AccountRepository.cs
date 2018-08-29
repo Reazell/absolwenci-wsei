@@ -28,8 +28,8 @@ namespace CareerMonitoring.Infrastructure.Repositories {
 
         public async Task<Account> GetByEmailAsync (string email, bool isTracking = true) {
             if (isTracking)
-                return await _context.Accounts.AsTracking ().SingleOrDefaultAsync (x => x.Email == email);
-            return await _context.Accounts.AsNoTracking ().SingleOrDefaultAsync (x => x.Email == email);
+                return await _context.Accounts.AsTracking ().SingleOrDefaultAsync (x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
+            return await _context.Accounts.AsNoTracking ().SingleOrDefaultAsync (x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
         public async Task<Account> GetByActivationKeyAsync (Guid activationKey, bool isTracking = true) {

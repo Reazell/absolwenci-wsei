@@ -5,6 +5,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Api.ActionFilters;
+using CareerMonitoring.Infrastructure.Commands.CareerOffice;
+using CareerMonitoring.Infrastructure.Commands.Employer;
+using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Extension.JWT;
@@ -14,6 +17,9 @@ using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using CareerMonitoring.Infrastructure.Validators.CareerOffice;
+using CareerMonitoring.Infrastructure.Validators.Employer;
+using CareerMonitoring.Infrastructure.Validators.Graduate;
 using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -74,6 +80,9 @@ namespace CareerMonitoring.Api {
 
             services.AddScoped<IAccountRepository, AccountRepository> ();
             services.AddScoped<IStudentRepository, StudentRepository> ();
+            services.AddScoped<IGraduateRepository, GraduateRepository> ();
+            services.AddScoped<IEmployerRepository, EmployerRepository> ();
+            services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
 
             #endregion
             #region Services 
@@ -81,12 +90,18 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IAccountService, AccountService> ();
             services.AddScoped<IAuthService, AuthService> ();
             services.AddScoped<IStudentService, StudentService> ();
+            services.AddScoped<IGraduateService, GraduateService> ();
+            services.AddScoped<IEmployerService, EmployerService> ();
+            services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
 
             #endregion
             #region Validations
 
-            services.AddTransient<IValidator<RegisterStudent>, RegisterStudentValidator> ();
             services.AddTransient<IValidator<SignIn>, SignInValidator> ();
+            services.AddTransient<IValidator<RegisterStudent>, RegisterStudentValidator> ();
+            services.AddTransient<IValidator<RegisterGraduate>, RegisterGraduateValidator> ();
+            services.AddTransient<IValidator<RegisterEmployer>, RegisterEmployerValidator> ();
+            services.AddTransient<IValidator<RegisterCareerOffice>, RegisterCareerOfficeValidator> ();
 
             #endregion
             #region Factories

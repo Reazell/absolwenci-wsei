@@ -27,8 +27,8 @@ namespace CareerMonitoring.Infrastructure.Repositories {
 
         public async Task<Graduate> GetByEmailAsync (string email, bool isTracking = true) {
             if (isTracking)
-                return await _context.Graduates.AsTracking ().SingleOrDefaultAsync (x => x.Email == email);
-            return await _context.Graduates.AsNoTracking ().SingleOrDefaultAsync (x => x.Email == email);
+                return await _context.Graduates.AsTracking ().SingleOrDefaultAsync (x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
+            return await _context.Graduates.AsNoTracking ().SingleOrDefaultAsync (x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
         public async Task<IEnumerable<Graduate>> GetAllAsync (bool isTracking = true) {

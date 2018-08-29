@@ -44,9 +44,9 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task<Account> LoginAsync (string email, string password) {
             var account = await _accountRepository.GetByEmailAsync (email, false);
             if (account == null || !account.Activated || account.Deleted)
-                throw new Exception ("Account of given email and password does not exist!");
+                return null;
             if (!VerifyPasswordHash (password, account.PasswordHash, account.PasswordSalt))
-                throw new Exception ("Given email or password are incorrect!");
+                return null;
             return account;
         }
 
