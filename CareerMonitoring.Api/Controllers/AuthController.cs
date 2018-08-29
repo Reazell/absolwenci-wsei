@@ -61,7 +61,8 @@ namespace CareerMonitoring.Api.Controllers {
 
         [HttpPost ("students")]
         public async Task<IActionResult> RegisterStudent ([FromBody] RegisterStudent command) {
-            if (await _accountService.ExistsByEmailAsync (command.Email.ToLowerInvariant ()))
+            command.Email = command.Email.ToLowerInvariant ();
+            if (await _accountService.ExistsByEmailAsync (command.Email))
                 ModelState.AddModelError ("Email", "Email is already taken.");
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -75,7 +76,8 @@ namespace CareerMonitoring.Api.Controllers {
 
         [HttpPost ("employers")]
         public async Task<IActionResult> RegisterEmployer ([FromBody] RegisterEmployer command) {
-            if (await _accountService.ExistsByEmailAsync (command.Email.ToLowerInvariant ()))
+            command.Email = command.Email.ToLowerInvariant ();
+            if (await _accountService.ExistsByEmailAsync (command.Email))
                 ModelState.AddModelError ("Email", "Email is already taken.");
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -90,7 +92,8 @@ namespace CareerMonitoring.Api.Controllers {
 
         [HttpPost ("graduates")]
         public async Task<IActionResult> RegisterGraduate ([FromBody] RegisterGraduate command) {
-            if (await _accountService.ExistsByEmailAsync (command.Email.ToLowerInvariant ()))
+            command.Email = command.Email.ToLowerInvariant ();
+            if (await _accountService.ExistsByEmailAsync (command.Email))
                 ModelState.AddModelError ("Email", "Email is already taken.");
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -104,7 +107,8 @@ namespace CareerMonitoring.Api.Controllers {
 
         [HttpPost ("careeroffices")]
         public async Task<IActionResult> RegisterCareerOffice ([FromBody] RegisterCareerOffice command) {
-            if (await _accountService.ExistsByEmailAsync (command.Email.ToLowerInvariant ()))
+            command.Email = command.Email.ToLowerInvariant ();
+            if (await _accountService.ExistsByEmailAsync (command.Email))
                 ModelState.AddModelError ("Email", "Email is already taken.");
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);

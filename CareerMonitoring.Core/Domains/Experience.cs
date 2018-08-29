@@ -2,6 +2,7 @@ using System;
 
 namespace CareerMonitoring.Core.Domains {
     public class Experience {
+        public int Id { get; private set; }
         public string Position { get; private set; }
         public string CompanyName { get; private set; }
         public string Location { get; private set; }

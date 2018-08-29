@@ -1,5 +1,6 @@
 namespace CareerMonitoring.Core.Domains {
     public class JobOffer {
+        public int Id { get; private set; }
         public string JobType { get; private set; }
         public string Position { get; private set; }
         public string CompanyName { get; private set; }
