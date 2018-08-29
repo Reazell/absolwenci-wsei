@@ -6,18 +6,18 @@ using MimeKit;
 
 namespace CareerMonitoring.Infrastructure.Email
 {
-    public class ActivationEmailSender : IActivationEmailSender
+    public class UserEmailSender : IUserEmailSender
     {
         private readonly IEmailSender _emailSender;
         private readonly IEmailConfig _emailConfig;
 
-        public ActivationEmailSender (IEmailSender emailSender, IEmailConfig emailConfig)
+        public UserEmailSender (IEmailSender emailSender, IEmailConfig emailConfig)
         {
             _emailSender = emailSender;
             _emailConfig = emailConfig;
         }
 
-        public async Task SendActivationEmailAsync(User user, Guid activationKey)
+        public async Task SendActivationEmailAsync (User user, Guid activationKey)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(_emailConfig.Name, _emailConfig.SmtpUsername));

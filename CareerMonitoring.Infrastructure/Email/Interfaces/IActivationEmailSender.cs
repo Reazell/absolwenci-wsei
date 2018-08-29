@@ -4,7 +4,7 @@ using CareerMonitoring.Core.Domains;
 
 namespace CareerMonitoring.Infrastructure.Email.Interfaces
 {
-    public interface IActivationEmailSender
+    public interface IUserEmailSender
     {
         Task SendActivationEmailAsync(User user, Guid activationKey);
     }

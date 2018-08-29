@@ -9,9 +9,9 @@ namespace CareerMonitoring.Infrastructure.Services {
     public class AuthService : IAuthService {
         private readonly IUserRepository _userRepository;
         private readonly IUserService _userService;
-        private readonly IActivationEmailSender _activationEmailSender;
+        private readonly IUserEmailSender _activationEmailSender;
 
-        public AuthService (IUserRepository userRepository, IUserService userService, IActivationEmailSender activationEmailSender) {
+        public AuthService (IUserRepository userRepository, IUserService userService, IUserEmailSender activationEmailSender) {
             _userRepository = userRepository;
             _userService = userService;
             _activationEmailSender = activationEmailSender;
