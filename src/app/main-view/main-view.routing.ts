@@ -10,6 +10,18 @@ const mainRoutes: Routes = [
       {
         path: 'admin',
         loadChildren: './admin-view/admin-view.module#AdminViewModule'
+      },
+      {
+        path: 'student',
+        loadChildren: './student-view/student-view.module#StudentViewModule'
+      },
+      {
+        path: 'graduate',
+        loadChildren: './graduate-view/graduate-view.module#GraduateViewModule'
+      },
+      {
+        path: 'employer',
+        loadChildren: './employer-view/employer-view.module#EmployerViewModule'
       }
     ]
   }
