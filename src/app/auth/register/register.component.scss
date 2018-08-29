@@ -64,7 +64,7 @@
         }
       }
       .Student:before {
-        content: '\f19c';
+        content: '\f040';
         padding-left: 5px;
       }
       .Graduate:before {
@@ -86,47 +86,50 @@
         display: inline-block;
       }
     }
-  }
-  #form-container {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    .group {
-      width: 100%;
+
+    #register-container {
+      width: 500px;
       display: flex;
-      padding: 12px 0;
-      .field {
-        width: 50%;
+      flex-direction: column;
+      #form-container {
+        .group {
+          padding: 5px 10px;
+          float: left;
+          mat-form-field {
+            // margin: 0px 5px 7px 5px;
+            width: 100%;
+            flex-direction: row;
+          }
+        }
+        .full {
+          width: 94%;
+        }
+        .half {
+          width: 45%;
+        }
       }
-      .right {
-        margin-right: 16px;
+      .btnBox {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        button {
+          margin: 0px 3px;
+          font-weight: 600;
+        }
       }
-      mat-form-field {
-        // margin: 0px 5px 7px 5px;
-        width: 100%;
+      .additionalLink {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        color: $primary-light;
+        cursor: pointer;
+        outline: none;
       }
+      // }
+      .white {
+        color: white;
+      }
+      // }
     }
-    .btnBox {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      button {
-        margin: 0px 3px;
-        font-weight: 600;
-      }
-    }
   }
-  .additionalLink {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    color: $primary-light;
-    cursor: pointer;
-    outline: none;
-  }
-  // }
-  .white {
-    color: white;
-  }
-  // }
 }

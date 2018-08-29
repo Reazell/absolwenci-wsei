@@ -14,25 +14,39 @@ export class UserService {
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   // create new user
-  create(user: User) {
-    console.log(user);
 
-    const IndexNumber = user.albumID;
-    const Email = user.email;
-    const Password = user.password;
-    const Name = user.firstName;
-    const Surname = user.lastName;
-    const ProfileName = user.profileName;
-    return this.http.post(this.config.apiUrl + '/auth/register', {
-      IndexNumber,
-      Email,
-      Password,
-      Name,
-      Surname
-      // ProfileName
+  createStudent(user) {
+    return this.http.post(this.config.apiUrl + '/auth/students', {
+      IndexNumber: user.albumID,
+      Email: user.email,
+      Password: user.password,
+      Name: user.firstName,
+      Surname: user.lastName,
+      PhoneNumber: user.phoneNum
     });
   }
-
+  createGraduate(user) {
+    return this.http.post(this.config.apiUrl + '/auth/employers', {
+      Email: user.email,
+      Password: user.password,
+      Name: user.firstName,
+      Surname: user.lastName,
+      PhoneNumber: user.phoneNum
+    });
+  }
+  createEmployer(user) {
+    return this.http.post(this.config.apiUrl + '/auth/graduates', {
+      IndexNumber: user.albumID,
+      Email: user.email,
+      Password: user.password,
+      Name: user.firstName,
+      Surname: user.lastName,
+      PhoneNumber: user.phoneNum,
+      CompanyName: user.companyName,
+      Location: user.location,
+      CompanyDescription: user.companyDescription
+    });
+  }
   // // change password
   // changePassword(OldPassword, NewPassword) {
   //   return this.http.post(

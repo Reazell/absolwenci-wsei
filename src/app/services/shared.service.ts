@@ -38,7 +38,7 @@ export class SharedService {
           if (controlName === 'lastName') {
             controlName = 'last name';
           }
-          if (control.value.length === 0) {
+          if (control.value && control.value.length === 0) {
             errorStr = 'Enter your ' + controlName;
           } else {
             if (controlName === 'password') {

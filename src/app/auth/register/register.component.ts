@@ -29,6 +29,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
   passwordConfirm: AbstractControl;
   profileName: AbstractControl;
   albumID: AbstractControl;
+  phoneNum: AbstractControl;
+  companyName: AbstractControl;
+  location: AbstractControl;
+  companyDescription: AbstractControl;
 
   // error handlers
   nameErrorStr: string;
@@ -38,6 +42,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
   passwordErrorStr: string;
   passwordConfirmErrorStr: string;
   albumIDErrorStr: string;
+  phoneNumErrorStr: string;
+  companyNameErrorStr: string;
+  locationErrorStr: string;
+  companyDescriptionErrorStr: string;
   registrationError = false;
   registrationErrorMessage: Array<string>;
 
@@ -112,7 +120,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
         Validators.compose([Validators.required, this.matchPassword])
       ],
       profileName: ['Student', Validators.required],
-      albumID: ['', Validators.required]
+      albumID: ['', Validators.required],
+      phoneNum: ['', Validators.required],
+      companyName: [''],
+      location: [''],
+      companyDescription: ['']
     });
 
     // connecting controls with form inputs
@@ -123,6 +135,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.passwordConfirm = this.regForm.controls['passwordConfirm'];
     this.profileName = this.regForm.controls['profileName'];
     this.albumID = this.regForm.controls['albumID'];
+    this.phoneNum = this.regForm.controls['phoneNum'];
+    this.companyName = this.regForm.controls['companyName'];
+    this.location = this.regForm.controls['location'];
+    this.companyDescription = this.regForm.controls['companyDescription'];
   }
 
   onSubmit(form: NgForm): void {
@@ -131,24 +147,80 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.setAllAsTouched();
     } else {
       this.loading = true;
-      this.user.firstName = this.name.value;
-      this.user.lastName = this.lastName.value;
-      this.user.email = this.email.value;
-      this.user.password = this.password.value;
-      this.user.profileName = this.profileName.value;
-      this.user.albumID = this.albumID.value;
+      this.createUser();
       // create new user
-      this.userService.create(this.user).subscribe(
-        data => {
-          this.router.navigateByUrl('/auth/login');
-        },
-        error => {
-          this.loading = false;
-          this.registrationError = true;
-          // set error message from api to loginErrorMessage
-          this.registrationErrorMessage = error;
-        }
-      );
+      switch (this.profileName.value) {
+        case 'Student':
+          this.userService.createStudent(this.user).subscribe(
+            data => {
+              this.router.navigateByUrl('/auth/login');
+            },
+            error => {
+              this.loading = false;
+              this.registrationError = true;
+              // set error message from api to loginErrorMessage
+              this.registrationErrorMessage = error;
+            }
+          );
+          break;
+        case 'Employer':
+        this.userService.createEmployer(this.user).subscribe(
+          data => {
+            this.router.navigateByUrl('/auth/login');
+          },
+          error => {
+            this.loading = false;
+            this.registrationError = true;
+            // set error message from api to loginErrorMessage
+            this.registrationErrorMessage = error;
+          }
+        );
+          break;
+        case 'Graduate':
+        this.userService.createGraduate(this.user).subscribe(
+          data => {
+            this.router.navigateByUrl('/auth/login');
+          },
+          error => {
+            this.loading = false;
+            this.registrationError = true;
+            // set error message from api to loginErrorMessage
+            this.registrationErrorMessage = error;
+          }
+        );
+          break;
+      }
+      // this.userService.create(this.user).subscribe(
+      //   data => {
+      //     this.router.navigateByUrl('/auth/login');
+      //   },
+      //   error => {
+      //     this.loading = false;
+      //     this.registrationError = true;
+      //     // set error message from api to loginErrorMessage
+      //     this.registrationErrorMessage = error;
+      //   }
+      // );
+    }
+  }
+
+  createUser(): void {
+    this.user.firstName = this.name.value;
+    this.user.lastName = this.lastName.value;
+    this.user.email = this.email.value;
+    this.user.password = this.password.value;
+    this.user.profileName = this.profileName.value;
+    this.user.phoneNum = this.phoneNum.value;
+
+    switch (this.profileName.value) {
+      case 'Student':
+        this.user.albumID = this.albumID.value;
+        break;
+      case 'Employer':
+        this.user.companyName = this.companyName.value;
+        this.user.location = this.location.value;
+        this.user.companyDescription = this.companyDescription.value;
+        break;
     }
   }
 
