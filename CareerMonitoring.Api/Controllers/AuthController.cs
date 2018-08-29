@@ -120,7 +120,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpGet ("accountActivation/{activationKey}")]
+        [HttpGet ("activation/{activationKey}")]
         public async Task<IActionResult> AccountActivation (Guid activationKey) {
             if (!ModelState.IsValid) {
                 ModelState.AddModelError ("activationKey", "Value of activation key is invalid.");
