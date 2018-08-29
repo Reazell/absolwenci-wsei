@@ -13,7 +13,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task<bool> ExistByIdAsync (int id) =>
             await _studentRepository.GetByIdAsync (id, false) != null;
 
-        public async Task<bool> ExistByIndexNumberAsync (int indexNumber) =>
+        public async Task<bool> ExistByIndexNumberAsync (string indexNumber) =>
             await _studentRepository.GetByIndexNumberAsync (indexNumber, false) != null;
 
         public async Task<bool> ExistByEmailAsync (string email) =>

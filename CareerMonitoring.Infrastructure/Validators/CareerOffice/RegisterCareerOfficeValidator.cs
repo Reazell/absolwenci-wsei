@@ -1,9 +1,9 @@
-using CareerMonitoring.Infrastructure.Commands.User;
+using CareerMonitoring.Infrastructure.Commands.CareerOffice;
 using FluentValidation;
 
-namespace CareerMonitoring.Infrastructure.Validators.User {
-    public class RegisterStudentValidator : AbstractValidator<RegisterStudent> {
-        public RegisterStudentValidator () {
+namespace CareerMonitoring.Infrastructure.Validators.CareerOffice {
+    public class RegisterCareerOfficeValidator : AbstractValidator<RegisterCareerOffice> {
+        public RegisterCareerOfficeValidator () {
             RuleFor (reg => reg.Name)
                 .NotNull ()
                 .MinimumLength (3)
@@ -18,12 +18,6 @@ namespace CareerMonitoring.Infrastructure.Validators.User {
                 .NotNull ()
                 .EmailAddress ()
                 .MinimumLength (5);
-            RuleFor (eg => eg.IndexNumber)
-                .NotEmpty ()
-                .WithMessage ("Index number cannot be empty.")
-                .NotNull ()
-                .Matches (@"^\+(?:[0-9]●?){10,10}[0-9]$") //poprawic walidacje indeksu
-                .WithMessage ("Phone number is invalid.");
             RuleFor (reg => reg.PhoneNumber)
                 .NotNull ()
                 .Matches (@"^\+(?:[0-9]●?){10,10}[0-9]$")

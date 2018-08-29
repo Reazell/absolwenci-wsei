@@ -50,7 +50,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             return account;
         }
 
-        public async Task RegisterStudentAsync (string name, string surname, string email, int indexNumber, string phoneNumber, string password) {
+        public async Task RegisterStudentAsync (string name, string surname, string email, string indexNumber, string phoneNumber, string password) {
             if (await _studentService.ExistByEmailAsync (email.ToLowerInvariant ()))
                 throw new Exception ("User of given email already exist.");
             // if (!await _studentService.UserExistByIndexNumberAsync (indexNumber))

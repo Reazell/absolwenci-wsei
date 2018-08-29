@@ -4,7 +4,7 @@ using CareerMonitoring.Core.Domains.Abstract;
 
 namespace CareerMonitoring.Core.Domains {
     public class Student : Account {
-        public int IndexNumber { get; private set; }
+        public string IndexNumber { get; private set; }
         public string ProfileLink { get; private set; }
         public ICollection<Education> Educations { get; private set; }
         public ICollection<Experience> Experiences { get; private set; }
@@ -15,7 +15,7 @@ namespace CareerMonitoring.Core.Domains {
 
         protected Student () { }
 
-        public Student (string name, string surname, string email, int indexNumber, string phoneNumber, string password) : base (name, surname, email, phoneNumber, password) {
+        public Student (string name, string surname, string email, string indexNumber, string phoneNumber, string password) : base (name, surname, email, phoneNumber, password) {
             Role = "student";
             IndexNumber = indexNumber;
         }

@@ -25,7 +25,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             return await _context.Students.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public async Task<Student> GetByIndexNumberAsync (int indexNumber, bool isTracking = true) {
+        public async Task<Student> GetByIndexNumberAsync (string indexNumber, bool isTracking = true) {
             if (isTracking)
                 return await _context.Students.AsTracking ().SingleOrDefaultAsync (x => x.IndexNumber == indexNumber);
             return await _context.Students.AsNoTracking ().SingleOrDefaultAsync (x => x.IndexNumber == indexNumber);
