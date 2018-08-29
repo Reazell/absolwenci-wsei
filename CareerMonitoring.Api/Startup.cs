@@ -5,15 +5,23 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Api.ActionFilters;
+using CareerMonitoring.Infrastructure.Commands.CareerOffice;
+using CareerMonitoring.Infrastructure.Commands.Employer;
+using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Email;
 using CareerMonitoring.Infrastructure.Email.Interfaces;
 using CareerMonitoring.Infrastructure.Extension.JWT;
+using CareerMonitoring.Infrastructure.Extensions.Factories;
+using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using CareerMonitoring.Infrastructure.Validators.CareerOffice;
+using CareerMonitoring.Infrastructure.Validators.Employer;
+using CareerMonitoring.Infrastructure.Validators.Graduate;
 using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -63,27 +71,45 @@ namespace CareerMonitoring.Api {
                     };
                 });
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
-            services.AddSingleton<IEmailConfig> (Configuration.GetSection ("EmailSettings").Get<EmailConfig> ());
+            services.AddSingleton<IEmailConfiguration> (Configuration.GetSection ("EmailConfiguration").Get<EmailConfiguration> ());
+            services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
+            services.AddAuthorization (options => options.AddPolicy ("graduate", policy => policy.RequireRole ("graduate")));
+            services.AddAuthorization (options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
+            services.AddAuthorization (options => options.AddPolicy ("careerOffice", policy => policy.RequireRole ("careerOffice")));
 
             #endregion
             #region Repositories
 
-            services.AddScoped<IUserRepository, UserRepository> ();
+            services.AddScoped<IAccountRepository, AccountRepository> ();
+            services.AddScoped<IStudentRepository, StudentRepository> ();
+            services.AddScoped<IGraduateRepository, GraduateRepository> ();
+            services.AddScoped<IEmployerRepository, EmployerRepository> ();
+            services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
 
             #endregion
             #region Services 
 
+            services.AddScoped<IAccountService, AccountService> ();
             services.AddScoped<IAuthService, AuthService> ();
-            services.AddScoped<IUserService, UserService> ();
-            services.AddScoped<IEmailSender, EmailSender> ();
-            services.AddScoped<IEmailConfig, EmailConfig> ();
-            services.AddScoped<IUserEmailSender, UserEmailSender> ();
+            services.AddScoped<IStudentService, StudentService> ();
+            services.AddScoped<IGraduateService, GraduateService> ();
+            services.AddScoped<IEmployerService, EmployerService> ();
+            services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
 
             #endregion
             #region Validations
 
-            services.AddTransient<IValidator<RegisterUser>, RegisterUserValidator> ();
-            services.AddTransient<IValidator<SignInUser>, SignInUserValidator> ();
+            services.AddTransient<IValidator<SignIn>, SignInValidator> ();
+            services.AddTransient<IValidator<RegisterStudent>, RegisterStudentValidator> ();
+            services.AddTransient<IValidator<RegisterGraduate>, RegisterGraduateValidator> ();
+            services.AddTransient<IValidator<RegisterEmployer>, RegisterEmployerValidator> ();
+            services.AddTransient<IValidator<RegisterCareerOffice>, RegisterCareerOfficeValidator> ();
+
+            #endregion
+            #region Factories
+
+            services.AddScoped<IEmailFactory, EmailFactory> ();
+            services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
 
             #endregion
         }

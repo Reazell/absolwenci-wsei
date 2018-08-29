@@ -6,6 +6,6 @@ namespace CareerMonitoring.Infrastructure.Email.Interfaces
 {
     public interface IUserEmailSender
     {
-        Task SendActivationEmailAsync(User user, Guid activationKey);
+        //Task SendActivationEmailAsync(User user, Guid activationKey);
     }
 }

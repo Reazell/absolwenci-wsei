@@ -1,40 +1,96 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
-using CareerMonitoring.Infrastructure.Email.Interfaces;
+using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
 namespace CareerMonitoring.Infrastructure.Services {
     public class AuthService : IAuthService {
-        private readonly IUserRepository _userRepository;
-        private readonly IUserService _userService;
-        private readonly IUserEmailSender _activationEmailSender;
+        private readonly IAccountRepository _accountRepository;
+        private readonly IStudentRepository _studentRepository;
+        private readonly IStudentService _studentService;
+        private readonly IGraduateRepository _graduateRepository;
+        private readonly IGraduateService _graduateService;
+        private readonly ICareerOfficeRepository _careerOfficeRepository;
+        private readonly ICareerOfficeService _careerOfficeService;
+        private readonly IEmployerRepository _employerRepository;
+        private readonly IEmployerService _employerService;
+        private readonly IAccountEmailFactory _accountEmailFactory;
 
-        public AuthService (IUserRepository userRepository, IUserService userService, IUserEmailSender activationEmailSender) {
-            _userRepository = userRepository;
-            _userService = userService;
-            _activationEmailSender = activationEmailSender;
+        public AuthService (IAccountRepository accountRepository,
+            IStudentRepository studentRepository,
+            IStudentService studentService,
+            IGraduateRepository graduateRepository,
+            IGraduateService graduateService,
+            ICareerOfficeRepository careerOfficeRepository,
+            ICareerOfficeService careerOfficeService,
+            IEmployerRepository employerRepository,
+            IEmployerService employerService,
+            IAccountEmailFactory accountEmailFactory) {
+            _accountRepository = accountRepository;
+            _studentRepository = studentRepository;
+            _studentService = studentService;
+            _graduateRepository = graduateRepository;
+            _graduateService = graduateService;
+            _careerOfficeRepository = careerOfficeRepository;
+            _careerOfficeService = careerOfficeService;
+            _employerRepository = employerRepository;
+            _employerService = employerService;
+            _accountEmailFactory = accountEmailFactory;
         }
 
-        public async Task<User> LoginAsync (string email, string password) {
-            var user = await _userRepository.GetByEmailAsync (email, false);
-            if (user == null || !user.Activated || user.Deleted)
-                throw new Exception ("User of given email and password does not exist!");
-            if (!VerifyPasswordHash (password, user.PasswordHash, user.PasswordSalt))
-                throw new Exception ("Given email or password are incorrect!");
-            return user;
+        public async Task<Account> LoginAsync (string email, string password) {
+            var account = await _accountRepository.GetByEmailAsync (email, false);
+            if (account == null || !account.Activated || account.Deleted)
+                return null;
+            if (!VerifyPasswordHash (password, account.PasswordHash, account.PasswordSalt))
+                return null;
+            return account;
         }
 
-        public async Task RegisterAsync (string name, string surname, string email, int indexNumber, string password) {
-            if (await _userService.UserExistByEmailAsync (email.ToLowerInvariant ()))
+        public async Task RegisterStudentAsync (string name, string surname, string email, string indexNumber, string phoneNumber, string password) {
+            if (await _studentService.ExistByEmailAsync (email.ToLowerInvariant ()))
                 throw new Exception ("User of given email already exist.");
-            // if (!await _userService.UserExistByIndexNumberAsync (indexNumber))
+            // if (!await _studentService.UserExistByIndexNumberAsync (indexNumber))
             //     throw new Exception ("Given index number does not exist.");
+            var student = new Student (name, surname, email, indexNumber, phoneNumber, password);
+            var activationKey = Guid.NewGuid ();
+            student.AddAccountActivation (new AccountActivation (activationKey));
+            await _studentRepository.AddAsync (student);
+            await _accountEmailFactory.SendActivationEmailAsync (student, activationKey);
+        }
 
-            var user = new User (name, surname, email, indexNumber, password);
-            await _activationEmailSender.SendActivationEmailAsync(user, user.ActivationKey);
-            await _userRepository.AddAsync (user);
+        public async Task RegisterGraduateAsync (string name, string surname, string email, string phoneNumber, string password) {
+            if (await _graduateService.ExistByEmailAsync (email.ToLowerInvariant ()))
+                throw new Exception ("User of given email already exist.");
+            var graduate = new Graduate (name, surname, email, phoneNumber, password);
+            var activationKey = Guid.NewGuid ();
+            graduate.AddAccountActivation (new AccountActivation (activationKey));
+            await _graduateRepository.AddAsync (graduate);
+            await _accountEmailFactory.SendActivationEmailAsync (graduate, activationKey);
+        }
+
+        public async Task RegisterCareerOfficeAsync (string name, string surname, string email, string phoneNumber, string password) {
+            if (await _careerOfficeService.ExistByEmailAsync (email.ToLowerInvariant ()))
+                throw new Exception ("User of given email already exist.");
+            var careerOffice = new CareerOffice (name, surname, email, phoneNumber, password);
+            var activationKey = Guid.NewGuid ();
+            careerOffice.AddAccountActivation (new AccountActivation (activationKey));
+            await _careerOfficeRepository.AddAsync (careerOffice);
+            await _accountEmailFactory.SendActivationEmailAsync (careerOffice, activationKey);
+        }
+
+        public async Task RegisterEmployerAsync (string name, string surname, string email, string phoneNumber, string password, string companyName,
+            string location, string companyDescription) {
+            if (await _employerService.ExistByEmailAsync (email.ToLowerInvariant ()))
+                throw new Exception ("User of given email already exist.");
+            var employer = new Employer (name, surname, email, phoneNumber, password, companyName, location, companyDescription);
+            var activationKey = Guid.NewGuid ();
+            employer.AddAccountActivation (new AccountActivation (activationKey));
+            await _employerRepository.AddAsync (employer);
+            await _accountEmailFactory.SendActivationEmailAsync (employer, activationKey);
         }
 
         private bool VerifyPasswordHash (string password, byte[] passwordHash, byte[] passwordSalt) {

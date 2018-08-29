@@ -8,6 +8,6 @@ namespace CareerMonitoring.Infrastructure.Email.Interfaces
     public interface IEmailSender
     {
         Task SendEmailAsync(MimeMessage mimeMessage);
-        Task SendEmailToAllAsync(IEnumerable<User> Users);
+        //Task SendEmailToAllAsync(IEnumerable<User> Users);
     }
 }

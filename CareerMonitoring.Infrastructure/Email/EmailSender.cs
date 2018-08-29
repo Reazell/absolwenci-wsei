@@ -7,7 +7,7 @@ using CareerMonitoring.Core.Domains;
 
 namespace CareerMonitoring.Infrastructure.Email
 {
-    public class EmailSender : IEmailSender
+    public class EmailSender //: IEmailSender
     {
         private readonly IEmailConfig _emailConfig;
 
@@ -27,17 +27,17 @@ namespace CareerMonitoring.Infrastructure.Email
             }
         }
 
-        public async Task SendEmailToAllAsync (IEnumerable<User> Users)
-        {
-            foreach(var user in Users)
-            {
-                var message = new MimeMessage();
-                message.From.Add(new MailboxAddress(_emailConfig.Name, _emailConfig.SmtpUsername));
-                message.To.Add(new MailboxAddress(user.Name.ToString(), user.Email.ToString()));
-                message.Subject = "mail";
-                message.Body = new TextPart("html") {Text = "mail"};
-                await SendEmailAsync(message);
-            }
-        }
+        // public async Task SendEmailToAllAsync (IEnumerable<User> Users)
+        // {
+        //     foreach(var user in Users)
+        //     {
+        //         var message = new MimeMessage();
+        //         message.From.Add(new MailboxAddress(_emailConfig.Name, _emailConfig.SmtpUsername));
+        //         message.To.Add(new MailboxAddress(user.Name.ToString(), user.Email.ToString()));
+        //         message.Subject = "mail";
+        //         message.Body = new TextPart("html") {Text = "mail"};
+        //         await SendEmailAsync(message);
+        //     }
+        // }
     }
 }
