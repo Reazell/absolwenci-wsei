@@ -1,17 +1,21 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using MimeKit;
 
 namespace CareerMonitoring.Infrastructure.Extensions.Factories {
     public class AccountEmailFactory : IAccountEmailFactory {
         private readonly IEmailFactory _emailFactory;
         private readonly IEmailConfiguration _emailConfiguration;
+        private readonly IAccountRepository _accountRepository;
 
-        public AccountEmailFactory (IEmailFactory emailFactory, IEmailConfiguration emailConfiguration) {
+        public AccountEmailFactory (IEmailFactory emailFactory, IEmailConfiguration emailConfiguration, IAccountRepository accountRepository) {
             _emailFactory = emailFactory;
             _emailConfiguration = emailConfiguration;
+            _accountRepository = accountRepository;
         }
 
         public async Task SendActivationEmailAsync (Account account, Guid activationKey) {
@@ -34,6 +38,24 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                 Text = $"Witaj, {account.Name}.Ten mail został wygenerowany automatycznie.</b><br/> Kliknij w <a href=\"http://localhost:5000/api/auth/recoveringPassword/{token}\">link </a>, aby zmienić swoje hasło."
             };
             await _emailFactory.SendEmailAsync (message);
+        }
+
+        public async Task SendEmailToAllAsync (string subject, string body)
+        {
+            var accounts = await _accountRepository.GetAllAsync();
+            foreach(var account in accounts)
+            {
+                if(account.Role != "careerOffice"){
+                    var message = new MimeMessage ();
+                    message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
+                    message.To.Add (new MailboxAddress (account.Name, account.Email));
+                    message.Subject = subject;
+                    message.Body = new TextPart ("html") {
+                        Text = body
+                    };
+                    await _emailFactory.SendEmailAsync (message);
+                }
+            }
         }
     }
 }
