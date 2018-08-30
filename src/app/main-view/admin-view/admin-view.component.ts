@@ -12,6 +12,7 @@ export class AdminViewComponent implements OnInit, OnDestroy {
   isSidebarOpened = true;
   smallScreen: boolean;
   showDetails = false;
+  toggleSidebarSubscription;
   @ViewChild('sidenav')
   sidenav;
 
@@ -21,14 +22,16 @@ export class AdminViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sharedService.toggleSidebar.unsubscribe();
+    this.toggleSidebarSubscription.unsubscribe();
   }
   ngOnInit() {
-    this.sharedService.toggleSidebar.subscribe(res => {
-      if (this.sidenav) {
-        this.sidenav.toggle();
+    this.toggleSidebarSubscription = this.sharedService.toggleSidebar.subscribe(
+      res => {
+        if (this.sidenav) {
+          this.sidenav.toggle();
+        }
       }
-    });
+    );
     // this.detailsService.showMailDetails.subscribe(res => {
     //   this.showDetails = res;
     //   this.showMailDetails();

@@ -13,7 +13,7 @@ export class GroupListComponent implements OnInit {
     name: 'pracodawcy'
   },
   {
-    name: 'absolewnci'
+    name: 'absolwenci'
   }
   ];
   constructor() { }
