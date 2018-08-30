@@ -16,7 +16,7 @@ const authRoutes: Routes = [
       },
       {
         path: 'activation/:token',
-        loadChildren: './auth/account-activation/account-activation.module#AccountActivationModule',
+        loadChildren: './account-activation/account-activation.module#AccountActivationModule',
         canActivate: [GuidGuard]
       },
       {

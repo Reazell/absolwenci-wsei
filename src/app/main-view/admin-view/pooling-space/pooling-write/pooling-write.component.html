@@ -1,13 +1,11 @@
 <div class="write-container">
   <div class="template">
-    <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="logForm">
-      <mat-form-field>
-        <input matInput placeholder="wpisz wiadomość" type="text" id="sent" formControlName="text">
-      </mat-form-field>
+    <form #sent="ngForm" (ngSubmit)=onSubmit(sent) [formGroup]="sentForm">
+      <input matInput placeholder="wpisz wiadomość" type="text" id="sent" formControlName="text">
+
       <div class="btnBox">
-        <button class="white" mat-raised-button color="accent" type="submit">Logowanie</button>
+        <button class="white" mat-raised-button color="accent" type="submit">Wyślij testowego maila</button>
       </div>
+    </form>
   </div>
-  </form>
-</div>
 </div>

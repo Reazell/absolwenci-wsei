@@ -1,5 +1,11 @@
+import { PoolingService } from './../../../services/pooling.services';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  AbstractControl,
+  FormBuilder,
+  Validators
+} from '@angular/forms';
 
 @Component({
   selector: 'app-pooling-write',
@@ -10,7 +16,10 @@ export class PoolingWriteComponent implements OnInit {
   sentForm: FormGroup;
   text: AbstractControl;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private poolingService: PoolingService
+  ) {}
 
   ngOnInit() {
     this.sentForm = this.fb.group({
@@ -19,6 +28,13 @@ export class PoolingWriteComponent implements OnInit {
     this.text = this.sentForm.controls['text'];
   }
   onSubmit() {
-this.
+    this.poolingService.sendPooling(this.text.value).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
