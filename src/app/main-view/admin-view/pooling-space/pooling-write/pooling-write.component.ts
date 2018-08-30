@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pooling-write',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pooling-write.component.scss']
 })
 export class PoolingWriteComponent implements OnInit {
+  sentForm: FormGroup;
+  text: AbstractControl;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.sentForm = this.fb.group({
+      text: ['', Validators.required]
+    });
+    this.text = this.sentForm.controls['text'];
   }
-
+  onSubmit() {
+this.
+  }
 }

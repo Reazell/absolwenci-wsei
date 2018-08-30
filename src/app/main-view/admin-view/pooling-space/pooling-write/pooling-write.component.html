@@ -1,3 +1,13 @@
-<p>
-  pooling-write works!
-</p>
+<div class="write-container">
+  <div class="template">
+    <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="logForm">
+      <mat-form-field>
+        <input matInput placeholder="wpisz wiadomość" type="text" id="sent" formControlName="text">
+      </mat-form-field>
+      <div class="btnBox">
+        <button class="white" mat-raised-button color="accent" type="submit">Logowanie</button>
+      </div>
+  </div>
+  </form>
+</div>
+</div>
