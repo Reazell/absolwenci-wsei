@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.CareerOffice;
 using CareerMonitoring.Infrastructure.Commands.Employer;
 using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -131,6 +133,37 @@ namespace CareerMonitoring.Api.Controllers {
                 return Ok (new { message = "Account was activated" });
             } catch (Exception e) {
                 return NotFound (new { message = e.Message });
+            }
+        }
+
+        [Authorize]
+        [HttpPost ("changePassword")]
+        public async Task<IActionResult> ChangePassword ([FromBody] ChangePassword command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            var user = await _authService.LoginAsync (UserEmail, command.OldPassword);
+            if (user == null)
+                return Unauthorized ();
+            try {
+                await _accountService.UpdatePasswordAsync (user, command.NewPassword);
+                return Ok (new { message = "Password was changed." });
+            } catch (Exception e) {
+                return BadRequest (new { errorMessage = e.Message });
+            }
+        }
+
+        [HttpPost ("restorePassword")]
+        public async Task<IActionResult> RestorePassword ([FromBody] RestorePassword command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            var user = await _accountService.GetActiveByEmailAsync (command.Email);
+            if (user == null)
+                return BadRequest (new { message = "User of given email does not exist." });
+            try {
+                await _accountService.RestorePasswordAsync (user);
+                return Ok (new { message = "The message of password restoring has been sent to given email address" });
+            } catch (Exception e) {
+                return BadRequest (new { errorMessage = e.Message });
             }
         }
 

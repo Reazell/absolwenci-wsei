@@ -17,6 +17,10 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasOne (a => a.AccountActivation)
                 .WithOne (b => b.Account)
                 .HasForeignKey<AccountActivation> (b => b.AccountId);
+            modelBuilder.Entity<Account> ()
+                .HasOne (a => a.AccountRestoringPassword)
+                .WithOne (b => b.Account)
+                .HasForeignKey<AccountRestoringPassword> (b => b.AccountId);
         }
     }
 }
