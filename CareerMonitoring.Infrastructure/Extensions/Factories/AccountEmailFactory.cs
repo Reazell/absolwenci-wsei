@@ -24,7 +24,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             message.To.Add (new MailboxAddress (account.Name, account.Email));
             message.Subject = "Monitorowanie karier - aktywacja konta.";
             message.Body = new TextPart ("html") {
-                Text = $"Oto mail wygenerowany automatycznie, potwierdzający Twoją rejestrację w aplikacji <b>Monitorowanie karier</b><br/> Kliknij w <a href=\"http://localhost:5000/api/auth/activation/{activationKey}\">link aktywacyjny</a>, dzięki czemu aktywujesz swoje konto w serwisie."
+                Text = $"Oto mail wygenerowany automatycznie, potwierdzający Twoją rejestrację w aplikacji <b>Monitorowanie karier</b><br/> Kliknij w <a href=\"http://localhost:4200/api/auth/activation/{activationKey}\">link aktywacyjny</a>, dzięki czemu aktywujesz swoje konto w serwisie."
             };
             await _emailFactory.SendEmailAsync (message);
         }
