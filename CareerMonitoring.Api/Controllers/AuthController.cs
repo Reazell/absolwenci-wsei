@@ -13,6 +13,8 @@ using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CareerMonitoring.Api.Controllers {
     public class AuthController : ApiUserController {
@@ -56,7 +58,8 @@ namespace CareerMonitoring.Api.Controllers {
             var token = new TokenDto {
                 Token = await GenerateToken (account, _jwtSettings)
             };
-            return Ok (token);
+            var loginResult = new {LoginData = token, account.Role};
+            return Json (loginResult);
         }
 
         [HttpPost ("students")]
