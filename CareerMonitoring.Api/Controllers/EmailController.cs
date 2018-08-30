@@ -16,9 +16,10 @@ namespace CareerMonitoring.Api.Controllers
             _accountEmailFactory = accountEmailFactory;
         }
         [HttpPost]
-        public async Task SendEmailToAll ([FromBody] EmailToSend command)
+        public async Task<IActionResult> SendEmailToAll ([FromBody] EmailToSend command)
         {
             await _accountEmailFactory.SendEmailToAllAsync(command.Subject, command.Body);
+            return StatusCode(201);
         }
     }
 }
