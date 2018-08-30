@@ -20,10 +20,11 @@ namespace CareerMonitoring.Core.Domains {
             IndexNumber = indexNumber;
         }
 
-        public void Update (string name, string surname, string email) {
+        public void Update (string name, string surname, string email, string phoneNumber) {
             Name = name;
             Surname = surname;
             Email = email;
+            PhoneNumber = phoneNumber;
         }
 
         public void AddProfileLink (string profileLink) {

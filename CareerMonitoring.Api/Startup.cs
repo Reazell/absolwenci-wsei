@@ -10,8 +10,6 @@ using CareerMonitoring.Infrastructure.Commands.Employer;
 using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
-using CareerMonitoring.Infrastructure.Email;
-using CareerMonitoring.Infrastructure.Email.Interfaces;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Extensions.Factories;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;

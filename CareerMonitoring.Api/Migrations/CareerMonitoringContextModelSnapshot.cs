@@ -27,8 +27,6 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<bool>("Activated");
 
-                    b.Property<Guid>("ActivationKey");
-
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<bool>("Deleted");

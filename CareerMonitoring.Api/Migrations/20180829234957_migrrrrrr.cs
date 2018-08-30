@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class migrrrrrr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
