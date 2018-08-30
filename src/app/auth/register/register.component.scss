@@ -60,7 +60,7 @@
           align-items: center;
           justify-content: center;
           font-size: 50px;
-          color: $grey;
+          // color: $grey;
         }
       }
       .Student:before {
@@ -75,11 +75,18 @@
         content: '\f0b1';
         padding-top: 5px;
       }
+      label{
+        color: $grey;
+      }
       input:checked ~ label {
-        color: $primary !important;
+        color: $primary;
+        transition: color .2s ease-in-out;
+      }
+      input:checked ~ label:hover{
+        color:  $primary-light
       }
       label:hover {
-        color: gray !important;
+        color: gray;
       }
       label:before {
         font-family: FontAwesome;
@@ -124,6 +131,9 @@
         color: $primary-light;
         cursor: pointer;
         outline: none;
+      }
+      .additionalLink:hover{
+        color: $primary;
       }
       // }
       .white {

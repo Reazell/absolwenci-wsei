@@ -16,7 +16,7 @@ export class AuthenticationService {
     private http: HttpClient,
     private config: AppConfig,
     private userService: UserService
-  ) {}
+  ) { }
 
   /**
    * Sign in user - make request using values email and password
@@ -51,4 +51,8 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   }
 
+  activateAccount(token: string) {
+    const string = '/auth/activation/' + token;
+    return this.http.get(this.config.apiUrl + string);
+  }
 }

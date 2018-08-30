@@ -1,6 +1,7 @@
 import { AuthComponent } from './auth.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { GuidGuard } from './other/guid.auth';
 // import { AuthGuard } from './auth/guard.auth';
 
 const authRoutes: Routes = [
@@ -12,6 +13,11 @@ const authRoutes: Routes = [
       {
         path: 'register',
         loadChildren: './register/register.module#RegisterModule'
+      },
+      {
+        path: 'activation/:token',
+        loadChildren: './auth/account-activation/account-activation.module#AccountActivationModule',
+        canActivate: [GuidGuard]
       },
       {
         path: 'recovery',
@@ -29,4 +35,4 @@ const authRoutes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(authRoutes)]
 })
-export class AuthRoutingModule {}
+export class AuthRoutingModule { }

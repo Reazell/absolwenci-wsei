@@ -1,3 +1,4 @@
+import { GuidGuard } from './auth/other/guid.auth';
 import { AuthGuard } from './auth/other/guard.auth';
 import { JwtInterceptor } from './auth/other/jwt.interceptor';
 import { UserService } from './auth/services/user.service';
@@ -37,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AuthenticationService,
     UserService,
     AuthGuard,
+    GuidGuard,
     AppConfig,
     {
       provide: HTTP_INTERCEPTORS,
