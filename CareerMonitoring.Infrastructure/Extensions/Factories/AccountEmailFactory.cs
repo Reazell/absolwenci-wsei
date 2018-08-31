@@ -35,7 +35,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             message.To.Add (new MailboxAddress (account.Name.ToString (), account.Email.ToString ()));
             message.Subject = "Monitorowanie Karier - przywracanie hasla";
             message.Body = new TextPart ("html") {
-                Text = $"Witaj, {account.Name}.Ten mail został wygenerowany automatycznie.</b><br/> Kliknij w <a href=\"http://localhost:5000/api/auth/recoveringPassword/{token}\">link </a>, aby zmienić swoje hasło."
+                Text = $"Witaj, {account.Name}.Ten mail został wygenerowany automatycznie.</b><br/> Kliknij w <a href=\"http://localhost:4200/api/auth/recoveringPassword/{token}\">link </a>, aby zmienić swoje hasło."
             };
             await _emailFactory.SendEmailAsync (message);
         }
