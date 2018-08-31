@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerMonitoring.Api.ActionFilters;
 using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.CareerOffice;
+using CareerMonitoring.Infrastructure.Commands.Email;
 using CareerMonitoring.Infrastructure.Commands.Employer;
 using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
@@ -20,6 +21,7 @@ using CareerMonitoring.Infrastructure.Services;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using CareerMonitoring.Infrastructure.Validators.Account;
 using CareerMonitoring.Infrastructure.Validators.CareerOffice;
+using CareerMonitoring.Infrastructure.Validators.Email;
 using CareerMonitoring.Infrastructure.Validators.Employer;
 using CareerMonitoring.Infrastructure.Validators.Graduate;
 using CareerMonitoring.Infrastructure.Validators.User;
@@ -107,6 +109,7 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<ChangePassword>, ChangePasswordValidator> ();
             services.AddTransient<IValidator<RestorePassword>, RestorePasswordValidator> ();
             services.AddTransient<IValidator<ChangePasswordByRestoringPassword>, ChangePasswordByRestoringPasswordValidator> ();
+            services.AddTransient<IValidator<EmailToSend>, EmailToSendValidator> ();
 
             #endregion
             #region Factories
