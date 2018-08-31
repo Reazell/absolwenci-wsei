@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Api.ActionFilters;
+using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.CareerOffice;
 using CareerMonitoring.Infrastructure.Commands.Email;
 using CareerMonitoring.Infrastructure.Commands.Employer;
@@ -18,6 +19,7 @@ using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using CareerMonitoring.Infrastructure.Validators.Account;
 using CareerMonitoring.Infrastructure.Validators.CareerOffice;
 using CareerMonitoring.Infrastructure.Validators.Email;
 using CareerMonitoring.Infrastructure.Validators.Employer;
@@ -105,6 +107,9 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<RegisterEmployer>, RegisterEmployerValidator> ();
             services.AddTransient<IValidator<RegisterCareerOffice>, RegisterCareerOfficeValidator> ();
             services.AddTransient<IValidator<EmailToSend>, EmailToSendValidator> ();
+            services.AddTransient<IValidator<ChangePassword>, ChangePasswordValidator> ();
+            services.AddTransient<IValidator<RestorePassword>, RestorePasswordValidator> ();
+            services.AddTransient<IValidator<ChangePasswordByRestoringPassword>, ChangePasswordByRestoringPasswordValidator> ();
 
             #endregion
             #region Factories

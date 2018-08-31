@@ -15,6 +15,7 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         public bool Deleted { get; protected set; }
         public bool Activated { get; protected set; }
         public AccountActivation AccountActivation { get; protected set; }
+        public AccountRestoringPassword AccountRestoringPassword { get; protected set; }
 
         protected Account () { }
 
@@ -45,6 +46,11 @@ namespace CareerMonitoring.Core.Domains.Abstract {
             }
         }
 
+        public void UpdatePassword (string newPassword) {
+            CreatePasswordHash (newPassword);
+            UpdatedAt = DateTime.UtcNow;
+        }
+
         private void CreatePasswordHash (string password) {
             using (var hmac = new System.Security.Cryptography.HMACSHA512 ()) {
                 PasswordSalt = hmac.Key;
@@ -54,6 +60,14 @@ namespace CareerMonitoring.Core.Domains.Abstract {
 
         public void AddAccountActivation (AccountActivation accountActivation) {
             AccountActivation = accountActivation;
+        }
+        public void ChangeAccountRestoringPassword (Guid token) {
+            if (AccountRestoringPassword != null)
+                AccountRestoringPassword.ResetState (token);
+        }
+        public void AddAccountRestoringPassword (AccountRestoringPassword accountRestoringPassword) {
+            if (accountRestoringPassword != null)
+                AccountRestoringPassword = accountRestoringPassword;
         }
     }
 }

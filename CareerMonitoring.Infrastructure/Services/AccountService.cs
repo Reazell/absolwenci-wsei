@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
+using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -10,19 +12,31 @@ namespace CareerMonitoring.Infrastructure.Services {
         private readonly IStudentRepository _studentRepository;
         private readonly IEmployerRepository _employerRepository;
         private readonly IGraduateRepository _graduateRepository;
+        private readonly IAccountEmailFactory _accountEmailFactory;
 
-        public AccountService (IAccountRepository accountRepository, IStudentRepository studentRepository,
-        IEmployerRepository employerRepository, IGraduateRepository graduateRepository) {
+        public AccountService (IAccountRepository accountRepository,
+         IStudentRepository studentRepository,
+        IEmployerRepository employerRepository,
+         IGraduateRepository graduateRepository,
+          IAccountEmailFactory accountEmailFactory) {
             _accountRepository = accountRepository;
             _studentRepository = studentRepository;
             _employerRepository = employerRepository;
             _graduateRepository = graduateRepository;
+            _accountEmailFactory = accountEmailFactory;
         }
-        public async Task<bool> ExistsByIdAsync (int id) =>
+                public async Task<bool> ExistsByIdAsync (int id) =>
             await _accountRepository.GetByIdAsync (id) != null;
 
         public async Task<bool> ExistsByEmailAsync (string email) =>
             await _accountRepository.GetByEmailAsync (email) != null;
+
+        public async Task<Account> GetActiveByEmailAsync (string email) {
+            var account = await _accountRepository.GetByEmailAsync (email, false);
+            if (account == null || account.Deleted || !account.Activated)
+                return null;
+            return account;
+        }
 
         public async Task ActivateAsync (Guid activationKey) {
             var account = await _accountRepository.GetByActivationKeyAsync (activationKey);
@@ -30,6 +44,33 @@ namespace CareerMonitoring.Infrastructure.Services {
                 throw new Exception ("Your activation key is incorrect.");
             }
             account.Activate (account.AccountActivation);
+            await _accountRepository.UpdateAsync (account);
+        }
+
+        public async Task RestorePasswordAsync (Account account) {
+            var token = Guid.NewGuid ();
+            var accountToPaswordRestor = await _accountRepository.GetWithAccountRestoringPasswordAsync (account.Id);
+            if (accountToPaswordRestor.AccountRestoringPassword != null && accountToPaswordRestor.Activated == true && accountToPaswordRestor.Deleted == false)
+                accountToPaswordRestor.ChangeAccountRestoringPassword (token);
+            else
+                accountToPaswordRestor.AddAccountRestoringPassword (new AccountRestoringPassword (token));
+            await _accountEmailFactory.SendRecoveringPasswordEmailAsync (accountToPaswordRestor, token);
+            await _accountRepository.UpdateAsync (accountToPaswordRestor);
+        }
+
+        public async Task UpdatePasswordAsync (Account account, string newPassword) {
+            account.UpdatePassword (newPassword);
+            await _accountRepository.UpdateAsync (account);
+        }
+
+        public async Task ChangePasswordByRestoringPassword (string accountEmail, Guid token, string newPassword) {
+            var account = await _accountRepository.GetWithAccountRestoringPasswordByTokenAsync (token);
+            if (account == null || account.AccountRestoringPassword == null || account.AccountRestoringPassword.Restored)
+                throw new Exception ("Your token is incorrect");
+            if (account.Email.ToLowerInvariant () != accountEmail.ToLowerInvariant ())
+                throw new Exception ("Invalid email address");
+            await UpdatePasswordAsync (account, newPassword);
+            account.AccountRestoringPassword.PasswordRestoring ();
             await _accountRepository.UpdateAsync (account);
         }
 
