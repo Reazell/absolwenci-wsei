@@ -10,6 +10,7 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces {
         Task ActivateAsync (Guid activationKey);
         Task RestorePasswordAsync (Account account);
         Task UpdatePasswordAsync (Account account, string newPassword);
+        Task ChangePasswordByRestoringPassword (string accountEmail, Guid token, string newPassword);
         Task DeleteAsync (int id);
     }
 }

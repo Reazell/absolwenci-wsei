@@ -65,7 +65,7 @@ namespace CareerMonitoring.Core.Domains.Abstract {
             if (AccountRestoringPassword != null)
                 AccountRestoringPassword.ResetState (token);
         }
-        public void AddUserRestoringPassword (AccountRestoringPassword accountRestoringPassword) {
+        public void AddAccountRestoringPassword (AccountRestoringPassword accountRestoringPassword) {
             if (accountRestoringPassword != null)
                 AccountRestoringPassword = accountRestoringPassword;
         }

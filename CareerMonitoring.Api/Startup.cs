@@ -106,6 +106,7 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<RegisterCareerOffice>, RegisterCareerOfficeValidator> ();
             services.AddTransient<IValidator<ChangePassword>, ChangePasswordValidator> ();
             services.AddTransient<IValidator<RestorePassword>, RestorePasswordValidator> ();
+            services.AddTransient<IValidator<ChangePasswordByRestoringPassword>, ChangePasswordByRestoringPasswordValidator> ();
 
             #endregion
             #region Factories

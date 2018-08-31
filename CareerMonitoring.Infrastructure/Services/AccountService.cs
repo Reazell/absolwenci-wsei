@@ -40,17 +40,28 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task RestorePasswordAsync (Account account) {
             var token = Guid.NewGuid ();
-            var accountToPaswordRestor = await _accountRepository.GetByIdAsync (account.Id);
+            var accountToPaswordRestor = await _accountRepository.GetWithAccountRestoringPasswordAsync (account.Id);
             if (accountToPaswordRestor.AccountRestoringPassword != null && accountToPaswordRestor.Activated == true && accountToPaswordRestor.Deleted == false)
                 accountToPaswordRestor.ChangeAccountRestoringPassword (token);
             else
-                accountToPaswordRestor.AddUserRestoringPassword (new AccountRestoringPassword (token));
+                accountToPaswordRestor.AddAccountRestoringPassword (new AccountRestoringPassword (token));
             await _accountEmailFactory.SendRecoveringPasswordEmailAsync (accountToPaswordRestor, token);
             await _accountRepository.UpdateAsync (accountToPaswordRestor);
         }
 
         public async Task UpdatePasswordAsync (Account account, string newPassword) {
             account.UpdatePassword (newPassword);
+            await _accountRepository.UpdateAsync (account);
+        }
+
+        public async Task ChangePasswordByRestoringPassword (string accountEmail, Guid token, string newPassword) {
+            var account = await _accountRepository.GetWithAccountRestoringPasswordByTokenAsync (token);
+            if (account == null || account.AccountRestoringPassword == null || account.AccountRestoringPassword.Restored)
+                throw new Exception ("Your token is incorrect");
+            if (account.Email.ToLowerInvariant () != accountEmail.ToLowerInvariant ())
+                throw new Exception ("Invalid email address");
+            await UpdatePasswordAsync (account, newPassword);
+            account.AccountRestoringPassword.PasswordRestoring ();
             await _accountRepository.UpdateAsync (account);
         }
 

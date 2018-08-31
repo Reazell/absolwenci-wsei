@@ -167,5 +167,20 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
+        [HttpPost ("changePasswordByRestoringPassword")]
+        public async Task<IActionResult> ChangePasswordByRestoringPassword ([FromBody] ChangePasswordByRestoringPassword command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            var account = await _accountService.GetActiveByEmailAsync (command.Email);
+            if (account == null)
+                return Unauthorized ();
+            try {
+                await _accountService.ChangePasswordByRestoringPassword (account.Email, command.Token, command.NewPassword);
+                return Ok (new { message = "The password was changed" });
+            } catch (Exception e) {
+                return NotFound (new { message = e.Message });
+            }
+        }
+
     }
 }

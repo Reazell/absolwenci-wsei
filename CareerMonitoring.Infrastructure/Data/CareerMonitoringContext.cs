@@ -9,6 +9,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<Graduate> Graduates { get; set; }
         public DbSet<CareerOffice> CareerOffices { get; set; }
         public DbSet<Employer> Employers { get; set; }
+        public DbSet<AccountRestoringPassword> AccountRestoringPasswords { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 
