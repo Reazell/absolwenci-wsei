@@ -47,34 +47,33 @@ export class UserService {
       CompanyDescription: user.companyDescription
     });
   }
-  // // change password
-  // changePassword(OldPassword, NewPassword) {
-  //   return this.http.post(
-  //     this.config.apiUrl + '/auth/changePassword',
-  //     { OldPassword, NewPassword },
-  //     { headers: this.jwt() }
-  //   );
-  // }
+  // change password
+  changePassword(OldPassword, NewPassword) {
+    return this.http.post(this.config.apiUrl + '/auth/changePassword', {
+      OldPassword,
+      NewPassword
+    });
+  }
 
-  // // restore password
-  // sendRestorePasswordEmail(Email) {
-  //   return this.http.post(this.config.apiUrl + '/auth/restorePassword', {
-  //     Email
-  //   });
-  // }
+  // restore password
+  sendRestorePasswordEmail(Email) {
+    return this.http.post(this.config.apiUrl + '/auth/restorePassword', {
+      Email
+    });
+  }
 
-  // changePasswordByRestoringPassword(Email, Token, NewPassword) {
-  //   return this.http.put(this.config.apiUrl + '/auth/restorePassword', {
-  //     Email,
-  //     Token,
-  //     NewPassword
-  //   });
-  // }
+  changePasswordByRestoringPassword(Email, Token, NewPassword) {
+    return this.http.put(this.config.apiUrl + '/auth/restorePassword', {
+      Email,
+      Token,
+      NewPassword
+    });
+  }
 
-  // // update user data
-  // update(user: User) {
-  //   return this.http.put(this.config.apiUrl + '/users/' + user.id, user);
-  // }
+  // update user data
+  update(user: User) {
+    return this.http.put(this.config.apiUrl + '/users/' + user.id, user);
+  }
 
   // // delete user by id
   // delete(id: number) {

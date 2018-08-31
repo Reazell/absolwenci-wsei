@@ -16,7 +16,14 @@ const authRoutes: Routes = [
       },
       {
         path: 'activation/:token',
-        loadChildren: './account-activation/account-activation.module#AccountActivationModule',
+        loadChildren:
+          './account-activation/account-activation.module#AccountActivationModule',
+        canActivate: [GuidGuard]
+      },
+      {
+        path: 'restore/:token',
+        loadChildren:
+          './restore-password/restore-password.module#RestorePasswordModule',
         canActivate: [GuidGuard]
       },
       {
@@ -35,4 +42,4 @@ const authRoutes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(authRoutes)]
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}

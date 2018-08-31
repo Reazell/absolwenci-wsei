@@ -159,48 +159,38 @@ export class RegisterComponent implements OnInit, OnDestroy {
               this.loading = false;
               this.registrationError = true;
               // set error message from api to loginErrorMessage
+              console.log(error);
               this.registrationErrorMessage = error;
             }
           );
           break;
         case 'Employer':
-        this.userService.createEmployer(this.user).subscribe(
-          data => {
-            this.router.navigateByUrl('/auth/login');
-          },
-          error => {
-            this.loading = false;
-            this.registrationError = true;
-            // set error message from api to loginErrorMessage
-            this.registrationErrorMessage = error;
-          }
-        );
+          this.userService.createEmployer(this.user).subscribe(
+            data => {
+              this.router.navigateByUrl('/auth/login');
+            },
+            error => {
+              this.loading = false;
+              this.registrationError = true;
+              // set error message from api to loginErrorMessage
+              this.registrationErrorMessage = error.error;
+            }
+          );
           break;
         case 'Graduate':
-        this.userService.createGraduate(this.user).subscribe(
-          data => {
-            this.router.navigateByUrl('/auth/login');
-          },
-          error => {
-            this.loading = false;
-            this.registrationError = true;
-            // set error message from api to loginErrorMessage
-            this.registrationErrorMessage = error;
-          }
-        );
+          this.userService.createGraduate(this.user).subscribe(
+            data => {
+              this.router.navigateByUrl('/auth/login');
+            },
+            error => {
+              this.loading = false;
+              this.registrationError = true;
+              // set error message from api to loginErrorMessage
+              this.registrationErrorMessage = error;
+            }
+          );
           break;
       }
-      // this.userService.create(this.user).subscribe(
-      //   data => {
-      //     this.router.navigateByUrl('/auth/login');
-      //   },
-      //   error => {
-      //     this.loading = false;
-      //     this.registrationError = true;
-      //     // set error message from api to loginErrorMessage
-      //     this.registrationErrorMessage = error;
-      //   }
-      // );
     }
   }
 

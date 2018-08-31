@@ -93,8 +93,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         .login(this.email.value, this.password.value)
         .subscribe(
           data => {
+            console.log(data);
             // if login is successful, redirect to app
-            this.router.navigateByUrl(`/app`);
+            this.routeSwitch(data.role);
           },
           error => {
             console.log(error);
@@ -104,6 +105,19 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.loading = false;
           }
         );
+    }
+  }
+  routeSwitch(role) {
+    switch (role) {
+      case 'student':
+        this.router.navigateByUrl('/app/student');
+        break;
+      case 'employer':
+        this.router.navigateByUrl('/app/employer');
+        break;
+      case 'graduate':
+        this.router.navigateByUrl('/app/graduate');
+        break;
     }
   }
 

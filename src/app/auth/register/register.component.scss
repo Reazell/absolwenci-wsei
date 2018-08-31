@@ -75,15 +75,15 @@
         content: '\f0b1';
         padding-top: 5px;
       }
-      label{
+      label {
         color: $grey;
       }
       input:checked ~ label {
         color: $primary;
-        transition: color .2s ease-in-out;
+        transition: color 0.2s ease-in-out;
       }
-      input:checked ~ label:hover{
-        color:  $primary-light
+      input:checked ~ label:hover {
+        color: $primary-light;
       }
       label:hover {
         color: gray;
@@ -99,6 +99,10 @@
       display: flex;
       flex-direction: column;
       #form-container {
+        #regErr {
+          padding: 5px;
+          margin-bottom: 5px;
+        }
         .group {
           padding: 5px 10px;
           float: left;
@@ -132,7 +136,7 @@
         cursor: pointer;
         outline: none;
       }
-      .additionalLink:hover{
+      .additionalLink:hover {
         color: $primary;
       }
       // }

@@ -17,6 +17,9 @@
     </div>
     <div id="register-container">
       <div id="form-container">
+          <div id="regErr">
+              <mat-error *ngIf=registrationError>{{registrationErrorMessage}}</mat-error>
+            </div>
         <!-- <div class="group half"> -->
         <!-- <div class="field right"> -->
         <div class="group half">

@@ -7,6 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { Router } from '../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-password-recovery',
@@ -30,7 +31,8 @@ export class PasswordRecoveryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -53,15 +55,17 @@ export class PasswordRecoveryComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // this.userService.sendRestorePasswordEmail(this.email.value).subscribe(
-    //   data => {
-    //     this.dialogRef.close(this.email.value);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //     this.dialogRef.close(false);
-    //   }
-    // );
+    this.loading = true;
+    console.log(this.email.value);
+    this.userService.sendRestorePasswordEmail(this.email.value).subscribe(
+      data => {
+        this.router.navigateByUrl('auth/login');
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+      }
+    );
   }
 
   inputError(control: AbstractControl): boolean {
