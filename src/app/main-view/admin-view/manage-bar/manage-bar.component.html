@@ -2,9 +2,9 @@
   <div id="container">
 
     <div id="buttonsContainer">
-      <button mat-button class="element" id="newMail" [routerLink]="['./write']">
+      <button mat-button class="element" id="newMail" [routerLink]="['./create']">
         <span class="icon fa fa-plus"></span>
-        <span class="txt">New</span>
+        <span class="txt" [routerLink]="'/app/admin/create'">New</span>
       </button>
     </div>
   </div>

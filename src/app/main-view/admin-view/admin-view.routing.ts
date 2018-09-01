@@ -12,6 +12,11 @@ const adminRoutes: Routes = [
         loadChildren: './pooling-space/pooling-space.module#PoolingSpaceModule'
       }
     ]
+  },
+  {
+    path: 'create',
+    loadChildren:
+      './pooling-creator/pooling-creator.module#PoolingCreatorModule'
   }
 ];
 
@@ -21,4 +26,4 @@ const adminRoutes: Routes = [
   imports: [RouterModule.forChild(adminRoutes)],
   exports: [RouterModule]
 })
-export class AdminViewRoutingModule { }
+export class AdminViewRoutingModule {}

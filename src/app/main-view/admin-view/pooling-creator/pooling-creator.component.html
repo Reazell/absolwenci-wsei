@@ -1,0 +1,116 @@
+<div id="creator-container">
+  <button (click)="addQuestion()">
+    Add Question</button>
+  <form [formGroup]="invoiceForm">
+    <div id="form-title">
+      <mat-form-field>
+        <input matInput placeholder="Nazwa formularza" formControlName="Form_Title" />
+      </mat-form-field>
+    </div>
+    <div id="questions-container" formArrayName="QuestionData">
+      <div *ngFor="let question of invoiceForm.controls['QuestionData'].controls; let i = index" [formGroupName]="i" class="question-field">
+
+        <div class="select-container">
+          <mat-form-field>
+            <input matInput placeholder="Pytanie" formControlName="question" /></mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="typ kontrolki" formControlName="select" name="control">
+              <mat-option *ngFor="let control of controls" [value]="control.value" (click)="changeControl(question.controls.FieldData, i)">
+                {{control.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+        <div class="field-container">
+          <div formArrayName="FieldData" [ngSwitch]="question.value.select">
+            <button (click)="addField(question.value.select)">add field</button>
+            <div *ngFor="let room of question.controls.FieldData.controls; let j = index" [formGroupName]="j">
+              <div class="single-choice" *ngSwitchCase="'single-choice'">
+
+                <mat-radio-group formControlName="single_choice">
+                  <div *ngFor="let single of singleControls">
+                    <mat-radio-button [value]="single.value"></mat-radio-button>
+                    <mat-form-field>
+                      <input matInput type="text" [value]="single.viewValue" (keyup)="changeSingleValue(single, $event)" (keydown)="changeSingleValue(single, $event)"
+                        maxlength="20">
+                    </mat-form-field>
+                  </div>
+                </mat-radio-group>
+
+              </div>
+              <div class="multiple-choice" *ngSwitchCase="'multiple-choice'">
+                <label>multiple Field</label>
+                <input formControlName="multiple_choice">
+                <button (click)="removeField(j, i)">delete field</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="menu-container">
+          <button (click)="removeQuestion(i)">delete question</button></div>
+      </div>
+    </div>
+  </form>
+  <br>
+  <pre>{{invoiceForm.value | json }}</pre>
+</div>
+
+<!-- <div id="creator-container">
+    <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="myForm">
+      <div id="formArray" formArrayName="formArray">
+        <div id="formGroup" *ngFor="let item of items; let i = index" [formGroupName]="i">
+          <div class="control-group">
+            <div class="question">
+              <mat-form-field>
+                <input matInput placeholder="description" formControlName="description" />
+              </mat-form-field>
+              <div class="control-type">
+                <mat-form-field>
+                  <mat-select placeholder="typ kontrolki" formControlName="select" name="control">
+                    <mat-option *ngFor="let control of controls" [value]="control.value" (click)="changeControl(item)">
+                      {{control.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+<!-- <p> Selected value: {{selectedValue}} </p> -->
+<!-- </div>
+            </div>
+            <div class="control-container"> -->
+<!-- formArrayName="controlArray" -->
+<!-- <div id="controlArray" formArrayName="controlArray" [ngSwitch]="item.value.select">
+                <div class="single-choice" *ngSwitchCase="'single-choice'">
+                  <mat-form-field>
+                  <input matInput placeholder="typ" type="text" formControlName="type">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="order" formControlName="order" />
+                </mat-form-field>
+                </div>
+
+                <div class="multiple-choice" *ngSwitchCase="'multiple-choice'"> -->
+<!-- <input type="checkbox" *ngFor=> -->
+<!-- <div class="checkbox" *ngFor="let choice of checkboxes; let i = index" [formGroupName]="i">
+                  <label>
+                    <input type="checkbox" [value]="choice.value" formControlName="check"> {{choice.viewValue}}
+                  </label>
+                </div> -->
+<!-- <mat-form-field>
+                    <input matInput placeholder="typ" type="text" formControlName="what">
+                  </mat-form-field> -->
+<!-- </div>
+              </div>
+            </div>
+          </div>
+          <button (click)="removeField(i)">delete</button>
+          <p> value: {{item.value | json}}</p> -->
+<!-- <p>{{i}}</p> -->
+<!-- </div>
+      </div> -->
+<!-- <button>submit</button> -->
+<!-- </form>
+    <button (click)="addSingleChoice()">click</button>
+    <pre>{{myForm.value | json}}</pre>
+  </div> -->
