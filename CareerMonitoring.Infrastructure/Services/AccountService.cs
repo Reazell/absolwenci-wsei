@@ -15,9 +15,9 @@ namespace CareerMonitoring.Infrastructure.Services {
         private readonly IAccountEmailFactory _accountEmailFactory;
 
         public AccountService (IAccountRepository accountRepository,
-         IStudentRepository studentRepository,
+            IStudentRepository studentRepository,
             IEmployerRepository employerRepository,
-             IGraduateRepository graduateRepository,
+            IGraduateRepository graduateRepository,
             IAccountEmailFactory accountEmailFactory) {
             _accountRepository = accountRepository;
             _studentRepository = studentRepository;
@@ -31,8 +31,15 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task<bool> ExistsByEmailAsync (string email) =>
             await _accountRepository.GetByEmailAsync (email) != null;
 
-        public async Task<Account> GetActiveByEmailAsync (string email) {
-            var account = await _accountRepository.GetByEmailAsync (email, false);
+        public async Task<Account> GetActiveByEmailAsync (string email, bool isTracking = true) {
+            var account = await _accountRepository.GetByEmailAsync (email, isTracking);
+            if (account == null || account.Deleted || !account.Activated)
+                return null;
+            return account;
+        }
+
+        public async Task<Account> GetActiveWithAccountRestoringPasswordByTokenAsync (Guid token, bool isTracking = true) {
+            var account = await _accountRepository.GetWithAccountRestoringPasswordByTokenAsync (token, isTracking);
             if (account == null || account.Deleted || !account.Activated)
                 return null;
             return account;

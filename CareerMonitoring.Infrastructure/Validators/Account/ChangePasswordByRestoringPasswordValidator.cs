@@ -4,11 +4,11 @@ using FluentValidation;
 namespace CareerMonitoring.Infrastructure.Validators.Account {
     public class ChangePasswordByRestoringPasswordValidator : AbstractValidator<ChangePasswordByRestoringPassword> {
         public ChangePasswordByRestoringPasswordValidator () {
-            RuleFor (reg => reg.Email)
-                .EmailAddress ()
-                .MinimumLength (5)
-                .MaximumLength (150)
-                .NotNull ();
+            // RuleFor (reg => reg.Email)
+            //     .EmailAddress ()
+            //     .MinimumLength (5)
+            //     .MaximumLength (150)
+            //     .NotNull ();
             RuleFor (reg => reg.NewPassword)
                 .NotNull ()
                 .NotEmpty ()
