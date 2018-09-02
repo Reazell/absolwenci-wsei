@@ -15,7 +15,7 @@
             <input matInput placeholder="Pytanie" formControlName="question" /></mat-form-field>
           <mat-form-field>
             <mat-select placeholder="typ kontrolki" formControlName="select" name="control">
-              <mat-option *ngFor="let control of controls" [value]="control.value" (click)="changeControl(question.controls.FieldData, i)">
+              <mat-option *ngFor="let control of controls" [value]="control.value" (click)="changeControl(question.controls.FieldData, question.value.select)">
                 {{control.viewValue}}
               </mat-option>
             </mat-select>
@@ -25,19 +25,42 @@
 
         <div class="field-container">
           <div formArrayName="FieldData" [ngSwitch]="question.value.select">
-            <button (click)="addField(question.value.select)">add field</button>
             <div *ngFor="let room of question.controls.FieldData.controls; let j = index" [formGroupName]="j">
+              <!-- <button (click)="addSingleChoiceField(room.value.single_choice)">add field</button> -->
               <div class="single-choice" *ngSwitchCase="'single-choice'">
 
-                <mat-radio-group formControlName="single_choice">
+                <!-- <mat-radio-group formControlName="single_choice">
                   <div *ngFor="let single of singleControls">
                     <mat-radio-button [value]="single.value"></mat-radio-button>
                     <mat-form-field>
-                      <input matInput type="text" [value]="single.viewValue" (keyup)="changeSingleValue(single, $event)" (keydown)="changeSingleValue(single, $event)"
+                      <input matInput type="text" [value]="single.viewValue" (keyup)="changeSingleValue(single, $event)" (keydown)="changeSingleValue(single, $event)" formcControlName
                         maxlength="20">
                     </mat-form-field>
+                    <button (click)="removeField(j, i)">delete field</button>
                   </div>
-                </mat-radio-group>
+                </mat-radio-group> -->
+                <div formArrayName="single_choice">
+                  <button (click)="addSingleChoiceField(room.controls['single_choice'])">add</button>
+                  <div *ngFor="let choice of room.controls['single_choice'].controls; let k = index" [formGroupName]="k">
+                    <!-- <button (click)="seeSingle(room.controls['single_choice'])">see</button> -->
+                    <mat-radio-group formControlName="value" name="radio"  (change)="updateSelection(room.controls['single_choice'], choice, $event)">
+                      <!-- <div *ngFor="let single of singleControls"> -->
+                      <mat-radio-button></mat-radio-button>
+                      <!-- <input type="radio" name="radio" (change)="updateSelection(room.controls['single_choice'], choice )"> -->
+                      <mat-form-field>
+                        <input matInput type="text" [value]="choice.value.viewValue" (keyup)="changeSingleValue(choice, $event)" (keydown)="changeSingleValue(choice, $event)"
+                          formControlName="viewValue" maxlength="20">
+                      </mat-form-field>
+                      <!-- <input type="radio" [value]="choice.value.value"> -->
+
+                      <button (click)="removeField(k, room.controls['single_choice'])" style="background-color: red">delete
+                        field
+                      </button>
+                      <!-- </div> -->
+                    </mat-radio-group>
+                    <!-- <p>{{k}}</p> -->
+                  </div>
+                </div>
 
               </div>
               <div class="multiple-choice" *ngSwitchCase="'multiple-choice'">
@@ -50,7 +73,7 @@
 
         </div>
         <div class="menu-container">
-          <button (click)="removeQuestion(i)">delete question</button></div>
+          <button (click)="removeQuestion(i)" style="background-color: red">delete question</button></div>
       </div>
     </div>
   </form>
