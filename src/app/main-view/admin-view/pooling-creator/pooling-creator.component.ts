@@ -75,17 +75,7 @@ export class PoolingCreatorComponent implements OnInit {
         break;
     }
   }
-  updateSelection(SingleChoice, choice, e) {
-    console.log(e.source.name, e);
-    SingleChoice.controls.forEach(el => {
-      el.controls.value.setValue(false);
-    });
-    choice.controls.value.setValue(true);
-    e.source.checked = true;
-  }
-  seeSingle(x) {
-    console.log(x);
-  }
+
   addSingleChoice(FieldData) {
     // const group = this.fb.group({
     //   single_choice: ['']
@@ -97,40 +87,34 @@ export class PoolingCreatorComponent implements OnInit {
     });
     FieldData.push(group);
     this.addSingleChoiceField(group.controls.single_choice);
+    console.log('1: ', group.controls.single_choice);
+    console.log('2: ', group.controls[0]);
+
     // return group;
   }
   addSingleChoiceField(SingleChoice) {
-    // console.log(SingleChoice);
-    // const value =
-    //   Number(this.singleControls[this.singleControls.length - 1].value) + 1;
     const length = SingleChoice.controls.length;
-
     const group = this.fb.group({
       value: false,
       viewValue: 'opcja ' + length
     });
     SingleChoice.push(group);
-    // console.log('single: ', SingleChoice);
-    // console.log(single);
-    // this.singleControls.push(single);
   }
 
-  addMultipleChoice(FieldData) {
-    const group = this.fb.group({
-      multiple_choice: ['']
-    });
-    FieldData.push(group);
-    // const single = new Control(true, 'opcja 1');
-    // FieldData.push(this.fb.group(single));
-    // console.log(FieldData);
-    // const fieldArr = fieldArrGroup.controls.fieldArray as FormArray;
-    // fieldArr.push(this.fb.group(single));
-    // console.log(fieldArr);
-  }
+  addMultipleChoice(FieldData) {}
   addMultipleChoiceField() {}
 
   removeField(index, SingleChoice) {
     SingleChoice.removeAt(index);
+  }
+
+  updateSelection(SingleChoice, choice, e) {
+    console.log(e.source.name, e);
+    SingleChoice.controls.forEach(el => {
+      el.controls.value.setValue(false);
+    });
+    choice.controls.value.setValue(true);
+    e.source.checked = true;
   }
 
   changeControl(controls, select) {
