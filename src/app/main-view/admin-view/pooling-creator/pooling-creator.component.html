@@ -1,131 +1,126 @@
-<div id="creator-container">
-  <button (click)="addQuestion()">
-    Add Question</button>
-  <form [formGroup]="invoiceForm">
-    <div id="form-title">
-      <mat-form-field>
-        <input matInput placeholder="Nazwa formularza" formControlName="Form_Title" />
-      </mat-form-field>
-    </div>
-    <div id="questions-container" formArrayName="QuestionData">
-      <div *ngFor="let question of invoiceForm.controls['QuestionData'].controls; let i = index" [formGroupName]="i" class="question-field">
+<div id="container">
+  <div id="creator-container">
+    <button (click)="addQuestion()">
+      Add Question</button>
+    <form [formGroup]="invoiceForm">
+      <div id="form-title">
+        <mat-form-field appearance="standard">
+          <input matInput placeholder="Nazwa formularza" formControlName="Form_Title" />
+        </mat-form-field>
+      </div>
+      <div id="questions-container" formArrayName="QuestionData">
+        <div *ngFor="let question of invoiceForm.controls['QuestionData'].controls; let i = index" [formGroupName]="i" class="question-field">
 
-        <div class="select-container">
-          <mat-form-field>
-            <input matInput placeholder="Pytanie" formControlName="question" /></mat-form-field>
-          <mat-form-field>
-            <mat-select placeholder="typ kontrolki" formControlName="select" name="control">
-              <mat-option *ngFor="let control of controls" [value]="control.value" (click)="changeControl(question.controls.FieldData, question.value.select)">
-                {{control.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+          <div class="select-container">
+            <mat-form-field appearance="standard">
+              <input matInput placeholder="Pytanie" formControlName="question" />
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-select placeholder="typ kontrolki" formControlName="select" name="control">
+                <div *ngFor="let group of selects">
+                  <mat-option *ngFor="let control of group.control" [value]="control.value" (click)="changeControl(question.controls.FieldData, question.value.select)">
+                    {{control.viewValue}}
+                  </mat-option>
+                  <div class="break"></div>
+                </div>
+              </mat-select>
+            </mat-form-field>
 
-        </div>
+          </div>
 
-        <div class="field-container">
-          <div formArrayName="FieldData" [ngSwitch]="question.value.select">
-            <div *ngFor="let room of question.controls.FieldData.controls; let j = index" [formGroupName]="j">
-              <div class="single-choice" *ngSwitchCase="'single-choice'">
+          <div id="field-container">
+            <div id="field-data" formArrayName="FieldData" [ngSwitch]="question.value.select">
+              <div id="loop" *ngFor="let field of question.controls.FieldData.controls; let j = index" [formGroupName]="j">
 
-                <div formArrayName="single_choice">
-                  <button (click)="addSingleChoiceField(room.controls['single_choice'])">add</button>
-                  <div *ngFor="let choice of room.controls['single_choice'].controls; let k = index" [formGroupName]="k">
-                    <mat-radio-group formControlName="value" name="radio"  (change)="updateSelection(room.controls['single_choice'], choice, $event)">
-                      <mat-radio-button></mat-radio-button>
-                      <mat-form-field>
-                        <input matInput type="text" [value]="choice.value.viewValue" (keyup)="changeSingleValue(choice, $event)" (keydown)="changeSingleValue(choice, $event)"
-                          formControlName="viewValue" maxlength="20">
-                      </mat-form-field>
-                      <button (click)="removeField(k, room.controls['single_choice'])" style="background-color: red">delete
-                        field
-                      </button>
-                    </mat-radio-group>
-                  </div>
+                <div class="choice answer" *ngSwitchCase="'short-answer'">
+                  <mat-form-field appearance="standard">
+                    <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
+                  </mat-form-field>
                 </div>
 
-              </div>
-              <div class="multiple-choice" *ngSwitchCase="'multiple-choice'">
-                  <button (click)="addMultipleChoiceField(room.controls['multiple_choice'])">add</button>
-                  <div *ngFor="let choice of room.controls['multiple_choice'].controls; let k = index" [formGroupName]="k">
-                    <div formControlName="value" name="radio"  (change)="updateSelection(room.controls['multiple_choice'], choice, $event)">
-                      <!-- <mat-radio-button></mat-radio-button> -->
-                      <mat-form-field>
+                <div class="choice answer" *ngSwitchCase="'long-answer'">
+                  <mat-form-field appearance="standard">
+                    <textarea matInput [rows]="1" type="text" formControlName="textarea" placeholder="Twoja odpowiedź" matTextareaAutosize></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div class="choice" *ngSwitchCase="'single-choice'">
+                  <div class="formArray" formArrayName="single_choice">
+                    <button (click)="addSingleMultipleField(field.controls['single_choice'])">add</button>
+                    <div class="choice-loop" *ngFor="let choice of field.controls['single_choice'].controls; let k = index" [formGroupName]="k">
+                      <mat-radio-group formControlName="value" name="radio">
+                        <!-- (change)="updateSelection(field.controls['single_choice'], choice, $event)" -->
+                        <mat-radio-button></mat-radio-button>
+                      </mat-radio-group>
+                      <mat-form-field appearance="standard">
                         <input matInput type="text" [value]="choice.value.viewValue" (keyup)="changeSingleValue(choice, $event)" (keydown)="changeSingleValue(choice, $event)"
                           formControlName="viewValue" maxlength="20">
                       </mat-form-field>
-                      <button (click)="removeField(k, room.controls['multiple_choice'])" style="background-color: red">delete
-                        field
+                      <button (click)="removeField(k, field.controls['single_choice'])" class="delete">delete field
                       </button>
                     </div>
                   </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="menu-container">
-          <button (click)="removeQuestion(i)" style="background-color: red">delete question</button></div>
-      </div>
-    </div>
-  </form>
-  <br>
-  <pre>{{invoiceForm.value | json }}</pre>
-</div>
-
-<!-- <div id="creator-container">
-    <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="myForm">
-      <div id="formArray" formArrayName="formArray">
-        <div id="formGroup" *ngFor="let item of items; let i = index" [formGroupName]="i">
-          <div class="control-group">
-            <div class="question">
-              <mat-form-field>
-                <input matInput placeholder="description" formControlName="description" />
-              </mat-form-field>
-              <div class="control-type">
-                <mat-form-field>
-                  <mat-select placeholder="typ kontrolki" formControlName="select" name="control">
-                    <mat-option *ngFor="let control of controls" [value]="control.value" (click)="changeControl(item)">
-                      {{control.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field> -->
-<!-- <p> Selected value: {{selectedValue}} </p> -->
-<!-- </div>
-            </div>
-            <div class="control-container"> -->
-<!-- formArrayName="controlArray" -->
-<!-- <div id="controlArray" formArrayName="controlArray" [ngSwitch]="item.value.select">
-                <div class="single-choice" *ngSwitchCase="'single-choice'">
-                  <mat-form-field>
-                  <input matInput placeholder="typ" type="text" formControlName="type">
-                </mat-form-field>
-                <mat-form-field>
-                  <input matInput placeholder="order" formControlName="order" />
-                </mat-form-field>
                 </div>
 
-                <div class="multiple-choice" *ngSwitchCase="'multiple-choice'"> -->
-<!-- <input type="checkbox" *ngFor=> -->
-<!-- <div class="checkbox" *ngFor="let choice of checkboxes; let i = index" [formGroupName]="i">
-                  <label>
-                    <input type="checkbox" [value]="choice.value" formControlName="check"> {{choice.viewValue}}
-                  </label>
-                </div> -->
-<!-- <mat-form-field>
-                    <input matInput placeholder="typ" type="text" formControlName="what">
-                  </mat-form-field> -->
-<!-- </div>
+                <div class="choice" *ngSwitchCase="'multiple-choice'">
+                  <div class="formArray" formArrayName="multiple_choice">
+                    <button (click)="addSingleMultipleField(field.controls['multiple_choice'])">add</button>
+                    <div class="choice-loop" *ngFor="let choice of field.controls['multiple_choice'].controls; let k = index" [formGroupName]="k">
+                      <div class="checkbox" name="check">
+                        <!-- (change)="updateSelection(field.controls['multiple_choice'], choice, $event)" -->
+                        <div class="right">
+                          <mat-checkbox formControlName="value"></mat-checkbox>
+                        </div>
+                        <mat-form-field appearance="standard">
+                          <input matInput type="text" [value]="choice.value.viewValue" (keyup)="changeSingleValue(choice, $event)" (keydown)="changeSingleValue(choice, $event)"
+                            formControlName="viewValue" maxlength="20">
+                        </mat-form-field>
+                        <button (click)="removeField(k, field.controls['multiple_choice'])" style="background-color: red">delete
+                          field
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="choice form" *ngSwitchCase="'single-selection-grid'">
+                  <div id="row-container" class="cont" formArrayName="rows">
+                    <button (click)="addSingleSelectionInput(field.controls['rows'])">add</button>
+                    <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
+                      <mat-form-field appearance="standard">
+                        <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
+                      </mat-form-field>
+                      <button (click)="removeField(k, field.controls['rows'])" style="background-color: red">delete
+                          field
+                        </button>
+                    </div>
+                  </div>
+                  <div id="column-container" class="cont" formArrayName="columns">
+                    <button (click)="addSingleSelectionField(field.controls['columns'])">add</button>
+                    <div *ngFor="let radio of field.controls['columns'].controls; let l = index" [formGroupName]="l">
+                      <mat-radio-group formControlName="value" name="radio">
+                        <mat-radio-button></mat-radio-button>
+                      </mat-radio-group>
+                      <mat-form-field appearance="standard">
+                        <input matInput type="text" [value]="radio.value.viewValue" (keyup)="changeSingleValue(radio, $event)" (keydown)="changeSingleValue(radio, $event)"
+                          formControlName="viewValue" maxlength="20">
+                      </mat-form-field>
+                      <button (click)="removeField(l, field.controls['columns'])" style="background-color: red">delete
+                          field
+                        </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
-          <button (click)="removeField(i)">delete</button>
-          <p> value: {{item.value | json}}</p> -->
-<!-- <p>{{i}}</p> -->
-<!-- </div>
-      </div> -->
-<!-- <button>submit</button> -->
-<!-- </form>
-    <button (click)="addSingleChoice()">click</button>
-    <pre>{{myForm.value | json}}</pre>
-  </div> -->
+          <div class="menu-container">
+            <button (click)="removeQuestion(i)" style="background-color: red">delete question</button></div>
+        </div>
+      </div>
+    </form>
+    <br>
+    <pre>{{invoiceForm.value | json }}</pre>
+  </div>
+</div>

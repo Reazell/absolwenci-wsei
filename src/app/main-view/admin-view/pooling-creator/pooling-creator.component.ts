@@ -15,10 +15,37 @@ import {
 export class PoolingCreatorComponent implements OnInit {
   invoiceForm: FormGroup;
 
-  controls: Control[] = [
-    // { value: 'radio', viewValue: 'radio' },
-    { value: 'single-choice', viewValue: 'jednokrotny wybór' },
-    { value: 'multiple-choice', viewValue: 'wielokrotny wybór' }
+  selects: Select[] = [
+    {
+      control: [
+        { value: 'short-answer', viewValue: 'Krótka odpowiedź' },
+        { value: 'long-answer', viewValue: 'Długa odpowiedź' }
+      ]
+    },
+    {
+      control: [
+        { value: 'single-choice', viewValue: 'Jednokrotny wybór' },
+        { value: 'multiple-choice', viewValue: 'Wielokrotny wybór' }
+      ]
+    },
+    {
+      control: [
+        { value: 'menu', viewValue: 'Menu' },
+        { value: 'linear-scale', viewValue: 'Skala liniowa' }
+      ]
+    },
+    {
+      control: [
+        {
+          value: 'single-selection-grid',
+          viewValue: 'Siatka jednokrotnego wyboru'
+        },
+        {
+          value: 'multiple selection grid',
+          viewValue: 'Siatka wielokrotnego wyboru'
+        }
+      ]
+    }
   ];
   singleControls = [{ value: '1', viewValue: 'opcja 1' }];
 
@@ -34,7 +61,7 @@ export class PoolingCreatorComponent implements OnInit {
   addRows() {
     const group = this.fb.group({
       question: [''],
-      select: ['single-choice'],
+      select: ['single-selection-grid'],
       FieldData: this.fb.array([])
     });
     this.addGroup(group.controls.FieldData, group.controls.select.value);
@@ -52,64 +79,118 @@ export class PoolingCreatorComponent implements OnInit {
     questionArr.removeAt(index);
   }
 
-  addGroup(FieldData: AbstractControl, select: string) {
-    // console.log(question);
+  addGroup(FieldData, select: string) {
+    let group;
     switch (select) {
+      case 'short-answer':
+        group = this.addInput();
+        FieldData.push(group);
+        break;
+      case 'long-answer':
+        group = this.addTextarea();
+        FieldData.push(group);
+        break;
       case 'single-choice':
-        this.addSingleChoice(FieldData);
+        group = this.addSingleChoice();
+        FieldData.push(group);
+        this.addField(select, group.controls.single_choice);
         break;
       case 'multiple-choice':
-        this.addMultipleChoice(FieldData);
+        group = this.addMultipleChoice();
+        FieldData.push(group);
+        this.addField(select, group.controls.multiple_choice);
+        break;
+      case 'single-selection-grid':
+        group = this.addSingleSelectionGrid();
+        FieldData.push(group);
+        this.addField(select, group.controls.columns, group.controls.rows);
         break;
     }
-    // console.log(FieldData);
   }
-  addField(select: string, SingleChoice) {
-    // console.log('single choice: ', SingleChoice);
+  addField(select: string, choiceData, choiceData2?) {
     switch (select) {
       case 'single-choice':
-        this.addSingleChoiceField(SingleChoice);
+        this.addSingleMultipleField(choiceData);
         break;
       case 'multiple-choice':
-        // this.addMultipleChoiceField();
+        this.addSingleMultipleField(choiceData);
+        break;
+      case 'single-selection-grid':
+        this.addSingleSelectionField(choiceData);
+        this.addSingleSelectionInput(choiceData2);
         break;
     }
   }
 
-  addSingleChoice(FieldData) {
-    // const group = this.fb.group({
-    //   single_choice: ['']
-    // });
-    // FieldData.push(group);
-    // this.addSingleChoiceField();
+  addInput() {
+    const group = this.fb.group({
+      input: [{ value: '', disabled: true }]
+    });
+    return group;
+  }
+  addTextarea() {
+    const group = this.fb.group({
+      textarea: [{ value: '', disabled: true }]
+    });
+    return group;
+  }
+  addSingleChoice() {
     const group = this.fb.group({
       single_choice: this.fb.array([])
     });
-    FieldData.push(group);
-    this.addSingleChoiceField(group.controls.single_choice);
-    console.log('1: ', group.controls.single_choice);
-    console.log('2: ', group.controls[0]);
-
-    // return group;
+    return group;
   }
-  addSingleChoiceField(SingleChoice) {
-    const length = SingleChoice.controls.length;
+  addMultipleChoice() {
     const group = this.fb.group({
-      value: false,
+      multiple_choice: this.fb.array([])
+    });
+    return group;
+  }
+  addSingleSelection() {
+    const group = this.fb.group({
+      single_grid: this.fb.array([])
+    });
+    return group;
+  }
+  addSingleSelectionGrid() {
+    const group = this.fb.group({
+      columns: this.fb.array([]),
+      rows: this.fb.array([])
+    });
+    return group;
+  }
+  addSingleMultipleField(choiceArr) {
+    const length = choiceArr.controls.length;
+    const group = this.fb.group({
+      value: [{ value: false, disabled: true }],
       viewValue: 'opcja ' + length
     });
-    SingleChoice.push(group);
+    choiceArr.push(group);
   }
-
-  addMultipleChoice(FieldData) {}
-  addMultipleChoiceField() {}
+  addSingleSelectionField(selectionArr) {
+    const length = selectionArr.controls.length;
+    const group = this.fb.group({
+      value: [{ value: false, disabled: true }],
+      viewValue: 'kolumna ' + length
+    });
+    selectionArr.push(group);
+  }
+  addSingleSelectionInput(selectionArr) {
+    const length = selectionArr.controls.length;
+    const group = this.fb.group({
+      input: 'wiersz ' + length
+    });
+    selectionArr.push(group);
+  }
 
   removeField(index, SingleChoice) {
     SingleChoice.removeAt(index);
   }
 
   updateSelection(SingleChoice, choice, e) {
-    console.log(e.source.name, e);
+    if (e.source) {
+      console.log(e.source.name, e);
+    }
     SingleChoice.controls.forEach(el => {
       el.controls.value.setValue(false);
     });
@@ -138,114 +219,10 @@ export class Control {
     this.viewValue = viewValue;
   }
 }
-
-// export class SingleChoice extends Control {
-//   constructor() {}
-// }
-
-/*
-export class PoolingCreatorComponent implements OnInit {
-  myForm: FormGroup;
-  control: FormGroup;
-  formArr;
-  // controlArr;
-  arr = Array<MainForm>();
-  r1: MainForm;
-  r2: MainForm;
-  items;
-
-  selectedValue: string;
-  controls: Control[] = [
-    // { value: 'radio', viewValue: 'radio' },
-    { value: 'single-choice', viewValue: 'jednokrotny wybór' },
-    { value: 'multiple-choice', viewValue: 'wielokrotny wybór' }
-  ];
-  // checks: Control[] = [
-  //   { value: 'value1', viewValue: 'pierwsza wartość' },
-  //   { value: 'value2', viewValue: 'druga wartość' },
-  //   { value: 'value3', viewValue: 'trzecia wartość' }
-  // ];
-  constructor(private fb: FormBuilder) {
-    this.myForm = this.fb.group({
-      formArray: this.fb.array([])
-    });
-
-    this.formArr = this.myForm.controls.formArray as FormArray;
-    this.items = this.myForm.controls['formArray']['controls'];
-    this.addMainForm();
-  }
-
-  ngOnInit() {}
-
-  onSubmit(form) {
-    console.log(form.value);
-  }
-
-  setControlView(index, value) {
-    console.log(index, value);
-  }
-
-  addMainForm() {
-    let main = new MainForm();
-    const fieldArrGroup = this.initControl();
-    main = {
-      select: 'single-choice',
-      description: '',
-      field: fieldArrGroup
-    };
-    this.formArr.push(this.fb.group(main));
-    this.addSingleChoice(fieldArrGroup);
-    //
-
-    // this.controlArr.push
-    //
-    this.arr.push(main);
-    console.log(this.myForm);
-    console.log(this.formArr);
-    console.log(this.items);
-    // const l = this.items[0].value;
-    // console.log(l);
-    // console.log(this.arr);
-  }
-
-  addSingleChoice(fieldArrGroup, index = 0) {
-    let single = new SingleChoice();
-    single = {
-      order: '8',
-      type: '9'
-    };
-
-    const fieldArr = fieldArrGroup.controls.fieldArray as FormArray;
-    fieldArr.push(this.fb.group(single));
-    console.log(fieldArr);
-  }
-
-  initControl() {
-    return this.fb.group({
-      fieldArray: this.fb.array([])
-    });
-  }
-
-  changeControl(item) {
-    console.log(item);
-  }
-
-  removeField(i) {
-    this.formArr.removeAt(i);
+export class Select {
+  control: Control[];
+  constructor(control: Control[]) {
+    this.control = control;
   }
 }
 
-export class MainForm {
-  select: string;
-  description: string;
-  field: FormGroup;
-}
-export class SingleChoice {
-  order: string;
-  type: string;
-}
-export interface Control {
-  value: string;
-  viewValue: string;
-}
-*/
