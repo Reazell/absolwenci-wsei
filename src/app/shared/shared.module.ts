@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppBarComponent } from './bar/app-bar.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +13,8 @@ import { SharedService } from '../services/shared.service';
     MaterialsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    FontAwesomeModule
   ],
   declarations: [AppBarComponent],
   exports: [AppBarComponent],

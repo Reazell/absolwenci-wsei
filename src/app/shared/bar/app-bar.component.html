@@ -1,6 +1,9 @@
 <div id="bar">
   <div id="container">
-    <div id="sidenavToggler" class="catalogListToggler" (click)="openSidebar()"> <i class="fas fa-bars"></i> </div>
+    <div id="sidenavToggler" class="catalogListToggler" (click)="openSidebar()">
+      <!-- <i class="fas fa-bars"></i> -->
+      <fa-icon [icon]="['fas','bars']"></fa-icon>
+    </div>
     <div id="logo">
       <img src="./../../../assets/logo-wsei.png" alt="logo WSEI">
     </div>

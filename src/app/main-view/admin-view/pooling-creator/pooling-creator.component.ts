@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
-  FormArray,
-  FormControl,
-  AbstractControl
+  FormArray
 } from '../../../../../node_modules/@angular/forms';
 
 @Component({
@@ -14,7 +12,7 @@ import {
 })
 export class PoolingCreatorComponent implements OnInit {
   invoiceForm: FormGroup;
-
+  default = 'dropdown-menu';
   selects: Select[] = [
     {
       control: [
@@ -30,7 +28,7 @@ export class PoolingCreatorComponent implements OnInit {
     },
     {
       control: [
-        { value: 'menu', viewValue: 'Menu' },
+        { value: 'dropdown-menu', viewValue: 'Menu rozwijane' },
         { value: 'linear-scale', viewValue: 'Skala liniowa' }
       ]
     },
@@ -41,19 +39,36 @@ export class PoolingCreatorComponent implements OnInit {
           viewValue: 'Siatka jednokrotnego wyboru'
         },
         {
-          value: 'multiple selection grid',
+          value: 'multiple-selection-grid',
           viewValue: 'Siatka wielokrotnego wyboru'
         }
       ]
     }
   ];
-  singleControls = [{ value: '1', viewValue: 'opcja 1' }];
+
+  minValue: Value[] = [{ value: 0 }, { value: 1 }];
+  maxValue: Value[] = [
+    { value: 2 },
+    { value: 3 },
+    { value: 4 },
+    { value: 5 },
+    { value: 6 },
+    { value: 7 },
+    { value: 8 },
+    { value: 9 },
+    { value: 10 }
+  ];
+  info = {
+    add: 'Dodaj pytanie',
+    copy: 'Duplikuj',
+    delete: 'Usuń pytanie'
+  };
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.invoiceForm = this.fb.group({
-      Form_Title: [''],
+      Form_Title: ['Formularz bez nazwy'],
       QuestionData: this.fb.array([this.addRows()])
     });
   }
@@ -61,7 +76,7 @@ export class PoolingCreatorComponent implements OnInit {
   addRows() {
     const group = this.fb.group({
       question: [''],
-      select: ['single-selection-grid'],
+      select: [this.default],
       FieldData: this.fb.array([])
     });
     this.addGroup(group.controls.FieldData, group.controls.select.value);
@@ -76,7 +91,13 @@ export class PoolingCreatorComponent implements OnInit {
   }
   removeQuestion(index) {
     const questionArr = this.invoiceForm.controls.QuestionData as FormArray;
-    questionArr.removeAt(index);
+    console.log(questionArr.controls.length);
+    if (questionArr.controls.length > 1) {
+      questionArr.removeAt(index);
+    } else {
+      questionArr.removeAt(0);
+      questionArr.push(this.addRows());
+    }
   }
 
   addGroup(FieldData, select: string) {
@@ -87,8 +108,18 @@ export class PoolingCreatorComponent implements OnInit {
         FieldData.push(group);
         break;
       case 'long-answer':
-        group = this.addTextarea();
+        group = this.addInput();
         FieldData.push(group);
+        break;
+      case 'dropdown-menu':
+        group = this.addMenu();
+        FieldData.push(group);
+        this.addField(select, group.controls.dropdown_menu);
+        break;
+      case 'linear-scale':
+        group = this.addLinearScale();
+        FieldData.push(group);
+        this.addField(select, group.controls.linear_scale);
         break;
       case 'single-choice':
         group = this.addSingleChoice();
@@ -105,10 +136,21 @@ export class PoolingCreatorComponent implements OnInit {
         FieldData.push(group);
         this.addField(select, group.controls.columns, group.controls.rows);
         break;
+      case 'multiple-selection-grid':
+        group = this.addSingleSelectionGrid();
+        FieldData.push(group);
+        this.addField(select, group.controls.columns, group.controls.rows);
+        break;
     }
   }
   addField(select: string, choiceData, choiceData2?) {
     switch (select) {
+      case 'dropdown-menu':
+        this.addSelectOption(choiceData);
+        break;
+      case 'linear-scale':
+        this.addLinearScaleField(choiceData);
+        break;
       case 'single-choice':
         this.addSingleMultipleField(choiceData);
         break;
@@ -116,6 +158,10 @@ export class PoolingCreatorComponent implements OnInit {
         this.addSingleMultipleField(choiceData);
         break;
       case 'single-selection-grid':
+        this.addSingleSelectionField(choiceData);
+        this.addSingleSelectionInput(choiceData2);
+        break;
+      case 'multiple-selection-grid':
         this.addSingleSelectionField(choiceData);
         this.addSingleSelectionInput(choiceData2);
         break;
@@ -128,9 +174,9 @@ export class PoolingCreatorComponent implements OnInit {
     });
     return group;
   }
-  addTextarea() {
+  addLinearScale() {
     const group = this.fb.group({
-      textarea: [{ value: '', disabled: true }]
+      linear_scale: this.fb.array([])
     });
     return group;
   }
@@ -146,9 +192,9 @@ export class PoolingCreatorComponent implements OnInit {
     });
     return group;
   }
-  addSingleSelection() {
+  addMenu() {
     const group = this.fb.group({
-      single_grid: this.fb.array([])
+      dropdown_menu: this.fb.array([])
     });
     return group;
   }
@@ -158,6 +204,22 @@ export class PoolingCreatorComponent implements OnInit {
       rows: this.fb.array([])
     });
     return group;
+  }
+  addLinearScaleField(choiceArr) {
+    const group = this.fb.group({
+      minValue: 1,
+      maxValue: 6,
+      minLabel: [''],
+      maxLabel: ['']
+    });
+    choiceArr.push(group);
+  }
+  addSelectOption(choiceArr) {
+    const length = choiceArr.controls.length;
+    const group = this.fb.group({
+      input: 'opcja ' + length
+    });
+    choiceArr.push(group);
   }
   addSingleMultipleField(choiceArr) {
     const length = choiceArr.controls.length;
@@ -199,10 +261,7 @@ export class PoolingCreatorComponent implements OnInit {
   }
 
   changeControl(controls, select) {
-    const length = controls.length;
-    for (let i = 0; i < length; i++) {
-      controls.removeAt(0);
-    }
+    controls.removeAt(0);
     this.addGroup(controls, select);
   }
 
@@ -226,3 +285,9 @@ export class Select {
   }
 }
 
+export class Value {
+  value: number;
+  constructor(value: number) {
+    this.value = value;
+  }
+}
