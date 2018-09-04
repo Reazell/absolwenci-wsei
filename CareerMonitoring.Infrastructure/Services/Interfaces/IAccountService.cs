@@ -6,7 +6,8 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces {
     public interface IAccountService {
         Task<bool> ExistsByIdAsync (int id);
         Task<bool> ExistsByEmailAsync (string email);
-        Task<Account> GetActiveByEmailAsync (string email);
+        Task<Account> GetActiveByEmailAsync (string email, bool isTracking = true);
+        Task<Account> GetActiveWithAccountRestoringPasswordByTokenAsync (Guid token, bool isTracking = true);
         Task ActivateAsync (Guid activationKey);
         Task RestorePasswordAsync (Account account);
         Task UpdatePasswordAsync (Account account, string newPassword);

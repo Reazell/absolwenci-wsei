@@ -60,7 +60,7 @@ namespace CareerMonitoring.Api.Controllers {
             var token = new TokenDto {
                 Token = await GenerateToken (account, _jwtSettings)
             };
-            var loginResult = new {LoginData = token, account.Role};
+            var loginResult = new { LoginData = token, account.Role };
             return Json (loginResult);
         }
 
@@ -159,7 +159,7 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> RestorePassword ([FromBody] RestorePassword command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            var user = await _accountService.GetActiveByEmailAsync (command.Email);
+            var user = await _accountService.GetActiveByEmailAsync (command.Email, true);
             if (user == null)
                 return BadRequest (new { message = "User of given email does not exist." });
             try {
@@ -174,7 +174,7 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> ChangePasswordByRestoringPassword ([FromBody] ChangePasswordByRestoringPassword command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            var account = await _accountService.GetActiveByEmailAsync (command.Email);
+            var account = await _accountService.GetActiveWithAccountRestoringPasswordByTokenAsync (command.Token);
             if (account == null)
                 return Unauthorized ();
             try {
