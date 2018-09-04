@@ -1,9 +1,14 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Core.Domains.Surveys;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
     public class CareerMonitoringContext : DbContext {
+        public DbSet<Survey> Surveys { get; set; }
+        public DbSet<LinearScale> LinearScales { get; set; }
+        public DbSet<MultipleChoice> MultipleChoices { get; set; }
+        public DbSet<SingleChoice> SingleChoices { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
@@ -22,6 +27,18 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasOne (a => a.AccountRestoringPassword)
                 .WithOne (b => b.Account)
                 .HasForeignKey<AccountRestoringPassword> (b => b.AccountId);
+            modelBuilder.Entity<Survey> ()
+                .HasMany (a => a.LinearScales)
+                .WithOne (s => s.Survey)
+                .OnDelete (DeleteBehavior.Cascade);
+            modelBuilder.Entity<Survey> ()
+                .HasMany (a => a.SingleChoices)
+                .WithOne (s => s.Survey)
+                .OnDelete (DeleteBehavior.Cascade);
+            modelBuilder.Entity<Survey> ()
+                .HasMany (a => a.MultipleChoices)
+                .WithOne (s => s.Survey)
+                .OnDelete (DeleteBehavior.Cascade);
         }
     }
 }
