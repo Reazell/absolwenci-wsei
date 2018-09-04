@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/* import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -13,6 +13,244 @@ import {
 export class PoolingCreatorComponent implements OnInit {
   invoiceForm: FormGroup;
   default = 'dropdown-menu';
+  selects: Select[] = [
+    {
+      control: [
+        { value: 'short-answer', viewValue: 'Krótka odpowiedź' },
+        { value: 'long-answer', viewValue: 'Długa odpowiedź' }
+      ]
+    },
+    {
+      control: [
+        { value: 'single-choice', viewValue: 'Jednokrotny wybór' },
+        { value: 'multiple-choice', viewValue: 'Wielokrotny wybór' }
+      ]
+    },
+    {
+      control: [
+        { value: 'dropdown-menu', viewValue: 'Menu rozwijane' },
+        { value: 'linear-scale', viewValue: 'Skala liniowa' }
+      ]
+    },
+    {
+      control: [
+        {
+          value: 'single-selection-grid',
+          viewValue: 'Siatka jednokrotnego wyboru'
+        },
+        {
+          value: 'multiple-selection-grid',
+          viewValue: 'Siatka wielokrotnego wyboru'
+        }
+      ]
+    }
+  ];
+
+  minValue: Value[] = [{ value: 0 }, { value: 1 }];
+  maxValue: Value[] = [
+    { value: 2 },
+    { value: 3 },
+    { value: 4 },
+    { value: 5 },
+    { value: 6 },
+    { value: 7 },
+    { value: 8 },
+    { value: 9 },
+    { value: 10 }
+  ];
+  info = {
+    add: 'Dodaj pytanie',
+    copy: 'Duplikuj',
+    delete: 'Usuń pytanie'
+  };
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.invoiceForm = this.fb.group({
+      Form_Title: ['Formularz bez nazwy'],
+      QuestionData: this.fb.array([this.addRows()])
+    });
+  }
+
+  addRows() {
+    const group = this.fb.group({
+      question: [''],
+      select: [this.default],
+      FieldData: this.fb.array([])
+    });
+    this.addGroup(group.controls.FieldData, group.controls.select.value);
+    return group;
+  }
+
+  addQuestion() {
+    const control: FormArray = this.invoiceForm.get(
+      `QuestionData`
+    ) as FormArray;
+    control.push(this.addRows());
+  }
+  removeQuestion(index) {
+    const questionArr = this.invoiceForm.controls.QuestionData as FormArray;
+    if (questionArr.controls.length > 1) {
+      questionArr.removeAt(index);
+    } else {
+      questionArr.removeAt(0);
+      questionArr.push(this.addRows());
+    }
+  }
+
+  addGroup(FieldData, select: string) {
+    switch (select) {
+      case 'short-answer':
+      case 'long-answer':
+        this.addInput(FieldData, select);
+        break;
+      case 'dropdown-menu':
+      case 'linear-scale':
+      case 'single-choice':
+      case 'multiple-choice':
+        this.addArray(FieldData, select);
+        break;
+      case 'single-selection-grid':
+      case 'multiple-selection-grid':
+        this.addSelectionGridField(FieldData, select);
+        break;
+    }
+  }
+
+  // mains
+  addInput(FieldData, select) {
+    const group = this.fb.group({
+      input: [{ value: '', disabled: true }]
+    });
+    FieldData.push(group);
+    this.addField(select, group.controls.input);
+  }
+  addArray(FieldData, select) {
+    const group = this.fb.group({
+      field: this.fb.array([])
+    });
+    FieldData.push(group);
+    this.addField(select, group.controls.field);
+  }
+  addSelectionGridField(FieldData, select) {
+    const group = this.fb.group({
+      columns: this.fb.array([]),
+      rows: this.fb.array([])
+    });
+    FieldData.push(group);
+    this.addField(select, group.controls.columns, group.controls.rows);
+  }
+
+  addField(select: string, choiceData, choiceData2?) {
+    switch (select) {
+      case 'dropdown-menu':
+        this.addInputOption(choiceData, 'opcja');
+        break;
+      case 'linear-scale':
+        this.addLinearScaleField(choiceData);
+        break;
+      case 'single-choice':
+      case 'multiple-choice':
+        this.addCheckField(choiceData, 'opcja');
+        break;
+      case 'single-selection-grid':
+      case 'multiple-selection-grid':
+        this.addCheckField(choiceData, 'kolumna');
+        this.addInputOption(choiceData2, 'wiersz');
+        break;
+    }
+  }
+
+  // field
+  addLinearScaleField(choiceArr) {
+    const group = this.fb.group({
+      minValue: 1,
+      maxValue: 6,
+      minLabel: [''],
+      maxLabel: ['']
+    });
+    choiceArr.push(group);
+  }
+  addInputOption(selectArr, name) {
+    const length = selectArr.controls.length;
+    const group = this.fb.group({
+      input: `${name} ${length}`
+    });
+    selectArr.push(group);
+  }
+  addCheckField(selectArr, name) {
+    const length = selectArr.controls.length;
+    const group = this.fb.group({
+      value: [{ value: false, disabled: true }],
+      viewValue: `${name} ${length}`
+    });
+    selectArr.push(group);
+  }
+
+  removeField(index, SingleChoice) {
+    SingleChoice.removeAt(index);
+  }
+
+  updateSelection(SingleChoice, choice, e) {
+    if (e.source) {
+      console.log(e.source.name, e);
+    }
+    SingleChoice.controls.forEach(el => {
+      el.controls.value.setValue(false);
+    });
+    choice.controls.value.setValue(true);
+    e.source.checked = true;
+  }
+
+  changeControl(controls, select) {
+    controls.removeAt(0);
+    this.addGroup(controls, select);
+  }
+
+  changeSingleValue(single, e) {
+    // single.viewValue = e.target.value;
+  }
+}
+
+export class Control {
+  value: any;
+  viewValue: string;
+  constructor(value: any, viewValue: string) {
+    this.value = value;
+    this.viewValue = viewValue;
+  }
+}
+export class Select {
+  control: Control[];
+  constructor(control: Control[]) {
+    this.control = control;
+  }
+}
+
+export class Value {
+  value: number;
+  constructor(value: number) {
+    this.value = value;
+  }
+}
+
+ */
+import { Component, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormBuilder,
+  FormArray
+} from '../../../../../node_modules/@angular/forms';
+
+@Component({
+  selector: 'app-pooling-creator',
+  templateUrl: './pooling-creator.component.html',
+  styleUrls: ['./pooling-creator.component.scss']
+})
+export class PoolingCreatorComponent implements OnInit {
+  invoiceForm: FormGroup;
+  default = 'single-selection-grid';
   selects: Select[] = [
     {
       control: [
@@ -232,7 +470,8 @@ export class PoolingCreatorComponent implements OnInit {
   addSingleSelectionField(selectionArr) {
     const length = selectionArr.controls.length;
     const group = this.fb.group({
-      value: [{ value: false, disabled: true }],
+      // value: [{ value: false, disabled: true }],
+      value: false,
       viewValue: 'kolumna ' + length
     });
     selectionArr.push(group);
