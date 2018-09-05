@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class migrationz : Migration
+    public partial class migrationzgzzz : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -329,7 +329,8 @@ namespace CareerMonitoring.Api.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: true)
+                    SurveyId = table.Column<int>(nullable: true),
+                    MarkedAnswersNames = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

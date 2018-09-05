@@ -313,6 +313,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<string>("MarkedAnswersNames");
+
                     b.Property<int?>("SurveyId");
 
                     b.HasKey("Id");

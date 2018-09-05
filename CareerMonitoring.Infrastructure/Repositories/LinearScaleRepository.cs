@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Infrastructure.Data;
@@ -31,6 +33,13 @@ namespace CareerMonitoring.Infrastructure.Repositories
             if(isTracking)
                 return await _context.LinearScales.AsTracking().SingleOrDefaultAsync (x => x.Id == id);
             return await _context.LinearScales.AsTracking().SingleOrDefaultAsync (x => x.Id == id);
+        }
+
+        public async Task<IEnumerable<LinearScale>> GetBySurveyIdAsync(int surveyId, bool isTracking = true)
+        {
+            if(isTracking)
+                return await Task.FromResult (_context.LinearScales.AsTracking ().Where (x => x.SurveyId == surveyId));
+            return await Task.FromResult (_context.LinearScales.AsNoTracking ().Where (x => x.SurveyId == surveyId));
         }
 
         public async Task UpdateAsync(LinearScale linearScale)

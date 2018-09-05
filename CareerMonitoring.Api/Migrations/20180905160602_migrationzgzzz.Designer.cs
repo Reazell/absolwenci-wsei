@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareerMonitoring.Api.Migrations
 {
     [DbContext(typeof(CareerMonitoringContext))]
-    [Migration("20180905144435_migrationz")]
-    partial class migrationz
+    [Migration("20180905160602_migrationzgzzz")]
+    partial class migrationzgzzz
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -314,6 +314,8 @@ namespace CareerMonitoring.Api.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content");
+
+                    b.Property<string>("MarkedAnswersNames");
 
                     b.Property<int?>("SurveyId");
 
