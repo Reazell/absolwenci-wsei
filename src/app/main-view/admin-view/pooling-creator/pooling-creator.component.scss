@@ -33,23 +33,14 @@
                 margin: 10px;
                 mat-select {
                   font-size: 13px;
-                  div {
-                    // mat-option{
-                    // }
-                  }
                 }
               }
             }
             #field-container {
               padding-bottom: 20px;
-              // #field-container mat-form-field {
-              //   font-size: 12px;
-              // }
               #field-data {
                 .loop {
                   .choice {
-                    .formArray {
-                      .choice-loop {
                         display: flex;
                         align-items: center;
                         mat-form-field {
@@ -76,8 +67,8 @@
                             margin: 0 15px;
                           }
                         }
-                      }
-                    }
+                      // }
+                    // }
                     .center {
                       display: flex;
                       justify-content: center;

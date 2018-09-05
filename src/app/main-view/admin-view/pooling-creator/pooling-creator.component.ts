@@ -12,7 +12,7 @@ import {
 })
 export class PoolingCreatorComponent implements OnInit {
   invoiceForm: FormGroup;
-  default = 'dropdown-menu';
+  default = 'single-choice';
   lastSelect = this.default;
   disabled = false;
   selects: Select[] = [
@@ -105,68 +105,45 @@ export class PoolingCreatorComponent implements OnInit {
     switch (select) {
       case 'short-answer':
       case 'long-answer':
-        this.addInput(FieldData, select);
+        this.addInput(FieldData);
         break;
       case 'dropdown-menu':
-        // this.addInputOption(FieldData, 'opcja');
-        // break;
+        this.addInputOption(FieldData, 'opcja');
+        break;
       case 'linear-scale':
+        this.addLinearScaleField(FieldData);
+        break;
       case 'single-choice':
       case 'multiple-choice':
-        this.addArray(FieldData, select);
+        this.addCheckField(FieldData, 'opcja');
         break;
       case 'single-grid':
       case 'multiple-grid':
-        this.addSelectionGridField(FieldData, select);
+        this.addSelectionGridField(FieldData);
         break;
     }
   }
 
-  // mains
-  addInput(FieldData, select) {
+  addInput(FieldData) {
     const group = this.fb.group({
       input: [{ value: '', disabled: this.disabled }]
     });
     FieldData.push(group);
-    this.addField(select, group.controls.input);
   }
-  addArray(FieldData, select) {
-    const group = this.fb.group({
-      field: this.fb.array([])
-    });
-    FieldData.push(group);
-    this.addField(select, group.controls.field);
-  }
-  addSelectionGridField(FieldData, select) {
+  addSelectionGridField(FieldData) {
     const group = this.fb.group({
       columns: this.fb.array([]),
       rows: this.fb.array([])
     });
     FieldData.push(group);
-    this.addField(select, group.controls.columns, group.controls.rows);
+    this.addField(group.controls.columns, group.controls.rows);
   }
 
-  addField(select: string, choiceData, choiceData2?) {
-    switch (select) {
-      case 'dropdown-menu':
-        this.addInputOption(choiceData, 'opcja');
-        break;
-      case 'linear-scale':
-        this.addLinearScaleField(choiceData);
-        break;
-      case 'single-choice':
-      case 'multiple-choice':
-        this.addCheckField(choiceData, 'opcja');
-        break;
-      case 'single-grid':
-      case 'multiple-grid':
-        this.addCheckField(choiceData, 'kolumna');
-        this.addInputOption(choiceData2, 'wiersz');
-        break;
-    }
+  addField(choiceData, choiceData2) {
+    this.addCheckField(choiceData, 'kolumna');
+    this.addInputOption(choiceData2, 'wiersz');
   }
 
-  // field
   addLinearScaleField(choiceArr) {
     const group = this.fb.group({
       minValue: 1,
@@ -190,18 +167,13 @@ export class PoolingCreatorComponent implements OnInit {
       viewValue: `${name} ${length}`
     });
     selectArr.push(group);
-    // this.time2 = Date.now();
-    // console.log(this.time2 - this.time1);
   }
 
-  removeField(index, SingleChoice) {
-    SingleChoice.removeAt(index);
+  removeField(index, FieldData) {
+    FieldData.removeAt(index);
   }
 
   updateSelection(SingleChoice, choice, e) {
-    if (e.source) {
-      console.log(e.source.name, e);
-    }
     SingleChoice.controls.forEach(el => {
       el.controls.value.setValue(false);
     });
