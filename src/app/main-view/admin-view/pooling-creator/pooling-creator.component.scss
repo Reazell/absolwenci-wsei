@@ -7,8 +7,9 @@
     padding-bottom: 100px;
     #creator-container {
       display: flex;
+      width: 770px;
       background-color: white;
-      margin: 0 15%;
+      margin: 0 auto;
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       form {
         width: 100%;
@@ -36,94 +37,100 @@
                 }
               }
             }
-            #field-container {
+
+            #field-data {
               padding-bottom: 20px;
-              #field-data {
-                .loop {
-                  .choice {
-                        display: flex;
-                        align-items: center;
-                        mat-form-field {
-                          width: 100%;
-                        }
-                        .checkbox {
-                          width: 100%;
-                          display: flex;
-                          align-items: center;
-                          .right {
-                            display: inline-block;
-                            margin-right: 8px;
-                          }
-                        }
-                      }
-                      .loop {
-                        display: flex;
-                        flex-direction: column;
-                        .cont {
-                          display: flex;
-                          width: 100%;
-                          mat-form-field {
-                            width: 90%;
-                            margin: 0 15px;
-                          }
-                        }
-                      // }
-                    // }
-                    .center {
-                      display: flex;
-                      justify-content: center;
-                    }
+              .field-loop {
+                .choice {
+                  display: flex;
+                  align-items: center;
+                  // answer fields
+                  mat-form-field {
+                    width: 100%;
+                    font-size: 13px;
                   }
-                  .form {
+                  // multiple-choice
+                  .checkbox {
+                    width: 100%;
                     display: flex;
-                    .cont {
-                      margin: 0px 10px;
-                      width: 50%;
-                      .loop {
-                        .checkbox {
-                          width: 100%;
-                          .right {
-                            display: inline-block;
-                            margin-right: 8px;
-                          }
-                          mat-form-field {
-                            width: 87%;
-                          }
-                        }
-                      }
-                      mat-form-field {
-                        width: 87%;
-                      }
-                      div {
-                        display: flex;
-                        align-items: center;
-                      }
+                    align-items: center;
+                    .right {
+                      display: inline-block;
+                      margin-right: 8px;
                     }
                   }
-                  .answer {
+                  // linear-scale
+                  .cont {
+                    width: 47%;
+                    margin: 0 13px;
+                  }
+                }
+                .loop {
+                  display: flex;
+                  flex-direction: column;
+                  .cont {
+                    display: flex;
+                    width: 100%;
                     mat-form-field {
-                      width: 100%;
+                      width: 90%;
+                      margin: 0 15px;
                     }
+                  }
+                  .center {
+                    display: flex;
+                    justify-content: center;
+                  }
+                }
+                .form {
+                  display: flex;
+                  .cont {
+                    margin: 0px 10px;
+                    width: 50%;
+                    .loop {
+                      .checkbox {
+                        width: 100%;
+                        .right {
+                          display: inline-block;
+                          margin-right: 8px;
+                        }
+                        mat-form-field {
+                          width: 87%;
+                        }
+                      }
+                    }
+                    mat-form-field {
+                      width: 87%;
+                    }
+                    div {
+                      display: flex;
+                      align-items: center;
+                    }
+                  }
+                }
+                .answer {
+                  mat-form-field {
+                    width: 100%;
                   }
                 }
               }
             }
-            .menu-container {
-              margin: 10px;
-              display: flex;
-              justify-content: space-between;
-              .add,
-              .menu {
-                fa-icon {
-                  font-size: 20px;
-                  color: $grey;
-                  cursor: pointer;
-                }
+          }
+
+          .menu-container {
+            margin: 10px;
+            display: flex;
+            justify-content: space-between;
+            .add,
+            .menu {
+              fa-icon {
+                font-size: 20px;
+                color: $grey;
+                cursor: pointer;
               }
-              .menu {
-                fa-icon {
-                  margin: 0 15px;
-                }
+            }
+            .menu {
+              fa-icon {
+                margin: 0 15px;
               }
             }
           }
@@ -141,7 +148,7 @@
 .delete {
   float: right;
   cursor: pointer;
-  color: $grey;
-  font-size: 30px;
+  color: $grey-light;
+  font-size: 20px;
   margin: 0 10px;
 }

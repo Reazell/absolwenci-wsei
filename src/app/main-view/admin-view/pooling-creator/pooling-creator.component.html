@@ -26,137 +26,149 @@
               </mat-form-field>
             </div>
 
-            <div id="field-container">
-              <div id="field-data" formArrayName="FieldData" [ngSwitch]="question.value.select">
-                <div class="loop" *ngFor="let field of question.controls.FieldData.controls; let j = index" [formGroupName]="j">
+            <div id="field-data" formArrayName="FieldData" [ngSwitch]="question.value.select">
+              <div class="field-loop" *ngFor="let field of question.controls.FieldData.controls; let j = index" [formGroupName]="j">
 
-                  <div class="choice answer" *ngSwitchCase="'short-answer'">
+                <div class="choice answer" *ngSwitchCase="'short-answer'">
+                  <mat-form-field appearance="standard">
+                    <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
+                  </mat-form-field>
+                </div>
+
+                <div class="choice answer" *ngSwitchCase="'long-answer'">
+                  <mat-form-field appearance="standard">
+                    <textarea matInput [rows]="1" type="text" formControlName="input" placeholder="Twoja odpowiedź" matTextareaAutosize></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div class="choice" *ngSwitchCase="'dropdown-menu'">
+                  <mat-form-field appearance="standard">
+                    <input matInput type="text" formControlName="input" maxlength="20" #inputs>
+                  </mat-form-field>
+                  <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, question.controls.FieldData)" *ngIf="question.controls.FieldData.controls.length > 1"></fa-icon>
+                </div>
+
+                <div class="choice" *ngSwitchCase="'linear-scale'">
+                  <div id="scale-container" class="cont">
                     <mat-form-field appearance="standard">
-                      <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
+                      <mat-select placeholder="typ kontrolki" formControlName="minValue" name="control">
+                        <mat-option *ngFor="let control of minValue" [value]="control.value">
+                          {{control.value}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="standard">
+                      <mat-select placeholder="typ kontrolki" formControlName="maxValue" name="control">
+                        <mat-option *ngFor="let control of maxValue" [value]="control.value">
+                          {{control.value}}
+                        </mat-option>
+                      </mat-select>
                     </mat-form-field>
                   </div>
-
-                  <div class="choice answer" *ngSwitchCase="'long-answer'">
+                  <div id="label-container" class="cont">
                     <mat-form-field appearance="standard">
-                      <textarea matInput [rows]="1" type="text" formControlName="input" placeholder="Twoja odpowiedź" matTextareaAutosize></textarea>
+                      <input matInput type="text" formControlName="minLabel" placeholder="Etykieta (opcjonalna)">
+                    </mat-form-field>
+                    <mat-form-field appearance="standard">
+                      <input matInput type="text" formControlName="maxLabel" placeholder="Etykieta (opcjonalna)">
                     </mat-form-field>
                   </div>
+                </div>
 
-                  <div class="choice" *ngSwitchCase="'dropdown-menu'">
-                    <button (click)="addInputOption(question.controls.FieldData, 'opcja')">add</button>
+                <div class="choice" *ngSwitchCase="'single-choice'">
+                  <mat-radio-group formControlName="value" name="radio">
+                    <!-- (change)="updateSelection(field.controls['field'], choice, $event)" -->
+                    <mat-radio-button></mat-radio-button>
+                  </mat-radio-group>
+                  <mat-form-field appearance="standard">
+                    <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
+                  </mat-form-field>
+                  <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, question.controls.FieldData)" *ngIf="question.controls.FieldData.controls.length > 1"></fa-icon>
+                </div>
+
+                <div class="choice" *ngSwitchCase="'multiple-choice'">
+                  <div class="checkbox" name="check">
+                    <!-- (change)="updateSelection(question.controls.FieldData, choice, $event)" -->
+                    <div class="right">
+                      <mat-checkbox formControlName="value"></mat-checkbox>
+                    </div>
                     <mat-form-field appearance="standard">
-                      <input matInput type="text" formControlName="input" maxlength="20">
+                      <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
                     </mat-form-field>
                     <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, question.controls.FieldData)" *ngIf="question.controls.FieldData.controls.length > 1"></fa-icon>
                   </div>
+                </div>
 
-                  <div class="choice" *ngSwitchCase="'linear-scale'">
-                    <div id="scale-container" class="cont">
+                <div class="form" *ngSwitchCase="'single-grid'">
+                  <div id="row-container" class="cont" formArrayName="rows">
+                    <!-- <button (click)="addInputOption(field.controls['rows'], 'wiersz')">add</button> -->
+                    <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
                       <mat-form-field appearance="standard">
-                        <mat-select placeholder="typ kontrolki" formControlName="minValue" name="control">
-                          <mat-option *ngFor="let control of minValue" [value]="control.value">
-                            {{control.value}}
-                          </mat-option>
-                        </mat-select>
+                        <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs>
                       </mat-form-field>
-                      <mat-form-field appearance="standard">
-                        <mat-select placeholder="typ kontrolki" formControlName="maxValue" name="control">
-                          <mat-option *ngFor="let control of maxValue" [value]="control.value">
-                            {{control.value}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
+                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])" *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                     </div>
-                    <div id="label-container" class="cont">
+                    <input type="text" ngModel [ngModelOptions]="{standalone: true}" (click)="addInputOption(field.controls['rows'], 'wiersz')">
+                  </div>
+                  <div id="column-container" class="cont" formArrayName="columns">
+                    <!-- <button (click)="addCheckField(field.controls['columns'], 'kolumna')">add</button> -->
+                    <div *ngFor="let radio of field.controls['columns'].controls; let l = index" [formGroupName]="l">
+                      <mat-radio-group formControlName="value" name="radio">
+                        <mat-radio-button></mat-radio-button>
+                      </mat-radio-group>
                       <mat-form-field appearance="standard">
-                        <input matInput type="text" formControlName="minLabel" placeholder="Etykieta (opcjonalna)">
+                        <input matInput type="text" [value]="radio.value.viewValue" formControlName="viewValue" maxlength="20" #inputs>
                       </mat-form-field>
-                      <mat-form-field appearance="standard">
-                        <input matInput type="text" formControlName="maxLabel" placeholder="Etykieta (opcjonalna)">
-                      </mat-form-field>
+                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['columns'])" *ngIf="field.controls['columns'].controls.length > 1"></fa-icon>
                     </div>
+                    <input type="text" ngModel [ngModelOptions]="{standalone: true}" (click)="addCheckField(field.controls['columns'], 'kolumna')">
                   </div>
+                </div>
 
-                  <div class="choice" *ngSwitchCase="'single-choice'">
-                    <button (click)="addCheckField(question.controls.FieldData, 'opcja')">add</button>
-                    <mat-radio-group formControlName="value" name="radio">
-                      <!-- (change)="updateSelection(field.controls['field'], choice, $event)" -->
-                      <mat-radio-button></mat-radio-button>
-                    </mat-radio-group>
-                    <mat-form-field appearance="standard">
-                      <input matInput type="text" formControlName="viewValue" maxlength="20">
-                    </mat-form-field>
-                    <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, question.controls.FieldData)" *ngIf="question.controls.FieldData.controls.length > 1"></fa-icon>
-                  </div>
-
-                  <div class="choice" *ngSwitchCase="'multiple-choice'">
-                    <button (click)="addCheckField(question.controls.FieldData, 'opcja')">add</button>
-                    <div class="checkbox" name="check">
-                      <!-- (change)="updateSelection(question.controls.FieldData, choice, $event)" -->
-                      <div class="right">
-                        <mat-checkbox formControlName="value"></mat-checkbox>
-                      </div>
+                <div class="form" *ngSwitchCase="'multiple-grid'">
+                  <div id="row-container" class="cont" formArrayName="rows">
+                    <button (click)="addInputOption(field.controls['rows'], 'wiersz')">add</button>
+                    <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
                       <mat-form-field appearance="standard">
-                        <input matInput type="text" formControlName="viewValue" maxlength="20">
+                        <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs>
                       </mat-form-field>
-                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, question.controls.FieldData)" *ngIf="question.controls.FieldData.controls.length > 1"></fa-icon>
+                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])" *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                     </div>
                   </div>
-
-                  <div class="choice form" *ngSwitchCase="'single-grid'">
-                    <div id="row-container" class="cont" formArrayName="rows">
-                      <button (click)="addInputOption(field.controls['rows'], 'wiersz')">add</button>
-                      <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
+                  <div id="column-container" class="cont" formArrayName="columns">
+                    <button (click)="addCheckField(field.controls['columns'], 'kolumna')">add</button>
+                    <div class="loop" *ngFor="let check of field.controls['columns'].controls; let l = index" [formGroupName]="l">
+                      <div class="checkbox">
+                        <!-- (change)="updateSelection(field.controls['multiple_choice'], choice, $event)" -->
+                        <div class="right">
+                          <mat-checkbox formControlName="value"></mat-checkbox>
+                        </div>
                         <mat-form-field appearance="standard">
-                          <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
-                        </mat-form-field>
-                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])" *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
-                      </div>
-                    </div>
-                    <div id="column-container" class="cont" formArrayName="columns">
-                      <button (click)="addCheckField(field.controls['columns'], 'kolumna')">add</button>
-                      <div *ngFor="let radio of field.controls['columns'].controls; let l = index" [formGroupName]="l">
-                        <mat-radio-group formControlName="value" name="radio">
-                          <mat-radio-button></mat-radio-button>
-                        </mat-radio-group>
-                        <mat-form-field appearance="standard">
-                          <input matInput type="text" [value]="radio.value.viewValue" formControlName="viewValue" maxlength="20">
+                          <input matInput type="text" [value]="check.value.viewValue" formControlName="viewValue" maxlength="20" #inputs>
                         </mat-form-field>
                         <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['columns'])" *ngIf="field.controls['columns'].controls.length > 1"></fa-icon>
                       </div>
                     </div>
                   </div>
-
-                  <div class="choice form" *ngSwitchCase="'multiple-grid'">
-                    <div id="row-container" class="cont" formArrayName="rows">
-                      <button (click)="addInputOption(field.controls['rows'], 'wiersz')">add</button>
-                      <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
-                        <mat-form-field appearance="standard">
-                          <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
-                        </mat-form-field>
-                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])" *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
-                      </div>
-                    </div>
-                    <div id="column-container" class="cont" formArrayName="columns">
-                      <button (click)="addCheckField(field.controls['columns'], 'kolumna')">add</button>
-                      <div class="loop" *ngFor="let check of field.controls['columns'].controls; let l = index" [formGroupName]="l">
-                        <div class="checkbox">
-                          <!-- (change)="updateSelection(field.controls['multiple_choice'], choice, $event)" -->
-                          <div class="right">
-                            <mat-checkbox formControlName="value"></mat-checkbox>
-                          </div>
-                          <mat-form-field appearance="standard">
-                            <input matInput type="text" [value]="check.value.viewValue" formControlName="viewValue" maxlength="20">
-                          </mat-form-field>
-                          <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['columns'])" *ngIf="field.controls['columns'].controls.length > 1"></fa-icon>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
+
               </div>
+
+              <!-- dodawanie inputami -->
+
+              <div *ngSwitchCase="'dropdown-menu'">
+                <input type="text" ngModel [ngModelOptions]="{standalone: true}" (click)="addInputOption(question.controls.FieldData, 'opcja')">
+              </div>
+              <div *ngSwitchCase="'single-choice'">
+                <input type="text" ngModel [ngModelOptions]="{standalone: true}" (click)="addCheckField(question.controls.FieldData, 'opcja')">
+              </div>
+              <div *ngSwitchCase="'multiple-choice'">
+                <input type="text" ngModel [ngModelOptions]="{standalone: true}" (click)="addCheckField(question.controls.FieldData, 'opcja')">
+              </div>
+              <!--  -->
+
             </div>
+
             <div class="break"></div>
             <div class="menu-container">
               <div class="add">

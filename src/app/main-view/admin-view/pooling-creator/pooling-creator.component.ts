@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChildren,
+  QueryList,
+  ViewContainerRef
+} from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -11,6 +17,8 @@ import {
   styleUrls: ['./pooling-creator.component.scss']
 })
 export class PoolingCreatorComponent implements OnInit {
+  @ViewChildren('inputs')
+  inputs: QueryList<any>;
   invoiceForm: FormGroup;
   default = 'single-choice';
   lastSelect = this.default;
@@ -129,6 +137,7 @@ export class PoolingCreatorComponent implements OnInit {
       input: [{ value: '', disabled: this.disabled }]
     });
     FieldData.push(group);
+    this.autofocusField();
   }
   addSelectionGridField(FieldData) {
     const group = this.fb.group({
@@ -159,6 +168,7 @@ export class PoolingCreatorComponent implements OnInit {
       input: `${name} ${length}`
     });
     selectArr.push(group);
+    this.autofocusField();
   }
   addCheckField(selectArr, name) {
     const length = selectArr.controls.length;
@@ -167,8 +177,15 @@ export class PoolingCreatorComponent implements OnInit {
       viewValue: `${name} ${length}`
     });
     selectArr.push(group);
+    this.autofocusField();
   }
-
+  autofocusField() {
+    setTimeout(() => {
+      if (this.inputs && this.inputs.last) {
+        this.inputs.last.nativeElement.focus();
+      }
+    }, 0);
+  }
   removeField(index, FieldData) {
     FieldData.removeAt(index);
   }
@@ -182,37 +199,42 @@ export class PoolingCreatorComponent implements OnInit {
   }
 
   changeControl(FieldData, select, i) {
-    switch (this.lastSelect) {
-      case 'single-choice':
-      case 'multiple-choice':
-        switch (select) {
-          case 'single-choice':
-          case 'multiple-choice':
-            break;
-          default:
-            this.fieldRemoving(FieldData, select);
-            break;
-        }
-        break;
-      case 'single-grid':
-      case 'multiple-grid':
-        switch (select) {
-          case 'single-grid':
-          case 'multiple-grid':
-            break;
-          default:
-            this.fieldRemoving(FieldData, select);
-            break;
-        }
-        break;
-      default:
-        this.fieldRemoving(FieldData, select);
-        break;
+    if (this.lastSelect !== select) {
+      switch (this.lastSelect) {
+        case 'single-choice':
+        case 'multiple-choice':
+          switch (select) {
+            case 'single-choice':
+            case 'multiple-choice':
+              break;
+            default:
+              this.fieldRemoving(FieldData, select);
+              break;
+          }
+          break;
+        case 'single-grid':
+        case 'multiple-grid':
+          switch (select) {
+            case 'single-grid':
+            case 'multiple-grid':
+              break;
+            default:
+              this.fieldRemoving(FieldData, select);
+              break;
+          }
+          break;
+        default:
+          this.fieldRemoving(FieldData, select);
+          break;
+      }
+      this.lastSelect = select;
     }
-    this.lastSelect = select;
   }
   fieldRemoving(FieldData, select) {
-    FieldData.removeAt(0);
+    const length = FieldData.controls.length - 1;
+    for (let i = length; i >= 0; i--) {
+      FieldData.removeAt(i);
+    }
     this.addGroup(FieldData, select);
   }
 }

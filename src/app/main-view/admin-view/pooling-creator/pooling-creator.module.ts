@@ -1,3 +1,4 @@
+import { MyAutofocusDirective } from './directive/myAutofocus.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCheckboxModule,
     FontAwesomeModule
   ],
-  declarations: [PoolingCreatorComponent]
+  declarations: [PoolingCreatorComponent, MyAutofocusDirective]
 })
 export class PoolingCreatorModule {}
