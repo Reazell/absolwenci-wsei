@@ -56,8 +56,6 @@
                     </div>
                   </div>
 
-                  <!-- working  -->
-
                   <div class="choice" *ngSwitchCase="'linear-scale'">
                     <div class="formArray center" formArrayName="field">
                       <div class="loop" *ngFor="let choice of field.controls['field'].controls; let k = index" [formGroupName]="k">

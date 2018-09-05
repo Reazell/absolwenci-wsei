@@ -12,11 +12,9 @@ import {
 })
 export class PoolingCreatorComponent implements OnInit {
   invoiceForm: FormGroup;
-  default = 'single-choice';
+  default = 'dropdown-menu';
   lastSelect = this.default;
-  disabled = true;
-  time1;
-  time2;
+  disabled = false;
   selects: Select[] = [
     {
       control: [
@@ -110,6 +108,8 @@ export class PoolingCreatorComponent implements OnInit {
         this.addInput(FieldData, select);
         break;
       case 'dropdown-menu':
+        // this.addInputOption(FieldData, 'opcja');
+        // break;
       case 'linear-scale':
       case 'single-choice':
       case 'multiple-choice':
@@ -210,103 +210,39 @@ export class PoolingCreatorComponent implements OnInit {
   }
 
   changeControl(FieldData, select, i) {
-    // console.log(FieldData);
-    // tslint:disable-next-line:prefer-const
-    // let formGroup;
-    // const stringArr = Object.keys(FieldData.controls[i].controls);
-    // console.log(stringArr);
-    // console.log(FieldData.controls[i].controls.field.controls);
-    // stringArr.forEach(string => {
-    // console.log(FieldData.controls[i].controls[string].controls);
-    //   formGroup.push(FieldData.controls[i].controls[string].controls);
-    // });
-    FieldData.removeAt(0);
-    this.addGroup(FieldData, select);
-    // switch (this.lastSelect) {
-    //   case 'single-choice':
-    //   case 'multiple-choice':
-    //     switch (select) {
-    //       case 'single-grid':
-    //       case 'multiple-grid':
-    //       case 'dropdown-menu':
-    //         // send formgroup
-    //         console.log('send');
-    //         FieldData.removeAt(0);
-    //         // this.addExampleArr(FieldData);
-    //         this.addArray(FieldData, select);
-    //         break;
-    //       default:
-    //         FieldData.removeAt(0);
-    //         this.addGroup(FieldData, select);
-    //         break;
-    //     }
-    //     break;
-    //   case 'single-grid':
-    //   case 'multiple-grid':
-    //     // //
-    //     switch (select) {
-    //       case 'single-choice':
-    //       case 'multiple-choice':
-    //       case 'dropdown-menu':
-    //         // send formgroup
-    //         console.log('send');
-    //         break;
-    //       default:
-    //         FieldData.removeAt(0);
-    //         this.addGroup(FieldData, select);
-    //         break;
-    //     }
-    //     break;
-    //   case 'dropdown-menu':
-    //     switch (select) {
-    //       case 'single-choice':
-    //       case 'multiple-choice':
-    //       case 'dropdown-menu':
-    //       case 'single-grid':
-    //       case 'multiple-grid':
-    //         // send formgroup
-    //         console.log('send');
-    //         break;
-    //       default:
-    //         FieldData.removeAt(0);
-    //         this.addGroup(FieldData, select);
-    //         break;
-    //     }
-    //     break;
-    //   default:
-    //     FieldData.removeAt(0);
-    //     this.addGroup(FieldData, select);
-    //     break;
-    // }
-    // if (this.lastSelect) {
-    //   this.lastSelect = select;
-    // }
-    /*     // this.time1 = Date.now();
-    // let group;
-    const stringArr = Object.keys(FieldData.controls[i].controls);
-    console.log(stringArr);
-    // console.log(FieldData.controls[i].controls.field.controls);
-    stringArr.forEach(string => {
-      console.log(FieldData.controls[i].controls[string].controls);
-      // group.push(FieldData.controls[i].controls[string].controls);
-    });
-    // switch (stringArr[0]) {
-    //   case 'field':
-    //   break;
-    // }
-    FieldData.removeAt(0);
-    console.log(select);
-    this.addGroup(FieldData, select);
-    // if(stringArr[0] === 'field'){
-    //   if(select)
-    // } */
+    switch (this.lastSelect) {
+      case 'single-choice':
+      case 'multiple-choice':
+        switch (select) {
+          case 'single-choice':
+          case 'multiple-choice':
+            break;
+          default:
+            this.fieldRemoving(FieldData, select);
+            break;
+        }
+        break;
+      case 'single-grid':
+      case 'multiple-grid':
+        switch (select) {
+          case 'single-grid':
+          case 'multiple-grid':
+            break;
+          default:
+            this.fieldRemoving(FieldData, select);
+            break;
+        }
+        break;
+      default:
+        this.fieldRemoving(FieldData, select);
+        break;
+    }
+    this.lastSelect = select;
   }
-  //   addExampleArr(FieldData) {
-  //     const group = this.fb.group({
-  //       field: this.fb.array([])
-  //     });
-  //     FieldData.push(group);
-  //   }
+  fieldRemoving(FieldData, select) {
+    FieldData.removeAt(0);
+    this.addGroup(FieldData, select);
+  }
 }
 
 export class Control {
