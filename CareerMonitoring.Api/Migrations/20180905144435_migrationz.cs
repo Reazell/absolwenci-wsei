@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class migrrrrrr : Migration
+    public partial class migrationz : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,6 +39,22 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Surveys",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    Answered = table.Column<bool>(nullable: false),
+                    Answer = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Surveys", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AccountActivation",
                 columns: table => new
                 {
@@ -54,6 +70,28 @@ namespace CareerMonitoring.Api.Migrations
                     table.PrimaryKey("PK_AccountActivation", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AccountActivation_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AccountRestoringPasswords",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RestoredAt = table.Column<DateTime>(nullable: false),
+                    Token = table.Column<Guid>(nullable: false),
+                    Restored = table.Column<bool>(nullable: false),
+                    AccountId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccountRestoringPasswords", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AccountRestoringPasswords_Accounts_AccountId",
                         column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
@@ -259,9 +297,81 @@ namespace CareerMonitoring.Api.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "LinearScales",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    MinValue = table.Column<int>(nullable: false),
+                    MaxValue = table.Column<int>(nullable: false),
+                    MarkedValue = table.Column<int>(nullable: false),
+                    MinLabel = table.Column<string>(nullable: true),
+                    MaxLabel = table.Column<string>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LinearScales", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LinearScales_Surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "Surveys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MultipleChoices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MultipleChoices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MultipleChoices_Surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "Surveys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SingleChoices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    MarkedAnswerName = table.Column<string>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SingleChoices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SingleChoices_Surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "Surveys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AccountActivation_AccountId",
                 table: "AccountActivation",
+                column: "AccountId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccountRestoringPasswords_AccountId",
+                table: "AccountRestoringPasswords",
                 column: "AccountId",
                 unique: true);
 
@@ -321,6 +431,21 @@ namespace CareerMonitoring.Api.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_LinearScales_SurveyId",
+                table: "LinearScales",
+                column: "SurveyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MultipleChoices_SurveyId",
+                table: "MultipleChoices",
+                column: "SurveyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SingleChoices_SurveyId",
+                table: "SingleChoices",
+                column: "SurveyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Skill_GraduateId",
                 table: "Skill",
                 column: "GraduateId");
@@ -335,6 +460,9 @@ namespace CareerMonitoring.Api.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AccountActivation");
+
+            migrationBuilder.DropTable(
+                name: "AccountRestoringPasswords");
 
             migrationBuilder.DropTable(
                 name: "Certificate");
@@ -355,7 +483,19 @@ namespace CareerMonitoring.Api.Migrations
                 name: "Language");
 
             migrationBuilder.DropTable(
+                name: "LinearScales");
+
+            migrationBuilder.DropTable(
+                name: "MultipleChoices");
+
+            migrationBuilder.DropTable(
+                name: "SingleChoices");
+
+            migrationBuilder.DropTable(
                 name: "Skill");
+
+            migrationBuilder.DropTable(
+                name: "Surveys");
 
             migrationBuilder.DropTable(
                 name: "Accounts");
