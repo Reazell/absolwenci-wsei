@@ -87,9 +87,10 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IGraduateRepository, GraduateRepository> ();
             services.AddScoped<IEmployerRepository, EmployerRepository> ();
             services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
+            services.AddScoped<ISurveyRepository, SurveyRepository> ();
 
             #endregion
-            #region Services 
+            #region Services
 
             services.AddScoped<IAccountService, AccountService> ();
             services.AddScoped<IAuthService, AuthService> ();

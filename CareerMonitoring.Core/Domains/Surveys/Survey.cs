@@ -11,5 +11,16 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public ICollection<LinearScale> LinearScales { get; private set; }
         public ICollection<SingleChoice> SingleChoices { get; private set; }
         public ICollection<MultipleChoice> MultipleChoices { get; private set; }
+
+        public Survey (string title)
+        {
+            Title = title;
+            CreatedAt = DateTime.UtcNow;
+        }
+
+        public void MarkAsAnswered ()
+        {
+            Answered = true;
+        }
     }
 }
