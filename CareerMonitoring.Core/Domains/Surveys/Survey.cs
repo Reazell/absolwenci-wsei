@@ -20,6 +20,26 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             CreatedAt = DateTime.UtcNow;
         }
 
+        public void AddLinearScale (LinearScale linearScale)
+        {
+            LinearScales.Add(linearScale);
+        }
+
+        public void AddSingleChoice (SingleChoice singleChoice)
+        {
+            SingleChoices.Add(singleChoice);
+        }
+
+        public void AddMultipleChoice (MultipleChoice multipleChoice)
+        {
+            MultipleChoices.Add(multipleChoice);
+        }
+
+        public void AddOpenQuestion (OpenQuestion openQuestion)
+        {
+            OpenQuestions.Add(openQuestion);
+        }
+
         public void MarkAsAnswered ()
         {
             Answered = true;

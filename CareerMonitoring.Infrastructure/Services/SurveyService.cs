@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Infrastructure.DTO;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
@@ -30,54 +31,68 @@ namespace CareerMonitoring.Infrastructure.Services
             _multipleChoiceRepository = multipleChoiceRepository;
             _surveyRepository = surveyRepository;
         }
-        public Task AddLinearScaleQuestionAsync(int surveyId, string content, int minValue, int maxValue, string minLabel, string maxLabel)
+        public async Task AddLinearScaleQuestionAsync(int surveyId, string content, int minValue, int maxValue, string minLabel, string maxLabel)
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetByIdAsync (surveyId);
+            survey.AddLinearScale (new LinearScale (content, minValue, maxValue, minLabel, maxLabel));
+            await _surveyRepository.UpdateAsync (survey);
         }
 
-        public Task AddMultipleChoiceQuestionAsync(int surveyId, string content)
+        public async Task AddMultipleChoiceQuestionAsync(int surveyId, string content)
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetByIdAsync(surveyId);
+            survey.AddMultipleChoice (new MultipleChoice (content));
+            await _surveyRepository.UpdateAsync (survey);
         }
 
-        public Task AddOpenQuestionAsync(int surveyId, string content)
+        public async Task AddOpenQuestionAsync(int surveyId, string content)
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetByIdAsync (surveyId);
+            survey.AddOpenQuestion (new OpenQuestion (content));
+            await _surveyRepository.UpdateAsync (survey);
         }
 
-        public Task AddSingleChoiceQuestionAsync(int surveyId, string content)
+        public async Task AddSingleChoiceQuestionAsync(int surveyId, string content)
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetByIdAsync (surveyId);
+            survey.AddSingleChoice (new SingleChoice (content));
+            await _surveyRepository.UpdateAsync (survey);
         }
 
-        public Task CreateAsync(string title)
+        public async Task CreateAsync(string title)
         {
-            throw new System.NotImplementedException();
+            var survey = new Survey(title);
+            await _surveyRepository.AddAsync(survey);
         }
 
-        public Task DeleteAsync()
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetByIdWithQuestionsAsync (id);
+            await _surveyRepository.DeleteAsync (survey);
         }
 
-        public Task<IEnumerable<SurveyDto>> GetAllAsync(bool isTracking = true)
+        public async Task<IEnumerable<SurveyDto>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetAllWithQuestionsAsync ();
+            return _mapper.Map<IEnumerable<SurveyDto>> (survey);
         }
 
-        public Task<SurveyDto> GetByIdAsync(int id, bool isTracking = true)
+        public async Task<SurveyDto> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetByIdWithQuestionsAsync (id);
+            return _mapper.Map<SurveyDto> (survey);
         }
 
-        public Task<SurveyDto> GetByTitleAsync(string title, bool isTracking = true)
+        public async Task<SurveyDto> GetByTitleAsync(string title)
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetByTitleWithQuestionsAsync (title);
+            return _mapper.Map<SurveyDto> (survey);
         }
 
-        public Task UpdateAsync()
+        public async Task UpdateAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var survey = await _surveyRepository.GetByIdWithQuestionsAsync (id);
+            await _surveyRepository.UpdateAsync (survey);
         }
     }
 }
