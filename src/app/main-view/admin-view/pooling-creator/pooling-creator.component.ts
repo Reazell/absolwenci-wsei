@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChildren,
-  QueryList,
-  ViewContainerRef
-} from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -21,7 +15,7 @@ export class PoolingCreatorComponent implements OnInit {
   inputs: QueryList<any>;
   invoiceForm: FormGroup;
   default = 'single-choice';
-  lastSelect = this.default;
+  // lastSelect = this.default;
   disabled = false;
   selects: Select[] = [
     {
@@ -87,6 +81,7 @@ export class PoolingCreatorComponent implements OnInit {
     const group = this.fb.group({
       question: [''],
       select: [this.default],
+      lastSelect: [undefined],
       FieldData: this.fb.array([])
     });
     this.addGroup(group.controls.FieldData, group.controls.select.value);
@@ -137,7 +132,7 @@ export class PoolingCreatorComponent implements OnInit {
       input: [{ value: '', disabled: this.disabled }]
     });
     FieldData.push(group);
-    this.autofocusField();
+    // this.autofocusField();
   }
   addSelectionGridField(FieldData) {
     const group = this.fb.group({
@@ -168,7 +163,7 @@ export class PoolingCreatorComponent implements OnInit {
       input: `${name} ${length}`
     });
     selectArr.push(group);
-    this.autofocusField();
+    // this.autofocusField(length);
   }
   addCheckField(selectArr, name) {
     const length = selectArr.controls.length;
@@ -177,12 +172,16 @@ export class PoolingCreatorComponent implements OnInit {
       viewValue: `${name} ${length}`
     });
     selectArr.push(group);
-    this.autofocusField();
+    // this.autofocusField();
   }
-  autofocusField() {
+  autofocusField(i?) {
     setTimeout(() => {
       if (this.inputs && this.inputs.last) {
-        this.inputs.last.nativeElement.focus();
+        if (!i) {
+          this.inputs.last.nativeElement.focus();
+        } else {
+          this.inputs.toArray()[i].nativeElement.focus();
+        }
       }
     }, 0);
   }
@@ -198,9 +197,19 @@ export class PoolingCreatorComponent implements OnInit {
     e.source.checked = true;
   }
 
-  changeControl(FieldData, select, i) {
-    if (this.lastSelect !== select) {
-      switch (this.lastSelect) {
+  saveLastSelect(lastSelect, select: string) {
+    lastSelect.setValue(select);
+  }
+
+  changeControl(question, i) {
+    // console.log('change');
+    // console.log(e);
+    const FieldData = question.controls.FieldData;
+    const select = question.value.select;
+    const lastSelect = question.value.lastSelect;
+    console.log(select);
+    if (lastSelect !== select) {
+      switch (lastSelect) {
         case 'single-choice':
         case 'multiple-choice':
           switch (select) {
@@ -227,7 +236,6 @@ export class PoolingCreatorComponent implements OnInit {
           this.fieldRemoving(FieldData, select);
           break;
       }
-      this.lastSelect = select;
     }
   }
   fieldRemoving(FieldData, select) {
