@@ -200,9 +200,9 @@
             </div>
           </div>
         </div>
+        <button type="button" (click)="onSubmit()">submit</button>
+        <pre>{{invoiceForm.value | json }}</pre>
       </form>
-      <br>
-      <pre>{{invoiceForm.value | json }}</pre>
     </div>
   </div>
 </div>

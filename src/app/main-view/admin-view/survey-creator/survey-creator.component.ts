@@ -1,9 +1,7 @@
+import { Router } from '@angular/router';
+import { SurveyService } from './../../services/survey.services';
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  FormArray
-} from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-survey-creator',
@@ -14,7 +12,7 @@ export class SurveyCreatorComponent implements OnInit {
   @ViewChildren('inputs')
   inputs: QueryList<any>;
   invoiceForm: FormGroup;
-  default = 'single-choice';
+  default = 'single-grid';
   disabled = false;
   selects: Select[] = [
     {
@@ -67,13 +65,23 @@ export class SurveyCreatorComponent implements OnInit {
     delete: 'Usuń pytanie'
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private surveyService: SurveyService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    console.clear();
     this.invoiceForm = this.fb.group({
       Form_Title: ['Formularz bez nazwy'],
       QuestionData: this.fb.array([this.addRows()])
     });
+  }
+
+  onSubmit() {
+    this.surveyService.saveSurvey(this.invoiceForm);
+    this.router.navigateByUrl(`/app/admin/viewform`);
   }
 
   addRows() {
@@ -201,12 +209,9 @@ export class SurveyCreatorComponent implements OnInit {
   }
 
   changeControl(question, i) {
-    // console.log('change');
-    // console.log(e);
     const FieldData = question.controls.FieldData;
     const select = question.value.select;
     const lastSelect = question.value.lastSelect;
-    console.log(select);
     if (lastSelect !== select) {
       switch (lastSelect) {
         case 'single-choice':

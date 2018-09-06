@@ -1,3 +1,4 @@
+import { SurveyService } from './../../services/survey.services';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';

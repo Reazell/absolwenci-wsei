@@ -15,8 +15,12 @@ const adminRoutes: Routes = [
   },
   {
     path: 'create',
+    loadChildren: './survey-creator/survey-creator.module#SurveyCreatorModule'
+  },
+  {
+    path: 'viewform',
     loadChildren:
-      './survey-creator/survey-creator.module#SurveyCreatorModule'
+      './survey-viewform/survey-viewform.module#SurveyViewformModule'
   }
 ];
 

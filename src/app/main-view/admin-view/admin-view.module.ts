@@ -1,3 +1,4 @@
+import { SurveyService } from './../services/survey.services';
 import { SurveyListModule } from './Survey-list/Survey-list.module';
 import { GroupListModule } from './group-list/group-list.module';
 import { MaterialsModule } from '../../materials/materials.module';
@@ -19,10 +20,10 @@ import { ManageBarModule } from './manage-bar/manage-bar.module';
     ManageBarModule,
     GroupListModule,
     SurveyListModule,
-    SurveySearchModule,
     AdminViewRoutingModule,
     MatSidenavModule
   ],
-  declarations: [AdminViewComponent]
+  declarations: [AdminViewComponent],
+  providers: [SurveyService]
 })
 export class AdminViewModule {}
