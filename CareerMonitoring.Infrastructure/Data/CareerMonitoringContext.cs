@@ -11,6 +11,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<SingleChoice> SingleChoices { get; set; }
         public DbSet<SingleGrid> SingleGrids { get; set; }
         public DbSet<MultipleGrid> MultipleGrids { get; set; }
+        public DbSet<OpenQuestion> OpenQuestions { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
@@ -32,14 +33,22 @@ namespace CareerMonitoring.Infrastructure.Data {
             modelBuilder.Entity<Survey> ()
                 .HasMany (a => a.LinearScales)
                 .WithOne (s => s.Survey)
+                .HasForeignKey (b => b.SurveyId)
                 .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<Survey> ()
                 .HasMany (a => a.SingleChoices)
                 .WithOne (s => s.Survey)
+                .HasForeignKey (b => b.SurveyId)
                 .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<Survey> ()
                 .HasMany (a => a.MultipleChoices)
                 .WithOne (s => s.Survey)
+                .HasForeignKey (b => b.SurveyId)
+                .OnDelete (DeleteBehavior.Cascade);
+            modelBuilder.Entity<Survey> ()
+                .HasMany (a => a.OpenQuestions)
+                .WithOne (s => s.Survey)
+                .HasForeignKey (b => b.SurveyId)
                 .OnDelete (DeleteBehavior.Cascade);
         }
     }
