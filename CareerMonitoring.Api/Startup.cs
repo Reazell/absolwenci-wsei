@@ -13,6 +13,7 @@ using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Extension.JWT;
+using CareerMonitoring.Infrastructure.Extensions.AutoMapper;
 using CareerMonitoring.Infrastructure.Extensions.Factories;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories;
@@ -74,6 +75,7 @@ namespace CareerMonitoring.Api {
                 });
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
             services.AddSingleton<IEmailConfiguration> (Configuration.GetSection ("EmailConfiguration").Get<EmailConfiguration> ());
+            services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
             services.AddAuthorization (options => options.AddPolicy ("graduate", policy => policy.RequireRole ("graduate")));
             services.AddAuthorization (options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
