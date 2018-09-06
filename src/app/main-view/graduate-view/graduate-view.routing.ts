@@ -5,13 +5,7 @@ import { NgModule } from '@angular/core';
 const graduateRoutes: Routes = [
   {
     path: '',
-    component: GraduateViewComponent,
-    // children: [
-    //   {
-    //     path: '',
-    //     loadChildren: './pooling-space/pooling-space.module#PoolingSpaceModule'
-    //   }
-    // ]
+    component: GraduateViewComponent
   }
 ];
 

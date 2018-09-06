@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {
   AbstractControl,
   FormGroup
-} from '../../../node_modules/@angular/forms';
-import { BehaviorSubject } from '../../../node_modules/rxjs';
+} from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class SharedService {

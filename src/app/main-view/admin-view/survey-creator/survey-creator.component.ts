@@ -3,19 +3,18 @@ import {
   FormGroup,
   FormBuilder,
   FormArray
-} from '../../../../../node_modules/@angular/forms';
+} from '@angular/forms';
 
 @Component({
-  selector: 'app-pooling-creator',
-  templateUrl: './pooling-creator.component.html',
-  styleUrls: ['./pooling-creator.component.scss']
+  selector: 'app-survey-creator',
+  templateUrl: './survey-creator.component.html',
+  styleUrls: ['./survey-creator.component.scss']
 })
-export class PoolingCreatorComponent implements OnInit {
+export class SurveyCreatorComponent implements OnInit {
   @ViewChildren('inputs')
   inputs: QueryList<any>;
   invoiceForm: FormGroup;
   default = 'single-choice';
-  // lastSelect = this.default;
   disabled = false;
   selects: Select[] = [
     {
@@ -238,6 +237,7 @@ export class PoolingCreatorComponent implements OnInit {
       }
     }
   }
+
   fieldRemoving(FieldData, select) {
     const length = FieldData.controls.length - 1;
     for (let i = length; i >= 0; i--) {

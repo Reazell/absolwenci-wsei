@@ -6,12 +6,6 @@ const studentRoutes: Routes = [
   {
     path: '',
     component: StudentViewComponent
-    // children: [
-    //   {
-    //     path: '',
-    //     loadChildren: './pooling-space/pooling-space.module#PoolingSpaceModule'
-    //   }
-    // ]
   }
 ];
 

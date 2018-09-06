@@ -107,7 +107,7 @@
                       </mat-form-field>
                       <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])" *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                     </div>
-                    <mat-form-field class="standalone" appearance="standard">
+                    <mat-form-field appearance="standard">
                       <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addInputOption(field.controls['rows'], 'wiersz')"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                     </mat-form-field>
@@ -137,7 +137,7 @@
                       </mat-form-field>
                       <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])" *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                     </div>
-                    <mat-form-field class="standalone" appearance="standard">
+                    <mat-form-field appearance="standard">
                       <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addInputOption(field.controls['rows'], 'wiersz')"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                     </mat-form-field>
@@ -167,7 +167,7 @@
               <!-- dodawanie inputami -->
 
               <div *ngSwitchCase="'dropdown-menu'">
-                <mat-form-field class="standalone" appearance="standard">
+                <mat-form-field appearance="standard">
                   <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addInputOption(question.controls.FieldData, 'opcja')"
                     autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                 </mat-form-field>

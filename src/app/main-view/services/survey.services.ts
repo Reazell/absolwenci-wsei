@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app.config';
 
 @Injectable()
-export class PoolingService {
+export class SurveyService {
   controlArray: string[];
   constructor(private http: HttpClient, private config: AppConfig) {}
 
-  sendPooling(pooling) {
+  sendSurvey(survey) {
     return this.http
       .post<any>(this.config.apiUrl + '/email', {
         Subject: 'testowe wysyłanie',
-        Body: pooling
+        Body: survey
       })
       .map(data => {
         return data;

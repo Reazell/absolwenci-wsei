@@ -1,4 +1,4 @@
-import { SharedService } from './../../services/shared.service';
+import { SharedService } from '../../services/shared.service';
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialsModule } from '../../materials/materials.module';

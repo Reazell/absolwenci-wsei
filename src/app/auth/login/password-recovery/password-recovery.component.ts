@@ -1,4 +1,4 @@
-import { SharedService } from './../../../services/shared.service';
+import { SharedService } from '../../../services/shared.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -7,7 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { Router } from '../../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-password-recovery',

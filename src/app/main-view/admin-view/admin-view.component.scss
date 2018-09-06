@@ -10,8 +10,8 @@
             display: grid;
             grid-template-rows: 40px auto;
             grid-template-columns: 150px;
-           
-            app-pooling-search {
+
+            app-survey-search {
                 grid-column: 1;
                 grid-row: 1;
               }
@@ -29,7 +29,7 @@
               grid-column: 1 / span 2;
               grid-row: 1;
             }
-            app-pooling-list {
+            app-survey-list {
               overflow-y: overlay;
               grid-column: 1;
               grid-row: 2;

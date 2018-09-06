@@ -1,4 +1,4 @@
-import { SharedService } from './../../services/shared.service';
+import { SharedService } from '../../services/shared.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 
 @Component({

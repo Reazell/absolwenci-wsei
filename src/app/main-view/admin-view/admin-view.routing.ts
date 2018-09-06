@@ -9,14 +9,14 @@ const adminRoutes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './pooling-space/pooling-space.module#PoolingSpaceModule'
+        loadChildren: './survey-space/survey-space.module#SurveySpaceModule'
       }
     ]
   },
   {
     path: 'create',
     loadChildren:
-      './pooling-creator/pooling-creator.module#PoolingCreatorModule'
+      './survey-creator/survey-creator.module#SurveyCreatorModule'
   }
 ];
 

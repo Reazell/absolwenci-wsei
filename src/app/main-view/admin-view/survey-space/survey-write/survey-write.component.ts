@@ -1,4 +1,4 @@
-import { PoolingService } from './../../../services/pooling.services';
+import { SurveyService } from '../../../services/survey.services';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -8,18 +8,15 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-pooling-write',
-  templateUrl: './pooling-write.component.html',
-  styleUrls: ['./pooling-write.component.scss']
+  selector: 'app-survey-write',
+  templateUrl: './survey-write.component.html',
+  styleUrls: ['./survey-write.component.scss']
 })
-export class PoolingWriteComponent implements OnInit {
+export class SurveyWriteComponent implements OnInit {
   sentForm: FormGroup;
   text: AbstractControl;
 
-  constructor(
-    private fb: FormBuilder,
-    private poolingService: PoolingService
-  ) {}
+  constructor(private fb: FormBuilder, private surveyService: SurveyService) {}
 
   ngOnInit() {
     this.sentForm = this.fb.group({
@@ -28,7 +25,7 @@ export class PoolingWriteComponent implements OnInit {
     this.text = this.sentForm.controls['text'];
   }
   onSubmit() {
-    this.poolingService.sendPooling(this.text.value).subscribe(
+    this.surveyService.sendSurvey(this.text.value).subscribe(
       data => {
         console.log(data);
       },

@@ -5,13 +5,7 @@ import { EmployerViewComponent } from './employer-view.component';
 const employerRoutes: Routes = [
   {
     path: '',
-    component: EmployerViewComponent,
-    // children: [
-    //   {
-    //     path: '',
-    //     loadChildren: './pooling-space/pooling-space.module#PoolingSpaceModule'
-    //   }
-    // ]
+    component: EmployerViewComponent
   }
 ];
 
