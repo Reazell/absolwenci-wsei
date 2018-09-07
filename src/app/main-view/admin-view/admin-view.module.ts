@@ -1,3 +1,4 @@
+import { SurveyGuard } from './../../others/survey.auth';
 import { SurveyService } from '../services/survey.services';
 import { SurveyListModule } from './Survey-list/Survey-list.module';
 import { GroupListModule } from './group-list/group-list.module';
@@ -25,6 +26,6 @@ import { ManageBarModule } from './manage-bar/manage-bar.module';
     MatSidenavModule
   ],
   declarations: [AdminViewComponent],
-  providers: []
+  providers: [SurveyGuard, SurveyService]
 })
 export class AdminViewModule {}

@@ -41,11 +41,13 @@
                   </mat-form-field>
                 </div>
 
-                <div class="choice" *ngSwitchCase="'dropdown-menu'">
-                  <mat-form-field appearance="standard">
-                    <input matInput type="text" formControlName="input" maxlength="20" #inputs>
-                  </mat-form-field>
-                  <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, question.controls.FieldData)" *ngIf="question.controls.FieldData.controls.length > 1"></fa-icon>
+                <div class="dropdown" *ngSwitchCase="'dropdown-menu'" formArrayName="input">
+                  <div *ngFor="let input of field.controls.input.controls; let k = index" [formGroupName]="k">
+                    <mat-form-field appearance="standard">
+                      <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
+                    </mat-form-field>
+                    <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.input)" *ngIf="field.controls.input.controls.length > 1"></fa-icon>
+                  </div>
                 </div>
 
                 <div class="choice" *ngSwitchCase="'linear-scale'">
@@ -162,29 +164,22 @@
                   </div>
                 </div>
 
+                <div *ngSwitchCase="'dropdown-menu'">
+                  <mat-form-field appearance="standard">
+                    <input matInput ngModel [ngModelOptions]="{standalone: true}" (mousedown)="addCheckField(field.controls.input, 'opcja')" autocomplete="off"
+                      tabindex="0" role="button" placeholder="Dodaj opcję">
+                  </mat-form-field>
+
+                </div>
               </div>
 
-              <!-- dodawanie inputami -->
 
-              <div *ngSwitchCase="'dropdown-menu'">
+              <div *ngSwitchCase="'single-choice' || 'multiple-choice'">
                 <mat-form-field appearance="standard">
-                  <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addInputOption(question.controls.FieldData, 'opcja')"
+                  <input matInput ngModel [ngModelOptions]="{standalone: true}" (mousedown)="addCheckField(question.controls.FieldData, 'opcja')"
                     autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                 </mat-form-field>
               </div>
-              <div *ngSwitchCase="'single-choice'">
-                <mat-form-field class="standalone" appearance="standard">
-                  <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addCheckField(question.controls.FieldData, 'opcja')"
-                    autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
-                </mat-form-field>
-              </div>
-              <div *ngSwitchCase="'multiple-choice'">
-                <mat-form-field class="standalone" appearance="standard">
-                  <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addCheckField(question.controls.FieldData, 'opcja')"
-                    autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
-                </mat-form-field>
-              </div>
-              <!--  -->
 
             </div>
 

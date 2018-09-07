@@ -36,39 +36,45 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.surveyService.savedSurvey.subscribe(data => {
       if (data) {
-        console.log(data);
-        this.makeSth(data);
+        // console.log(data);
+        this.createQuestionData(data);
       }
     });
   }
 
   ngOnDestroy() {
-    this.surveyService.saveSurvey(undefined);
-    this.oldData = undefined;
-    this.invoiceForm = undefined;
+    // this.surveyService.saveSurvey(undefined);
+    // this.oldData = undefined;
+    // this.invoiceForm = undefined;
   }
 
-  updateSelection(radios, radio, e) {
-    console.log(radios);
+  updateSelection(radios, radio, e?) {
+    // console.log(radios);
     radios.forEach(el => {
       el.controls.value.setValue(false);
     });
     radio.setValue(true);
-    e.source.checked = true;
+    if (e) {
+      e.source.checked = true;
+    }
   }
 
   sth(f) {
     console.log(f);
   }
 
-  makeSth(data) {
+  createQuestionData(data) {
     this.invoiceForm = data;
-    console.log(this.invoiceForm.controls.QuestionData['controls']);
-    const select = this.invoiceForm.controls.QuestionData['controls'][0]
-      .controls.select.value;
-    const fieldData = this.invoiceForm.controls.QuestionData['controls'][0]
-      .controls.FieldData;
+    const questionData = this.invoiceForm.controls.QuestionData['controls'];
+    questionData.forEach(question => {
+      this.createQuestion(question);
+    });
+  }
+  createQuestion(question) {
+    const select = question.controls.select.value;
+    const fieldData = question.controls.FieldData;
     this.oldData = fieldData.getRawValue();
+    // console.log(this.oldData);
     this.oldData.forEach(oldFieldData => {
       if (select === 'single-grid' || select === 'multiple-grid') {
         fieldData.removeAt(0);
@@ -76,6 +82,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   // rows
   createRow(fieldData, oldFieldData) {
     const group = this.fb.group({

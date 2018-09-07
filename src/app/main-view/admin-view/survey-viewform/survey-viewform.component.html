@@ -3,17 +3,16 @@
     <div id="creator-container">
       <form [formGroup]="invoiceForm">
         <div id="form-title">
-          <mat-form-field appearance="standard">
+          <!-- <mat-form-field appearance="standard">
             <input matInput placeholder="Nazwa formularza" formControlName="Form_Title" />
-          </mat-form-field>
+          </mat-form-field> -->
+          <span>{{invoiceForm.controls['Form_Title'].value}}</span>
         </div>
         <div id="questions-container" formArrayName="QuestionData">
           <div *ngFor="let question of invoiceForm.controls['QuestionData'].controls; let i = index" [formGroupName]="i" class="question-field">
 
             <div class="select-container">
-              <mat-form-field appearance="standard">
-                <input matInput placeholder="Pytanie" formControlName="question" />
-              </mat-form-field>
+              <span>{{question.controls.question.value}}</span>
             </div>
 
             <div id="field-data" formArrayName="FieldData" [ngSwitch]="question.value.select">
@@ -31,9 +30,16 @@
                   </mat-form-field>
                 </div>
 
-                <div class="choice" *ngSwitchCase="'dropdown-menu'">
+                <div class="choice" *ngSwitchCase="'dropdown-menu'" formArrayName="input">
                   <mat-form-field appearance="standard">
-                    <input matInput type="text" formControlName="input" maxlength="20" #inputs>
+                    <mat-select placeholder="Wybierz">
+                      <mat-option>Wybierz</mat-option>
+                      <div *ngFor="let select of field.controls.input.controls; let k = index" [formGroupName]="k">
+                        <mat-option [value]="select.value.value" (click)="updateSelection(field.controls.input.controls, select.controls.value)">
+                          {{select.value.viewValue}}
+                        </mat-option>
+                      </div>
+                    </mat-select>
                   </mat-form-field>
                 </div>
 
@@ -86,26 +92,27 @@
                 </div>
 
                 <div class="form" *ngSwitchCase="'multiple-grid'">
-                  <div id="row-container" class="cont" formArrayName="rows">
-                    <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
-                      <mat-form-field appearance="standard">
-                        <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs>
-                      </mat-form-field>
+                  <div class="columns">
+                    <div class="column">
+                    </div>
+                    <div class="column" *ngFor="let column of field.controls.rows.controls[j].controls.column.controls">
+                      <span>{{column.value.viewValue}}</span>
                     </div>
                   </div>
-                  <div id="column-container" class="cont" formArrayName="columns">
-                    <div class="loop" *ngFor="let check of field.controls['columns'].controls; let l = index" [formGroupName]="l">
-                      <div class="checkbox">
-                        <div class="right">
+                  <div formArrayName="rows" class="rows">
+                    <div *ngFor="let row of field.controls.rows.controls; let k = index" [formGroupName]="k" class="row">
+                      <div formArrayName="column" class="row-container">
+                        <div class="row-el">
+                          <span>{{row.value.input}}</span>
+                        </div>
+                        <div *ngFor="let column of row.controls.column.controls; let l = index" [formGroupName]="l" class="row-el">
                           <mat-checkbox formControlName="value"></mat-checkbox>
                         </div>
-                        <mat-form-field appearance="standard">
-                          <input matInput type="text" [value]="check.value.viewValue" formControlName="viewValue" maxlength="20" #inputs>
-                        </mat-form-field>
                       </div>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

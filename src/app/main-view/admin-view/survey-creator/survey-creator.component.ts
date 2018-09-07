@@ -15,10 +15,10 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
   styleUrls: ['./survey-creator.component.scss']
 })
 export class SurveyCreatorComponent implements OnInit, OnDestroy {
-  @ViewChildren('inputs')
-  inputs: QueryList<any>;
+  // @ViewChildren('inputs')
+  // inputs: QueryList<any>;
   invoiceForm: FormGroup;
-  default = 'single-grid';
+  default = 'dropdown-menu';
   disabled = false;
   selects: Select[] = [
     {
@@ -83,11 +83,11 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       QuestionData: this.fb.array([this.addRows()])
     });
 
-    this.router.events.subscribe(val => {
-      if (val instanceof NavigationEnd) {
-        console.log('NavigationEnd!');
-      }
-    });
+    // this.router.events.subscribe(val => {
+    //   if (val instanceof NavigationEnd) {
+    //     console.log('NavigationEnd!');
+    //   }
+    // });
   }
   ngOnDestroy() {}
 
@@ -131,7 +131,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
         this.addInput(FieldData);
         break;
       case 'dropdown-menu':
-        this.addInputOption(FieldData, 'opcja');
+        this.addArray(FieldData);
         break;
       case 'linear-scale':
         this.addLinearScaleField(FieldData);
@@ -146,7 +146,13 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
         break;
     }
   }
-
+  addArray(FieldData) {
+    const group = this.fb.group({
+      input: this.fb.array([])
+    });
+    FieldData.push(group);
+    this.addCheckField(group.controls.input, 'opcja');
+  }
   addInput(FieldData) {
     const group = this.fb.group({
       input: [{ value: '', disabled: this.disabled }]
@@ -177,6 +183,9 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     });
     choiceArr.push(group);
   }
+  see(sth) {
+    console.log(sth);
+  }
   addInputOption(selectArr, name) {
     const length = selectArr.controls.length;
     const group = this.fb.group({
@@ -186,6 +195,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     // this.autofocusField(length);
   }
   addCheckField(selectArr, name) {
+    // console.log(selectArr);
     const length = selectArr.controls.length;
     const group = this.fb.group({
       value: [{ value: false, disabled: this.disabled }],
@@ -194,17 +204,17 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     selectArr.push(group);
     // this.autofocusField();
   }
-  autofocusField(i?) {
-    setTimeout(() => {
-      if (this.inputs && this.inputs.last) {
-        if (!i) {
-          this.inputs.last.nativeElement.focus();
-        } else {
-          this.inputs.toArray()[i].nativeElement.focus();
-        }
-      }
-    }, 0);
-  }
+  // autofocusField(i?) {
+  //   setTimeout(() => {
+  //     if (this.inputs && this.inputs.last) {
+  //       if (!i) {
+  //         this.inputs.last.nativeElement.focus();
+  //       } else {
+  //         this.inputs.toArray()[i].nativeElement.focus();
+  //       }
+  //     }
+  //   }, 0);
+  // }
   removeField(index, FieldData) {
     FieldData.removeAt(index);
   }
