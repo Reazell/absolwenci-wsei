@@ -23,6 +23,8 @@ import {
   faPlus,
   faCopy
 } from '@fortawesome/free-solid-svg-icons';
+import { SurveyGuard } from './others/survey.auth';
+import { SurveyService } from './main-view/services/survey.services';
 
 library.add(faTimes, faBars, faPlus, faTrash, faCopy);
 

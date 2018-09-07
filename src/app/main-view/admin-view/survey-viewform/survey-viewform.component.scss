@@ -41,6 +41,8 @@
             #field-data {
               padding-bottom: 20px;
               .field-loop {
+                overflow-x: auto;
+                overflow-y: hidden;
                 .choice {
                   display: flex;
                   align-items: center;
@@ -89,7 +91,7 @@
                     .column {
                       display: flex;
                       justify-content: center;
-                      width: 35px;
+                      width: 65px;
                       border: 1px solid black;
                       flex: 1;
                     }
@@ -102,7 +104,7 @@
                           display: flex;
                           justify-content: center;
                           border: 1px solid black;
-                          min-width: 35px;
+                          min-width: 65px;
                           flex: 1;
                         }
                       }

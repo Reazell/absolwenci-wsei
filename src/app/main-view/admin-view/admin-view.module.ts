@@ -1,4 +1,4 @@
-import { SurveyService } from './../services/survey.services';
+import { SurveyService } from '../services/survey.services';
 import { SurveyListModule } from './Survey-list/Survey-list.module';
 import { GroupListModule } from './group-list/group-list.module';
 import { MaterialsModule } from '../../materials/materials.module';
@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SurveySearchModule } from './Survey-search/Survey-search.module';
 import { ManageBarModule } from './manage-bar/manage-bar.module';
+// import { SurveyGuard } from '../../auth/other/survey.auth';
 
 @NgModule({
   imports: [
@@ -24,6 +25,6 @@ import { ManageBarModule } from './manage-bar/manage-bar.module';
     MatSidenavModule
   ],
   declarations: [AdminViewComponent],
-  providers: [SurveyService]
+  providers: []
 })
 export class AdminViewModule {}
