@@ -1,12 +1,6 @@
-import { Router, NavigationEnd } from '@angular/router';
-import { SurveyService } from '../../services/survey.services';
-import {
-  Component,
-  OnInit,
-  ViewChildren,
-  QueryList,
-  OnDestroy
-} from '@angular/core';
+import { Router } from '@angular/router';
+import { SurveyService } from './../../services/survey.services';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
@@ -14,7 +8,7 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
   templateUrl: './survey-creator.component.html',
   styleUrls: ['./survey-creator.component.scss']
 })
-export class SurveyCreatorComponent implements OnInit, OnDestroy {
+export class SurveyCreatorComponent implements OnInit {
   @ViewChildren('inputs')
   inputs: QueryList<any>;
   invoiceForm: FormGroup;
@@ -78,23 +72,16 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    console.clear();
     this.invoiceForm = this.fb.group({
       Form_Title: ['Formularz bez nazwy'],
       QuestionData: this.fb.array([this.addRows()])
     });
-
-    this.router.events.subscribe(val => {
-      if (val instanceof NavigationEnd) {
-        console.log('NavigationEnd!');
-      }
-    });
   }
-  ngOnDestroy() {}
 
   onSubmit() {
     this.surveyService.saveSurvey(this.invoiceForm);
     this.router.navigateByUrl(`/app/admin/viewform`);
-    // window.open('http://localhost:4200/app/admin/viewform', '_blank');
   }
 
   addRows() {

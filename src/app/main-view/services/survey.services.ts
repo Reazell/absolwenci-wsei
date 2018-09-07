@@ -23,5 +23,9 @@ export class SurveyService {
 
   saveSurvey(form: FormGroup): void {
     this.savedSurvey.next(form);
+    // console.log(this.savedSurvey);
   }
+  // getSurvey(): FormGroup {
+  //   return this.savedSurvey;
+  // }
 }

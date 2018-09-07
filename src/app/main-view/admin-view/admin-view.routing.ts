@@ -1,7 +1,6 @@
 import { AdminViewComponent } from './admin-view.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { SurveyGuard } from '../../others/survey.auth';
 
 const adminRoutes: Routes = [
   {
@@ -21,8 +20,7 @@ const adminRoutes: Routes = [
   {
     path: 'viewform',
     loadChildren:
-      './survey-viewform/survey-viewform.module#SurveyViewformModule',
-    canLoad: [SurveyGuard]
+      './survey-viewform/survey-viewform.module#SurveyViewformModule'
   }
 ];
 
