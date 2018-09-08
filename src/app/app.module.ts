@@ -21,10 +21,11 @@ import {
   faTrash,
   faBars,
   faPlus,
-  faCopy
+  faCopy,
+  faGripHorizontal
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faTimes, faBars, faPlus, faTrash, faCopy);
+library.add(faTimes, faBars, faPlus, faTrash, faCopy, faGripHorizontal);
 
 @NgModule({
   declarations: [AppComponent],

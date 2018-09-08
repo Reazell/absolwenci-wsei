@@ -124,6 +124,9 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       questionArr.push(this.addRows());
     }
   }
+  focusQuestion(question) {
+    console.log(question);
+  }
 
   addGroup(FieldData, select: string) {
     switch (select) {
