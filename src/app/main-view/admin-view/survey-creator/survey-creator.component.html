@@ -69,17 +69,16 @@
                   </div>
                   <div id="label-container" class="cont">
                     <mat-form-field appearance="standard">
-                      <input matInput type="text" formControlName="minLabel" placeholder="Etykieta (opcjonalna)">
+                      <input matInput type="text" formControlName="minLabel" placeholder="Etykieta (opcjonalna)" maxlength="30">
                     </mat-form-field>
                     <mat-form-field appearance="standard">
-                      <input matInput type="text" formControlName="maxLabel" placeholder="Etykieta (opcjonalna)">
+                      <input matInput type="text" formControlName="maxLabel" placeholder="Etykieta (opcjonalna)" maxlength="30">
                     </mat-form-field>
                   </div>
                 </div>
 
                 <div class="choice" *ngSwitchCase="'single-choice'">
                   <mat-radio-group formControlName="value" name="radio">
-                    <!-- (change)="updateSelection(field.controls['field'], choice, $event)" -->
                     <mat-radio-button></mat-radio-button>
                   </mat-radio-group>
                   <mat-form-field appearance="standard">
@@ -90,7 +89,6 @@
 
                 <div class="choice" *ngSwitchCase="'multiple-choice'">
                   <div class="checkbox" name="check">
-                    <!-- (change)="updateSelection(question.controls.FieldData, choice, $event)" -->
                     <div class="right">
                       <mat-checkbox formControlName="value"></mat-checkbox>
                     </div>
@@ -105,12 +103,12 @@
                   <div id="row-container" class="cont" formArrayName="rows">
                     <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
                       <mat-form-field appearance="standard">
-                        <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs>
+                        <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs2>
                       </mat-form-field>
                       <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])" *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                     </div>
                     <mat-form-field appearance="standard">
-                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addInputOption(field.controls['rows'], 'wiersz')"
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addInputOption(field.controls['rows'], 'wiersz')" maxlength="0"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                     </mat-form-field>
                   </div>
@@ -125,7 +123,7 @@
                       <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['columns'])" *ngIf="field.controls['columns'].controls.length > 1"></fa-icon>
                     </div>
                     <mat-form-field class="standalone" appearance="standard">
-                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addCheckField(field.controls['columns'], 'kolumna')"
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls['columns'], 'kolumna')" maxlength="0"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                     </mat-form-field>
                   </div>
@@ -135,19 +133,18 @@
                   <div id="row-container" class="cont" formArrayName="rows">
                     <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
                       <mat-form-field appearance="standard">
-                        <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs>
+                        <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs2>
                       </mat-form-field>
                       <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])" *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                     </div>
                     <mat-form-field appearance="standard">
-                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addInputOption(field.controls['rows'], 'wiersz')"
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addInputOption(field.controls['rows'], 'wiersz')" maxlength="0"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                     </mat-form-field>
                   </div>
                   <div id="column-container" class="cont" formArrayName="columns">
                     <div class="loop" *ngFor="let check of field.controls['columns'].controls; let l = index" [formGroupName]="l">
                       <div class="checkbox">
-                        <!-- (change)="updateSelection(field.controls['multiple_choice'], choice, $event)" -->
                         <div class="right">
                           <mat-checkbox formControlName="value"></mat-checkbox>
                         </div>
@@ -158,26 +155,32 @@
                       </div>
                     </div>
                     <mat-form-field class="standalone" appearance="standard">
-                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (click)="addCheckField(field.controls['columns'], 'kolumna')"
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls['columns'], 'kolumna')" maxlength="0"
                         autocomplete="off" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                     </mat-form-field>
                   </div>
                 </div>
 
-                <div *ngSwitchCase="'dropdown-menu'">
+                <div *ngSwitchCase="'dropdown-menu'" class="add">
                   <mat-form-field appearance="standard">
-                    <input matInput ngModel [ngModelOptions]="{standalone: true}" (mousedown)="addCheckField(field.controls.input, 'opcja')" autocomplete="off"
-                      tabindex="0" role="button" placeholder="Dodaj opcję">
+                    <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls.input, 'opcja')"
+                      autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
                   </mat-form-field>
 
                 </div>
               </div>
 
 
-              <div *ngSwitchCase="'single-choice' || 'multiple-choice'">
+              <div *ngSwitchCase="'single-choice'" class="add">
                 <mat-form-field appearance="standard">
-                  <input matInput ngModel [ngModelOptions]="{standalone: true}" (mousedown)="addCheckField(question.controls.FieldData, 'opcja')"
-                    autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
+                  <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(question.controls.FieldData, 'opcja')"
+                    autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
+                </mat-form-field>
+              </div>
+              <div *ngSwitchCase="'multiple-choice'" class="add">
+                <mat-form-field appearance="standard">
+                  <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(question.controls.FieldData, 'opcja')"
+                    autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
                 </mat-form-field>
               </div>
 
@@ -189,14 +192,14 @@
                 <fa-icon [icon]="['fas','plus']" (click)="addQuestion(i)" matTooltip="{{info.add}}" matTooltipPosition="below"></fa-icon>
               </div>
               <div class="menu">
-                <fa-icon [icon]="['fas','copy']" matTooltip="{{info.copy}}" matTooltipPosition="below"></fa-icon>
+                <fa-icon [icon]="['fas','copy']" matTooltip="{{info.copy}}" matTooltipPosition="below" (click)="copyQuestion(question)"></fa-icon>
                 <fa-icon [icon]="['fas','trash']" (click)="removeQuestion(i, question.value.select)" matTooltip="{{info.delete}}" matTooltipPosition="below"></fa-icon>
               </div>
             </div>
           </div>
         </div>
         <button type="button" (click)="onSubmit()">submit</button>
-        <pre>{{invoiceForm.value | json }}</pre>
+        <!-- <pre>{{invoiceForm.value | json }}</pre> -->
       </form>
     </div>
   </div>

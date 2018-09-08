@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SurveyService } from '../../services/survey.services';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-survey-viewform',
@@ -10,23 +10,9 @@ import { Router } from '@angular/router';
 })
 export class SurveyViewformComponent implements OnInit, OnDestroy {
   invoiceForm: FormGroup;
+  // disabled = false;
   oldData;
-  rows = [
-    {
-      input: 'row 0'
-    },
-    {
-      input: 'row 1'
-    }
-  ];
-  cols = [
-    {
-      input: 'col 0'
-    },
-    {
-      input: 'col 1'
-    }
-  ];
+
   constructor(
     private surveyService: SurveyService,
     private fb: FormBuilder,
@@ -34,12 +20,18 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    // window.scrollTo(0, 0);
     this.surveyService.savedSurvey.subscribe(data => {
       if (data) {
-        // console.log(data);
         this.createQuestionData(data);
       }
     });
+    // this.router.events.subscribe(val => {
+    //   // if (val instanceof NavigationEnd) {
+    //   //     console.log(val);
+    //   // }
+    //   console.log(val);
+    // });
   }
 
   ngOnDestroy() {
@@ -49,7 +41,6 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   updateSelection(radios, radio, e?) {
-    // console.log(radios);
     radios.forEach(el => {
       el.controls.value.setValue(false);
     });
@@ -74,15 +65,45 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     const select = question.controls.select.value;
     const fieldData = question.controls.FieldData;
     this.oldData = fieldData.getRawValue();
-    // console.log(this.oldData);
     this.oldData.forEach(oldFieldData => {
-      if (select === 'single-grid' || select === 'multiple-grid') {
-        fieldData.removeAt(0);
-        this.createRow(fieldData, oldFieldData);
+      let length;
+      switch (select) {
+        case 'short-answer':
+        case 'long-answer':
+          length = fieldData.controls.length;
+          for (let i = 0; i < length; i++) {
+            fieldData.controls[i].controls.input.enable();
+          }
+          break;
+        case 'single-choice':
+        case 'multiple-choice':
+          console.log(this.invoiceForm.controls.QuestionData['controls']);
+          length = fieldData.controls.length;
+          for (let i = 0; i < length; i++) {
+            fieldData.controls[i].controls.value.enable();
+          }
+          break;
+        case 'single-grid':
+        case 'multiple-grid':
+          fieldData.removeAt(0);
+          this.createRow(fieldData, oldFieldData);
+          break;
+        case 'linear-scale':
+          fieldData.removeAt(0);
+          this.createRadio(fieldData, oldFieldData);
+          break;
+        case 'dropdown-menu':
+          // this.addValue(fieldData);
+          const fieldDataArr = fieldData.controls[0].controls.input.controls;
+          fieldDataArr.forEach(field => {
+            field.controls.value.enable();
+          });
+          break;
       }
     });
   }
 
+  // grid
   // rows
   createRow(fieldData, oldFieldData) {
     const group = this.fb.group({
@@ -92,28 +113,56 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     const rowLength = oldFieldData.rows.length;
 
     for (let i = 0; i < rowLength; i++) {
-      this.createGrid(group.controls.rows, oldFieldData);
+      this.createGrid(
+        group.controls.rows,
+        oldFieldData,
+        oldFieldData.rows[i].input
+      );
     }
   }
 
-  createGrid(rows, oldFieldData) {
+  createGrid(rows, oldFieldData, name) {
+    console.log(oldFieldData);
     const group = this.fb.group({
-      input: 'row 0',
+      input: name,
       column: this.fb.array([])
     });
-    // return group;
     rows.push(group);
     const colLength = oldFieldData.columns.length;
     for (let i = 0; i < colLength; i++) {
-      this.createCol(group.controls.column);
+      this.createViewValue(
+        group.controls.column,
+        oldFieldData.columns[i].viewValue
+      );
     }
   }
-  createCol(column) {
+  createViewValue(field, name) {
     const group = this.fb.group({
-      viewValue: 'col 0',
+      viewValue: name,
       value: false
     });
-    // return group;
-    column.push(group);
+    field.push(group);
   }
+  //
+
+  // linear
+  createRadio(fieldData, oldFieldData) {
+    const minValue = oldFieldData.minValue;
+    const maxValue = oldFieldData.maxValue;
+    const group = this.fb.group({
+      minLabel: oldFieldData.minLabel,
+      maxLabel: oldFieldData.maxLabel,
+      radios: this.fb.array([])
+    });
+    fieldData.push(group);
+    for (let i = minValue; i <= maxValue; i++) {
+      this.createViewValue(group.controls.radios, i.toString());
+    }
+  }
+
+  // dropdown
+  // addValue(fieldData) {
+  //   console.log(fieldData);
+
+  // }
 }

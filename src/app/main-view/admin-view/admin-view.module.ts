@@ -11,7 +11,7 @@ import { MatSidenavModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SurveySearchModule } from './Survey-search/Survey-search.module';
 import { ManageBarModule } from './manage-bar/manage-bar.module';
-// import { SurveyGuard } from '../../auth/other/survey.auth';
+import { RouteGuard } from '../../others/route.auth';
 
 @NgModule({
   imports: [
@@ -26,6 +26,6 @@ import { ManageBarModule } from './manage-bar/manage-bar.module';
     MatSidenavModule
   ],
   declarations: [AdminViewComponent],
-  providers: [SurveyGuard, SurveyService]
+  providers: [SurveyGuard, SurveyService, RouteGuard]
 })
 export class AdminViewModule {}

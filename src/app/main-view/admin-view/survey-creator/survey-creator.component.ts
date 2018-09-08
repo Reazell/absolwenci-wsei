@@ -8,6 +8,7 @@ import {
   OnDestroy
 } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import * as cloneDeep from 'lodash/cloneDeep';
 
 @Component({
   selector: 'app-survey-creator',
@@ -15,11 +16,13 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
   styleUrls: ['./survey-creator.component.scss']
 })
 export class SurveyCreatorComponent implements OnInit, OnDestroy {
-  // @ViewChildren('inputs')
-  // inputs: QueryList<any>;
+  @ViewChildren('inputs')
+  inputs: QueryList<any>;
+  @ViewChildren('inputs2')
+  inputs2: QueryList<any>;
   invoiceForm: FormGroup;
   default = 'dropdown-menu';
-  disabled = false;
+  disabled = true;
   selects: Select[] = [
     {
       control: [
@@ -82,12 +85,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       Form_Title: ['Formularz bez nazwy'],
       QuestionData: this.fb.array([this.addRows()])
     });
-
-    // this.router.events.subscribe(val => {
-    //   if (val instanceof NavigationEnd) {
-    //     console.log('NavigationEnd!');
-    //   }
-    // });
   }
   ngOnDestroy() {}
 
@@ -113,6 +110,10 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       `QuestionData`
     ) as FormArray;
     control.push(this.addRows());
+  }
+  copyQuestion(question) {
+    const clonedObject = cloneDeep(question);
+    this.invoiceForm.controls.QuestionData['controls'].push(clonedObject);
   }
   removeQuestion(index) {
     const questionArr = this.invoiceForm.controls.QuestionData as FormArray;
@@ -158,7 +159,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       input: [{ value: '', disabled: this.disabled }]
     });
     FieldData.push(group);
-    // this.autofocusField();
+    this.autofocusField(this.inputs);
   }
   addSelectionGridField(FieldData) {
     const group = this.fb.group({
@@ -183,38 +184,36 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     });
     choiceArr.push(group);
   }
-  see(sth) {
-    console.log(sth);
-  }
   addInputOption(selectArr, name) {
     const length = selectArr.controls.length;
     const group = this.fb.group({
       input: `${name} ${length}`
     });
     selectArr.push(group);
-    // this.autofocusField(length);
+    this.autofocusField(this.inputs2, length);
   }
   addCheckField(selectArr, name) {
-    // console.log(selectArr);
     const length = selectArr.controls.length;
     const group = this.fb.group({
       value: [{ value: false, disabled: this.disabled }],
       viewValue: `${name} ${length}`
     });
     selectArr.push(group);
-    // this.autofocusField();
+    this.autofocusField(this.inputs);
   }
-  // autofocusField(i?) {
-  //   setTimeout(() => {
-  //     if (this.inputs && this.inputs.last) {
-  //       if (!i) {
-  //         this.inputs.last.nativeElement.focus();
-  //       } else {
-  //         this.inputs.toArray()[i].nativeElement.focus();
-  //       }
-  //     }
-  //   }, 0);
-  // }
+
+  autofocusField(inputs, i?) {
+    setTimeout(() => {
+      if (inputs && inputs.last) {
+        if (!i) {
+          inputs.last.nativeElement.focus();
+        } else {
+          inputs.toArray()[i].nativeElement.focus();
+        }
+      }
+    }, 0);
+  }
+
   removeField(index, FieldData) {
     FieldData.removeAt(index);
   }
