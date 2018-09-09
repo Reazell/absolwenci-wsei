@@ -1,4 +1,4 @@
-import { SurveyGuard } from './../../others/survey.auth';
+import { SurveyGuard } from '../../others/survey.auth';
 import { SurveyService } from '../services/survey.services';
 import { SurveyListModule } from './Survey-list/Survey-list.module';
 import { GroupListModule } from './group-list/group-list.module';

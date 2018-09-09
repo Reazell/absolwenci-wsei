@@ -25,7 +25,12 @@ const adminRoutes: Routes = [
       './survey-viewform/survey-viewform.module#SurveyViewformModule',
     canLoad: [SurveyGuard],
     // canActivate: [RouteGuard]
-  }
+  },
+  {
+    path: 'list',
+    loadChildren:
+      './draggable/sortable-list/sortable-list.module#SortableListModule'
+   }
 ];
 
 // export const routing = RouterModule.forRoot(appRoutes);

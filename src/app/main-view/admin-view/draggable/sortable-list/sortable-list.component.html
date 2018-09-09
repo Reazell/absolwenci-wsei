@@ -1,3 +1,16 @@
+<!-- <section>
+  <h2>Part 5 - the sortable list</h2>
+
+  <h3>Vertical</h3>
+
+  <ul appSortableList (sort)="sort($event)">
+    <li *ngFor="let box of sortableList" class="box" appSortable>
+      {{ box }}
+      <div class="box" *appDraggableHelper>{{ box }}</div>
+    </li>
+  </ul>
+</section> -->
+
 <div id="outer-container">
   <div id="container">
     <div id="creator-container">
@@ -7,8 +20,8 @@
             <input matInput placeholder="Nazwa formularza" formControlName="Form_Title" />
           </mat-form-field>
         </div>
-        <div id="questions-container" formArrayName="QuestionData">
-          <div *ngFor="let question of invoiceForm.controls['QuestionData'].controls; let i = index" [formGroupName]="i" class="question-field"
+        <div id="questions-container" formArrayName="QuestionData" appSortableList (sort)="sort($event)">
+          <div *ngFor="let question of invoiceForm.controls['QuestionData'].controls; let i = index" [formGroupName]="i" class="question-field" appSortable
             #qField (click)="focusQuestion(qField)">
             <div class="grip-container">
               <fa-icon class="grip" [icon]="['fas','grip-horizontal']"></fa-icon>
@@ -203,9 +216,8 @@
               </div>
             </div>
           </div>
-          <!-- <div class="box">kto wie</div> -->
+          <!-- <div class="box" *appDraggableHelper>kto wie xd</div> -->
         </div>
-        <button type="button" (click)="onSubmit()">submit</button>
         <!-- <pre>{{invoiceForm.value | json }}</pre> -->
       </form>
     </div>

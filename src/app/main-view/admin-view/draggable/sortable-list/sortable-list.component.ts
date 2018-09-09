@@ -1,26 +1,35 @@
-import { Router, NavigationEnd } from '@angular/router';
-import { SurveyService } from '../../services/survey.services';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SortEvent } from '../sortable-list.directive';
 import {
-  Component,
-  OnInit,
-  ViewChildren,
-  QueryList,
-  OnDestroy
-} from '@angular/core';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+  FormBuilder,
+  FormGroup,
+  FormArray
+} from '../../../../../../node_modules/@angular/forms';
+import { SurveyService } from '../../../services/survey.services';
+import { Router } from '../../../../../../node_modules/@angular/router';
 import * as cloneDeep from 'lodash/cloneDeep';
-import { SortEvent } from '../draggable/sortable-list.directive';
 
 @Component({
-  selector: 'app-survey-creator',
-  templateUrl: './survey-creator.component.html',
-  styleUrls: ['./survey-creator.component.scss']
+  selector: 'app-sortable-list',
+  templateUrl: './sortable-list.component.html',
+  styleUrls: ['./sortable-list.component.scss']
 })
-export class SurveyCreatorComponent implements OnInit, OnDestroy {
-  @ViewChildren('inputs')
-  inputs: QueryList<any>;
-  @ViewChildren('inputs2')
-  inputs2: QueryList<any>;
+export class SortableListComponent implements OnInit, OnDestroy {
+  trappedBoxes = ['Trapped 1', 'Trapped 2'];
+
+  sortableList = [
+    'Box 1',
+    'Box 2',
+    'Box 3',
+    'Box 4',
+    'Box 5',
+    'Box 6',
+    'Box 7',
+    'Box 8',
+    'Box 9',
+    'Box 10'
+  ];
+
   invoiceForm: FormGroup;
   default = 'dropdown-menu';
   disabled = true;
@@ -95,6 +104,18 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     // window.open('http://localhost:4200/app/admin/viewform', '_blank');
   }
 
+  add(): void {
+    this.trappedBoxes.push('New trapped');
+  }
+
+  sort(event: SortEvent) {
+    const current = this.sortableList[event.currentIndex];
+    const swapWith = this.sortableList[event.newIndex];
+
+    this.sortableList[event.newIndex] = current;
+    this.sortableList[event.currentIndex] = swapWith;
+  }
+
   addRows() {
     const group = this.fb.group({
       question: [''],
@@ -163,7 +184,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       input: [{ value: '', disabled: this.disabled }]
     });
     FieldData.push(group);
-    this.autofocusField(this.inputs);
+    // this.autofocusField(this.inputs);
   }
   addSelectionGridField(FieldData) {
     const group = this.fb.group({
@@ -194,7 +215,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       input: `${name} ${length}`
     });
     selectArr.push(group);
-    this.autofocusField(this.inputs2, length);
+    // this.autofocusField(this.inputs2, length);
   }
   addCheckField(selectArr, name) {
     const length = selectArr.controls.length;
@@ -203,7 +224,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       viewValue: `${name} ${length}`
     });
     selectArr.push(group);
-    this.autofocusField(this.inputs);
+    // this.autofocusField(this.inputs);
   }
 
   autofocusField(inputs, i?) {
@@ -267,14 +288,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
           break;
       }
     }
-  }
-
-  sort(sortableList, event: SortEvent) {
-    const current = sortableList[event.currentIndex];
-    const swapWith = sortableList[event.newIndex];
-
-    sortableList[event.newIndex] = current;
-    sortableList[event.currentIndex] = swapWith;
   }
 
   fieldRemoving(FieldData, select) {
