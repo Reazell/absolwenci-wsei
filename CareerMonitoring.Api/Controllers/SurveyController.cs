@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class SurveyController : ApiUserController
     {
         private readonly ISurveyService _surveyService;
@@ -36,24 +36,24 @@ namespace CareerMonitoring.Api.Controllers
         [HttpPost ("multipleChoice/{surveyId}")]
         public async Task<IActionResult> AddMultipleChoiceQuestionToSurvey (int surveyId, [FromBody] QuestionToAdd command)
         {
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
-            try
-            {
-                await _surveyService.AddMultipleChoiceQuestionAsync (surveyId, command.Content);
-                return StatusCode(201);
-            }
-            catch (Exception e)
-            {
-                return BadRequest (e.Message);
+             if (!ModelState.IsValid)
+                 return BadRequest (ModelState);
+             try
+             {
+                 await _surveyService.AddMultipleChoiceQuestionAsync (surveyId, command.Content);
+                 return StatusCode(201);
+             }
+             catch (Exception e)
+             {
+                 return BadRequest (e.Message);
             }
         }
 
         [HttpPost ("singleChoice/{surveyId}")]
         public async Task<IActionResult> AddSingleChoiceQuestionToSurvey (int surveyId, [FromBody] QuestionToAdd command)
         {
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
+            // if (!ModelState.IsValid)
+            //     return BadRequest (ModelState);
             try
             {
                 await _surveyService.AddSingleChoiceQuestionAsync (surveyId, command.Content);

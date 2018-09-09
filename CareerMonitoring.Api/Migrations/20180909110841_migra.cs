@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class migrationzgzzz : Migration
+    public partial class migra : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,8 +46,7 @@ namespace CareerMonitoring.Api.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
-                    Answered = table.Column<bool>(nullable: false),
-                    Answer = table.Column<string>(nullable: true)
+                    Answered = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -309,7 +308,7 @@ namespace CareerMonitoring.Api.Migrations
                     MarkedValue = table.Column<int>(nullable: false),
                     MinLabel = table.Column<string>(nullable: true),
                     MaxLabel = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: true)
+                    SurveyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -329,7 +328,7 @@ namespace CareerMonitoring.Api.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: false),
                     MarkedAnswersNames = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -344,6 +343,27 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OpenQuestions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    Answer = table.Column<string>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OpenQuestions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OpenQuestions_Surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "Surveys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SingleChoices",
                 columns: table => new
                 {
@@ -351,7 +371,7 @@ namespace CareerMonitoring.Api.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
                     MarkedAnswerName = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: true)
+                    SurveyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -442,6 +462,11 @@ namespace CareerMonitoring.Api.Migrations
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OpenQuestions_SurveyId",
+                table: "OpenQuestions",
+                column: "SurveyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SingleChoices_SurveyId",
                 table: "SingleChoices",
                 column: "SurveyId");
@@ -488,6 +513,9 @@ namespace CareerMonitoring.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "MultipleChoices");
+
+            migrationBuilder.DropTable(
+                name: "OpenQuestions");
 
             migrationBuilder.DropTable(
                 name: "SingleChoices");

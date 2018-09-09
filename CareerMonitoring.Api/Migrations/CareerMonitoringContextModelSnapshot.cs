@@ -296,7 +296,7 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<int>("MinValue");
 
-                    b.Property<int?>("SurveyId");
+                    b.Property<int>("SurveyId");
 
                     b.HasKey("Id");
 
@@ -315,13 +315,32 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<string>("MarkedAnswersNames");
 
-                    b.Property<int?>("SurveyId");
+                    b.Property<int>("SurveyId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SurveyId");
 
                     b.ToTable("MultipleChoices");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.OpenQuestion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Answer");
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("SurveyId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyId");
+
+                    b.ToTable("OpenQuestions");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.SingleChoice", b =>
@@ -334,7 +353,7 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<string>("MarkedAnswerName");
 
-                    b.Property<int?>("SurveyId");
+                    b.Property<int>("SurveyId");
 
                     b.HasKey("Id");
 
@@ -348,8 +367,6 @@ namespace CareerMonitoring.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Answer");
 
                     b.Property<bool>("Answered");
 
@@ -513,6 +530,14 @@ namespace CareerMonitoring.Api.Migrations
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Surveys.Survey", "Survey")
                         .WithMany("MultipleChoices")
+                        .HasForeignKey("SurveyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.OpenQuestion", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.Survey", "Survey")
+                        .WithMany("OpenQuestions")
                         .HasForeignKey("SurveyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

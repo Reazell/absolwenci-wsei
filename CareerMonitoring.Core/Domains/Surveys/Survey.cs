@@ -7,10 +7,10 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public string Title { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public bool Answered { get; private set; }
-        public ICollection<LinearScale> LinearScales { get; private set; }
-        public ICollection<SingleChoice> SingleChoices { get; private set; }
-        public ICollection<MultipleChoice> MultipleChoices { get; private set; }
-        public ICollection<OpenQuestion> OpenQuestions { get; private set; }
+        public ICollection<LinearScale> LinearScales { get; private set; } = new List<LinearScale>();
+        public ICollection<SingleChoice> SingleChoices { get; private set; } = new List<SingleChoice>();
+        public ICollection<MultipleChoice> MultipleChoices { get; private set; } = new List<MultipleChoice>();
+        public ICollection<OpenQuestion> OpenQuestions { get; private set; } = new List<OpenQuestion>();
 
         private Survey () {}
 
