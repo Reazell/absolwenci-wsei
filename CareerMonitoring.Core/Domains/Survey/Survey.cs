@@ -32,6 +32,13 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public void AddMultipleChoice (MultipleChoice multipleChoice) {
             MultipleChoices.Add (multipleChoice);
         }
+        public void AddSingleGrid (SingleGrid singleGrid) {
+            SingleGrids.Add (singleGrid);
+        }
+
+        public void AddMultipleGrid (MultipleGrid multipleGrid) {
+            MultipleGrids.Add (multipleGrid);
+        }
 
         public void AddOpenQuestion (OpenQuestion openQuestion) {
             OpenQuestions.Add (openQuestion);
