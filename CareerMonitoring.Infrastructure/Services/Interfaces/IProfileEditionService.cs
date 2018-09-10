@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 
 namespace CareerMonitoring.Infrastructure.Services.Interfaces {
-    public interface IProfileEditionInterface {
+    public interface IProfileEditionService {
         Task AddCertificateAsync (int accountId, string title, DateTime dateOfReceived);
         Task AddCourseAsync (int accountId, string name);
         Task AddEducationAsync (int accountId, string course, int year, string specialization,

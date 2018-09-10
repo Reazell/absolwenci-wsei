@@ -103,7 +103,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmployerService, EmployerService> ();
             services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
             services.AddScoped<ISurveyService, SurveyService> ();
-            services.AddScoped<IProfileEditionInterface, ProfileEditionInterface> ();
+            services.AddScoped<IProfileEditionService, ProfileEditionService> ();
 
             #endregion
             #region Validations

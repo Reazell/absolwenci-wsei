@@ -6,10 +6,10 @@ using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
 namespace CareerMonitoring.Infrastructure.Services {
-    public class ProfileEditionInterface : IProfileEditionInterface {
+    public class ProfileEditionService : IProfileEditionService {
         private readonly IAccountRepository _accountRepository;
 
-        public ProfileEditionInterface (IAccountRepository accountRepository) {
+        public ProfileEditionService (IAccountRepository accountRepository) {
             _accountRepository = accountRepository;
         }
 
