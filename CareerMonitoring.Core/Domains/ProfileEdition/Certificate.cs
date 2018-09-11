@@ -11,7 +11,8 @@ namespace CareerMonitoring.Core.Domains {
 
         protected Certificate () { }
 
-        public Certificate (string title, DateTime dateOfReceived) {
+        public Certificate (int accountId, string title, DateTime dateOfReceived) {
+            AccountId = accountId;
             Title = title;
             DateOfReceived = dateOfReceived;
         }

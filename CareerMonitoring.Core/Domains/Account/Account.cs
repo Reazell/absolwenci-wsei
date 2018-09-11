@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using CareerMonitoring.Core.Domains.Profile;
 
 namespace CareerMonitoring.Core.Domains.Abstract {
     public abstract class Account {

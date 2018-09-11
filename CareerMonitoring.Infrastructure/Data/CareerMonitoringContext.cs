@@ -1,6 +1,5 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
-using CareerMonitoring.Core.Domains.Profile;
 using CareerMonitoring.Core.Domains.Surveys;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,6 +1,6 @@
 using CareerMonitoring.Core.Domains.Abstract;
 
-namespace CareerMonitoring.Core.Domains.Profile {
+namespace CareerMonitoring.Core.Domains {
     public class ProfileLink {
         public int Id { get; private set; }
         public string Content { get; private set; }

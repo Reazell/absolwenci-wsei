@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
@@ -27,38 +28,59 @@ namespace CareerMonitoring.Api.Controllers {
         [Authorize]
         [HttpPut ("accounts/certificate")]
         public async Task<IActionResult> AddCertificate ([FromBody] AddCertificate command) {
-            await _profileEditionService.AddCertificateAsync (UserId, command.Title, command.DateOfReceived);
-            return Ok ();
+            try {
+                await _profileEditionService.AddCertificateAsync (UserId, command.Title, command.DateOfReceived);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
         }
 
         [Authorize]
         [HttpPut ("accounts/courses")]
         public async Task<IActionResult> AddCourse ([FromBody] AddCourse command) {
-            await _profileEditionService.AddCourseAsync (UserId, command.Name);
-            return Ok ();
+            try {
+                await _profileEditionService.AddCourseAsync (UserId, command.Name);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+
         }
 
         [Authorize]
         [HttpPut ("accounts/educations")]
         public async Task<IActionResult> AddEducation ([FromBody] AddEducation command) {
-            await _profileEditionService.AddEducationAsync (UserId, command.Course, command.Year,
-                command.Specialization, command.NameOfUniversity, command.Graduated);
-            return Ok ();
+            try {
+                await _profileEditionService.AddEducationAsync (UserId, command.Course, command.Year,
+                    command.Specialization, command.NameOfUniversity, command.Graduated);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
         }
 
         [Authorize]
         [HttpPut ("accounts/experiences")]
         public async Task<IActionResult> AddExperience ([FromBody] AddExperience command) {
-            await _profileEditionService.AddExperienceAsync (UserId, command.Position, command.CompanyName,
-                command.Location, command.From, command.To, command.IsCurrentJob);
-            return Ok ();
+            try {
+                await _profileEditionService.AddExperienceAsync (UserId, command.Position, command.CompanyName,
+                    command.Location, command.From, command.To, command.IsCurrentJob);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
         }
 
         [Authorize]
         [HttpPut ("accounts/profileLinks")]
         public async Task<IActionResult> AddProfileLink ([FromBody] AddProfileLink command) {
-            await _profileEditionService.AddProfileLinkAsync (UserId, command.Content);
-            return Ok ();
+            try {
+                await _profileEditionService.AddProfileLinkAsync (UserId, command.Content);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
         }
     }
 }

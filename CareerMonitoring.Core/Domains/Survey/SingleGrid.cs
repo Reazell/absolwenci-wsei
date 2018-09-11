@@ -5,8 +5,8 @@ namespace CareerMonitoring.Core.Domains {
     public class SingleGrid {
         public int Id { get; private set; }
         public string Title { get; private set; }
-        public ICollection<string> Rows { get; private set; }
-        public ICollection<string> Cols { get; private set; }
+        // public ICollection<string> Rows { get; private set; }
+        // public ICollection<string> Cols { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
         
@@ -14,11 +14,11 @@ namespace CareerMonitoring.Core.Domains {
             Title = title;
         }
 
-        public void AddRow (string row) {
-            Rows.Add (row);
-        }
-        public void AddCol (string col) {
-            Cols.Add (col);
-        }
+        // public void AddRow (string row) {
+        //     Rows.Add (row);
+        // }
+        // public void AddCol (string col) {
+        //     Cols.Add (col);
+        // }
     }
 }
