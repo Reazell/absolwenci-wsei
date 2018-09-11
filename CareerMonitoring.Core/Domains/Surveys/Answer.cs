@@ -46,9 +46,36 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public SingleChoice SingleChoice { get; private set; }
         public SingleGrid SingleGrid { get; private set; }
 
-        public Answer (string rowTitle, string colTitle) {
-            RowTitle = rowTitle;
-            ColTitle = colTitle;
+        private Answer () {}
+
+        public void AnswerLinearScale ()
+        {
+
+        }
+
+        public void AnswerMultipleChoice ()
+        {
+
+        }
+
+        public void AnswerMultipleGrid ()
+        {
+
+        }
+
+        public void AnswerOpenQuestion ()
+        {
+
+        }
+
+        public void AnswerSingleChoice ()
+        {
+
+        }
+
+        public void AnswerSingleGrid ()
+        {
+
         }
     }
 }

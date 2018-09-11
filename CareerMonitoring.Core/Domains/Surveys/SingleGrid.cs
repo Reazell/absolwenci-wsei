@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using CareerMonitoring.Core.Domains.Surveys;
 
-namespace CareerMonitoring.Core.Domains {
+namespace CareerMonitoring.Core.Domains.Surveys {
     public class SingleGrid {
         public int Id { get; private set; }
         public string Content { get; private set; }
