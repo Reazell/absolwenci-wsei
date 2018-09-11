@@ -11,11 +11,12 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public ICollection<SingleChoice> SingleChoices { get; private set; } = new List<SingleChoice>();
         public ICollection<MultipleChoice> MultipleChoices { get; private set; } = new List<MultipleChoice>();
         public ICollection<OpenQuestion> OpenQuestions { get; private set; } = new List<OpenQuestion>();
+        public ICollection<SingleGrid> SingleGrids { get; private set; }
+        public ICollection<MultipleGrid> MultipleGrids { get; private set; }
 
-        private Survey () {}
+        private Survey () { }
 
-        public Survey (string title)
-        {
+        public Survey (string title) {
             Title = title;
             CreatedAt = DateTime.UtcNow;
         }

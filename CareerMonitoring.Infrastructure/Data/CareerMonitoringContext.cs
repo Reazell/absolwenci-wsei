@@ -10,6 +10,8 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<MultipleChoice> MultipleChoices { get; set; }
         public DbSet<SingleChoice> SingleChoices { get; set; }
         public DbSet<OpenQuestion> OpenQuestions { get; set; }
+        public DbSet<SingleGrid> SingleGrids { get; set; }
+        public DbSet<MultipleGrid> MultipleGrids { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
