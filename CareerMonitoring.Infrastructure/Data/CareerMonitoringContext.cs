@@ -61,36 +61,6 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .WithOne (s => s.Survey)
                 .HasForeignKey (b => b.SurveyId)
                 .OnDelete (DeleteBehavior.Cascade);
-            modelBuilder.Entity<LinearScale> ()
-                .HasMany (a => a.Answers)
-                .WithOne (l => l.LinearScale)
-                .HasForeignKey (b => b.QuestionId)
-                .OnDelete (DeleteBehavior.Restrict);
-            modelBuilder.Entity<SingleChoice> ()
-                .HasMany (a => a.Answers)
-                .WithOne (l => l.SingleChoice)
-                .HasForeignKey (b => b.QuestionId)
-                .OnDelete (DeleteBehavior.Restrict);
-            modelBuilder.Entity<MultipleChoice> ()
-                .HasMany (a => a.Answers)
-                .WithOne (l => l.MultipleChoice)
-                .HasForeignKey (b => b.QuestionId)
-                .OnDelete (DeleteBehavior.Restrict);
-            modelBuilder.Entity<OpenQuestion> ()
-                .HasMany (a => a.Answers)
-                .WithOne (l => l.OpenQuestion)
-                .HasForeignKey (b => b.QuestionId)
-                .OnDelete (DeleteBehavior.Restrict);
-            modelBuilder.Entity<SingleGrid> ()
-                .HasMany (a => a.Answers)
-                .WithOne (l => l.SingleGrid)
-                .HasForeignKey (b => b.QuestionId)
-                .OnDelete (DeleteBehavior.Restrict);
-            modelBuilder.Entity<MultipleGrid> ()
-                .HasMany (a => a.Answers)
-                .WithOne (l => l.MultipleGrid)
-                .HasForeignKey (b => b.QuestionId)
-                .OnDelete (DeleteBehavior.Restrict);
         }
     }
 }

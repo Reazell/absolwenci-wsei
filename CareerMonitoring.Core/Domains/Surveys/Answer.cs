@@ -5,10 +5,9 @@ using System.Linq;
 namespace CareerMonitoring.Core.Domains.Surveys {
     public class Answer {
         public int Id { get; private set; }
-        public string RowTitle { get; private set; }
-        public string ColTitle { get; private set; }
         public int QuestionId { get; private set; }
         public string QuestionType { get; private set;}
+        public string OpenQuestionAnswer { get; private set; }
         public string MarkedAnswers
         {
             get { return string.Join (",", _markedAnswers);}
@@ -47,6 +46,18 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public SingleGrid SingleGrid { get; private set; }
 
         private Answer () {}
+
+        public Answer (string openQuestionAnswer)
+        {
+            QuestionType = "OpenQuestion";
+            OpenQuestionAnswer = openQuestionAnswer;
+        }
+
+        public Answer (ICollection<string> markedAnswers)
+        {
+            QuestionType = "OpenQuestion";
+            _markedAnswers = markedAnswers;
+        }
 
         public void AnswerLinearScale ()
         {
