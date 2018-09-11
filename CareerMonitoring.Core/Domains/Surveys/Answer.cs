@@ -16,6 +16,29 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         }
         [NotMapped]
         public ICollection<string> _markedAnswers { get; private set; }
+        public string MarkedAnswer { get; private set; }
+        public string Rows
+        {
+            get { return string.Join (",", _rows); }
+            private set { _rows = value.Split (',').ToList(); }
+        }
+        [NotMapped]
+        public ICollection<string> _rows { get; private set; }
+        public string MarkedCols
+        {
+            get { return string.Join (",", _cols); }
+            private set { _cols = value.Split (',').ToList(); }
+        }
+        [NotMapped]
+        public ICollection<string> _cols { get; private set; }
+        public string MarkedCol
+        {
+            get { return string.Join (",", _col); }
+            private set { _col = value.Split (',').ToList(); }
+        }
+        [NotMapped]
+        public ICollection<string> _col { get; private set; }
+        public int MarkedValue { get; private set; }
         public LinearScale LinearScale { get; private set; }
         public MultipleChoice MultipleChoice { get; private set; }
         public MultipleGrid MultipleGrid { get; private set; }
