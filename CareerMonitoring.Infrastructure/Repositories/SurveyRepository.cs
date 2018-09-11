@@ -37,13 +37,17 @@ namespace CareerMonitoring.Infrastructure.Repositories
                 .Include(x => x.LinearScales)
                 .Include(x => x.MultipleChoices)
                 .Include(x => x.SingleChoices)
-                .Include(x => x.OpenQuestions).AsEnumerable ());
+                .Include(x => x.OpenQuestions)
+                .Include(x => x.SingleGrids)
+                .Include(x => x.MultipleGrids).AsEnumerable ());
             }
             return await Task.FromResult (_context.Surveys.AsNoTracking ()
                 .Include(x => x.LinearScales)
                 .Include(x => x.MultipleChoices)
                 .Include(x => x.SingleChoices)
-                .Include(x => x.OpenQuestions).AsEnumerable ());
+                .Include(x => x.OpenQuestions)
+                .Include(x => x.SingleGrids)
+                .Include(x => x.MultipleGrids).AsEnumerable ());
         }
 
         public async Task<Survey> GetByIdWithQuestionsAsync(int id, bool isTracking = true)
@@ -54,13 +58,17 @@ namespace CareerMonitoring.Infrastructure.Repositories
                 .Include(x => x.LinearScales)
                 .Include(x => x.MultipleChoices)
                 .Include(x => x.SingleChoices)
-                .Include(x => x.OpenQuestions).SingleOrDefaultAsync (x => x.Id == id);
+                .Include(x => x.OpenQuestions)
+                .Include(x => x.SingleGrids)
+                .Include(x => x.MultipleGrids).SingleOrDefaultAsync (x => x.Id == id);
             }
             return await _context.Surveys.AsNoTracking ()
                 .Include(x => x.LinearScales)
                 .Include(x => x.MultipleChoices)
                 .Include(x => x.SingleChoices)
-                .Include(x => x.OpenQuestions).SingleOrDefaultAsync (x => x.Id == id);
+                .Include(x => x.OpenQuestions)
+                .Include(x => x.SingleGrids)
+                .Include(x => x.MultipleGrids).SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<Survey> GetByTitleWithQuestionsAsync(string title, bool isTracking = true)
@@ -71,13 +79,17 @@ namespace CareerMonitoring.Infrastructure.Repositories
                 .Include(x => x.LinearScales)
                 .Include(x => x.MultipleChoices)
                 .Include(x => x.SingleChoices)
-                .Include(x => x.OpenQuestions).SingleOrDefaultAsync (x => x.Title == title);
+                .Include(x => x.OpenQuestions)
+                .Include(x => x.SingleGrids)
+                .Include(x => x.MultipleGrids).SingleOrDefaultAsync (x => x.Title == title);
             }
             return await _context.Surveys.AsNoTracking ()
                 .Include(x => x.LinearScales)
                 .Include(x => x.MultipleChoices)
                 .Include(x => x.SingleChoices)
-                .Include(x => x.OpenQuestions).SingleOrDefaultAsync (x => x.Title == title);
+                .Include(x => x.OpenQuestions)
+                .Include(x => x.SingleGrids)
+                .Include(x => x.MultipleGrids).SingleOrDefaultAsync (x => x.Title == title);
         }
 
         public async Task<Survey> GetByIdAsync(int id, bool isTracking = true)

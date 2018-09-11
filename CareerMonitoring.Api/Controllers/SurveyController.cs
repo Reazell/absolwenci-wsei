@@ -34,13 +34,13 @@ namespace CareerMonitoring.Api.Controllers
         }
 
         [HttpPost ("multipleChoice/{surveyId}")]
-        public async Task<IActionResult> AddMultipleChoiceQuestionToSurvey (int surveyId, [FromBody] QuestionToAdd command)
+        public async Task<IActionResult> AddMultipleChoiceQuestionToSurvey (int surveyId, [FromBody] ChoiceQuestionToAdd command)
         {
              if (!ModelState.IsValid)
                  return BadRequest (ModelState);
              try
              {
-                 await _surveyService.AddMultipleChoiceQuestionAsync (surveyId, command.Content);
+                 await _surveyService.AddMultipleChoiceQuestionAsync (surveyId, command.Content, command.AnswersOptions);
                  return StatusCode(201);
              }
              catch (Exception e)
@@ -50,13 +50,13 @@ namespace CareerMonitoring.Api.Controllers
         }
 
         [HttpPost ("singleChoice/{surveyId}")]
-        public async Task<IActionResult> AddSingleChoiceQuestionToSurvey (int surveyId, [FromBody] QuestionToAdd command)
+        public async Task<IActionResult> AddSingleChoiceQuestionToSurvey (int surveyId, [FromBody] ChoiceQuestionToAdd command)
         {
             // if (!ModelState.IsValid)
             //     return BadRequest (ModelState);
             try
             {
-                await _surveyService.AddSingleChoiceQuestionAsync (surveyId, command.Content);
+                await _surveyService.AddSingleChoiceQuestionAsync (surveyId, command.Content, command.AnswersOptions);
                 return StatusCode(201);
             }
             catch (Exception e)
@@ -82,13 +82,45 @@ namespace CareerMonitoring.Api.Controllers
         }
 
         [HttpPost ("openQuestion/{surveyId}")]
-        public async Task<IActionResult> AddOpenQuestionToSurvey (int surveyId, [FromBody] QuestionToAdd command)
+        public async Task<IActionResult> AddOpenQuestionToSurvey (int surveyId, [FromBody] OpenQuestionToAdd command)
         {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try
             {
                 await _surveyService.AddOpenQuestionAsync (surveyId, command.Content);
+                return StatusCode(201);
+            }
+            catch (Exception e)
+            {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpPost ("singleGrid/{surveyId}")]
+        public async Task<IActionResult> AddSingleGridQuestionToSurvey (int surveyId, [FromBody] GridQuestionToAdd command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try
+            {
+                await _surveyService.AddSingleGridQuestionAsync (surveyId, command.Content, command.Rows, command.Cols);
+                return StatusCode(201);
+            }
+            catch (Exception e)
+            {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpPost ("multipleGrid/{surveyId}")]
+        public async Task<IActionResult> AddMultipleGridQuestionToSurvey (int surveyId, [FromBody] GridQuestionToAdd command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try
+            {
+                await _surveyService.AddMultipleGridQuestionAsync (surveyId, command.Content, command.Rows, command.Cols);
                 return StatusCode(201);
             }
             catch (Exception e)

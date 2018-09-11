@@ -12,9 +12,11 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces
         Task<IEnumerable<SurveyDto>> GetAllAsync ();
         Task CreateAsync (string title);
         Task AddLinearScaleQuestionAsync (int surveyId, string content, int minValue, int maxValue, string minLabel, string maxLabel);
-        Task AddSingleChoiceQuestionAsync (int surveyId, string content);
-        Task AddMultipleChoiceQuestionAsync (int surveyId, string content);
+        Task AddSingleChoiceQuestionAsync (int surveyId, string content, ICollection<string> answersOptions);
+        Task AddMultipleChoiceQuestionAsync (int surveyId, string content, ICollection<string> answersOptions);
         Task AddOpenQuestionAsync (int surveyId, string content);
+        Task AddSingleGridQuestionAsync (int surveyId, string content, ICollection<string> rows, ICollection<string> cols);
+        Task AddMultipleGridQuestionAsync (int surveyId, string content, ICollection<string> rows, ICollection<string> cols);
         Task DeleteAsync (int id);
         Task UpdateAsync (int id);
     }

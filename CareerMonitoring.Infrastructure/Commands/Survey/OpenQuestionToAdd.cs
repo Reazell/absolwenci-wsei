@@ -1,6 +1,6 @@
 namespace CareerMonitoring.Infrastructure.Commands.Survey
 {
-    public class QuestionToAdd
+    public class OpenQuestionToAdd
     {
         public string Content { get; set; }
     }

@@ -41,6 +41,16 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             OpenQuestions.Add(openQuestion);
         }
 
+        public void AddSingleGrid (SingleGrid singleGrid)
+        {
+            SingleGrids.Add(singleGrid);
+        }
+
+        public void AddMultipleGrid (MultipleGrid multipleGrid)
+        {
+            MultipleGrids.Add(multipleGrid);
+        }
+
         public void MarkAsAnswered ()
         {
             Answered = true;

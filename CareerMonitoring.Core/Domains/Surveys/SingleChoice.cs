@@ -14,26 +14,23 @@ namespace CareerMonitoring.Core.Domains.Surveys
         public string AnswersOptions
         {
             get { return string.Join (",", _answersOptions); }
-            set { _answersOptions = value.Split (',').ToList(); }
+            private set { _answersOptions = value.Split (',').ToList(); }
         }
         [NotMapped]
-        public ICollection<string> _answersOptions { get; set; }
+        public ICollection<string> _answersOptions { get; private set; }
+        public ICollection<Answer> Answers { get; private set; }
 
         private SingleChoice () {}
 
-        public SingleChoice (string content)
+        public SingleChoice (string content, ICollection<string> answerOptions)
         {
             Content = content;
+            _answersOptions = answerOptions;
         }
 
         public void AddAnswerOption (string answerOption)
         {
             _answersOptions.Add(answerOption);
-        }
-
-        public void MarkAnswerOption (string answerOption)
-        {
-            MarkedAnswerName = answerOption;
         }
     }
 }

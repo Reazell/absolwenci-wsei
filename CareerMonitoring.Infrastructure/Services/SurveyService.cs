@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Infrastructure.DTO;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
@@ -38,10 +39,10 @@ namespace CareerMonitoring.Infrastructure.Services
             await _surveyRepository.UpdateAsync (survey);
         }
 
-        public async Task AddMultipleChoiceQuestionAsync(int surveyId, string content)
+        public async Task AddMultipleChoiceQuestionAsync(int surveyId, string content, ICollection<string> answersOptions)
         {
             var survey = await _surveyRepository.GetByIdAsync(surveyId);
-            survey.AddMultipleChoice (new MultipleChoice (content));
+            survey.AddMultipleChoice (new MultipleChoice (content, answersOptions));
             await _surveyRepository.UpdateAsync (survey);
         }
 
@@ -52,10 +53,22 @@ namespace CareerMonitoring.Infrastructure.Services
             await _surveyRepository.UpdateAsync (survey);
         }
 
-        public async Task AddSingleChoiceQuestionAsync(int surveyId, string content)
+        public async Task AddSingleChoiceQuestionAsync(int surveyId, string content, ICollection<string> answersOptions)
         {
             var survey = await _surveyRepository.GetByIdAsync (surveyId);
-            survey.AddSingleChoice (new SingleChoice (content));
+            survey.AddSingleChoice (new SingleChoice (content, answersOptions));
+            await _surveyRepository.UpdateAsync (survey);
+        }
+        public async Task AddSingleGridQuestionAsync (int surveyId, string content, ICollection<string> rows, ICollection<string> cols)
+        {
+            var survey = await _surveyRepository.GetByIdAsync (surveyId);
+            survey.AddSingleGrid (new SingleGrid (content, rows, cols));
+            await _surveyRepository.UpdateAsync (survey);
+        }
+        public async Task AddMultipleGridQuestionAsync (int surveyId, string content, ICollection<string> rows, ICollection<string> cols)
+        {
+            var survey = await _surveyRepository.GetByIdAsync (surveyId);
+            survey.AddMultipleGrid (new MultipleGrid (content, rows, cols));
             await _surveyRepository.UpdateAsync (survey);
         }
 
