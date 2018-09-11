@@ -65,6 +65,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                     .Include (x => x.Experiences)
                     .Include (x => x.Languages)
                     .Include (x => x.ProfileLink)
+                    .Include (x => x.Skills)
                     .SingleOrDefaultAsync (x => x.Id == id);
             return await _context.Accounts.AsNoTracking ()
                 .Include (x => x.Certificates)
@@ -73,6 +74,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .Include (x => x.Experiences)
                 .Include (x => x.Languages)
                 .Include (x => x.ProfileLink)
+                .Include (x => x.Skills)
                 .SingleOrDefaultAsync (x => x.Id == id);
         }
 

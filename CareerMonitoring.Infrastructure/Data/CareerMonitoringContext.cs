@@ -85,6 +85,10 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .WithOne (s => s.Account)
                 .HasForeignKey (b => b.AccountId);
             modelBuilder.Entity<Account> ()
+                .HasMany (a => a.Languages)
+                .WithOne (s => s.Account)
+                .HasForeignKey (b => b.AccountId);
+            modelBuilder.Entity<Account> ()
                 .HasOne (a => a.ProfileLink)
                 .WithOne (s => s.Account)
                 .HasForeignKey<ProfileLink> (b => b.AccountId);
