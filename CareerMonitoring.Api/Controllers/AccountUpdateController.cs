@@ -73,10 +73,32 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [Authorize]
+        [HttpPut ("accounts/languages")]
+        public async Task<IActionResult> AddLanguage ([FromBody] AddLanguage command) {
+            try {
+                await _profileEditionService.AddLanguageAsync (UserId, command.Name, command.Proficiency);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [Authorize]
         [HttpPut ("accounts/profileLinks")]
         public async Task<IActionResult> AddProfileLink ([FromBody] AddProfileLink command) {
             try {
                 await _profileEditionService.AddProfileLinkAsync (UserId, command.Content);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut ("accounts/skills")]
+        public async Task<IActionResult> AddSkills ([FromBody] AddSkill command) {
+            try {
+                await _profileEditionService.AddSkillAsync (UserId, command.SkillId);
                 return Ok ();
             } catch (Exception e) {
                 return BadRequest (e.Message);

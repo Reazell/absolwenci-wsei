@@ -241,7 +241,7 @@ namespace CareerMonitoring.Api.Migrations
                     b.ToTable("Languages");
                 });
 
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Profile.ProfileLink", b =>
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.ProfileLink", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -538,11 +538,11 @@ namespace CareerMonitoring.Api.Migrations
                         .HasForeignKey("AccountId");
                 });
 
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Profile.ProfileLink", b =>
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.ProfileLink", b =>
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
                         .WithOne("ProfileLink")
-                        .HasForeignKey("CareerMonitoring.Core.Domains.Profile.ProfileLink", "AccountId")
+                        .HasForeignKey("CareerMonitoring.Core.Domains.ProfileLink", "AccountId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

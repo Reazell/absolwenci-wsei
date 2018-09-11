@@ -9,6 +9,8 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces {
             string nameOfUniveristy, bool graduated);
         Task AddExperienceAsync (int accountId, string position, string companyName, string location,
             DateTime from, DateTime to, bool isCurrentJob);
+        Task AddLanguageAsync (int accountId, string name, string proficiency);
         Task AddProfileLinkAsync (int accountId, string content);
+        Task AddSkillAsync (int accountId, int skillId);
     }
 }

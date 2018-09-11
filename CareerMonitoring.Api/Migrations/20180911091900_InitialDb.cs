@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class migrationzgzzz : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,9 +29,7 @@ namespace CareerMonitoring.Api.Migrations
                     CompanyName = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true),
                     CompanyDescription = table.Column<string>(nullable: true),
-                    ProfileLink = table.Column<string>(nullable: true),
-                    IndexNumber = table.Column<string>(nullable: true),
-                    Student_ProfileLink = table.Column<string>(nullable: true)
+                    IndexNumber = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,8 +44,7 @@ namespace CareerMonitoring.Api.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
-                    Answered = table.Column<bool>(nullable: false),
-                    Answer = table.Column<string>(nullable: true)
+                    Answered = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,62 +96,48 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Certificate",
+                name: "Certificates",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     DateOfReceived = table.Column<DateTime>(nullable: false),
-                    GraduateId = table.Column<int>(nullable: true),
-                    StudentId = table.Column<int>(nullable: true)
+                    AccountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Certificate", x => x.Id);
+                    table.PrimaryKey("PK_Certificates", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Certificate_Accounts_GraduateId",
-                        column: x => x.GraduateId,
+                        name: "FK_Certificates_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Certificate_Accounts_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Course",
+                name: "Courses",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    GraduateId = table.Column<int>(nullable: true),
-                    StudentId = table.Column<int>(nullable: true)
+                    AccountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Course", x => x.Id);
+                    table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Course_Accounts_GraduateId",
-                        column: x => x.GraduateId,
+                        name: "FK_Courses_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Course_Accounts_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Education",
+                name: "Educations",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -162,29 +145,23 @@ namespace CareerMonitoring.Api.Migrations
                     Course = table.Column<string>(nullable: true),
                     Year = table.Column<int>(nullable: false),
                     Specialization = table.Column<string>(nullable: true),
-                    Graduate = table.Column<bool>(nullable: false),
-                    GraduateId = table.Column<int>(nullable: true),
-                    StudentId = table.Column<int>(nullable: true)
+                    NameOfUniversity = table.Column<string>(nullable: true),
+                    Graduated = table.Column<bool>(nullable: false),
+                    AccountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Education", x => x.Id);
+                    table.PrimaryKey("PK_Educations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Education_Accounts_GraduateId",
-                        column: x => x.GraduateId,
+                        name: "FK_Educations_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Education_Accounts_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Experience",
+                name: "Experiences",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -194,28 +171,22 @@ namespace CareerMonitoring.Api.Migrations
                     Location = table.Column<string>(nullable: true),
                     From = table.Column<DateTime>(nullable: false),
                     To = table.Column<DateTime>(nullable: false),
-                    GraduateId = table.Column<int>(nullable: true),
-                    StudentId = table.Column<int>(nullable: true)
+                    IsCurrentJob = table.Column<bool>(nullable: false),
+                    AccountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Experience", x => x.Id);
+                    table.PrimaryKey("PK_Experiences", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Experience_Accounts_GraduateId",
-                        column: x => x.GraduateId,
+                        name: "FK_Experiences_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Experience_Accounts_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "JobOffer",
+                name: "JobOffers",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -233,9 +204,9 @@ namespace CareerMonitoring.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobOffer", x => x.Id);
+                    table.PrimaryKey("PK_JobOffers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_JobOffer_Accounts_EmployerId",
+                        name: "FK_JobOffers_Accounts_EmployerId",
                         column: x => x.EmployerId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
@@ -243,55 +214,61 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Language",
+                name: "Languages",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Proficiency = table.Column<string>(nullable: true),
-                    GraduateId = table.Column<int>(nullable: true),
-                    StudentId = table.Column<int>(nullable: true)
+                    AccountId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Language", x => x.Id);
+                    table.PrimaryKey("PK_Languages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Language_Accounts_GraduateId",
-                        column: x => x.GraduateId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Language_Accounts_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_Languages_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Skill",
+                name: "ProfileLinks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    AccountId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProfileLinks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProfileLinks_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Skills",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    GraduateId = table.Column<int>(nullable: true),
-                    StudentId = table.Column<int>(nullable: true)
+                    AccountId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Skill", x => x.Id);
+                    table.PrimaryKey("PK_Skills", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Skill_Accounts_GraduateId",
-                        column: x => x.GraduateId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Skill_Accounts_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_Skills_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -309,7 +286,7 @@ namespace CareerMonitoring.Api.Migrations
                     MarkedValue = table.Column<int>(nullable: false),
                     MinLabel = table.Column<string>(nullable: true),
                     MaxLabel = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: true)
+                    SurveyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -329,7 +306,7 @@ namespace CareerMonitoring.Api.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: false),
                     MarkedAnswersNames = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -344,6 +321,47 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MultipleGrids",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MultipleGrids", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MultipleGrids_Surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "Surveys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OpenQuestions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    Answer = table.Column<string>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OpenQuestions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OpenQuestions_Surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "Surveys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SingleChoices",
                 columns: table => new
                 {
@@ -351,7 +369,7 @@ namespace CareerMonitoring.Api.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
                     MarkedAnswerName = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: true)
+                    SurveyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -362,6 +380,47 @@ namespace CareerMonitoring.Api.Migrations
                         principalTable: "Surveys",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SingleGrids",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    SurveyId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SingleGrids", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SingleGrids_Surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "Surveys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Answer",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RowTitle = table.Column<string>(nullable: true),
+                    ColTitle = table.Column<string>(nullable: true),
+                    MultipleGridId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answer", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Answer_MultipleGrids_MultipleGridId",
+                        column: x => x.MultipleGridId,
+                        principalTable: "MultipleGrids",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -377,59 +436,39 @@ namespace CareerMonitoring.Api.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Certificate_GraduateId",
-                table: "Certificate",
-                column: "GraduateId");
+                name: "IX_Answer_MultipleGridId",
+                table: "Answer",
+                column: "MultipleGridId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Certificate_StudentId",
-                table: "Certificate",
-                column: "StudentId");
+                name: "IX_Certificates_AccountId",
+                table: "Certificates",
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Course_GraduateId",
-                table: "Course",
-                column: "GraduateId");
+                name: "IX_Courses_AccountId",
+                table: "Courses",
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Course_StudentId",
-                table: "Course",
-                column: "StudentId");
+                name: "IX_Educations_AccountId",
+                table: "Educations",
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Education_GraduateId",
-                table: "Education",
-                column: "GraduateId");
+                name: "IX_Experiences_AccountId",
+                table: "Experiences",
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Education_StudentId",
-                table: "Education",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Experience_GraduateId",
-                table: "Experience",
-                column: "GraduateId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Experience_StudentId",
-                table: "Experience",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_JobOffer_EmployerId",
-                table: "JobOffer",
+                name: "IX_JobOffers_EmployerId",
+                table: "JobOffers",
                 column: "EmployerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Language_GraduateId",
-                table: "Language",
-                column: "GraduateId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Language_StudentId",
-                table: "Language",
-                column: "StudentId");
+                name: "IX_Languages_AccountId",
+                table: "Languages",
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LinearScales_SurveyId",
@@ -442,19 +481,35 @@ namespace CareerMonitoring.Api.Migrations
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MultipleGrids_SurveyId",
+                table: "MultipleGrids",
+                column: "SurveyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OpenQuestions_SurveyId",
+                table: "OpenQuestions",
+                column: "SurveyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProfileLinks_AccountId",
+                table: "ProfileLinks",
+                column: "AccountId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SingleChoices_SurveyId",
                 table: "SingleChoices",
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Skill_GraduateId",
-                table: "Skill",
-                column: "GraduateId");
+                name: "IX_SingleGrids_SurveyId",
+                table: "SingleGrids",
+                column: "SurveyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Skill_StudentId",
-                table: "Skill",
-                column: "StudentId");
+                name: "IX_Skills_AccountId",
+                table: "Skills",
+                column: "AccountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -466,22 +521,25 @@ namespace CareerMonitoring.Api.Migrations
                 name: "AccountRestoringPasswords");
 
             migrationBuilder.DropTable(
-                name: "Certificate");
+                name: "Answer");
 
             migrationBuilder.DropTable(
-                name: "Course");
+                name: "Certificates");
 
             migrationBuilder.DropTable(
-                name: "Education");
+                name: "Courses");
 
             migrationBuilder.DropTable(
-                name: "Experience");
+                name: "Educations");
 
             migrationBuilder.DropTable(
-                name: "JobOffer");
+                name: "Experiences");
 
             migrationBuilder.DropTable(
-                name: "Language");
+                name: "JobOffers");
+
+            migrationBuilder.DropTable(
+                name: "Languages");
 
             migrationBuilder.DropTable(
                 name: "LinearScales");
@@ -490,16 +548,28 @@ namespace CareerMonitoring.Api.Migrations
                 name: "MultipleChoices");
 
             migrationBuilder.DropTable(
+                name: "OpenQuestions");
+
+            migrationBuilder.DropTable(
+                name: "ProfileLinks");
+
+            migrationBuilder.DropTable(
                 name: "SingleChoices");
 
             migrationBuilder.DropTable(
-                name: "Skill");
+                name: "SingleGrids");
 
             migrationBuilder.DropTable(
-                name: "Surveys");
+                name: "Skills");
+
+            migrationBuilder.DropTable(
+                name: "MultipleGrids");
 
             migrationBuilder.DropTable(
                 name: "Accounts");
+
+            migrationBuilder.DropTable(
+                name: "Surveys");
         }
     }
 }

@@ -7,9 +7,12 @@ using CareerMonitoring.Infrastructure.Services.Interfaces;
 namespace CareerMonitoring.Infrastructure.Services {
     public class ProfileEditionService : IProfileEditionService {
         private readonly IAccountRepository _accountRepository;
+        private readonly ISkillRepository _skillRepository;
 
-        public ProfileEditionService (IAccountRepository accountRepository) {
+        public ProfileEditionService (IAccountRepository accountRepository,
+            ISkillRepository skillRepository) {
             _accountRepository = accountRepository;
+            _skillRepository = skillRepository;
         }
 
         public async Task AddCertificateAsync (int accountId, string title, DateTime dateOfReceived) {
@@ -52,10 +55,31 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
+        public async Task AddLanguageAsync (int accountId, string name, string proficiency) {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            try {
+                account.AddLanguage (new Language (name, proficiency));
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new Exception (e.Message);
+            }
+        }
+
         public async Task AddProfileLinkAsync (int accountId, string content) {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
                 account.AddProfileLink (new ProfileLink (content));
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new Exception (e.Message);
+            }
+        }
+
+        public async Task AddSkillAsync (int accountId, int skillId) {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            var skill = await _skillRepository.GetByIdAsync (skillId);
+            try {
+                account.AddSkill (skill);
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
                 throw new Exception (e.Message);
