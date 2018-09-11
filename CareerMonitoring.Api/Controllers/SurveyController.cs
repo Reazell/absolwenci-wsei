@@ -17,7 +17,14 @@ namespace CareerMonitoring.Api.Controllers
             _surveyService = surveyService;
         }
 
-        [HttpPost ("createSurvey")]
+        [HttpGet ("surveys/{surveyId}")]
+        public async Task<IActionResult> GetSurvey (int surveyId)
+        {
+            var survey = await _surveyService.GetByIdAsync (surveyId);
+            return Json(survey);
+        }
+
+        [HttpPost ("surveys")]
         public async Task<IActionResult> CreateSurvey ([FromBody] CreateSurvey command)
         {
             if (!ModelState.IsValid)
@@ -33,27 +40,27 @@ namespace CareerMonitoring.Api.Controllers
             }
         }
 
-        [HttpPost ("multipleChoice/{surveyId}")]
+        [HttpPost ("multipleChoices/{surveyId}")]
         public async Task<IActionResult> AddMultipleChoiceQuestionToSurvey (int surveyId, [FromBody] ChoiceQuestionToAdd command)
         {
              if (!ModelState.IsValid)
-                 return BadRequest (ModelState);
+                return BadRequest (ModelState);
              try
              {
-                 await _surveyService.AddMultipleChoiceQuestionAsync (surveyId, command.Content, command.AnswersOptions);
-                 return StatusCode(201);
+                await _surveyService.AddMultipleChoiceQuestionAsync (surveyId, command.Content, command.AnswersOptions);
+                return StatusCode(201);
              }
              catch (Exception e)
              {
-                 return BadRequest (e.Message);
+                return BadRequest (e.Message);
             }
         }
 
-        [HttpPost ("singleChoice/{surveyId}")]
+        [HttpPost ("singleChoices/{surveyId}")]
         public async Task<IActionResult> AddSingleChoiceQuestionToSurvey (int surveyId, [FromBody] ChoiceQuestionToAdd command)
         {
-            // if (!ModelState.IsValid)
-            //     return BadRequest (ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
             try
             {
                 await _surveyService.AddSingleChoiceQuestionAsync (surveyId, command.Content, command.AnswersOptions);
@@ -65,7 +72,7 @@ namespace CareerMonitoring.Api.Controllers
             }
         }
 
-        [HttpPost ("linearScale/{surveyId}")]
+        [HttpPost ("linearScales/{surveyId}")]
         public async Task<IActionResult> AddLinearScaleQuestionToSurvey (int surveyId, [FromBody] LinearScaleQuestionToAdd command)
         {
             if (!ModelState.IsValid)
@@ -81,7 +88,7 @@ namespace CareerMonitoring.Api.Controllers
             }
         }
 
-        [HttpPost ("openQuestion/{surveyId}")]
+        [HttpPost ("openQuestions/{surveyId}")]
         public async Task<IActionResult> AddOpenQuestionToSurvey (int surveyId, [FromBody] OpenQuestionToAdd command)
         {
             if (!ModelState.IsValid)
@@ -97,7 +104,7 @@ namespace CareerMonitoring.Api.Controllers
             }
         }
 
-        [HttpPost ("singleGrid/{surveyId}")]
+        [HttpPost ("singleGrids/{surveyId}")]
         public async Task<IActionResult> AddSingleGridQuestionToSurvey (int surveyId, [FromBody] GridQuestionToAdd command)
         {
             if (!ModelState.IsValid)
@@ -113,7 +120,7 @@ namespace CareerMonitoring.Api.Controllers
             }
         }
 
-        [HttpPost ("multipleGrid/{surveyId}")]
+        [HttpPost ("multipleGrids/{surveyId}")]
         public async Task<IActionResult> AddMultipleGridQuestionToSurvey (int surveyId, [FromBody] GridQuestionToAdd command)
         {
             if (!ModelState.IsValid)

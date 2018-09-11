@@ -124,6 +124,7 @@ namespace CareerMonitoring.Api {
 
             services.AddScoped<IEmailFactory, EmailFactory> ();
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
+            services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
 
             #endregion
         }

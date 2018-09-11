@@ -4,6 +4,6 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces
 {
     public interface ISurveyEmailFactory
     {
-        Task SendSurveyEmailAsync ();
+        Task SendSurveyEmailAsync (int surveyId);
     }
 }

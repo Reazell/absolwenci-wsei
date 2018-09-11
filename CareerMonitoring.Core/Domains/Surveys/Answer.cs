@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+
 namespace CareerMonitoring.Core.Domains.Surveys {
     public class Answer {
         public int Id { get; private set; }
@@ -5,6 +9,13 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public string ColTitle { get; private set; }
         public int QuestionId { get; private set; }
         public string QuestionType { get; private set;}
+        public string MarkedAnswers
+        {
+            get { return string.Join (",", _markedAnswers);}
+            private set { _markedAnswers = value.Split (',').ToList(); }
+        }
+        [NotMapped]
+        public ICollection<string> _markedAnswers { get; private set; }
         public LinearScale LinearScale { get; private set; }
         public MultipleChoice MultipleChoice { get; private set; }
         public MultipleGrid MultipleGrid { get; private set; }
