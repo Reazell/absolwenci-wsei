@@ -18,7 +18,7 @@ namespace CareerMonitoring.Api.Controllers {
             _profileEditionService = profileEditionService;
         }
 
-        [HttpPut ("{id}")]
+        [HttpPut ("accounts/{id}")]
         public async Task<IActionResult> AccountUpdate (int id, [FromBody] UpdateAccount command) {
             await _accountService.UpdateAsync (id, command.Name, command.Surname, command.Email,
                 command.PhoneNumber, command.CompanyName, command.Location, command.CompanyDescription);
