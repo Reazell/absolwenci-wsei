@@ -22,5 +22,10 @@ namespace CareerMonitoring.Core.Domains.Surveys
             MinLabel = minLabel;
             MaxLabel = maxLabel;
         }
+
+        public void MarkValue (int markedValue)
+        {
+            MarkedValue = markedValue;
+        }
     }
 }
