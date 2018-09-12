@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
 
-namespace CareerMonitoring.Core.Domains.Surveys.Answer
+namespace CareerMonitoring.Core.Domains.Surveys.Answers
 {
-    public class MultipleChoiceAnswer
+    public class MultipleChoiceAnswer : Answer
     {
-        public int Id { get; private set; }
-        public int QuestionId { get; private set; }
-        public string QuestionType { get; private set; }
         public string MarkedAnswers
         {
             get { return string.Join (",", _markedAnswers);}

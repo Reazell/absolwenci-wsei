@@ -1,10 +1,9 @@
-namespace CareerMonitoring.Core.Domains.Surveys.Answer
+using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
+
+namespace CareerMonitoring.Core.Domains.Surveys.Answers
 {
-    public class OpenQuestionAnswer
+    public class OpenQuestionAnswer : Answer
     {
-        public int Id { get; private set; }
-        public int QuestionId { get; private set; }
-        public string QuestionType { get; private set;}
         public string Answer { get; private set; }
         public OpenQuestion OpenQuestion { get; private set; }
 

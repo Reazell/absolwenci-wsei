@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using CareerMonitoring.Core.Domains.Surveys.Answer;
+using CareerMonitoring.Core.Domains.Surveys.Answers;
 
 namespace CareerMonitoring.Core.Domains.Surveys
 {

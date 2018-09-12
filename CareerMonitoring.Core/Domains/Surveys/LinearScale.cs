@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using CareerMonitoring.Core.Domains.Surveys.Answer;
+using CareerMonitoring.Core.Domains.Surveys.Answers;
 
 namespace CareerMonitoring.Core.Domains.Surveys
 {

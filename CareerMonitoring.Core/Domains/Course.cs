@@ -4,7 +4,7 @@ namespace CareerMonitoring.Core.Domains {
         public string Name { get; private set; }
 
         protected Course () { }
-        
+
         public Course (string name) {
             Name = name;
         }

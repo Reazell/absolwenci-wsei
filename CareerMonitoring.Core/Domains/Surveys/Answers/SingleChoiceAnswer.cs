@@ -1,13 +1,12 @@
-namespace CareerMonitoring.Core.Domains.Surveys.Answer
+using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
+
+namespace CareerMonitoring.Core.Domains.Surveys.Answers
 {
-    public class SingleChoiceAnswer
+    public class SingleChoiceAnswer : Answer
     {
-        public int Id { get; private set; }
-        public int QuestionId { get; private set; }
-        public string QuestionType { get; private set; }
         public string MarkedAnswer { get; private set; }
         public SingleChoice SingleChoice { get; private set; }
-        
+
         private SingleChoiceAnswer () {}
 
         public SingleChoiceAnswer (string markedAnswer)

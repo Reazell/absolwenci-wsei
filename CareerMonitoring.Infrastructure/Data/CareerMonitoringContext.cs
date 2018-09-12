@@ -1,6 +1,8 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.Surveys;
+using CareerMonitoring.Core.Domains.Surveys.Answers;
+using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
@@ -12,6 +14,13 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<OpenQuestion> OpenQuestions { get; set; }
         public DbSet<SingleGrid> SingleGrids { get; set; }
         public DbSet<MultipleGrid> MultipleGrids { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<LinearScaleAnswer> LinearScalesAnswers { get; set; }
+        public DbSet<MultipleChoiceAnswer> MultipleChoicesAnswers { get; set; }
+        public DbSet<SingleChoiceAnswer> SingleChoicesAnswers { get; set; }
+        public DbSet<OpenQuestionAnswer> OpenQuestionsAnswers { get; set; }
+        public DbSet<SingleGridAnswer> SingleGridsAnswers { get; set; }
+        public DbSet<MultipleGridAnswer> MultipleGridsAnswers { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }

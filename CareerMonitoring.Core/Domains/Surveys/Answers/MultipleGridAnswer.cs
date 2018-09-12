@@ -1,12 +1,10 @@
 using System.Linq;
+using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
 
-namespace CareerMonitoring.Core.Domains.Surveys.Answer
+namespace CareerMonitoring.Core.Domains.Surveys.Answers
 {
-    public class MultipleGridAnswer
+    public class MultipleGridAnswer : Answer
     {
-        public int Id { get; private set; }
-        public int QuestionId { get; private set; }
-        public string QuestionType { get; private set; }
         public string RowTitle { get; private set; }
         public string ColTitle { get; private set; }
 
