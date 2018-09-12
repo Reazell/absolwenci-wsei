@@ -60,6 +60,30 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .WithOne (s => s.Survey)
                 .HasForeignKey (b => b.SurveyId)
                 .OnDelete (DeleteBehavior.Cascade);
+            modelBuilder.Entity<LinearScale> ()
+                .HasMany (a => a.LinearScaleAnswers)
+                .WithOne (s => s.LinearScale)
+                .HasForeignKey (b => b.QuestionId);
+            modelBuilder.Entity<MultipleChoice> ()
+                .HasMany (a => a.MultipleChoiceAnswers)
+                .WithOne (s => s.MultipleChoice)
+                .HasForeignKey (b => b.QuestionId);
+            modelBuilder.Entity<MultipleGrid> ()
+                .HasMany (a => a.MultipleGridAnswers)
+                .WithOne (s => s.MultipleGrid)
+                .HasForeignKey (b => b.QuestionId);
+            modelBuilder.Entity<OpenQuestion> ()
+                .HasMany (a => a.OpenQuestionAnswers)
+                .WithOne (s => s.OpenQuestion)
+                .HasForeignKey (b => b.QuestionId);
+            modelBuilder.Entity<SingleChoice> ()
+                .HasMany (a => a.SingleChoiceAnswers)
+                .WithOne (s => s.SingleChoice)
+                .HasForeignKey (b => b.QuestionId);
+            modelBuilder.Entity<SingleGrid> ()
+                .HasMany (a => a.SingleGridAnswers)
+                .WithOne (s => s.SingleGrid)
+                .HasForeignKey (b => b.QuestionId);
         }
     }
 }
