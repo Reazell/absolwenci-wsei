@@ -32,15 +32,5 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             _rows = rows;
             _cols = cols;
         }
-
-        public void AddRow (string row) {
-            _rows.Add(row);
-        }
-        public void AddCol (string col) {
-            _cols.Add (col);
-        }
-        public void AddAnswer (Answer answer) {
-            Answers.Add (answer);
-        }
     }
 }

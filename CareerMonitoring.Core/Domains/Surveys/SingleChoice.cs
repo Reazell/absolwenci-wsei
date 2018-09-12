@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using CareerMonitoring.Core.Domains.Surveys.Answer;
 
 namespace CareerMonitoring.Core.Domains.Surveys
 {
@@ -18,7 +19,7 @@ namespace CareerMonitoring.Core.Domains.Surveys
         }
         [NotMapped]
         public ICollection<string> _answersOptions { get; private set; }
-        public ICollection<Answer> Answers { get; private set; }
+        public ICollection<SingleChoiceAnswer> SingleChoiceAnswers { get; private set; }
 
         private SingleChoice () {}
 

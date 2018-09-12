@@ -6,6 +6,7 @@ namespace CareerMonitoring.Core.Domains.Surveys.Answer
         public int QuestionId { get; private set; }
         public string QuestionType { get; private set;}
         public string Answer { get; private set; }
+        public OpenQuestion OpenQuestion { get; private set; }
 
         private OpenQuestionAnswer () {}
 

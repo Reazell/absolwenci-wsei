@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using CareerMonitoring.Core.Domains.Surveys.Answer;
 
 namespace CareerMonitoring.Core.Domains.Surveys {
     public class MultipleGrid {
@@ -20,9 +21,9 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         }
         [NotMapped]
         public ICollection<string> _cols { get; private set; }
-        public ICollection<Answer> Answers { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
+        public ICollection<MultipleGridAnswer> MultipleGridAnswers { get; private set; }
 
         private MultipleGrid () {}
 
@@ -30,13 +31,6 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             Content = content;
             _rows = rows;
             _cols = cols;
-        }
-
-        public void AddRow (string row) {
-            _rows.Add (row);
-        }
-        public void AddCol (string col) {
-            _cols.Add (col);
         }
     }
 }

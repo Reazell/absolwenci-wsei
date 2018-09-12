@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CareerMonitoring.Core.Domains.Surveys.Answer;
 
 namespace CareerMonitoring.Core.Domains.Surveys
 {
@@ -8,8 +9,7 @@ namespace CareerMonitoring.Core.Domains.Surveys
         public string Content { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
-        public ICollection<Answer> Answers { get; private set; }
-
+        public ICollection<OpenQuestionAnswer> OpenQuestionAnswers { get; private set; }
         private OpenQuestion () {}
 
         public OpenQuestion (string content)

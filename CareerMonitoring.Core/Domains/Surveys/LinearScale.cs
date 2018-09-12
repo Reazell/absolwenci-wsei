@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CareerMonitoring.Core.Domains.Surveys.Answer;
 
 namespace CareerMonitoring.Core.Domains.Surveys
 {
@@ -12,7 +13,7 @@ namespace CareerMonitoring.Core.Domains.Surveys
         public string MaxLabel { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
-
+        public ICollection<LinearScaleAnswer> LinearScaleAnswers { get; private set; }
         private LinearScale () {}
 
         public LinearScale (string content, int minValue, int maxValue, string minLabel, string maxLabel)

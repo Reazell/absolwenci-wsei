@@ -12,7 +12,7 @@ namespace CareerMonitoring.Core.Domains.Surveys.Answer
         public string RowTitle { get; private set; }
         public string ColTitle { get; private set; }
 
-        public MultipleGrid MultipleGrid { get; private set; }
+        public SingleGrid MultipleGrid { get; private set; }
 
         private SingleGridAnswer () {}
 
