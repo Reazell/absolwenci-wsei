@@ -12,7 +12,6 @@ namespace CareerMonitoring.Core.Domains.Surveys
         public string MaxLabel { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
-        public ICollection<Answer> Answers { get; private set; }
 
         private LinearScale () {}
 

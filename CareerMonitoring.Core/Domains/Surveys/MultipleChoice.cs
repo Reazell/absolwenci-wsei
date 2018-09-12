@@ -19,7 +19,6 @@ namespace CareerMonitoring.Core.Domains.Surveys
         }
         [NotMapped]
         public ICollection<string> _answersOptions { get; private set; }
-        public ICollection<Answer> Answers { get; private set; }
 
         private MultipleChoice () {}
 

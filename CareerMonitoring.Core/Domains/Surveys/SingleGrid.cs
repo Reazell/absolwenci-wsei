@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using CareerMonitoring.Core.Domains.Surveys.Answer;
 
 namespace CareerMonitoring.Core.Domains.Surveys {
     public class SingleGrid {
@@ -20,7 +21,7 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         }
         [NotMapped]
         public ICollection<string> _cols { get; private set; }
-        public ICollection<Answer> Answers { get; private set; }
+        public ICollection<SingleGridAnswer> SingleGridAnswers { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
 

@@ -6,5 +6,13 @@ namespace CareerMonitoring.Core.Domains.Surveys.Answer
         public int QuestionId { get; private set; }
         public string QuestionType { get; private set;}
         public int MarkedValue { get; private set; }
+
+        private LinearScaleAnswer () {}
+
+        public LinearScaleAnswer (int markedValue)
+        {
+            MarkedValue = markedValue;
+            QuestionType = "linearScale";
+        }
     }
 }

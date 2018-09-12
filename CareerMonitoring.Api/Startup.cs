@@ -94,7 +94,6 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IMultipleChoiceRepository, MultipleChoiceRepository> ();
             services.AddScoped<ISingleChoiceRepository, SingleChoiceRepository> ();
             services.AddScoped<IOpenQuestionRepository, OpenQuestionRepository> ();
-            services.AddScoped<IAnswerRepository, AnswerRepository> ();
 
             #endregion
             #region Services
