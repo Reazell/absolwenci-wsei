@@ -1,9 +1,7 @@
-import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app.config';
-import { RequestOptions } from '@angular/http';
 import { User } from '../../models/user.model';
 
 @Injectable()
@@ -26,7 +24,7 @@ export class UserService {
     });
   }
   createGraduate(user) {
-    return this.http.post(this.config.apiUrl + '/auth/employers', {
+    return this.http.post(this.config.apiUrl + '/auth/graduates', {
       Email: user.email,
       Password: user.password,
       Name: user.firstName,
@@ -35,7 +33,7 @@ export class UserService {
     });
   }
   createEmployer(user) {
-    return this.http.post(this.config.apiUrl + '/auth/graduates', {
+    return this.http.post(this.config.apiUrl + '/auth/employers', {
       IndexNumber: user.albumID,
       Email: user.email,
       Password: user.password,
@@ -62,9 +60,8 @@ export class UserService {
     });
   }
 
-  changePasswordByRestoringPassword(Email, Token, NewPassword) {
-    return this.http.put(this.config.apiUrl + '/auth/restorePassword', {
-      Email,
+  changePasswordByRestoringPassword(Token, NewPassword) {
+    return this.http.post(this.config.apiUrl + '/auth/changePasswordByRestoringPassword', {
       Token,
       NewPassword
     });

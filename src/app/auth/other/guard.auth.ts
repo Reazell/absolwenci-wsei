@@ -1,17 +1,12 @@
 import { UserService } from '../services/user.service';
 import { Injectable } from '@angular/core';
-import {
-  Router,
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from '@angular/router';
+import { Router, CanLoad } from '@angular/router';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanLoad {
   constructor(private router: Router, private userService: UserService) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canLoad() {
     if (localStorage.getItem('currentUser')) {
       // logged in so return true
       this.userService.isLogged.next(true);
@@ -20,7 +15,7 @@ export class AuthGuard implements CanActivate {
 
     // not logged in so redirect to login page with previous url
     this.userService.isLogged.next(false);
-    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    this.router.navigateByUrl('/auth/login');
     return false;
   }
 }

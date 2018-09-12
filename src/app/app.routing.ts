@@ -8,7 +8,7 @@ const appRoutes: Routes = [
   {
     path: 'app',
     loadChildren: './main-view/main-view.module#MainViewModule',
-    // canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'info',

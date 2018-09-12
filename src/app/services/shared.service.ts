@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  AbstractControl,
-  FormGroup
-} from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
@@ -37,11 +34,19 @@ export class SharedService {
         if (control.errors !== null && control.touched) {
           if (controlName === 'lastName') {
             controlName = 'last name';
+          } else if (controlName === 'phoneNum') {
+            controlName = 'phone number';
+          } else if (controlName === 'companyName') {
+            controlName = 'company name';
+          } else if (controlName === 'oldPassword') {
+            controlName = 'old password';
+          } else if (controlName === 'newPassword') {
+            controlName = 'new password';
           }
-          if (control.value && control.value.length === 0) {
+          if (control.value !== undefined && control.value.length === 0) {
             errorStr = 'Enter your ' + controlName;
           } else {
-            if (controlName === 'password') {
+            if (controlName === 'password' || controlName === 'newPassword') {
               errorStr =
                 // tslint:disable-next-line:max-line-length
                 'Użyj co najmniej ośmiu znaków, w tym jednocześnie liter, cyfr i symboli: !#$%&?';

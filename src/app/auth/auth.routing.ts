@@ -34,6 +34,11 @@ const authRoutes: Routes = [
       {
         path: 'admin',
         loadChildren: './admin/admin.module#AdminModule'
+      },
+      {
+        path: 'password',
+        loadChildren:
+          './password-change/password-change.module#PasswordChangeModule'
       }
     ]
   }

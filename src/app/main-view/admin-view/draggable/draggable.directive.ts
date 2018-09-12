@@ -1,21 +1,28 @@
+import { GrippableDirective } from './grippable.directive';
 import {
   Directive,
   EventEmitter,
   HostBinding,
   HostListener,
   Output,
-  ElementRef
+  ElementRef,
+  ContentChild,
+  forwardRef,
+  AfterContentInit
 } from '@angular/core';
 
 @Directive({
   selector: '[appDraggable]'
 })
-export class DraggableDirective {
+export class DraggableDirective implements AfterContentInit {
   @HostBinding('class.draggable')
   draggable = true;
 
-  pointerId?: number;
+  @ContentChild(forwardRef(() => GrippableDirective))
+  grippable;
 
+  pointerId?: number;
+  mouseDownElement: any;
   // to trigger pointer-events polyfill
   @HostBinding('attr.touch-action')
   touchAction = 'none';
@@ -26,11 +33,23 @@ export class DraggableDirective {
   dragMove = new EventEmitter<PointerEvent>();
   @Output()
   dragEnd = new EventEmitter<PointerEvent>();
+  // @Output()
+  // scroll = new EventEmitter<Event>();
 
   @HostBinding('class.dragging')
   dragging = false;
 
+  ngAfterContentInit() {}
+
   constructor(public element: ElementRef) {}
+
+  // @HostListener('window:mousewheel', ['$event'])
+  // public onWindowScroll(event: Event): void {
+  //   if (this.mouseDownElement) {
+  //     // console.log('scrolled');
+  //     this.scroll.emit(event);
+  //   }
+  // }
 
   @HostListener('pointerdown', ['$event'])
   onPointerDown(event: PointerEvent): void {
@@ -38,11 +57,19 @@ export class DraggableDirective {
     if (event.button !== 0) {
       return;
     }
+    // if(event.target)
+    // console.log(this.grippable.element.nativeElement.className);
+    // console.log(this.grippable.element.nativeElement, event.target);
 
-    this.pointerId = event.pointerId;
+    if (this.grippable.element.nativeElement === event.target) {
+      // event.stopPropagation();
+      this.mouseDownElement = event.target;
+      event.preventDefault();
+      this.pointerId = event.pointerId;
 
-    this.dragging = true;
-    this.dragStart.emit(event);
+      this.dragging = true;
+      this.dragStart.emit(event);
+    }
   }
 
   @HostListener('document:pointermove', ['$event'])
@@ -50,7 +77,6 @@ export class DraggableDirective {
     if (!this.dragging || event.pointerId !== this.pointerId) {
       return;
     }
-
     this.dragMove.emit(event);
   }
 
@@ -61,8 +87,9 @@ export class DraggableDirective {
     if (!this.dragging || event.pointerId !== this.pointerId) {
       return;
     }
-
+    this.mouseDownElement = undefined;
     this.dragging = false;
     this.dragEnd.emit(event);
+    window.getSelection().removeAllRanges();
   }
 }

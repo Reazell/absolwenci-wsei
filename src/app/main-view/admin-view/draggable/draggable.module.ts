@@ -6,6 +6,7 @@ import { DraggableDirective } from './draggable.directive';
 import { DraggableHelperDirective } from './draggable-helper.directive';
 import { SortableDirective } from './sortable.directive';
 import { SortableListDirective } from './sortable-list.directive';
+import { GrippableDirective } from './grippable.directive';
 
 @NgModule({
   imports: [CommonModule, OverlayModule],
@@ -13,14 +14,16 @@ import { SortableListDirective } from './sortable-list.directive';
     DraggableDirective,
     DraggableHelperDirective,
     SortableDirective,
-    SortableListDirective
+    SortableListDirective,
+    GrippableDirective
   ],
   exports: [
     DraggableDirective,
     DraggableHelperDirective,
     SortableListDirective,
-    SortableDirective
+    SortableDirective,
+    GrippableDirective
   ],
-  providers: [DraggableDirective]
+  providers: [GrippableDirective]
 })
 export class DraggableModule {}

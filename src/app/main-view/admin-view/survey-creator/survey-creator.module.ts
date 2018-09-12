@@ -1,3 +1,4 @@
+import { DraggableModule } from '../draggable/draggable.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,8 @@ import { SurveyCreatorComponent } from './survey-creator.component';
     MaterialsModule,
     MatRadioModule,
     MatCheckboxModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DraggableModule
   ],
   declarations: [SurveyCreatorComponent]
 })

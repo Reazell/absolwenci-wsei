@@ -32,8 +32,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   email: AbstractControl;
   password: AbstractControl;
 
-  // loader
+  // booleans
   loading = false;
+  recoveryRoute = false;
 
   // error handlers
   emailErrorStr: string;
@@ -53,7 +54,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy() {
-    this.userService.passMailData(this.email.value);
+    if (this.recoveryRoute === true) {
+      this.userService.passMailData(this.email.value);
+    }
     this.sharedService.deleteControlArray();
   }
 
@@ -70,10 +73,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           Validators.pattern(this.emailPattern)
         ])
       ],
-      password: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(5)])
-      ]
+      password: ['', Validators.compose([Validators.required])]
     });
 
     // connecting controls with form inputs
@@ -94,6 +94,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         .subscribe(
           data => {
             console.log(data);
+            this.userService.isLogged.next(true);
             // if login is successful, redirect to app
             this.routeSwitch(data.role);
           },
@@ -137,5 +138,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
       return true;
     }
+  }
+
+  setRecoveryRoute() {
+    this.recoveryRoute = true;
   }
 }

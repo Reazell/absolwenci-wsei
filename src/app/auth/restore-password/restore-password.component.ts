@@ -1,61 +1,74 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  AbstractControl,
+  FormBuilder,
+  Validators
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-restore-password',
   templateUrl: './restore-password.component.html',
   styleUrls: ['./restore-password.component.scss']
 })
-export class RestorePasswordComponent implements OnInit {
+export class RestorePasswordComponent {
+  loader = false;
   passwordForm: FormGroup;
-  email: AbstractControl;
-  newPassword: AbstractControl;
+  passwordErrorStr: string;
+  password: AbstractControl;
   token: string;
   href: string[];
-  passwordPattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$';
+  passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private sharedService: SharedService
   ) {
     this.passwordForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      newPassword: [
+      password: [
         '',
-        [
-          Validators.required
-          // Validators.pattern(this.passwordPattern)
-        ]
+        [Validators.required, Validators.pattern(this.passwordPattern)]
       ]
     });
-    this.email = this.passwordForm.controls['email'];
-    this.newPassword = this.passwordForm.controls['newPassword'];
+    this.password = this.passwordForm.controls['password'];
     this.href = this.router.url.split('/');
     this.token = this.href[this.href.length - 1];
   }
 
   onSubmit(form) {
-    console.log(this.email.errors);
-    console.log(this.newPassword.errors);
-    console.log(form.valid);
     if (form.valid) {
+      this.loader = true;
       this.userService
-        .changePasswordByRestoringPassword(
-          this.email.value,
-          this.token,
-          this.newPassword.value
-        )
+        .changePasswordByRestoringPassword(this.token, this.password.value)
         .subscribe(
           data => {
+            this.loader = false;
             console.log(data);
+            this.router.navigateByUrl('auth/login');
           },
           error => {
+            this.loader = false;
             console.log(error);
           }
         );
     }
   }
-  ngOnInit() {}
+  inputError(control: AbstractControl): boolean {
+    // get error message and control name in string
+    const errorObj = this.sharedService.inputError(control);
+
+    // assign error to input
+    if (errorObj) {
+      switch (errorObj.controlName) {
+        case 'password':
+          this.passwordErrorStr = errorObj.errorStr;
+          break;
+      }
+      return true;
+    }
+  }
 }

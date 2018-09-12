@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatRadioModule } from '@angular/material';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 export const routes: Routes = [{ path: '', component: RegisterComponent }];
 
@@ -17,7 +18,8 @@ export const routes: Routes = [{ path: '', component: RegisterComponent }];
     ReactiveFormsModule,
     CommonModule,
     MatRadioModule,
-    ProgressBarModule
+    ProgressBarModule,
+    FontAwesomeModule
   ],
   providers: [SharedService],
   declarations: [RegisterComponent],

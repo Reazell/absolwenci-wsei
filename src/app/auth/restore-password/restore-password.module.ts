@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaterialsModule } from '../../materials/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 export const routes: Routes = [
   { path: '', component: RestorePasswordComponent }
@@ -17,7 +18,8 @@ export const routes: Routes = [
     MaterialsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    ProgressBarModule
   ],
   declarations: [RestorePasswordComponent]
 })

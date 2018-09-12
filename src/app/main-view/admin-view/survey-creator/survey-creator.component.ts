@@ -22,8 +22,9 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   @ViewChildren('inputs2')
   inputs2: QueryList<any>;
   invoiceForm: FormGroup;
-  default = 'dropdown-menu';
+  default = 'single-choice';
   disabled = true;
+  index = 0;
   selects: Select[] = [
     {
       control: [
@@ -75,6 +76,22 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     delete: 'Usuń pytanie'
   };
 
+  // sort(sortableList, event: SortEvent) {
+  //   if (this.index === 0) {
+  //     // console.log(sortableList);
+  //     // console.log(event);
+  //     const current = sortableList[event.currentIndex];
+  //     const swapWith = sortableList[event.newIndex];
+
+  //     sortableList[event.newIndex] = current;
+  //     sortableList[event.currentIndex] = swapWith;
+  //     this.index++;
+  //   } else {
+  //     this.index = 0;
+  //   }
+  // }
+  //
+
   constructor(
     private fb: FormBuilder,
     private surveyService: SurveyService,
@@ -84,9 +101,15 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.invoiceForm = this.fb.group({
       Form_Title: ['Formularz bez nazwy'],
+      Created_Date: [new Date().toLocaleDateString()],
+      Created_Time: [new Date().toLocaleTimeString()],
       QuestionData: this.fb.array([this.addRows()])
     });
   }
+
+  // let date = new Date().toLocaleDateString(); //dd.mm.rrrr
+  // let time = new Date().toLocaleTimeString();
+
   ngOnDestroy() {}
 
   onSubmit() {
@@ -269,14 +292,9 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     }
   }
 
-  sort(sortableList, event: SortEvent) {
-    const current = sortableList[event.currentIndex];
-    const swapWith = sortableList[event.newIndex];
-
-    sortableList[event.newIndex] = current;
-    sortableList[event.currentIndex] = swapWith;
+  see(f) {
+    console.log(f);
   }
-
   fieldRemoving(FieldData, select) {
     const length = FieldData.controls.length - 1;
     for (let i = length; i >= 0; i--) {

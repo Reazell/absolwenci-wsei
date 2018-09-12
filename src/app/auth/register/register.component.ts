@@ -55,12 +55,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
   loading = false;
   // profiles tooltip
   profiles = [
-    { value: 'Student', message: 'Student' },
+    { value: 'Student', icon: 'pen', message: 'Student' },
     {
       value: 'Graduate',
+      icon: 'graduation-cap',
       message: 'Absolwent'
     },
-    { value: 'Employer', message: 'Pracodawca' }
+    { value: 'Employer', icon: 'briefcase', message: 'Pracodawca' }
   ];
 
   // tslint:disable-next-line:max-line-length
@@ -122,7 +123,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       profileName: ['Student', Validators.required],
       albumID: ['', Validators.required],
       phoneNum: ['', Validators.required],
-      companyName: [''],
+      companyName: ['', Validators.required],
       location: [''],
       companyDescription: ['']
     });
@@ -141,14 +142,47 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.companyDescription = this.regForm.controls['companyDescription'];
   }
 
+  hide(profile) {
+    this.setAllAsUntouched();
+    switch (profile) {
+      case 'Graduate':
+        this.albumID.clearValidators();
+        this.albumID.updateValueAndValidity();
+      // tslint:disable-next-line:no-switch-case-fall-through
+      case 'Student':
+        this.companyName.clearValidators();
+        this.companyName.updateValueAndValidity();
+        break;
+      case 'Employer':
+        this.albumID.clearValidators();
+        this.albumID.updateValueAndValidity();
+        break;
+    }
+    this.show(profile);
+  }
+  show(profile) {
+    switch (profile) {
+      case 'Student':
+        this.albumID.setValidators([Validators.required]);
+        this.albumID.updateValueAndValidity();
+        break;
+      case 'Employer':
+        this.companyName.setValidators([Validators.required]);
+        this.companyName.updateValueAndValidity();
+        break;
+    }
+  }
+
   onSubmit(form: NgForm): void {
     if (!form.valid) {
       // showing possible errors
       this.setAllAsTouched();
+      console.log(this.email);
     } else {
       this.loading = true;
       this.createUser();
       // create new user
+      console.log(this.profileName.value);
       switch (this.profileName.value) {
         case 'Student':
           this.userService.createStudent(this.user).subscribe(
@@ -221,13 +255,25 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.password.markAsTouched();
     this.passwordConfirm.markAsTouched();
     this.albumID.markAsTouched();
+    this.companyName.markAsTouched();
+    this.phoneNum.markAsTouched();
+  }
+  setAllAsUntouched(): void {
+    this.name.markAsUntouched();
+    this.lastName.markAsUntouched();
+    this.email.markAsUntouched();
+    this.password.markAsUntouched();
+    this.passwordConfirm.markAsUntouched();
+    this.albumID.markAsUntouched();
+    this.companyName.markAsUntouched();
+    this.phoneNum.markAsUntouched();
   }
 
   onFocus(control: AbstractControl): void {
     // hide possible errors
-    if (control.touched) {
-      control.markAsUntouched();
-    }
+    // if (control.touched) {
+    control.markAsUntouched();
+    // }
     this.registrationError = false;
   }
 
@@ -275,16 +321,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
         case 'password':
           this.passwordErrorStr = errorObj.errorStr;
           break;
+        case 'albumID':
+          this.albumIDErrorStr = errorObj.errorStr;
+          break;
+        case 'phone number':
+          this.phoneNumErrorStr = errorObj.errorStr;
+          break;
       }
       return true;
     }
   }
 
-  passwordNoMatch(control: AbstractControl): boolean {
-    /*show error while passwords do not match*/
-    if (this.password.value.length === 0) {
-      this.passwordConfirmErrorStr = 'This input cannot be empty';
-    } else if (this.passwordConfirm.errors) {
+  passwordNoMatch(): boolean {
+     if (this.passwordConfirm.errors) {
       if (this.passwordConfirm.errors.noMatch === undefined) {
         this.passwordConfirmErrorStr = 'Passwords do not match';
         return true;

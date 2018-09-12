@@ -17,4 +17,7 @@
     <li class="menu-item" [routerLink]="['/info/employer']">Dla Firm</li>
     <li class="menu-item" [routerLink]="['/info/contact']">Kontakt</li>
   </ul>
+  <ul id="menu" *ngIf="isLogged === true">
+    <li class="menu-item" [routerLink]="['/auth/password']">zmień hasło</li>
+  </ul>
 </div>

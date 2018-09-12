@@ -4,7 +4,9 @@ import {
   Directive,
   EventEmitter,
   Output,
-  QueryList
+  QueryList,
+  forwardRef,
+  HostListener
 } from '@angular/core';
 import { SortableDirective } from './sortable.directive';
 
@@ -31,21 +33,41 @@ const vCenter = (rect: ClientRect): number => {
   selector: '[appSortableList]'
 })
 export class SortableListDirective implements AfterContentInit {
-  @ContentChildren(SortableDirective)
+  @ContentChildren(forwardRef(() => SortableDirective))
   sortables: QueryList<SortableDirective>;
-
+  length;
   @Output()
   sort = new EventEmitter<SortEvent>();
 
   private clientRects: ClientRect[];
 
   ngAfterContentInit(): void {
-    this.sortables.forEach(sortable => {
-      sortable.dragStart.subscribe(() => this.measureClientRects());
-      sortable.dragMove.subscribe(event => this.detectSorting(sortable, event));
+    // console.log(this.sortables);
+    this.length = this.sortables.length;
+    this.sortables.changes.subscribe(changes => {
+      if (this.length !== changes.length) {
+        // console.log('changes');
+        this.evaluateSortables();
+        this.length = changes.length;
+      }
     });
+    this.evaluateSortables();
   }
 
+  evaluateSortables() {
+    this.sortables.forEach(sortable => {
+      sortable.dragStart.subscribe(() => {
+        this.measureClientRects();
+      });
+      // sortable.scroll.subscribe(() => {
+      //   // console.log('lol');
+      //   this.measureClientRects();
+      // });
+      sortable.dragMove.subscribe(event => {
+        this.detectSorting(sortable, event);
+      });
+    });
+  }
   private measureClientRects() {
     this.clientRects = this.sortables.map(sortable =>
       sortable.element.nativeElement.getBoundingClientRect()
@@ -84,9 +106,10 @@ export class SortableListDirective implements AfterContentInit {
             : event.clientY > vCenter(rect));
 
         if (moveBack || moveForward) {
+          const newIndex = this.clientRects.indexOf(rect);
           this.sort.emit({
             currentIndex: currentIndex,
-            newIndex: this.clientRects.indexOf(rect)
+            newIndex: newIndex
           });
 
           return true;
