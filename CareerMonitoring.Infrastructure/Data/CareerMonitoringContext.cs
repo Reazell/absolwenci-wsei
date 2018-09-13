@@ -3,6 +3,7 @@ using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Core.Domains.Surveys.Answers;
 using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
+using CareerMonitoring.Core.Domains.Surveys.Score;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
@@ -35,6 +36,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<ProfileLink> ProfileLinks { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Answer> Answers { get; set; }
+        public DbSet<SurveyScore> SurveyScores { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 
