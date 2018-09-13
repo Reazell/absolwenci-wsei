@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using CareerMonitoring.Core.Domains.Surveys.Answers;
 using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
 using CareerMonitoring.Infrastructure.DTO;
@@ -11,6 +12,7 @@ namespace CareerMonitoring.Infrastructure.Services
 {
     public class AnswerService : IAnswerService
     {
+        private readonly IMapper _mapper;
         private readonly IAnswerRepository _answerRepository;
         private readonly ILinearScaleAnswerRepository _linearScaleAnswerRepository;
         private readonly IMultipleChoiceAnswerRepository _multipleChoiceAnswerRepository;
@@ -19,7 +21,8 @@ namespace CareerMonitoring.Infrastructure.Services
         private readonly ISingleChoiceAnswerRepository _singleChoiceAnswerRepository;
         private readonly ISingleGridAnswerRepository _singleGridAnswerRepository;
 
-        public AnswerService(IAnswerRepository answerRepository,
+        public AnswerService(IMapper mapper,
+        IAnswerRepository answerRepository,
         ILinearScaleAnswerRepository linearScaleAnswerRepository,
         IMultipleChoiceAnswerRepository multipleChoiceAnswerRepository,
         IMultipleGridAnswerRepository multipleGridAnswerRepository,
@@ -27,6 +30,7 @@ namespace CareerMonitoring.Infrastructure.Services
         ISingleChoiceAnswerRepository singleChoiceAnswerRepository,
         ISingleGridAnswerRepository singleGridAnswerRepository)
         {
+            _mapper = mapper;
             _answerRepository = answerRepository;
             _linearScaleAnswerRepository = linearScaleAnswerRepository;
             _multipleChoiceAnswerRepository = multipleChoiceAnswerRepository;
@@ -63,19 +67,22 @@ namespace CareerMonitoring.Infrastructure.Services
             }
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var answer = await _answerRepository.GetByIdAsync (id);
+            await _answerRepository.DeleteAsync (answer);
         }
 
-        public Task<IEnumerable<AnswerDto>> GetAllForQuestionAsync(int questionId)
+        public async Task<IEnumerable<AnswerDto>> GetAllForQuestionAsync(int questionId)
         {
-            throw new System.NotImplementedException();
+            var answers = await _answerRepository.GetAllByQuestionIdAsync (questionId);
+            return _mapper.Map<IEnumerable<AnswerDto>> (answers);
         }
 
-        public Task<AnswerDto> GetByIdAsync(int id)
+        public async Task<AnswerDto> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var answer = await _answerRepository.GetByIdAsync (id);
+            return _mapper.Map<AnswerDto> (answer);
         }
     }
 }
