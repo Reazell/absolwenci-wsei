@@ -22,6 +22,10 @@ const mainRoutes: Routes = [
       {
         path: 'employer',
         loadChildren: './employer-view/employer-view.module#EmployerViewModule'
+      },
+      {
+        path: 'settings',
+        loadChildren: './settings/settings.module#SettingsModule'
       }
     ]
   }

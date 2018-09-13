@@ -17,7 +17,15 @@
     <li class="menu-item" [routerLink]="['/info/employer']">Dla Firm</li>
     <li class="menu-item" [routerLink]="['/info/contact']">Kontakt</li>
   </ul>
-  <ul id="menu" *ngIf="isLogged === true">
-    <li class="menu-item" [routerLink]="['/auth/password']">zmień hasło</li>
-  </ul>
+
+  <div id="profile-container" *ngIf="isLogged === true">
+    <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger">
+      <!-- <div id="userDisplayName">{{account?.name}} {{account?.surname}}</div> -->
+      <img src="./../../../assets/profile-image.jpg">
+    </div>
+
+    <mat-menu #userInfo="matMenu" id="sth" [overlapTrigger]="false">
+      <app-user-info trigger=open></app-user-info>
+    </mat-menu>
+  </div>
 </div>

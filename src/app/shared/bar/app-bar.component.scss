@@ -1,66 +1,122 @@
 @import '../../../styles/colors.scss';
+
 #bar {
-    height: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 5px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  #container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0px 5px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
-    #container {
-        display: flex;
-        align-items: center;
-        #sidenavToggler {
-            color: $primary;
-            height: 50px;
-            width: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            cursor: pointer;
-        }
-        #logo {
-            transform: scale(0.8);
-            margin: 0px 25px;
-            img {
-                width: 200px;
-                height: 60px;
-            }
-        }
+    #sidenavToggler {
+      color: $primary;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
     }
-    #menu {
-        white-space: nowrap;
-        list-style: none;
-        padding-right: 15px;
-        .menu-item {
-            display: inline-block;
-            margin: 0px 10px;
-            font-size: 15px;
-            color: $grey;
-            cursor: pointer;
-            padding: 15px 5px;
-            border-radius: 3px;
-            outline: none;
-        }
-        .menu-item:hover {
-            background-color: $primary;
-            color: white;
-        }
+    #logo {
+      transform: scale(0.8);
+      margin: 0px 25px;
+      img {
+        width: 200px;
+        height: 60px;
+      }
     }
+  }
+  #menu {
+    white-space: nowrap;
+    list-style: none;
+    padding-right: 15px;
+    .menu-item {
+      display: inline-block;
+      margin: 0px 10px;
+      font-size: 15px;
+      color: $grey;
+      cursor: pointer;
+      padding: 15px 5px;
+      border-radius: 3px;
+      outline: none;
+    }
+    .menu-item:hover {
+      background-color: $primary;
+      color: white;
+    }
+  }
+  #userInfo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    // color: $white;
+
+    height: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+
+    #userDisplayName {
+      height: auto;
+      margin: 5px;
+    }
+
+    img {
+      display: block;
+      background-clip: content-box;
+      user-select: none;
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+
+      border-radius: 30px;
+      border: 3px solid $primary;
+      object-fit: cover;
+    }
+
+    app-user-info {
+      display: none;
+      position: absolute;
+
+      left: 0px;
+      top: 100%;
+    }
+  }
+  #userInfo.mat-menu-content {
+    background-color: #000000 !important;
+  }
+
+  #userInfo.active {
+    // background-color: rgba($accent, 0.5);
+
+    app-user-info {
+      display: block;
+    }
+
+    img {
+      display: none;
+    }
+  }
 }
 
 @media (max-width: 800px) {
-    #bar {
-        #container {
-            #logo {
-                margin-left: 20px;
-            }
-        }
-        #menu {
-            .menu-item {
-                font-size: 13px;
-                margin: 5px;
-            }
-        }
+  #bar {
+    #container {
+      #logo {
+        margin-left: 20px;
+      }
     }
+    #menu {
+      .menu-item {
+        font-size: 13px;
+        margin: 5px;
+      }
+    }
+  }
 }

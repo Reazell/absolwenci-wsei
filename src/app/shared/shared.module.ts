@@ -6,6 +6,7 @@ import { MaterialsModule } from '../materials/materials.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedService } from '../services/shared.service';
+import { UserInfoComponent } from './bar/user-info/user-info.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { SharedService } from '../services/shared.service';
     RouterModule,
     FontAwesomeModule
   ],
-  declarations: [AppBarComponent],
+  declarations: [AppBarComponent, UserInfoComponent],
   exports: [AppBarComponent],
   providers: [SharedService],
   entryComponents: []

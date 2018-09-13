@@ -10,10 +10,10 @@ const appRoutes: Routes = [
     loadChildren: './main-view/main-view.module#MainViewModule',
     canLoad: [AuthGuard]
   },
-  {
-    path: 'info',
-    loadChildren: './info/info.module#InfoModule'
-  },
+  // {
+  //   path: 'info',
+  //   loadChildren: './info/info.module#InfoModule'
+  // },
 
   { path: '**', redirectTo: '/auth/login' }
 ];

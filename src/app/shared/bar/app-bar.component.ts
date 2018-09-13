@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { UserService } from '../../auth/services/user.service';
+import { MatMenuTrigger } from '../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-bar',

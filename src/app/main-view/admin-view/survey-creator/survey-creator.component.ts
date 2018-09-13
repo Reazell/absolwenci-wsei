@@ -21,10 +21,15 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   inputs: QueryList<any>;
   @ViewChildren('inputs2')
   inputs2: QueryList<any>;
+
   invoiceForm: FormGroup;
   default = 'single-choice';
   disabled = true;
   index = 0;
+
+  // subs
+  createSurveySub: any;
+
   selects: Select[] = [
     {
       control: [
@@ -96,7 +101,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private surveyService: SurveyService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.invoiceForm = this.fb.group({
@@ -105,12 +111,17 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       Created_Time: [new Date().toLocaleTimeString()],
       QuestionData: this.fb.array([this.addRows()])
     });
+    // this.createSurvey();
   }
 
-  // let date = new Date().toLocaleDateString(); //dd.mm.rrrr
-  // let time = new Date().toLocaleTimeString();
-
-  ngOnDestroy() {}
+  createSurvey() {
+    this.createSurveySub = this.surveyService.createSurvey().subscribe(() => {
+      console.log('created');
+    });
+  }
+  ngOnDestroy() {
+    this.createSurveySub.unsubscribe();
+  }
 
   onSubmit() {
     this.surveyService.saveSurvey(this.invoiceForm);

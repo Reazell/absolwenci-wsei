@@ -25,7 +25,9 @@ import {
   faGripHorizontal,
   faPen,
   faGraduationCap,
-  faBriefcase
+  faBriefcase,
+  faCog,
+  faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -37,7 +39,9 @@ library.add(
   faGripHorizontal,
   faPen,
   faGraduationCap,
-  faBriefcase
+  faBriefcase,
+  faCog,
+  faUserAlt
 );
 
 @NgModule({

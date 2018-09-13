@@ -10,7 +10,7 @@ export class SurveyService {
   savedSurvey: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
   constructor(private http: HttpClient, private config: AppConfig) {}
 
-  sendSurvey(survey) {
+  sendSurveyEmail(survey) {
     return this.http
       .post<any>(this.config.apiUrl + '/email', {
         Subject: 'testowe wysyłanie',
@@ -23,5 +23,24 @@ export class SurveyService {
 
   saveSurvey(form: FormGroup): void {
     this.savedSurvey.next(form);
+  }
+  sendSurvey(survey) {
+    return this.http
+      .post<any>(this.config.apiUrl + '/email', {
+        Subject: 'testowe wysyłanie',
+        Body: survey
+      })
+      .map(data => {
+        return data;
+      });
+  }
+  createSurvey() {
+    return this.http
+      .post<any>(this.config.apiUrl + '/survey/surveys', {
+        Title: 'testowy tytuł'
+      })
+      .map(data => {
+        return data;
+      });
   }
 }
