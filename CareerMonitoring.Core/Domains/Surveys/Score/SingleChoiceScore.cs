@@ -7,9 +7,10 @@ namespace CareerMonitoring.Core.Domains.Surveys.Score {
         public SurveyScore SurveyScore { get; private set; }
         public string Result { get; private set; }
 
-        public SingleChoiceScore (SingleChoice singlechoice) {
+        public SingleChoiceScore (SingleChoice singlechoice, string result) {
             SingleChoice = singlechoice;
             Content = singlechoice.Content;
+            Result = result;
         }
     }
 }
