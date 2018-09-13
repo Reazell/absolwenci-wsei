@@ -7,6 +7,7 @@ namespace CareerMonitoring.Core.Domains.Surveys.Answers
         public string MarkedAnswer { get; private set; }
         public SingleChoice SingleChoice { get; private set; }
 
+
         private SingleChoiceAnswer () {}
 
         public SingleChoiceAnswer (string markedAnswer)

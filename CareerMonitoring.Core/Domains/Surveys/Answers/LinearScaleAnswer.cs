@@ -6,6 +6,7 @@ namespace CareerMonitoring.Core.Domains.Surveys.Answers
     {
         public int MarkedValue { get; private set; }
         public LinearScale LinearScale { get; private set; }
+        
 
         private LinearScaleAnswer () {}
 

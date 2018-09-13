@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using CareerMonitoring.Core.Domains.Surveys.Answers;
+using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
 
 namespace CareerMonitoring.Core.Domains.Surveys
 {

@@ -1,20 +1,25 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Survey;
+using CareerMonitoring.Infrastructure.Data;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SurveyController : ApiUserController
     {
+        private readonly ISingleChoiceRepository _singleChoiceRepository;
         private readonly ISurveyService _surveyService;
 
-        public SurveyController (ISurveyService surveyService)
+        public SurveyController (ISurveyService surveyService, ISingleChoiceRepository singleChoiceRepository)
         {
             _surveyService = surveyService;
+            _singleChoiceRepository = singleChoiceRepository;
         }
 
         [HttpGet ("survey/{surveyId}")]
@@ -23,6 +28,7 @@ namespace CareerMonitoring.Api.Controllers
             var survey = await _surveyService.GetByIdAsync (surveyId);
             return Json(survey);
         }
+
         [HttpGet ("surveys")]
         public async Task<IActionResult> GetAllSurveys ()
         {

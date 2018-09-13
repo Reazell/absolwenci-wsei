@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class migrs : Migration
+    public partial class migzzzsxd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -433,16 +433,17 @@ namespace CareerMonitoring.Api.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    RowTitle = table.Column<string>(nullable: true),
-                    ColTitle = table.Column<string>(nullable: true),
                     QuestionId = table.Column<int>(nullable: false),
                     QuestionType = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    MarkedValue = table.Column<int>(nullable: true),
                     MarkedAnswers = table.Column<string>(nullable: true),
+                    RowTitle = table.Column<string>(nullable: true),
+                    ColTitle = table.Column<string>(nullable: true),
+                    Answer = table.Column<string>(nullable: true),
                     MarkedAnswer = table.Column<string>(nullable: true),
-                    Rows = table.Column<string>(nullable: true),
-                    MarkedCols = table.Column<string>(nullable: true),
-                    MarkedCol = table.Column<string>(nullable: true),
-                    MarkedValue = table.Column<int>(nullable: false)
+                    SingleGridAnswer_RowTitle = table.Column<string>(nullable: true),
+                    SingleGridAnswer_ColTitle = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -499,6 +500,31 @@ namespace CareerMonitoring.Api.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Answers_QuestionId",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId1",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId2",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId3",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId4",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId5",
                 table: "Answers",
                 column: "QuestionId");
 

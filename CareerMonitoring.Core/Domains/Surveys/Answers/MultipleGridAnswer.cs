@@ -7,8 +7,9 @@ namespace CareerMonitoring.Core.Domains.Surveys.Answers
     {
         public string RowTitle { get; private set; }
         public string ColTitle { get; private set; }
-
         public MultipleGrid MultipleGrid { get; private set; }
+
+
 
         private MultipleGridAnswer () {}
 
