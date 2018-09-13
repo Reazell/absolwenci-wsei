@@ -7,7 +7,7 @@ import { User } from '../../models/user.model';
 @Injectable()
 export class UserService {
   mail: string;
-  isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(undefined);
 
   constructor(private http: HttpClient, private config: AppConfig) {}
 
@@ -61,15 +61,27 @@ export class UserService {
   }
 
   changePasswordByRestoringPassword(Token, NewPassword) {
-    return this.http.post(this.config.apiUrl + '/auth/changePasswordByRestoringPassword', {
-      Token,
-      NewPassword
-    });
+    return this.http.post(
+      this.config.apiUrl + '/auth/changePasswordByRestoringPassword',
+      {
+        Token,
+        NewPassword
+      }
+    );
   }
 
   // update user data
-  update(user: User) {
-    return this.http.put(this.config.apiUrl + '/users/' + user.id, user);
+
+  updateProfile(user) {
+    return this.http.put(this.config.apiUrl + `/accountupdate/${user.id}`, {
+      Name: user.name,
+      Surname: user.surname,
+      Email: user.email,
+      PhoneNumber: user.phoneNum,
+      CompanyName: user.companyName,
+      Location: user.location,
+      CompanyDescription: user.companyDescription
+    });
   }
 
   // // delete user by id

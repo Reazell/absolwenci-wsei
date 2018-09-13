@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { UserService } from '../../auth/services/user.service';
-import { MatMenuTrigger } from '../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-bar',
@@ -10,7 +9,8 @@ import { MatMenuTrigger } from '../../../../node_modules/@angular/material';
 })
 export class AppBarComponent implements OnInit, OnDestroy {
   userServiceSub;
-  isLogged = false;
+  isLogged: boolean = undefined;
+
   constructor(
     private sharedService: SharedService,
     private userService: UserService
@@ -18,11 +18,9 @@ export class AppBarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userService.isLogged.subscribe(data => {
-      console.log(data);
       this.isLogged = data;
     });
   }
-
   openSidebar() {
     this.sharedService.toggleSideNav();
   }

@@ -32,16 +32,22 @@ export class SharedService {
         }
 
         if (control.errors !== null && control.touched) {
-          if (controlName === 'lastName') {
-            controlName = 'last name';
-          } else if (controlName === 'phoneNum') {
-            controlName = 'phone number';
-          } else if (controlName === 'companyName') {
-            controlName = 'company name';
-          } else if (controlName === 'oldPassword') {
-            controlName = 'old password';
-          } else if (controlName === 'newPassword') {
-            controlName = 'new password';
+          switch (controlName) {
+            case 'lastName':
+              controlName = 'last name';
+              break;
+            case 'phoneNum':
+              controlName = 'phone number';
+              break;
+            case 'companyName':
+              controlName = 'company name';
+              break;
+            case 'oldPassword':
+              controlName = 'old password';
+              break;
+            case 'newPassword':
+              controlName = 'new password';
+              break;
           }
           if (control.value !== undefined && control.value.length === 0) {
             errorStr = 'Enter your ' + controlName;

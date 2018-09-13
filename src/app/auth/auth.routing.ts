@@ -2,6 +2,7 @@ import { AuthComponent } from './auth.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GuidGuard } from './other/guid.auth';
+import { AuthGuard } from './other/guard.auth';
 // import { AuthGuard } from './auth/guard.auth';
 
 const authRoutes: Routes = [
@@ -38,7 +39,8 @@ const authRoutes: Routes = [
       {
         path: 'password',
         loadChildren:
-          './password-change/password-change.module#PasswordChangeModule'
+          './password-change/password-change.module#PasswordChangeModule',
+          canLoad: [AuthGuard]
       }
     ]
   }

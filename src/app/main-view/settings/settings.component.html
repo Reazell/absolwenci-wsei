@@ -4,24 +4,25 @@
   </div>
   <div id="tab-groups">
     <mat-tab-group>
-      <mat-tab>
-        <!-- <fa-icon [icon]="['fas', 'user-alt']"></fa-icon> -->
+      <mat-tab label="profile">
 
         <ng-template mat-tab-label>
-            <mat-icon>person</mat-icon>
+          <mat-icon>person</mat-icon>
           Profil
         </ng-template>
-        <h1>Best pasta restaurants</h1>
-        <p>...</p>
+        <ng-template matTabContent>
+          <app-profile-settings></app-profile-settings>
+        </ng-template>
+
       </mat-tab>
-      <mat-tab>
+      <mat-tab label="settings">
         <ng-template mat-tab-label>
-          <!-- <fa-icon [icon]="['fas', 'cog']"></fa-icon> -->
           <mat-icon>settings</mat-icon>
           Ustawienia
         </ng-template>
-        <h1>Terrible sushi restaurants</h1>
-        <p>...</p>
+        <ng-template matTabContent>
+          <app-main-settings></app-main-settings>
+        </ng-template>
       </mat-tab>
     </mat-tab-group>
   </div>

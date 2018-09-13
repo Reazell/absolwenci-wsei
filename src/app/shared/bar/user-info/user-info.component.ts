@@ -1,5 +1,5 @@
 import { AuthenticationService } from './../../../auth/services/authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-info',
@@ -12,12 +12,7 @@ export class UserInfoComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleMenu() {
-    // this.trigger.openMenu();
-  }
-
   logout() {
-    this.toggleMenu();
     this.authenticationService.logout();
   }
 }
