@@ -1,9 +1,9 @@
 <div id="bar">
   <div id="container">
-    <div id="sidenavToggler" class="catalogListToggler" (click)="openSidebar()">
+    <!-- <div id="sidenavToggler" class="catalogListToggler" (click)="openSidebar()"> -->
       <!-- *ngIf="isLogged === true" -->
-      <fa-icon [icon]="['fas','bars']"></fa-icon>
-    </div>
+      <!-- <fa-icon [icon]="['fas','bars']"></fa-icon>
+    </div> -->
     <div id="logo">
       <img src="./../../../assets/logo-wsei.png" alt="logo WSEI">
     </div>
@@ -22,7 +22,7 @@
   <div id="profile-container" *ngIf="isLogged === true">
     <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger">
       <!-- <div id="userDisplayName">{{account?.name}} {{account?.surname}}</div> -->
-      <img src="./../../../assets/profile-image.jpg">
+      <img src="./../../../assets/profile-image.png">
     </div>
     <mat-menu #userInfo="matMenu" id="sth" [overlapTrigger]="false">
       <app-user-info></app-user-info>

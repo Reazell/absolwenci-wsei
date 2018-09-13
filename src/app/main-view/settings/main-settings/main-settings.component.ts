@@ -8,7 +8,7 @@ import {
   FormGroup,
   FormControl
 } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from '../../../services/shared.service';
 @Component({
   selector: 'app-main-settings',
@@ -16,6 +16,8 @@ import { SharedService } from '../../../services/shared.service';
   styleUrls: ['./main-settings.component.scss']
 })
 export class MainSettingsComponent implements OnInit {
+  @Input()
+  userInfo;
   panelOpenState = false;
 
   // declare form
@@ -46,18 +48,6 @@ export class MainSettingsComponent implements OnInit {
   companyDescriptionErrorStr: string;
   registrationError = false;
   registrationErrorMessage: Array<string>;
-
-  userInfo = {
-    id: 2,
-    name: 'Gabriela',
-    surname: 'Oskroba',
-    email: 'gabi97_97@o2.pl',
-    phoneNum: '+48123123123',
-    albumID: '10610',
-    companyName: 'QVC',
-    location: 'Kraków',
-    companyDescription: ''
-  };
 
   profileType: string;
 
