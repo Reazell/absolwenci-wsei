@@ -10,17 +10,26 @@ namespace CareerMonitoring.Api.Controllers
     public class EmailController : ApiUserController
     {
         private readonly IAccountEmailFactory _accountEmailFactory;
+        private readonly ISurveyEmailFactory _surveyEmailFactory;
 
-        public EmailController (IAccountEmailFactory accountEmailFactory)
+        public EmailController (IAccountEmailFactory accountEmailFactory, ISurveyEmailFactory surveyEmailFactory)
         {
             _accountEmailFactory = accountEmailFactory;
+            _surveyEmailFactory = surveyEmailFactory;
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> SendEmailToAll ([FromBody] EmailToSend command)
         {
             await _accountEmailFactory.SendEmailToAllAsync(command.Subject, command.Body);
             return StatusCode(201);
+        }
+
+        [HttpPost ("surveyEmails/{surveyId}")]
+        public async Task<IActionResult> SendSurveyEmail (int surveyId)
+        {
+            await _surveyEmailFactory.SendSurveyEmailAsync (surveyId);
+            return StatusCode (200);
         }
     }
 }
