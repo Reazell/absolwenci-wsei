@@ -7,15 +7,23 @@ import { Router } from '../../../node_modules/@angular/router';
 export class SharedService {
   toggleSidebar: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   saveButton: Subject<number> = new Subject<number>();
-  openCreator: Subject<boolean> = new Subject<boolean>();
+  sendButton: Subject<number> = new Subject<number>();
+  showCreator: Subject<boolean> = new Subject<boolean>();
+  showSend: Subject<boolean> = new Subject<boolean>();
   controlArray: string[];
   constructor(private router: Router) {}
 
   saveSurveyButton(x) {
     this.saveButton.next(x);
   }
-  openCreatorMenu(x) {
-    this.openCreator.next(x);
+  sendSurveyButton(x) {
+    this.sendButton.next(x);
+  }
+  showCreatorButton(x) {
+    this.showCreator.next(x);
+  }
+  showSendButton(x) {
+    this.showSend.next(x);
   }
 
   routeSwitch(role) {

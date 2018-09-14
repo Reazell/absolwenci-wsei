@@ -2,6 +2,7 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { SurveyService } from '../../services/survey.services';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { SharedService } from '../../../services/shared.service';
 
 @Component({
   selector: 'app-survey-viewform',
@@ -10,6 +11,10 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class SurveyViewformComponent implements OnInit, OnDestroy {
   invoiceForm: FormGroup;
+
+  // subs
+  sendSurveySub;
+
   // disabled = false;
   oldData;
   data = {
@@ -34,7 +39,8 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   constructor(
     private surveyService: SurveyService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {
@@ -43,13 +49,18 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
         this.createQuestionData(data);
       }
     });
-    // this.createQuestionData(this.data);
+    this.sendSurvey();
+    this.sharedService.showSendButton(true);
   }
-
+  sendSurvey() {
+    this.sendSurveySub = this.sharedService.sendButton.subscribe(() => {
+      // this.onSubmit();
+      console.log('sent!');
+    });
+  }
   ngOnDestroy() {
-    // this.surveyService.saveSurvey(undefined);
-    // this.oldData = undefined;
-    // this.invoiceForm = undefined;
+    this.sharedService.showSendButton(false);
+    this.sendSurveySub.unsubscribe();
   }
 
   updateSelection(radios, radio, e?) {
@@ -98,12 +109,6 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   createFieldData(question, controls) {
-    // let array;
-    // if (question.select !== 'dropdown-menu') {
-    //   array = question.FieldData;
-    // } else {
-    //   array = question.FieldData[0].input;
-    // }
     question.FieldData.forEach(data => {
       this.addGroup(controls.FieldData, controls.select.value, data);
     });
@@ -137,7 +142,9 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       input: this.fb.array([])
     });
     FieldData.push(group);
-    this.addCheckField(group.controls.input, data);
+    data.input.forEach(input => {
+      this.addCheckField(group.controls.input, input);
+    });
   }
   addInput(FieldData) {
     const group = this.fb.group({

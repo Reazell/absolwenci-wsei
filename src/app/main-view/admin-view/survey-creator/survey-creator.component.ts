@@ -23,7 +23,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   inputs2: QueryList<any>;
 
   invoiceForm: FormGroup;
-  default = 'dropdown-menu';
+  default = 'single-choice';
   disabled = true;
   index = 0;
 
@@ -114,7 +114,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     });
     // this.createSurvey();
     this.saveSurvey();
-    this.sharedService.openCreatorMenu(true);
+    this.sharedService.showCreatorButton(true);
   }
   saveSurvey() {
     this.saveSurveySub = this.sharedService.saveButton.subscribe(() => {
@@ -129,7 +129,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // this.createSurveySub.unsubscribe();
     this.saveSurveySub.unsubscribe();
-    this.sharedService.openCreatorMenu(false);
+    this.sharedService.showCreatorButton(false);
   }
 
   onSubmit() {
@@ -208,7 +208,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       input: [{ value: '', disabled: this.disabled }]
     });
     FieldData.push(group);
-    this.autofocusField(this.inputs);
   }
   addSelectionGridField(FieldData) {
     const group = this.fb.group({

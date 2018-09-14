@@ -20,8 +20,9 @@
   <!-- <button ></button> -->
 
   <div id="profile-container" *ngIf="isLogged === true">
-    <div id="admin-menu" *ngIf="showCreatorMenu">
-      <button mat-raised-button id="save" (click)="saveSurvey()">ZAPISZ</button>
+    <div id="admin-menu">
+      <button mat-raised-button id="save" (click)="saveSurvey()" *ngIf="showCreatorButton">ZAPISZ</button>
+      <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="showSendButton">PRZEŚLIJ</button>
     </div>
     <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger">
       <!-- <div id="userDisplayName">{{account?.name}} {{account?.surname}}</div> -->

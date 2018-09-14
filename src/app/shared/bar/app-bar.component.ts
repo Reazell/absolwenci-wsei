@@ -11,10 +11,11 @@ export class AppBarComponent implements OnInit, OnDestroy {
   // subs
   userServiceSub;
   creatorSub;
+  sendSub;
 
   isLogged: boolean;
-  showCreatorMenu = false;
-
+  showCreatorButton = false;
+  showSendButton = false;
   constructor(
     private sharedService: SharedService,
     private userService: UserService
@@ -22,7 +23,8 @@ export class AppBarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkIfLogged();
-    this.openCreator();
+    this.showCreator();
+    this.showSend();
   }
 
   checkIfLogged() {
@@ -30,14 +32,22 @@ export class AppBarComponent implements OnInit, OnDestroy {
       this.isLogged = data;
     });
   }
-  openCreator() {
-    this.creatorSub = this.sharedService.openCreator.subscribe(data => {
-      this.showCreatorMenu = data;
+  showCreator() {
+    this.creatorSub = this.sharedService.showCreator.subscribe(data => {
+      this.showCreatorButton = data;
+    });
+  }
+  showSend() {
+    this.sendSub = this.sharedService.showSend.subscribe(data => {
+      this.showSendButton = data;
     });
   }
 
   saveSurvey() {
     this.sharedService.saveSurveyButton(0);
+  }
+  sendSurvey() {
+    this.sharedService.sendSurveyButton(0);
   }
   openSidebar() {
     this.sharedService.toggleSideNav();
