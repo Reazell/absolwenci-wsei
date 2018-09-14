@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { SurveyService } from '../../services/survey.services';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
@@ -12,7 +12,25 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   invoiceForm: FormGroup;
   // disabled = false;
   oldData;
-
+  data = {
+    Form_Title: 'Formularz bez nazwy',
+    Created_Date: '14.09.2018',
+    Created_Time: '11:46:12',
+    QuestionData: [
+      {
+        question: '',
+        select: 'single-choice',
+        lastSelect: null,
+        FieldData: [{ value: false, viewValue: 'opcja 0' }]
+      },
+      {
+        question: '',
+        select: 'single-choice',
+        lastSelect: null,
+        FieldData: [{ value: false, viewValue: 'opcja 1' }]
+      }
+    ]
+  };
   constructor(
     private surveyService: SurveyService,
     private fb: FormBuilder,
@@ -25,6 +43,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
         this.createQuestionData(data);
       }
     });
+    // this.createQuestionData(this.data);
   }
 
   ngOnDestroy() {
@@ -48,52 +67,91 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   createQuestionData(data) {
-    this.invoiceForm = data;
-    const questionData = this.invoiceForm.controls.QuestionData['controls'];
-    questionData.forEach(question => {
+    this.invoiceForm = this.fb.group({
+      Form_Title: [data.Form_Title],
+      Created_Date: [data.Created_Date],
+      Created_Time: [data.Created_Time],
+      QuestionData: this.fb.array([])
+    });
+    data.QuestionData.forEach(question => {
       this.createQuestion(question);
     });
   }
+
   createQuestion(question) {
-    const select = question.controls.select.value;
-    const fieldData = question.controls.FieldData;
-    this.oldData = fieldData.getRawValue();
-    this.oldData.forEach(oldFieldData => {
-      let length;
-      switch (select) {
-        case 'short-answer':
-        case 'long-answer':
-          length = fieldData.controls.length;
-          for (let i = 0; i < length; i++) {
-            fieldData.controls[i].controls.input.enable();
-          }
-          break;
-        case 'single-choice':
-        case 'multiple-choice':
-          console.log(this.invoiceForm.controls.QuestionData['controls']);
-          length = fieldData.controls.length;
-          for (let i = 0; i < length; i++) {
-            fieldData.controls[i].controls.value.enable();
-          }
-          break;
-        case 'single-grid':
-        case 'multiple-grid':
-          fieldData.removeAt(0);
-          this.createRow(fieldData, oldFieldData);
-          break;
-        case 'linear-scale':
-          fieldData.removeAt(0);
-          this.createRadio(fieldData, oldFieldData);
-          break;
-        case 'dropdown-menu':
-          // this.addValue(fieldData);
-          const fieldDataArr = fieldData.controls[0].controls.input.controls;
-          fieldDataArr.forEach(field => {
-            field.controls.value.enable();
-          });
-          break;
-      }
+    const control: FormArray = this.invoiceForm.get(
+      `QuestionData`
+    ) as FormArray;
+    const group = this.addRows(question);
+    control.push(group);
+  }
+
+  addRows(question) {
+    const group = this.fb.group({
+      question: [question.question],
+      select: [question.select],
+      lastSelect: [undefined],
+      FieldData: this.fb.array([])
     });
+    this.createFieldData(question, group.controls);
+    return group;
+  }
+
+  createFieldData(question, controls) {
+    // let array;
+    // if (question.select !== 'dropdown-menu') {
+    //   array = question.FieldData;
+    // } else {
+    //   array = question.FieldData[0].input;
+    // }
+    question.FieldData.forEach(data => {
+      this.addGroup(controls.FieldData, controls.select.value, data);
+    });
+  }
+
+  addGroup(FieldData, select: string, data) {
+    switch (select) {
+      case 'short-answer':
+      case 'long-answer':
+        this.addInput(FieldData);
+        break;
+      case 'dropdown-menu':
+        this.addArray(FieldData, data);
+        break;
+      case 'linear-scale':
+        this.createRadio(FieldData, data);
+        break;
+      case 'single-choice':
+      case 'multiple-choice':
+        this.addCheckField(FieldData, data);
+        break;
+      case 'single-grid':
+      case 'multiple-grid':
+        this.createRow(FieldData, data);
+        break;
+    }
+  }
+
+  addArray(FieldData, data) {
+    const group = this.fb.group({
+      input: this.fb.array([])
+    });
+    FieldData.push(group);
+    this.addCheckField(group.controls.input, data);
+  }
+  addInput(FieldData) {
+    const group = this.fb.group({
+      input: ['']
+    });
+    FieldData.push(group);
+  }
+  addCheckField(selectArr, data) {
+    const group = this.fb.group({
+      // input: false,
+      value: false,
+      viewValue: [data.viewValue]
+    });
+    selectArr.push(group);
   }
 
   // grid

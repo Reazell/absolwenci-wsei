@@ -23,7 +23,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   inputs2: QueryList<any>;
 
   invoiceForm: FormGroup;
-  default = 'single-choice';
+  default = 'dropdown-menu';
   disabled = true;
   index = 0;
 
@@ -133,9 +133,9 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(JSON.stringify(this.invoiceForm.getRawValue()));
+    // console.log(JSON.stringify(this.invoiceForm.getRawValue()));
     // console.log(this.invoiceForm.getRawValue());
-    this.surveyService.saveSurvey(this.invoiceForm);
+    this.surveyService.saveSurvey(this.invoiceForm.getRawValue());
     this.router.navigateByUrl(`/app/admin/viewform`);
     // window.open('http://localhost:4200/app/admin/viewform', '_blank');
   }
