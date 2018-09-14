@@ -12,10 +12,12 @@ export class AppBarComponent implements OnInit, OnDestroy {
   userServiceSub;
   creatorSub;
   sendSub;
+  surveyMainSub;
 
   isLogged: boolean;
   showCreatorButton = false;
   showSendButton = false;
+  showSurveyMenu = false;
   constructor(
     private sharedService: SharedService,
     private userService: UserService
@@ -25,6 +27,7 @@ export class AppBarComponent implements OnInit, OnDestroy {
     this.checkIfLogged();
     this.showCreator();
     this.showSend();
+    this.showMenu();
   }
 
   checkIfLogged() {
@@ -42,6 +45,11 @@ export class AppBarComponent implements OnInit, OnDestroy {
       this.showSendButton = data;
     });
   }
+  showMenu() {
+    this.surveyMainSub = this.sharedService.showSurveyMenu.subscribe(data => {
+      this.showSurveyMenu = data;
+    });
+  }
 
   saveSurvey() {
     this.sharedService.saveSurveyButton(0);
@@ -55,5 +63,7 @@ export class AppBarComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.userServiceSub.unsubscribe();
     this.creatorSub.unsubscribe();
+    this.sendSub.unsubscribe();
+    this.surveyMainSub.unsubscribe();
   }
 }

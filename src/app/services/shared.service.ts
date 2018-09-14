@@ -10,6 +10,7 @@ export class SharedService {
   sendButton: Subject<number> = new Subject<number>();
   showCreator: Subject<boolean> = new Subject<boolean>();
   showSend: Subject<boolean> = new Subject<boolean>();
+  showSurveyMenu: Subject<boolean> = new Subject<boolean>();
   controlArray: string[];
   constructor(private router: Router) {}
 
@@ -24,6 +25,9 @@ export class SharedService {
   }
   showSendButton(x) {
     this.showSend.next(x);
+  }
+  showSurveyMain(x) {
+    this.showSurveyMenu.next(x);
   }
 
   routeSwitch(role) {

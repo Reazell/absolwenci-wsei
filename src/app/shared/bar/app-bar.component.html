@@ -8,8 +8,6 @@
       <img src="./../../../assets/logo-wsei.png" alt="logo WSEI">
     </div>
   </div>
-  <!-- *ngIf="isModuleOpened === true" -->
-
   <ul id="menu" *ngIf="isLogged === false">
     <li class="menu-item" [routerLink]="['/auth/login']">Logowanie</li>
     <li class="menu-item" [routerLink]="['/info/student']">Student</li>
@@ -17,10 +15,15 @@
     <li class="menu-item" [routerLink]="['/info/employer']">Dla Firm</li>
     <li class="menu-item" [routerLink]="['/info/contact']">Kontakt</li>
   </ul>
-  <!-- <button ></button> -->
-
   <div id="profile-container" *ngIf="isLogged === true">
-    <div id="admin-menu">
+    <ul id="menu">
+      <li class="menu-item" [routerLink]="['/app/admin']">Ankiety</li>
+      <!-- <li class="menu-item" [routerLink]="['/info/student']">Student</li>
+          <li class="menu-item" [routerLink]="['/info/graduate']">Absolwent</li>
+          <li class="menu-item" [routerLink]="['/info/employer']">Dla Firm</li>
+          <li class="menu-item" [routerLink]="['/info/contact']">Kontakt</li> -->
+    </ul>
+    <div id="survey-buttons">
       <button mat-raised-button id="save" (click)="saveSurvey()" *ngIf="showCreatorButton">ZAPISZ</button>
       <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="showSendButton">PRZEŚLIJ</button>
     </div>

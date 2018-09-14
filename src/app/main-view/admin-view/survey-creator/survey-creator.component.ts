@@ -133,13 +133,17 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    // console.log(JSON.stringify(this.invoiceForm.getRawValue()));
-    // console.log(this.invoiceForm.getRawValue());
+    this.saveInLocalStorage();
     this.surveyService.saveSurvey(this.invoiceForm.getRawValue());
     this.router.navigateByUrl(`/app/admin/viewform`);
     // window.open('http://localhost:4200/app/admin/viewform', '_blank');
   }
 
+  saveInLocalStorage() {
+    const array = JSON.parse(localStorage.getItem('surveys')) || [];
+    array.push(this.invoiceForm.getRawValue());
+    localStorage.setItem('surveys', JSON.stringify(array));
+  }
   addRows() {
     const group = this.fb.group({
       question: [''],

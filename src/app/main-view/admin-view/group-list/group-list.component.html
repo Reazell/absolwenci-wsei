@@ -1,9 +1,13 @@
 <div id="catalogs">
-  <mat-toolbar>
-    <div *ngFor="let group of groupList">
+  <div id="add-container">
+    <span id="add-name">GRUPY</span>
+    <fa-icon id="icon" [icon]="['fas','plus']"></fa-icon>
+  </div>
+  <ul id="list">
+    <li class="loop" *ngFor="let group of groupList">
       <div class="name">
         {{group.name}}
       </div>
-    </div>
-  </mat-toolbar>
+    </li>
+  </ul>
 </div>

@@ -27,7 +27,8 @@ import {
   faGraduationCap,
   faBriefcase,
   faCog,
-  faUserAlt
+  faUserAlt,
+  faSearch
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -41,7 +42,8 @@ library.add(
   faGraduationCap,
   faBriefcase,
   faCog,
-  faUserAlt
+  faUserAlt,
+  faSearch
 );
 
 @NgModule({

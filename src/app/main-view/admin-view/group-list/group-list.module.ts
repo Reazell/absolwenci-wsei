@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GroupListComponent } from './group-list.component';
 import { MatToolbarModule } from '@angular/material';
+import { FontAwesomeModule } from '../../../../../node_modules/@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    FontAwesomeModule
   ],
   declarations: [GroupListComponent],
   exports: [GroupListComponent]

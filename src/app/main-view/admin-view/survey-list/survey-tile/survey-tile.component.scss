@@ -1,33 +1,31 @@
 @import './../../../../../styles/colors.scss';
 
-.mailBox {
+.surveyBox {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   outline: none;
   user-select: none;
-  cursor: context-menu;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  .mail {
+  cursor: pointer;
+  .survey {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
-    border-top: 1px solid rgba($grey, 0.5);
     outline: none;
     font-weight: 400;
   }
-  .mail:hover {
+  .survey:hover {
     background-color: #eaeaea;
   }
-  .select.mail {
+  .select.survey {
     // background-color: rgba($accent, 0.1);
 
     .address {
       font-weight: 600;
     }
     .content {
-    //   color: $grey;
+      //   color: $grey;
     }
   }
   .marker {
@@ -39,7 +37,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
   }
   .info {
     flex: 1 1 auto;
@@ -58,7 +55,7 @@
 
       margin: 2px;
 
-    //   color: $black;
+      //   color: $black;
       font-size: 1em;
       font-weight: 400;
 
@@ -70,7 +67,7 @@
     .address {
       margin: 1px;
 
-    //   color: $grey-dark;
+      //   color: $grey-dark;
       font-size: 0.9em;
 
       white-space: nowrap;
@@ -81,7 +78,7 @@
     .content {
       margin: 2px;
 
-    //   color: $grey;
+      //   color: $grey;
       font-size: 0.8em;
 
       white-space: nowrap;
@@ -91,15 +88,15 @@
   }
 
   .unread {
-    .title{
+    .title {
       font-weight: 600;
     }
     .marker {
-    //   background-color: $accent;
+      //   background-color: $accent;
     }
     .address {
       font-weight: 600;
-    //   color: $accent;
+      //   color: $accent;
     }
   }
 
@@ -111,7 +108,7 @@
     // background-color: $grey-ultra-light;
   }
 }
-.noMails {
+.nosurveys {
   padding: 20px;
   display: flex;
   justify-content: center;
