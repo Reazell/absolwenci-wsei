@@ -4,7 +4,7 @@
       <div id="form-container">
         <mat-accordion>
 
-          <mat-expansion-panel>
+          <mat-expansion-panel *ngIf="profileType === 'student'">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Kierunek studiów
@@ -29,7 +29,7 @@
             </ng-template>
           </mat-expansion-panel>
 
-          <mat-expansion-panel>
+          <mat-expansion-panel *ngIf="profileType === 'student'">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 Tryb i rok studiów

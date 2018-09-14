@@ -4,21 +4,21 @@
     <!-- <div id="userInfo">
       <img src="./../../../assets/profile-image.png">
     </div> -->
-        <div id="avatar-field">
-          <div id="avatar">
-              <img src="./../../../assets/profile-image.png">
-          </div>
-          <div id="avatar-info">
-            <h2 id="name">{{userInfo.name + ' ' + userInfo.surname}}</h2>
-            <div id="degree-info">
-             <span>opis profilu</span>
-            </div>
-          </div>
+    <div id="avatar-field">
+      <div id="avatar">
+        <img src="./../../../assets/profile-image.png">
+      </div>
+      <div id="avatar-info">
+        <h2 id="name">{{userInfo.name + ' ' + userInfo.surname}}</h2>
+        <div id="degree-info">
+          <span>opis profilu</span>
         </div>
+      </div>
+    </div>
 
   </div>
   <div id="tab-groups">
-    <mat-tab-group mat-stretch-tabs>
+    <mat-tab-group mat-stretch-tabs [selectedIndex]="selected">
       <mat-tab label="profile">
 
         <ng-template mat-tab-label>

@@ -109,17 +109,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
   routeSwitch(role) {
-    switch (role) {
-      case 'student':
-        this.router.navigateByUrl('/app/student');
-        break;
-      case 'employer':
-        this.router.navigateByUrl('/app/employer');
-        break;
-      case 'graduate':
-        this.router.navigateByUrl('/app/graduate');
-        break;
-    }
+    this.sharedService.routeSwitch(role);
   }
 
   inputError(control: AbstractControl): boolean {

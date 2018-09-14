@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
@@ -74,7 +75,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private authService: AuthenticationService
   ) {}
 
   ngOnDestroy() {
@@ -82,9 +84,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     // reset login status
-    if (localStorage.getItem('currentUser')) {
-      this.router.navigateByUrl('');
-    }
+    this.authService.logout();
 
     // form declaration
     this.regForm = this.fb.group({
@@ -333,7 +333,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   passwordNoMatch(): boolean {
-     if (this.passwordConfirm.errors) {
+    if (this.passwordConfirm.errors) {
       if (this.passwordConfirm.errors.noMatch === undefined) {
         this.passwordConfirmErrorStr = 'Passwords do not match';
         return true;

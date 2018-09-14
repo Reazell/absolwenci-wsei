@@ -130,7 +130,7 @@ export class ProfileSettingsComponent implements OnInit {
       year: [this.userInfo.year, Validators.required],
       initialSemester: [this.userInfo.initialSemester, Validators.required]
     });
-    console.log(this.userInfo.degree);
+    // console.log(this.userInfo.degree);
     this.degree = this.regForm.controls['degree'];
     // input: [{ value: this.userInfo.major, disabled: this.disabled }];
   }
@@ -153,7 +153,7 @@ export class ProfileSettingsComponent implements OnInit {
         break;
       case 'IT':
         this.majorsDropdown = this.majorsIT;
-        console.log(this.majorsDropdown);
+        // console.log(this.majorsDropdown);
         break;
     }
   }

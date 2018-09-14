@@ -120,7 +120,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
-    this.createSurveySub.unsubscribe();
+    // this.createSurveySub.unsubscribe();
   }
 
   onSubmit() {

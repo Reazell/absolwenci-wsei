@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { UserService } from '../../auth/services/user.service';
 
@@ -9,7 +9,8 @@ import { UserService } from '../../auth/services/user.service';
 })
 export class AppBarComponent implements OnInit, OnDestroy {
   userServiceSub;
-  isLogged: boolean = undefined;
+  isLogged: boolean;
+  sticky;
 
   constructor(
     private sharedService: SharedService,
@@ -21,6 +22,10 @@ export class AppBarComponent implements OnInit, OnDestroy {
       this.isLogged = data;
     });
   }
+  // stickyNav(nav) {
+  //   console.log('sth');
+
+
   openSidebar() {
     this.sharedService.toggleSideNav();
   }

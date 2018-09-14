@@ -1,13 +1,28 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Injectable()
 export class SharedService {
   toggleSidebar: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   controlArray: string[];
-  constructor() {}
+  constructor(private router: Router) {}
+
+  routeSwitch(role) {
+    switch (role) {
+      case 'student':
+        this.router.navigateByUrl('/app/student');
+        break;
+      case 'employer':
+        this.router.navigateByUrl('/app/employer');
+        break;
+      case 'graduate':
+        this.router.navigateByUrl('/app/graduate');
+        break;
+    }
+  }
 
   inputError(control: AbstractControl) {
     // retrieve controls names into array to show errors for user
