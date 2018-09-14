@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Router } from '../../../node_modules/@angular/router';
 
 @Injectable()
 export class SharedService {
   toggleSidebar: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-
+  saveButton: Subject<number> = new Subject<number>();
+  openCreator: Subject<boolean> = new Subject<boolean>();
   controlArray: string[];
   constructor(private router: Router) {}
+
+  saveSurveyButton(x) {
+    this.saveButton.next(x);
+  }
+  openCreatorMenu(x) {
+    this.openCreator.next(x);
+  }
 
   routeSwitch(role) {
     switch (role) {

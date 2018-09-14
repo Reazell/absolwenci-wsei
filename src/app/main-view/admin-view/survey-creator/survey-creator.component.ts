@@ -1,3 +1,4 @@
+import { SharedService } from './../../../services/shared.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { SurveyService } from '../../services/survey.services';
 import {
@@ -9,7 +10,6 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import * as cloneDeep from 'lodash/cloneDeep';
-import { SortEvent } from '../draggable/sortable-list.directive';
 
 @Component({
   selector: 'app-survey-creator',
@@ -28,6 +28,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   index = 0;
 
   // subs
+  saveSurveySub: any;
   createSurveySub: any;
 
   selects: Select[] = [
@@ -100,9 +101,9 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private surveyService: SurveyService,
+    private sharedService: SharedService,
     private router: Router
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.invoiceForm = this.fb.group({
@@ -112,8 +113,14 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       QuestionData: this.fb.array([this.addRows()])
     });
     // this.createSurvey();
+    this.saveSurvey();
+    this.sharedService.openCreatorMenu(true);
   }
-
+  saveSurvey() {
+    this.saveSurveySub = this.sharedService.saveButton.subscribe(() => {
+      this.onSubmit();
+    });
+  }
   createSurvey() {
     this.createSurveySub = this.surveyService.createSurvey().subscribe(() => {
       console.log('created');
@@ -121,9 +128,13 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     // this.createSurveySub.unsubscribe();
+    this.saveSurveySub.unsubscribe();
+    this.sharedService.openCreatorMenu(false);
   }
 
   onSubmit() {
+    console.log(JSON.stringify(this.invoiceForm.getRawValue()));
+    // console.log(this.invoiceForm.getRawValue());
     this.surveyService.saveSurvey(this.invoiceForm);
     this.router.navigateByUrl(`/app/admin/viewform`);
     // window.open('http://localhost:4200/app/admin/viewform', '_blank');

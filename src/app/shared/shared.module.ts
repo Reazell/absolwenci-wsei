@@ -19,7 +19,6 @@ import { UserInfoComponent } from './bar/user-info/user-info.component';
   ],
   declarations: [AppBarComponent, UserInfoComponent],
   exports: [AppBarComponent],
-  providers: [SharedService],
-  entryComponents: []
+  providers: [SharedService]
 })
 export class SharedModule {}

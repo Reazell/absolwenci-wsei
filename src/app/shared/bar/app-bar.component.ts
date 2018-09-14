@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { UserService } from '../../auth/services/user.service';
 
@@ -8,9 +8,12 @@ import { UserService } from '../../auth/services/user.service';
   styleUrls: ['./app-bar.component.scss']
 })
 export class AppBarComponent implements OnInit, OnDestroy {
+  // subs
   userServiceSub;
+  creatorSub;
+
   isLogged: boolean;
-  sticky;
+  showCreatorMenu = false;
 
   constructor(
     private sharedService: SharedService,
@@ -18,18 +21,29 @@ export class AppBarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.userService.isLogged.subscribe(data => {
+    this.checkIfLogged();
+    this.openCreator();
+  }
+
+  checkIfLogged() {
+    this.userServiceSub = this.userService.isLogged.subscribe(data => {
       this.isLogged = data;
     });
   }
-  // stickyNav(nav) {
-  //   console.log('sth');
+  openCreator() {
+    this.creatorSub = this.sharedService.openCreator.subscribe(data => {
+      this.showCreatorMenu = data;
+    });
+  }
 
-
+  saveSurvey() {
+    this.sharedService.saveSurveyButton(0);
+  }
   openSidebar() {
     this.sharedService.toggleSideNav();
   }
   ngOnDestroy() {
     this.userServiceSub.unsubscribe();
+    this.creatorSub.unsubscribe();
   }
 }

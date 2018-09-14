@@ -20,18 +20,11 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // window.scrollTo(0, 0);
     this.surveyService.savedSurvey.subscribe(data => {
       if (data) {
         this.createQuestionData(data);
       }
     });
-    // this.router.events.subscribe(val => {
-    //   // if (val instanceof NavigationEnd) {
-    //   //     console.log(val);
-    //   // }
-    //   console.log(val);
-    // });
   }
 
   ngOnDestroy() {
@@ -159,10 +152,4 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       this.createViewValue(group.controls.radios, i.toString());
     }
   }
-
-  // dropdown
-  // addValue(fieldData) {
-  //   console.log(fieldData);
-
-  // }
 }
