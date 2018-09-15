@@ -23,9 +23,10 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   inputs2: QueryList<any>;
 
   invoiceForm: FormGroup;
-  default = 'single-grid';
+  default = 'multiple-choice';
   disabled = true;
   index = 0;
+  questionIndex = 0;
 
   // subs
   saveSurveySub: any;
@@ -98,6 +99,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   // }
   //
 
+
+
   constructor(
     private fb: FormBuilder,
     private surveyService: SurveyService,
@@ -110,7 +113,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       Form_Title: ['Formularz bez nazwy'],
       Created_Date: [new Date().toLocaleDateString()],
       Created_Time: [new Date().toLocaleTimeString()],
-      QuestionData: this.fb.array([this.addRows()])
+      QuestionData: this.fb.array([this.addRows(-1)])
     });
     // this.createSurvey();
     this.saveSurvey();
@@ -134,6 +137,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(JSON.stringify(this.invoiceForm.getRawValue()));
+    console.log(this.invoiceForm.getRawValue());
+
     // this.saveInLocalStorage();
     this.surveyService.saveSurvey(this.invoiceForm.getRawValue());
     this.router.navigateByUrl(`/app/admin/viewform`);
@@ -145,38 +150,56 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     array.push(this.invoiceForm.getRawValue());
     localStorage.setItem('surveys', JSON.stringify(array));
   }
-  addRows() {
+  addRows(i) {
     const group = this.fb.group({
       question: [''],
       select: [this.default],
       lastSelect: [undefined],
+      QuestionPosition: i + 1,
       FieldData: this.fb.array([])
     });
     this.addGroup(group.controls.FieldData, group.controls.select.value);
     return group;
   }
 
-  addQuestion() {
-    const control: FormArray = this.invoiceForm.get(
+  addQuestion(i) {
+    const questionData: FormArray = this.invoiceForm.get(
       `QuestionData`
     ) as FormArray;
-    control.push(this.addRows());
+    const length = questionData.controls.length - 1;
+    questionData.push(this.addRows(length));
   }
-  copyQuestion(question) {
+  copyQuestion(question, index) {
+    const sortableList = this.invoiceForm.controls.QuestionData as FormArray;
+    const length = sortableList.length;
     const clonedObject = cloneDeep(question);
-    this.invoiceForm.controls.QuestionData['controls'].push(clonedObject);
+    const newIndex = index + 1;
+    if (index !== length - 1) {
+      const questionList = sortableList.controls;
+      for (let i = newIndex; i < length; i++) {
+        questionList[newIndex]['controls'].QuestionPosition.setValue(i + 1);
+      }
+    }
+    clonedObject.controls.QuestionPosition.setValue(newIndex);
+    sortableList.insert(newIndex, clonedObject);
   }
-  removeQuestion(index) {
+  removeQuestion(i) {
     const questionArr = this.invoiceForm.controls.QuestionData as FormArray;
+    const length = questionArr.controls.length;
     if (questionArr.controls.length > 1) {
-      questionArr.removeAt(index);
+      questionArr.removeAt(i);
+      if (i !== length - 1) {
+        this.setCurrentQuestionPositions(i, questionArr.controls, length - 1);
+      }
     } else {
       questionArr.removeAt(0);
-      questionArr.push(this.addRows());
+      questionArr.push(this.addRows(-1));
     }
   }
-  focusQuestion(question) {
-    // console.log(question);
+  setCurrentQuestionPositions(index, array, length) {
+    for (let i = index; i < length; i++) {
+      array[i].controls.QuestionPosition.setValue(i);
+    }
   }
 
   addGroup(FieldData, select: string) {
@@ -239,7 +262,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   addInputOption(selectArr, name) {
     const length = selectArr.controls.length;
     const group = this.fb.group({
-      input: `${name} ${length}`
+      RowPosition: length,
+      input: `${name} ${length + 1}`
     });
     selectArr.push(group);
     this.autofocusField(this.inputs2, length);
@@ -248,7 +272,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     const length = selectArr.controls.length;
     const group = this.fb.group({
       value: [{ value: false, disabled: this.disabled }],
-      viewValue: `${name} ${length}`
+      viewValue: `${name} ${length + 1}`,
+      ChoicePosition: length
     });
     selectArr.push(group);
     this.autofocusField(this.inputs);
@@ -266,8 +291,25 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
-  removeField(index, FieldData) {
+  removeField(index, FieldData, row?) {
+    const length = FieldData.controls.length - 1;
     FieldData.removeAt(index);
+    if (index !== length) {
+      this.setCurrentFieldPositions(index, FieldData.controls, length, row);
+    }
+  }
+  setCurrentFieldPositions(index, arr, length, row?) {
+    {
+      if (!row) {
+        for (let i = index; i < length; i++) {
+          arr[i].controls.ChoicePosition.setValue(i);
+        }
+      } else {
+        for (let i = index; i < length; i++) {
+          arr[i].controls.RowPosition.setValue(i);
+        }
+      }
+    }
   }
 
   updateSelection(SingleChoice, choice, e) {

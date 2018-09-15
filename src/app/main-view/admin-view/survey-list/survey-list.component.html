@@ -1,7 +1,7 @@
 <div id="mail-container">
   <div id="mailList">
-    <div id="container">
-      <app-survey-tile [surveyData]=surveyArr></app-survey-tile>
+    <div id="container" *ngFor="let survey of surveyArr">
+      <app-survey-tile [survey]=survey></app-survey-tile>
       <!-- <app-survey-tile></app-survey-tile> -->
     </div>
   </div>

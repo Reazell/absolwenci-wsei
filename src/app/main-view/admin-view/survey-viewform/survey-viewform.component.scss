@@ -51,6 +51,11 @@
                       width: 100%;
                       font-size: 13px;
                     }
+                    .label{
+                      padding: 5px 2px;
+                      cursor: pointer;
+                      user-select: none;
+                    }
                     // multiple-choice
                     .checkbox {
                       width: 100%;

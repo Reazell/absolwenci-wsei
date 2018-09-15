@@ -11,31 +11,12 @@ import { SharedService } from '../../../services/shared.service';
 })
 export class SurveyViewformComponent implements OnInit, OnDestroy {
   invoiceForm: FormGroup;
-
+  defaultQuestion = 'Brak pytania';
   // subs
   sendSurveySub;
 
   // disabled = false;
   oldData;
-  data = {
-    Form_Title: 'Formularz bez nazwy',
-    Created_Date: '14.09.2018',
-    Created_Time: '11:46:12',
-    QuestionData: [
-      {
-        question: '',
-        select: 'single-choice',
-        lastSelect: null,
-        FieldData: [{ value: false, viewValue: 'opcja 0' }]
-      },
-      {
-        question: '',
-        select: 'single-choice',
-        lastSelect: null,
-        FieldData: [{ value: false, viewValue: 'opcja 1' }]
-      }
-    ]
-  };
 
   constructor(
     private surveyService: SurveyService,
@@ -65,7 +46,6 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   updateSelection(radios, radio, e?) {
-
     radios.forEach(el => {
       el.controls.value.setValue(false);
     });
@@ -101,9 +81,9 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   addRows(question) {
     const group = this.fb.group({
-      question: [question.question],
+      question: [question.question || this.defaultQuestion],
       select: [question.select],
-      lastSelect: [undefined],
+      QuestionPosition: [question.QuestionPosition],
       FieldData: this.fb.array([])
     });
     this.createFieldData(question, group.controls);
@@ -144,7 +124,12 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     });
     FieldData.push(group);
     data.choiceOptions.forEach(choiceOptions => {
-      this.addCheckField(group.controls.choiceOptions, choiceOptions);
+      // this.addCheckField(group.controls.choiceOptions, choiceOptions);
+      this.createViewValue(
+        group.controls.choiceOptions,
+        choiceOptions.viewValue,
+        choiceOptions.ChoicePosition
+      );
     });
   }
   addInput(FieldData) {
@@ -154,6 +139,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     FieldData.push(group);
   }
   addCheckField(selectArr, data) {
+    console.log();
     const group = this.fb.group({
       // input: false,
       value: false,
@@ -172,30 +158,29 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     const rowLength = oldFieldData.rows.length;
 
     for (let i = 0; i < rowLength; i++) {
-      this.createGrid(
-        group.controls.rows,
-        oldFieldData,
-        oldFieldData.rows[i].input
-      );
+      this.createGrid(group.controls.rows, oldFieldData, i);
     }
   }
 
-  createGrid(rows, oldFieldData, name) {
+  createGrid(rows, oldFieldData, i) {
     const group = this.fb.group({
-      input: name,
+      RowPosition: oldFieldData.rows[i].RowPosition,
+      input: oldFieldData.rows[i].input,
       choiceOptions: this.fb.array([])
     });
     rows.push(group);
     const colLength = oldFieldData.columns.length;
-    for (let i = 0; i < colLength; i++) {
+    for (let j = 0; j < colLength; j++) {
       this.createViewValue(
         group.controls.choiceOptions,
-        oldFieldData.columns[i].viewValue
+        oldFieldData.columns[j].viewValue,
+        oldFieldData.columns[j].ChoicePosition
       );
     }
   }
-  createViewValue(field, name) {
+  createViewValue(field, name, pos) {
     const group = this.fb.group({
+      ChoicePosition: pos,
       viewValue: name,
       value: false
     });
@@ -213,8 +198,10 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       radios: this.fb.array([])
     });
     fieldData.push(group);
+    let index = 0;
     for (let i = minValue; i <= maxValue; i++) {
-      this.createViewValue(group.controls.radios, i.toString());
+      this.createViewValue(group.controls.radios, i.toString(), index);
+      index++;
     }
   }
 }

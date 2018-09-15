@@ -57,7 +57,7 @@
                       <mat-form-field appearance="standard">
                         <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
                       </mat-form-field>
-                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.choiceOptions)"
+                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls.choiceOptions)"
                         *ngIf="field.controls.choiceOptions.controls.length > 1"></fa-icon>
                     </div>
                   </div>
@@ -99,7 +99,7 @@
                       <mat-form-field appearance="standard">
                         <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
                       </mat-form-field>
-                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.choiceOptions)"
+                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls.choiceOptions)"
                         *ngIf="field.controls.choiceOptions.controls.length > 1"></fa-icon>
                     </div>
                   </div>
@@ -125,7 +125,7 @@
                         <mat-form-field appearance="standard">
                           <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs2>
                         </mat-form-field>
-                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])"
+                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'], 'rows')"
                           *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                       </div>
                       <mat-form-field appearance="standard">
@@ -158,7 +158,7 @@
                         <mat-form-field appearance="standard">
                           <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs2>
                         </mat-form-field>
-                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'])"
+                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'], 'rows')"
                           *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                       </div>
                       <mat-form-field appearance="standard">
@@ -220,16 +220,17 @@
                     matTooltipPosition="below"></fa-icon>
                 </div>
                 <div class="menu">
-                  <fa-icon [icon]="['fas','copy']" matTooltip="{{info.copy}}" matTooltipPosition="below" (click)="copyQuestion(question)"></fa-icon>
+                  <fa-icon [icon]="['fas','copy']" matTooltip="{{info.copy}}" matTooltipPosition="below" (click)="copyQuestion(question, i)"></fa-icon>
                   <fa-icon [icon]="['fas','trash']" (click)="removeQuestion(i, question.value.select)" matTooltip="{{info.delete}}"
                     matTooltipPosition="below"></fa-icon>
                 </div>
               </div>
             </div>
             <!-- <div class="box"  *appDraggableHelper>coś</div> -->
+            <!-- <pre>{{question.value.QuestionPosition}}</pre> -->
           </div>
         </div>
-        <pre>{{invoiceForm.value | json }}</pre>
+        <!-- <pre>{{invoiceForm.value | json }}</pre> -->
       </form>
     </div>
   </div>
