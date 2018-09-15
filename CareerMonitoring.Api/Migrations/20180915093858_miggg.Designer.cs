@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareerMonitoring.Api.Migrations
 {
     [DbContext(typeof(CareerMonitoringContext))]
-    [Migration("20180915075439_migxd")]
-    partial class migxd
+    [Migration("20180915093858_miggg")]
+    partial class miggg
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -288,6 +288,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<int>("FieldDataId");
 
+                    b.Property<int>("OptionPosition");
+
                     b.Property<bool>("Value");
 
                     b.Property<string>("ViewValue");
@@ -319,7 +321,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("QuestionId")
+                        .IsUnique();
 
                     b.ToTable("FieldData");
                 });
@@ -354,6 +357,8 @@ namespace CareerMonitoring.Api.Migrations
                     b.Property<int>("FieldDataId");
 
                     b.Property<string>("Input");
+
+                    b.Property<int>("RowPosition");
 
                     b.HasKey("Id");
 
@@ -529,8 +534,8 @@ namespace CareerMonitoring.Api.Migrations
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.FieldData", b =>
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Surveys.Question", "Question")
-                        .WithMany("FieldData")
-                        .HasForeignKey("QuestionId")
+                        .WithOne("FieldData")
+                        .HasForeignKey("CareerMonitoring.Core.Domains.Surveys.FieldData", "QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

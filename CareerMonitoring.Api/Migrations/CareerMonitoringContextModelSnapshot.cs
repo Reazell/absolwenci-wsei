@@ -286,6 +286,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<int>("FieldDataId");
 
+                    b.Property<int>("OptionPosition");
+
                     b.Property<bool>("Value");
 
                     b.Property<string>("ViewValue");
@@ -317,7 +319,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId");
+                    b.HasIndex("QuestionId")
+                        .IsUnique();
 
                     b.ToTable("FieldData");
                 });
@@ -352,6 +355,8 @@ namespace CareerMonitoring.Api.Migrations
                     b.Property<int>("FieldDataId");
 
                     b.Property<string>("Input");
+
+                    b.Property<int>("RowPosition");
 
                     b.HasKey("Id");
 
@@ -527,8 +532,8 @@ namespace CareerMonitoring.Api.Migrations
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.FieldData", b =>
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Surveys.Question", "Question")
-                        .WithMany("FieldData")
-                        .HasForeignKey("QuestionId")
+                        .WithOne("FieldData")
+                        .HasForeignKey("CareerMonitoring.Core.Domains.Surveys.FieldData", "QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

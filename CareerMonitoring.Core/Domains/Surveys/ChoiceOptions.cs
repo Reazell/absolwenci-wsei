@@ -3,6 +3,7 @@ namespace CareerMonitoring.Core.Domains.Surveys
     public class ChoiceOption
     {
         public int Id { get; private set; }
+        public int OptionPosition { get; private set; }
         public bool Value { get; private set; }
         public string ViewValue { get; private set; }
         public int FieldDataId { get; private set; }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class migxd : Migration
+    public partial class miggg : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -348,6 +348,7 @@ namespace CareerMonitoring.Api.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OptionPosition = table.Column<int>(nullable: false),
                     Value = table.Column<bool>(nullable: false),
                     ViewValue = table.Column<string>(nullable: true),
                     FieldDataId = table.Column<int>(nullable: false)
@@ -369,6 +370,7 @@ namespace CareerMonitoring.Api.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RowPosition = table.Column<int>(nullable: false),
                     Input = table.Column<string>(nullable: true),
                     FieldDataId = table.Column<int>(nullable: false)
                 },
@@ -443,7 +445,8 @@ namespace CareerMonitoring.Api.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_FieldData_QuestionId",
                 table: "FieldData",
-                column: "QuestionId");
+                column: "QuestionId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobOffer_EmployerId",

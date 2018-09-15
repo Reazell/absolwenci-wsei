@@ -35,8 +35,9 @@ namespace CareerMonitoring.Core.Domains.Surveys
             MaxLabel = maxLabel;
         }
 
-        public FieldData (ICollection<Row> rows)
+        public FieldData (ICollection<ChoiceOption> choiceOptions,ICollection<Row> rows)
         {
+            ChoiceOptions = choiceOptions;
             Rows = rows;
         }
     }

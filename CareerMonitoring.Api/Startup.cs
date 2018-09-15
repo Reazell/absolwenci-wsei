@@ -89,11 +89,9 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IGraduateRepository, GraduateRepository> ();
             services.AddScoped<IEmployerRepository, EmployerRepository> ();
             services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
-            // services.AddScoped<ISurveyRepository, SurveyRepository> ();
-            // services.AddScoped<ILinearScaleRepository, LinearScaleRepository> ();
-            // services.AddScoped<IMultipleChoiceRepository, MultipleChoiceRepository> ();
-            // services.AddScoped<ISingleChoiceRepository, SingleChoiceRepository> ();
-            // services.AddScoped<IOpenQuestionRepository, OpenQuestionRepository> ();
+            services.AddScoped<ISurveyRepository, SurveyRepository> ();
+            services.AddScoped<IQuestionRepository, QuestionRepository> ();
+            services.AddScoped<IFieldDataRepository, FieldDataRepository> ();
 
             #endregion
             #region Services

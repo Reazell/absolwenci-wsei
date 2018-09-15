@@ -10,13 +10,14 @@ namespace CareerMonitoring.Core.Domains.Surveys
         public string Select { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
-        public ICollection<FieldData> FieldData { get; private set; }
+        public FieldData FieldData { get; private set; }
 
         private Question () {}
 
-        public Question (int questionPosition, string select)
+        public Question (int questionPosition, string content, string select)
         {
             QuestionPosition = questionPosition;
+            Content = content;
             Select = select;
         }
     }
