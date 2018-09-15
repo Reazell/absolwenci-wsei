@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class SurveyScore : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -221,7 +221,7 @@ namespace CareerMonitoring.Api.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Proficiency = table.Column<string>(nullable: true),
-                    AccountId = table.Column<int>(nullable: true)
+                    AccountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -231,7 +231,7 @@ namespace CareerMonitoring.Api.Migrations
                         column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -283,7 +283,6 @@ namespace CareerMonitoring.Api.Migrations
                     Content = table.Column<string>(nullable: true),
                     MinValue = table.Column<int>(nullable: false),
                     MaxValue = table.Column<int>(nullable: false),
-                    MarkedValue = table.Column<int>(nullable: false),
                     MinLabel = table.Column<string>(nullable: true),
                     MaxLabel = table.Column<string>(nullable: true),
                     SurveyId = table.Column<int>(nullable: false)
@@ -307,7 +306,7 @@ namespace CareerMonitoring.Api.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
                     SurveyId = table.Column<int>(nullable: false),
-                    MarkedAnswersNames = table.Column<string>(nullable: true)
+                    AnswersOptions = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -326,7 +325,9 @@ namespace CareerMonitoring.Api.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(nullable: true),
+                    Rows = table.Column<string>(nullable: true),
+                    Cols = table.Column<string>(nullable: true),
                     SurveyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -347,7 +348,6 @@ namespace CareerMonitoring.Api.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
-                    Answer = table.Column<string>(nullable: true),
                     SurveyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -369,7 +369,8 @@ namespace CareerMonitoring.Api.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
                     MarkedAnswerName = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: false)
+                    SurveyId = table.Column<int>(nullable: false),
+                    AnswersOptions = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -388,7 +389,9 @@ namespace CareerMonitoring.Api.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(nullable: true),
+                    Rows = table.Column<string>(nullable: true),
+                    Cols = table.Column<string>(nullable: true),
                     SurveyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -403,24 +406,199 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Answer",
+                name: "SurveyScores",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    RowTitle = table.Column<string>(nullable: true),
-                    ColTitle = table.Column<string>(nullable: true),
-                    MultipleGridId = table.Column<int>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    SurveyCreatedAt = table.Column<DateTime>(nullable: false),
+                    ReportCreatedAt = table.Column<DateTime>(nullable: false),
+                    SurveyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Answer", x => x.Id);
+                    table.PrimaryKey("PK_SurveyScores", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Answer_MultipleGrids_MultipleGridId",
-                        column: x => x.MultipleGridId,
+                        name: "FK_SurveyScores_Surveys_SurveyId",
+                        column: x => x.SurveyId,
+                        principalTable: "Surveys",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Answers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    QuestionId = table.Column<int>(nullable: false),
+                    QuestionType = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    MarkedValue = table.Column<int>(nullable: true),
+                    MarkedAnswers = table.Column<string>(nullable: true),
+                    RowTitle = table.Column<string>(nullable: true),
+                    ColTitle = table.Column<string>(nullable: true),
+                    Answer = table.Column<string>(nullable: true),
+                    MarkedAnswer = table.Column<string>(nullable: true),
+                    SingleGridAnswer_RowTitle = table.Column<string>(nullable: true),
+                    SingleGridAnswer_ColTitle = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Answers_LinearScales_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "LinearScales",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Answers_MultipleChoices_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "MultipleChoices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Answers_MultipleGrids_QuestionId",
+                        column: x => x.QuestionId,
                         principalTable: "MultipleGrids",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Answers_OpenQuestions_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "OpenQuestions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Answers_SingleChoices_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "SingleChoices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Answers_SingleGrids_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "SingleGrids",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LinearScaleScore",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    LinearScaleId = table.Column<int>(nullable: true),
+                    SurveyScoreId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LinearScaleScore", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LinearScaleScore_LinearScales_LinearScaleId",
+                        column: x => x.LinearScaleId,
+                        principalTable: "LinearScales",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_LinearScaleScore_SurveyScores_SurveyScoreId",
+                        column: x => x.SurveyScoreId,
+                        principalTable: "SurveyScores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MultipleChoiceScore",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    SurveyScoreId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MultipleChoiceScore", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MultipleChoiceScore_SurveyScores_SurveyScoreId",
+                        column: x => x.SurveyScoreId,
+                        principalTable: "SurveyScores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MultipleGridScore",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    SurveyScoreId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MultipleGridScore", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MultipleGridScore_SurveyScores_SurveyScoreId",
+                        column: x => x.SurveyScoreId,
+                        principalTable: "SurveyScores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SingleChoiceScores",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    SingleChoiceId = table.Column<int>(nullable: true),
+                    SurveyScoreId = table.Column<int>(nullable: false),
+                    Result = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SingleChoiceScores", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SingleChoiceScores_SingleChoices_SingleChoiceId",
+                        column: x => x.SingleChoiceId,
+                        principalTable: "SingleChoices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SingleChoiceScores_SurveyScores_SurveyScoreId",
+                        column: x => x.SurveyScoreId,
+                        principalTable: "SurveyScores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SingleGridScore",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: true),
+                    SurveyScoreId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SingleGridScore", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SingleGridScore_SurveyScores_SurveyScoreId",
+                        column: x => x.SurveyScoreId,
+                        principalTable: "SurveyScores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -436,9 +614,34 @@ namespace CareerMonitoring.Api.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Answer_MultipleGridId",
-                table: "Answer",
-                column: "MultipleGridId");
+                name: "IX_Answers_QuestionId",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId1",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId2",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId3",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId4",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId5",
+                table: "Answers",
+                column: "QuestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Certificates_AccountId",
@@ -476,14 +679,34 @@ namespace CareerMonitoring.Api.Migrations
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_LinearScaleScore_LinearScaleId",
+                table: "LinearScaleScore",
+                column: "LinearScaleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LinearScaleScore_SurveyScoreId",
+                table: "LinearScaleScore",
+                column: "SurveyScoreId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MultipleChoices_SurveyId",
                 table: "MultipleChoices",
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MultipleChoiceScore_SurveyScoreId",
+                table: "MultipleChoiceScore",
+                column: "SurveyScoreId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MultipleGrids_SurveyId",
                 table: "MultipleGrids",
                 column: "SurveyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MultipleGridScore_SurveyScoreId",
+                table: "MultipleGridScore",
+                column: "SurveyScoreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OpenQuestions_SurveyId",
@@ -502,14 +725,34 @@ namespace CareerMonitoring.Api.Migrations
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SingleChoiceScores_SingleChoiceId",
+                table: "SingleChoiceScores",
+                column: "SingleChoiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SingleChoiceScores_SurveyScoreId",
+                table: "SingleChoiceScores",
+                column: "SurveyScoreId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SingleGrids_SurveyId",
                 table: "SingleGrids",
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SingleGridScore_SurveyScoreId",
+                table: "SingleGridScore",
+                column: "SurveyScoreId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Skills_AccountId",
                 table: "Skills",
                 column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SurveyScores_SurveyId",
+                table: "SurveyScores",
+                column: "SurveyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -521,7 +764,7 @@ namespace CareerMonitoring.Api.Migrations
                 name: "AccountRestoringPasswords");
 
             migrationBuilder.DropTable(
-                name: "Answer");
+                name: "Answers");
 
             migrationBuilder.DropTable(
                 name: "Certificates");
@@ -542,28 +785,46 @@ namespace CareerMonitoring.Api.Migrations
                 name: "Languages");
 
             migrationBuilder.DropTable(
-                name: "LinearScales");
+                name: "LinearScaleScore");
 
             migrationBuilder.DropTable(
-                name: "MultipleChoices");
+                name: "MultipleChoiceScore");
 
             migrationBuilder.DropTable(
-                name: "OpenQuestions");
+                name: "MultipleGridScore");
 
             migrationBuilder.DropTable(
                 name: "ProfileLinks");
 
             migrationBuilder.DropTable(
-                name: "SingleChoices");
+                name: "SingleChoiceScores");
 
             migrationBuilder.DropTable(
-                name: "SingleGrids");
+                name: "SingleGridScore");
 
             migrationBuilder.DropTable(
                 name: "Skills");
 
             migrationBuilder.DropTable(
+                name: "MultipleChoices");
+
+            migrationBuilder.DropTable(
                 name: "MultipleGrids");
+
+            migrationBuilder.DropTable(
+                name: "OpenQuestions");
+
+            migrationBuilder.DropTable(
+                name: "SingleGrids");
+
+            migrationBuilder.DropTable(
+                name: "LinearScales");
+
+            migrationBuilder.DropTable(
+                name: "SingleChoices");
+
+            migrationBuilder.DropTable(
+                name: "SurveyScores");
 
             migrationBuilder.DropTable(
                 name: "Accounts");

@@ -228,7 +228,7 @@ namespace CareerMonitoring.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountId");
+                    b.Property<int>("AccountId");
 
                     b.Property<string>("Name");
 
@@ -259,23 +259,6 @@ namespace CareerMonitoring.Api.Migrations
                     b.ToTable("ProfileLinks");
                 });
 
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.SingleGrid", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("SurveyId");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SurveyId");
-
-                    b.ToTable("SingleGrids");
-                });
-
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Skill", b =>
                 {
                     b.Property<int>("Id")
@@ -293,32 +276,14 @@ namespace CareerMonitoring.Api.Migrations
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer", b =>
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.Abstract.Answer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ColTitle");
-
-                    b.Property<int?>("MultipleGridId");
-
-                    b.Property<string>("RowTitle");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MultipleGridId");
-
-                    b.ToTable("Answer");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.LinearScaleAnswer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("MarkedValue");
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
 
                     b.Property<int>("QuestionId");
 
@@ -326,108 +291,9 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId");
+                    b.ToTable("Answers");
 
-                    b.ToTable("LinearScalesAnswers");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.MultipleChoiceAnswer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("MarkedAnswers");
-
-                    b.Property<int>("QuestionId");
-
-                    b.Property<string>("QuestionType");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("MultipleChoicesAnswers");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.MultipleGridAnswer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ColTitle");
-
-                    b.Property<int>("QuestionId");
-
-                    b.Property<string>("QuestionType");
-
-                    b.Property<string>("RowTitle");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("MultipleGridsAnswers");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.OpenQuestionAnswer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Answer");
-
-                    b.Property<int>("QuestionId");
-
-                    b.Property<string>("QuestionType");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("OpenQuestionsAnswers");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.SingleChoiceAnswer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("MarkedAnswer");
-
-                    b.Property<int>("QuestionId");
-
-                    b.Property<string>("QuestionType");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("SingleChoicesAnswers");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.SingleGridAnswer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ColTitle");
-
-                    b.Property<int>("QuestionId");
-
-                    b.Property<string>("QuestionType");
-
-                    b.Property<string>("RowTitle");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("SingleGridsAnswers");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Answer");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.LinearScale", b =>
@@ -510,6 +376,122 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasIndex("SurveyId");
 
                     b.ToTable("OpenQuestions");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.LinearScaleScore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<int?>("LinearScaleId");
+
+                    b.Property<int>("SurveyScoreId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LinearScaleId");
+
+                    b.HasIndex("SurveyScoreId");
+
+                    b.ToTable("LinearScaleScore");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.MultipleChoiceScore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("SurveyScoreId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyScoreId");
+
+                    b.ToTable("MultipleChoiceScore");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.MultipleGridScore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("SurveyScoreId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyScoreId");
+
+                    b.ToTable("MultipleGridScore");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.SingleChoiceScore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<string>("Result");
+
+                    b.Property<int?>("SingleChoiceId");
+
+                    b.Property<int>("SurveyScoreId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SingleChoiceId");
+
+                    b.HasIndex("SurveyScoreId");
+
+                    b.ToTable("SingleChoiceScores");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.SingleGridScore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("SurveyScoreId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyScoreId");
+
+                    b.ToTable("SingleGridScore");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.SurveyScore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ReportCreatedAt");
+
+                    b.Property<DateTime>("SurveyCreatedAt");
+
+                    b.Property<int>("SurveyId");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyId");
+
+                    b.ToTable("SurveyScores");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.SingleChoice", b =>
@@ -617,6 +599,95 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasDiscriminator().HasValue("Student");
                 });
 
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.LinearScaleAnswer", b =>
+                {
+                    b.HasBaseType("CareerMonitoring.Core.Domains.Surveys.Answers.Abstract.Answer");
+
+                    b.Property<int>("MarkedValue");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("LinearScaleAnswer");
+
+                    b.HasDiscriminator().HasValue("LinearScaleAnswer");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.MultipleChoiceAnswer", b =>
+                {
+                    b.HasBaseType("CareerMonitoring.Core.Domains.Surveys.Answers.Abstract.Answer");
+
+                    b.Property<string>("MarkedAnswers");
+
+                    b.HasIndex("QuestionId")
+                        .HasName("IX_Answers_QuestionId1");
+
+                    b.ToTable("MultipleChoiceAnswer");
+
+                    b.HasDiscriminator().HasValue("MultipleChoiceAnswer");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.MultipleGridAnswer", b =>
+                {
+                    b.HasBaseType("CareerMonitoring.Core.Domains.Surveys.Answers.Abstract.Answer");
+
+                    b.Property<string>("ColTitle");
+
+                    b.Property<string>("RowTitle");
+
+                    b.HasIndex("QuestionId")
+                        .HasName("IX_Answers_QuestionId2");
+
+                    b.ToTable("MultipleGridAnswer");
+
+                    b.HasDiscriminator().HasValue("MultipleGridAnswer");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.OpenQuestionAnswer", b =>
+                {
+                    b.HasBaseType("CareerMonitoring.Core.Domains.Surveys.Answers.Abstract.Answer");
+
+                    b.Property<string>("Answer");
+
+                    b.HasIndex("QuestionId")
+                        .HasName("IX_Answers_QuestionId3");
+
+                    b.ToTable("OpenQuestionAnswer");
+
+                    b.HasDiscriminator().HasValue("OpenQuestionAnswer");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.SingleChoiceAnswer", b =>
+                {
+                    b.HasBaseType("CareerMonitoring.Core.Domains.Surveys.Answers.Abstract.Answer");
+
+                    b.Property<string>("MarkedAnswer");
+
+                    b.HasIndex("QuestionId")
+                        .HasName("IX_Answers_QuestionId4");
+
+                    b.ToTable("SingleChoiceAnswer");
+
+                    b.HasDiscriminator().HasValue("SingleChoiceAnswer");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.SingleGridAnswer", b =>
+                {
+                    b.HasBaseType("CareerMonitoring.Core.Domains.Surveys.Answers.Abstract.Answer");
+
+                    b.Property<string>("ColTitle")
+                        .HasColumnName("SingleGridAnswer_ColTitle");
+
+                    b.Property<string>("RowTitle")
+                        .HasColumnName("SingleGridAnswer_RowTitle");
+
+                    b.HasIndex("QuestionId")
+                        .HasName("IX_Answers_QuestionId5");
+
+                    b.ToTable("SingleGridAnswer");
+
+                    b.HasDiscriminator().HasValue("SingleGridAnswer");
+                });
+
             modelBuilder.Entity("CareerMonitoring.Core.Domains.AccountActivation", b =>
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
@@ -674,9 +745,10 @@ namespace CareerMonitoring.Api.Migrations
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Language", b =>
                 {
-                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account")
+                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
                         .WithMany("Languages")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.ProfileLink", b =>
@@ -687,74 +759,11 @@ namespace CareerMonitoring.Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.SingleGrid", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.Survey", "Survey")
-                        .WithMany("SingleGrids")
-                        .HasForeignKey("SurveyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Skill", b =>
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account")
                         .WithMany("Skills")
                         .HasForeignKey("AccountId");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.MultipleGrid")
-                        .WithMany("Answers")
-                        .HasForeignKey("MultipleGridId");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.LinearScaleAnswer", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.LinearScale", "LinearScale")
-                        .WithMany("LinearScaleAnswers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.MultipleChoiceAnswer", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.MultipleChoice", "MultipleChoice")
-                        .WithMany("MultipleChoiceAnswers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.MultipleGridAnswer", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.MultipleGrid", "MultipleGrid")
-                        .WithMany("MultipleGridAnswers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.OpenQuestionAnswer", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.OpenQuestion", "OpenQuestion")
-                        .WithMany("OpenQuestionAnswers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.SingleChoiceAnswer", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.SingleChoice", "SingleChoice")
-                        .WithMany("SingleChoiceAnswers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answer.SingleGridAnswer", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.SingleGrid", "SingleGrid")
-                        .WithMany("SingleGridAnswers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.LinearScale", b =>
@@ -789,6 +798,62 @@ namespace CareerMonitoring.Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.LinearScaleScore", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.LinearScale", "LinearScale")
+                        .WithMany()
+                        .HasForeignKey("LinearScaleId");
+
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.Score.SurveyScore", "SurveyScore")
+                        .WithMany("LinearScaleScores")
+                        .HasForeignKey("SurveyScoreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.MultipleChoiceScore", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.Score.SurveyScore", "SurveyScore")
+                        .WithMany("MultipleChoiceScores")
+                        .HasForeignKey("SurveyScoreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.MultipleGridScore", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.Score.SurveyScore", "SurveyScore")
+                        .WithMany("MultipleGridScores")
+                        .HasForeignKey("SurveyScoreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.SingleChoiceScore", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.SingleChoice", "SingleChoice")
+                        .WithMany()
+                        .HasForeignKey("SingleChoiceId");
+
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.Score.SurveyScore", "SurveyScore")
+                        .WithMany("SingleChoiceScores")
+                        .HasForeignKey("SurveyScoreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.SingleGridScore", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.Score.SurveyScore", "SurveyScore")
+                        .WithMany("SingleGridScores")
+                        .HasForeignKey("SurveyScoreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Score.SurveyScore", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.Survey", "Survey")
+                        .WithMany()
+                        .HasForeignKey("SurveyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.SingleChoice", b =>
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Surveys.Survey", "Survey")
@@ -803,6 +868,54 @@ namespace CareerMonitoring.Api.Migrations
                         .WithMany("SingleGrids")
                         .HasForeignKey("SurveyId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.LinearScaleAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.LinearScale", "LinearScale")
+                        .WithMany("LinearScaleAnswers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.MultipleChoiceAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.MultipleChoice", "MultipleChoice")
+                        .WithMany("MultipleChoiceAnswers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.MultipleGridAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.MultipleGrid", "MultipleGrid")
+                        .WithMany("MultipleGridAnswers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.OpenQuestionAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.OpenQuestion", "OpenQuestion")
+                        .WithMany("OpenQuestionAnswers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.SingleChoiceAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.SingleChoice", "SingleChoice")
+                        .WithMany("SingleChoiceAnswers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.Answers.SingleGridAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Surveys.SingleGrid", "SingleGrid")
+                        .WithMany("SingleGridAnswers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }
