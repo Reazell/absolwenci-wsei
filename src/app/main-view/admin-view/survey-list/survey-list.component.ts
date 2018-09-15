@@ -1,4 +1,6 @@
+import { SurveyService } from './../../services/survey.services';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-survey-list',
@@ -7,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SurveyListComponent implements OnInit {
   surveyArr = [];
-  constructor() {}
+  constructor(private surveyService: SurveyService, private router: Router) {}
 
   ngOnInit() {
     this.surveyArr = JSON.parse(localStorage.getItem('surveys'));
     console.log(this.surveyArr);
+  }
+
+  openCreator(survey) {
+    // [routerLink]="['/app/admin/create']"
+    this.surveyService.openCreator(survey);
+    this.router.navigateByUrl('/app/admin/create');
   }
 }

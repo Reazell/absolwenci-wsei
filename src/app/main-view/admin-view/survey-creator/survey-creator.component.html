@@ -129,7 +129,7 @@
                           *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                       </div>
                       <mat-form-field appearance="standard">
-                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addInputOption(field.controls['rows'], 'wiersz')"
+                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addRowControl(field.controls['rows'], 'wiersz')"
                           maxlength="0" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                       </mat-form-field>
                     </div>
@@ -146,7 +146,7 @@
                           *ngIf="field.controls['columns'].controls.length > 1"></fa-icon>
                       </div>
                       <mat-form-field class="standalone" appearance="standard">
-                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls['columns'], 'kolumna')"
+                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls['columns'], 'kolumna')"
                           maxlength="0" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                       </mat-form-field>
                     </div>
@@ -162,7 +162,7 @@
                           *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                       </div>
                       <mat-form-field appearance="standard">
-                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addInputOption(field.controls['rows'], 'wiersz')"
+                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addRowControl(field.controls['rows'], 'wiersz')"
                           maxlength="0" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                       </mat-form-field>
                     </div>
@@ -182,7 +182,7 @@
                         </div>
                       </div>
                       <mat-form-field class="standalone" appearance="standard">
-                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls['columns'], 'kolumna')"
+                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls['columns'], 'kolumna')"
                           maxlength="0" autocomplete="off" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                       </mat-form-field>
                     </div>
@@ -190,19 +190,19 @@
 
                   <div *ngSwitchCase="'dropdown-menu'" class="add">
                     <mat-form-field appearance="standard">
-                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls.choiceOptions, 'opcja')"
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls.choiceOptions, 'opcja')"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
                     </mat-form-field>
                   </div>
                   <div *ngSwitchCase="'single-choice'" class="add">
                     <mat-form-field appearance="standard">
-                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls.choiceOptions, 'opcja')"
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls.choiceOptions, 'opcja')"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
                     </mat-form-field>
                   </div>
                   <div *ngSwitchCase="'multiple-choice'" class="add">
                     <mat-form-field appearance="standard">
-                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls.choiceOptions, 'opcja')"
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls.choiceOptions, 'opcja')"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
                     </mat-form-field>
                   </div>
@@ -230,7 +230,7 @@
             <!-- <pre>{{question.value.QuestionPosition}}</pre> -->
           </div>
         </div>
-        <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+        <pre>{{invoiceForm.value | json }}</pre>
       </form>
     </div>
   </div>

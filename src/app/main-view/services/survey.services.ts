@@ -8,6 +8,7 @@ import { AppConfig } from '../../app.config';
 export class SurveyService {
   controlArray: string[];
   savedSurvey: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
+  openedSurvey: any;
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   sendSurveyEmail(survey) {
@@ -19,10 +20,6 @@ export class SurveyService {
       .map(data => {
         return data;
       });
-  }
-
-  saveSurvey(form: FormGroup): void {
-    this.savedSurvey.next(form);
   }
   sendSurvey(survey) {
     return this.http
@@ -42,5 +39,16 @@ export class SurveyService {
       .map(data => {
         return data;
       });
+  }
+
+  saveSurveyToOpen(form: FormGroup): void {
+    this.savedSurvey.next(form);
+  }
+
+  openCreator(formGroup): void {
+    this.openedSurvey = formGroup;
+  }
+  getSurveyToOpen() {
+    return this.openedSurvey;
   }
 }
