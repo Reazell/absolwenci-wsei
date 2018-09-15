@@ -16,13 +16,11 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             CreatedAt = DateTime.UtcNow;
         }
 
-        public void AddQuestions (ICollection<Question> questions)
-        {
+        public void AddQuestions (ICollection<Question> questions) {
             Questions = questions;
         }
 
-        public void MarkAsAnswered ()
-        {
+        public void MarkAsAnswered () {
             Answered = true;
         }
     }
