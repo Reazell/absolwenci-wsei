@@ -1,14 +1,15 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.Surveys;
-using CareerMonitoring.Core.Domains.Surveys.Answers;
-using CareerMonitoring.Core.Domains.Surveys.Answers.Abstract;
-using CareerMonitoring.Core.Domains.Surveys.Score;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
     public class CareerMonitoringContext : DbContext {
         public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<FieldData> FieldData { get; set; }
+        public DbSet<ChoiceOption> ChoiceOptions { get; set; }
+        public DbSet<Row> Rows { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
@@ -59,6 +60,22 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasOne (a => a.ProfileLink)
                 .WithOne (s => s.Account)
                 .HasForeignKey<ProfileLink> (b => b.AccountId);
+            modelBuilder.Entity<Survey> ()
+                .HasMany (a => a.Questions)
+                .WithOne (b => b.Survey)
+                .HasForeignKey (s => s.SurveyId);
+            modelBuilder.Entity<Question> ()
+                .HasOne (a => a.FieldData)
+                .WithOne (b => b.Question)
+                .HasForeignKey<FieldData> (s => s.QuestionId);
+            modelBuilder.Entity<FieldData> ()
+                .HasMany (a => a.Rows)
+                .WithOne (b => b.FieldData)
+                .HasForeignKey (s => s.FieldDataId);
+            modelBuilder.Entity<FieldData> ()
+                .HasMany (a => a.ChoiceOptions)
+                .WithOne (b => b.FieldData)
+                .HasForeignKey (s => s.FieldDataId);
         }
     }
 }

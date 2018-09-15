@@ -93,6 +93,9 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
             services.AddScoped<ILanguageRepository, LanguageRepository> ();
             services.AddScoped<ISkillRepository, SkillRepository> ();
+            services.AddScoped<ISurveyRepository, SurveyRepository> ();
+            services.AddScoped<IQuestionRepository, QuestionRepository> ();
+            services.AddScoped<IFieldDataRepository, FieldDataRepository> ();
 
             #endregion
             #region Services
@@ -104,6 +107,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmployerService, EmployerService> ();
             services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
             services.AddScoped<IProfileEditionService, ProfileEditionService> ();
+            // services.AddScoped<ISurveyService, SurveyService> ();
 
             #endregion
             #region Validations

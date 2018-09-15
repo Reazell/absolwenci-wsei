@@ -7,6 +7,7 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public string Title { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public bool Answered { get; private set; }
+        public ICollection<Question> Questions { get; private set; }
 
         private Survey () { }
 
