@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Surveys;
 
 namespace CareerMonitoring.Infrastructure.DTO

@@ -10,6 +10,7 @@ using CareerMonitoring.Infrastructure.Commands.CareerOffice;
 using CareerMonitoring.Infrastructure.Commands.Email;
 using CareerMonitoring.Infrastructure.Commands.Employer;
 using CareerMonitoring.Infrastructure.Commands.Graduate;
+using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Extension.JWT;
@@ -25,6 +26,7 @@ using CareerMonitoring.Infrastructure.Validators.CareerOffice;
 using CareerMonitoring.Infrastructure.Validators.Email;
 using CareerMonitoring.Infrastructure.Validators.Employer;
 using CareerMonitoring.Infrastructure.Validators.Graduate;
+using CareerMonitoring.Infrastructure.Validators.ProfileEdition;
 using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -89,6 +91,8 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IGraduateRepository, GraduateRepository> ();
             services.AddScoped<IEmployerRepository, EmployerRepository> ();
             services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
+            services.AddScoped<ILanguageRepository, LanguageRepository> ();
+            services.AddScoped<ISkillRepository, SkillRepository> ();
             services.AddScoped<ISurveyRepository, SurveyRepository> ();
             services.AddScoped<IQuestionRepository, QuestionRepository> ();
             services.AddScoped<IFieldDataRepository, FieldDataRepository> ();
@@ -102,6 +106,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IGraduateService, GraduateService> ();
             services.AddScoped<IEmployerService, EmployerService> ();
             services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
+            services.AddScoped<IProfileEditionService, ProfileEditionService> ();
             // services.AddScoped<ISurveyService, SurveyService> ();
 
             #endregion
@@ -116,6 +121,13 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<RestorePassword>, RestorePasswordValidator> ();
             services.AddTransient<IValidator<ChangePasswordByRestoringPassword>, ChangePasswordByRestoringPasswordValidator> ();
             services.AddTransient<IValidator<EmailToSend>, EmailToSendValidator> ();
+            services.AddTransient<IValidator<AddCertificate>, AddCertificateValidator> ();
+            services.AddTransient<IValidator<AddCourse>, AddCourseValidator> ();
+            services.AddTransient<IValidator<AddEducation>, AddEducationValidator> ();
+            services.AddTransient<IValidator<AddExperience>, AddExperienceValidator> ();
+            services.AddTransient<IValidator<AddLanguage>, AddLanguageValidator> ();
+            services.AddTransient<IValidator<AddProfileLink>, AddProfileLinkValidator> ();
+            services.AddTransient<IValidator<AddSkill>, AddSkillValidator> ();
 
             #endregion
             #region Factories

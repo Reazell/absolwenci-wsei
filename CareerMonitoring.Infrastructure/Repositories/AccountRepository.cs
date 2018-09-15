@@ -56,6 +56,28 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             SingleOrDefaultAsync (x => x.AccountRestoringPassword.Token == token);
         }
 
+        public async Task<Account> GetWithProfileEditionByIdAsync (int id, bool isTracking = true) {
+            if (isTracking)
+                return await _context.Accounts.AsTracking ()
+                    .Include (x => x.Certificates)
+                    .Include (x => x.Courses)
+                    .Include (x => x.Educations)
+                    .Include (x => x.Experiences)
+                    .Include (x => x.Languages)
+                    .Include (x => x.ProfileLink)
+                    .Include (x => x.Skills)
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            return await _context.Accounts.AsNoTracking ()
+                .Include (x => x.Certificates)
+                .Include (x => x.Courses)
+                .Include (x => x.Educations)
+                .Include (x => x.Experiences)
+                .Include (x => x.Languages)
+                .Include (x => x.ProfileLink)
+                .Include (x => x.Skills)
+                .SingleOrDefaultAsync (x => x.Id == id);
+        }
+
         public async Task<IEnumerable<Account>> GetAllAsync (bool isTracking = true) {
             if (isTracking)
                 return await Task.FromResult (_context.Accounts.AsTracking ().AsEnumerable ());
