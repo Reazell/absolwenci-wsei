@@ -36,6 +36,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       }
     ]
   };
+
   constructor(
     private surveyService: SurveyService,
     private fb: FormBuilder,
@@ -55,7 +56,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   sendSurvey() {
     this.sendSurveySub = this.sharedService.sendButton.subscribe(() => {
       // this.onSubmit();
-      console.log('sent!');
+      console.log(JSON.stringify(this.invoiceForm.getRawValue()));
     });
   }
   ngOnDestroy() {
@@ -64,6 +65,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   updateSelection(radios, radio, e?) {
+
     radios.forEach(el => {
       el.controls.value.setValue(false);
     });
@@ -120,15 +122,14 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       case 'long-answer':
         this.addInput(FieldData);
         break;
-      case 'dropdown-menu':
-        this.addArray(FieldData, data);
-        break;
       case 'linear-scale':
         this.createRadio(FieldData, data);
         break;
+      case 'dropdown-menu':
       case 'single-choice':
       case 'multiple-choice':
-        this.addCheckField(FieldData, data);
+        // this.addCheckField(FieldData, data);
+        this.addArray(FieldData, data);
         break;
       case 'single-grid':
       case 'multiple-grid':
@@ -139,11 +140,11 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   addArray(FieldData, data) {
     const group = this.fb.group({
-      input: this.fb.array([])
+      choiceOptions: this.fb.array([])
     });
     FieldData.push(group);
-    data.input.forEach(input => {
-      this.addCheckField(group.controls.input, input);
+    data.choiceOptions.forEach(choiceOptions => {
+      this.addCheckField(group.controls.choiceOptions, choiceOptions);
     });
   }
   addInput(FieldData) {
@@ -180,16 +181,15 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   createGrid(rows, oldFieldData, name) {
-    console.log(oldFieldData);
     const group = this.fb.group({
       input: name,
-      column: this.fb.array([])
+      choiceOptions: this.fb.array([])
     });
     rows.push(group);
     const colLength = oldFieldData.columns.length;
     for (let i = 0; i < colLength; i++) {
       this.createViewValue(
-        group.controls.column,
+        group.controls.choiceOptions,
         oldFieldData.columns[i].viewValue
       );
     }

@@ -30,12 +30,12 @@
                   </mat-form-field>
                 </div>
 
-                <div class="choice" *ngSwitchCase="'dropdown-menu'" formArrayName="input">
+                <div class="choice" *ngSwitchCase="'dropdown-menu'" formArrayName="choiceOptions">
                   <mat-form-field appearance="standard">
                     <mat-select placeholder="Wybierz">
                       <!-- <mat-option>Wybierz</mat-option> -->
-                      <div *ngFor="let select of field.controls.input.controls; let k = index" [formGroupName]="k">
-                        <mat-option [value]="select.value.value" (click)="updateSelection(field.controls.input.controls, select.controls.value)">
+                      <div *ngFor="let select of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
+                        <mat-option [value]="select.value.value" (click)="updateSelection(field.controls.choiceOptions.controls, select.controls.value)">
                           {{select.value.viewValue}}
                         </mat-option>
                       </div>
@@ -81,19 +81,23 @@
 
                 </div>
 
-                <div class="choice" *ngSwitchCase="'single-choice'">
-                  <mat-radio-group formControlName="value" name="{{j}}" (change)="updateSelection(question.controls.FieldData.controls, field.controls.value, $event)">
-                    <mat-radio-button></mat-radio-button>
-                  </mat-radio-group>
-                  <span>{{field.value.viewValue}}</span>
+                <div class="choice" *ngSwitchCase="'single-choice'" formArrayName="choiceOptions">
+                  <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
+                    <mat-radio-group formControlName="value" name="{{'radio' + i}}" (change)="updateSelection(field.controls.choiceOptions.controls, input.controls.value, $event)">
+                      <mat-radio-button></mat-radio-button>
+                    </mat-radio-group>
+                    <span>{{input.value.viewValue}}</span>
+                  </div>
                 </div>
 
-                <div class="choice" *ngSwitchCase="'multiple-choice'">
-                  <div class="checkbox" name="check">
-                    <div class="right">
-                      <mat-checkbox formControlName="value"></mat-checkbox>
+                <div class="choice" *ngSwitchCase="'multiple-choice'" formArrayName="choiceOptions">
+                  <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
+                    <div class="checkbox" name="check">
+                      <div class="right">
+                        <mat-checkbox formControlName="value"></mat-checkbox>
+                      </div>
+                      <span>{{input.value.viewValue}}</span>
                     </div>
-                    <span>{{field.value.viewValue}}</span>
                   </div>
                 </div>
 
@@ -102,20 +106,20 @@
                     <div class="columns">
                       <div class="column width">
                       </div>
-                      <div class="column width" *ngFor="let column of field.controls.rows.controls[j].controls.column.controls">
+                      <div class="column width" *ngFor="let column of field.controls.rows.controls[j].controls.choiceOptions.controls">
                         <span>{{column.value.viewValue}}</span>
                       </div>
                     </div>
                     <div formArrayName="rows" class="rows">
                       <div *ngFor="let row of field.controls.rows.controls; let k = index" [formGroupName]="k" class="row">
-                        <div formArrayName="column" [ngClass]="k % 2 ? 'row-container dark': 'row-container light'">
+                        <div formArrayName="choiceOptions" [ngClass]="k % 2 ? 'row-container dark': 'row-container light'">
                           <div class="row-el width">
                             <span>{{row.value.input}}</span>
                           </div>
 
-                          <div *ngFor="let column of row.controls.column.controls; let l = index" [formGroupName]="l"
-                            class="row-el width">
-                            <mat-radio-group formControlName="value" name="{{k}}" (change)="updateSelection(row.controls.column.controls, column.controls.value ,$event)">
+                          <div *ngFor="let column of row.controls.choiceOptions.controls; let l = index"
+                            [formGroupName]="l" class="row-el width">
+                            <mat-radio-group formControlName="value" name="{{'grid_radio' + i + k}}" (change)="updateSelection(row.controls.choiceOptions.controls, column.controls.value ,$event)">
                               <mat-radio-button></mat-radio-button>
                             </mat-radio-group>
                           </div>
@@ -130,18 +134,18 @@
                     <div class="columns">
                       <div class="column width">
                       </div>
-                      <div class="column width" *ngFor="let column of field.controls.rows.controls[j].controls.column.controls">
+                      <div class="column width" *ngFor="let column of field.controls.rows.controls[j].controls.choiceOptions.controls">
                         <span>{{column.value.viewValue}}</span>
                       </div>
                     </div>
                     <div formArrayName="rows" class="rows">
                       <div *ngFor="let row of field.controls.rows.controls; let k = index" [formGroupName]="k" class="row">
-                        <div formArrayName="column" [ngClass]="k % 2 ? 'row-container dark': 'row-container light'">
+                        <div formArrayName="choiceOptions" [ngClass]="k % 2 ? 'row-container dark': 'row-container light'">
                           <div class="row-el width">
                             <span>{{row.value.input}}</span>
                           </div>
-                          <div *ngFor="let column of row.controls.column.controls; let l = index" [formGroupName]="l"
-                            class="row-el width">
+                          <div *ngFor="let column of row.controls.choiceOptions.controls; let l = index"
+                            [formGroupName]="l" class="row-el width">
                             <mat-checkbox formControlName="value"></mat-checkbox>
                           </div>
                         </div>
@@ -149,10 +153,11 @@
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
-          <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+          <pre>{{invoiceForm.value | json }}</pre>
         </div>
       </form>
 

@@ -11,5 +11,6 @@ export class SurveyListComponent implements OnInit {
 
   ngOnInit() {
     this.surveyArr = JSON.parse(localStorage.getItem('surveys'));
+    console.log(this.surveyArr);
   }
 }

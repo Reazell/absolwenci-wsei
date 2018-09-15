@@ -42,21 +42,24 @@
                 overflow-y: hidden;
                 padding: 15px;
                 .choice {
-                  display: flex;
-                  align-items: center;
-                  // answer fields
-                  mat-form-field {
-                    width: 100%;
-                    font-size: 13px;
-                  }
-                  // multiple-choice
-                  .checkbox {
-                    width: 100%;
+                  div {
                     display: flex;
                     align-items: center;
-                    .right {
-                      display: inline-block;
-                      margin-right: 8px;
+                    padding: 5px 0;
+                    // answer fields
+                    mat-form-field {
+                      width: 100%;
+                      font-size: 13px;
+                    }
+                    // multiple-choice
+                    .checkbox {
+                      width: 100%;
+                      display: flex;
+                      align-items: center;
+                      .right {
+                        display: inline-block;
+                        margin-right: 8px;
+                      }
                     }
                   }
                   // linear-scale

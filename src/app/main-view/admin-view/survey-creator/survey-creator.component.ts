@@ -23,7 +23,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   inputs2: QueryList<any>;
 
   invoiceForm: FormGroup;
-  default = 'single-choice';
+  default = 'single-grid';
   disabled = true;
   index = 0;
 
@@ -133,7 +133,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.saveInLocalStorage();
+    console.log(JSON.stringify(this.invoiceForm.getRawValue()));
+    // this.saveInLocalStorage();
     this.surveyService.saveSurvey(this.invoiceForm.getRawValue());
     this.router.navigateByUrl(`/app/admin/viewform`);
     // window.open('http://localhost:4200/app/admin/viewform', '_blank');
@@ -184,15 +185,14 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       case 'long-answer':
         this.addInput(FieldData);
         break;
-      case 'dropdown-menu':
-        this.addArray(FieldData);
-        break;
       case 'linear-scale':
         this.addLinearScaleField(FieldData);
         break;
+      case 'dropdown-menu':
       case 'single-choice':
       case 'multiple-choice':
-        this.addCheckField(FieldData, 'opcja');
+        // this.addCheckField(FieldData, 'opcja');
+        this.addArray(FieldData);
         break;
       case 'single-grid':
       case 'multiple-grid':
@@ -202,10 +202,10 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
   addArray(FieldData) {
     const group = this.fb.group({
-      input: this.fb.array([])
+      choiceOptions: this.fb.array([])
     });
     FieldData.push(group);
-    this.addCheckField(group.controls.input, 'opcja');
+    this.addCheckField(group.controls.choiceOptions, 'opcja');
   }
   addInput(FieldData) {
     const group = this.fb.group({
@@ -290,9 +290,11 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       switch (lastSelect) {
         case 'single-choice':
         case 'multiple-choice':
+        case 'dropdown-menu':
           switch (select) {
             case 'single-choice':
             case 'multiple-choice':
+            case 'dropdown-menu':
               break;
             default:
               this.fieldRemoving(FieldData, select);

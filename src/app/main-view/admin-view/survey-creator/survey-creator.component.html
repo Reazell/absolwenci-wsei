@@ -52,17 +52,17 @@
                     </mat-form-field>
                   </div>
 
-                  <div class="dropdown" *ngSwitchCase="'dropdown-menu'" formArrayName="input">
-                    <div *ngFor="let input of field.controls.input.controls; let k = index" [formGroupName]="k">
+                  <div class="dropdown" *ngSwitchCase="'dropdown-menu'" formArrayName="choiceOptions">
+                    <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
                       <mat-form-field appearance="standard">
                         <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
                       </mat-form-field>
-                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.input)"
-                        *ngIf="field.controls.input.controls.length > 1"></fa-icon>
+                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.choiceOptions)"
+                        *ngIf="field.controls.choiceOptions.controls.length > 1"></fa-icon>
                     </div>
                   </div>
 
-                  <div class="choice" *ngSwitchCase="'linear-scale'">
+                  <div class="linear-scale" *ngSwitchCase="'linear-scale'">
                     <div id="scale-container" class="cont">
                       <mat-form-field appearance="standard">
                         <mat-select placeholder="typ kontrolki" formControlName="minValue" name="control">
@@ -91,27 +91,31 @@
                     </div>
                   </div>
 
-                  <div class="choice" *ngSwitchCase="'single-choice'">
-                    <mat-radio-group formControlName="value" name="radio">
-                      <mat-radio-button></mat-radio-button>
-                    </mat-radio-group>
-                    <mat-form-field appearance="standard">
-                      <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
-                    </mat-form-field>
-                    <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, question.controls.FieldData)"
-                      *ngIf="question.controls.FieldData.controls.length > 1"></fa-icon>
-                  </div>
-
-                  <div class="choice" *ngSwitchCase="'multiple-choice'">
-                    <div class="checkbox" name="check">
-                      <div class="right">
-                        <mat-checkbox formControlName="value"></mat-checkbox>
-                      </div>
+                  <div class="choice" *ngSwitchCase="'single-choice'" formArrayName="choiceOptions">
+                    <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
+                      <mat-radio-group formControlName="value" name="radio">
+                        <mat-radio-button></mat-radio-button>
+                      </mat-radio-group>
                       <mat-form-field appearance="standard">
                         <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
                       </mat-form-field>
-                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, question.controls.FieldData)"
-                        *ngIf="question.controls.FieldData.controls.length > 1"></fa-icon>
+                      <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.choiceOptions)"
+                        *ngIf="field.controls.choiceOptions.controls.length > 1"></fa-icon>
+                    </div>
+                  </div>
+
+                  <div class="choice" *ngSwitchCase="'multiple-choice'" formArrayName="choiceOptions">
+                    <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
+                      <div class="checkbox" name="check">
+                        <div class="right">
+                          <mat-checkbox formControlName="value"></mat-checkbox>
+                        </div>
+                        <mat-form-field appearance="standard">
+                          <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs>
+                        </mat-form-field>
+                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.choiceOptions)"
+                          *ngIf="field.controls.choiceOptions.controls.length > 1"></fa-icon>
+                      </div>
                     </div>
                   </div>
 
@@ -186,26 +190,26 @@
 
                   <div *ngSwitchCase="'dropdown-menu'" class="add">
                     <mat-form-field appearance="standard">
-                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls.input, 'opcja')"
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls.choiceOptions, 'opcja')"
                         autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
                     </mat-form-field>
-
+                  </div>
+                  <div *ngSwitchCase="'single-choice'" class="add">
+                    <mat-form-field appearance="standard">
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls.choiceOptions, 'opcja')"
+                        autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
+                    </mat-form-field>
+                  </div>
+                  <div *ngSwitchCase="'multiple-choice'" class="add">
+                    <mat-form-field appearance="standard">
+                      <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(field.controls.choiceOptions, 'opcja')"
+                        autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
+                    </mat-form-field>
                   </div>
                 </div>
 
 
-                <div *ngSwitchCase="'single-choice'" class="add">
-                  <mat-form-field appearance="standard">
-                    <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(question.controls.FieldData, 'opcja')"
-                      autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
-                  </mat-form-field>
-                </div>
-                <div *ngSwitchCase="'multiple-choice'" class="add">
-                  <mat-form-field appearance="standard">
-                    <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="addCheckField(question.controls.FieldData, 'opcja')"
-                      autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję" maxlength="0">
-                  </mat-form-field>
-                </div>
+
 
               </div>
 
@@ -225,7 +229,7 @@
             <!-- <div class="box"  *appDraggableHelper>coś</div> -->
           </div>
         </div>
-        <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+        <pre>{{invoiceForm.value | json }}</pre>
       </form>
     </div>
   </div>

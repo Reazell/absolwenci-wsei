@@ -29,7 +29,6 @@
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
               0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
-
             // &.sortable.dragging {
             //   visibility: hidden;
             //   // background: none;
@@ -67,27 +66,36 @@
                 padding-bottom: 20px;
                 .field-loop {
                   .choice {
-                    display: flex;
-                    align-items: center;
-                    // answer fields
-                    mat-form-field {
-                      width: 100%;
-                      font-size: 13px;
-                    }
-                    // multiple-choice
-                    .checkbox {
-                      width: 100%;
+                    div {
                       display: flex;
                       align-items: center;
-                      .right {
-                        display: inline-block;
-                        margin-right: 8px;
+                      // answer fields
+                      mat-form-field {
+                        width: 100%;
+                        font-size: 13px;
+                      }
+                      // multiple-choice
+                      .checkbox {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        .right {
+                          display: inline-block;
+                          margin-right: 8px;
+                        }
                       }
                     }
+                  }
+                  .linear-scale {
+                    display: flex;
+                    align-items: center;
                     // linear-scale
                     .cont {
                       width: 47%;
                       margin: 0 13px;
+                      mat-form-field {
+                        width: 100%;
+                      }
                     }
                   }
                   .loop {
