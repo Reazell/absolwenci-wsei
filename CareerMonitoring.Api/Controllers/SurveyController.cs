@@ -13,13 +13,11 @@ namespace CareerMonitoring.Api.Controllers
     //[Authorize]
     public class SurveyController : ApiUserController
     {
-        private readonly ISingleChoiceRepository _singleChoiceRepository;
         private readonly ISurveyService _surveyService;
 
-        public SurveyController (ISurveyService surveyService, ISingleChoiceRepository singleChoiceRepository)
+        public SurveyController (ISurveyService surveyService)
         {
             _surveyService = surveyService;
-            _singleChoiceRepository = singleChoiceRepository;
         }
 
         [HttpGet ("survey/{surveyId}")]
