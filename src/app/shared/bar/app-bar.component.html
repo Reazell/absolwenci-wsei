@@ -24,6 +24,8 @@
           <li class="menu-item" [routerLink]="['/info/contact']">Kontakt</li> -->
     </ul>
     <div id="survey-buttons">
+      <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton" matTooltip="{{info.show}}" matTooltipPosition="below"
+        (click)="showSurvey()"></fa-icon>
       <button mat-raised-button id="save" (click)="saveSurvey()" *ngIf="showCreatorButton">ZAPISZ</button>
       <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="showSendButton">PRZEŚLIJ</button>
     </div>

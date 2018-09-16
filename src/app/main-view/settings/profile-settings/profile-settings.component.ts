@@ -1,4 +1,4 @@
-import { UserService } from './../../../auth/services/user.service';
+import { UserService } from '../../../auth/services/user.service';
 import { Router } from '@angular/router';
 import {
   FormBuilder,

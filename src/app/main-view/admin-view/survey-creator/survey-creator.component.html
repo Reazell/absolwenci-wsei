@@ -220,7 +220,7 @@
                     matTooltipPosition="below"></fa-icon>
                 </div>
                 <div class="menu">
-                  <fa-icon [icon]="['fas','copy']" matTooltip="{{info.copy}}" matTooltipPosition="below" (click)="copyQuestion(question, i)"></fa-icon>
+                  <fa-icon [icon]="['fas','clone']" matTooltip="{{info.copy}}" matTooltipPosition="below" (click)="copyQuestion(question, i)"></fa-icon>
                   <fa-icon [icon]="['fas','trash']" (click)="removeQuestion(i, question.value.select)" matTooltip="{{info.delete}}"
                     matTooltipPosition="below"></fa-icon>
                 </div>
@@ -230,7 +230,7 @@
             <!-- <pre>{{question.value.QuestionPosition}}</pre> -->
           </div>
         </div>
-        <pre>{{invoiceForm.value | json }}</pre>
+        <!-- <pre>{{invoiceForm.value | json }}</pre> -->
       </form>
     </div>
   </div>

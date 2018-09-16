@@ -1,4 +1,4 @@
-import { SharedService } from './../../../services/shared.service';
+import { SharedService } from '../../../services/shared.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { SurveyService } from '../../services/survey.services';
 import {
@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import * as cloneDeep from 'lodash/cloneDeep';
-import { Select, Value } from './classes/survey-creator.classes';
+import { Select, Value } from './classes/survey-creator.models';
 
 @Component({
   selector: 'app-survey-creator',
@@ -31,6 +31,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   id: number;
   // subs
   saveSurveySub: any;
+  showSurveySub: any;
   createSurveySub: any;
 
   selects: Select[] = [
@@ -114,13 +115,20 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       this.createQuestionData();
     }
     // this.createSurvey();
+    this.saveInLocalStorage();
     this.saveSurveyOnClick();
+    this.showSurveyOnClick();
     this.sharedService.showCreatorButton(true);
   }
 
   saveSurveyOnClick() {
     this.saveSurveySub = this.sharedService.saveButton.subscribe(() => {
       this.onSubmit();
+    });
+  }
+  showSurveyOnClick() {
+    this.showSurveySub = this.sharedService.showButton.subscribe(() => {
+      this.showSurvey();
     });
   }
   createSurvey() {
@@ -262,7 +270,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     }
   }
   addArray(FieldData, data?, isForm?) {
-    console.log(data);
     const group = this.fb.group({
       choiceOptions: this.fb.array([])
     });
@@ -306,7 +313,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
 
   addField(choiceData, choiceData2, isForm?, data?) {
-    console.log(data);
     if (isForm !== undefined && data !== undefined) {
       if (isForm === true) {
         data.columns.forEach(column => {
@@ -440,7 +446,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
 
   changeControl(question, i) {
-    console.log(question);
     const FieldData = question.controls.FieldData;
     const select = question.value.select;
     const lastSelect = question.value.lastSelect;
@@ -499,13 +504,19 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     this.addGroup(FieldData, select, data, isForm);
   }
   onSubmit() {
-    console.log(JSON.stringify(this.invoiceForm.getRawValue()));
-    console.log(this.invoiceForm.getRawValue());
-
     this.saveInLocalStorage();
-    this.surveyService.saveSurveyToOpen(this.invoiceForm.getRawValue());
-    this.router.navigateByUrl(`/app/admin/viewform`);
+    this.router.navigateByUrl(`/app/admin`);
     // window.open('http://localhost:4200/app/admin/viewform', '_blank');
+  }
+  showSurvey() {
+    console.log(this.id);
+    // console.log(JSON.stringify(this.invoiceForm.getRawValue()));
+    // this.surveyService.saveSurveyToOpen(this.invoiceForm.getRawValue());
+    this.router.navigateByUrl(`/app/admin/viewform/${this.id}`);
+    // window.open(
+    //   'http://localhost:4200/app/admin/viewform?id=' + this.id.toString(),
+    //   '_blank'
+    // );
   }
 
   saveInLocalStorage() {
@@ -525,6 +536,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       }
     }
     if (isSurveySaved === false) {
+      this.id = length;
       const surveyObj = {
         id: length,
         content: this.invoiceForm.getRawValue()

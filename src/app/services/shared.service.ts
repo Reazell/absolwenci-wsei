@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Router } from '../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class SharedService {
   toggleSidebar: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   saveButton: Subject<number> = new Subject<number>();
   sendButton: Subject<number> = new Subject<number>();
+  showButton: Subject<number> = new Subject<number>();
   showCreator: Subject<boolean> = new Subject<boolean>();
   showSend: Subject<boolean> = new Subject<boolean>();
   showSurveyMenu: Subject<boolean> = new Subject<boolean>();
@@ -19,6 +20,9 @@ export class SharedService {
   }
   sendSurveyButton(x) {
     this.sendButton.next(x);
+  }
+  showSurveyButton(x) {
+    this.showButton.next(x);
   }
   showCreatorButton(x) {
     this.showCreator.next(x);

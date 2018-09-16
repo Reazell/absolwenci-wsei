@@ -1,4 +1,4 @@
-import { RoleGuard } from './../auth/other/role.auth';
+import { RoleGuard } from '../auth/other/role.auth';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainViewComponent } from './main-view.component';

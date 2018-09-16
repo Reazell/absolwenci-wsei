@@ -18,6 +18,11 @@ export class AppBarComponent implements OnInit, OnDestroy {
   showCreatorButton = false;
   showSendButton = false;
   showSurveyMenu = false;
+
+  info = {
+    show: 'Podgląd'
+  };
+
   constructor(
     private sharedService: SharedService,
     private userService: UserService
@@ -51,6 +56,9 @@ export class AppBarComponent implements OnInit, OnDestroy {
     });
   }
 
+  showSurvey() {
+    this.sharedService.showSurveyButton(0);
+  }
   saveSurvey() {
     this.sharedService.saveSurveyButton(0);
   }

@@ -16,14 +16,15 @@ import { AppRoutingModule } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
 import {
   faTimes,
   faTrash,
   faBars,
   faPlus,
-  faCopy,
   faGripHorizontal,
   faPen,
+  faClone,
   faGraduationCap,
   faBriefcase,
   faCog,
@@ -36,12 +37,13 @@ library.add(
   faBars,
   faPlus,
   faTrash,
-  faCopy,
   faGripHorizontal,
   faPen,
   faGraduationCap,
   faBriefcase,
   faCog,
+  faEye,
+  faClone,
   faUserAlt,
   faSearch
 );

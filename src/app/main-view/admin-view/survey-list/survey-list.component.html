@@ -1,8 +1,10 @@
-<div id="mail-container">
-  <div id="mailList">
+<div id="survey-container">
+  <div id="surveyList">
     <div id="container" *ngFor="let survey of surveyArr">
       <app-survey-tile [survey]=survey (click)="openCreator(survey)"></app-survey-tile>
       <!-- <app-survey-tile></app-survey-tile> -->
+      <fa-icon class="delete" [icon]="['fas','times']" (click)="deleteSurvey(survey.id)"></fa-icon>
+
     </div>
   </div>
 </div>

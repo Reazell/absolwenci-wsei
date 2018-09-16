@@ -1,5 +1,5 @@
-import { SharedService } from './../../../services/shared.service';
-import { AuthenticationService } from './../../../auth/services/authentication.service';
+import { SharedService } from '../../../services/shared.service';
+import { AuthenticationService } from '../../../auth/services/authentication.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

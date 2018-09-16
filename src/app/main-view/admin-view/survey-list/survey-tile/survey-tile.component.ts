@@ -12,6 +12,6 @@ export class SurveyTileComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {}
   ngAfterViewInit() {
-    console.log(this.survey);
+    // console.log(this.survey);
   }
 }

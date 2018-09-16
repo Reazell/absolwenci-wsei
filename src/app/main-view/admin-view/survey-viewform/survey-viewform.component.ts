@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { SurveyService } from '../../services/survey.services';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../../services/shared.service';
 
 @Component({
@@ -12,27 +12,50 @@ import { SharedService } from '../../../services/shared.service';
 export class SurveyViewformComponent implements OnInit, OnDestroy {
   invoiceForm: FormGroup;
   defaultQuestion = 'Brak pytania';
+  id: number;
+
   // subs
   sendSurveySub;
-
-  // disabled = false;
-  oldData;
+  savedSurveySub;
+  surveyIDSub;
 
   constructor(
     private surveyService: SurveyService,
     private fb: FormBuilder,
     private router: Router,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.surveyService.savedSurvey.subscribe(data => {
-      if (data) {
-        this.createQuestionData(data);
-      }
-    });
+    this.getSurveyId();
+    // this.getSavedSurvey();
     this.sendSurvey();
     this.sharedService.showSendButton(true);
+  }
+  getSurveyId() {
+    this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
+      this.id = params['id'];
+      this.getSurvey();
+    });
+  }
+  // getSavedSurvey() {
+  //   this.savedSurveySub = this.surveyService.savedSurvey.subscribe(data => {
+  //     if (data) {
+  //       this.createQuestionData(data);
+  //     }
+  //   });
+  // }
+  getSurvey() {
+    const surveyArr = JSON.parse(localStorage.getItem('surveys')) || [];
+    if (this.id !== undefined) {
+      for (let i = 0; i < length; i++) {
+        if (surveyArr[i].id === this.id) {
+          this.createQuestionData(surveyArr[i].content);
+          break;
+        }
+      }
+    }
   }
   sendSurvey() {
     this.sendSurveySub = this.sharedService.sendButton.subscribe(() => {
@@ -43,6 +66,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sharedService.showSendButton(false);
     this.sendSurveySub.unsubscribe();
+    this.savedSurveySub.unsubscribe();
   }
 
   updateSelection(choiceOptions, radio, e?) {

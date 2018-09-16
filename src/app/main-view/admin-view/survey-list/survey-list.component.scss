@@ -1,0 +1,14 @@
+#survey-container {
+  #surveyList {
+    #container {
+      display: flex;
+      align-items: center;
+      app-survey-tile {
+        width: 90%;
+      }
+    }
+    #container:hover {
+      background-color: #eaeaea;
+    }
+  }
+}

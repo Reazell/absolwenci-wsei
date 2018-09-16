@@ -1,4 +1,4 @@
-import { SharedService } from './../../services/shared.service';
+import { SharedService } from '../../services/shared.service';
 import { UserService } from '../services/user.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
