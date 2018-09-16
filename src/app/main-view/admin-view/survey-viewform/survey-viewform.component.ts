@@ -45,8 +45,8 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     this.sendSurveySub.unsubscribe();
   }
 
-  updateSelection(radios, radio, e?) {
-    radios.forEach(el => {
+  updateSelection(choiceOptions, radio, e?) {
+    choiceOptions.forEach(el => {
       el.controls.value.setValue(false);
     });
     radio.setValue(true);
@@ -195,12 +195,12 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     const group = this.fb.group({
       minLabel: oldFieldData.minLabel,
       maxLabel: oldFieldData.maxLabel,
-      radios: this.fb.array([])
+      choiceOptions: this.fb.array([])
     });
     fieldData.push(group);
     let index = 0;
     for (let i = minValue; i <= maxValue; i++) {
-      this.createViewValue(group.controls.radios, i.toString(), index);
+      this.createViewValue(group.controls.choiceOptions, i.toString(), index);
       index++;
     }
   }

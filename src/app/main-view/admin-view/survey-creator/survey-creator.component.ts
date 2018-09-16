@@ -24,11 +24,11 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   inputs2: QueryList<any>;
 
   invoiceForm: FormGroup;
-  default = 'multiple-choice';
+  default = 'multiple-grid';
   disabled = true;
   index = 0;
   questionIndex = 0;
-
+  id: number;
   // subs
   saveSurveySub: any;
   createSurveySub: any;
@@ -108,7 +108,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const form = this.surveyService.getSurveyToOpen();
     if (form) {
-      this.createQuestionData(form);
+      this.id = form.id;
+      this.createQuestionData(form.content);
     } else {
       this.createQuestionData();
     }
@@ -234,13 +235,13 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       const FieldData = question.FieldData;
       // const i = -1;
       FieldData.forEach(data => {
-        this.addGroup(controls.FieldData, controls.select.value, data);
+        this.addGroup(controls.FieldData, controls.select.value, data, true);
       });
     } else {
       this.addGroup(controls.FieldData, controls.select.value);
     }
   }
-  addGroup(FieldData, select: string, data?) {
+  addGroup(FieldData, select: string, data?, isForm?) {
     switch (select) {
       case 'short-answer':
       case 'long-answer':
@@ -252,28 +253,39 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       case 'dropdown-menu':
       case 'single-choice':
       case 'multiple-choice':
-        this.addArray(FieldData, data);
+        this.addArray(FieldData, data, isForm);
         break;
       case 'single-grid':
       case 'multiple-grid':
-        this.addSelectionGridField(FieldData, data);
+        this.addSelectionGridField(FieldData, data, isForm);
         break;
     }
   }
-  addArray(FieldData, data?) {
+  addArray(FieldData, data?, isForm?) {
+    console.log(data);
     const group = this.fb.group({
       choiceOptions: this.fb.array([])
     });
-    this.createChoiceControls(group.controls.choiceOptions, 'opcja', data);
+    this.createChoiceControls(
+      group.controls.choiceOptions,
+      'opcja',
+      data,
+      isForm
+    );
     FieldData.push(group);
   }
-  createChoiceControls(choiceOptionsField, name, data?) {
+  createChoiceControls(choiceOptionsField, name, data?, isForm?) {
     if (data) {
-      const choiceData = data.choiceOptions;
-      // const i = -1;
-      choiceData.forEach(choice => {
-        this.addChoiceField(choiceOptionsField, name, choice);
-      });
+      if (isForm === true) {
+        const choiceData = data.choiceOptions;
+        choiceData.forEach(choice => {
+          this.addChoiceField(choiceOptionsField, name, choice);
+        });
+      } else {
+        data.forEach(choice => {
+          this.addChoiceField(choiceOptionsField, name, choice);
+        });
+      }
     } else {
       this.addChoiceField(choiceOptionsField, name);
     }
@@ -284,24 +296,31 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     });
     FieldData.push(group);
   }
-  addSelectionGridField(FieldData, data?) {
+  addSelectionGridField(FieldData, data?, isForm?) {
     const group = this.fb.group({
       columns: this.fb.array([]),
       rows: this.fb.array([])
     });
-    this.addField(group.controls.columns, group.controls.rows, data);
+    this.addField(group.controls.columns, group.controls.rows, isForm, data);
     FieldData.push(group);
   }
 
-  addField(choiceData, choiceData2, data?) {
+  addField(choiceData, choiceData2, isForm?, data?) {
     console.log(data);
-    if (data) {
-      data.columns.forEach(column => {
-        this.addChoiceField(choiceData, 'kolumna', column);
-      });
-      data.rows.forEach(row => {
-        this.addRowControl(choiceData2, 'wiersz', row);
-      });
+    if (isForm !== undefined && data !== undefined) {
+      if (isForm === true) {
+        data.columns.forEach(column => {
+          this.addChoiceField(choiceData, 'kolumna', column);
+        });
+        data.rows.forEach(row => {
+          this.addRowControl(choiceData2, 'wiersz', row);
+        });
+      } else if (isForm === false) {
+        data.forEach(column => {
+          this.addChoiceField(choiceData, 'kolumna', column);
+        });
+        this.addRowControl(choiceData2, 'wiersz');
+      }
     } else {
       this.addChoiceField(choiceData, 'kolumna');
       this.addRowControl(choiceData2, 'wiersz');
@@ -421,6 +440,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
 
   changeControl(question, i) {
+    console.log(question);
     const FieldData = question.controls.FieldData;
     const select = question.value.select;
     const lastSelect = question.value.lastSelect;
@@ -434,6 +454,13 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
             case 'multiple-choice':
             case 'dropdown-menu':
               break;
+            case 'single-grid':
+            case 'multiple-grid':
+              const control = FieldData.controls[
+                i
+              ].controls.choiceOptions.getRawValue();
+              this.fieldRemoving(FieldData, select, control, false);
+              break;
             default:
               this.fieldRemoving(FieldData, select);
               break;
@@ -444,6 +471,14 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
           switch (select) {
             case 'single-grid':
             case 'multiple-grid':
+              break;
+            case 'single-choice':
+            case 'multiple-choice':
+            case 'dropdown-menu':
+              const control = FieldData.controls[
+                i
+              ].controls.columns.getRawValue();
+              this.fieldRemoving(FieldData, select, control);
               break;
             default:
               this.fieldRemoving(FieldData, select);
@@ -456,18 +491,18 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       }
     }
   }
-
-  ngOnDestroy() {
-    // this.createSurveySub.unsubscribe();
-    this.saveSurveySub.unsubscribe();
-    this.sharedService.showCreatorButton(false);
+  fieldRemoving(FieldData, select, data?, isForm?) {
+    const length = FieldData.controls.length - 1;
+    for (let i = length; i >= 0; i--) {
+      FieldData.removeAt(i);
+    }
+    this.addGroup(FieldData, select, data, isForm);
   }
-
   onSubmit() {
     console.log(JSON.stringify(this.invoiceForm.getRawValue()));
     console.log(this.invoiceForm.getRawValue());
 
-    // this.saveInLocalStorage();
+    this.saveInLocalStorage();
     this.surveyService.saveSurveyToOpen(this.invoiceForm.getRawValue());
     this.router.navigateByUrl(`/app/admin/viewform`);
     // window.open('http://localhost:4200/app/admin/viewform', '_blank');
@@ -475,18 +510,38 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
 
   saveInLocalStorage() {
     const array = JSON.parse(localStorage.getItem('surveys')) || [];
-    array.push(this.invoiceForm.getRawValue());
+    let isSurveySaved = false;
+    const length = array.length;
+    // const surveyObj = {
+    //   id:
+    // }
+    if (this.id !== undefined) {
+      for (let i = 0; i < length; i++) {
+        if (array[i].id === this.id) {
+          isSurveySaved = true;
+          array[i].content = this.invoiceForm.getRawValue();
+          break;
+        }
+      }
+    }
+    if (isSurveySaved === false) {
+      const surveyObj = {
+        id: length,
+        content: this.invoiceForm.getRawValue()
+      };
+      array.push(surveyObj);
+    }
     localStorage.setItem('surveys', JSON.stringify(array));
+  }
+
+  ngOnDestroy() {
+    // this.createSurveySub.unsubscribe();
+    this.surveyService.openCreator(undefined);
+    this.saveSurveySub.unsubscribe();
+    this.sharedService.showCreatorButton(false);
   }
 
   see(f) {
     console.log(f);
-  }
-  fieldRemoving(FieldData, select) {
-    const length = FieldData.controls.length - 1;
-    for (let i = length; i >= 0; i--) {
-      FieldData.removeAt(i);
-    }
-    this.addGroup(FieldData, select);
   }
 }

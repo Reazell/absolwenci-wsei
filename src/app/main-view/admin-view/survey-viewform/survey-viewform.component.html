@@ -54,16 +54,16 @@
 
                   <div class="table">
                     <div class="columns">
-                      <div class="column" *ngFor="let column of field.controls.radios.controls">
+                      <div class="column" *ngFor="let column of field.controls.choiceOptions.controls">
                         <div class="label">{{column.value.viewValue}}</div>
                       </div>
                     </div>
                     <div class="rows">
-                      <div formArrayName="radios" class="row">
+                      <div formArrayName="choiceOptions" class="row">
                         <div class="row-container">
-                          <div *ngFor="let column of field.controls.radios.controls; let j = index" [formGroupName]="j"
+                          <div *ngFor="let column of field.controls.choiceOptions.controls; let j = index" [formGroupName]="j"
                             class="row-el light">
-                            <mat-radio-group formControlName="value" name="{{j}}" (change)="updateSelection(field.controls.radios.controls, column.controls.value ,$event)">
+                            <mat-radio-group formControlName="value" name="{{j}}" (change)="updateSelection(field.controls.choiceOptions.controls, column.controls.value ,$event)">
                               <mat-radio-button></mat-radio-button>
                             </mat-radio-group>
                           </div>
@@ -157,7 +157,7 @@
               </div>
             </div>
           </div>
-          <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+          <pre>{{invoiceForm.value | json }}</pre>
         </div>
       </form>
 
