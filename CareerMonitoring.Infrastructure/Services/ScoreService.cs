@@ -30,7 +30,7 @@ namespace CareerMonitoring.Infrastructure.Services {
 
             var questions = await _questionRepository.GetAllBySurveyIdInOrderAsync (survey.Id);
 
-            var questionsScore = await _scoreRepository.GetAllBySurveyScoreIdInOrderAsync (surveyScore.Id); // get only questions from db
+            var questionsScore = await _scoreRepository.GetAllBySurveyScoreIdInOrderAsync (surveyScore.Id); //get only questions from db
 
             foreach (var question in questions) {
                 foreach (var questionScore in questionsScore) {
@@ -60,6 +60,18 @@ namespace CareerMonitoring.Infrastructure.Services {
                             }
 
                             break;
+                            
+                        case "dropdown-menu":
+
+                            foreach (var choiceOption in question.FieldData.ChoiceOptions) {
+                                foreach (var choiceScore in questionScore.FieldData.ChoiceOptions) {
+
+                                    if (choiceOption.ViewValue == choiceScore.ViewValue && choiceOption.Value == true)
+                                        choiceScore.AddNumericalValue ();
+                                }
+                            }
+
+                            break;
 
                         case "short-answer":
 
@@ -72,7 +84,7 @@ namespace CareerMonitoring.Infrastructure.Services {
 
                             if (string.IsNullOrEmpty (question.FieldData.Input))
                                 questionScore.FieldData.IncrementInputValue ();
-                                
+
                             break;
                     }
                 }
