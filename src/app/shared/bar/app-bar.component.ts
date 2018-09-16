@@ -17,7 +17,7 @@ export class AppBarComponent implements OnInit, OnDestroy {
 
   isLogged: boolean;
   showCreatorButton = false;
-  showSendButton;
+  showSendButton = false;
   showSurveyMenu = false;
 
   info = {
@@ -32,21 +32,21 @@ export class AppBarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.checkIfLogged();
     this.showCreator();
     this.showSend();
     this.showMenu();
+    this.checkIfLogged();
   }
 
   checkIfLogged() {
     this.userServiceSub = this.userService.isLogged.subscribe(data => {
       this.isLogged = data;
+      this.showSendButton = false;
     });
   }
   showCreator() {
     this.creatorSub = this.sharedService.showCreator.subscribe(data => {
       this.showCreatorButton = data;
-      this.showSendButton = false;
     });
   }
   showSend() {

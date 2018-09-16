@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SurveyCreatorRoutingModule } from './survey-creator.routing';
 import { SurveyCreatorComponent } from './survey-creator.component';
 import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dial
     MatRadioModule,
     MatCheckboxModule,
     FontAwesomeModule,
-    DraggableModule
+    DraggableModule,
+    ProgressSpinnerModule
   ],
   declarations: [SurveyCreatorComponent, SendSurveyDialogComponent],
   entryComponents: [SendSurveyDialogComponent]

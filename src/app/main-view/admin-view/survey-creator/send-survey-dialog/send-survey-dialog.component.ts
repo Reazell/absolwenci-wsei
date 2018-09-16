@@ -1,11 +1,6 @@
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  AbstractControl
-} from '@angular/forms';
+import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { SurveyService } from '../../../services/survey.services';
 
 @Component({
@@ -18,8 +13,11 @@ export class SendSurveyDialogComponent implements OnInit {
   subject: AbstractControl;
   url: string;
   toMailTable: string;
+  accent = 'accent';
+  loader = false;
 
   constructor(
+    private dialog: MatDialogRef<SendSurveyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private surveyService: SurveyService,
     private fb: FormBuilder
@@ -85,9 +83,12 @@ export class SendSurveyDialogComponent implements OnInit {
       Body: this.toMailTable
     };
     console.log(sendObj);
+    this.loader = true;
     this.surveyService.sendSurvey(sendObj).subscribe(
       data => {
         console.log(data);
+        this.loader = false;
+        this.dialog.close();
       },
       error => {
         console.log(error);

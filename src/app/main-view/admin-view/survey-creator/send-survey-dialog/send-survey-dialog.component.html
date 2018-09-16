@@ -4,17 +4,21 @@
       <span>{{data.content.Form_Title}}</span>
     </div>
     <div id="content-container">
-      <form #dialog="ngForm"  (ngSubmit)=onSubmit(dialog.value) [formGroup]="dialogForm">
-              <div id="form-container">
+      <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog.value) [formGroup]="dialogForm">
+        <div id="form-container">
 
-                <mat-form-field>
-                  <input matInput  placeholder="Temat wiadomości" formControlName="subject">
-                </mat-form-field>
-
-                <div id="button-container">
-                    <button mat-button type="submit">Wyślij wszystkim</button>
-                  </div>
+          <mat-form-field>
+            <input matInput placeholder="Temat wiadomości" formControlName="subject">
+          </mat-form-field>
+          <div id="button-container">
+            <button mat-button type="submit">
+              <div id="button">
+                <span>Wyślij wszystkim</span>
+                <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>
               </div>
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
