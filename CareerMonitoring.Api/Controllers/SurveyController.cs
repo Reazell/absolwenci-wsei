@@ -18,7 +18,7 @@ namespace CareerMonitoring.Api.Controllers
             _surveyService = surveyService;
         }
 
-        [HttpGet ("survey/{surveyId}")]
+        [HttpGet ("{surveyId}")]
         public async Task<IActionResult> GetSurvey (int surveyId)
         {
             var survey = await _surveyService.GetByIdAsync (surveyId);
