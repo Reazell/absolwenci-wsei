@@ -1,5 +1,6 @@
+import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 import { SharedService } from '../../../services/shared.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { SurveyService } from '../../services/survey.services';
 import {
   Component,
@@ -11,6 +12,7 @@ import {
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import * as cloneDeep from 'lodash/cloneDeep';
 import { Select, Value } from './classes/survey-creator.models';
+import { MatDialog } from '../../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-survey-creator',
@@ -33,6 +35,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   saveSurveySub: any;
   showSurveySub: any;
   createSurveySub: any;
+  surveyIDSub: any;
+  showSurveyDialogSub: any;
 
   selects: Select[] = [
     {
@@ -103,21 +107,25 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private surveyService: SurveyService,
     private sharedService: SharedService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
-    const form = this.surveyService.getSurveyToOpen();
-    if (form) {
-      this.id = form.id;
-      this.createQuestionData(form.content);
-    } else {
-      this.createQuestionData();
-    }
+    // const form = this.surveyService.getSurveyToOpen();
+    // if (form) {
+    //   this.id = form.id;
+    //   this.createQuestionData(form.content);
+    // } else {
+    //   this.createQuestionData();
+    // }
     // this.createSurvey();
+    this.getSurveyId();
     this.saveInLocalStorage();
     this.saveSurveyOnClick();
     this.showSurveyOnClick();
+    this.showSurveyDialog();
     this.sharedService.showCreatorButton(true);
   }
 
@@ -136,7 +144,42 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       console.log('created');
     });
   }
-
+  showSurveyDialog() {
+    this.showSurveyDialogSub = this.sharedService.showSurveyDialog.subscribe(
+      () => {
+        this.openSurveyDialog();
+      }
+    );
+  }
+  openSurveyDialog() {
+    this.dialog.open(SendSurveyDialogComponent, {
+      data: { id: this.id, content: this.invoiceForm.getRawValue() }
+    });
+  }
+  getSurveyId() {
+    this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
+      this.id = Number(params['id']);
+      this.getSurvey();
+    });
+  }
+  getSurvey() {
+    const surveyArr = JSON.parse(localStorage.getItem('surveys')) || [];
+    const length = surveyArr.length;
+    if (this.id !== undefined) {
+      for (let i = 0; i < length; i++) {
+        if (surveyArr[i].id === this.id) {
+          const content = surveyArr[i].content;
+          if (content !== undefined) {
+            this.createQuestionData(surveyArr[i].content);
+          } else {
+            this.createQuestionData();
+          }
+          this.saveInLocalStorage();
+          break;
+        }
+      }
+    }
+  }
   // creating FormGroup  -- Main Form
   createQuestionData(form?) {
     this.invoiceForm = this.fb.group(this.populateQuestionData(form));
@@ -461,9 +504,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
               break;
             case 'single-grid':
             case 'multiple-grid':
-              const control = FieldData.controls[
-                i
-              ].controls.choiceOptions.getRawValue();
+              const control = FieldData.controls[0].controls.choiceOptions.getRawValue();
               this.fieldRemoving(FieldData, select, control, false);
               break;
             default:
@@ -480,9 +521,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
             case 'single-choice':
             case 'multiple-choice':
             case 'dropdown-menu':
-              const control = FieldData.controls[
-                i
-              ].controls.columns.getRawValue();
+              const control = FieldData.controls[0].controls.columns.getRawValue();
               this.fieldRemoving(FieldData, select, control);
               break;
             default:
@@ -505,51 +544,32 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
   onSubmit() {
     this.saveInLocalStorage();
-    this.router.navigateByUrl(`/app/admin`);
-    // window.open('http://localhost:4200/app/admin/viewform', '_blank');
+    this.router.navigate(['/app/admin/']);
   }
   showSurvey() {
-    console.log(this.id);
-    // console.log(JSON.stringify(this.invoiceForm.getRawValue()));
-    // this.surveyService.saveSurveyToOpen(this.invoiceForm.getRawValue());
-    this.router.navigateByUrl(`/app/admin/viewform/${this.id}`);
-    // window.open(
-    //   'http://localhost:4200/app/admin/viewform?id=' + this.id.toString(),
-    //   '_blank'
-    // );
+    const string = 'http://localhost:4200/app/admin/viewform/' + this.id;
+    window.open(string, '_blank');
   }
 
   saveInLocalStorage() {
     const array = JSON.parse(localStorage.getItem('surveys')) || [];
-    let isSurveySaved = false;
     const length = array.length;
-    // const surveyObj = {
-    //   id:
-    // }
     if (this.id !== undefined) {
       for (let i = 0; i < length; i++) {
         if (array[i].id === this.id) {
-          isSurveySaved = true;
           array[i].content = this.invoiceForm.getRawValue();
+          localStorage.setItem('surveys', JSON.stringify(array));
           break;
         }
       }
     }
-    if (isSurveySaved === false) {
-      this.id = length;
-      const surveyObj = {
-        id: length,
-        content: this.invoiceForm.getRawValue()
-      };
-      array.push(surveyObj);
-    }
-    localStorage.setItem('surveys', JSON.stringify(array));
   }
 
   ngOnDestroy() {
-    // this.createSurveySub.unsubscribe();
     this.surveyService.openCreator(undefined);
     this.saveSurveySub.unsubscribe();
+    this.showSurveySub.unsubscribe();
+    this.showSurveyDialogSub.unsubscribe();
     this.sharedService.showCreatorButton(false);
   }
 

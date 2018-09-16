@@ -16,14 +16,14 @@ const adminRoutes: Routes = [
     ]
   },
   {
-    path: 'create',
+    path: 'create/:id',
     loadChildren: './survey-creator/survey-creator.module#SurveyCreatorModule'
   },
   {
     path: 'viewform/:id',
     loadChildren:
       './survey-viewform/survey-viewform.module#SurveyViewformModule',
-    canLoad: [SurveyGuard],
+    // canLoad: [SurveyGuard],
     // canActivate: [RouteGuard]
   },
   {

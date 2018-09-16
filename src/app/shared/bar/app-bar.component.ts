@@ -13,14 +13,17 @@ export class AppBarComponent implements OnInit, OnDestroy {
   creatorSub;
   sendSub;
   surveyMainSub;
+  // editSurveySub;
 
   isLogged: boolean;
   showCreatorButton = false;
-  showSendButton = false;
+  showSendButton;
   showSurveyMenu = false;
 
   info = {
-    show: 'Podgląd'
+    show: 'Podgląd',
+    edit: 'Edytuj ankietę',
+    save: 'Zapisz ankietę'
   };
 
   constructor(
@@ -43,6 +46,7 @@ export class AppBarComponent implements OnInit, OnDestroy {
   showCreator() {
     this.creatorSub = this.sharedService.showCreator.subscribe(data => {
       this.showCreatorButton = data;
+      this.showSendButton = false;
     });
   }
   showSend() {
@@ -55,19 +59,22 @@ export class AppBarComponent implements OnInit, OnDestroy {
       this.showSurveyMenu = data;
     });
   }
-
+  editSurvey() {
+    this.sharedService.routeToEdit(0);
+  }
+  sendSurvey() {
+    this.sharedService.showSendSurveyDialog(0);
+  }
   showSurvey() {
     this.sharedService.showSurveyButton(0);
   }
   saveSurvey() {
     this.sharedService.saveSurveyButton(0);
   }
-  sendSurvey() {
-    this.sharedService.sendSurveyButton(0);
-  }
   openSidebar() {
     this.sharedService.toggleSideNav();
   }
+
   ngOnDestroy() {
     this.userServiceSub.unsubscribe();
     this.creatorSub.unsubscribe();

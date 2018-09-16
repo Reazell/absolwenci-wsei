@@ -1,0 +1,28 @@
+@import './../../../../../styles/colors.scss';
+
+#send-survey-container {
+  width: 700px;
+  #header {
+    background-color: #8bc34a;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    height: 40px;
+    line-height: 40px;
+  }
+  #content-container {
+    text-align: center;
+    form {
+      #form-container {
+        padding: 30px;
+        #button-container {
+          padding: 20px;
+          button {
+            background-color: $primary;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

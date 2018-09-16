@@ -16,7 +16,7 @@
     <li class="menu-item" [routerLink]="['/info/contact']">Kontakt</li>
   </ul>
   <div id="profile-container" *ngIf="isLogged === true">
-    <ul id="menu">
+    <ul id="menu" *ngIf="showSendButton === false">
       <li class="menu-item" [routerLink]="['/app/admin']">Ankiety</li>
       <!-- <li class="menu-item" [routerLink]="['/info/student']">Student</li>
           <li class="menu-item" [routerLink]="['/info/graduate']">Absolwent</li>
@@ -26,10 +26,13 @@
     <div id="survey-buttons">
       <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton" matTooltip="{{info.show}}" matTooltipPosition="below"
         (click)="showSurvey()"></fa-icon>
-      <button mat-raised-button id="save" (click)="saveSurvey()" *ngIf="showCreatorButton">ZAPISZ</button>
-      <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="showSendButton">PRZEŚLIJ</button>
+      <fa-icon [icon]="['far', 'save']" *ngIf="showCreatorButton" matTooltip="{{info.save}}" matTooltipPosition="below"
+        (click)="saveSurvey()"></fa-icon>
+      <fa-icon [icon]="['fas', 'pen']" *ngIf="showSendButton" matTooltip="{{info.edit}}" matTooltipPosition="below"
+        (click)="editSurvey()"></fa-icon>
+      <button mat-button id="save" *ngIf="showCreatorButton" (click)="sendSurvey()">WYŚLIJ</button>
     </div>
-    <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger">
+    <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger" *ngIf="showSendButton === false">
       <!-- <div id="userDisplayName">{{account?.name}} {{account?.surname}}</div> -->
       <img src="./../../../assets/profile-image.png">
     </div>

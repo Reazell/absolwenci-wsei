@@ -4,7 +4,7 @@
       <span id="workspace-name">Grupa ankiet 1</span>
     </div>
     <div id="buttonsContainer">
-      <button mat-raised-button class="element" [routerLink]="'/app/admin/create'">
+      <button mat-raised-button class="element" (click)="routeToNewSurvey()">
         <div>
           <fa-icon class="icon" [icon]="['fas','plus']"></fa-icon>
 

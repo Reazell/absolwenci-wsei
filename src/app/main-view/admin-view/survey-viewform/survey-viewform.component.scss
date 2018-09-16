@@ -27,6 +27,7 @@
           }
         }
         #questions-container {
+          padding: 25px 15px;
           .question-field {
             padding: 10px 30px;
             .select-container {
@@ -52,7 +53,7 @@
                       width: 100%;
                       font-size: 13px;
                     }
-                    .label{
+                    .label {
                       padding: 5px 2px;
                       cursor: pointer;
                       user-select: none;
@@ -183,6 +184,11 @@
                 margin: 0 15px;
               }
             }
+          }
+          #send {
+            margin: 5px 20px;
+            background-color: $primary;
+            color: white;
           }
         }
       }

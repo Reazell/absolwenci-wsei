@@ -61,8 +61,8 @@
                     <div class="rows">
                       <div formArrayName="choiceOptions" class="row">
                         <div class="row-container">
-                          <div *ngFor="let column of field.controls.choiceOptions.controls; let j = index" [formGroupName]="j"
-                            class="row-el light">
+                          <div *ngFor="let column of field.controls.choiceOptions.controls; let j = index"
+                            [formGroupName]="j" class="row-el light">
                             <mat-radio-group formControlName="value" name="{{j}}" (change)="updateSelection(field.controls.choiceOptions.controls, column.controls.value ,$event)">
                               <mat-radio-button></mat-radio-button>
                             </mat-radio-group>
@@ -153,10 +153,10 @@
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
+          <button mat-raised-button id="send" (click)="sendSurvey()" >PRZEŚLIJ</button>
           <!-- <pre>{{invoiceForm.value | json }}</pre> -->
         </div>
       </form>

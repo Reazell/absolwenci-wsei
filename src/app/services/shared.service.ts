@@ -9,6 +9,9 @@ export class SharedService {
   saveButton: Subject<number> = new Subject<number>();
   sendButton: Subject<number> = new Subject<number>();
   showButton: Subject<number> = new Subject<number>();
+  editButton: Subject<number> = new Subject<number>();
+
+  showSurveyDialog: Subject<number> = new Subject<number>();
   showCreator: Subject<boolean> = new Subject<boolean>();
   showSend: Subject<boolean> = new Subject<boolean>();
   showSurveyMenu: Subject<boolean> = new Subject<boolean>();
@@ -24,6 +27,9 @@ export class SharedService {
   showSurveyButton(x) {
     this.showButton.next(x);
   }
+  routeToEdit(x) {
+    this.editButton.next(x);
+  }
   showCreatorButton(x) {
     this.showCreator.next(x);
   }
@@ -32,6 +38,9 @@ export class SharedService {
   }
   showSurveyMain(x) {
     this.showSurveyMenu.next(x);
+  }
+  showSendSurveyDialog(x) {
+    this.showSurveyDialog.next(x);
   }
 
   routeSwitch(role) {

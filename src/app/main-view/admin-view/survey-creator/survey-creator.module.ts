@@ -8,6 +8,7 @@ import { MatRadioModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SurveyCreatorRoutingModule } from './survey-creator.routing';
 import { SurveyCreatorComponent } from './survey-creator.component';
+import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { SurveyCreatorComponent } from './survey-creator.component';
     FontAwesomeModule,
     DraggableModule
   ],
-  declarations: [SurveyCreatorComponent]
+  declarations: [SurveyCreatorComponent, SendSurveyDialogComponent],
+  entryComponents: [SendSurveyDialogComponent]
 })
 export class SurveyCreatorModule {}

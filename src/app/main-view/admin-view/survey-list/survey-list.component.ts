@@ -19,7 +19,7 @@ export class SurveyListComponent implements OnInit {
   openCreator(survey) {
     // [routerLink]="['/app/admin/create']"
     this.surveyService.openCreator(survey);
-    this.router.navigateByUrl('/app/admin/create');
+    this.router.navigateByUrl('/app/admin/create/' + survey.id);
   }
   deleteSurvey(id) {
     const length = this.surveyArr.length;

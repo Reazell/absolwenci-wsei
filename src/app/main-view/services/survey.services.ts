@@ -11,21 +11,22 @@ export class SurveyService {
   openedSurvey: any;
   constructor(private http: HttpClient, private config: AppConfig) {}
 
-  sendSurveyEmail(survey) {
-    return this.http
-      .post<any>(this.config.apiUrl + '/email', {
-        Subject: 'testowe wysyłanie',
-        Body: survey
-      })
-      .map(data => {
-        return data;
-      });
-  }
+  // sendSurveyEmail(survey) {
+  //   return this.http
+  //     .post<any>(this.config.apiUrl + '/email', {
+  //       Subject: 'testowe wysyłanie',
+  //       Body: survey
+  //     })
+  //     .map(data => {
+  //       return data;
+  //     });
+  // }
   sendSurvey(survey) {
+    console.log(survey);
     return this.http
-      .post<any>(this.config.apiUrl + '/email', {
-        Subject: 'testowe wysyłanie',
-        Body: survey
+      .post<any>(this.config.apiUrl + '/email/emails', {
+        Subject: survey.Subject,
+        Body: survey.Body
       })
       .map(data => {
         return data;
@@ -51,4 +52,6 @@ export class SurveyService {
   getSurveyToOpen() {
     return this.openedSurvey;
   }
+
+  saveInLocaLStorage() {}
 }

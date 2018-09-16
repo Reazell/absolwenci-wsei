@@ -15,9 +15,8 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   id: number;
 
   // subs
-  sendSurveySub;
-  savedSurveySub;
   surveyIDSub;
+  editSurveySub;
 
   constructor(
     private surveyService: SurveyService,
@@ -29,25 +28,18 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getSurveyId();
-    // this.getSavedSurvey();
-    this.sendSurvey();
     this.sharedService.showSendButton(true);
+    this.editSurvey();
   }
   getSurveyId() {
     this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
-      this.id = params['id'];
+      this.id = Number(params['id']);
       this.getSurvey();
     });
   }
-  // getSavedSurvey() {
-  //   this.savedSurveySub = this.surveyService.savedSurvey.subscribe(data => {
-  //     if (data) {
-  //       this.createQuestionData(data);
-  //     }
-  //   });
-  // }
   getSurvey() {
     const surveyArr = JSON.parse(localStorage.getItem('surveys')) || [];
+    const length = surveyArr.length;
     if (this.id !== undefined) {
       for (let i = 0; i < length; i++) {
         if (surveyArr[i].id === this.id) {
@@ -58,15 +50,21 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     }
   }
   sendSurvey() {
-    this.sendSurveySub = this.sharedService.sendButton.subscribe(() => {
-      // this.onSubmit();
-      console.log(JSON.stringify(this.invoiceForm.getRawValue()));
+    console.log(JSON.stringify(this.invoiceForm.getRawValue()));
+  }
+  editSurvey() {
+    this.editSurveySub = this.sharedService.editButton.subscribe(() => {
+      this.routeToEditSurvey();
     });
   }
+
+  routeToEditSurvey() {
+    this.router.navigateByUrl('/app/admin/create/' + this.id);
+  }
+
   ngOnDestroy() {
     this.sharedService.showSendButton(false);
-    this.sendSurveySub.unsubscribe();
-    this.savedSurveySub.unsubscribe();
+    this.editSurveySub.unsubscribe();
   }
 
   updateSelection(choiceOptions, radio, e?) {

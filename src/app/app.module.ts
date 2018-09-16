@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEye } from '@fortawesome/free-regular-svg-icons';
+import { faEye, faSave } from '@fortawesome/free-regular-svg-icons';
 import {
   faTimes,
   faTrash,
@@ -45,7 +45,8 @@ library.add(
   faEye,
   faClone,
   faUserAlt,
-  faSearch
+  faSearch,
+  faSave
 );
 
 @NgModule({
