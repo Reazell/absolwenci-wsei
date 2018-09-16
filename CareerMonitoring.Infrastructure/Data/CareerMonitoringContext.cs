@@ -1,6 +1,7 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.Surveys;
+using CareerMonitoring.Core.Domains.SurveysAnswers;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
@@ -10,6 +11,11 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<FieldData> FieldData { get; set; }
         public DbSet<ChoiceOption> ChoiceOptions { get; set; }
         public DbSet<Row> Rows { get; set; }
+        public DbSet<SurveyAnswer> SurveyAnswers { get; set; }
+        public DbSet<QuestionAnswer> QuestionsAnswers { get; set; }
+        public DbSet<FieldDataAnswer> FieldDataAnswers { get; set; }
+        public DbSet<ChoiceOptionAnswer> ChoiceOptionsAnswers { get; set; }
+        public DbSet<RowAnswer> RowAnswers { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
@@ -74,6 +80,25 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasMany (a => a.ChoiceOptions)
                 .WithOne (b => b.FieldData)
                 .HasForeignKey (s => s.FieldDataId);
+            modelBuilder.Entity<SurveyAnswer> ()
+                .HasMany (a => a.QuestionsAnswers)
+                .WithOne (b => b.SurveyAnswer);
+            modelBuilder.Entity<QuestionAnswer> ()
+                .HasMany (a => a.FieldDataAnswers)
+                .WithOne (b => b.QuestionAnswer);
+            modelBuilder.Entity<FieldDataAnswer> ()
+                .HasMany (a => a.RowsAnswers)
+                .WithOne (b => b.FieldDataAnswer)
+                .HasForeignKey (s => s.FieldDataAnswerId);
+            modelBuilder.Entity<FieldDataAnswer> ()
+                .HasMany (a => a.ChoiceOptionAnswers)
+                .WithOne (b => b.FieldDataAnswer)
+                .HasForeignKey (s => s.FieldDataAnswerId);
+            modelBuilder.Entity<RowAnswer> ()
+                .HasMany (a => a.ChoiceOptionAnswers)
+                .WithOne (b => b.RowAnswer)
+                .HasForeignKey (s => s.RowAnswerId)
+                .OnDelete (DeleteBehavior.Restrict);
         }
     }
 }
