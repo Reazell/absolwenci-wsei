@@ -8,8 +8,9 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public FieldData FieldData { get; private set; }
 
         private ChoiceOption () { }
-        
-        public ChoiceOption (bool value, string viewValue) {
+
+        public ChoiceOption (int optionPosition, bool value, string viewValue) {
+            OptionPosition = optionPosition;
             Value = value;
             ViewValue = viewValue;
         }

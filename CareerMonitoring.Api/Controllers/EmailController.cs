@@ -18,7 +18,7 @@ namespace CareerMonitoring.Api.Controllers
             _surveyEmailFactory = surveyEmailFactory;
         }
 
-        [HttpPost]
+        [HttpPost ("emails")]
         public async Task<IActionResult> SendEmailToAll ([FromBody] EmailToSend command)
         {
             await _accountEmailFactory.SendEmailToAllAsync(command.Subject, command.Body);

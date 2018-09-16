@@ -8,6 +8,7 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces
     {
         Task AddAsync (FieldData fieldData);
         Task<FieldData> GetByQuestionIdAsync (int questionId, bool isTracking = true);
+        Task<FieldData> GetByIdAsync (int id, bool isTracking = true);
         Task UpdateAsync (FieldData fieldData);
         Task DeleteAsync (FieldData fieldData);
     }

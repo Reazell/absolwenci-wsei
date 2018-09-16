@@ -62,12 +62,10 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasForeignKey<ProfileLink> (b => b.AccountId);
             modelBuilder.Entity<Survey> ()
                 .HasMany (a => a.Questions)
-                .WithOne (b => b.Survey)
-                .HasForeignKey (s => s.SurveyId);
+                .WithOne (b => b.Survey);
             modelBuilder.Entity<Question> ()
-                .HasOne (a => a.FieldData)
-                .WithOne (b => b.Question)
-                .HasForeignKey<FieldData> (s => s.QuestionId);
+                .HasMany (a => a.FieldData)
+                .WithOne (b => b.Question);
             modelBuilder.Entity<FieldData> ()
                 .HasMany (a => a.Rows)
                 .WithOne (b => b.FieldData)

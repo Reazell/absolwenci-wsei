@@ -317,8 +317,7 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId")
-                        .IsUnique();
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("FieldData");
                 });
@@ -515,8 +514,8 @@ namespace CareerMonitoring.Api.Migrations
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.FieldData", b =>
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Surveys.Question", "Question")
-                        .WithOne("FieldData")
-                        .HasForeignKey("CareerMonitoring.Core.Domains.Surveys.FieldData", "QuestionId")
+                        .WithMany("FieldData")
+                        .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class miggszz : Migration
+    public partial class miggszzzxc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -403,8 +403,7 @@ namespace CareerMonitoring.Api.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_FieldData_QuestionId",
                 table: "FieldData",
-                column: "QuestionId",
-                unique: true);
+                column: "QuestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobOffers_EmployerId",

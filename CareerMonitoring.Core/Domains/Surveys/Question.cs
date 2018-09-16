@@ -8,7 +8,7 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public string Select { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
-        public FieldData FieldData { get; private set; }
+        public ICollection<FieldData> FieldData { get; private set; } = new List<FieldData>();
 
         private Question () { }
 
@@ -16,6 +16,11 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             QuestionPosition = questionPosition;
             Content = content;
             Select = select;
+        }
+
+        public void AddFieldData (FieldData fieldData)
+        {
+            FieldData.Add(fieldData);
         }
     }
 }

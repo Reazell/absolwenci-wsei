@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareerMonitoring.Api.Migrations
 {
     [DbContext(typeof(CareerMonitoringContext))]
-    [Migration("20180915200916_miggszz")]
-    partial class miggszz
+    [Migration("20180916181328_miggszzzxc")]
+    partial class miggszzzxc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -319,8 +319,7 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId")
-                        .IsUnique();
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("FieldData");
                 });
@@ -517,8 +516,8 @@ namespace CareerMonitoring.Api.Migrations
             modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.FieldData", b =>
                 {
                     b.HasOne("CareerMonitoring.Core.Domains.Surveys.Question", "Question")
-                        .WithOne("FieldData")
-                        .HasForeignKey("CareerMonitoring.Core.Domains.Surveys.FieldData", "QuestionId")
+                        .WithMany("FieldData")
+                        .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

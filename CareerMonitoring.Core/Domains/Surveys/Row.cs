@@ -7,5 +7,10 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public FieldData FieldData { get; private set; }
 
         private Row () { }
+
+        public Row (int rowPosition, string input) {
+            RowPosition = rowPosition;
+            Input = input;
+        }
     }
 }

@@ -10,13 +10,13 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public string Input { get; private set; }
         public int QuestionId { get; private set; }
         public Question Question { get; private set; }
-        public ICollection<ChoiceOption> ChoiceOptions { get; private set; }
-        public ICollection<Row> Rows { get; private set; }
+        public ICollection<ChoiceOption> ChoiceOptions { get; private set; } = new List<ChoiceOption>();
+        public ICollection<Row> Rows { get; private set; } = new List<Row>();
 
-        private FieldData () { }
+        public FieldData () { }
 
-        public FieldData (ICollection<ChoiceOption> choiceOptions) {
-            ChoiceOptions = choiceOptions;
+        public void AddChoiceOption (ChoiceOption choiceOption) {
+            ChoiceOptions.Add(choiceOption);
         }
 
         public FieldData (string input) {
@@ -30,9 +30,8 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             MaxLabel = maxLabel;
         }
 
-        public FieldData (ICollection<ChoiceOption> choiceOptions, ICollection<Row> rows) {
-            ChoiceOptions = choiceOptions;
-            Rows = rows;
+        public void AddRow (Row row) {
+            Rows.Add(row);
         }
     }
 }
