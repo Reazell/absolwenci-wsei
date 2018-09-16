@@ -19,5 +19,8 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public void MarkAsAnswered () {
             Answered = true;
         }
+        public void AddQuestion (Question question) {
+            Questions.Add (question);
+        }
     }
 }
