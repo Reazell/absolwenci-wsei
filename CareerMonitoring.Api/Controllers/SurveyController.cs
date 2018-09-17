@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    [Authorize]
+    //[Authorize]
     public class SurveyController : ApiUserController {
         private readonly ISurveyService _surveyService;
 
@@ -32,8 +32,12 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             int surveyId = await _surveyService.CreateAsync (command.Title);
+            if(command.Questions == null)
+                return BadRequest ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 int questionId = await _surveyService.AddQuestionToSurveyAsync (surveyId, question.QuestionPosition, question.Content, question.Select);
+                if(question.FieldData == null)
+                    return BadRequest ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
                     int fieldDataId = await _surveyService.AddFieldDataToQuestionAsync (questionId,
                         fieldData.Input,
@@ -41,12 +45,16 @@ namespace CareerMonitoring.Api.Controllers {
                         fieldData.MaxValue,
                         fieldData.MinLabel,
                         fieldData.MaxLabel);
-
+                    if(fieldData.ChoiceOptions == null)
+                        goto loop;
                     if (question.Select == "single-choice" || question.Select == "multiple-choice" || question.Select == "dropdown-menu" || question.Select == "single-grid" || question.Select == "multiple-grid") {
                         foreach (var choiceOption in fieldData.ChoiceOptions) {
                             await _surveyService.AddChoiceOptionsAsync (fieldDataId, choiceOption.OptionPosition, choiceOption.Value, choiceOption.ViewValue);
                         }
                     }
+                    loop:
+                    if(fieldData.Rows == null)
+                        continue;
                     if (question.Select == "single-grid" || question.Select == "multiple-grid") {
                         foreach (var row in fieldData.Rows) {
                             await _surveyService.AddRowAsync (fieldDataId, row.RowPosition, row.Input);
