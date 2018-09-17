@@ -32,6 +32,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                     .ThenInclude (x => x.ChoiceOptionAnswers)
                     .Include (x => x.FieldDataAnswers)
                     .ThenInclude (x => x.RowsAnswers)
+                    .ThenInclude (x => x.RowChoiceOptionAnswers)
                     .Where (x => x.SurveyAnswer.SurveyId == surveyId)
                     .OrderBy (q => q.QuestionPosition));
             return await Task.FromResult (_context.QuestionsAnswers.AsNoTracking ()
@@ -40,6 +41,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .ThenInclude (x => x.ChoiceOptionAnswers)
                 .Include (x => x.FieldDataAnswers)
                 .ThenInclude (x => x.RowsAnswers)
+                .ThenInclude (x => x.RowChoiceOptionAnswers)
                 .Where (x => x.SurveyAnswer.SurveyId == surveyId)
                 .OrderBy (q => q.QuestionPosition));
         }
