@@ -11,5 +11,14 @@ namespace CareerMonitoring.Core.Domains.SurveyScore {
         public ICollection<QuestionScore> Questions { get; private set; } = new List<QuestionScore> ();
 
         public SurveyScore () { }
+
+        public SurveyScore (Survey survey) {
+            Title = survey.Title;
+            CreatedAt = DateTime.UtcNow;
+        }
+
+        public void AddQuestion (Question question) {
+            Questions.Add (new QuestionScore(question));
+        }
     }
 }

@@ -6,10 +6,8 @@ using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CareerMonitoring.Infrastructure.Repositories
-{
-    public class QuestionAnswerRepository : IQuestionAnswerRepository
-    {
+namespace CareerMonitoring.Infrastructure.Repositories {
+    public class QuestionAnswerRepository : IQuestionAnswerRepository {
         private readonly CareerMonitoringContext _context;
         public QuestionAnswerRepository (CareerMonitoringContext context) {
             _context = context;
@@ -28,8 +26,22 @@ namespace CareerMonitoring.Infrastructure.Repositories
 
         public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyIdInOrderAsync (int surveyId, bool isTracking = true) {
             if (isTracking)
-                return await Task.FromResult (_context.QuestionsAnswers.AsTracking ().Where (x => x.SurveyAnswer.SurveyId == surveyId).OrderBy (q => q.QuestionPosition));
-            return await Task.FromResult (_context.QuestionsAnswers.AsNoTracking ().Where (x => x.SurveyAnswer.SurveyId == surveyId).OrderBy (q => q.QuestionPosition));
+                return await Task.FromResult (_context.QuestionsAnswers.AsTracking ()
+                    .Include (x => x.SurveyAnswer)
+                    .Include (x => x.FieldDataAnswers)
+                    .ThenInclude (x => x.ChoiceOptionAnswers)
+                    .Include (x => x.FieldDataAnswers)
+                    .ThenInclude (x => x.RowsAnswers)
+                    .Where (x => x.SurveyAnswer.SurveyId == surveyId)
+                    .OrderBy (q => q.QuestionPosition));
+            return await Task.FromResult (_context.QuestionsAnswers.AsNoTracking ()
+                .Include (x => x.SurveyAnswer)
+                .Include (x => x.FieldDataAnswers)
+                .ThenInclude (x => x.ChoiceOptionAnswers)
+                .Include (x => x.FieldDataAnswers)
+                .ThenInclude (x => x.RowsAnswers)
+                .Where (x => x.SurveyAnswer.SurveyId == surveyId)
+                .OrderBy (q => q.QuestionPosition));
         }
 
         public async Task<QuestionAnswer> GetByIdAsync (int id, bool isTracking = true) {

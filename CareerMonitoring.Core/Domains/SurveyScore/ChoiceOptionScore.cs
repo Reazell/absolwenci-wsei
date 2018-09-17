@@ -1,3 +1,4 @@
+using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Core.Domains.SurveyScore;
 
 namespace CareerMonitoring.Core.Domains.SurveyScore {
@@ -10,14 +11,15 @@ namespace CareerMonitoring.Core.Domains.SurveyScore {
         public int FieldDataId { get; private set; }
         public FieldDataScore FieldData { get; private set; }
 
-        public ChoiceOptionScore () { }
+        private ChoiceOptionScore () { }
+
+        public ChoiceOptionScore (ChoiceOption choiceOption) {
+            OptionPosition = choiceOption.OptionPosition;
+            ViewValue = choiceOption.ViewValue;
+        }
 
         public void AddNumericalValue () {
             NumericalValue++;
-        }
-
-        public void AddViewValue (string viewValue) {
-            ViewValue = viewValue;
         }
     }
 }

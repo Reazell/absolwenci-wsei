@@ -77,7 +77,7 @@ namespace CareerMonitoring.Api {
                 });
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
             services.AddSingleton<IEmailConfiguration> (Configuration.GetSection ("EmailConfiguration").Get<EmailConfiguration> ());
-            services.AddSingleton(AutoMapperConfig.Initialize());
+            services.AddSingleton (AutoMapperConfig.Initialize ());
             services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
             services.AddAuthorization (options => options.AddPolicy ("graduate", policy => policy.RequireRole ("graduate")));
             services.AddAuthorization (options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
@@ -104,7 +104,8 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IChoiceOptionAnswerRepository, ChoiceOptionAnswerRepository> ();
             services.AddScoped<IRowAnswerRepository, RowAnswerRepository> ();
             services.AddScoped<IRowChoiceOptionAnswerRepository, RowChoiceOptionAnswerRepository> ();
-
+            services.AddScoped<ISurveyScoreRepository, SurveyScoreRepository> ();
+            services.AddScoped<IQuestionScoreRepository, QuestionScoreRepository> ();
 
             #endregion
             #region Services
@@ -118,6 +119,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IProfileEditionService, ProfileEditionService> ();
             services.AddScoped<ISurveyService, SurveyService> ();
             services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
+            services.AddScoped<ISurveyScoreService, SurveyScoreService> ();
 
             #endregion
             #region Validations

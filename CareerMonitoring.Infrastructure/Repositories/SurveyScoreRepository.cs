@@ -7,10 +7,10 @@ using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Repositories {
-    public class ScoreRepository : ISurveyScoreRepository {
+    public class SurveyScoreRepository : ISurveyScoreRepository {
         private readonly CareerMonitoringContext _context;
 
-        public ScoreRepository (CareerMonitoringContext context) {
+        public SurveyScoreRepository (CareerMonitoringContext context) {
             _context = context;
         }
 

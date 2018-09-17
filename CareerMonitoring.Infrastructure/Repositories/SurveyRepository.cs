@@ -19,25 +19,23 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             await _context.SaveChangesAsync ();
         }
 
-        public async Task<Survey> GetByIdWithQuestionsAsync(int id, bool isTracking = true)
-        {
-            if (isTracking)
-            {
-                return await _context.Surveys.AsTracking ().Include(x => x.Questions)
-                .ThenInclude(x => x.FieldData)
-                .ThenInclude(x => x.ChoiceOptions)
-                .Include(x => x.Questions)
-                .ThenInclude(x => x.FieldData)
-                .ThenInclude(x => x.Rows)
-                .SingleOrDefaultAsync (x => x.Id == id);
+        public async Task<Survey> GetByIdWithQuestionsAsync (int id, bool isTracking = true) {
+            if (isTracking) {
+                return await _context.Surveys.AsTracking ().Include (x => x.Questions)
+                    .ThenInclude (x => x.FieldData)
+                    .ThenInclude (x => x.ChoiceOptions)
+                    .Include (x => x.Questions)
+                    .ThenInclude (x => x.FieldData)
+                    .ThenInclude (x => x.Rows)
+                    .SingleOrDefaultAsync (x => x.Id == id);
             }
-            return await _context.Surveys.AsNoTracking ().Include(x => x.Questions)
-            .ThenInclude(x => x.FieldData)
-            .ThenInclude(x => x.ChoiceOptions)
-            .Include(x => x.Questions)
-            .ThenInclude(x => x.FieldData)
-            .ThenInclude(x => x.Rows)
-            .SingleOrDefaultAsync (x => x.Id == id);
+            return await _context.Surveys.AsNoTracking ().Include (x => x.Questions)
+                .ThenInclude (x => x.FieldData)
+                .ThenInclude (x => x.ChoiceOptions)
+                .Include (x => x.Questions)
+                .ThenInclude (x => x.FieldData)
+                .ThenInclude (x => x.Rows)
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<Survey> GetByTitleWithQuestionsAsync (string title, bool isTracking = true) {
@@ -55,23 +53,22 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<IEnumerable<Survey>> GetAllWithQuestionsFieldDataAndChoiceOptionsByTitleAsync (string title, bool isTracking = true) {
-            if (isTracking)
-            {
+            if (isTracking) {
                 return await Task.FromResult (_context.Surveys.AsTracking ()
-                .Include(x => x.Questions)
-                .ThenInclude(x => x.FieldData)
-                .ThenInclude(x => x.ChoiceOptions)
-                .Include(x => x.Questions)
-                .ThenInclude(x => x.FieldData)
-                .ThenInclude(x => x.Rows).AsEnumerable ());
+                    .Include (x => x.Questions)
+                    .ThenInclude (x => x.FieldData)
+                    .ThenInclude (x => x.ChoiceOptions)
+                    .Include (x => x.Questions)
+                    .ThenInclude (x => x.FieldData)
+                    .ThenInclude (x => x.Rows).AsEnumerable ());
             }
             return await Task.FromResult (_context.Surveys.AsNoTracking ()
-            .Include(x => x.Questions)
-            .ThenInclude(x => x.FieldData)
-            .ThenInclude(x => x.ChoiceOptions)
-            .Include(x => x.Questions)
-            .ThenInclude(x => x.FieldData)
-            .ThenInclude(x => x.Rows).AsEnumerable ());
+                .Include (x => x.Questions)
+                .ThenInclude (x => x.FieldData)
+                .ThenInclude (x => x.ChoiceOptions)
+                .Include (x => x.Questions)
+                .ThenInclude (x => x.FieldData)
+                .ThenInclude (x => x.Rows).AsEnumerable ());
         }
 
         public async Task UpdateAsync (Survey survey) {
@@ -84,9 +81,10 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             await _context.SaveChangesAsync ();
         }
 
-        public Task<Survey> GetByIdAsync(int id, bool isTracking = true)
-        {
-            throw new System.NotImplementedException();
+        public async Task<Survey> GetByIdAsync (int id, bool isTracking = true) {
+            if (isTracking)
+                return await _context.Surveys.AsTracking ().SingleOrDefaultAsync (x => x.Id == id);
+            return await _context.Surveys.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
         }
     }
 }

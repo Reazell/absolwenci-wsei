@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CareerMonitoring.Core.Domains.Surveys;
+using CareerMonitoring.Core.Domains.SurveysAnswers;
 using CareerMonitoring.Core.Domains.SurveyScore;
+using CareerMonitoring.Infrastructure.DTO;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -23,159 +26,323 @@ namespace CareerMonitoring.Infrastructure.Services {
             _surveyScoreRepository = surveyScoreRepository;
         }
 
-        public async Task<SurveyScore> CountScore (Survey survey) {
+        public async Task<SurveyDto> CountScore (Survey survey) {
 
-            var surveyScore = _mapper.Map<SurveyScore> (survey);
-            await _surveyScoreRepository.AddAsync (surveyScore);
+            var surveyScore = _mapper.Map<SurveyDto> (survey);
 
             var questionsAnswer = await _questionAnswerRepository.GetAllBySurveyIdInOrderAsync (survey.Id);
 
-            var questionsScore = await _questionScoreRepository.GetAllBySurveyScoreIdInOrderAsync (surveyScore.Id);
+            var questionsScore = (from x in surveyScore.Questions select x);
 
-            foreach (var question in questionsAnswer) {
-                foreach (var questionScore in questionsScore) {
+            foreach (var questionScore in questionsScore) {
+                foreach (var question in questionsAnswer) {
 
                     switch (question.Select) {
 
                         case "short-answer":
 
-                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                            if (questionScore.Select == "short-answer" && question.QuestionPosition == questionScore.QuestionPosition)
                                 foreach (var fieldDataScore in questionScore.FieldData) {
+                                    foreach (var fieldDataAnswer in question.FieldDataAnswers) {
 
-                                    if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
-                                        fieldDataScore.IncrementInputValue ();
+                                        if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
+                                            fieldDataScore.IncrementInputValue ();
+                                    }
                                 }
-                            }
 
                             break;
 
                         case "long-answer":
 
-                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                            if (questionScore.Select == "long-answer" && question.QuestionPosition == questionScore.QuestionPosition)
                                 foreach (var fieldDataScore in questionScore.FieldData) {
+                                    foreach (var fieldDataAnswer in question.FieldDataAnswers) {
 
-                                    if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
-                                        fieldDataScore.IncrementInputValue ();
+                                        if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
+                                            fieldDataScore.IncrementInputValue ();
+                                    }
                                 }
-                            }
 
                             break;
 
                         case "single-choice":
 
-                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                            if (questionScore.Select == "single-choice" && question.QuestionPosition == questionScore.QuestionPosition)
                                 foreach (var fieldDataScore in questionScore.FieldData) {
+                                    foreach (var fieldDataAnswer in question.FieldDataAnswers) {
 
-                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
                                         foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+                                            foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
 
-                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
-                                                choiceOptionScore.AddNumericalValue ();
+                                                if (choiceOptionAnswer.ViewValue.ToLowerInvariant () == choiceOptionScore.ViewValue.ToLowerInvariant () && choiceOptionAnswer.Value == true)
+                                                    choiceOptionScore.AddNumericalValue ();
 
+                                            }
                                         }
                                     }
                                 }
-                            }
 
                             break;
 
                         case "multiple-choice":
 
-                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                            if (questionScore.Select == "multiple-choice" && question.QuestionPosition == questionScore.QuestionPosition)
                                 foreach (var fieldDataScore in questionScore.FieldData) {
+                                    foreach (var fieldDataAnswer in question.FieldDataAnswers) {
 
-                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
                                         foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+                                            foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
 
-                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
-                                                choiceOptionScore.AddNumericalValue ();
+                                                if (choiceOptionAnswer.ViewValue.ToLowerInvariant () == choiceOptionScore.ViewValue.ToLowerInvariant () && choiceOptionAnswer.Value == true)
+                                                    choiceOptionScore.AddNumericalValue ();
 
+                                            }
                                         }
                                     }
                                 }
-                            }
 
                             break;
 
                         case "dropdown-menu":
 
-                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                            if (questionScore.Select == "dropdown-menu" && question.QuestionPosition == questionScore.QuestionPosition)
                                 foreach (var fieldDataScore in questionScore.FieldData) {
+                                    foreach (var fieldDataAnswer in question.FieldDataAnswers) {
 
-                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
-                                        foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+                                        foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                            foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
 
-                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
-                                                choiceOptionScore.AddNumericalValue ();
+                                                if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+                                                    choiceOptionScore.AddNumericalValue ();
 
+                                            }
                                         }
                                     }
                                 }
-                            }
 
                             break;
 
                         case "linear-scale":
 
-                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                            if (questionScore.Select == "linear-scale" && question.QuestionPosition == questionScore.QuestionPosition)
                                 foreach (var fieldDataScore in questionScore.FieldData) {
+                                    foreach (var fieldDataAnswer in question.FieldDataAnswers) {
 
-                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
-                                        foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+                                        foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                            foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
 
-                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
-                                                choiceOptionScore.AddNumericalValue ();
+                                                if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+                                                    choiceOptionScore.AddNumericalValue ();
 
+                                            }
                                         }
                                     }
                                 }
-                            }
 
                             break;
 
                         case "single-grid":
 
-                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                            if (questionScore.Select == "single-grid" && question.QuestionPosition == questionScore.QuestionPosition)
                                 foreach (var fieldDataScore in questionScore.FieldData) {
+                                    foreach (var fieldDataAnswer in question.FieldDataAnswers) {
 
-                                    foreach (var rowAnswer in fieldDataAnswer.RowsAnswers) {
+                                        foreach (var rowAnswer in fieldDataAnswer.RowsAnswers) {
 
-                                        foreach (var choiceOptionAnswer in rowAnswer.ChoiceOptionAnswers)
+                                            foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                                foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
 
-                                            foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+                                                    if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+                                                        choiceOptionScore.AddNumericalValue ();
 
-                                                if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
-                                                    choiceOptionScore.AddNumericalValue ();
-
+                                                }
                                             }
+                                        }
                                     }
                                 }
-                            }
 
                             break;
 
                         case "multiple-grid":
 
-                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                            if (questionScore.Select == "multiple-grid" && question.QuestionPosition == questionScore.QuestionPosition)
                                 foreach (var fieldDataScore in questionScore.FieldData) {
+                                    foreach (var fieldDataAnswer in question.FieldDataAnswers) {
 
-                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
-                                        foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+                                        foreach (var rowAnswer in fieldDataAnswer.RowsAnswers) {
 
-                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
-                                                choiceOptionScore.AddNumericalValue ();
+                                            foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                                foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
 
+                                                    if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+                                                        choiceOptionScore.AddNumericalValue ();
+
+                                                }
+                                            }
                                         }
                                     }
                                 }
-                            }
 
                             break;
+
+                        default:
+                            throw new Exception ("Something went wrong in loop.");
 
                     }
                 }
             }
-            await _surveyScoreRepository.UpdateAsync (surveyScore);
+
+            // foreach (var questionScore in questionsScore) {
+            //     foreach (var question in questionsAnswer) {
+
+            //         if (question.Select == "short-answer" &&
+            //             questionScore.Select == "short-answer" &&
+            //             question.QuestionPosition == questionScore.QuestionPosition) {
+
+            //             foreach (var fieldDataScore in questionScore.FieldData) {
+            //                 foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+
+            //                     if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
+            //                         fieldDataScore.IncrementInputValue ();
+            //                 }
+            //             }
+            //         }
+
+            //         if (question.Select == "long-answer" &&
+            //             questionScore.Select == "long-answer" &&
+            //             question.QuestionPosition == questionScore.QuestionPosition) {
+
+            //             foreach (var fieldDataScore in questionScore.FieldData) {
+            //                 foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+
+            //                     if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
+            //                         fieldDataScore.IncrementInputValue ();
+            //                 }
+            //             }
+            //         }
+
+            //         if (question.Select == "single-choice" &&
+            //             questionScore.Select == "single-choice" &&
+            //             question.QuestionPosition == questionScore.QuestionPosition) {
+
+            //             foreach (var fieldDataScore in questionScore.FieldData) {
+            //                 foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+
+            //                     foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+            //                         foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+
+            //                             if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+            //                                 choiceOptionScore.AddNumericalValue ();
+
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+
+            //         if (question.Select == "multiple-choice" &&
+            //             questionScore.Select == "multiple-choice" &&
+            //             question.QuestionPosition == questionScore.QuestionPosition) {
+
+            //             foreach (var fieldDataScore in questionScore.FieldData) {
+            //                 foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+
+            //                     foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+            //                         foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+
+            //                             if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+            //                                 choiceOptionScore.AddNumericalValue ();
+
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+
+            //         if (question.Select == "dropdown-menu" &&
+            //             questionScore.Select == "dropdown-menu" &&
+            //             question.QuestionPosition == questionScore.QuestionPosition) {
+
+            //             foreach (var fieldDataScore in questionScore.FieldData) {
+            //                 foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+
+            //                     foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+            //                         foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+
+            //                             if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+            //                                 choiceOptionScore.AddNumericalValue ();
+
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+
+            //         if (question.Select == "linear-scale" &&
+            //             questionScore.Select == "linear-scale" &&
+            //             question.QuestionPosition == questionScore.QuestionPosition) {
+
+            //             foreach (var fieldDataScore in questionScore.FieldData) {
+            //                 foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+
+            //                     foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+            //                         foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+
+            //                             if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+            //                                 choiceOptionScore.AddNumericalValue ();
+
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+
+            //         if (question.Select == "single-grid" &&
+            //             questionScore.Select == "single-grid" &&
+            //             question.QuestionPosition == questionScore.QuestionPosition) {
+
+            //             foreach (var fieldDataScore in questionScore.FieldData) {
+            //                 foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+
+            //                     foreach (var rowAnswer in fieldDataAnswer.RowsAnswers) {
+
+            //                         foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+            //                             foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+
+            //                                 if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+            //                                     choiceOptionScore.AddNumericalValue ();
+
+            //                             }
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+
+            //         if (question.Select == "multiple-grid" &&
+            //             questionScore.Select == "multiple-grid" &&
+            //             question.QuestionPosition == questionScore.QuestionPosition) {
+
+            //             foreach (var fieldDataScore in questionScore.FieldData) {
+            //                 foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+
+            //                     foreach (var rowAnswer in fieldDataAnswer.RowsAnswers) {
+
+            //                         foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+            //                             foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+
+            //                                 if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+            //                                     choiceOptionScore.AddNumericalValue ();
+
+            //                             }
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+
             return surveyScore;
 
         }
