@@ -112,7 +112,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                                         foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
                                             foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
 
-                                                if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+                                                if (choiceOptionAnswer.ViewValue.ToLowerInvariant () == choiceOptionScore.ViewValue.ToLowerInvariant () && choiceOptionAnswer.Value == true)
                                                     choiceOptionScore.AddNumericalValue ();
 
                                             }
@@ -131,7 +131,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                                         foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
                                             foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
 
-                                                if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+                                                if (choiceOptionAnswer.ViewValue.ToLowerInvariant () == choiceOptionScore.ViewValue.ToLowerInvariant () && choiceOptionAnswer.Value == true)
                                                     choiceOptionScore.AddNumericalValue ();
 
                                             }
@@ -152,7 +152,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                                             foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
                                                 foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
 
-                                                    if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+                                                    if (choiceOptionAnswer.ViewValue.ToLowerInvariant () == choiceOptionScore.ViewValue.ToLowerInvariant () && choiceOptionAnswer.Value == true)
                                                         choiceOptionScore.AddNumericalValue ();
 
                                                 }
@@ -174,7 +174,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                                             foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
                                                 foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
 
-                                                    if (choiceOptionAnswer.OptionPosition == choiceOptionScore.OptionPosition && choiceOptionAnswer.Value == true)
+                                                    if (choiceOptionAnswer.ViewValue.ToLowerInvariant () == choiceOptionScore.ViewValue.ToLowerInvariant () && choiceOptionAnswer.Value == true)
                                                         choiceOptionScore.AddNumericalValue ();
 
                                                 }
