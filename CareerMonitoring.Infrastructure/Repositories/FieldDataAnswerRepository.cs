@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
 using CareerMonitoring.Infrastructure.Data;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Repositories
 {
-    public class FieldDataAnswerRepository
+    public class FieldDataAnswerRepository : IFieldDataAnswerRepository
     {
         private readonly CareerMonitoringContext _context;
         public FieldDataAnswerRepository (CareerMonitoringContext context)

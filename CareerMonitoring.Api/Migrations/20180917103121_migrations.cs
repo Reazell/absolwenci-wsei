@@ -381,6 +381,28 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ChoiceOptionsAnswers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OptionPosition = table.Column<int>(nullable: false),
+                    Value = table.Column<bool>(nullable: false),
+                    ViewValue = table.Column<string>(nullable: true),
+                    FieldDataAnswerId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChoiceOptionsAnswers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ChoiceOptionsAnswers_FieldDataAnswers_FieldDataAnswerId",
+                        column: x => x.FieldDataAnswerId,
+                        principalTable: "FieldDataAnswers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RowAnswers",
                 columns: table => new
                 {
@@ -445,7 +467,7 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ChoiceOptionsAnswers",
+                name: "RowChoiceOptionsAnswers",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -453,20 +475,13 @@ namespace CareerMonitoring.Api.Migrations
                     OptionPosition = table.Column<int>(nullable: false),
                     Value = table.Column<bool>(nullable: false),
                     ViewValue = table.Column<string>(nullable: true),
-                    FieldDataAnswerId = table.Column<int>(nullable: false),
                     RowAnswerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChoiceOptionsAnswers", x => x.Id);
+                    table.PrimaryKey("PK_RowChoiceOptionsAnswers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ChoiceOptionsAnswers_FieldDataAnswers_FieldDataAnswerId",
-                        column: x => x.FieldDataAnswerId,
-                        principalTable: "FieldDataAnswers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ChoiceOptionsAnswers_RowAnswers_RowAnswerId",
+                        name: "FK_RowChoiceOptionsAnswers_RowAnswers_RowAnswerId",
                         column: x => x.RowAnswerId,
                         principalTable: "RowAnswers",
                         principalColumn: "Id",
@@ -499,11 +514,6 @@ namespace CareerMonitoring.Api.Migrations
                 name: "IX_ChoiceOptionsAnswers_FieldDataAnswerId",
                 table: "ChoiceOptionsAnswers",
                 column: "FieldDataAnswerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ChoiceOptionsAnswers_RowAnswerId",
-                table: "ChoiceOptionsAnswers",
-                column: "RowAnswerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Courses_AccountId",
@@ -562,6 +572,11 @@ namespace CareerMonitoring.Api.Migrations
                 column: "FieldDataAnswerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RowChoiceOptionsAnswers_RowAnswerId",
+                table: "RowChoiceOptionsAnswers",
+                column: "RowAnswerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Rows_FieldDataId",
                 table: "Rows",
                 column: "FieldDataId");
@@ -606,6 +621,9 @@ namespace CareerMonitoring.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProfileLinks");
+
+            migrationBuilder.DropTable(
+                name: "RowChoiceOptionsAnswers");
 
             migrationBuilder.DropTable(
                 name: "Rows");

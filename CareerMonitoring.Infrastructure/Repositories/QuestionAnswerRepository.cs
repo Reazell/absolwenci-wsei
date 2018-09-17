@@ -3,11 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
 using CareerMonitoring.Infrastructure.Data;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Repositories
 {
-    public class QuestionAnswerRepository
+    public class QuestionAnswerRepository : IQuestionAnswerRepository
     {
         private readonly CareerMonitoringContext _context;
         public QuestionAnswerRepository (CareerMonitoringContext context)
@@ -21,11 +22,18 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.SaveChangesAsync ();
         }
 
-        public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyIdInOrderAsync(int surveyAnswerId, bool isTracking = true)
+        public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyAnswerIdInOrderAsync(int surveyAnswerId, bool isTracking = true)
         {
             if(isTracking)
                 return await Task.FromResult(_context.QuestionsAnswers.AsTracking ().Where(x => x.SurveyAnswerId == surveyAnswerId).OrderBy(q => q.QuestionPosition));
             return await Task.FromResult(_context.QuestionsAnswers.AsNoTracking ().Where(x => x.SurveyAnswerId == surveyAnswerId).OrderBy(q => q.QuestionPosition));
+        }
+
+        public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyIdInOrderAsync (int surveyId, bool isTracking = true)
+        {
+            if(isTracking)
+                return await Task.FromResult(_context.QuestionsAnswers.AsTracking ().Where(x => x.SurveyAnswer.SurveyId == surveyId).OrderBy(q => q.QuestionPosition));
+            return await Task.FromResult(_context.QuestionsAnswers.AsNoTracking ().Where(x => x.SurveyAnswer.SurveyId == surveyId).OrderBy(q => q.QuestionPosition));
         }
 
         public async Task<QuestionAnswer> GetByIdAsync(int id, bool isTracking = true)
