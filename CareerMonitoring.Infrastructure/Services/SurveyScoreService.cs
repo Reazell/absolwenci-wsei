@@ -8,13 +8,13 @@ using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
 namespace CareerMonitoring.Infrastructure.Services {
-    public class ScoreService : IScoreService {
+    public class SurveyScoreService : ISurveyScoreService {
         private readonly IQuestionScoreRepository _questionScoreRepository;
         private readonly IQuestionAnswerRepository _questionAnswerRepository;
         private readonly ISurveyScoreRepository _surveyScoreRepository;
         private readonly IMapper _mapper;
 
-        public ScoreService (IQuestionScoreRepository questionScoreRepository,
+        public SurveyScoreService (IQuestionScoreRepository questionScoreRepository,
             IQuestionAnswerRepository questionAnswerRepository,
             IMapper mapper, ISurveyScoreRepository surveyScoreRepository) {
             _questionScoreRepository = questionScoreRepository;

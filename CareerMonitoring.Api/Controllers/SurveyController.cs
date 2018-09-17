@@ -10,12 +10,9 @@ namespace CareerMonitoring.Api.Controllers {
     //[Authorize]
     public class SurveyController : ApiUserController {
         private readonly ISurveyService _surveyService;
-        private readonly IScoreService _scoreService;
 
-        public SurveyController (ISurveyService surveyService,
-            IScoreService scoreService) {
+        public SurveyController (ISurveyService surveyService) {
             _surveyService = surveyService;
-            _scoreService = scoreService;
         }
 
         [HttpGet ("{surveyId}")]
@@ -66,13 +63,6 @@ namespace CareerMonitoring.Api.Controllers {
                 }
             }
             return StatusCode (201);
-        }
-
-        [HttpGet ("report/{surveyId}")]
-        public async Task<IActionResult> GetReport (int surveyId) {
-            var survey = await _surveyService.GetByIdAsync (surveyId);
-            var surveyScore = _scoreService.CountScore (survey);
-            return Json (surveyScore);
         }
     }
 }
