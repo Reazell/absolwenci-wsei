@@ -193,7 +193,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
               this.loading = false;
               this.registrationError = true;
               // set error message from api to loginErrorMessage
-              console.log(error);
+              console.log(error.error);
               this.registrationErrorMessage = error;
             }
           );

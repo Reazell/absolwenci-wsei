@@ -10,15 +10,4 @@ export class ManageBarComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}
-  routeToNewSurvey() {
-    const array = JSON.parse(localStorage.getItem('surveys')) || [];
-    const length = array.length;
-    const surveyObj = {
-      id: length,
-      content: undefined
-    };
-    array.push(surveyObj);
-    localStorage.setItem('surveys', JSON.stringify(array));
-    this.router.navigateByUrl('/app/admin/create/' + length);
-  }
 }

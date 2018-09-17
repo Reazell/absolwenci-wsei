@@ -41,7 +41,6 @@ export class AppBarComponent implements OnInit, OnDestroy {
   checkIfLogged() {
     this.userServiceSub = this.userService.isLogged.subscribe(data => {
       this.isLogged = data;
-      this.showSendButton = false;
     });
   }
   showCreator() {

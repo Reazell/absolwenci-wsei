@@ -41,7 +41,7 @@ export class SendSurveyDialogComponent implements OnInit {
     <tbody>
       <tr id="header">
         <td height="40" style="background-color: #8bc34a; padding: 25px; text-align: center; color: white;">
-        ${this.data.content.Form_Title}
+        ${this.data.content.title}
         </td>
       </tr>
       <tr>
@@ -62,9 +62,9 @@ export class SendSurveyDialogComponent implements OnInit {
       <tr>
         <td height="30"></td>
       </tr>
-      <tr>
+      <tr style="display: flex; justify-content: center;">
         <td style="display: flex; justify-content: center;">
-          <div style="border-radius: 3px; background-color: #8bc34a; padding: 10px;">
+          <div style="border-radius: 3px; background-color: #8bc34a; padding: 10px; text-align: center; max-width: 150px;">
             <a href=${
               this.url
             } style="text-decoration: none; color: white; outline: none;">Przejdź do ankiety</a>

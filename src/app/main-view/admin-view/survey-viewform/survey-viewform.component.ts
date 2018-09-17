@@ -12,8 +12,9 @@ import { SharedService } from '../../../services/shared.service';
 export class SurveyViewformComponent implements OnInit, OnDestroy {
   invoiceForm: FormGroup;
   defaultQuestion = 'Brak pytania';
+  loaded = false;
   id: number;
-
+  title: string;
   // subs
   surveyIDSub;
   editSurveySub;
@@ -38,19 +39,29 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     });
   }
   getSurvey() {
-    const surveyArr = JSON.parse(localStorage.getItem('surveys')) || [];
-    const length = surveyArr.length;
-    if (this.id !== undefined) {
-      for (let i = 0; i < length; i++) {
-        if (surveyArr[i].id === this.id) {
-          this.createQuestionData(surveyArr[i].content);
-          break;
-        }
+    this.surveyService.getSurveyWithId(this.id).subscribe(
+      data => {
+        this.createQuestionData(data);
+        this.title = data['title'];
+        this.loaded = true;
+      },
+      error => {
+        console.log(error);
       }
-    }
+    );
   }
   sendSurvey() {
-    console.log(JSON.stringify(this.invoiceForm.getRawValue()));
+    console.log(JSON.stringify(this.invoiceForm.getRawValue().questions));
+    this.surveyService
+      .saveSurveyAnswer(this.invoiceForm.getRawValue(), this.id)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
   editSurvey() {
     this.editSurveySub = this.sharedService.editButton.subscribe(() => {
@@ -83,29 +94,27 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   createQuestionData(data) {
     this.invoiceForm = this.fb.group({
-      Form_Title: [data.Form_Title],
-      Created_Date: [data.Created_Date],
-      Created_Time: [data.Created_Time],
-      QuestionData: this.fb.array([])
+      // title: [data.title],
+      // Created_Date: [data.Created_Date],
+      // Created_Time: [data.Created_Time],
+      questions: this.fb.array([])
     });
-    data.QuestionData.forEach(question => {
+    data.questions.forEach(question => {
       this.createQuestion(question);
     });
   }
 
   createQuestion(question) {
-    const control: FormArray = this.invoiceForm.get(
-      `QuestionData`
-    ) as FormArray;
+    const control: FormArray = this.invoiceForm.get(`questions`) as FormArray;
     const group = this.addRows(question);
     control.push(group);
   }
 
   addRows(question) {
     const group = this.fb.group({
-      question: [question.question || this.defaultQuestion],
+      content: [question.content || this.defaultQuestion],
       select: [question.select],
-      QuestionPosition: [question.QuestionPosition],
+      QuestionPosition: [question.questionPosition],
       FieldData: this.fb.array([])
     });
     this.createFieldData(question, group.controls);
@@ -113,7 +122,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   createFieldData(question, controls) {
-    question.FieldData.forEach(data => {
+    question.fieldData.forEach(data => {
       this.addGroup(controls.FieldData, controls.select.value, data);
     });
   }
@@ -186,17 +195,17 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   createGrid(rows, oldFieldData, i) {
     const group = this.fb.group({
-      RowPosition: oldFieldData.rows[i].RowPosition,
+      rowPosition: oldFieldData.rows[i].rowPosition,
       input: oldFieldData.rows[i].input,
       choiceOptions: this.fb.array([])
     });
     rows.push(group);
-    const colLength = oldFieldData.columns.length;
+    const colLength = oldFieldData.choiceOptions.length;
     for (let j = 0; j < colLength; j++) {
       this.createViewValue(
         group.controls.choiceOptions,
-        oldFieldData.columns[j].viewValue,
-        oldFieldData.columns[j].ChoicePosition
+        oldFieldData.choiceOptions[j].viewValue,
+        oldFieldData.choiceOptions[j].ChoicePosition
       );
     }
   }

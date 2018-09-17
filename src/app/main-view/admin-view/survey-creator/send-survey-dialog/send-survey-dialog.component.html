@@ -1,7 +1,7 @@
 <div id="send-survey-container">
   <div>
     <div id="header">
-      <span>{{data.content.Form_Title}}</span>
+      <span>{{data.content.title}}</span>
     </div>
     <div id="content-container">
       <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog.value) [formGroup]="dialogForm">

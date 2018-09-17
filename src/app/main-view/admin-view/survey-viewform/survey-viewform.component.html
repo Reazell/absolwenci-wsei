@@ -1,16 +1,16 @@
 <div id="outer-container">
   <div id="container">
     <div id="creator-container">
-      <form [formGroup]="invoiceForm">
+      <form *ngIf="loaded === true" [formGroup]="invoiceForm">
         <div id="form-title">
-          <span>{{invoiceForm.controls['Form_Title'].value}}</span>
+          <span>{{title}}</span>
         </div>
-        <div id="questions-container" formArrayName="QuestionData">
-          <div *ngFor="let question of invoiceForm.controls['QuestionData'].controls; let i = index" [formGroupName]="i"
+        <div id="questions-container" formArrayName="questions">
+          <div *ngFor="let question of invoiceForm.controls['questions'].controls; let i = index" [formGroupName]="i"
             class="question-field">
 
             <div class="select-container">
-              <span>{{question.controls.question.value}}</span>
+              <span>{{question.controls.content.value}}</span>
             </div>
 
             <div id="field-data" formArrayName="FieldData" [ngSwitch]="question.value.select">
@@ -156,7 +156,7 @@
               </div>
             </div>
           </div>
-          <button mat-raised-button id="send" (click)="sendSurvey()" >PRZEŚLIJ</button>
+          <button mat-raised-button id="send" (click)="sendSurvey()">PRZEŚLIJ</button>
           <!-- <pre>{{invoiceForm.value | json }}</pre> -->
         </div>
       </form>

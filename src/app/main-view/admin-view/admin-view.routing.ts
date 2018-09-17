@@ -23,6 +23,11 @@ const adminRoutes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'create',
+    loadChildren: './survey-creator/survey-creator.module#SurveyCreatorModule',
+    canLoad: [AuthGuard]
+  },
+  {
     path: 'viewform/:id',
     loadChildren:
       './survey-viewform/survey-viewform.module#SurveyViewformModule'
@@ -33,7 +38,7 @@ const adminRoutes: Routes = [
     path: 'list',
     loadChildren:
       './draggable/sortable-list/sortable-list.module#SortableListModule',
-      canLoad: [AuthGuard]
+    canLoad: [AuthGuard]
   }
 ];
 

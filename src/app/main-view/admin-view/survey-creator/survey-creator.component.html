@@ -1,15 +1,15 @@
 <div id="outer-container">
   <div id="container">
     <div id="creator-container">
-      <form [formGroup]="invoiceForm">
+      <form *ngIf="loaded === true" [formGroup]="invoiceForm">
         <div id="form-title">
-          <mat-form-field appearance="standard">
-            <input matInput placeholder="Nazwa formularza" formControlName="Form_Title" />
+          <mat-form-field appearance="standard" >
+            <input matInput placeholder="Nazwa formularza" formControlName="title" autofocus>
           </mat-form-field>
         </div>
-        <div id="questions-container" formArrayName="QuestionData">
-          <!-- appSortableList  (sort)="sort(invoiceForm.controls['QuestionData'].controls , $event)" -->
-          <div *ngFor="let question of invoiceForm.controls['QuestionData'].controls; let i = index" [formGroupName]="i"
+        <div id="questions-container" formArrayName="questions">
+          <!-- appSortableList  (sort)="sort(invoiceForm.controls['questions'].controls , $event)" -->
+          <div *ngFor="let question of invoiceForm.controls['questions'].controls; let i = index" [formGroupName]="i"
             class="question-field">
             <!-- appSortable -->
 
@@ -20,7 +20,7 @@
 
               <div class="select-container">
                 <mat-form-field appearance="standard">
-                  <input matInput placeholder="Pytanie" formControlName="question" />
+                  <input matInput placeholder="Pytanie" formControlName="content">
                 </mat-form-field>
                 <mat-form-field appearance="standard">
                   <mat-select placeholder="typ kontrolki" formControlName="select" name="control">
@@ -133,8 +133,8 @@
                           maxlength="0" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                       </mat-form-field>
                     </div>
-                    <div id="column-container" class="cont" formArrayName="columns">
-                      <div *ngFor="let radio of field.controls['columns'].controls; let l = index" [formGroupName]="l">
+                    <div id="column-container" class="cont" formArrayName="ChoiceOptions">
+                      <div *ngFor="let radio of field.controls['ChoiceOptions'].controls; let l = index" [formGroupName]="l">
                         <mat-radio-group formControlName="value" name="radio">
                           <mat-radio-button></mat-radio-button>
                         </mat-radio-group>
@@ -142,11 +142,11 @@
                           <input matInput type="text" [value]="radio.value.viewValue" formControlName="viewValue"
                             maxlength="20" #inputs>
                         </mat-form-field>
-                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['columns'])"
-                          *ngIf="field.controls['columns'].controls.length > 1"></fa-icon>
+                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['ChoiceOptions'])"
+                          *ngIf="field.controls['ChoiceOptions'].controls.length > 1"></fa-icon>
                       </div>
                       <mat-form-field class="standalone" appearance="standard">
-                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls['columns'], 'kolumna')"
+                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls['ChoiceOptions'], 'kolumna')"
                           maxlength="0" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                       </mat-form-field>
                     </div>
@@ -166,8 +166,8 @@
                           maxlength="0" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                       </mat-form-field>
                     </div>
-                    <div id="column-container" class="cont" formArrayName="columns">
-                      <div class="loop" *ngFor="let check of field.controls['columns'].controls; let l = index"
+                    <div id="column-container" class="cont" formArrayName="ChoiceOptions">
+                      <div class="loop" *ngFor="let check of field.controls['ChoiceOptions'].controls; let l = index"
                         [formGroupName]="l">
                         <div class="checkbox">
                           <div class="right">
@@ -177,12 +177,12 @@
                             <input matInput type="text" [value]="check.value.viewValue" formControlName="viewValue"
                               maxlength="20" #inputs>
                           </mat-form-field>
-                          <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['columns'])"
-                            *ngIf="field.controls['columns'].controls.length > 1"></fa-icon>
+                          <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['ChoiceOptions'])"
+                            *ngIf="field.controls['ChoiceOptions'].controls.length > 1"></fa-icon>
                         </div>
                       </div>
                       <mat-form-field class="standalone" appearance="standard">
-                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls['columns'], 'kolumna')"
+                        <input matInput ngModel [ngModelOptions]="{standalone: true}" (focus)="createChoiceControls(field.controls['ChoiceOptions'], 'kolumna')"
                           maxlength="0" autocomplete="off" autocomplete="off" tabindex="0" role="button" placeholder="Dodaj opcję">
                       </mat-form-field>
                     </div>

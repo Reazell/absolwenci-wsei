@@ -21,8 +21,18 @@ export class SurveyService {
   //       return data;
   //     });
   // }
+  saveSurveyAnswer(survey, id) {
+    return this.http
+      .post<any>(this.config.apiUrl + '/surveyanswer/surveys', {
+        SurveyTitle: survey.title,
+        SurveyId: id,
+        Questions: survey.questions
+      })
+      .map(data => {
+        return data;
+      });
+  }
   sendSurvey(survey) {
-    console.log(survey);
     return this.http
       .post<any>(this.config.apiUrl + '/email/emails', {
         Subject: survey.Subject,
@@ -32,16 +42,26 @@ export class SurveyService {
         return data;
       });
   }
-  createSurvey() {
+  createSurvey(survey) {
     return this.http
       .post<any>(this.config.apiUrl + '/survey/surveys', {
-        Title: 'testowy tytuł'
+        Title: survey.title,
+        Questions: survey.questions
       })
       .map(data => {
         return data;
       });
   }
-
+  getAllSurveys() {
+    return this.http.get(this.config.apiUrl + '/survey/surveys').map(data => {
+      return data;
+    });
+  }
+  getSurveyWithId(id) {
+    return this.http.get(this.config.apiUrl + '/survey/' + id).map(data => {
+      return data;
+    });
+  }
   saveSurveyToOpen(form: FormGroup): void {
     this.savedSurvey.next(form);
   }
