@@ -7,7 +7,8 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces
     public interface IQuestionAnswerRepository
     {
         Task AddAsync (QuestionAnswer questionAnswer);
-        Task<IEnumerable<QuestionAnswer>> GetAllBySurveyIdInOrderAsync (int surveyAnswerId, bool isTracking = true);
+        Task<IEnumerable<QuestionAnswer>> GetAllBySurveyAnswerIdInOrderAsync (int surveyAnswerId, bool isTracking = true);
+        Task<IEnumerable<QuestionAnswer>> GetAllBySurveyIdInOrderAsync (int surveyId, bool isTracking = true);
         Task<QuestionAnswer> GetByIdAsync(int id, bool isTracking = true);
         Task UpdateAsync (QuestionAnswer question);
         Task DeleteAsync (QuestionAnswer question);

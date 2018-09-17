@@ -9,41 +9,47 @@ using CareerMonitoring.Infrastructure.Services.Interfaces;
 
 namespace CareerMonitoring.Infrastructure.Services {
     public class ScoreService : IScoreService {
-        private readonly ISurveyRepository _surveyRepository;
-        private readonly IQuestionRepository _questionRepository;
-        private readonly IScoreRepository _scoreRepository;
+        private readonly IQuestionScoreRepository _questionScoreRepository;
+        private readonly IQuestionAnswerRepository _questionAnswerRepository;
+        private readonly ISurveyScoreRepository _surveyScoreRepository;
         private readonly IMapper _mapper;
 
-        public ScoreService (ISurveyRepository surveyRepository,
-            IQuestionRepository questionRepository,
-            IMapper mapper, IScoreRepository scoreRepository) {
-            _surveyRepository = surveyRepository;
-            _questionRepository = questionRepository;
+        public ScoreService (IQuestionScoreRepository questionScoreRepository,
+            IQuestionAnswerRepository questionAnswerRepository,
+            IMapper mapper, ISurveyScoreRepository surveyScoreRepository) {
+            _questionScoreRepository = questionScoreRepository;
+            _questionAnswerRepository = questionAnswerRepository;
             _mapper = mapper;
-            _scoreRepository = scoreRepository;
+            _surveyScoreRepository = surveyScoreRepository;
         }
 
         public async Task<SurveyScore> CountScore (Survey survey) {
 
             var surveyScore = _mapper.Map<SurveyScore> (survey);
-            await _scoreRepository.AddAsync (surveyScore);
+            await _surveyScoreRepository.AddAsync (surveyScore);
 
-            var questions = await _questionRepository.GetAllBySurveyIdInOrderAsync (survey.Id);
+            var questionsAnswer = await _questionAnswerRepository.GetAllBySurveyIdInOrderAsync (survey.Id);
 
-            var questionsScore = await _scoreRepository.GetAllBySurveyScoreIdInOrderAsync (surveyScore.Id); //get only questions from db
+            var questionsScore = await _questionScoreRepository.GetAllBySurveyScoreIdInOrderAsync (surveyScore.Id);
 
-            foreach (var question in questions) {
+            foreach (var question in questionsAnswer) {
                 foreach (var questionScore in questionsScore) {
 
                     switch (question.Select) {
 
                         case "single-choice":
 
-                            foreach (var choiceOption in question.FieldData.ChoiceOptions) {
-                                foreach (var choiceScore in questionScore.FieldDataAnswer.ChoiceOptionAnswers) {
+                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                                foreach (var fieldDataScore in questionScore.FieldData) {
 
-                                    if (choiceOption.ViewValue == choiceScore.ViewValue && choiceOption.Value == true)
-                                        choiceScore.AddNumericalValue ();
+                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                        foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+
+                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
+                                                choiceOptionScore.AddNumericalValue ();
+
+                                        }
+                                    }
                                 }
                             }
 
@@ -51,23 +57,35 @@ namespace CareerMonitoring.Infrastructure.Services {
 
                         case "multiple-choice":
 
-                            foreach (var choiceOption in question.FieldData.ChoiceOptions) {
-                                foreach (var choiceScore in questionScore.FieldData.ChoiceOptions) {
+                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                                foreach (var fieldDataScore in questionScore.FieldData) {
 
-                                    if (choiceOption.ViewValue == choiceScore.ViewValue && choiceOption.Value == true)
-                                        choiceScore.AddNumericalValue ();
+                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                        foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+
+                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
+                                                choiceOptionScore.AddNumericalValue ();
+
+                                        }
+                                    }
                                 }
                             }
 
                             break;
-                            
+
                         case "dropdown-menu":
 
-                            foreach (var choiceOption in question.FieldData.ChoiceOptions) {
-                                foreach (var choiceScore in questionScore.FieldData.ChoiceOptions) {
+                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                                foreach (var fieldDataScore in questionScore.FieldData) {
 
-                                    if (choiceOption.ViewValue == choiceScore.ViewValue && choiceOption.Value == true)
-                                        choiceScore.AddNumericalValue ();
+                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                        foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+
+                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
+                                                choiceOptionScore.AddNumericalValue ();
+
+                                        }
+                                    }
                                 }
                             }
 
@@ -75,15 +93,25 @@ namespace CareerMonitoring.Infrastructure.Services {
 
                         case "short-answer":
 
-                            if (string.IsNullOrEmpty (question.FieldData.Input))
-                                questionScore.FieldData.IncrementInputValue ();
+                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                                foreach (var fieldDataScore in questionScore.FieldData) {
+
+                                    if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
+                                        fieldDataScore.IncrementInputValue ();
+                                }
+                            }
 
                             break;
 
                         case "long-answer":
 
-                            if (string.IsNullOrEmpty (question.FieldData.Input))
-                                questionScore.FieldData.IncrementInputValue ();
+                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                                foreach (var fieldDataScore in questionScore.FieldData) {
+
+                                    if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
+                                        fieldDataScore.IncrementInputValue ();
+                                }
+                            }
 
                             break;
                     }
@@ -91,38 +119,6 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
 
             return surveyScore;
-
-            // var surveys = await _surveyRepository.GetAllWithQuestionsFieldDataAndChoiceOptionsByTitleAsync (survey.Title);
-            // Survey surveyScore = new Survey (survey.Title);
-
-            // foreach (var s in surveys) {
-
-            //     foreach (var question in s.Questions) {
-            //         Question questionScore = new Question (question.QuestionPosition, question.Content,
-            //             question.Select);
-            //         surveyScore.AddQuestion (questionScore);
-
-            //         switch (question.Select) {
-
-            //             case "single-choice":
-
-            //                 foreach (var choiceOption in question.FieldData.ChoiceOptions) {
-
-            //                     for (int i = 0; i < question.FieldData.ChoiceOptions.Count; i++) {
-            //                         if (choiceOption.OptionPosition == i && choiceOption.Value == true)
-            //                             choiceScore.AddViewValue (choiceOption.ViewValue);
-            //                         choiceScore.AddNumericalValue ();
-            //                     }
-
-            //                 }
-
-            //                 break;
-
-            //         } // switch
-
-            //     } //question loop
-
-            // } //survey loop
 
         }
 

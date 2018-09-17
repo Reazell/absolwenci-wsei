@@ -7,7 +7,7 @@ using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Repositories {
-    public class ScoreRepository : IScoreRepository {
+    public class ScoreRepository : ISurveyScoreRepository {
         private readonly CareerMonitoringContext _context;
 
         public ScoreRepository (CareerMonitoringContext context) {
@@ -19,30 +19,19 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             await _context.SaveChangesAsync ();
         }
 
-        public async Task<IEnumerable<QuestionScore>> GetAllBySurveyScoreIdInOrderAsync (int surveyId, bool isTracking = true) {
-            if (isTracking)
-                return await Task.FromResult (_context.QuestionScores.AsTracking ()
-                    .Include (x => x.FieldData)
-                    .ThenInclude (x => x.ChoiceOptions)
-                    .Include (x => x.FieldData)
-                    .ThenInclude (x => x.Rows)
-                    .Where (x => x.SurveyId == surveyId)
-                    .OrderBy (q => q.QuestionPosition));
-            return await Task.FromResult (_context.QuestionScores.AsNoTracking ()
-                .Include (x => x.FieldData)
-                .ThenInclude (x => x.ChoiceOptions)
-                .Include (x => x.FieldData)
-                .ThenInclude (x => x.Rows)
-                .Where (x => x.SurveyId == surveyId)
-                .OrderBy (q => q.QuestionPosition));
-        }
-
         public async Task<SurveyScore> GetByIdAsync (int id, bool isTracking = true) {
-            throw new System.NotImplementedException ();
+            if (isTracking)
+                return await _context.SurveyScores.AsTracking ().SingleOrDefaultAsync (x => x.Id == id);
+            return await _context.SurveyScores.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task UpdateAsync (SurveyScore surveyScore) {
             _context.SurveyScores.Update (surveyScore);
+            await _context.SaveChangesAsync ();
+        }
+
+        public async Task DeleteAsync (SurveyScore surveyScore) {
+            _context.SurveyScores.Remove (surveyScore);
             await _context.SaveChangesAsync ();
         }
     }

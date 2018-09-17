@@ -1,3 +1,9 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using CareerMonitoring.Core.Domains.Surveys;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
+
 namespace CareerMonitoring.Infrastructure.Services
 {
     public class SurveyAnswerService
@@ -9,7 +15,7 @@ namespace CareerMonitoring.Infrastructure.Services
         private readonly IChoiceOptionRepository _choiceOptionRepository;
         private readonly IRowRepository _rowRepository;
 
-        public SurveyService (IMapper mapper,
+        public SurveyAnswerService (IMapper mapper,
         ISurveyRepository surveyRepository,
         IQuestionRepository questionRepository,
         IFieldDataRepository fieldDataRepository,
