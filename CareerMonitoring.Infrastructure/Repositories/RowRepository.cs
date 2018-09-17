@@ -29,6 +29,13 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await Task.FromResult(_context.Rows.AsNoTracking ().Where(x => x.FieldDataId == fieldDataId).OrderBy(q => q.RowPosition));
         }
 
+        public async Task<Row> GetByFieldDataIdAsync (int fieldDataId, bool isTracking = true)
+        {
+            if(isTracking)
+                return await _context.Rows.AsTracking ().SingleOrDefaultAsync (x => x.FieldDataId == fieldDataId);
+            return await _context.Rows.AsNoTracking ().SingleOrDefaultAsync (x => x.FieldDataId == fieldDataId);
+        }
+
         public async Task UpdateAsync(Row row)
         {
             _context.Rows.Update (row);

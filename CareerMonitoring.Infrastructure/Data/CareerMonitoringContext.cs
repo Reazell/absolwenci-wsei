@@ -69,18 +69,22 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasForeignKey<ProfileLink> (b => b.AccountId);
             modelBuilder.Entity<Survey> ()
                 .HasMany (a => a.Questions)
-                .WithOne (b => b.Survey);
+                .WithOne (b => b.Survey)
+                .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<Question> ()
                 .HasMany (a => a.FieldData)
-                .WithOne (b => b.Question);
+                .WithOne (b => b.Question)
+                .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<FieldData> ()
                 .HasMany (a => a.Rows)
                 .WithOne (b => b.FieldData)
-                .HasForeignKey (s => s.FieldDataId);
+                .HasForeignKey (s => s.FieldDataId)
+                .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<FieldData> ()
                 .HasMany (a => a.ChoiceOptions)
                 .WithOne (b => b.FieldData)
-                .HasForeignKey (s => s.FieldDataId);
+                .HasForeignKey (s => s.FieldDataId)
+                .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<SurveyAnswer> ()
                 .HasMany (a => a.QuestionsAnswers)
                 .WithOne (b => b.SurveyAnswer);

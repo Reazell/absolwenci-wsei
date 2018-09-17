@@ -19,6 +19,10 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             ChoiceOptions.Add(choiceOption);
         }
 
+        public void AddRow (Row row) {
+            Rows.Add(row);
+        }
+
         public FieldData (string input) {
             Input = input;
         }
@@ -30,8 +34,17 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             MaxLabel = maxLabel;
         }
 
-        public void AddRow (Row row) {
-            Rows.Add(row);
+        public void Update (string input)
+        {
+            Input = input;
+        }
+
+        public void Update (int minValue, int maxValue, string minLabel, string maxLabel)
+        {
+            MinValue = minValue;
+            MaxValue = maxValue;
+            MinLabel = minLabel;
+            MaxLabel = maxLabel;
         }
     }
 }
