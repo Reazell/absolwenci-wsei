@@ -16,6 +16,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<QuestionAnswer> QuestionsAnswers { get; set; }
         public DbSet<FieldDataAnswer> FieldDataAnswers { get; set; }
         public DbSet<ChoiceOptionAnswer> ChoiceOptionsAnswers { get; set; }
+        public DbSet<RowChoiceOptionAnswer> RowChoiceOptionsAnswers { get; set; }
         public DbSet<RowAnswer> RowAnswers { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
@@ -98,9 +99,10 @@ namespace CareerMonitoring.Infrastructure.Data {
             modelBuilder.Entity<FieldDataAnswer> ()
                 .HasMany (a => a.ChoiceOptionAnswers)
                 .WithOne (b => b.FieldDataAnswer)
-                .HasForeignKey (s => s.FieldDataAnswerId);
+                .HasForeignKey (s => s.FieldDataAnswerId)
+                .OnDelete (DeleteBehavior.Restrict);
             modelBuilder.Entity<RowAnswer> ()
-                .HasMany (a => a.ChoiceOptionAnswers)
+                .HasMany (a => a.RowChoiceOptionAnswers)
                 .WithOne (b => b.RowAnswer)
                 .HasForeignKey (s => s.RowAnswerId)
                 .OnDelete (DeleteBehavior.Restrict);

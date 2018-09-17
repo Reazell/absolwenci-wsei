@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareerMonitoring.Api.Migrations
 {
     [DbContext(typeof(CareerMonitoringContext))]
-    [Migration("20180916204241_migrations")]
+    [Migration("20180917103121_migrations")]
     partial class migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -391,8 +391,6 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<int>("OptionPosition");
 
-                    b.Property<int>("RowAnswerId");
-
                     b.Property<bool>("Value");
 
                     b.Property<string>("ViewValue");
@@ -400,8 +398,6 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FieldDataAnswerId");
-
-                    b.HasIndex("RowAnswerId");
 
                     b.ToTable("ChoiceOptionsAnswers");
                 });
@@ -465,6 +461,27 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasIndex("FieldDataAnswerId");
 
                     b.ToTable("RowAnswers");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.RowChoiceOptionAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OptionPosition");
+
+                    b.Property<int>("RowAnswerId");
+
+                    b.Property<bool>("Value");
+
+                    b.Property<string>("ViewValue");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RowAnswerId");
+
+                    b.ToTable("RowChoiceOptionsAnswers");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.SurveyAnswer", b =>
@@ -648,11 +665,6 @@ namespace CareerMonitoring.Api.Migrations
                         .WithMany("ChoiceOptionAnswers")
                         .HasForeignKey("FieldDataAnswerId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CareerMonitoring.Core.Domains.SurveysAnswers.RowAnswer", "RowAnswer")
-                        .WithMany("ChoiceOptionAnswers")
-                        .HasForeignKey("RowAnswerId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.FieldDataAnswer", b =>
@@ -677,6 +689,14 @@ namespace CareerMonitoring.Api.Migrations
                         .WithMany("RowsAnswers")
                         .HasForeignKey("FieldDataAnswerId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.RowChoiceOptionAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveysAnswers.RowAnswer", "RowAnswer")
+                        .WithMany("RowChoiceOptionAnswers")
+                        .HasForeignKey("RowAnswerId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

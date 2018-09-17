@@ -37,6 +37,30 @@ namespace CareerMonitoring.Infrastructure.Services {
 
                     switch (question.Select) {
 
+                        case "short-answer":
+
+                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                                foreach (var fieldDataScore in questionScore.FieldData) {
+
+                                    if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
+                                        fieldDataScore.IncrementInputValue ();
+                                }
+                            }
+
+                            break;
+
+                        case "long-answer":
+
+                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                                foreach (var fieldDataScore in questionScore.FieldData) {
+
+                                    if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
+                                        fieldDataScore.IncrementInputValue ();
+                                }
+                            }
+
+                            break;
+
                         case "single-choice":
 
                             foreach (var fieldDataAnswer in question.FieldDataAnswers) {
@@ -91,33 +115,67 @@ namespace CareerMonitoring.Infrastructure.Services {
 
                             break;
 
-                        case "short-answer":
+                        case "linear-scale":
 
                             foreach (var fieldDataAnswer in question.FieldDataAnswers) {
                                 foreach (var fieldDataScore in questionScore.FieldData) {
 
-                                    if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
-                                        fieldDataScore.IncrementInputValue ();
+                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                        foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+
+                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
+                                                choiceOptionScore.AddNumericalValue ();
+
+                                        }
+                                    }
                                 }
                             }
 
                             break;
 
-                        case "long-answer":
+                        case "single-grid":
 
                             foreach (var fieldDataAnswer in question.FieldDataAnswers) {
                                 foreach (var fieldDataScore in questionScore.FieldData) {
 
-                                    if (!string.IsNullOrEmpty (fieldDataAnswer.Input))
-                                        fieldDataScore.IncrementInputValue ();
+                                    foreach (var rowAnswer in fieldDataAnswer.RowsAnswers) {
+
+                                        foreach (var choiceOptionAnswer in rowAnswer.ChoiceOptionAnswers)
+
+                                            foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+
+                                                if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
+                                                    choiceOptionScore.AddNumericalValue ();
+
+                                            }
+                                    }
                                 }
                             }
 
                             break;
+
+                        case "multiple-grid":
+
+                            foreach (var fieldDataAnswer in question.FieldDataAnswers) {
+                                foreach (var fieldDataScore in questionScore.FieldData) {
+
+                                    foreach (var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
+                                        foreach (var choiceOptionScore in fieldDataScore.ChoiceOptions) {
+
+                                            if (choiceOptionAnswer.ViewValue == choiceOptionScore.ViewValue && choiceOptionAnswer.Value == true)
+                                                choiceOptionScore.AddNumericalValue ();
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            break;
+
                     }
                 }
             }
-
+            await _surveyScoreRepository.UpdateAsync (surveyScore);
             return surveyScore;
 
         }

@@ -98,6 +98,13 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IFieldDataRepository, FieldDataRepository> ();
             services.AddScoped<IChoiceOptionRepository, ChoiceOptionRepository> ();
             services.AddScoped<IRowRepository, RowRepository> ();
+            services.AddScoped<ISurveyAnswerRepository, SurveyAnswerRepository> ();
+            services.AddScoped<IQuestionAnswerRepository, QuestionAnswerRepository> ();
+            services.AddScoped<IFieldDataAnswerRepository, FieldDataAnswerRepository> ();
+            services.AddScoped<IChoiceOptionAnswerRepository, ChoiceOptionAnswerRepository> ();
+            services.AddScoped<IRowAnswerRepository, RowAnswerRepository> ();
+            services.AddScoped<IRowChoiceOptionAnswerRepository, RowChoiceOptionAnswerRepository> ();
+
 
             #endregion
             #region Services
@@ -110,6 +117,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
             services.AddScoped<IProfileEditionService, ProfileEditionService> ();
             services.AddScoped<ISurveyService, SurveyService> ();
+            services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
 
             #endregion
             #region Validations

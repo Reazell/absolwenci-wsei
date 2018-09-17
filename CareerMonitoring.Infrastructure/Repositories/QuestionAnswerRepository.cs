@@ -6,8 +6,10 @@ using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CareerMonitoring.Infrastructure.Repositories {
-    public class QuestionAnswerRepository : IQuestionAnswerRepository {
+namespace CareerMonitoring.Infrastructure.Repositories
+{
+    public class QuestionAnswerRepository : IQuestionAnswerRepository
+    {
         private readonly CareerMonitoringContext _context;
         public QuestionAnswerRepository (CareerMonitoringContext context) {
             _context = context;

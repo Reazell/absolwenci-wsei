@@ -6,7 +6,13 @@ namespace CareerMonitoring.Core.Domains.SurveysAnswers {
         public string ViewValue { get; private set; }
         public int FieldDataAnswerId { get; private set; }
         public FieldDataAnswer FieldDataAnswer { get; private set; }
-        public int RowAnswerId { get; private set; }
-        public RowAnswer RowAnswer { get; private set; }
+
+        private ChoiceOptionAnswer () { }
+
+        public ChoiceOptionAnswer (int optionPosition, bool value, string viewValue) {
+            OptionPosition = optionPosition;
+            Value = value;
+            ViewValue = viewValue;
+        }
     }
 }
