@@ -60,5 +60,10 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             _context.Surveys.Remove (survey);
             await _context.SaveChangesAsync ();
         }
+
+        public Task<Survey> GetByIdAsync(int id, bool isTracking = true)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

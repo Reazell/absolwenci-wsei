@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CareerMonitoring.Core.Domains.Surveys;
-using CareerMonitoring.Core.Domains.Surveys.Score;
+using CareerMonitoring.Core.Domains.SurveyScore;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -40,7 +40,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                         case "single-choice":
 
                             foreach (var choiceOption in question.FieldData.ChoiceOptions) {
-                                foreach (var choiceScore in questionScore.FieldData.ChoiceOptions) {
+                                foreach (var choiceScore in questionScore.FieldDataAnswer.ChoiceOptionAnswers) {
 
                                     if (choiceOption.ViewValue == choiceScore.ViewValue && choiceOption.Value == true)
                                         choiceScore.AddNumericalValue ();

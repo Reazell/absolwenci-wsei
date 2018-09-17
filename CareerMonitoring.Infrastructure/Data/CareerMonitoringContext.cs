@@ -1,7 +1,7 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.Surveys;
-using CareerMonitoring.Core.Domains.Surveys.Score;
+using CareerMonitoring.Core.Domains.SurveyScore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
@@ -28,7 +28,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<SurveyScore> SurveyScores { get; set; }
         public DbSet<FieldDataScore> FieldDataScores { get; set; }
         public DbSet<QuestionScore> QuestionScores { get; set; }
-        public DbSet<ChoiceScore> ChoiceScores { get; set; }
+        public DbSet<ChoiceOptionScore> ChoiceScores { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 

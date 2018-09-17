@@ -1,5 +1,7 @@
-namespace CareerMonitoring.Core.Domains.Surveys.Score {
-    public class ChoiceScore {
+using CareerMonitoring.Core.Domains.SurveyScore;
+
+namespace CareerMonitoring.Core.Domains.SurveyScore {
+    public class ChoiceOptionScore {
         public int Id { get; private set; }
         public int OptionPosition { get; private set; }
         public string ViewValue { get; private set; }
@@ -8,17 +10,7 @@ namespace CareerMonitoring.Core.Domains.Surveys.Score {
         public int FieldDataId { get; private set; }
         public FieldDataScore FieldData { get; private set; }
 
-        public ChoiceScore () { }
-        public ChoiceScore (ChoiceOption choiceOption) {
-            OptionPosition = choiceOption.OptionPosition;
-            ViewValue = choiceOption.ViewValue;
-        }
-
-        public ChoiceScore (string viewValue, double percentageValue, double numericalValue) {
-            ViewValue = viewValue;
-            PercentageValue = percentageValue;
-            NumericalValue = numericalValue;
-        }
+        public ChoiceOptionScore () { }
 
         public void AddNumericalValue () {
             NumericalValue++;
