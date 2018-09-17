@@ -7,7 +7,7 @@ namespace CareerMonitoring.Core.Domains.SurveysAnswers {
         public string MaxLabel { get; private set; }
         public string Input { get; private set; }
         public int QuestionAnswerId { get; private set; }
-        public QuestionAnswer Question { get; private set; }
+        public QuestionAnswer QuestionAnswer { get; private set; }
         public ICollection<ChoiceOptionAnswer> ChoiceOptionAnswers { get; private set; }
         public ICollection<RowAnswer> RowsAnswers { get; private set; }
     }

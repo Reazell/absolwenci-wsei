@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace CareerMonitoring.Core.Domains.SurveysAnswers {
     public class QuestionAnswer {
         public int Id { get; private set; }
@@ -6,6 +8,6 @@ namespace CareerMonitoring.Core.Domains.SurveysAnswers {
         public string Select { get; private set; }
         public int SurveyAnswerId { get; private set; }
         public SurveyAnswer SurveyAnswer { get; private set; }
-        public FieldDataAnswer FieldDataAnswer { get; private set; }
+        public ICollection<FieldDataAnswer> FieldDataAnswers { get; private set; }
     }
 }

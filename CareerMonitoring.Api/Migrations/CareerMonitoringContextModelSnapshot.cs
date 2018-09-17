@@ -379,6 +379,111 @@ namespace CareerMonitoring.Api.Migrations
                     b.ToTable("Surveys");
                 });
 
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.ChoiceOptionAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FieldDataAnswerId");
+
+                    b.Property<int>("OptionPosition");
+
+                    b.Property<int>("RowAnswerId");
+
+                    b.Property<bool>("Value");
+
+                    b.Property<string>("ViewValue");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FieldDataAnswerId");
+
+                    b.HasIndex("RowAnswerId");
+
+                    b.ToTable("ChoiceOptionsAnswers");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.FieldDataAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Input");
+
+                    b.Property<string>("MaxLabel");
+
+                    b.Property<string>("MinLabel");
+
+                    b.Property<int>("QuestionAnswerId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionAnswerId");
+
+                    b.ToTable("FieldDataAnswers");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.QuestionAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("QuestionPosition");
+
+                    b.Property<string>("Select");
+
+                    b.Property<int>("SurveyAnswerId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyAnswerId");
+
+                    b.ToTable("QuestionsAnswers");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.RowAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FieldDataAnswerId");
+
+                    b.Property<string>("Input");
+
+                    b.Property<int>("RowPosition");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FieldDataAnswerId");
+
+                    b.ToTable("RowAnswers");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.SurveyAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Answered");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("SurveyId");
+
+                    b.Property<string>("SurveyTitle");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SurveyAnswers");
+                });
+
             modelBuilder.Entity("CareerMonitoring.Core.Domains.CareerOffice", b =>
                 {
                     b.HasBaseType("CareerMonitoring.Core.Domains.Abstract.Account");
@@ -532,6 +637,43 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasOne("CareerMonitoring.Core.Domains.Surveys.FieldData", "FieldData")
                         .WithMany("Rows")
                         .HasForeignKey("FieldDataId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.ChoiceOptionAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveysAnswers.FieldDataAnswer", "FieldDataAnswer")
+                        .WithMany("ChoiceOptionAnswers")
+                        .HasForeignKey("FieldDataAnswerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveysAnswers.RowAnswer", "RowAnswer")
+                        .WithMany("ChoiceOptionAnswers")
+                        .HasForeignKey("RowAnswerId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.FieldDataAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveysAnswers.QuestionAnswer", "QuestionAnswer")
+                        .WithMany("FieldDataAnswers")
+                        .HasForeignKey("QuestionAnswerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.QuestionAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveysAnswers.SurveyAnswer", "SurveyAnswer")
+                        .WithMany("QuestionsAnswers")
+                        .HasForeignKey("SurveyAnswerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.RowAnswer", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveysAnswers.FieldDataAnswer", "FieldDataAnswer")
+                        .WithMany("RowsAnswers")
+                        .HasForeignKey("FieldDataAnswerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

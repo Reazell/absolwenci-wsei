@@ -5,7 +5,7 @@ namespace CareerMonitoring.Core.Domains.SurveysAnswers {
         public bool Value { get; private set; }
         public string ViewValue { get; private set; }
         public int FieldDataAnswerId { get; private set; }
-        public FieldDataAnswer FieldDataAsnwer { get; private set; }
+        public FieldDataAnswer FieldDataAnswer { get; private set; }
         public int RowAnswerId { get; private set; }
         public RowAnswer RowAnswer { get; private set; }
     }
