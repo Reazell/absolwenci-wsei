@@ -5,27 +5,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    //[Authorize]
+    [Authorize]
     public class SurveyAnswerController : ApiUserController {
         private readonly ISurveyAnswerService _surveyAnswerService;
 
         public SurveyAnswerController (ISurveyAnswerService surveyAnswerService) {
             _surveyAnswerService = surveyAnswerService;
         }
-
-        // [HttpGet ("{surveyId}")]
-        // public async Task<IActionResult> GetSurvey (int surveyId)
-        // {
-        //     var surveyAnswer = await _surveyAnswerService.GetBySurveyIdAsync (surveyId);
-        //     return Json(surveyAnswer);
-        // }
-
-        // [HttpGet ("surveys")]
-        // public async Task<IActionResult> GetAllSurveys ()
-        // {
-        //     var surveys = await _surveyAnswerService.GetAllAsync ();
-        //     return Json (surveys);
-        // }
 
         [HttpPost ("surveys")]
         public async Task<IActionResult> CreateSurvey ([FromBody] SurveyAnswerToAdd command) {
