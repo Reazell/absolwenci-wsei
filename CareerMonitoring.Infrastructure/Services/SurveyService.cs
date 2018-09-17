@@ -91,7 +91,7 @@ namespace CareerMonitoring.Infrastructure.Services
                 }
                 case "linear-scale":
                 {
-                    var fieldData = new FieldData();
+                    var fieldData = new FieldData(minValue, maxValue, minLabel, maxLabel);
                     question.AddFieldData(fieldData);
                     await _fieldDataRepository.AddAsync (fieldData);
                     return fieldData.Id;
