@@ -2,6 +2,7 @@ using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
+using CareerMonitoring.Core.Domains.SurveyScore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
@@ -31,6 +32,10 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<Language> Languages { get; set; }
         public DbSet<ProfileLink> ProfileLinks { get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<SurveyScore> SurveyScores { get; set; }
+        public DbSet<FieldDataScore> FieldDataScores { get; set; }
+        public DbSet<QuestionScore> QuestionScores { get; set; }
+        public DbSet<ChoiceOptionScore> ChoiceScores { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 
@@ -105,6 +110,20 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .WithOne (b => b.RowAnswer)
                 .HasForeignKey (s => s.RowAnswerId)
                 .OnDelete (DeleteBehavior.Restrict);
+            modelBuilder.Entity<SurveyScore> ()
+                .HasMany (a => a.Questions)
+                .WithOne (b => b.Survey);
+            modelBuilder.Entity<QuestionScore> ()
+                .HasMany (a => a.FieldData)
+                .WithOne (b => b.Question);
+            modelBuilder.Entity<FieldDataScore> ()
+                .HasMany (a => a.Rows)
+                .WithOne (b => b.FieldData)
+                .HasForeignKey (s => s.FieldDataId);
+            modelBuilder.Entity<FieldDataScore> ()
+                .HasMany (a => a.ChoiceOptions)
+                .WithOne (b => b.FieldData)
+                .HasForeignKey (s => s.FieldDataId);
         }
     }
 }
