@@ -27,6 +27,7 @@ namespace CareerMonitoring.Api.Controllers {
             return Json (surveys);
         }
 
+        //nie działa -> naprawić
         [HttpPost ("surveys")]
         public async Task<IActionResult> CreateSurvey ([FromBody] SurveyToAdd command) {
             if (!ModelState.IsValid)
@@ -65,7 +66,7 @@ namespace CareerMonitoring.Api.Controllers {
             return StatusCode (201);
         }
 
-        [HttpPut ("surveyId")]
+        [HttpPut ("update")]
         public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command)
         {
             if (!ModelState.IsValid)
@@ -104,7 +105,7 @@ namespace CareerMonitoring.Api.Controllers {
             return StatusCode (201);
         }
 
-        [HttpDelete ("surveyId")]
+        [HttpDelete ("{surveyId}")]
         public async Task<IActionResult> DeleteSurvey (int surveyId)
         {
             await _surveyService.DeleteAsync(surveyId);

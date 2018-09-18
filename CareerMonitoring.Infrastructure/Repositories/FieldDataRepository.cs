@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Infrastructure.Data;
@@ -29,8 +30,8 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<FieldData> GetByQuestionIdAsync(int questionId, bool isTracking = true)
         {
             if(isTracking)
-                return await _context.FieldData.AsTracking().SingleOrDefaultAsync (x => x.QuestionId == questionId);
-            return await _context.FieldData.AsNoTracking().SingleOrDefaultAsync (x => x.QuestionId == questionId);
+                return await _context.FieldData.AsTracking().Where (x => x.QuestionId == questionId).SingleOrDefaultAsync();
+            return await _context.FieldData.AsNoTracking().Where (x => x.QuestionId == questionId).SingleOrDefaultAsync();
         }
 
         public async Task UpdateAsync(FieldData fieldData)

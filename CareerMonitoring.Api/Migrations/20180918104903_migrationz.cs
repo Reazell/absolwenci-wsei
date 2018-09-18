@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class SurveyScore : Migration
+    public partial class migrationz : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

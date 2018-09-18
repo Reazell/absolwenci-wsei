@@ -31,8 +31,8 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<ChoiceOption> GetByFieldDataIdAsync (int fieldDataId, bool isTracking = true)
         {
             if (isTracking)
-                return await _context.ChoiceOptions.AsTracking ().SingleOrDefaultAsync (x => x.FieldDataId == fieldDataId);
-            return await _context.ChoiceOptions.AsNoTracking ().SingleOrDefaultAsync (x => x.FieldDataId == fieldDataId);
+                return await _context.ChoiceOptions.AsTracking ().Where (x => x.FieldDataId == fieldDataId).SingleOrDefaultAsync();
+            return await _context.ChoiceOptions.AsNoTracking ().Where (x => x.FieldDataId == fieldDataId).SingleOrDefaultAsync();
         }
 
         public async Task UpdateAsync(ChoiceOption choiceOption)
