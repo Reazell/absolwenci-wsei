@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import * as cloneDeep from 'lodash/cloneDeep';
-import { Select, Value } from './classes/survey-creator.models';
-import { MatDialog } from '../../../../../node_modules/@angular/material';
+import { Select, Value } from '../classes/survey-creator.models';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-survey-creator',
@@ -123,10 +123,7 @@ export class SurveyCreatorComponent
     this.sharedService.showCreatorButton(true);
   }
 
-  ngAfterViewInit() {
-    console.log(this.inputs);
-    console.log(this.inputs2);
-  }
+  ngAfterViewInit() {}
 
   saveSurveyOnClick() {
     this.saveSurveySub = this.sharedService.saveButton.subscribe(() => {
@@ -166,7 +163,7 @@ export class SurveyCreatorComponent
       data => {
         this.createQuestionData(data);
         this.loaded = true;
-        console.log(this.loaded);
+        console.log(data);
       },
       error => {
         console.log(error);
@@ -428,7 +425,7 @@ export class SurveyCreatorComponent
       group = {
         value: [{ value: false, disabled: this.disabled }],
         viewValue: [data.viewValue],
-        ChoicePosition: [data.ChoicePosition]
+        ChoicePosition: [data.optionPosition]
       };
     } else {
       group = {
@@ -540,20 +537,44 @@ export class SurveyCreatorComponent
   }
   onSubmit() {
     // console.log(JSON.stringify(this.invoiceForm.getRawValue()));
-    this.createSurvey();
-    this.router.navigate(['/app/admin/']);
+    if (this.id) {
+      // this.updateSurvey();
+    } else {
+      this.createSurvey();
+    }
   }
 
   createSurvey() {
-    const rawValue = this.invoiceForm.getRawValue();
-    this.createSurveySub = this.surveyService.createSurvey(rawValue).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.createSurveySub = this.surveyService
+      .createSurvey(this.invoiceForm.getRawValue())
+      .subscribe(
+        data => {
+          console.log(data);
+          this.router.navigate(['/app/admin/']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+  updateSurvey() {
+    const object = {
+      Title: this.invoiceForm.getRawValue().title,
+      Questions: this.invoiceForm.getRawValue().questions,
+      surveyId: this.id
+    };
+    console.log(JSON.stringify(object));
+    this.createSurveySub = this.surveyService
+      .updateSurvey(this.invoiceForm.getRawValue(), this.id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.router.navigate(['/app/admin/']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
   showSurvey() {
     const string = 'http://localhost:4200/app/admin/viewform/' + this.id;

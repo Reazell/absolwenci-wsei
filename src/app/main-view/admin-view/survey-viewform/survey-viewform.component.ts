@@ -159,7 +159,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       this.createViewValue(
         group.controls.choiceOptions,
         choiceOptions.viewValue,
-        choiceOptions.ChoicePosition
+        choiceOptions.optionPosition
       );
     });
   }
@@ -170,7 +170,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     FieldData.push(group);
   }
   addCheckField(selectArr, data) {
-    console.log();
+    // console.log();
     const group = this.fb.group({
       // input: false,
       value: false,
@@ -205,7 +205,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       this.createViewValue(
         group.controls.choiceOptions,
         oldFieldData.choiceOptions[j].viewValue,
-        oldFieldData.choiceOptions[j].ChoicePosition
+        oldFieldData.choiceOptions[j].optionPosition
       );
     }
   }

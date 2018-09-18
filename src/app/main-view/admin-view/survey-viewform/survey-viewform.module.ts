@@ -9,6 +9,7 @@ import {
   MatRadioModule,
   MatCheckboxModule
 } from '@angular/material';
+import { SurveySentComponent } from './survey-sent/survey-sent.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import {
     MatCheckboxModule,
     FontAwesomeModule
   ],
-  declarations: [SurveyViewformComponent],
+  declarations: [SurveyViewformComponent, SurveySentComponent],
   exports: [SurveyViewformComponent]
 })
 export class SurveyViewformModule {}

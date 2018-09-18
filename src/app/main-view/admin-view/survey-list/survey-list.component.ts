@@ -22,7 +22,7 @@ export class SurveyListComponent implements OnInit {
     this.getAllSurveysSub = this.surveyService.getAllSurveys().subscribe(
       data => {
         this.surveyArr = data;
-        console.log(this.surveyArr);
+        // console.log(this.surveyArr);
       },
       error => {
         console.log(error);
@@ -34,14 +34,16 @@ export class SurveyListComponent implements OnInit {
     this.surveyService.openCreator(survey);
     this.router.navigateByUrl('/app/admin/create/' + survey.id);
   }
+
   deleteSurvey(id) {
-  //   const length = this.surveyArr.length;
-  //   for (let i = 0; i < length; i++) {
-  //     if (id === this.surveyArr[i].id) {
-  //       this.surveyArr.splice(i, 1);
-  //       localStorage.setItem('surveys', JSON.stringify(this.surveyArr));
-  //       break;
-  //     }
-  //   }
-  // }
+    this.surveyService.deleteSurvey(id).subscribe(
+      data => {
+        console.log(data);
+        this.getAllSurveys();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

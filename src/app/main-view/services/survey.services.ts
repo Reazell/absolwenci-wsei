@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app.config';
+import { Survey } from '../admin-view/classes/survey.model';
 
 @Injectable()
 export class SurveyService {
@@ -52,13 +53,31 @@ export class SurveyService {
         return data;
       });
   }
+  updateSurvey(survey, id) {
+    return this.http
+      .put<any>(this.config.apiUrl + '/survey/' + id, {
+        Title: survey.title,
+        Questions: survey.questions
+      })
+      .map(data => {
+        return data;
+      });
+  }
+  deleteSurvey(id) {
+    return this.http
+      .delete<any>(this.config.apiUrl + '/survey/' + id)
+      .map(data => {
+        return data;
+      });
+  }
   getAllSurveys() {
     return this.http.get(this.config.apiUrl + '/survey/surveys').map(data => {
       return data;
     });
   }
   getSurveyWithId(id) {
-    return this.http.get(this.config.apiUrl + '/survey/' + id).map(data => {
+    return this.http.get<Survey>(this.config.apiUrl + '/survey/' + id).map(data => {
+      // return this.http.get(this.config.apiUrl + '/survey/' + id).map(data => {
       return data;
     });
   }

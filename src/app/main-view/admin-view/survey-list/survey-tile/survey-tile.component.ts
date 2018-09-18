@@ -1,3 +1,4 @@
+import { SurveyModel } from './../../classes/survey.model';
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
 @Component({
@@ -8,10 +9,16 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 export class SurveyTileComponent implements OnInit, AfterViewInit {
   @Input()
   survey;
+
+  surveyModel: SurveyModel;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.surveyModel = new SurveyModel(this.survey);
+    console.log(this.surveyModel);
+    console.log(this.survey);
+  }
   ngAfterViewInit() {
-    // console.log(this.survey);
+    // const date = createdAt
   }
 }

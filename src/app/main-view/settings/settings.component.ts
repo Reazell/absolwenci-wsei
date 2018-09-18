@@ -19,7 +19,7 @@ export class SettingsComponent implements OnInit {
     mode: 'extramural',
     year: 3,
     initialSemester: 'winter',
-    companyName: 'QVC',
+    companyName: 'WSEI',
     location: 'Kraków',
     companyDescription: ''
   };

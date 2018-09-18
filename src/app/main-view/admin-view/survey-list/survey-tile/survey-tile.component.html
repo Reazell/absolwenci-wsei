@@ -3,18 +3,11 @@
     <div class="survey">
       <div class="marker"></div>
       <div class="options">
-        <!-- <input #check type="checkbox"> -->
-        <!-- <div *ngIf="survey.subsurveysId.length > 0" class="expandBtn" (click)="$event.stopPropagation()">
-          <i class="fas fa-caret-right"></i>
-        </div> -->
       </div>
       <div class="info">
-        <!-- <div class="title">{{survey.subject}}</div> -->
-        <!-- <div class="address">{{survey.from}}</div> -->
-        <!-- <div class="content">{{survey.content}}</div> -->
-        <div class="title">{{survey.title}}</div>
-        <div class="address">{{survey.createdAt}}</div>
-        <!-- <div class="content">{{survey.content.Created_Time}}</div> -->
+        <div class="title">{{surveyModel?.title}}</div>
+        <div class="address">{{surveyModel?.created_date}}</div>
+        <div class="content">{{surveyModel?.created_time}}</div>
       </div>
       <div class="attach">
       </div>
