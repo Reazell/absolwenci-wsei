@@ -8,6 +8,7 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces
     {
         Task AddAsync (ChoiceOption choiceOption);
         Task<IEnumerable<ChoiceOption>> GetAllByFieldDataIdInOrderAsync (int fieldDataId, bool isTracking = true);
+        Task<ChoiceOption> GetByFieldDataIdAsync (int fieldDataId, bool isTracking = true);
         Task UpdateAsync (ChoiceOption choiceOption);
         Task DeleteAsync (ChoiceOption choiceOption);
     }

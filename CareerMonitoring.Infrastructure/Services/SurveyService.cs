@@ -98,7 +98,7 @@ namespace CareerMonitoring.Infrastructure.Services
                 }
                 case "single-grid":
                 {
-                    var fieldData = new FieldData(minValue, maxValue, minLabel, maxLabel);
+                    var fieldData = new FieldData();
                     question.AddFieldData(fieldData);
                     await _fieldDataRepository.AddAsync (fieldData);
                     return fieldData.Id;
@@ -149,9 +149,72 @@ namespace CareerMonitoring.Infrastructure.Services
             return survey;
         }
 
+        public async Task<int> UpdateAsync (int surveyId, string title)
+        {
+            var survey = await _surveyRepository.GetByIdAsync(surveyId);
+            survey.Update (title);
+            await _surveyRepository.UpdateAsync (survey);
+            return survey.Id;
+        }
+
+        public async Task<int> UpdateQuestionForSurveyAsync (int surveyId, int questionPosition, string content, string select)
+        {
+            var question = await _questionRepository.GetBySurveyIdAsync(surveyId);
+            question.Update(questionPosition, content, select);
+            await _questionRepository.UpdateAsync (question);
+            return question.Id;
+        }
+        public async Task<int> UpdateFieldDataForQuestionAsync (int questionId, string input, int minValue, int maxValue, string minLabel, string maxLabel)
+        {
+            var question = await _questionRepository.GetByIdAsync (questionId);
+            var fieldData = await _fieldDataRepository.GetByQuestionIdAsync (questionId);
+            if(question.Select != "short-answer" || question.Select != "long-answer" || question.Select != "linear-scale")
+                goto endspot;
+
+            switch(question.Select)
+            {
+                case "short-answer":
+                {
+                    fieldData.Update(input);
+                    await _fieldDataRepository.UpdateAsync (fieldData);
+                    return fieldData.Id;
+                }
+                case "long-answer":
+                {
+                    fieldData.Update(input);
+                    await _fieldDataRepository.UpdateAsync (fieldData);
+                    return fieldData.Id;
+                }
+                case "linear-scale":
+                {
+                    fieldData.Update(minValue, maxValue, minLabel, maxLabel);
+                    await _fieldDataRepository.UpdateAsync (fieldData);
+                    return fieldData.Id;
+                }
+                default:
+                    throw new System.Exception("invalid select value");
+            }
+            endspot:
+            return fieldData.Id;
+        }
+        public async Task UpdateChoiceOptionsAsync (int fieldDataId, int optionPosition, bool value, string viewValue)
+        {
+            var choiceOption = await _choiceOptionRepository.GetByFieldDataIdAsync (fieldDataId);
+            choiceOption.Update(optionPosition, value, viewValue);
+            await _choiceOptionRepository.UpdateAsync (choiceOption);
+        }
+        public async Task UpdateRowAsync (int fieldDataId, int rowPosition, string input)
+        {
+            var row = await _rowRepository.GetByFieldDataIdAsync (fieldDataId);
+            row.Update(rowPosition, input);
+            await _rowRepository.UpdateAsync (row);
+        }
+
         public async Task DeleteAsync(int surveyId)
         {
             var survey = await _surveyRepository.GetByIdAsync (surveyId);
+            if(survey == null)
+                throw new System.Exception("survey with given Id does not exist");
             await _surveyRepository.DeleteAsync (survey);
         }
     }

@@ -15,7 +15,11 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces
         Task<IEnumerable<Survey>> GetAllAsync();
         Task<Survey> GetByIdAsync(int surveyId);
         Task<Survey> GetByTitleAsync(string title);
-        //Task UpdateAsync (int surveyId, string title, int minValue, int maxValue, string minLabel, string maxLabel);
+        Task<int> UpdateAsync (int surveyId, string title);
+        Task<int> UpdateQuestionForSurveyAsync (int surveyId, int questionPosition, string content, string select);
+        Task<int> UpdateFieldDataForQuestionAsync (int questionId, string input, int minValue, int maxValue, string minLabel, string maxLabel);
+        Task UpdateChoiceOptionsAsync (int fieldDataId, int optionPosition, bool value, string viewValue);
+        Task UpdateRowAsync (int fieldDataId, int rowPosition, string input);
         Task DeleteAsync(int surveyId);
     }
 }

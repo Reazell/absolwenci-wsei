@@ -17,11 +17,20 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         }
 
         public void AddQuestion (Question question) {
-            Questions.Add(question);
+            Questions.Add (question);
         }
 
         public void MarkAsAnswered () {
             Answered = true;
+        }
+
+        public void Update (string title) {
+            Title = title;
+            CreatedAt = DateTime.UtcNow;
+        }
+
+        public void UpdateQuestion (Question question) {
+            question.Update(question.QuestionPosition, question.Content, question.Select);
         }
     }
 }

@@ -12,5 +12,10 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             RowPosition = rowPosition;
             Input = input;
         }
+
+        public void Update (int rowPosition, string input) {
+            RowPosition = rowPosition;
+            Input = input;
+        }
     }
 }
