@@ -25,7 +25,7 @@ namespace CareerMonitoring.Api.Controllers
             return StatusCode(201);
         }
 
-        [HttpPost ("surveyEmails/{surveyId}")]
+        [HttpPost ("survey-emails/{surveyId}")]
         public async Task<IActionResult> SendSurveyEmail (int surveyId)
         {
             await _surveyEmailFactory.SendSurveyEmailAsync (surveyId);
