@@ -1,4 +1,4 @@
-import { SurveyModel } from './../../classes/survey.model';
+import { SurveyModel } from '../../classes/survey.model';
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
 @Component({

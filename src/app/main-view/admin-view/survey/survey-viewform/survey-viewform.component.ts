@@ -1,8 +1,8 @@
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { SurveyService } from '../../services/survey.services';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { SharedService } from '../../../services/shared.service';
+import { SharedService } from '../../../../services/shared.service';
+import { SurveyService } from '../../../services/survey.services';
 
 @Component({
   selector: 'app-survey-viewform',

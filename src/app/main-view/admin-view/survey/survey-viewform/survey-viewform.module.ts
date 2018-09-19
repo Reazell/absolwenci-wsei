@@ -1,4 +1,3 @@
-import { MaterialsModule } from '../../../materials/materials.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule } from '@angular/core';
@@ -10,6 +9,7 @@ import {
   MatCheckboxModule
 } from '@angular/material';
 import { SurveySentComponent } from './survey-sent/survey-sent.component';
+import { MaterialsModule } from '../../../../materials/materials.module';
 
 @NgModule({
   imports: [

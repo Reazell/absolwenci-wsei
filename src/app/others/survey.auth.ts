@@ -6,11 +6,11 @@ import { Router, CanLoad } from '@angular/router';
 export class SurveyGuard implements CanLoad {
   bool = false;
   constructor(private router: Router, private surveyService: SurveyService) {
-    this.surveyService.savedSurvey.subscribe(data => {
-      if (data) {
-        this.bool = true;
-      }
-    });
+    // this.surveyService.savedSurvey.subscribe(data => {
+    //   if (data) {
+    //     this.bool = true;
+    //   }
+    // });
   }
 
   canLoad() {

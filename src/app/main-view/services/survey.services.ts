@@ -8,20 +8,12 @@ import { Survey } from '../admin-view/classes/survey.model';
 @Injectable()
 export class SurveyService {
   controlArray: string[];
-  savedSurvey: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
+  savedSurveys: BehaviorSubject<Survey[]> = new BehaviorSubject<Survey[]>(
+    undefined
+  );
   openedSurvey: any;
   constructor(private http: HttpClient, private config: AppConfig) {}
 
-  // sendSurveyEmail(survey) {
-  //   return this.http
-  //     .post<any>(this.config.apiUrl + '/email', {
-  //       Subject: 'testowe wysyłanie',
-  //       Body: survey
-  //     })
-  //     .map(data => {
-  //       return data;
-  //     });
-  // }
   saveSurveyAnswer(survey, id) {
     return this.http
       .post<any>(this.config.apiUrl + '/surveyanswer/surveys', {
@@ -71,18 +63,25 @@ export class SurveyService {
       });
   }
   getAllSurveys() {
-    return this.http.get(this.config.apiUrl + '/survey/surveys').map(data => {
-      return data;
-    });
+    return this.http
+      .get<Survey[]>(this.config.apiUrl + '/survey/surveys')
+      .map(data => {
+        return data;
+      });
   }
   getSurveyWithId(id) {
-    return this.http.get<Survey>(this.config.apiUrl + '/survey/' + id).map(data => {
-      // return this.http.get(this.config.apiUrl + '/survey/' + id).map(data => {
-      return data;
-    });
+    return this.http
+      .get<Survey>(this.config.apiUrl + '/survey/' + id)
+      .map(data => {
+        // return this.http.get(this.config.apiUrl + '/survey/' + id).map(data => {
+        return data;
+      });
   }
-  saveSurveyToOpen(form: FormGroup): void {
-    this.savedSurvey.next(form);
+  saveSurveysFromApi(): void {
+    this.getAllSurveys().subscribe(data => {
+      this.savedSurveys.next(data);
+      console.log(this.savedSurveys.value);
+    });
   }
 
   openCreator(formGroup): void {

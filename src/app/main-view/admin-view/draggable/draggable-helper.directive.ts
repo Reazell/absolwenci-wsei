@@ -19,10 +19,8 @@ import { TemplatePortal } from '@angular/cdk/portal';
 })
 export class DraggableHelperDirective implements OnInit, OnDestroy {
   private overlayRef: OverlayRef;
-  // private positionStrategy = new GlobalPositionStrategy(document);
   private positionStrategy = new GlobalPositionStrategy();
   private startPosition?: { x: number; y: number };
-
 
   constructor(
     private draggable: DraggableDirective,
@@ -55,7 +53,7 @@ export class DraggableHelperDirective implements OnInit, OnDestroy {
       x: event.clientX - clientRect.left,
       y: event.clientY - clientRect.top
     };
-    // console.log(this.startPosition);
+
     // added after YouTube video: width
     this.overlayRef.overlayElement.style.width = `${clientRect.width}px`;
   }

@@ -12,34 +12,34 @@ const adminRoutes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './survey-space/survey-space.module#SurveySpaceModule',
+        loadChildren: './survey/survey-space/survey-space.module#SurveySpaceModule',
         canLoad: [AuthGuard]
       }
     ]
   },
   {
     path: 'create/:id',
-    loadChildren: './survey-creator/survey-creator.module#SurveyCreatorModule',
+    loadChildren: './survey/survey-creator/survey-creator.module#SurveyCreatorModule',
     canLoad: [AuthGuard]
   },
   {
     path: 'create',
-    loadChildren: './survey-creator/survey-creator.module#SurveyCreatorModule',
+    loadChildren: './survey/survey-creator/survey-creator.module#SurveyCreatorModule',
     canLoad: [AuthGuard]
   },
   {
     path: 'viewform/:id',
     loadChildren:
-      './survey-viewform/survey-viewform.module#SurveyViewformModule'
+      './survey/survey-viewform/survey-viewform.module#SurveyViewformModule'
     // canLoad: [SurveyGuard],
     // canLoad: [RouteGuard]
   },
-  {
-    path: 'list',
-    loadChildren:
-      './draggable/sortable-list/sortable-list.module#SortableListModule',
-    canLoad: [AuthGuard]
-  }
+  // {
+  //   path: 'list',
+  //   loadChildren:
+  //     './draggable/sortable-list/sortable-list.module#SortableListModule',
+  //   canLoad: [AuthGuard]
+  // }
 ];
 
 // export const routing = RouterModule.forRoot(appRoutes);

@@ -1,7 +1,7 @@
 import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { SurveyService } from '../../../services/survey.services';
+import { SurveyService } from '../../../../services/survey.services';
 
 @Component({
   selector: 'app-send-survey-dialog',

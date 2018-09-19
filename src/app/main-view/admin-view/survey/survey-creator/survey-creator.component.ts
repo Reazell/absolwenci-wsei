@@ -1,7 +1,5 @@
 import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
-import { SharedService } from '../../../services/shared.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { SurveyService } from '../../services/survey.services';
 import {
   Component,
   OnInit,
@@ -12,8 +10,10 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import * as cloneDeep from 'lodash/cloneDeep';
-import { Select, Value } from '../classes/survey-creator.models';
 import { MatDialog } from '@angular/material';
+import { Select, Value } from '../../classes/survey-creator.models';
+import { SurveyService } from '../../../services/survey.services';
+import { SharedService } from '../../../../services/shared.service';
 
 @Component({
   selector: 'app-survey-creator',
@@ -28,7 +28,7 @@ export class SurveyCreatorComponent
   inputs2: QueryList<any>;
 
   invoiceForm: FormGroup;
-  default = 'multiple-grid';
+  default = 'single-choice';
   loaded = false;
   disabled = true;
   index = 0;
@@ -93,17 +93,17 @@ export class SurveyCreatorComponent
   };
 
   sort(sortableList, event) {
-    //   if (this.index === 0) {
-    //     // console.log(sortableList);
-    //     // console.log(event);
-    //     const current = sortableList[event.currentIndex];
-    //     const swapWith = sortableList[event.newIndex];
-    //     sortableList[event.newIndex] = current;
-    //     sortableList[event.currentIndex] = swapWith;
-    //     this.index++;
-    //   } else {
-    //     this.index = 0;
-    //   }
+      // if (this.index === 0) {
+      //   // console.log(sortableList);
+      //   // console.log(event);
+      //   const current = sortableList[event.currentIndex];
+      //   const swapWith = sortableList[event.newIndex];
+      //   sortableList[event.newIndex] = current;
+      //   sortableList[event.currentIndex] = swapWith;
+      //   this.index++;
+      // } else {
+      //   this.index = 0;
+      // }
   }
 
   constructor(
@@ -332,11 +332,11 @@ export class SurveyCreatorComponent
   }
   addSelectionGridField(FieldData, data?, isForm?) {
     const group = this.fb.group({
-      ChoiceOptions: this.fb.array([]),
+      choiceOptions: this.fb.array([]),
       rows: this.fb.array([])
     });
     this.addField(
-      group.controls.ChoiceOptions,
+      group.controls.choiceOptions,
       group.controls.rows,
       isForm,
       data
@@ -514,7 +514,7 @@ export class SurveyCreatorComponent
             case 'single-choice':
             case 'multiple-choice':
             case 'dropdown-menu':
-              const control = FieldData.controls[0].controls.ChoiceOptions.getRawValue();
+              const control = FieldData.controls[0].controls.choiceOptions.getRawValue();
               this.fieldRemoving(FieldData, select, control);
               break;
             default:

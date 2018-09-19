@@ -1,4 +1,3 @@
-import { SurveyService } from '../../../services/survey.services';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -6,6 +5,7 @@ import {
   FormBuilder,
   Validators
 } from '@angular/forms';
+import { SurveyService } from '../../../../services/survey.services';
 
 @Component({
   selector: 'app-survey-write',
