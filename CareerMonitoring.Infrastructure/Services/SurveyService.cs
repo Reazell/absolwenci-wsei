@@ -159,7 +159,7 @@ namespace CareerMonitoring.Infrastructure.Services
 
         public async Task<int> UpdateQuestionForSurveyAsync (int surveyId, int questionPosition, string content, string select)
         {
-            var question = await _questionRepository.GetBySurveyIdAsync(surveyId);
+            var question = await _questionRepository.GetBySurveyIdAsync(surveyId, questionPosition);
             question.Update(questionPosition, content, select);
             await _questionRepository.UpdateAsync (question);
             return question.Id;
@@ -199,13 +199,13 @@ namespace CareerMonitoring.Infrastructure.Services
         }
         public async Task UpdateChoiceOptionsAsync (int fieldDataId, int optionPosition, bool value, string viewValue)
         {
-            var choiceOption = await _choiceOptionRepository.GetByFieldDataIdAsync (fieldDataId);
+            var choiceOption = await _choiceOptionRepository.GetByFieldDataIdAsync (fieldDataId, optionPosition);
             choiceOption.Update(optionPosition, value, viewValue);
             await _choiceOptionRepository.UpdateAsync (choiceOption);
         }
         public async Task UpdateRowAsync (int fieldDataId, int rowPosition, string input)
         {
-            var row = await _rowRepository.GetByFieldDataIdAsync (fieldDataId);
+            var row = await _rowRepository.GetByFieldDataIdAsync (fieldDataId, rowPosition);
             row.Update(rowPosition, input);
             await _rowRepository.UpdateAsync (row);
         }

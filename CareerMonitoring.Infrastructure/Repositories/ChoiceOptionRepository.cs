@@ -28,11 +28,11 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await Task.FromResult(_context.ChoiceOptions.AsNoTracking ().Where(x => x.FieldDataId == fieldDataId).OrderBy(q => q.OptionPosition));
         }
 
-        public async Task<ChoiceOption> GetByFieldDataIdAsync (int fieldDataId, bool isTracking = true)
+        public async Task<ChoiceOption> GetByFieldDataIdAsync (int fieldDataId, int optionPosition, bool isTracking = true)
         {
             if (isTracking)
-                return await _context.ChoiceOptions.AsTracking ().Where (x => x.FieldDataId == fieldDataId).SingleOrDefaultAsync();
-            return await _context.ChoiceOptions.AsNoTracking ().Where (x => x.FieldDataId == fieldDataId).SingleOrDefaultAsync();
+                return await _context.ChoiceOptions.AsTracking ().Where (x => x.FieldDataId == fieldDataId).Where(x => x.OptionPosition == optionPosition).SingleOrDefaultAsync();
+            return await _context.ChoiceOptions.AsNoTracking ().Where (x => x.FieldDataId == fieldDataId).Where(x => x.OptionPosition == optionPosition).SingleOrDefaultAsync();
         }
 
         public async Task UpdateAsync(ChoiceOption choiceOption)
