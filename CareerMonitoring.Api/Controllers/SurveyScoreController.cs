@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
@@ -7,6 +8,7 @@ namespace CareerMonitoring.Api.Controllers {
         private readonly ISurveyScoreService _surveyScoreService;
         private readonly ISurveyService _surveyService;
 
+        //[Authorize]
         public SurveyScoreController (ISurveyScoreService surveyScoreService,
             ISurveyService surveyService) {
             _surveyScoreService = surveyScoreService;
