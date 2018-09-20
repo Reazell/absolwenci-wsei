@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
+    //[Authorize]
     public class SurveyScoreController : ApiUserController {
         private readonly ISurveyScoreService _surveyScoreService;
         private readonly ISurveyService _surveyService;
 
-        //[Authorize]
         public SurveyScoreController (ISurveyScoreService surveyScoreService,
             ISurveyService surveyService) {
             _surveyScoreService = surveyScoreService;

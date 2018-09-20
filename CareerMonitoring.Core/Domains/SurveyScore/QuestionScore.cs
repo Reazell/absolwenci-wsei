@@ -8,7 +8,7 @@ namespace CareerMonitoring.Core.Domains.SurveyScore {
         public string Content { get; private set; }
         public string Select { get; private set; }
         public int SurveyId { get; private set; }
-        public SurveyScore Survey { get; private set; }
+        public SurveySingleScore Survey { get; private set; }
         public ICollection<FieldDataScore> FieldData { get; private set; } = new List<FieldDataScore> ();
 
         protected QuestionScore () { }
