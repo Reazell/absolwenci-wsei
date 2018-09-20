@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class migrationz : Migration
+    public partial class migrr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,8 +44,7 @@ namespace CareerMonitoring.Api.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SurveyTitle = table.Column<string>(nullable: true),
                     SurveyId = table.Column<int>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    Answered = table.Column<bool>(nullable: false)
+                    CreatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,8 +58,7 @@ namespace CareerMonitoring.Api.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    Answered = table.Column<bool>(nullable: false)
+                    CreatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -74,8 +72,7 @@ namespace CareerMonitoring.Api.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    Answered = table.Column<bool>(nullable: false)
+                    CreatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -552,7 +549,7 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RowScore",
+                name: "RowScores",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -563,9 +560,9 @@ namespace CareerMonitoring.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RowScore", x => x.Id);
+                    table.PrimaryKey("PK_RowScores", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RowScore_FieldDataScores_FieldDataId",
+                        name: "FK_RowScores_FieldDataScores_FieldDataId",
                         column: x => x.FieldDataId,
                         principalTable: "FieldDataScores",
                         principalColumn: "Id",
@@ -703,8 +700,8 @@ namespace CareerMonitoring.Api.Migrations
                 column: "FieldDataId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RowScore_FieldDataId",
-                table: "RowScore",
+                name: "IX_RowScores_FieldDataId",
+                table: "RowScores",
                 column: "FieldDataId");
 
             migrationBuilder.CreateIndex(
@@ -758,7 +755,7 @@ namespace CareerMonitoring.Api.Migrations
                 name: "Rows");
 
             migrationBuilder.DropTable(
-                name: "RowScore");
+                name: "RowScores");
 
             migrationBuilder.DropTable(
                 name: "Skills");

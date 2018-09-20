@@ -36,6 +36,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<FieldDataScore> FieldDataScores { get; set; }
         public DbSet<QuestionScore> QuestionScores { get; set; }
         public DbSet<ChoiceOptionScore> ChoiceScores { get; set; }
+        public DbSet<RowScore> RowScores { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 
@@ -117,7 +118,7 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasMany (a => a.FieldData)
                 .WithOne (b => b.Question);
             modelBuilder.Entity<FieldDataScore> ()
-                .HasMany (a => a.Rows)
+                .HasMany (a => a.RowScores)
                 .WithOne (b => b.FieldData)
                 .HasForeignKey (s => s.FieldDataId);
             modelBuilder.Entity<FieldDataScore> ()

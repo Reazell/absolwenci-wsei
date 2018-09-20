@@ -19,14 +19,14 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                     .Include (x => x.FieldData)
                     .ThenInclude (x => x.ChoiceOptions)
                     .Include (x => x.FieldData)
-                    .ThenInclude (x => x.Rows)
+                    .ThenInclude (x => x.RowScores)
                     .Where (x => x.SurveyId == surveyId)
                     .OrderBy (q => q.QuestionPosition));
             return await Task.FromResult (_context.QuestionScores.AsNoTracking ()
                 .Include (x => x.FieldData)
                 .ThenInclude (x => x.ChoiceOptions)
                 .Include (x => x.FieldData)
-                .ThenInclude (x => x.Rows)
+                .ThenInclude (x => x.RowScores)
                 .Where (x => x.SurveyId == surveyId)
                 .OrderBy (q => q.QuestionPosition));
         }
