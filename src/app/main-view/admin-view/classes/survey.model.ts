@@ -1,3 +1,5 @@
+import { FormArray } from '../../../../../node_modules/@angular/forms';
+
 export class SurveyModel implements Survey {
   title: string;
   id: number;
@@ -30,7 +32,7 @@ export class Survey {
   questions: Question[];
 }
 
-class Question {
+export class Question {
   id: number;
   surveyId: number;
   questionPosition: number;
@@ -39,7 +41,8 @@ class Question {
   fieldData: FieldData[];
 }
 
-class FieldData {
+
+export class FieldData {
   id: number;
   input: string;
   maxLabel: string;
@@ -51,14 +54,14 @@ class FieldData {
   choiceOptions: Choice[];
 }
 
-class Row {
+export class Row {
   id: number;
   input: string;
   fieldDataId: number;
   rowPosition: number;
 }
 
-class Choice {
+export class Choice {
   id: number;
   optionPosition: number;
   value: boolean;

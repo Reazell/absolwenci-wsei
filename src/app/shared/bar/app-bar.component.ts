@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { UserService } from '../../auth/services/user.service';
+import { Subscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-bar',
@@ -9,10 +10,10 @@ import { UserService } from '../../auth/services/user.service';
 })
 export class AppBarComponent implements OnInit, OnDestroy {
   // subs
-  userServiceSub;
-  creatorSub;
-  sendSub;
-  surveyMainSub;
+  userServiceSub: Subscription;
+  creatorSub: Subscription;
+  sendSub: Subscription;
+  surveyMainSub: Subscription;
   // editSurveySub;
 
   isLogged: boolean;

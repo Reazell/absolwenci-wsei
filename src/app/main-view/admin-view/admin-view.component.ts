@@ -1,5 +1,6 @@
 import { SharedService } from '../../services/shared.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Subscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-admin-view',
@@ -15,7 +16,7 @@ export class AdminViewComponent implements OnInit, OnDestroy {
   smallScreen: boolean;
   showDetails = false;
   // subs
-  toggleSidebarSub;
+  toggleSidebarSub: Subscription;
 
   constructor(private sharedService: SharedService) {
     // this.isLargeScreen();

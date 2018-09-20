@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../../../services/shared.service';
 import { SurveyService } from '../../../services/survey.services';
+import { Subscription } from '../../../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-survey-viewform',
@@ -16,8 +17,8 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   id: number;
   title: string;
   // subs
-  surveyIDSub;
-  editSurveySub;
+  surveyIDSub: Subscription;
+  editSurveySub: Subscription;
 
   constructor(
     private surveyService: SurveyService,

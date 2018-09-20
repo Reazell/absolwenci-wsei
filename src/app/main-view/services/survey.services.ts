@@ -1,9 +1,10 @@
+import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app.config';
-import { Survey } from '../admin-view/classes/survey.model';
+import { Survey, Update } from '../admin-view/classes/survey.model';
 
 @Injectable()
 export class SurveyService {
@@ -11,7 +12,7 @@ export class SurveyService {
   savedSurveys: BehaviorSubject<Survey[]> = new BehaviorSubject<Survey[]>(
     undefined
   );
-  openedSurvey: any;
+  // openedSurvey: any;
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   saveSurveyAnswer(survey, id) {
@@ -45,31 +46,33 @@ export class SurveyService {
         return data;
       });
   }
-  updateSurvey(survey, id) {
+  updateSurvey(object: Update): Observable<any> {
+    console.log(JSON.stringify(object.id));
     return this.http
-      .put<any>(this.config.apiUrl + '/survey/' + id, {
-        Title: survey.title,
-        Questions: survey.questions
+      .put<Update>(this.config.apiUrl + '/survey/' + object.id, {
+        surveyId: object.id,
+        Title: object.Title,
+        Questions: object.Questions
       })
       .map(data => {
         return data;
       });
   }
-  deleteSurvey(id) {
+  deleteSurvey(id: number) {
     return this.http
       .delete<any>(this.config.apiUrl + '/survey/' + id)
       .map(data => {
         return data;
       });
   }
-  getAllSurveys() {
+  getAllSurveys(): Observable<Survey[]> {
     return this.http
       .get<Survey[]>(this.config.apiUrl + '/survey/surveys')
       .map(data => {
         return data;
       });
   }
-  getSurveyWithId(id) {
+  getSurveyWithId(id: number): Observable<Survey> {
     return this.http
       .get<Survey>(this.config.apiUrl + '/survey/' + id)
       .map(data => {
@@ -80,16 +83,15 @@ export class SurveyService {
   saveSurveysFromApi(): void {
     this.getAllSurveys().subscribe(data => {
       this.savedSurveys.next(data);
-      console.log(this.savedSurveys.value);
     });
   }
 
-  openCreator(formGroup): void {
-    this.openedSurvey = formGroup;
-  }
-  getSurveyToOpen() {
-    return this.openedSurvey;
-  }
+  // openCreator(formGroup): void {
+  //   this.openedSurvey = formGroup;
+  // }
+  // getSurveyToOpen() {
+  //   return this.openedSurvey;
+  // }
 
   saveInLocaLStorage() {}
 }
