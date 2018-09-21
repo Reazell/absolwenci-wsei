@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from '../../../../node_modules/rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../../auth/services/user.service';
 import { SharedService } from '../../services/shared.service';
 

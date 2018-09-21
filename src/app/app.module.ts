@@ -12,6 +12,8 @@ import {
   faBriefcase,
   faClone,
   faCog,
+  faEllipsisH,
+  faEllipsisV,
   faGraduationCap,
   faGripHorizontal,
   faPen,
@@ -45,7 +47,9 @@ library.add(
   faEye,
   faClone,
   faUserAlt,
+  faEllipsisV,
   faSearch,
+  faEllipsisH,
   faSave,
   faChartBar
 );

@@ -1,8 +1,8 @@
-import { MainViewComponent } from './main-view.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/other/guard.auth';
 import { RoleGuard } from '../auth/other/role.auth';
+import { MainViewComponent } from './main-view.component';
 
 const mainRoutes: Routes = [
   {
@@ -11,7 +11,7 @@ const mainRoutes: Routes = [
     children: [
       {
         path: 'admin',
-        loadChildren: './admin-view/admin-view.module#AdminViewModule'
+        loadChildren: './admin-view/_main-admin-view/admin-view.module#AdminViewModule'
       },
       {
         path: 'student',

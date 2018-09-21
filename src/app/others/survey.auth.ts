@@ -1,6 +1,6 @@
-import { SurveyService } from '../main-view/services/survey.services';
 import { Injectable, OnInit } from '@angular/core';
-import { Router, CanLoad } from '@angular/router';
+import { CanLoad, Router } from '@angular/router';
+import { SurveyService } from '../main-view/admin-view/survey-container/services/survey.services';
 
 @Injectable()
 export class SurveyGuard implements CanLoad {

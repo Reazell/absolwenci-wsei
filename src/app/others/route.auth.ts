@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationEnd, CanActivate } from '@angular/router';
+import { CanActivate, NavigationEnd, Router } from '@angular/router';
 
 @Injectable()
 export class RouteGuard implements CanActivate {
