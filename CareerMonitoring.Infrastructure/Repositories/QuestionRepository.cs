@@ -36,6 +36,13 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await _context.Questions.AsNoTracking ().SingleOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<Question> GetByContentAsync (int surveyId, string content, bool isTracking = true)
+        {
+            if(isTracking)
+                return await _context.Questions.AsTracking ().Where (x => x.SurveyId == surveyId).Where(x => x.Content == content).SingleOrDefaultAsync();
+            return await _context.Questions.AsNoTracking ().Where (x => x.SurveyId == surveyId).Where(x => x.Content == content).SingleOrDefaultAsync();
+        }
+
         public async Task<Question> GetBySurveyIdAsync (int surveyId, int questionPosition, bool isTracking = true)
         {
             if(isTracking)

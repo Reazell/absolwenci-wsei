@@ -6,7 +6,7 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces
     public interface IRowReportRepository
     {
         Task AddAsync (RowReport rowReport);
-        Task GetBySurveyReportAsync (int questionReportId, bool isTracking = true);
+        Task<RowReport> GetByQuestionReportAsync (int questionReportId, bool isTracking = true);
         Task UpdateAsync (RowReport rowReport);
         Task DeleteAsync (RowReport rowReport);
     }
