@@ -151,66 +151,8 @@ namespace CareerMonitoring.Infrastructure.Services
 
         public async Task<int> UpdateAsync (int surveyId, string title)
         {
-            var survey = await _surveyRepository.GetByIdWithQuestionsAsync(surveyId);
-            survey.Update (title);
-            await _surveyRepository.UpdateAsync (survey);
-            return survey.Id;
-        }
-
-        public async Task<int> UpdateQuestionForSurveyAsync (int surveyId, int questionPosition, string content, string select)
-        {
-            var question = await _questionRepository.GetByContentAsync(surveyId, content);
-            if(question == null)
-                return await AddQuestionToSurveyAsync(surveyId, questionPosition, content, select);
-            question.Update(questionPosition, content, select);
-            await _questionRepository.UpdateAsync (question);
-            return question.Id;
-        }
-        public async Task<int> UpdateFieldDataForQuestionAsync (int questionId, string input, int minValue, int maxValue, string minLabel, string maxLabel)
-        {
-            var question = await _questionRepository.GetByIdAsync (questionId);
-            var fieldData = await _fieldDataRepository.GetByQuestionIdAsync (questionId);
-            if(question.Select != "short-answer" || question.Select != "long-answer" || question.Select != "linear-scale")
-                goto endspot;
-
-            switch(question.Select)
-            {
-                case "short-answer":
-                {
-                    fieldData.Update(input);
-                    await _fieldDataRepository.UpdateAsync (fieldData);
-                    return fieldData.Id;
-                }
-                case "long-answer":
-                {
-                    fieldData.Update(input);
-                    await _fieldDataRepository.UpdateAsync (fieldData);
-                    return fieldData.Id;
-                }
-                case "linear-scale":
-                {
-                    fieldData.Update(minValue, maxValue, minLabel, maxLabel);
-                    await _fieldDataRepository.UpdateAsync (fieldData);
-                    return fieldData.Id;
-                }
-                default:
-                    throw new System.Exception("invalid select value");
-            }
-            endspot:
-            return fieldData.Id;
-        }
-        public async Task UpdateChoiceOptionsAsync (int fieldDataId, int optionPosition, bool value, string viewValue)
-        {
-            var choiceOption = await _choiceOptionRepository.GetByFieldDataIdAsync (fieldDataId, optionPosition);
-            if(choiceOption == null)
-            choiceOption.Update(optionPosition, value, viewValue);
-            await _choiceOptionRepository.UpdateAsync (choiceOption);
-        }
-        public async Task UpdateRowAsync (int fieldDataId, int rowPosition, string input)
-        {
-            var row = await _rowRepository.GetByFieldDataIdAsync (fieldDataId, rowPosition);
-            row.Update(rowPosition, input);
-            await _rowRepository.UpdateAsync (row);
+            await DeleteAsync (surveyId);
+            return await CreateAsync(title);
         }
 
         public async Task DeleteAsync(int surveyId)

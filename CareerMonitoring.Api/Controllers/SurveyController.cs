@@ -64,20 +64,20 @@ namespace CareerMonitoring.Api.Controllers {
             }
             return StatusCode (201);
         }
-        [HttpPut ("surveys")]
-        public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command)
-        {
+
+        [HttpPost ("update")]
+        public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             int surveyId = await _surveyService.UpdateAsync (command.SurveyId, command.Title);
             if(command.Questions == null)
-                return BadRequest ("No questions to add");
+                return BadRequest ("Cannot create empty survey");
             foreach (var question in command.Questions) {
-                int questionId = await _surveyService.UpdateQuestionForSurveyAsync (surveyId, question.QuestionPosition, question.Content, question.Select);
+                int questionId = await _surveyService.AddQuestionToSurveyAsync (surveyId, question.QuestionPosition, question.Content, question.Select);
                 if(question.FieldData == null)
                     return BadRequest ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
-                    int fieldDataId = await _surveyService.UpdateFieldDataForQuestionAsync (questionId,
+                    int fieldDataId = await _surveyService.AddFieldDataToQuestionAsync (questionId,
                         fieldData.Input,
                         fieldData.MinValue,
                         fieldData.MaxValue,
@@ -87,7 +87,7 @@ namespace CareerMonitoring.Api.Controllers {
                         goto loop;
                     if (question.Select == "single-choice" || question.Select == "multiple-choice" || question.Select == "dropdown-menu" || question.Select == "single-grid" || question.Select == "multiple-grid") {
                         foreach (var choiceOption in fieldData.ChoiceOptions) {
-                            await _surveyService.UpdateChoiceOptionsAsync (fieldDataId, choiceOption.OptionPosition, choiceOption.Value, choiceOption.ViewValue);
+                            await _surveyService.AddChoiceOptionsAsync (fieldDataId, choiceOption.OptionPosition, choiceOption.Value, choiceOption.ViewValue);
                         }
                     }
                     loop:
@@ -95,12 +95,12 @@ namespace CareerMonitoring.Api.Controllers {
                         continue;
                     if (question.Select == "single-grid" || question.Select == "multiple-grid") {
                         foreach (var row in fieldData.Rows) {
-                            await _surveyService.UpdateRowAsync (fieldDataId, row.RowPosition, row.Input);
+                            await _surveyService.AddRowAsync (fieldDataId, row.RowPosition, row.Input);
                         }
                     }
                 }
             }
-            return StatusCode (200);
+            return StatusCode (201);
         }
 
         [HttpDelete ("{surveyId}")]
