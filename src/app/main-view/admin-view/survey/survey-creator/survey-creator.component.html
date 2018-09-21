@@ -25,7 +25,7 @@
                 <mat-form-field appearance="standard">
                   <mat-select placeholder="typ kontrolki" formControlName="select" name="control">
                     <div *ngFor="let group of selects">
-                      <mat-option *ngFor="let control of group.control" [value]="control.value" (click)="changeControl(question, i)"
+                      <mat-option *ngFor="let control of group.control" [value]="control.value" (click)="changeControl(question)"
                         (focus)="saveLastSelect(question.controls.lastSelect, question.value.select)">
                         {{control.viewValue}}
                       </mat-option>
@@ -125,7 +125,7 @@
                         <mat-form-field appearance="standard">
                           <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs2>
                         </mat-form-field>
-                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'], 'rows')"
+                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'], true)"
                           *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                       </div>
                       <app-button-single-control (change)="addRowControl(field.controls['rows'], 'wiersz')"></app-button-single-control>
@@ -153,7 +153,7 @@
                         <mat-form-field appearance="standard">
                           <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs2>
                         </mat-form-field>
-                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'], 'rows')"
+                        <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'], true)"
                           *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
                       </div>
                       <app-button-single-control (change)="addRowControl(field.controls['rows'], 'wiersz')"></app-button-single-control>
@@ -200,7 +200,7 @@
             <!-- <pre>{{question.value.QuestionPosition}}</pre> -->
           </div>
         </div>
-        <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+        <pre>{{invoiceForm.value | json }}</pre>
       </form>
     </div>
   </div>

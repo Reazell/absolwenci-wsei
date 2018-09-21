@@ -1,9 +1,8 @@
 <div id="bar" #nav>
   <div id="container">
-    <!-- <div id="sidenavToggler" class="catalogListToggler" (click)="openSidebar()"> -->
-    <!-- *ngIf="isLogged === true" -->
-    <!-- <fa-icon [icon]="['fas','bars']"></fa-icon>
-    </div> -->
+    <div id="sidenavToggler" class="catalogListToggler" *ngIf="isLogged === true" (click)="openSidebar()">
+      <fa-icon [icon]="['fas','bars']"></fa-icon>
+    </div>
     <div id="logo">
       <img src="./../../../assets/logo-wsei.png" alt="logo WSEI">
     </div>

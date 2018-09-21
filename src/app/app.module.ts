@@ -1,36 +1,36 @@
-import { GuidGuard } from './auth/other/guid.auth';
-import { AuthGuard } from './auth/other/guard.auth';
-import { JwtInterceptor } from './auth/other/jwt.interceptor';
-import { UserService } from './auth/services/user.service';
-import { AuthenticationService } from './auth/services/authentication.service';
-import { SharedModule } from './shared/shared.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { AppConfig } from './app.config';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { MaterialsModule } from './materials/materials.module';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppRoutingModule } from './app.routing';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEye, faSave } from '@fortawesome/free-regular-svg-icons';
+import { faChartBar, faEye, faSave } from '@fortawesome/free-regular-svg-icons';
 import {
-  faTimes,
-  faTrash,
   faBars,
-  faPlus,
+  faBriefcase,
+  faClone,
+  faCog,
+  faGraduationCap,
   faGripHorizontal,
   faPen,
-  faClone,
-  faGraduationCap,
-  faBriefcase,
-  faCog,
-  faUserAlt,
-  faSearch
+  faPlus,
+  faSearch,
+  faTimes,
+  faTrash,
+  faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
+import { AppComponent } from './app.component';
+import { AppConfig } from './app.config';
+import { AppRoutingModule } from './app.routing';
+import { AuthGuard } from './auth/other/guard.auth';
+import { GuidGuard } from './auth/other/guid.auth';
+import { JwtInterceptor } from './auth/other/jwt.interceptor';
+import { AuthenticationService } from './auth/services/authentication.service';
+import { UserService } from './auth/services/user.service';
+import { MaterialsModule } from './materials/materials.module';
+import { SharedModule } from './shared/shared.module';
 
 library.add(
   faTimes,
@@ -46,7 +46,8 @@ library.add(
   faClone,
   faUserAlt,
   faSearch,
-  faSave
+  faSave,
+  faChartBar
 );
 
 @NgModule({

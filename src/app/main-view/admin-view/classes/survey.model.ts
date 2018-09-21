@@ -6,13 +6,13 @@ export class SurveyModel implements Survey {
   createdAt: string;
   created_date: string;
   created_time: string;
-  answered: boolean;
+  // answered: boolean;
   questions: Question[];
 
   constructor(survey: Survey) {
     this.title = survey.title;
     this.id = survey.id;
-    this.answered = survey.answered;
+    // this.answered = survey.answered;
     this.questions = survey.questions;
     this.createdAt = survey.createdAt;
     this.created_date = this.createdAt
@@ -28,7 +28,7 @@ export class Survey {
   title: string;
   id: number;
   createdAt: string;
-  answered: boolean;
+  // answered: boolean;
   questions: Question[];
 }
 

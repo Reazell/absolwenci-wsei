@@ -50,7 +50,15 @@ export class QuestionData {
 export class ChoiceOptions {
   viewValue: string;
   value: boolean;
-  ChoicePosition: number;
+  optionPosition: number;
+}
+export class ChoiceOptionsData {
+  viewValue: string;
+  value: {
+    value: boolean;
+    disabled: boolean;
+  };
+  optionPosition: number;
 }
 
 export class MainForm {
@@ -60,4 +68,10 @@ export class MainForm {
 export class RowData {
   rowPosition: number;
   input: string;
+}
+export class LinearData {
+  minValue: number;
+  maxValue: number;
+  minLabel: string;
+  maxLabel: string;
 }

@@ -4,8 +4,23 @@
     #container {
       display: flex;
       align-items: center;
+      cursor: pointer;
       app-survey-tile {
         width: 90%;
+      }
+      fa-icon{
+        padding: 10px;
+        height: 15px;
+        width: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        border-radius: 50%;
+        // border: 1px solid black;
+      }
+      fa-icon:hover{
+        background-color: #cccccc;
       }
     }
     #container:hover {

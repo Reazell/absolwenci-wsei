@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable()
 export class SharedService {
@@ -109,8 +109,8 @@ export class SharedService {
             }
           }
           errorObj = {
-            errorStr: errorStr,
-            controlName: controlName
+            errorStr,
+            controlName
           };
           return errorObj;
         }

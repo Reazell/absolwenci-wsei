@@ -8,6 +8,7 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
+    "lint-fix": "ng lint --fix",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -52,6 +53,7 @@
     "protractor": "^5.4.0",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
+    "tslint-config-prettier": "^1.15.0",
     "typescript": "2.9.2"
   }
 }

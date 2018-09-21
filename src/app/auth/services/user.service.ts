@@ -1,6 +1,6 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AppConfig } from '../../app.config';
 import { User } from '../../models/user.model';
 

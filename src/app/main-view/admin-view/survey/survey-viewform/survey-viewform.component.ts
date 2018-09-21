@@ -16,6 +16,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   loaded = false;
   id: number;
   title: string;
+
   // subs
   surveyIDSub: Subscription;
   editSurveySub: Subscription;
@@ -28,18 +29,18 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getSurveyId();
     this.sharedService.showSendButton(true);
     this.editSurvey();
   }
-  getSurveyId() {
+  getSurveyId(): void {
     this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
       this.id = Number(params['id']);
       this.getSurvey();
     });
   }
-  getSurvey() {
+  getSurvey(): void {
     this.surveyService.getSurveyWithId(this.id).subscribe(
       data => {
         this.createQuestionData(data);
@@ -51,8 +52,10 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       }
     );
   }
-  sendSurvey() {
+  sendSurvey(): void {
     console.log(JSON.stringify(this.invoiceForm.getRawValue().questions));
+    // console.log(this.invoiceForm.getRawValue());
+
     this.surveyService
       .saveSurveyAnswer(this.invoiceForm.getRawValue(), this.id)
       .subscribe(
@@ -64,22 +67,23 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
         }
       );
   }
-  editSurvey() {
+  editSurvey(): void {
     this.editSurveySub = this.sharedService.editButton.subscribe(() => {
       this.routeToEditSurvey();
     });
   }
 
-  routeToEditSurvey() {
+  routeToEditSurvey(): void {
     this.router.navigateByUrl('/app/admin/create/' + this.id);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.sharedService.showSendButton(false);
     this.editSurveySub.unsubscribe();
   }
 
-  updateSelection(choiceOptions, radio, e?) {
+  updateSelection(choiceOptions, radio, e?): void {
+    // console.log(choiceOptions);
     choiceOptions.forEach(el => {
       el.controls.value.setValue(false);
     });
@@ -95,7 +99,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   createQuestionData(data) {
     this.invoiceForm = this.fb.group({
-      // title: [data.title],
+      title: [data.title],
       // Created_Date: [data.Created_Date],
       // Created_Time: [data.Created_Time],
       questions: this.fb.array([])

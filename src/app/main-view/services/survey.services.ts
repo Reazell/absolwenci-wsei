@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from '../../app.config';
-import { Survey, Update } from '../admin-view/classes/survey.model';
+import { Survey } from '../admin-view/classes/survey.model';
+import { Update } from '../admin-view/classes/survey-creator.models';
 
 @Injectable()
 export class SurveyService {
@@ -16,6 +16,7 @@ export class SurveyService {
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   saveSurveyAnswer(survey, id) {
+    console.log(survey);
     return this.http
       .post<any>(this.config.apiUrl + '/surveyanswer/surveys', {
         SurveyTitle: survey.title,
@@ -37,6 +38,7 @@ export class SurveyService {
       });
   }
   createSurvey(survey) {
+    console.log(survey);
     return this.http
       .post<any>(this.config.apiUrl + '/survey/surveys', {
         Title: survey.title,
@@ -49,7 +51,7 @@ export class SurveyService {
   updateSurvey(object: Update): Observable<any> {
     console.log(JSON.stringify(object.id));
     return this.http
-      .put<Update>(this.config.apiUrl + '/survey/' + object.id, {
+      .put<Update>(this.config.apiUrl + '/survey/surveys', {
         surveyId: object.id,
         Title: object.Title,
         Questions: object.Questions

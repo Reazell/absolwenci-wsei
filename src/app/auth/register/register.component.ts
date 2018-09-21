@@ -181,6 +181,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     } else {
       this.loading = true;
       this.createUser();
+      console.log(this.user);
       // create new user
       console.log(this.profileName.value);
       switch (this.profileName.value) {

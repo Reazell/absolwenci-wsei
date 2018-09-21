@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SharedService } from '../../services/shared.service';
-import { UserService } from '../../auth/services/user.service';
 import { Subscription } from '../../../../node_modules/rxjs/Subscription';
+import { UserService } from '../../auth/services/user.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-bar',

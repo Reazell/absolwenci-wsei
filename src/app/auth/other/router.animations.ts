@@ -1,12 +1,12 @@
 import {
-  sequence,
-  trigger,
   animate,
-  style,
+  animateChild,
   group,
   query as q,
+  sequence,
+  style,
   transition,
-  animateChild
+  trigger
 } from '@angular/animations';
 const query = (s, a, o = { optional: true }) => q(s, a, o);
 
