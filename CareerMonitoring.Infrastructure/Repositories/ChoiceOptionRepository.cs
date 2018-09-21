@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CareerMonitoring.Core.Domains.SurveyReport;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
@@ -11,10 +12,12 @@ namespace CareerMonitoring.Infrastructure.Repositories
     public class ChoiceOptionRepository : IChoiceOptionRepository
     {
         private readonly CareerMonitoringContext _context;
+
         public ChoiceOptionRepository (CareerMonitoringContext context)
         {
             _context = context;
         }
+
         public async Task AddAsync(ChoiceOption choiceOption)
         {
             await _context.ChoiceOptions.AddAsync (choiceOption);
@@ -28,9 +31,9 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await Task.FromResult(_context.ChoiceOptions.AsNoTracking ().Where(x => x.FieldDataId == fieldDataId).OrderBy(q => q.OptionPosition));
         }
 
-        public async Task<ChoiceOption> GetByFieldDataIdAsync (int fieldDataId, int optionPosition, bool isTracking = true)
+        public async Task<ChoiceOption> GetByFieldDataIdAsync(int fieldDataId, int optionPosition, bool isTracking = true)
         {
-            if (isTracking)
+            if(isTracking)
                 return await _context.ChoiceOptions.AsTracking ().Where (x => x.FieldDataId == fieldDataId).Where(x => x.OptionPosition == optionPosition).SingleOrDefaultAsync();
             return await _context.ChoiceOptions.AsNoTracking ().Where (x => x.FieldDataId == fieldDataId).Where(x => x.OptionPosition == optionPosition).SingleOrDefaultAsync();
         }

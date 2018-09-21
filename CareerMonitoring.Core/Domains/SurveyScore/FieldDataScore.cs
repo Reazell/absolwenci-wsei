@@ -15,7 +15,7 @@ namespace CareerMonitoring.Core.Domains.SurveyScore {
         public int QuestionId { get; private set; }
         public QuestionScore Question { get; private set; }
         public ICollection<ChoiceOptionScore> ChoiceOptions { get; private set; } = new List<ChoiceOptionScore> ();
-        public ICollection<RowScore> RowScores { get; private set; } = new List<RowScore> ();
+        public ICollection<RowScore> Row { get; private set; } = new List<RowScore> ();
 
         private FieldDataScore () { }
 
@@ -28,11 +28,11 @@ namespace CareerMonitoring.Core.Domains.SurveyScore {
 
         }
 
-        public void AddChoiceOption (ChoiceOption choiceOptionScore) {
-            ChoiceOptions.Add (new ChoiceOptionScore (choiceOptionScore));
+        public void AddChoiceOption (ChoiceOption choiceOption) {
+            ChoiceOptions.Add (new ChoiceOptionScore (choiceOption));
         }
-        public void AddRow (Row rowScore) {
-            RowScores.Add (new RowScore (rowScore));
+        public void AddRow (Row row) {
+            Row.Add (new RowScore (row));
         }
 
         public void IncrementInputValue () {

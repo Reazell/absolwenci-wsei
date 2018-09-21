@@ -1,5 +1,6 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Core.Domains.SurveyReport;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
 using CareerMonitoring.Core.Domains.SurveyScore;
@@ -18,6 +19,11 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<ChoiceOptionAnswer> ChoiceOptionsAnswers { get; set; }
         public DbSet<RowChoiceOptionAnswer> RowChoiceOptionsAnswers { get; set; }
         public DbSet<RowAnswer> RowAnswers { get; set; }
+        public DbSet<SurveyReport> SurveyReports { get; set; }
+        public DbSet<QuestionReport> QuestionReports { get; set; }
+        public DbSet<ChoiceOptionReport> ChoiceOptionReports { get; set; }
+        public DbSet<RowChoiceOptionReport> RowChoiceOptionReports { get; set; }
+        public DbSet<RowReport> RowReports { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
@@ -118,13 +124,25 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasMany (a => a.FieldData)
                 .WithOne (b => b.Question);
             modelBuilder.Entity<FieldDataScore> ()
-                .HasMany (a => a.RowScores)
+                .HasMany (a => a.Row)
                 .WithOne (b => b.FieldData)
                 .HasForeignKey (s => s.FieldDataId);
             modelBuilder.Entity<FieldDataScore> ()
                 .HasMany (a => a.ChoiceOptions)
                 .WithOne (b => b.FieldData)
                 .HasForeignKey (s => s.FieldDataId);
+            modelBuilder.Entity<SurveyReport> ()
+                .HasMany (a => a.QuestionsReports)
+                .WithOne (b => b.SurveyReport)
+                .HasForeignKey (s => s.SurveyReportId);
+            modelBuilder.Entity<QuestionReport> ()
+                .HasMany (a => a.ChoiceOptionReports)
+                .WithOne (b => b.QuestionReport)
+                .HasForeignKey (s => s.QuestionReportId);
+            modelBuilder.Entity<RowReport> ()
+                .HasMany (a => a.RowChoiceOptionReports)
+                .WithOne (b => b.RowReport)
+                .HasForeignKey (s => s.RowReportId);
         }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    [Authorize]
+    //[Authorize]
     public class SurveyScoreController : ApiUserController {
         private readonly ISurveyScoreService _surveyScoreService;
         private readonly ISurveyService _surveyService;
