@@ -60,16 +60,16 @@ export class AppBarComponent implements OnInit, OnDestroy {
     });
   }
   editSurvey() {
-    this.sharedService.routeToEdit(0);
+    this.sharedService.routeToEdit(true);
   }
   sendSurvey() {
-    this.sharedService.showSendSurveyDialog(0);
+    this.sharedService.showSendSurveyDialog(true);
   }
   showSurvey() {
-    this.sharedService.showSurveyButton(0);
+    this.sharedService.showSurveyButton(true);
   }
   saveSurvey() {
-    this.sharedService.saveSurveyButton(0);
+    this.sharedService.saveSurveyButton(true);
   }
   openSidebar() {
     this.sharedService.toggleSideNav();

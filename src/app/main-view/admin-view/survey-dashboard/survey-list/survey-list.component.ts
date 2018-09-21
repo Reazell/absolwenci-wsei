@@ -27,7 +27,9 @@ export class SurveyListComponent implements OnInit {
   getAllSurveys() {
     this.getAllSurveysSub = this.surveyService.savedSurveys.subscribe(
       data => {
-        this.surveyArr = data;
+        if (data) {
+          this.surveyArr = data.reverse();
+        }
       },
       error => {
         console.log(error);
@@ -35,7 +37,12 @@ export class SurveyListComponent implements OnInit {
     );
   }
   openCreator(survey) {
-    this.router.navigateByUrl('/app/admin/create/' + survey.id);
+    console.log(survey);
+    this.router.navigateByUrl('/app/admin/survey/create/' + survey.id);
+  }
+  openResult(survey) {
+    console.log(survey);
+    this.router.navigateByUrl('/app/admin/survey/result/' + survey.id);
   }
 
   deleteSurvey(id) {

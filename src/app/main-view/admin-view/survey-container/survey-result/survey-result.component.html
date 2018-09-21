@@ -1,0 +1,43 @@
+<div id="result-container">
+  <div id="result-header">
+    <div id="answer-title">
+      <span>{{sth?.title}}</span>
+    </div>
+    <div id="answer-number">
+
+    </div>
+    <div id="answer-toggle">
+
+    </div>
+  </div>
+  <div id="result-main" *ngFor="let question of sth?.questions; let i = index">
+    <div id="switch" [ngSwitch]="question.select">
+      <div *ngSwitchCase="'short-answer'">
+      </div>
+
+      <div *ngSwitchCase="'long-answer'">
+      </div>
+
+      <div *ngSwitchCase="'dropdown-menu'">
+
+      </div>
+
+      <div *ngSwitchCase="'linear-scale'">
+
+      </div>
+
+      <div *ngSwitchCase="'single-choice'">
+
+      </div>
+
+      <div *ngSwitchCase="'single-grid'">
+
+      </div>
+
+      <div *ngSwitchCase="'multiple-grid'">
+
+      </div>
+    </div>
+    <p-chart type="pie" [data]="data"></p-chart>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from '../../../../../../node_modules/rxjs/BehaviorSubject';
 import { AppConfig } from '../../../../app.config';
-import { Update } from './../models/survey-creator.models';
-import { Survey } from './../models/survey.model';
+import { Update } from '../models/survey-creator.models';
+import { Survey } from '../models/survey.model';
 
 @Injectable()
 export class SurveyService {
@@ -51,7 +51,7 @@ export class SurveyService {
   updateSurvey(object: Update): Observable<any> {
     console.log(JSON.stringify(object.id));
     return this.http
-      .put<Update>(this.config.apiUrl + '/survey/surveys', {
+      .post<Update>(this.config.apiUrl + '/survey/update', {
         surveyId: object.id,
         Title: object.Title,
         Questions: object.Questions
@@ -78,7 +78,13 @@ export class SurveyService {
     return this.http
       .get<Survey>(this.config.apiUrl + '/survey/' + id)
       .map(data => {
-        // return this.http.get(this.config.apiUrl + '/survey/' + id).map(data => {
+        return data;
+      });
+  }
+  getSurveyReport(id: number): Observable<any> {
+    return this.http
+      .get<any>(this.config.apiUrl + '/surveyscore/report/' + id)
+      .map(data => {
         return data;
       });
   }

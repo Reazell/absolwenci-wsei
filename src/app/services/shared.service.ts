@@ -5,16 +5,20 @@ import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable()
 export class SharedService {
-  toggleSidebar: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  saveButton: Subject<number> = new Subject<number>();
-  sendButton: Subject<number> = new Subject<number>();
-  showButton: Subject<number> = new Subject<number>();
-  editButton: Subject<number> = new Subject<number>();
+  toggleSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  saveButton: Subject<boolean> = new Subject<boolean>();
+  sendButton: Subject<boolean> = new Subject<boolean>();
+  showButton: Subject<boolean> = new Subject<boolean>();
+  editButton: Subject<boolean> = new Subject<boolean>();
 
-  showSurveyDialog: Subject<number> = new Subject<number>();
-  showCreator: Subject<boolean> = new Subject<boolean>();
-  showSend: Subject<boolean> = new Subject<boolean>();
-  showSurveyMenu: Subject<boolean> = new Subject<boolean>();
+  showSurveyDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+  showCreator: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  showSend: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  showSurveyMenu: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
   controlArray: string[];
   constructor(private router: Router) {}
 
@@ -85,7 +89,7 @@ export class SharedService {
               controlName = 'last name';
               break;
             case 'phoneNum':
-              controlName = 'phone number';
+              controlName = 'phone boolean';
               break;
             case 'companyName':
               controlName = 'company name';
@@ -123,6 +127,6 @@ export class SharedService {
   }
 
   public toggleSideNav() {
-    this.toggleSidebar.next(0);
+    this.toggleSidebar.next(true);
   }
 }

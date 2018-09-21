@@ -3,17 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { SurveySentComponent } from './survey-sent/survey-sent.component';
 import { SurveyViewformComponent } from './survey-viewform.component';
 
-const adminRoutes: Routes = [
+const surveyViewformRoutes: Routes = [
   {
     path: '',
     component: SurveyViewformComponent
-    // children: [
-    //   {
-    //     path: 'formResponse',
-    //     component: SurveySentComponent
-    //   }
-    // ]
-  },
+  }
   // {
   //   path: 'formResponse',
   //   component: SurveySentComponent
@@ -21,7 +15,7 @@ const adminRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(adminRoutes)],
+  imports: [RouterModule.forChild(surveyViewformRoutes)],
   exports: [RouterModule]
 })
 export class SurveyViewformRoutingModule {}

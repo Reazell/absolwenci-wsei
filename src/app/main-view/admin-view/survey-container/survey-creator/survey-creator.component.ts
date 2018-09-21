@@ -55,7 +55,6 @@ export class SurveyCreatorComponent
 
   invoiceForm: FormGroup;
   default = 'single-grid';
-  loaded = false;
   disabled = true;
   index = 0;
   questionIndex = 0;
@@ -139,10 +138,12 @@ export class SurveyCreatorComponent
     private router: Router,
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog
-  ) {}
+  ) {
+    this.getSurvey();
+  }
 
   ngOnInit(): void {
-    this.getSurveyId();
+    // this.getSurveyId();
     this.saveSurveyOnClick();
     this.showSurveyOnClick();
     this.showSurveyDialog();
@@ -165,8 +166,10 @@ export class SurveyCreatorComponent
   }
   showSurveyDialog(): void {
     this.showSurveyDialogSub = this.sharedService.showSurveyDialog.subscribe(
-      () => {
-        this.openSurveyDialog();
+      data => {
+        if (data === true) {
+          this.openSurveyDialog();
+        }
       }
     );
   }
@@ -175,29 +178,22 @@ export class SurveyCreatorComponent
       data: { id: this.id, content: this.invoiceForm.getRawValue() }
     });
   }
-  getSurveyId(): void {
-    this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
-      this.id = Number(params['id']);
-      if (this.id) {
-        this.getSurvey();
-      } else {
-        this.loaded = true;
-        this.createQuestionData();
-      }
-    });
-  }
   getSurvey(): void {
-    this.surveyService.getSurveyWithId(this.id).subscribe(
-      data => {
-        this.createQuestionData(data);
-        this.loaded = true;
-        // console.log(data);
+    this.activatedRoute.data.map(data => data.cres).subscribe(
+      res => {
+        if (res) {
+          this.id = res.id;
+          this.createQuestionData(res);
+        } else {
+          this.createQuestionData();
+        }
       },
       error => {
         console.log(error);
       }
     );
   }
+
   // creating FormGroup  -- Main Form
   createQuestionData(form?: Survey): void {
     this.invoiceForm = this.fb.group(this.populateQuestionData(form));
@@ -637,7 +633,7 @@ export class SurveyCreatorComponent
       .subscribe(
         data => {
           // console.log(data);
-          this.router.navigate(['/app/admin/']);
+          this.router.navigate(['/app/admin/survey-dashboard']);
         },
         error => {
           console.log(error);
@@ -650,11 +646,11 @@ export class SurveyCreatorComponent
       Questions: this.invoiceForm.getRawValue().questions,
       id: this.id
     };
-    console.log(object);
+    // console.log(object);
     this.createSurveySub = this.surveyService.updateSurvey(object).subscribe(
       data => {
         // console.log(data);
-        this.router.navigate(['/app/admin/']);
+        this.router.navigate(['/app/admin/survey-dashboard']);
       },
       error => {
         console.log(error);
@@ -663,7 +659,7 @@ export class SurveyCreatorComponent
   }
   showSurvey(): void {
     const string: string =
-      'http://localhost:4200/app/admin/viewform/' + this.id;
+      'http://localhost:4200/app/admin/survey/viewform/' + this.id;
     window.open(string, '_blank');
   }
 

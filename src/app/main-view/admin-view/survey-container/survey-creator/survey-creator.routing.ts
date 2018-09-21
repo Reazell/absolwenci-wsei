@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SurveyCreatorComponent } from './survey-creator.component';
 
-const adminRoutes: Routes = [
+const surveyCreatorRoutes: Routes = [
   {
     path: '',
     component: SurveyCreatorComponent
@@ -10,7 +10,7 @@ const adminRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(adminRoutes)],
+  imports: [RouterModule.forChild(surveyCreatorRoutes)],
   exports: [RouterModule]
 })
 export class SurveyCreatorRoutingModule {}

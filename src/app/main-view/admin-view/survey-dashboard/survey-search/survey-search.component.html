@@ -1,8 +1,9 @@
 <div id="searchBar">
   <mat-toolbar>
-    <div (click)="search(aaa.value)" id="icon-container">
+    <button mat-icon-button>
       <fa-icon [icon]="['fas', 'search']"></fa-icon>
-    </div>
-    <input  id="search" #aaa type="tekst" placeholder="Search in mail" class="textField" (keyup.enter)="search(aaa.value)">
+    </button>
+    <input id="search" #aaa type="tekst" placeholder="Search in mail" class="textField"/>
   </mat-toolbar>
+  <!-- (keyup.enter)="search(aaa.value) -->
 </div>

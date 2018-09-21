@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../../../../auth/other/guard.auth';
+import { SurveyCreatorResolver } from '../resolvers/survey-creator.resolver';
 import { SurveyContainerComponent } from './survey-container.component';
 
 const surveyContainerRoutes: Routes = [
@@ -15,15 +16,13 @@ const surveyContainerRoutes: Routes = [
         canLoad: [AuthGuard]
       },
       {
-        path: 'viewform',
-        loadChildren:
-          './../survey-viewform/survey-viewform.module#SurveyViewformModule',
-        canLoad: [AuthGuard]
-      },
-      {
         path: 'create/:id',
-        loadChildren: './../survey-creator/survey-creator.module#SurveyCreatorModule',
-        canLoad: [AuthGuard]
+        loadChildren:
+          './../survey-creator/survey-creator.module#SurveyCreatorModule',
+        canLoad: [AuthGuard],
+        resolve: {
+          cres: SurveyCreatorResolver
+        }
       },
       {
         path: 'viewform/:id',
@@ -32,6 +31,12 @@ const surveyContainerRoutes: Routes = [
         // canLoad: [SurveyGuard],
         // canLoad: [RouteGuard]
       },
+      {
+        path: 'result/:id',
+        loadChildren:
+          './../survey-result/survey-result.module#SurveyResultModule',
+        canLoad: [AuthGuard]
+      }
     ]
   }
 ];
