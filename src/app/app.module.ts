@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartBar, faEye, faSave } from '@fortawesome/free-regular-svg-icons';
 import {
+  faArrowLeft,
   faBars,
   faBriefcase,
   faClone,
@@ -51,7 +52,8 @@ library.add(
   faSearch,
   faEllipsisH,
   faSave,
-  faChartBar
+  faChartBar,
+  faArrowLeft
 );
 
 @NgModule({

@@ -1,5 +1,5 @@
 <div id="survey-container">
-  <div id="surveyList">
+  <div [ngClass]="loading === true ? 'surveyList opacity' : 'surveyList'">
     <div id="container" *ngFor="let survey of surveyArr">
       <app-survey-tile [survey]=survey (click)="openCreator(survey)"></app-survey-tile>
       <!-- <app-survey-tile></app-survey-tile> -->
@@ -11,5 +11,8 @@
       </button>
 
     </div>
+  </div>
+  <div id="overlay" *ngIf="loading === true">
+    <mat-spinner [diameter]="40"></mat-spinner>
   </div>
 </div>

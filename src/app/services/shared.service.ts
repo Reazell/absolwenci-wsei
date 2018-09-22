@@ -5,23 +5,29 @@ import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable()
 export class SharedService {
+  // button clicked Subjects
   toggleSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   saveButton: Subject<boolean> = new Subject<boolean>();
   sendButton: Subject<boolean> = new Subject<boolean>();
   showButton: Subject<boolean> = new Subject<boolean>();
   editButton: Subject<boolean> = new Subject<boolean>();
 
+  // showing elements Subjects
+  showBack: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  showToggle: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showSurveyDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
   showCreator: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showSend: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  showSurveyMenu: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  showAdminMenu: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  showUserInfo: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  // input error variable
   controlArray: string[];
   constructor(private router: Router) {}
 
+  // button clicked actions
   saveSurveyButton(x) {
     this.saveButton.next(x);
   }
@@ -34,17 +40,28 @@ export class SharedService {
   routeToEdit(x) {
     this.editButton.next(x);
   }
+
+  // showing elements
+  showBackButton(x) {
+    this.showBack.next(x);
+  }
+  showToggleButton(x) {
+    this.showToggle.next(x);
+  }
   showCreatorButton(x) {
     this.showCreator.next(x);
   }
   showSendButton(x) {
     this.showSend.next(x);
   }
-  showSurveyMain(x) {
-    this.showSurveyMenu.next(x);
+  showAdminMain(x) {
+    this.showAdminMenu.next(x);
   }
   showSendSurveyDialog(x) {
     this.showSurveyDialog.next(x);
+  }
+  showUser(x) {
+    this.showUserInfo.next(x);
   }
 
   routeSwitch(role) {
@@ -57,6 +74,9 @@ export class SharedService {
         break;
       case 'graduate':
         this.router.navigateByUrl('/app/graduate');
+        break;
+      case 'careerOffice':
+        this.router.navigateByUrl('/app/admin');
         break;
     }
   }

@@ -1,15 +1,16 @@
-import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
+  AbstractControl,
+  FormBuilder,
   FormGroup,
   NgForm,
-  FormBuilder,
-  Validators,
-  AbstractControl
+  Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
+import { Employer, Graduate, Student } from './../other/user.model';
 
 @Component({
   selector: 'app-register',
@@ -48,10 +49,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
   locationErrorStr: string;
   companyDescriptionErrorStr: string;
   registrationError = false;
-  registrationErrorMessage: Array<string>;
+  registrationErrorMessage: string[];
 
+  defaultProfile = 'Student';
   // user object sent to API
-  user: any = {};
+  user: Graduate | Student | Employer;
   // loader
   loading = false;
   // profiles tooltip
@@ -140,6 +142,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.companyName = this.regForm.controls['companyName'];
     this.location = this.regForm.controls['location'];
     this.companyDescription = this.regForm.controls['companyDescription'];
+    this.hide(this.defaultProfile);
   }
 
   hide(profile) {
@@ -230,23 +233,31 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   createUser(): void {
+    switch (this.profileName.value) {
+      case 'Graduate':
+        this.user = new Graduate();
+        break;
+      case 'Student':
+        this.user = new Student();
+        (this.user as Student).albumID = this.albumID.value;
+        break;
+      case 'Employer':
+        this.user = new Employer();
+        (this.user as Employer).companyName = this.companyName.value;
+        (this.user as Employer).location = this.location.value;
+        (this
+          .user as Employer).companyDescription = this.companyDescription.value;
+        break;
+    }
     this.user.firstName = this.name.value;
     this.user.lastName = this.lastName.value;
     this.user.email = this.email.value;
     this.user.password = this.password.value;
     this.user.profileName = this.profileName.value;
-    this.user.phoneNum = this.phoneNum.value;
-
-    switch (this.profileName.value) {
-      case 'Student':
-        this.user.albumID = this.albumID.value;
-        break;
-      case 'Employer':
-        this.user.companyName = this.companyName.value;
-        this.user.location = this.location.value;
-        this.user.companyDescription = this.companyDescription.value;
-        break;
-    }
+    const phoneNumString: string = this.phoneNum.value;
+    this.user.phoneNum = phoneNumString.startsWith('+')
+      ? phoneNumString
+      : '+48' + phoneNumString;
   }
 
   setAllAsTouched(): void {

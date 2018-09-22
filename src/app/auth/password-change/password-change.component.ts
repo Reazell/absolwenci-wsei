@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
   AbstractControl,
   FormBuilder,
-  Validators,
-  NgForm
+  FormGroup,
+  NgForm,
+  Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from '../../services/shared.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
-import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-password-change',
@@ -81,7 +81,7 @@ export class PasswordChangeComponent implements OnInit {
         .subscribe(
           data => {
             // console.log(data);
-            this.userService.isLogged.next(false);
+            this.userService.isLoggedNext(false);
             this.router.navigateByUrl('auth/login');
           },
           error => {

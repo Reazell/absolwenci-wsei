@@ -13,18 +13,26 @@ export class AppBarComponent implements OnInit, OnDestroy {
   userServiceSub: Subscription;
   creatorSub: Subscription;
   sendSub: Subscription;
-  surveyMainSub: Subscription;
-  // editSurveySub;
+  adminMainSub: Subscription;
+  toggleSub: Subscription;
+  backSub: Subscription;
+  accountRoleSub: Subscription;
+  userInfoSub: Subscription;
 
-  isLogged: boolean;
+  isLogged = false;
   showCreatorButton = false;
   showSendButton = false;
-  showSurveyMenu = false;
+  showAdminMenu = false;
+  showToogleButton = false;
+  showBackButton = false;
+  showUserInfo = false;
+  accountRole: string;
 
   info = {
     show: 'Podgląd',
     edit: 'Edytuj ankietę',
-    save: 'Zapisz ankietę'
+    save: 'Zapisz ankietę',
+    main: 'Strona główna ankiet'
   };
 
   constructor(
@@ -33,52 +41,79 @@ export class AppBarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.loggedAccountRole();
     this.showCreator();
     this.showSend();
-    this.showMenu();
+    this.showingAdminMenu();
+    this.showToogle();
+    this.showBack();
     this.checkIfLogged();
+    this.showUser();
   }
 
-  checkIfLogged() {
+  loggedAccountRole(): void {
+    this.accountRoleSub = this.userService.role.subscribe(role => {
+      this.accountRole = role;
+    });
+  }
+  checkIfLogged(): void {
     this.userServiceSub = this.userService.isLogged.subscribe(data => {
       this.isLogged = data;
     });
   }
-  showCreator() {
+  // showing elements
+  showUser(): void {
+    this.userInfoSub = this.sharedService.showUserInfo.subscribe(data => {
+      this.showUserInfo = data;
+    });
+  }
+  showToogle(): void {
+    this.toggleSub = this.sharedService.showToggle.subscribe(data => {
+      this.showToogleButton = data;
+    });
+  }
+  showCreator(): void {
     this.creatorSub = this.sharedService.showCreator.subscribe(data => {
       this.showCreatorButton = data;
     });
   }
-  showSend() {
+  showSend(): void {
     this.sendSub = this.sharedService.showSend.subscribe(data => {
       this.showSendButton = data;
     });
   }
-  showMenu() {
-    this.surveyMainSub = this.sharedService.showSurveyMenu.subscribe(data => {
-      this.showSurveyMenu = data;
+  showingAdminMenu(): void {
+    this.adminMainSub = this.sharedService.showAdminMenu.subscribe(data => {
+      this.showAdminMenu = data;
     });
   }
-  editSurvey() {
+  showBack(): void {
+    this.backSub = this.sharedService.showBack.subscribe(data => {
+      this.showBackButton = data;
+    });
+  }
+
+  // button actions
+  editSurvey(): void {
     this.sharedService.routeToEdit(true);
   }
-  sendSurvey() {
+  sendSurvey(): void {
     this.sharedService.showSendSurveyDialog(true);
   }
-  showSurvey() {
+  showSurvey(): void {
     this.sharedService.showSurveyButton(true);
   }
-  saveSurvey() {
+  saveSurvey(): void {
     this.sharedService.saveSurveyButton(true);
   }
-  openSidebar() {
+  openSidebar(): void {
     this.sharedService.toggleSideNav();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.userServiceSub.unsubscribe();
     this.creatorSub.unsubscribe();
     this.sendSub.unsubscribe();
-    this.surveyMainSub.unsubscribe();
+    this.adminMainSub.unsubscribe();
   }
 }

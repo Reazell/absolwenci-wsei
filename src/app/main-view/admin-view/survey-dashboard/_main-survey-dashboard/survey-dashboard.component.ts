@@ -11,6 +11,7 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav')
   sidenav;
   show = true;
+  loading = true;
   showingMailView = false;
   isSidebarOpened = true;
   smallScreen: boolean;
@@ -24,8 +25,8 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.showToggleButton();
     this.toggleSidebar();
-    this.showSurveyMain();
   }
   toggleSidebar() {
     this.toggleSidebarSub = this.sharedService.toggleSidebar.subscribe(res => {
@@ -34,10 +35,9 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
       }
     });
   }
-  showSurveyMain() {
-    this.sharedService.showSurveyMain(true);
+  showToggleButton() {
+    this.sharedService.showToggleButton(true);
   }
-
   isLargeScreen() {
     const width =
       window.innerWidth ||
@@ -69,7 +69,11 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
     //   }
     // }
   }
+  setLoader() {
+    this.loading = false;
+  }
   ngOnDestroy() {
     this.toggleSidebarSub.unsubscribe();
+    this.sharedService.showToggleButton(false);
   }
 }

@@ -9,12 +9,12 @@ export class AuthGuard implements CanLoad {
   canLoad() {
     if (localStorage.getItem('currentUser')) {
       // logged in so return true
-      this.userService.isLogged.next(true);
+      this.userService.isLoggedNext(true);
       return true;
     }
 
     // not logged in so redirect to login page with previous url
-    this.userService.isLogged.next(false);
+    this.userService.isLoggedNext(false);
     this.router.navigateByUrl('/auth/login');
     return false;
   }

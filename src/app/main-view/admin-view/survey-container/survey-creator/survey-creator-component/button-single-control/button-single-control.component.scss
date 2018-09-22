@@ -10,3 +10,8 @@
     font-size: 13px;
   }
 }
+@media (max-width: 580px) {
+  mat-form-field {
+    width: 100% !important;
+  }
+}

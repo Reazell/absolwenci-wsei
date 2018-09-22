@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material';
 import { MaterialsModule } from '../../../../materials/materials.module';
+import { SharedModule } from '../../../../shared/shared.module';
 import { GroupListModule } from '../group-list/group-list.module';
 import { ManageBarModule } from '../manage-bar/manage-bar.module';
 import { SurveyListModule } from '../survey-list/survey-list.module';
@@ -20,7 +21,8 @@ import { SurveyDashboardRoutingModule } from './survey-dashboard.routing';
     GroupListModule,
     SurveyListModule,
     MatSidenavModule,
-    SurveyDashboardRoutingModule
+    SurveyDashboardRoutingModule,
+    SharedModule
   ],
   declarations: [SurveyDashboardComponent]
 })

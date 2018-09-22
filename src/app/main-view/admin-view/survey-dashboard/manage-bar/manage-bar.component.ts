@@ -13,6 +13,7 @@ export class ManageBarComponent implements OnInit {
   ngOnInit() {}
   redirectToNew(): void {
     // [routerLink]="['/app/admin/survey/create/']"
+    this.surveyService.isCreatorLoading(true);
     this.router.navigateByUrl('/app/admin/survey/create/');
     //   const obj = {
     //     title: '',

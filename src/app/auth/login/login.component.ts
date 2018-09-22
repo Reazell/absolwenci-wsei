@@ -1,13 +1,13 @@
-import { SharedService } from '../../services/shared.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
+  AbstractControl,
+  FormBuilder,
   FormGroup,
   NgForm,
-  FormBuilder,
-  Validators,
-  AbstractControl
+  Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from '../../services/shared.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         .subscribe(
           data => {
             console.log(data);
-            this.userService.isLogged.next(true);
+            this.userService.isLoggedNext(true);
             // if login is successful, redirect to app
             this.routeSwitch(data.role);
           },

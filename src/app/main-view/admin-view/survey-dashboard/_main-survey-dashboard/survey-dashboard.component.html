@@ -9,7 +9,8 @@
     </mat-sidenav>
     <mat-sidenav-content id="content">
       <app-manage-bar></app-manage-bar>
-      <app-survey-list></app-survey-list>
+      <!-- <app-loading-screen *ngIf="loading === true"></app-loading-screen> -->
+      <app-survey-list (loading)="setLoader()"></app-survey-list>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

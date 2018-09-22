@@ -147,13 +147,16 @@ export class SurveyCreatorComponent
     this.saveSurveyOnClick();
     this.showSurveyOnClick();
     this.showSurveyDialog();
+    this.showBackButton();
     this.sharedService.showCreatorButton(true);
   }
 
   ngAfterViewInit() {
     // console.log(this.inputs);
   }
-
+  showBackButton() {
+    this.sharedService.showBackButton(true);
+  }
   saveSurveyOnClick(): void {
     this.saveSurveySub = this.sharedService.saveButton.subscribe(() => {
       this.onSubmit();
@@ -669,5 +672,6 @@ export class SurveyCreatorComponent
     this.showSurveySub.unsubscribe();
     this.showSurveyDialogSub.unsubscribe();
     this.sharedService.showCreatorButton(false);
+    this.sharedService.showBackButton(false);
   }
 }

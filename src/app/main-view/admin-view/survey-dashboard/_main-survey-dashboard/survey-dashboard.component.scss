@@ -24,11 +24,11 @@
       grid-template-rows: 80px auto;
       grid-template-columns: 100%;
       app-survey-list {
-        overflow-y: overlay;
+        overflow-y: auto;
         padding: 0 30px 20px 30px;
       }
       #mailSpace {
-        overflow-y: overlay;
+        overflow-y: auto;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -42,7 +42,7 @@
     #mailSpace {
       // grid-column-start: 3;
       // grid-column-end: 5;
-      overflow-y: overlay;
+      overflow-y: auto;
     }
     #wrapper {
       // #sidenav {

@@ -179,6 +179,8 @@ form {
           }
         }
         #required-container {
+          display: flex;
+          align-items: center;
           padding: 0px 10px;
         }
         #question-menu {
@@ -197,6 +199,9 @@ form {
   height: 100%;
   border-right: 2px solid rgba(0, 0, 0, 0.12);
 }
+.hidden {
+  display: none;
+}
 .delete {
   float: right;
   cursor: pointer;
@@ -208,6 +213,8 @@ form {
   margin-left: 27px;
 }
 .add {
+  display: flex;
+  align-items: center;
   mat-form-field {
     font-size: 13px;
   }
@@ -233,3 +240,21 @@ fa-icon {
 //     color: transparent;
 //   }
 // }
+
+@media (max-width: 580px) {
+  .select-container {
+    display: block !important;
+  }
+  .form {
+    display: block !important;
+    .cont {
+      width: 100% !important;
+    }
+  }
+  .hidden {
+    display: block !important;
+  }
+  mat-form-field {
+    width: 100% !important;
+  }
+}

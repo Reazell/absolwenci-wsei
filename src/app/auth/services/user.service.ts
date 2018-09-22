@@ -2,15 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AppConfig } from '../../app.config';
-import { User } from '../../models/user.model';
 
 @Injectable()
 export class UserService {
   mail: string;
   isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(undefined);
-
+  role: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);
   constructor(private http: HttpClient, private config: AppConfig) {}
 
+  isLoggedNext(x) {
+    this.isLogged.next(x);
+  }
+  setRoleSubject(x) {
+    this.role.next(x);
+  }
   // create new user
 
   createStudent(user) {
@@ -84,33 +89,7 @@ export class UserService {
     });
   }
 
-  // // delete user by id
-  // delete(id: number) {
-  //   return this.http.delete('/users/' + id);
-  // }
-
-  // getUser() {
-  //   return this.http.get<any>(this.config.apiUrl + '/profile');
-  // }
-
-  // // getUser() {
-  // //   return this.http
-  // //     .get<any>(this.config.apiUrl + '/user/account')
-  // //     .map(data => {
-  // //       return data;
-  // //     });
-  // // }
-
-  // private jwt() {
-  //   // create authorization header with jwt token
-  //   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  //   if (currentUser && currentUser.token) {
-  //     let headers = new HttpHeaders();
-  //     headers = headers.append('Content-Type', 'application/json');
-  //     headers = headers.append('Authorization', 'Bearer ' + currentUser.token);
-  //     return headers;
-  //   }
-  // }
+  // recovery password
   passMailData(mail) {
     this.mail = mail;
   }

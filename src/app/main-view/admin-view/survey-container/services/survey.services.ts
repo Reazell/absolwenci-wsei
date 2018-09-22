@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from '../../../../../../node_modules/rxjs/internal/Subject';
 import { AppConfig } from '../../../../app.config';
 import { Update } from '../models/survey-creator.models';
 import { Survey } from '../models/survey.model';
@@ -12,6 +13,7 @@ export class SurveyService {
   savedSurveys: BehaviorSubject<Survey[]> = new BehaviorSubject<Survey[]>(
     undefined
   );
+  openingCreatorLoader: Subject<boolean> = new Subject<boolean>();
   // openedSurvey: any;
   constructor(private http: HttpClient, private config: AppConfig) {}
 
@@ -93,7 +95,9 @@ export class SurveyService {
       this.savedSurveys.next(data);
     });
   }
-
+  isCreatorLoading(x) {
+    this.openingCreatorLoader.next(x);
+  }
   // openCreator(formGroup): void {
   //   this.openedSurvey = formGroup;
   // }

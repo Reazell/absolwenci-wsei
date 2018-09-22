@@ -140,6 +140,7 @@
                 </div>
                 <app-button-single-control (change)="addRowControl(field.controls['rows'], 'wiersz')"></app-button-single-control>
               </div>
+              <div class="breakH hidden"></div>
               <div id="column-container" class="cont" formArrayName="choiceOptions">
                 <div *ngFor="let radio of field.controls['choiceOptions'].controls; let l = index" [formGroupName]="l">
                   <mat-radio-group formControlName="value" name="radio">
@@ -195,7 +196,9 @@
         <div class="breakH"></div>
         <div class="menu-container">
           <div class="add">
-            <fa-icon [icon]="['fas','plus']" (click)="addQuestion(i)" matTooltip="{{info.add}}" matTooltipPosition="below"></fa-icon>
+            <button mat-icon-button (click)="addQuestion(i)">
+              <fa-icon [icon]="['fas','plus']" matTooltip="{{info.add}}" matTooltipPosition="below"></fa-icon>
+            </button>
           </div>
           <div class="menu">
             <div id="buttons-menu">

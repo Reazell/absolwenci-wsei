@@ -10,7 +10,7 @@
   #container {
     display: flex;
     align-items: center;
-    #sidenavToggler {
+    .sideButton {
       color: $primary;
       height: 50px;
       width: 50px;
@@ -19,6 +19,7 @@
       align-items: center;
       font-size: 30px;
       cursor: pointer;
+      outline: none;
     }
     #logo {
       user-select: none;
@@ -55,19 +56,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    #survey-buttons {
-      padding-right: 10px;
+    #career-offices {
       display: flex;
-      align-items: center;
-      fa-icon {
-        color: $grey;
-        font-size: 25px;
-        margin-right: 30px;
-        cursor: pointer;
-      }
-      button {
-        background-color: $primary;
-        color: white;
+      #survey-buttons {
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+        fa-icon {
+          color: $grey;
+          font-size: 25px;
+          margin-right: 30px;
+          cursor: pointer;
+        }
+        button {
+          background-color: $primary;
+          color: white;
+        }
       }
     }
     #userInfo {
