@@ -33,6 +33,7 @@ import { JwtInterceptor } from './auth/other/jwt.interceptor';
 import { AuthenticationService } from './auth/services/authentication.service';
 import { UserService } from './auth/services/user.service';
 import { MaterialsModule } from './materials/materials.module';
+import { SharedService } from './services/shared.service';
 import { SharedModule } from './shared/shared.module';
 
 library.add(
@@ -73,6 +74,7 @@ library.add(
   providers: [
     AuthenticationService,
     UserService,
+    SharedService,
     AuthGuard,
     GuidGuard,
     AppConfig,

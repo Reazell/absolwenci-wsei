@@ -21,7 +21,6 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
     MatProgressSpinnerModule
   ],
   declarations: [AppBarComponent, UserInfoComponent, LoadingScreenComponent],
-  exports: [AppBarComponent, LoadingScreenComponent],
-  providers: [SharedService]
+  exports: [AppBarComponent, LoadingScreenComponent]
 })
 export class SharedModule {}

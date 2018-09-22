@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialsModule } from '../../materials/materials.module';
+import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { MaterialsModule } from '../../materials/materials.module';
 import { SharedService } from '../../services/shared.service';
 import { AdminComponent } from './admin.component';
 
@@ -17,7 +17,6 @@ export const routes: Routes = [{ path: '', component: AdminComponent }];
     CommonModule,
     ProgressBarModule
   ],
-  providers: [SharedService],
   declarations: [AdminComponent]
 })
 export class AdminModule {}

@@ -42,13 +42,13 @@ export class AppBarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loggedAccountRole();
+    this.checkIfLogged();
+    this.showUser();
     this.showCreator();
     this.showSend();
     this.showingAdminMenu();
     this.showToogle();
     this.showBack();
-    this.checkIfLogged();
-    this.showUser();
   }
 
   loggedAccountRole(): void {
@@ -64,6 +64,7 @@ export class AppBarComponent implements OnInit, OnDestroy {
   // showing elements
   showUser(): void {
     this.userInfoSub = this.sharedService.showUserInfo.subscribe(data => {
+      // console.log('f', data);
       this.showUserInfo = data;
     });
   }

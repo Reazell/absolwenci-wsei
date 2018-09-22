@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PasswordRecoveryComponent } from './password-recovery.component';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialsModule } from '../../../materials/materials.module';
+import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { MaterialsModule } from '../../../materials/materials.module';
 import { SharedService } from '../../../services/shared.service';
+import { PasswordRecoveryComponent } from './password-recovery.component';
 
 export const routes: Routes = [
   { path: '', component: PasswordRecoveryComponent }
@@ -19,7 +19,6 @@ export const routes: Routes = [
     CommonModule,
     ProgressBarModule
   ],
-  providers: [SharedService],
   declarations: [PasswordRecoveryComponent],
   exports: [PasswordRecoveryComponent]
 })

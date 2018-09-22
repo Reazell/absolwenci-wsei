@@ -9,12 +9,6 @@ form {
     font-size: 34px;
     line-height: 135%;
     max-width: 100%;
-    mat-form-field {
-      margin-top: -1em;
-      font-size: 34px;
-      width: 100%;
-      color: black;
-    }
   }
   #questions-container {
     padding: 25px 15px;
@@ -154,46 +148,12 @@ form {
         }
       }
     }
-
-    .menu-container {
-      margin: 10px;
-      display: flex;
-      justify-content: space-between;
-      .add,
-      .menu {
-        fa-icon {
-          font-size: 20px;
-          color: $grey;
-          cursor: pointer;
-        }
-      }
-      .menu {
-        fa-icon {
-          margin: 0 15px;
-        }
-      }
-    }
     #send {
       margin: 5px 20px;
       background-color: $primary;
       color: white;
     }
   }
-}
-.break {
-  height: 0px;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  margin: 8px;
-}
-.delete {
-  float: right;
-  cursor: pointer;
-  color: $grey-light;
-  font-size: 20px;
-  margin: 0 10px;
-}
-.standalone {
-  margin-left: 27px;
 }
 .width {
   width: 65px;

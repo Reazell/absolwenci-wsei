@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialsModule } from '../../materials/materials.module';
+import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { MaterialsModule } from '../../materials/materials.module';
 import { SharedService } from '../../services/shared.service';
+import { LoginComponent } from './login.component';
 
 export const routes: Routes = [{ path: '', component: LoginComponent }];
 
@@ -17,7 +17,6 @@ export const routes: Routes = [{ path: '', component: LoginComponent }];
     CommonModule,
     ProgressBarModule
   ],
-  providers: [SharedService],
   declarations: [LoginComponent]
 })
 export class LoginModule {}

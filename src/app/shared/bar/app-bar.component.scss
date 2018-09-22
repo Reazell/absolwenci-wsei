@@ -134,7 +134,7 @@
   #bar {
     #container {
       #logo {
-        margin-left: 20px;
+        margin-left: 0px;
       }
     }
 
@@ -142,6 +142,44 @@
       .menu-item {
         font-size: 13px;
         margin: 5px;
+      }
+    }
+  }
+}
+@media (max-width: 580px) {
+  #bar {
+    #container {
+      #logo {
+        margin: 0 -45px;
+        transform: scale(0.4);
+      }
+    }
+    #profile-container {
+      #career-offices {
+        #survey-buttons {
+          fa-icon {
+            margin-right: 16px;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 380px) {
+  #bar {
+    #container {
+      #logo {
+        display: none;
+      }
+    }
+    #profile-container {
+      #career-offices {
+        #survey-buttons {
+          fa-icon {
+            margin-right: 16px;
+          }
+        }
       }
     }
   }

@@ -23,22 +23,28 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
     // this.isLargeScreen();
     // this.mailService.openModuleBool(true);
   }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.showUserInfo();
     this.showToggleButton();
-    this.toggleSidebar();
+    // this.toggleSidebar();
   }
-  toggleSidebar() {
+  toggleSidebar(): void {
     this.toggleSidebarSub = this.sharedService.toggleSidebar.subscribe(res => {
       if (this.sidenav) {
         this.sidenav.toggle();
       }
     });
   }
+  showUserInfo(): void {
+    this.sharedService.showUser(true);
+  }
   showToggleButton() {
     this.sharedService.showToggleButton(true);
   }
-  isLargeScreen() {
+  showAdminMenu(): void {
+    this.sharedService.showAdminMain(true);
+  }
+  isLargeScreen(): boolean {
     const width =
       window.innerWidth ||
       document.documentElement.clientWidth ||
@@ -55,7 +61,7 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
       return true;
     }
   }
-  showMailDetails() {
+  showMailDetails(): void {
     // if (this.smallScreen === false) {
     //   this.showingMailView = true;
     //   return this.showingMailView;
@@ -73,7 +79,6 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
     this.loading = false;
   }
   ngOnDestroy() {
-    this.toggleSidebarSub.unsubscribe();
-    this.sharedService.showToggleButton(false);
+    // this.toggleSidebarSub.unsubscribe();
   }
 }

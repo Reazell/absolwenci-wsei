@@ -1,27 +1,13 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { SurveyService } from '../services/survey.services';
+import { Survey } from './../models/survey.model';
 
 @Injectable()
-export class SurveyCreatorResolver implements Resolve<any>, OnDestroy {
-  // surveyIDSub: Subscription;
+export class SurveyCreatorResolver implements Resolve<Survey> {
   constructor(private surveyService: SurveyService) {}
-  resolve(route: ActivatedRouteSnapshot) {
-    // this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
-    //   this.surveyService
-    //     .getSurveyWithId(Number(params['id']))
-    //     .subscribe(data => {
-    //       return data;
-    //     },error => {
-
-    //     });
-    // });
-    console.log(Number(route.params['id']));
-
+  resolve(route: ActivatedRouteSnapshot): Observable<Survey> {
     return this.surveyService.getSurveyWithId(Number(route.params['id']));
-  }
-  ngOnDestroy() {
-    // this.surveyIDSub.unsubscribe();
   }
 }

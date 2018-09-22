@@ -1,0 +1,38 @@
+@import '../../../../../styles/colors.scss';
+:host {
+  // width: 100%;
+}
+#result-container {
+  #result-header {
+    #answer-title {
+      padding: 40px;
+      font-size: 34px;
+      line-height: 135%;
+      max-width: 100%;
+      span {
+      }
+    }
+    #answer-number {
+    }
+    #answer-toggle {
+    }
+  }
+  #result-main {
+    #switch {
+      .header {
+      }
+      .answer {
+        .answer-loop {
+          .answer-div {
+          }
+          .dark {
+            background-color: $primary-light;
+          }
+          .light {
+            background-color: $primary-very-light;
+          }
+        }
+      }
+    }
+  }
+}

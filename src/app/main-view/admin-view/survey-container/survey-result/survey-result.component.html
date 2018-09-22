@@ -1,21 +1,36 @@
 <div id="result-container">
   <div id="result-header">
     <div id="answer-title">
-      <span>{{sth?.title}}</span>
+      <span>{{data.title}}</span>
     </div>
     <div id="answer-number">
-
+      <span>{{data.totalAnswerCount}}</span>
     </div>
-    <div id="answer-toggle">
+    <!-- <div id="answer-toggle">
 
-    </div>
+    </div> -->
   </div>
-  <div id="result-main" *ngFor="let question of sth?.questions; let i = index">
+  <div id="result-main" *ngFor="let question of data.questionsData; let i = index">
     <div id="switch" [ngSwitch]="question.select">
-      <div *ngSwitchCase="'short-answer'">
+      <div class="header">
+        <span>{{question.question}}</span>
+        <span>{{question.answerCount}}</span>
       </div>
 
-      <div *ngSwitchCase="'long-answer'">
+      <div class="answer" *ngSwitchCase="'short-answer'">
+        <div class="answer-loop" *ngFor="let answer of question.answerData.datasets[0].data; let j = index">
+          <div class="answer-div" [ngClass]="j % 2 ? 'answer dark': 'answer light'">
+            {{answer}}
+          </div>
+        </div>
+      </div>
+
+      <div class="answer" *ngSwitchCase="'long-answer'">
+        <div class="answer-loop" *ngFor="let answer of question.answerData.datasets[0].data; let j = index">
+          <div class="answer-div" [ngClass]="j % 2 ? 'answer dark': 'answer light'">
+            {{answer}}
+          </div>
+        </div>
       </div>
 
       <div *ngSwitchCase="'dropdown-menu'">
@@ -23,11 +38,15 @@
       </div>
 
       <div *ngSwitchCase="'linear-scale'">
-
+        <!-- <p-chart type="bar" [data]="data2"></p-chart> -->
       </div>
 
       <div *ngSwitchCase="'single-choice'">
+        <p-chart type="bar" [data]="question.answerData"></p-chart>
+      </div>
 
+      <div *ngSwitchCase="'multiple-choice'">
+          <p-chart type="bar" [data]="question.answerData"></p-chart>
       </div>
 
       <div *ngSwitchCase="'single-grid'">
@@ -38,6 +57,6 @@
 
       </div>
     </div>
-    <p-chart type="pie" [data]="data"></p-chart>
+    <!-- <p-chart type="pie" [data]="data"></p-chart> -->
   </div>
 </div>

@@ -12,11 +12,15 @@ export class SurveyContainerComponent implements OnInit {
   ngOnInit() {
     this.showAdminMenu();
     this.showUserInfo();
+    this.showToggle();
   }
-  showAdminMenu() {
+  showAdminMenu(): void {
     this.sharedService.showAdminMain(false);
   }
-  showUserInfo() {
+  showUserInfo(): void {
     this.sharedService.showUser(false);
+  }
+  showToggle(): void {
+    this.sharedService.showToggleButton(false);
   }
 }
