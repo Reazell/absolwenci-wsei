@@ -152,7 +152,10 @@ namespace CareerMonitoring.Infrastructure.Services
         public async Task<int> UpdateAsync (int surveyId, string title)
         {
             await DeleteAsync (surveyId);
-            return await CreateAsync(title);
+            var survey = new Survey (title);
+            survey.SetId(surveyId);
+            await _surveyRepository.AddAsync (survey);
+            return survey.Id;
         }
 
         public async Task DeleteAsync(int surveyId)
