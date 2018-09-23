@@ -14,12 +14,5 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             Value = value;
             ViewValue = viewValue;
         }
-
-        public void Update (int optionPosition, bool value, string viewValue)
-        {
-            OptionPosition = optionPosition;
-            Value = value;
-            ViewValue = viewValue;
-        }
     }
 }

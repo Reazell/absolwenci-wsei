@@ -33,18 +33,5 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             MinLabel = minLabel;
             MaxLabel = maxLabel;
         }
-
-        public void Update (string input)
-        {
-            Input = input;
-        }
-
-        public void Update (int minValue, int maxValue, string minLabel, string maxLabel)
-        {
-            MinValue = minValue;
-            MaxValue = maxValue;
-            MinLabel = minLabel;
-            MaxLabel = maxLabel;
-        }
     }
 }

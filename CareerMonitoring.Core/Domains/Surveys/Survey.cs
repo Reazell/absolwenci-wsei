@@ -23,14 +23,5 @@ namespace CareerMonitoring.Core.Domains.Surveys {
             Title = title;
             CreatedAt = DateTime.UtcNow;
         }
-
-        public void UpdateQuestion (Question question) {
-            question.Update(question.QuestionPosition, question.Content, question.Select);
-        }
-
-        public void SetId (int id)
-        {
-            Id = id;
-        }
     }
 }

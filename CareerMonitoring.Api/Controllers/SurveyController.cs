@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Survey;
 using CareerMonitoring.Infrastructure.Services;
@@ -45,7 +46,7 @@ namespace CareerMonitoring.Api.Controllers {
             return StatusCode (201);
         }
 
-        [HttpPost ("update")]
+        [HttpPut]
         public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -97,6 +98,46 @@ namespace CareerMonitoring.Api.Controllers {
                 await _surveyService.AddRowAsync (fieldDataId, row.RowPosition, row.Input);
             }
         }
+
+        // private async Task UpdateChoiceOptionsAndRowsAsync (int questionId, string input, string select, int minValue,
+        // int maxValue, string minLabel, string maxLabel, FieldDataToAdd fieldDataToAdd, ICollection<ChoiceOptionToAdd> choiceOptionsToAdd, ICollection<RowToAdd> rowsToAdd)
+        // {
+        //     int fieldDataId = await _surveyService.UpdateFieldDataForQuestionAsync (questionId,
+        //         fieldDataToAdd.Input,
+        //         fieldDataToAdd.MinValue,
+        //         fieldDataToAdd.MaxValue,
+        //         fieldDataToAdd.MinLabel,
+        //         fieldDataToAdd.MaxLabel,
+        //         choiceOptionsToAdd,
+        //         rowsToAdd);
+        //     if (select == "single-grid" || select == "multiple-grid")
+        //         await AddRowsAsync(fieldDataToAdd, select, fieldDataId);
+
+        //     else if(select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" || select == "single-grid" || select == "multiple-grid")
+        //         await AddChoiceOptionsAsync(fieldDataToAdd, select, fieldDataId);
+        //     else
+        //         await Task.CompletedTask;
+        // }
+
+        // private async Task UpdateChoiceOptionsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
+        // {
+        //     if(fieldDataToAdd.ChoiceOptions != null){
+        //         foreach (var choiceOption in fieldDataToAdd.ChoiceOptions)
+        //         {
+        //             await _surveyService.UpdateChoiceOptionsAsync (fieldDataId, choiceOption.OptionPosition, choiceOption.Value, choiceOption.ViewValue);
+        //         }
+        //     }
+        // }
+
+        // private async Task UpdateRowsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
+        // {
+        //     if(fieldDataToAdd.Rows == null)
+        //         await Task.CompletedTask;
+        //     foreach (var row in fieldDataToAdd.Rows)
+        //     {
+        //         await _surveyService.UpdateRowAsync (fieldDataId, row.RowPosition, row.Input);
+        //     }
+        // }
 
         [HttpDelete ("{surveyId}")]
         public async Task<IActionResult> DeleteSurvey (int surveyId)

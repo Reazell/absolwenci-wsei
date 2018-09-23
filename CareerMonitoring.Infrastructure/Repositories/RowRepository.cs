@@ -22,6 +22,11 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.SaveChangesAsync ();
         }
 
+        public async Task<Row> GetByIdAsync (int id)
+        {
+            return await _context.Rows.SingleOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task<IEnumerable<Row>> GetAllByFieldDataIdInOrderAsync(int fieldDataId, bool isTracking = true)
         {
             if(isTracking)

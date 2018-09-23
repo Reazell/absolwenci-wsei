@@ -22,12 +22,5 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         {
             FieldData.Add(fieldData);
         }
-
-        public void Update (int questionPosition, string content, string select)
-        {
-            QuestionPosition = questionPosition;
-            Content = content;
-            Select = select;
-        }
     }
 }

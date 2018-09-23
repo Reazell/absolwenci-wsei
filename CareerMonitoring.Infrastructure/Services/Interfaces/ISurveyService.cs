@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.Surveys;
+using CareerMonitoring.Infrastructure.Commands.Survey;
 using CareerMonitoring.Infrastructure.DTO;
 
 namespace CareerMonitoring.Infrastructure.Services.Interfaces

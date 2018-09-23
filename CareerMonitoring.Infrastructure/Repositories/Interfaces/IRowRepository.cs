@@ -7,6 +7,7 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces
     public interface IRowRepository
     {
         Task AddAsync (Row row);
+        Task<Row> GetByIdAsync (int id);
         Task<IEnumerable<Row>> GetAllByFieldDataIdInOrderAsync (int fieldDataId, bool isTracking = true);
         Task<Row> GetByFieldDataIdAsync (int fieldDataId, int rowPosition, bool isTracking = true);
         Task UpdateAsync (Row row);
