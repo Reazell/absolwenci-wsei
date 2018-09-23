@@ -46,6 +46,12 @@ form {
       //   }
       // }
 
+      .question-menu {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 30px;
+      }
       .question {
         user-select: text;
         padding: 10px 30px;

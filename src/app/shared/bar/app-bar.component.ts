@@ -108,7 +108,7 @@ export class AppBarComponent implements OnInit, OnDestroy {
     this.sharedService.saveSurveyButton(true);
   }
   openSidebar(): void {
-    this.sharedService.toggleSideNav();
+    this.sharedService.toggleSideNav(true);
   }
 
   ngOnDestroy(): void {

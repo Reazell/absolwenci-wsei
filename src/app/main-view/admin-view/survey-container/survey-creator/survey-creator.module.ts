@@ -9,6 +9,8 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MaterialsModule } from '../../../../materials/materials.module';
+import { DraggableModule } from '../directives/draggable.module';
+import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
 import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 import { ButtonSingleControlComponent } from './survey-creator-component/button-single-control/button-single-control.component';
 import { SurveyCreatorComponent } from './survey-creator.component';
@@ -24,15 +26,16 @@ import { SurveyCreatorRoutingModule } from './survey-creator.routing';
     MatRadioModule,
     MatCheckboxModule,
     FontAwesomeModule,
-    // DraggableModule,
+    DraggableModule,
     ProgressSpinnerModule,
     MatSlideToggleModule
   ],
   declarations: [
     SurveyCreatorComponent,
     SendSurveyDialogComponent,
-    ButtonSingleControlComponent
+    ButtonSingleControlComponent,
+    MoveQuestionDialogComponent
   ],
-  entryComponents: [SendSurveyDialogComponent]
+  entryComponents: [SendSurveyDialogComponent, MoveQuestionDialogComponent]
 })
 export class SurveyCreatorModule {}

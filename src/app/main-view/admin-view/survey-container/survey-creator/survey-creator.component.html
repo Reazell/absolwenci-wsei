@@ -28,6 +28,12 @@
       <!-- <div class="grip-container" appGrippable>
               <fa-icon class="grip" [icon]="['fas','grip-horizontal']" ></fa-icon>
             </div> -->
+      <div class="question-menu">
+          <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="Qmenu"></fa-icon>
+        <mat-menu #Qmenu="matMenu" [overlapTrigger]="false">
+          <button mat-menu-item (click)="openMoveQuestionDialog()">Przenieś pytanie</button>
+        </mat-menu>
+      </div>
       <div class="question">
 
         <div class="select-container">
@@ -199,6 +205,7 @@
             <button mat-icon-button (click)="addQuestion(i)">
               <fa-icon [icon]="['fas','plus']" matTooltip="{{info.add}}" matTooltipPosition="below"></fa-icon>
             </button>
+            <button #sth (click)="sendToSubject(sth)">ughedueheu</button>
           </div>
           <div class="menu">
             <div id="buttons-menu">

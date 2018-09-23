@@ -30,9 +30,18 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.showAdminMenu();
+    this.showUserInfo();
     this.getSurveyId();
     this.sharedService.showSendButton(true);
     this.editSurvey();
+  }
+
+  showAdminMenu(): void {
+    this.sharedService.showAdminMain(false);
+  }
+  showUserInfo(): void {
+    this.sharedService.showUser(false);
   }
   getSurveyId(): void {
     this.surveyIDSub = this.activatedRoute.params.subscribe(params => {

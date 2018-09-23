@@ -1,0 +1,37 @@
+<div id="dialog-container">
+  <div id="dialog-header">
+    <span mat-dialog-title>Zmień kolejność pytań</span>
+  </div>
+  <ul appSortableList (sort)="sort($event)" id="dialog-main" mat-dialog-content>
+    <li class="question" *ngFor="let question of data.content; let i = index" appSortable>
+      <div class="dialog-grip">
+          <i class="material-icons grip" appGrippable>
+            reorder
+          </i>
+      </div>
+      <div class="dialog-info">
+        <div class="info">
+          <span>{{question.content}}</span>
+          <span>sekcja</span>
+        </div>
+        <div class="dialog-controls">
+          <div class="icon-container">
+            <button mat-icon-button [disabled]="i === length">
+              <i class="material-icons icon">arrow_drop_down</i>
+            </button>
+          </div>
+          <div class="icon-container">
+            <button mat-icon-button [disabled]="i === 0">
+              <i class="material-icons icon">arrow_drop_up</i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="box" *appDraggableHelper>napis</div>
+    </li>
+  </ul>
+  <div id="dialog-menu" mat-dialog-actions>
+    <button mat-button>Anuluj</button>
+    <button mat-button>Zapisz</button>
+  </div>
+</div>

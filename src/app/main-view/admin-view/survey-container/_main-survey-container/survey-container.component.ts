@@ -10,15 +10,7 @@ export class SurveyContainerComponent implements OnInit {
   constructor(private sharedService: SharedService) {}
 
   ngOnInit() {
-    this.showAdminMenu();
-    this.showUserInfo();
     this.showToggle();
-  }
-  showAdminMenu(): void {
-    this.sharedService.showAdminMain(false);
-  }
-  showUserInfo(): void {
-    this.sharedService.showUser(false);
   }
   showToggle(): void {
     this.sharedService.showToggleButton(false);

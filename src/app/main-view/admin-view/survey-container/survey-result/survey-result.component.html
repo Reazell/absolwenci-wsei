@@ -4,7 +4,7 @@
       <span>{{data.title}}</span>
     </div>
     <div id="answer-number">
-      <span>{{data.totalAnswerCount}}</span>
+      <span>{{data.totalAnswerCount + ' ' + 'odpowiedzi'}}</span>
     </div>
     <!-- <div id="answer-toggle">
 
@@ -13,8 +13,8 @@
   <div id="result-main" *ngFor="let question of data.questionsData; let i = index">
     <div id="switch" [ngSwitch]="question.select">
       <div class="header">
-        <span>{{question.question}}</span>
-        <span>{{question.answerCount}}</span>
+        <span id="question">{{question.question}}</span>
+        <span id="answer-count">{{question.answerCount + ' ' + 'odpowiedzi'}}</span>
       </div>
 
       <div class="answer" *ngSwitchCase="'short-answer'">
@@ -34,11 +34,11 @@
       </div>
 
       <div *ngSwitchCase="'dropdown-menu'">
-
+        <p-chart type="pie" [data]="question.answerData"></p-chart>
       </div>
 
       <div *ngSwitchCase="'linear-scale'">
-        <!-- <p-chart type="bar" [data]="data2"></p-chart> -->
+        <p-chart type="bar" [data]="question.answerData"></p-chart>
       </div>
 
       <div *ngSwitchCase="'single-choice'">
@@ -46,17 +46,16 @@
       </div>
 
       <div *ngSwitchCase="'multiple-choice'">
-          <p-chart type="bar" [data]="question.answerData"></p-chart>
+        <p-chart type="bar" [data]="question.answerData"></p-chart>
       </div>
 
       <div *ngSwitchCase="'single-grid'">
-
+        <p-chart type="bar" [data]="question.answerData"></p-chart>
       </div>
 
       <div *ngSwitchCase="'multiple-grid'">
-
+        <p-chart type="bar" [data]="question.answerData"></p-chart>
       </div>
     </div>
-    <!-- <p-chart type="pie" [data]="data"></p-chart> -->
   </div>
 </div>

@@ -19,17 +19,14 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
   // subs
   toggleSidebarSub: Subscription;
 
-  constructor(private sharedService: SharedService) {
-    // this.isLargeScreen();
-    // this.mailService.openModuleBool(true);
-  }
+  constructor(private sharedService: SharedService) {}
   ngOnInit(): void {
     this.showUserInfo();
     this.showToggleButton();
-    // this.toggleSidebar();
+    this.toggleSidebar();
   }
   toggleSidebar(): void {
-    this.toggleSidebarSub = this.sharedService.toggleSidebar.subscribe(res => {
+    this.toggleSidebarSub = this.sharedService.toggleSidebar.subscribe(() => {
       if (this.sidenav) {
         this.sidenav.toggle();
       }
@@ -61,24 +58,10 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
       return true;
     }
   }
-  showMailDetails(): void {
-    // if (this.smallScreen === false) {
-    //   this.showingMailView = true;
-    //   return this.showingMailView;
-    // } else {
-    //   if (this.showDetails === true) {
-    //     this.showingMailView = true;
-    //     return this.showingMailView;
-    //   } else {
-    //     this.showingMailView = false;
-    //     return this.showingMailView;
-    //   }
-    // }
-  }
   setLoader() {
     this.loading = false;
   }
   ngOnDestroy() {
-    // this.toggleSidebarSub.unsubscribe();
+    this.toggleSidebarSub.unsubscribe();
   }
 }

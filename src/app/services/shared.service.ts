@@ -146,7 +146,7 @@ export class SharedService {
     this.controlArray = undefined;
   }
 
-  public toggleSideNav() {
-    this.toggleSidebar.next(true);
+  public toggleSideNav(x) {
+    this.toggleSidebar.next(x);
   }
 }

@@ -1,0 +1,85 @@
+@import '../../../../../../styles/colors.scss';
+#dialog-container {
+  width: 450px;
+  #dialog-header {
+    border-bottom: 1px solid $grey;
+  }
+  #dialog-main {
+    .question {
+      display: flex;
+      align-items: center;
+      height: 64px;
+      border-bottom: 1px solid $grey;
+      user-select: none;
+
+      &.sortable.dragging {
+        visibility: hidden;
+        // background: none;
+        border: 1px dashed black;
+        color: transparent;
+      }
+
+      .dialog-grip {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 60px;
+        .grip {
+          cursor: move;
+        }
+      }
+      .dialog-info {
+        display: flex;
+        flex: 1;
+        height: 100%;
+        .info {
+          display: flex;
+          align-items: center;
+          flex: 1;
+          height: 100%;
+          span {
+          }
+        }
+        .dialog-controls {
+          display: flex;
+          align-items: center;
+          padding-right: 15px;
+          .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            button {
+              .icon {
+                font-size: 40px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #dialog-menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.box {
+  background: #bada55;
+  border: 1px solid black;
+  padding: 10px 20px;
+  display: inline-block;
+
+  &.dragging {
+    background: coral;
+  }
+
+  &.sortable.dragging {
+    background: none;
+    border: 1px dashed black;
+    color: transparent;
+  }
+}

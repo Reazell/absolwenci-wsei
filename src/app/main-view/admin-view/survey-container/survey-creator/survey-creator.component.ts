@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   OnDestroy,
@@ -17,7 +16,10 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 // tslint:disable-next-line:no-submodule-imports no-implicit-dependencies
 import * as cloneDeep from 'lodash/cloneDeep';
+import 'rxjs/add/observable/of';
+import { debounceTime, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subject } from '../../../../../../node_modules/rxjs';
 import { SharedService } from '../../../../services/shared.service';
 import {
   ChoiceOptions,
@@ -39,6 +41,7 @@ import {
   Survey
 } from '../models/survey.model';
 import { SurveyService } from '../services/survey.services';
+import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
 import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 
 @Component({
@@ -46,8 +49,7 @@ import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dial
   templateUrl: './survey-creator.component.html',
   styleUrls: ['./survey-creator.component.scss']
 })
-export class SurveyCreatorComponent
-  implements OnInit, OnDestroy, AfterViewInit {
+export class SurveyCreatorComponent implements OnInit, OnDestroy {
   @ViewChildren('inputs')
   inputs: QueryList<ElementRef>;
   @ViewChildren('inputs2')
@@ -66,6 +68,10 @@ export class SurveyCreatorComponent
   surveyIDSub: Subscription;
   showSurveyDialogSub: Subscription;
 
+  //
+  private updateToApi = new Subject();
+  public updateToApi$: Observable<any> = this.updateToApi.asObservable();
+  //
   selects: Select[] = [
     {
       control: [
@@ -149,12 +155,54 @@ export class SurveyCreatorComponent
     this.showSurveyDialog();
     this.showBackButton();
     this.sharedService.showCreatorButton(true);
+    this.subToObs();
   }
 
-  ngAfterViewInit() {
-    // console.log(this.inputs);
+  //
+  sendToSubject(x) {
+    this.updateToApi.next(x);
   }
-  showBackButton() {
+  subToObs() {
+    this.updateToApi$
+      .pipe(
+        debounceTime(300),
+        switchMap(() => this.updateSurvey())
+      )
+      .subscribe(res => {
+        console.log(res);
+      });
+  }
+  //
+
+  updateSurvey() {
+    console.log('updating');
+
+    const object: Update = {
+      Title: this.invoiceForm.getRawValue().title,
+      Questions: this.invoiceForm.getRawValue().questions,
+      id: this.id
+    };
+    return this.surveyService.updateSurvey(object);
+  }
+  // updateSurvey(): void {
+  //   const object: Update = {
+  //     Title: this.invoiceForm.getRawValue().title,
+  //     Questions: this.invoiceForm.getRawValue().questions,
+  //     id: this.id
+  //   };
+  //   // console.log(object);
+  //   this.createSurveySub = this.surveyService.updateSurvey(object).subscribe(
+  //     data => {
+  //       // console.log(data);
+  //       this.router.navigate(['/app/admin/survey-dashboard']);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
+  showBackButton(): void {
     this.sharedService.showBackButton(true);
   }
   saveSurveyOnClick(): void {
@@ -180,6 +228,11 @@ export class SurveyCreatorComponent
     this.dialog.open(SendSurveyDialogComponent, {
       data: { id: this.id, content: this.invoiceForm.getRawValue() }
     });
+  }
+  openMoveQuestionDialog(): void {
+    // this.dialog.open(MoveQuestionDialogComponent, {
+    //   data: { content: this.invoiceForm.getRawValue().questions }
+    // });
   }
   getSurvey(): void {
     this.activatedRoute.data.map(data => data.cres).subscribe(
@@ -623,11 +676,11 @@ export class SurveyCreatorComponent
   }
   onSubmit(): void {
     // console.log(JSON.stringify(this.invoiceForm.getRawValue()));
-    if (this.id) {
-      this.updateSurvey();
-    } else {
-      this.createSurvey();
-    }
+    // if (this.id) {
+    //   this.updateSurvey();
+    // } else {
+    //   this.createSurvey();
+    // }
   }
 
   createSurvey(): void {
@@ -643,23 +696,23 @@ export class SurveyCreatorComponent
         }
       );
   }
-  updateSurvey(): void {
-    const object: Update = {
-      Title: this.invoiceForm.getRawValue().title,
-      Questions: this.invoiceForm.getRawValue().questions,
-      id: this.id
-    };
-    // console.log(object);
-    this.createSurveySub = this.surveyService.updateSurvey(object).subscribe(
-      data => {
-        // console.log(data);
-        this.router.navigate(['/app/admin/survey-dashboard']);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+  // updateSurvey(): void {
+  //   const object: Update = {
+  //     Title: this.invoiceForm.getRawValue().title,
+  //     Questions: this.invoiceForm.getRawValue().questions,
+  //     id: this.id
+  //   };
+  //   // console.log(object);
+  //   this.createSurveySub = this.surveyService.updateSurvey(object).subscribe(
+  //     data => {
+  //       // console.log(data);
+  //       this.router.navigate(['/app/admin/survey-dashboard']);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
   showSurvey(): void {
     const string: string =
       'http://localhost:4200/app/admin/survey/viewform/' + this.id;

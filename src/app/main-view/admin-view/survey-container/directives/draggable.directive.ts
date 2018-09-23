@@ -57,14 +57,8 @@ export class DraggableDirective implements AfterContentInit {
     if (event.button !== 0) {
       return;
     }
-    // if(event.target)
-    // console.log(this.grippable.element.nativeElement.className);
-    // console.log(this.grippable.element.nativeElement, event.target);
-
     if (this.grippable.element.nativeElement === event.target) {
-      // event.stopPropagation();
       this.mouseDownElement = event.target;
-      event.preventDefault();
       this.pointerId = event.pointerId;
 
       this.dragging = true;
