@@ -18,6 +18,11 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             await _context.SaveChangesAsync ();
         }
 
+        public int CountAllQuestionAnswersByQuestionId(int surveyAnswerId, int id)
+        {
+            return _context.QuestionsAnswers.Where(x => x.SurveyAnswerId == surveyAnswerId).Count(x => x.Id == id);
+        }
+
         public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyAnswerIdInOrderAsync (int surveyAnswerId, bool isTracking = true) {
             if (isTracking)
                 return await Task.FromResult (_context.QuestionsAnswers.AsTracking ().Where (x => x.SurveyAnswerId == surveyAnswerId).OrderBy (q => q.QuestionPosition));

@@ -22,6 +22,13 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.SaveChangesAsync ();
         }
 
+        public async Task<QuestionReport> GetByIdAsync (int id, bool isTracking = true)
+        {
+            if(isTracking)
+                return await _context.QuestionReports.AsTracking().SingleOrDefaultAsync ();
+            return await _context.QuestionReports.AsNoTracking().SingleOrDefaultAsync ();
+        }
+
         public async Task<QuestionReport> GetBySurveyReportAsync(int surveyReportId, int id, bool isTracking = true)
         {
             if(isTracking)
