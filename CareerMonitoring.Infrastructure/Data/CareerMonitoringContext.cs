@@ -21,9 +21,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<RowAnswer> RowAnswers { get; set; }
         public DbSet<SurveyReport> SurveyReports { get; set; }
         public DbSet<QuestionReport> QuestionReports { get; set; }
-        public DbSet<ChoiceOptionReport> ChoiceOptionReports { get; set; }
-        public DbSet<RowChoiceOptionReport> RowChoiceOptionReports { get; set; }
-        public DbSet<RowReport> RowReports { get; set; }
+        public DbSet<DataSet> DataSets { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
@@ -136,13 +134,9 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .WithOne (b => b.SurveyReport)
                 .HasForeignKey (s => s.SurveyReportId);
             modelBuilder.Entity<QuestionReport> ()
-                .HasMany (a => a.ChoiceOptionReports)
+                .HasMany (a => a.DataSets)
                 .WithOne (b => b.QuestionReport)
                 .HasForeignKey (s => s.QuestionReportId);
-            modelBuilder.Entity<RowReport> ()
-                .HasMany (a => a.RowChoiceOptionReports)
-                .WithOne (b => b.RowReport)
-                .HasForeignKey (s => s.RowReportId);
         }
     }
 }
