@@ -47,7 +47,10 @@ export class QuestionData {
   QuestionPosition: number;
   FieldData: FormArray;
 }
-
+export class MoveDialogData {
+  content: string;
+  QuestionPosition: number;
+}
 export class ChoiceOptions {
   viewValue: string;
   value: boolean;

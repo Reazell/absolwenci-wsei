@@ -12,13 +12,6 @@
       border-bottom: 1px solid $grey;
       user-select: none;
 
-      &.sortable.dragging {
-        visibility: hidden;
-        // background: none;
-        border: 1px dashed black;
-        color: transparent;
-      }
-
       .dialog-grip {
         display: flex;
         justify-content: center;
@@ -35,10 +28,13 @@
         height: 100%;
         .info {
           display: flex;
-          align-items: center;
+          justify-content: center;
+          flex-direction: column;
           flex: 1;
           height: 100%;
-          span {
+          .section{
+            font-size: 12px;
+            color: grey;
           }
         }
         .dialog-controls {
@@ -64,22 +60,5 @@
   #dialog-menu {
     display: flex;
     justify-content: flex-end;
-  }
-}
-
-.box {
-  background: #bada55;
-  border: 1px solid black;
-  padding: 10px 20px;
-  display: inline-block;
-
-  &.dragging {
-    background: coral;
-  }
-
-  &.sortable.dragging {
-    background: none;
-    border: 1px dashed black;
-    color: transparent;
   }
 }

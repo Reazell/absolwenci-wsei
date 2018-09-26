@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { SortEvent } from '../../directives/sortable-list.directive';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-move-question-dialog',
@@ -9,23 +8,19 @@ import { SortEvent } from '../../directives/sortable-list.directive';
 })
 export class MoveQuestionDialogComponent implements OnInit {
   length: number;
-
+  defaultQuestion = 'Brak pytania';
   constructor(
-    private dialog: MatDialogRef<MoveQuestionDialogComponent>,
+    // private dialog: MatDialogRef<MoveQuestionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.length = this.data.content.length - 1;
+    this.length = this.data.content.length;
   }
 
   ngOnInit() {
-    console.log(this.data);
+    // console.log(this.data);
+    this.see(this.data.content);
   }
-
-  sort(event: SortEvent) {
-    const current = this.data.content[event.currentIndex];
-    const swapWith = this.data.content[event.newIndex];
-
-    this.data.content[event.newIndex] = current;
-    this.data.content[event.currentIndex] = swapWith;
+  see(x) {
+    // console.log(x);
   }
 }

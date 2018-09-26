@@ -12,22 +12,25 @@ export class ManageBarComponent implements OnInit {
 
   ngOnInit() {}
   redirectToNew(): void {
-    // [routerLink]="['/app/admin/survey/create/']"
     this.surveyService.isCreatorLoading(true);
-    this.router.navigateByUrl('/app/admin/survey/create/');
-    //   const obj = {
-    //     title: '',
-    //     questions: []
-    //   };
-    //   this.surveyService.createSurvey(obj).subscribe(
-    //     data => {
-    //       console.log(data);
-    //       const string: string = '/app/admin/survey/create/' + data.id;
-    //       this.router.navigateByUrl(string);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     }
-    //   );
+    const obj = {
+      title: '',
+      questions: []
+    };
+    this.surveyService.createSurvey(obj).subscribe(
+      data => {
+        console.log(data);
+        const string: string = '/app/admin/survey/create/' + data;
+        this.router.navigateByUrl(string);
+        this.surveyService.isCreatorLoading(false);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  searchSurveyList(searchString: string): void {
+    this.surveyService.filterSurveyList(searchString);
   }
 }

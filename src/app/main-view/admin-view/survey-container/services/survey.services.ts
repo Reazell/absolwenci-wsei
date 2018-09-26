@@ -15,6 +15,7 @@ export class SurveyService {
   );
   openingCreatorLoader: Subject<boolean> = new Subject<boolean>();
   // openedSurvey: any;
+  filterSurveyListInput: Subject<string> = new Subject<string>();
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   saveSurveyAnswer(survey, id) {
@@ -40,7 +41,6 @@ export class SurveyService {
       });
   }
   createSurvey(survey) {
-    console.log(survey);
     return this.http
       .post<any>(this.config.apiUrl + '/survey/surveys', {
         Title: survey.title,
@@ -51,9 +51,8 @@ export class SurveyService {
       });
   }
   updateSurvey(object: Update): Observable<any> {
-    console.log(JSON.stringify(object.id));
     return this.http
-      .post<Update>(this.config.apiUrl + '/survey/update', {
+      .put<Update>(this.config.apiUrl + '/survey', {
         surveyId: object.id,
         Title: object.Title,
         Questions: object.Questions
@@ -95,8 +94,11 @@ export class SurveyService {
       this.savedSurveys.next(data);
     });
   }
-  isCreatorLoading(x) {
+  isCreatorLoading(x: boolean): void {
     this.openingCreatorLoader.next(x);
+  }
+  filterSurveyList(x: string): void {
+    this.filterSurveyListInput.next(x);
   }
   // openCreator(formGroup): void {
   //   this.openedSurvey = formGroup;

@@ -17,21 +17,31 @@ export class SurveyListComponent implements OnInit, OnDestroy {
   surveyArr: Survey[];
   constructor(private surveyService: SurveyService, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAllSurveys();
     this.isLoadingFromOutside();
+    this.filterSurveyList();
   }
-  saveSurveysFromApi() {
+  saveSurveysFromApi(): void {
     this.surveyService.saveSurveysFromApi();
   }
-  isLoadingFromOutside() {
+  filterSurveyList(): void {
+    this.surveyService.filterSurveyListInput.subscribe(data => {
+      // this.surveyArr.filter(filtered => console.log(filtered));
+      this.surveyArr.filter(sth => {
+        console.log(data);
+        console.log(sth);
+      });
+    });
+  }
+  isLoadingFromOutside(): void {
     this.isLoadingSub = this.surveyService.openingCreatorLoader.subscribe(
       data => {
         this.loading = data;
       }
     );
   }
-  getAllSurveys() {
+  getAllSurveys(): void {
     this.saveSurveysFromApi();
     this.getAllSurveysSub = this.surveyService.savedSurveys.subscribe(
       data => {
@@ -44,16 +54,26 @@ export class SurveyListComponent implements OnInit, OnDestroy {
       }
     );
   }
-  openCreator(survey) {
+  // subToObs() {
+  //   this.updateToApi$
+  //     .pipe(
+  //       debounceTime(300),
+  //       switchMap(() => this.updateSurvey())
+  //     )
+  //     .subscribe(res => {
+  //       console.log(res);
+  //     });
+  // }
+  openCreator(survey): void {
     this.loading = true;
     this.router.navigateByUrl('/app/admin/survey/create/' + survey.id);
   }
-  openResult(survey) {
+  openResult(survey): void {
     this.loading = true;
     this.router.navigateByUrl('/app/admin/survey/result/' + survey.id);
   }
 
-  deleteSurvey(id) {
+  deleteSurvey(id: number): void {
     this.surveyService.deleteSurvey(id).subscribe(
       () => {
         this.saveSurveysFromApi();
@@ -63,7 +83,7 @@ export class SurveyListComponent implements OnInit, OnDestroy {
       }
     );
   }
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.loading = false;
   }
 }

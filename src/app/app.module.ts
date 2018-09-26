@@ -27,6 +27,7 @@ import {
   faTrash,
   faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
+import { SortablejsModule } from 'angular-sortablejs';
 import { AppComponent } from './app.component';
 import { AppConfig } from './app.config';
 import { AppRoutingModule } from './app.routing';
@@ -75,7 +76,8 @@ library.add(
     AppRoutingModule,
     SharedModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SortablejsModule.forRoot({ animation: 150 }),
   ],
   providers: [
     AuthenticationService,

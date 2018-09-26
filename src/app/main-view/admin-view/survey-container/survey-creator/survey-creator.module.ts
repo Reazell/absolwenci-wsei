@@ -8,6 +8,7 @@ import {
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SortablejsModule } from '../../../../../../node_modules/angular-sortablejs/dist';
 import { MaterialsModule } from '../../../../materials/materials.module';
 import { DraggableModule } from '../directives/draggable.module';
 import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
@@ -28,7 +29,8 @@ import { SurveyCreatorRoutingModule } from './survey-creator.routing';
     FontAwesomeModule,
     DraggableModule,
     ProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    SortablejsModule
   ],
   declarations: [
     SurveyCreatorComponent,
