@@ -128,7 +128,8 @@ namespace CareerMonitoring.Infrastructure.Services {
                     {
                         foreach(var fieldDataAnswer in questionAnswer.FieldDataAnswers)
                         {
-                            var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id, questionAnswer.Select, questionAnswer.Content);
+                            var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id,
+                                questionAnswer.Select, questionAnswer.Content);
                             foreach(var dataSet in questionReport.DataSets)
                             {
                                 dataSet.AddData(fieldDataAnswer.Input);
@@ -141,7 +142,8 @@ namespace CareerMonitoring.Infrastructure.Services {
                     {
                         foreach(var fieldDataAnswer in questionAnswer.FieldDataAnswers)
                         {
-                            var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id, questionAnswer.Select, questionAnswer.Content);
+                            var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id,
+                                questionAnswer.Select, questionAnswer.Content);
                             foreach(var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers){
                                 foreach(var dataSet in questionReport.DataSets)
                                 {
@@ -149,7 +151,8 @@ namespace CareerMonitoring.Infrastructure.Services {
                                     {
                                         foreach(var data in dataSet._data)
                                         {
-                                            var Data = dataSet._data.Where(i => i.IndexOf(data) == choiceOptionAnswer.OptionPosition).Single();
+                                            var Data = dataSet._data.Where(i =>
+                                                i.IndexOf(data) == choiceOptionAnswer.OptionPosition).Single();
                                             int counter = Int32.Parse(Data);
                                             counter++;
                                             Data = counter.ToString();

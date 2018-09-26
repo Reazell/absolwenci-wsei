@@ -36,14 +36,15 @@ namespace CareerMonitoring.Api.Controllers {
             if(command.Questions == null)
                 return BadRequest ("Cannot create empty survey");
             foreach (var question in command.Questions) {
-                int questionId = await _surveyService.AddQuestionToSurveyAsync (surveyId, question.QuestionPosition, question.Content, question.Select);
+                int questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
+                    question.Content, question.Select);
                 if(question.FieldData == null)
                     return BadRequest ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }
             }
-            return StatusCode (201);
+            return Json(surveyId);
         }
 
         [HttpPut]
@@ -54,7 +55,8 @@ namespace CareerMonitoring.Api.Controllers {
             if(command.Questions == null)
                 return BadRequest ("Cannot create empty survey");
             foreach (var question in command.Questions) {
-                int questionId = await _surveyService.AddQuestionToSurveyAsync (surveyId, question.QuestionPosition, question.Content, question.Select);
+                int questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
+                    question.Content, question.Select);
                 if(question.FieldData == null)
                     return BadRequest ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
@@ -74,7 +76,8 @@ namespace CareerMonitoring.Api.Controllers {
             if (select == "single-grid" || select == "multiple-grid")
                 await AddRowsAsync(fieldDataToAdd, select, fieldDataId);
 
-            else if(select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" || select == "single-grid" || select == "multiple-grid")
+            else if (select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" ||
+                     select == "single-grid" || select == "multiple-grid")
                 await AddChoiceOptionsAsync(fieldDataToAdd, select, fieldDataId);
             else
                 await Task.CompletedTask;
@@ -84,7 +87,8 @@ namespace CareerMonitoring.Api.Controllers {
             if(fieldDataToAdd.ChoiceOptions != null){
                 foreach (var choiceOption in fieldDataToAdd.ChoiceOptions)
                 {
-                    await _surveyService.AddChoiceOptionsAsync (fieldDataId, choiceOption.OptionPosition, choiceOption.Value, choiceOption.ViewValue);
+                    await _surveyService.AddChoiceOptionsAsync(fieldDataId, choiceOption.OptionPosition,
+                        choiceOption.Value, choiceOption.ViewValue);
                 }
             }
         }
@@ -99,45 +103,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        // private async Task UpdateChoiceOptionsAndRowsAsync (int questionId, string input, string select, int minValue,
-        // int maxValue, string minLabel, string maxLabel, FieldDataToAdd fieldDataToAdd, ICollection<ChoiceOptionToAdd> choiceOptionsToAdd, ICollection<RowToAdd> rowsToAdd)
-        // {
-        //     int fieldDataId = await _surveyService.UpdateFieldDataForQuestionAsync (questionId,
-        //         fieldDataToAdd.Input,
-        //         fieldDataToAdd.MinValue,
-        //         fieldDataToAdd.MaxValue,
-        //         fieldDataToAdd.MinLabel,
-        //         fieldDataToAdd.MaxLabel,
-        //         choiceOptionsToAdd,
-        //         rowsToAdd);
-        //     if (select == "single-grid" || select == "multiple-grid")
-        //         await AddRowsAsync(fieldDataToAdd, select, fieldDataId);
-
-        //     else if(select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" || select == "single-grid" || select == "multiple-grid")
-        //         await AddChoiceOptionsAsync(fieldDataToAdd, select, fieldDataId);
-        //     else
-        //         await Task.CompletedTask;
-        // }
-
-        // private async Task UpdateChoiceOptionsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
-        // {
-        //     if(fieldDataToAdd.ChoiceOptions != null){
-        //         foreach (var choiceOption in fieldDataToAdd.ChoiceOptions)
-        //         {
-        //             await _surveyService.UpdateChoiceOptionsAsync (fieldDataId, choiceOption.OptionPosition, choiceOption.Value, choiceOption.ViewValue);
-        //         }
-        //     }
-        // }
-
-        // private async Task UpdateRowsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
-        // {
-        //     if(fieldDataToAdd.Rows == null)
-        //         await Task.CompletedTask;
-        //     foreach (var row in fieldDataToAdd.Rows)
-        //     {
-        //         await _surveyService.UpdateRowAsync (fieldDataId, row.RowPosition, row.Input);
-        //     }
-        // }
+        
 
         [HttpDelete ("{surveyId}")]
         public async Task<IActionResult> DeleteSurvey (int surveyId)
