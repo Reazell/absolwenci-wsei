@@ -28,6 +28,12 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await Task.FromResult(_context.ChoiceOptionsAnswers.AsNoTracking ().Where(x => x.FieldDataAnswerId == fieldDataAnswerId).OrderBy(q => q.OptionPosition));
         }
 
+        public int CountMarkedByOptionPositionAsync(int fieldDataAnswerId, int optionPosition)
+        {
+            return _context.ChoiceOptionsAnswers.Where(x => x.Value == true && x.OptionPosition == optionPosition)
+                .Count(x => x.FieldDataAnswerId == fieldDataAnswerId);
+        }
+
         public async Task UpdateAsync(ChoiceOptionAnswer choiceOptionAnswer)
         {
             _context.ChoiceOptionsAnswers.Update (choiceOptionAnswer);

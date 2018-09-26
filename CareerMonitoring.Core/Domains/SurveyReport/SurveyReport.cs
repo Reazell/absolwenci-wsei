@@ -17,6 +17,7 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
         public SurveyReport (int surveyId, string surveyTitle){
             SurveyId = surveyId;
             SurveyTitle = surveyTitle;
+            CreatedAt = DateTime.UtcNow;
         }
 
         public void AddQuestionReport (QuestionReport questionReport)

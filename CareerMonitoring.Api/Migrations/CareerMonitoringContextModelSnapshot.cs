@@ -282,8 +282,6 @@ namespace CareerMonitoring.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ColoursList");
-
                     b.Property<string>("Data");
 
                     b.Property<string>("Label");

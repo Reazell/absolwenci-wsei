@@ -50,7 +50,37 @@ namespace CareerMonitoring.Infrastructure.Repositories
             .ThenInclude(x => x.RowChoiceOptionAnswers)
             .SingleOrDefaultAsync (x => x.Id == id);
         }
-
+        
+        public async Task<SurveyAnswer> GetBySurveyIdWithQuestionsAsync(int surveyId, bool isTracking = true)
+        {
+            if (isTracking)
+            {
+                return await _context
+                    .SurveyAnswers
+                    .AsTracking ()
+                    .Where(x => x.SurveyId == surveyId)
+                    .Include(x => x.QuestionsAnswers)
+                    .ThenInclude(x => x.FieldDataAnswers)
+                    .ThenInclude(x => x.ChoiceOptionAnswers)
+                    .Include(x => x.QuestionsAnswers)
+                    .ThenInclude(x => x.FieldDataAnswers)
+                    .ThenInclude(x => x.RowsAnswers)
+                    .ThenInclude(x => x.RowChoiceOptionAnswers)
+                    .SingleOrDefaultAsync ();
+            }
+            return await _context.SurveyAnswers
+                .AsNoTracking ()
+                .Where(x => x.SurveyId == surveyId)
+                .Include(x => x.QuestionsAnswers)
+                .ThenInclude(x => x.FieldDataAnswers)
+                .ThenInclude(x => x.ChoiceOptionAnswers)
+                .Include(x => x.QuestionsAnswers)
+                .ThenInclude(x => x.FieldDataAnswers)
+                .ThenInclude(x => x.RowsAnswers)
+                .ThenInclude(x => x.RowChoiceOptionAnswers)
+                .SingleOrDefaultAsync ();
+        }
+        
         public async Task<SurveyAnswer> GetBySurveyIdAsync (int surveyId, bool isTracking = true)
         {
             if(isTracking){
@@ -140,9 +170,9 @@ namespace CareerMonitoring.Infrastructure.Repositories
             .ToList ());
         }
 
-        public int CountAllSurveyAnswersBySurveyIdAsync(int surveyId)
+        public async Task<int> CountAllSurveyAnswersBySurveyIdAsync(int surveyId)
         {
-            return  _context.SurveyAnswers.Count(x => x.SurveyId == surveyId);
+            return  await _context.SurveyAnswers.CountAsync(x => x.SurveyId == surveyId);
         }
 
         public async Task<IEnumerable<SurveyAnswer>> GetAllWithQuestionsAsync(bool isTracking = true)

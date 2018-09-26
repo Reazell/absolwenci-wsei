@@ -20,6 +20,5 @@ namespace CareerMonitoring.Core.Domains.SurveysAnswers {
         public void AddQuestionAnswer (QuestionAnswer questionAnswer) {
             QuestionsAnswers.Add(questionAnswer);
         }
-
     }
 }

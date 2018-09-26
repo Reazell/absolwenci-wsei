@@ -25,15 +25,15 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<QuestionReport> GetByIdAsync (int id, bool isTracking = true)
         {
             if(isTracking)
-                return await _context.QuestionReports.AsTracking().SingleOrDefaultAsync ();
-            return await _context.QuestionReports.AsNoTracking().SingleOrDefaultAsync ();
+                return await _context.QuestionReports.AsTracking().SingleOrDefaultAsync (x => x.Id == id);
+            return await _context.QuestionReports.AsNoTracking().SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public async Task<QuestionReport> GetBySurveyReportAsync(int surveyReportId, int id, bool isTracking = true)
+        public async Task<QuestionReport> GetBySurveyReportAsync(int surveyReportId, string content, string select, bool isTracking = true)
         {
             if(isTracking)
-                return await _context.QuestionReports.AsTracking().Where(x => x.SurveyReportId == surveyReportId).Where(x => x.Id == id).SingleOrDefaultAsync ();
-            return await _context.QuestionReports.AsNoTracking().Where(x => x.SurveyReportId == surveyReportId).Where(x => x.Id == id).SingleOrDefaultAsync ();
+                return await _context.QuestionReports.AsTracking().Where(x => x.SurveyReportId == surveyReportId).Where(x => x.Content == content && x.Select == select).SingleOrDefaultAsync ();
+            return await _context.QuestionReports.AsNoTracking().Where(x => x.SurveyReportId == surveyReportId).Where(x => x.Content == content && x.Select == select).SingleOrDefaultAsync ();
         }
 
         public async Task UpdateAsync(QuestionReport questionReport)

@@ -18,8 +18,7 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
         public int QuestionReportId { get; private set; }
         public QuestionReport QuestionReport { get; private set; }
 
-        private DataSet () {}
-
+        public DataSet () { }
         public DataSet (string label)
         {
             Label = label;
