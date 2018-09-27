@@ -227,7 +227,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     array.forEach(el => {
       const obj: MoveDialogData = {
         content: el.content,
-        QuestionPosition: el.QuestionPosition
+        position: el.QuestionPosition
       };
       dialogArr.push(obj);
     });
@@ -241,16 +241,60 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       }
     });
   }
+  openMoveControlDialog(question): void {
+    console.log(question.getRawValue().FieldData[0].choiceOptions);
+    const array: ChoiceOptions[] = question.getRawValue().FieldData[0]
+      .choiceOptions;
+    const dialogArr: MoveDialogData[] = [];
+    array.forEach(el => {
+      const obj: MoveDialogData = {
+        content: el.viewValue,
+        position: el.optionPosition
+      };
+      dialogArr.push(obj);
+    });
+    const dialogRef = this.dialog.open(MoveQuestionDialogComponent, {
+      data: { content: dialogArr }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        console.log(res);
+
+        this.setControlPositionsOnMove(res, question);
+        // this.updateSurveySubject();
+      }
+    });
+  }
+
+  setPositionOnMove(array): void {
+    const moveArr: FormArray = array;
+    const clonedArr: FormArray = cloneDeep(moveArr);
+    const length: number = moveArr.length;
+  }
+  setControlPositionsOnMove(res, question): void {
+    const controlArr: FormArray =
+      question.controls.FieldData.controls[0].controls.choiceOptions;
+    const clonedArr: FormArray = cloneDeep(controlArr);
+    const length: number = controlArr.length;
+    const controlsList: AbstractControl[] = controlArr.controls;
+    const clonedControlsList: AbstractControl[] = clonedArr.controls;
+    for (let i = 0; i < length; i++) {
+      const id = res[i].position;
+      clonedArr.setControl(i, controlsList[id]);
+      clonedControlsList[i]['controls'].optionPosition.setValue(i);
+    }
+    question.controls.FieldData.controls[0].controls.choiceOptions = clonedArr;
+  }
   setQPositionsOnMove(res) {
     const questionArr: FormArray = this.invoiceForm.controls
       .questions as FormArray;
     const clonedArr: FormArray = cloneDeep(questionArr);
     const length: number = questionArr.length;
-    const questionList: AbstractControl[] = questionArr.controls;
+    const questionsList: AbstractControl[] = questionArr.controls;
     const clonedQuestionList: AbstractControl[] = clonedArr.controls;
     for (let i = 0; i < length; i++) {
-      const id = res[i].QuestionPosition;
-      clonedArr.setControl(i, questionList[id]);
+      const id = res[i].position;
+      clonedArr.setControl(i, questionsList[id]);
       clonedQuestionList[i]['controls'].QuestionPosition.setValue(i);
     }
     this.invoiceForm.controls.questions = clonedArr;

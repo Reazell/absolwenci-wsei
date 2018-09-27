@@ -1,16 +1,18 @@
 <form [formGroup]="invoiceForm">
-  <!-- <div id="section-name">
-    <span>sth</span>
+  <div id="section-name">
+    <span></span>
     <div id="menu">
-      <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="menu"></fa-icon>
-      <mat-menu #menu="matMenu" [overlapTrigger]="false">
-        <button mat-menu-item>Dodaj sekcję</button>
+      <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="form_menu"></fa-icon>
+      <mat-menu #form_menu="matMenu" [overlapTrigger]="false">
+        <!-- <button mat-menu-item>Dodaj sekcję</button>
         <button mat-menu-item>Duplikuj sekcję</button>
-        <button mat-menu-item>Przenieś sekcję</button>
-        <button mat-menu-item>Usuń sekcję</button>
+        <button mat-menu-item>Przenieś sekcję</button>-->
+        <button mat-menu-item>Lorem ipsum</button>
+        <button *ngIf="invoiceForm.controls['questions'].length > 1" mat-menu-item (click)="openMoveQuestionDialog()">Przenieś
+          pytania</button>
       </mat-menu>
     </div>
-  </div> -->
+  </div>
   <div id="form-title">
     <mat-form-field appearance="standard" id="title">
       <input matInput placeholder="Nazwa formularza" formControlName="title" autofocus (keyup)="updateSurveySubject()"
@@ -24,9 +26,14 @@
   <div id="questions-container" formArrayName="questions">
     <div *ngFor="let question of invoiceForm.controls['questions'].controls; let i = index" [formGroupName]="i" class="question-field">
       <div class="question-menu">
-        <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="Qmenu"></fa-icon>
-        <mat-menu #Qmenu="matMenu" [overlapTrigger]="false">
-          <button mat-menu-item (click)="openMoveQuestionDialog()">Przenieś pytanie</button>
+        <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="Fmenu"></fa-icon>
+        <mat-menu #Fmenu="matMenu" [overlapTrigger]="false" [ngSwitch]="question.value.select">
+          <button mat-menu-item (click)="openMoveControlDialog(question)" *ngIf="question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu'">Przenieś
+            opcje</button>
+          <button mat-menu-item (click)="openMoveControlDialog(question)" *ngIf="question.value.select === 'single-grid' || question.value.select === 'multiple-grid'">Przenieś
+            kolumny</button>
+          <button mat-menu-item (click)="openMoveControlDialog(question)" *ngIf="question.value.select === 'single-grid' || question.value.select === 'multiple-grid'">Przenieś
+            wiersze</button>
         </mat-menu>
       </div>
       <div class="question">
@@ -236,5 +243,5 @@
       </div>
     </div>
   </div>
-  <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+  <pre>{{invoiceForm.value | json }}</pre>
 </form>

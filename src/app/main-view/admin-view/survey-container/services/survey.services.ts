@@ -19,7 +19,12 @@ export class SurveyService {
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   saveSurveyAnswer(survey, id) {
-    console.log(survey);
+    const obj = {
+      SurveyTitle: survey.title,
+      SurveyId: id,
+      Questions: survey.questions
+    };
+    console.log(JSON.stringify(obj));
     return this.http
       .post<any>(this.config.apiUrl + '/surveyanswer/surveys', {
         SurveyTitle: survey.title,
@@ -84,7 +89,7 @@ export class SurveyService {
   }
   getSurveyReport(id: number): Observable<any> {
     return this.http
-      .get<any>(this.config.apiUrl + '/surveyscore/report/' + id)
+      .get<any>(this.config.apiUrl + '/surveyreport/' + id)
       .map(data => {
         return data;
       });

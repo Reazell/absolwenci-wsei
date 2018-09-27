@@ -49,7 +49,7 @@ export class QuestionData {
 }
 export class MoveDialogData {
   content: string;
-  QuestionPosition: number;
+  position: number;
 }
 export class ChoiceOptions {
   viewValue: string;

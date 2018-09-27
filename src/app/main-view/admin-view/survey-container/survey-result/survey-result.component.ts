@@ -177,9 +177,9 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
   getSurveyReport() {
     this.getResultsSub = this.surveyService.getSurveyReport(this.id).subscribe(
       data => {
-        this.sth = data.result;
-        this.createData();
-        console.log(data.result);
+        // this.sth = data.result;
+        // this.createData();
+        console.log(data);
       },
       error => {
         console.log(error);
