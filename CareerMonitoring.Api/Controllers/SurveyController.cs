@@ -11,9 +11,11 @@ namespace CareerMonitoring.Api.Controllers {
     //[Authorize]
     public class SurveyController : ApiUserController {
         private readonly ISurveyService _surveyService;
+        private readonly ISurveyReportService _surveyReportService;
 
-        public SurveyController (ISurveyService surveyService) {
+        public SurveyController (ISurveyService surveyService, ISurveyReportService surveyReportService) {
             _surveyService = surveyService;
+            _surveyReportService = surveyReportService;
         }
 
         [HttpGet ("{surveyId}")]
@@ -32,11 +34,11 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> CreateSurvey ([FromBody] SurveyToAdd command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            int surveyId = await _surveyService.CreateAsync (command.Title);
+            var surveyId = await _surveyService.CreateAsync (command.Title);
             if(command.Questions == null)
                 return BadRequest ("Cannot create empty survey");
             foreach (var question in command.Questions) {
-                int questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
+                var questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
                     question.Content, question.Select);
                 if(question.FieldData == null)
                     return BadRequest ("Question must contain FieldData");
@@ -44,6 +46,8 @@ namespace CareerMonitoring.Api.Controllers {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }
             }
+
+            await _surveyReportService.CreateAsync(surveyId, command.Title);
             return Json(surveyId);
         }
 
@@ -51,11 +55,11 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            int surveyId = await _surveyService.UpdateAsync (command.SurveyId, command.Title);
+            var surveyId = await _surveyService.UpdateAsync (command.SurveyId, command.Title);
             if(command.Questions == null)
                 return BadRequest ("Cannot create empty survey");
             foreach (var question in command.Questions) {
-                int questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
+                var questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
                     question.Content, question.Select);
                 if(question.FieldData == null)
                     return BadRequest ("Question must contain FieldData");
@@ -67,14 +71,16 @@ namespace CareerMonitoring.Api.Controllers {
         }
         private async Task AddChoiceOptionsAndRowsAsync (int questionId, string select, FieldDataToAdd fieldDataToAdd)
         {
-            int fieldDataId = await _surveyService.AddFieldDataToQuestionAsync (questionId,
+            var fieldDataId = await _surveyService.AddFieldDataToQuestionAsync (questionId,
                 fieldDataToAdd.Input,
                 fieldDataToAdd.MinValue,
                 fieldDataToAdd.MaxValue,
                 fieldDataToAdd.MinLabel,
                 fieldDataToAdd.MaxLabel);
-            if (select == "single-grid" || select == "multiple-grid")
+            if (select == "single-grid" || select == "multiple-grid"){
                 await AddRowsAsync(fieldDataToAdd, select, fieldDataId);
+                await AddChoiceOptionsAsync(fieldDataToAdd, select, fieldDataId);
+            }
 
             else if (select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" ||
                      select == "single-grid" || select == "multiple-grid")
@@ -85,10 +91,12 @@ namespace CareerMonitoring.Api.Controllers {
         private async Task AddChoiceOptionsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
         {
             if(fieldDataToAdd.ChoiceOptions != null){
+                var counter = 0; //temporary bugfix
                 foreach (var choiceOption in fieldDataToAdd.ChoiceOptions)
                 {
-                    await _surveyService.AddChoiceOptionsAsync(fieldDataId, choiceOption.OptionPosition,
+                    await _surveyService.AddChoiceOptionsAsync(fieldDataId, counter,
                         choiceOption.Value, choiceOption.ViewValue);
+                    counter++;
                 }
             }
         }
@@ -102,8 +110,6 @@ namespace CareerMonitoring.Api.Controllers {
                 await _surveyService.AddRowAsync (fieldDataId, row.RowPosition, row.Input);
             }
         }
-
-        
 
         [HttpDelete ("{surveyId}")]
         public async Task<IActionResult> DeleteSurvey (int surveyId)

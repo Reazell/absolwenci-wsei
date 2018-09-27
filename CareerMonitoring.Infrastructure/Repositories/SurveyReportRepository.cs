@@ -39,7 +39,7 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await _context.SurveyReports.AsNoTracking().Where(x => x.SurveyId == surveyId)
                 .SingleOrDefaultAsync();
         }
-        
+
         public async Task UpdateAsync(SurveyReport surveyReport)
         {
             _context.SurveyReports.Update (surveyReport);

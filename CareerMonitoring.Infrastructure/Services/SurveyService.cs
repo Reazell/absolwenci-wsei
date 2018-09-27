@@ -38,7 +38,9 @@ namespace CareerMonitoring.Infrastructure.Services {
             return survey.Id;
         }
 
-        public async Task<int> AddQuestionToSurveyAsync (int surveyId, int questionPosition, string content, string select) {
+        public async Task<int> AddQuestionToSurveyAsync(int surveyId, int questionPosition, string content,
+            string select)
+        {
             var survey = await _surveyRepository.GetByIdAsync (surveyId);
             var question = new Question (questionPosition, content, select);
             survey.AddQuestion (question);
@@ -46,7 +48,9 @@ namespace CareerMonitoring.Infrastructure.Services {
             return question.Id;
         }
 
-        public async Task<int> AddFieldDataToQuestionAsync (int questionId, string input, int minValue, int maxValue, string minLabel, string maxLabel) {
+        public async Task<int> AddFieldDataToQuestionAsync(int questionId, string input, int minValue, int maxValue,
+            string minLabel, string maxLabel)
+        {
             var question = await _questionRepository.GetByIdAsync (questionId);
             switch (question.Select) {
                 case "short-answer":

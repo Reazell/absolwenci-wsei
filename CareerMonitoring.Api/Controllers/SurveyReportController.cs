@@ -22,15 +22,8 @@ namespace CareerMonitoring.Api.Controllers
             _surveyReportRepository = surveyReportRepository;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateSurveyReport([FromBody] CreateSurveyReport command)
-        {
-            await _surveyReportService.CreateAsync(command.SurveyId, command.SurveyTitle);
-            return StatusCode(201);
-        }
-
         [HttpGet ("{surveyReportId}")]
-        public async Task<IActionResult> GetSurveyReport(int surveyReportId)
+        public async Task<JsonResult> GetSurveyReport(int surveyReportId)
         {
             var surveyReport = await _surveyReportRepository.GetByIdAsync(surveyReportId);
             return Json(surveyReport);

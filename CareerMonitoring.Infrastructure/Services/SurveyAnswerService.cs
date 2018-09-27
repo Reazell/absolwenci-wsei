@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
@@ -16,6 +18,10 @@ namespace CareerMonitoring.Infrastructure.Services
         private readonly IChoiceOptionAnswerRepository _choiceOptionAnswerRepository;
         private readonly IRowAnswerRepository _rowAnswerRepository;
         private readonly IRowChoiceOptionAnswerRepository _rowChoiceOptionAnswerRepository;
+        private readonly IQuestionReportRepository _questionReportRepository;
+        private readonly ISurveyReportRepository _surveyReportRepository;
+        private readonly IDataSetRepository _dataSetRepository;
+        private readonly ISurveyReportService _surveyReportService;
 
 
         public SurveyAnswerService (IMapper mapper,
@@ -24,7 +30,11 @@ namespace CareerMonitoring.Infrastructure.Services
         IFieldDataAnswerRepository fieldDataAnswerRepository,
         IChoiceOptionAnswerRepository choiceOptionAnswerRepository,
         IRowAnswerRepository rowAnswerRepository,
-        IRowChoiceOptionAnswerRepository rowChoiceOptionAnswerRepository)
+        IRowChoiceOptionAnswerRepository rowChoiceOptionAnswerRepository,
+        IQuestionReportRepository questionReportRepository,
+        ISurveyReportRepository surveyReportRepository,
+        IDataSetRepository dataSetRepository,
+        ISurveyReportService surveyReportService)
         {
             _mapper = mapper;
             _surveyAnswerRepository = surveyAnswerRepository;
@@ -33,16 +43,23 @@ namespace CareerMonitoring.Infrastructure.Services
             _choiceOptionAnswerRepository = choiceOptionAnswerRepository;
             _rowAnswerRepository = rowAnswerRepository;
             _rowChoiceOptionAnswerRepository = rowChoiceOptionAnswerRepository;
+            _questionReportRepository = questionReportRepository;
+            _surveyReportRepository = surveyReportRepository;
+            _dataSetRepository = dataSetRepository;
+            _surveyReportService = surveyReportService;
         }
 
         public async Task<int> CreateAsync(string surveyTitle, int surveyId)
         {
             var surveyAnswer = new SurveyAnswer (surveyTitle, surveyId);
             await _surveyAnswerRepository.AddAsync (surveyAnswer);
+            var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
+            surveyReport.AddAnswer();
             return surveyAnswer.Id;
         }
 
-        public async Task<int> AddQuestionAnswerToSurveyAnswerAsync (int surveyAnswerId, int questionPosition, string content, string select)
+        public async Task<int> AddQuestionAnswerToSurveyAnswerAsync(int surveyAnswerId, int questionPosition,
+            string content, string select)
         {
             var surveyAnswer = await _surveyAnswerRepository.GetByIdAsync (surveyAnswerId);
             var questionAnswer = new QuestionAnswer (questionPosition, content, select);
@@ -51,8 +68,10 @@ namespace CareerMonitoring.Infrastructure.Services
             return questionAnswer.Id;
         }
 
-        public async Task<int> AddFieldDataAnswerToQuestionAnswerAsync (int questionAnswerId, string input, string minLabel, string maxLabel)
+        public async Task<int> AddFieldDataAnswerToQuestionAnswerAsync(int surveyId, int questionAnswerId, string input,
+            string minLabel, string maxLabel)
         {
+            var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
             var questionAnswer = await _questionAnswerRepository.GetByIdAsync (questionAnswerId);
             switch(questionAnswer.Select)
             {
@@ -61,6 +80,13 @@ namespace CareerMonitoring.Infrastructure.Services
                     var fieldDataAnswer = new FieldDataAnswer(input);
                     questionAnswer.AddFieldDataAnswer(fieldDataAnswer);
                     await _fieldDataAnswerRepository.AddAsync (fieldDataAnswer);
+                    var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id,
+                        questionAnswer.Content, questionAnswer.Select);
+                    foreach (var dataSet in questionReport.DataSets)
+                    {
+                        dataSet.AddData(fieldDataAnswer.Input);
+                        await _dataSetRepository.UpdateAsync(dataSet);
+                    }
                     return fieldDataAnswer.Id;
                 }
                 case "long-answer":
@@ -68,6 +94,14 @@ namespace CareerMonitoring.Infrastructure.Services
                     var fieldDataAnswer = new FieldDataAnswer(input);
                     questionAnswer.AddFieldDataAnswer(fieldDataAnswer);
                     await _fieldDataAnswerRepository.AddAsync (fieldDataAnswer);
+                    var questionReport =
+                        await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id, questionAnswer.Content,
+                            questionAnswer.Select);
+                    foreach (var dataSet in questionReport.DataSets)
+                    {
+                        dataSet.AddData(fieldDataAnswer.Input);
+                        await _dataSetRepository.UpdateAsync(dataSet);
+                    }
                     return fieldDataAnswer.Id;
                 }
                 case "single-choice":
@@ -117,20 +151,55 @@ namespace CareerMonitoring.Infrastructure.Services
             }
         }
 
-        public async Task AddChoiceOptionsAnswerToFieldDataAnswerAsync (int fieldDataAnswerId, int optionPosition, bool value, string viewValue)
+        public async Task AddChoiceOptionsAnswerToFieldDataAnswerAsync(int fieldDataAnswerId, int optionPosition,
+            bool value, string viewValue)
         {
             var fieldDataAnswer = await _fieldDataAnswerRepository.GetByIdAsync (fieldDataAnswerId);
             var choiceOptionAnswer = new ChoiceOptionAnswer(optionPosition, value, viewValue);
             fieldDataAnswer.AddChoiceOptionAnswer (choiceOptionAnswer);
             await _choiceOptionAnswerRepository.AddAsync (choiceOptionAnswer);
+            var questionAnswer = await _questionAnswerRepository.GetByIdAsync(fieldDataAnswer.QuestionAnswerId);
+            if (choiceOptionAnswer.Value == true)
+            {
+                var questionReport =
+                    await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content,
+                        questionAnswer.Select);
+                foreach (var dataSet in questionReport.DataSets)
+                {
+                    var index = dataSet._data[choiceOptionAnswer.OptionPosition];
+                    var labelCounter = int.Parse(index);
+                    labelCounter++;
+                    dataSet._data[choiceOptionAnswer.OptionPosition] = labelCounter.ToString();
+                    await _dataSetRepository.UpdateAsync(dataSet);
+                }
+            }
         }
 
-        public async Task AddChoiceOptionAnswerToRowAnswerAsync (int rowAnswerId, int optionPosition, bool value, string viewValue)
+        public async Task AddChoiceOptionAnswerToRowAnswerAsync(int rowAnswerId, int optionPosition, bool value,
+            string viewValue)
         {
             var rowAnswer = await _rowAnswerRepository.GetByIdAsync (rowAnswerId);
+            var fieldDataAnswer = await _fieldDataAnswerRepository.GetByIdAsync(rowAnswer.FieldDataAnswerId);
             var rowChoiceOptionAnswer = new RowChoiceOptionAnswer(optionPosition, value, viewValue);
             rowAnswer.AddChoiceOptionAnswer (rowChoiceOptionAnswer);
             await _rowChoiceOptionAnswerRepository.AddAsync (rowChoiceOptionAnswer);
+            var questionAnswer = await _questionAnswerRepository.GetByIdAsync(fieldDataAnswer.QuestionAnswerId);
+            if (rowChoiceOptionAnswer.Value == true)
+            {
+                var questionReport =
+                    await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content,
+                        questionAnswer.Select);
+                foreach (var dataSet in questionReport.DataSets)
+                {
+                    if(dataSet.Label == rowChoiceOptionAnswer.ViewValue){
+                        var index = dataSet._data[rowChoiceOptionAnswer.RowAnswer.RowPosition];
+                        var labelCounter = int.Parse(index);
+                        labelCounter++;
+                        dataSet._data[rowAnswer.RowPosition] = labelCounter.ToString();
+                        await _dataSetRepository.UpdateAsync(dataSet);
+                    }
+                }
+            }
         }
 
         public async Task<int> AddRowAnswerAsync (int fieldDataId, int rowPosition, string input)
@@ -144,7 +213,7 @@ namespace CareerMonitoring.Infrastructure.Services
 
         public async Task<IEnumerable<SurveyAnswer>> GetAllAsync()
         {
-            IEnumerable<SurveyAnswer> surveyAnswers = await _surveyAnswerRepository.GetAllWithQuestionsAsync ();
+            var surveyAnswers = await _surveyAnswerRepository.GetAllWithQuestionsAsync ();
             return surveyAnswers;
         }
 

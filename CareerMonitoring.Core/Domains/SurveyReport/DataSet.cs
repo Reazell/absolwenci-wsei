@@ -9,7 +9,7 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
         public int Id { get; private set; }
         public string Label { get; private set; }
         [NotMapped]
-        public ICollection<string> _data { get; set; } = new List<string>();
+        public List<string> _data { get; set; } = new List<string>();
         public string Data
         {
             get { return string.Join(",", _data); }

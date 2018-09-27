@@ -1,6 +1,3 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.SurveyReport;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
@@ -13,23 +10,17 @@ namespace CareerMonitoring.Infrastructure.Services {
         private readonly ISurveyAnswerRepository _surveyAnswerRepository;
         private readonly IQuestionReportRepository _questionReportRepository;
         private readonly IDataSetRepository _dataSetRepository;
-        private readonly IChoiceOptionAnswerRepository _choiceOptionAnswerRepository;
-        private readonly IQuestionAnswerRepository _questionAnswerRepository;
 
         public SurveyReportService (ISurveyReportRepository surveyReportRepository,
             ISurveyRepository surveyRepository,
             ISurveyAnswerRepository surveyAnswerRepository,
             IDataSetRepository dataSetRepository,
-            IQuestionReportRepository questionReportRepository,
-            IChoiceOptionAnswerRepository choiceOptionAnswerRepository,
-            IQuestionAnswerRepository questionAnswerRepository) {
+            IQuestionReportRepository questionReportRepository) {
             _surveyReportRepository = surveyReportRepository;
             _surveyRepository = surveyRepository;
             _surveyAnswerRepository = surveyAnswerRepository;
             _dataSetRepository = dataSetRepository;
             _questionReportRepository = questionReportRepository;
-            _choiceOptionAnswerRepository = choiceOptionAnswerRepository;
-            _questionAnswerRepository = questionAnswerRepository;
         }
 
         //R E F A C T O R I N G
@@ -37,10 +28,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             var surveyReport = new SurveyReport (surveyId, surveyTitle);
             await _surveyReportRepository.AddAsync (surveyReport);
             var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
-            var surveyAnswersCount = await _surveyAnswerRepository.CountAllSurveyAnswersBySurveyIdAsync (surveyId);
-            for (var i = 0; i < surveyAnswersCount; i++) {
-                surveyReport.AddAnswer ();
-            }
+
             foreach (var question in survey.Questions) {
                 var questionReport = new QuestionReport (question.Content, question.Select, 0);
                 surveyReport.AddQuestionReport (questionReport);
@@ -53,34 +41,62 @@ namespace CareerMonitoring.Infrastructure.Services {
                                 var dataSet = new DataSet ();
                                 questionReport.AddDataSet (dataSet);
                                 await _dataSetRepository.AddAsync (dataSet);
+                                await _questionReportRepository.UpdateAsync(questionReport);
                                 foreach(var label in questionReport.Labels)
                                 {
                                     dataSet.AddData("0");
+                                    await _dataSetRepository.UpdateAsync(dataSet);
                                 }
                             }
                             break;
                         case "dropdown-menu":
                             {
+                                foreach (var choiceOption in fieldData.ChoiceOptions) {
+                                    questionReport.AddLabel (choiceOption.ViewValue);
+                                }
                                 var dataSet = new DataSet ();
                                 questionReport.AddDataSet (dataSet);
                                 await _dataSetRepository.AddAsync (dataSet);
+                                await _questionReportRepository.UpdateAsync(questionReport);
                                 foreach(var label in questionReport.Labels)
                                 {
                                     dataSet.AddData("0");
+                                    await _dataSetRepository.UpdateAsync(dataSet);
                                 }
                             }
                             break;
                         case "linear-scale":
+                            {
+                                for (var i = 1; i <= fieldData.MaxValue; i++) {
+                                    questionReport.AddLabel (i.ToString ());
+                                }
+                                var dataSet = new DataSet (question.Content);
+                                questionReport.AddDataSet (dataSet);
+                                await _dataSetRepository.AddAsync (dataSet);
+                                await _questionReportRepository.UpdateAsync(questionReport);
+                                foreach(var label in questionReport.Labels)
+                                {
+                                    dataSet.AddData("0");
+                                    await _dataSetRepository.UpdateAsync(dataSet);
+                                }
+                            }
+                            break;
                         case "multiple-grid":
                         case "single-grid":
                             {
-                                foreach (var row in fieldData.Rows) {
-                                    var dataSet = new DataSet (row.Input);
+                                foreach(var row in fieldData.Rows)
+                                {
+                                    questionReport.AddLabel (row.Input);
+                                }
+                                foreach (var choiceOption in fieldData.ChoiceOptions) {
+                                    var dataSet = new DataSet (choiceOption.ViewValue);
                                     questionReport.AddDataSet (dataSet);
                                     await _dataSetRepository.AddAsync (dataSet);
-                                    foreach(var label in questionReport.Labels)
+                                    await _questionReportRepository.UpdateAsync(questionReport);
+                                    foreach(var row in fieldData.Rows)
                                     {
                                         dataSet.AddData("0");
+                                        await _dataSetRepository.UpdateAsync(dataSet);
                                     }
                                 }
                             }
@@ -88,104 +104,103 @@ namespace CareerMonitoring.Infrastructure.Services {
                         case "single-choice":
                         case "multiple-choice":
                             {
+                                foreach (var choiceOption in fieldData.ChoiceOptions) {
+                                    questionReport.AddLabel (choiceOption.ViewValue);
+                                }
                                 var dataSet = new DataSet (question.Content);
                                 questionReport.AddDataSet (dataSet);
                                 await _dataSetRepository.AddAsync (dataSet);
+                                await _questionReportRepository.UpdateAsync(questionReport);
                                 foreach(var label in questionReport.Labels)
                                 {
                                     dataSet.AddData("0");
+                                    await _dataSetRepository.UpdateAsync(dataSet);
                                 }
                             }
                             break;
                     }
-
-                    if (fieldData.ChoiceOptions == null)
-                        return surveyReport.Id;
-                    if (question.Select == "linear-scale") {
-                        for (var i = 1; i <= fieldData.MaxValue; i++) {
-                            questionReport.AddLabel (i.ToString ());
-                        }
-                    }
-                    foreach (var choiceOption in fieldData.ChoiceOptions) {
-                        questionReport.AddLabel (choiceOption.ViewValue);
-                    }
                 }
             }
-            await AddDataSetValues (surveyId, surveyReport);
+            //await AddDataSetValues (surveyId, surveyReport);
             return surveyReport.Id;
         }
 
-    // R E F A C T O R I N G
-    public async Task AddDataSetValues (int surveyId, SurveyReport surveyReport) {
-        var surveyAnswers = await _surveyAnswerRepository.GetAllBySurveyIdWithQuestionsAsync(surveyId);
-        foreach(var surveyAnswer in surveyAnswers){
-            foreach(var questionAnswer in surveyAnswer.QuestionsAnswers)
-            {
-                switch(questionAnswer.Select)
+        public async Task<SurveyReport> GetReportAsync(int surveyId)
+        {
+            return await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
+        }
+
+        /*// R E F A C T O R I N G
+        public async Task AddDataSetValues (int surveyId, SurveyReport surveyReport) {
+            var surveyAnswers = await _surveyAnswerRepository.GetAllBySurveyIdWithQuestionsAsync(surveyId);
+            foreach(var surveyAnswer in surveyAnswers){
+                foreach(var questionAnswer in surveyAnswer.QuestionsAnswers)
                 {
-                    case "short-answer":
-                    case "long-answer":
+                    switch(questionAnswer.Select)
                     {
-                        foreach(var fieldDataAnswer in questionAnswer.FieldDataAnswers)
+                        case "short-answer":
+                        case "long-answer":
                         {
-                            var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id,
-                                questionAnswer.Select, questionAnswer.Content);
-                            foreach(var dataSet in questionReport.DataSets)
+                            foreach(var fieldDataAnswer in questionAnswer.FieldDataAnswers)
                             {
-                                dataSet.AddData(fieldDataAnswer.Input);
-                            }
-                        }
-                    }
-                    break;
-                    case "single-choice":
-                    case "multiple-choice":
-                    {
-                        foreach(var fieldDataAnswer in questionAnswer.FieldDataAnswers)
-                        {
-                            var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id,
-                                questionAnswer.Select, questionAnswer.Content);
-                            foreach(var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers){
+                                var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id,
+                                    questionAnswer.Select, questionAnswer.Content);
                                 foreach(var dataSet in questionReport.DataSets)
                                 {
-                                    if(choiceOptionAnswer.Value == true)
+                                    dataSet.AddData(fieldDataAnswer.Input);
+                                }
+                            }
+                        }
+                        break;
+                        case "single-choice":
+                        case "multiple-choice":
+                        {
+                            foreach(var fieldDataAnswer in questionAnswer.FieldDataAnswers)
+                            {
+                                var questionReport = await _questionReportRepository.GetBySurveyReportAsync(surveyReport.Id,
+                                    questionAnswer.Select, questionAnswer.Content);
+                                foreach(var choiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers){
+                                    foreach(var dataSet in questionReport.DataSets)
                                     {
-                                        foreach(var data in dataSet._data)
+                                        if(choiceOptionAnswer.Value == true)
                                         {
-                                            var Data = dataSet._data.Where(i =>
-                                                i.IndexOf(data) == choiceOptionAnswer.OptionPosition).Single();
-                                            int counter = Int32.Parse(Data);
-                                            counter++;
-                                            Data = counter.ToString();
+                                            var DataSet = dataSet._data.ToList();
+                                            foreach(var data in DataSet)
+                                            {
+                                                var indexValue = DataSet[choiceOptionAnswer.OptionPosition];
+                                                int counter = Int32.Parse(Data);
+                                                counter++;
+                                                Data = counter.ToString();
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
+                        break;
+                        case "linear-scale":
+                        case "dropdown-menu":
+                        case "single-grid":
+                        case "multiple-grid":
+                        {
+    
+                        }
+                        break;
                     }
-                    break;
-                    case "linear-scale":
-                    case "dropdown-menu":
-                    case "single-grid":
-                    case "multiple-grid":
-                    {
-
-                    }
-                    break;
                 }
             }
         }
+    
+        public async Task<SurveyReport> GetByIdAsync (int id) {
+            throw new System.NotImplementedException ();
+        }
+    
+        public async Task UpdateAsync (int id) {
+            throw new System.NotImplementedException ();
+        }
+    
+        public async Task DeleteAsync (int id) {
+            throw new System.NotImplementedException ();
+        }*/
     }
-
-    public async Task<SurveyReport> GetByIdAsync (int id) {
-        throw new System.NotImplementedException ();
-    }
-
-    public async Task UpdateAsync (int id) {
-        throw new System.NotImplementedException ();
-    }
-
-    public async Task DeleteAsync (int id) {
-        throw new System.NotImplementedException ();
-    }
-}
 }

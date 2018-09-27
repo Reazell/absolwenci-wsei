@@ -4,6 +4,7 @@ using CareerMonitoring.Core.Domains.SurveyReport;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.X9;
 
 namespace CareerMonitoring.Infrastructure.Repositories
 {
@@ -29,11 +30,17 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await _context.QuestionReports.AsNoTracking().SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public async Task<QuestionReport> GetBySurveyReportAsync(int surveyReportId, string content, string select, bool isTracking = true)
+        public async Task<QuestionReport> GetBySurveyReportAsync(int surveyReportId, string content, string select,
+            bool isTracking = true)
         {
             if(isTracking)
-                return await _context.QuestionReports.AsTracking().Where(x => x.SurveyReportId == surveyReportId).Where(x => x.Content == content && x.Select == select).SingleOrDefaultAsync ();
-            return await _context.QuestionReports.AsNoTracking().Where(x => x.SurveyReportId == surveyReportId).Where(x => x.Content == content && x.Select == select).SingleOrDefaultAsync ();
+                return await _context.QuestionReports.AsTracking().Include(x => x.DataSets).Where(x => x.SurveyReportId == surveyReportId && x.Content == content && x.Select == select).SingleOrDefaultAsync();
+            return await _context.QuestionReports.AsNoTracking().Include(x => x.DataSets).Where(x => x.SurveyReportId == surveyReportId && x.Content == content && x.Select == select).SingleOrDefaultAsync();
+        }
+
+        public async Task<QuestionReport> GetByContentAndSelectAsync(string content, string select)
+        {
+            return await _context.QuestionReports.Include(x => x.DataSets).SingleOrDefaultAsync(x => x.Content == content && x.Select == select);
         }
 
         public async Task UpdateAsync(QuestionReport questionReport)
