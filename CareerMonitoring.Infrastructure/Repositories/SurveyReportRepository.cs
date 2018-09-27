@@ -35,9 +35,9 @@ namespace CareerMonitoring.Infrastructure.Repositories
         {
             if(isTracking)
                 return await _context.SurveyReports.AsTracking().Where(x => x.SurveyId == surveyId)
-                    .SingleOrDefaultAsync();
+                    .Include(x => x.QuestionsReports).ThenInclude(x => x.DataSets).SingleOrDefaultAsync();
             return await _context.SurveyReports.AsNoTracking().Where(x => x.SurveyId == surveyId)
-                .SingleOrDefaultAsync();
+                .Include(x => x.QuestionsReports).ThenInclude(x => x.DataSets).SingleOrDefaultAsync();
         }
 
         public async Task UpdateAsync(SurveyReport surveyReport)

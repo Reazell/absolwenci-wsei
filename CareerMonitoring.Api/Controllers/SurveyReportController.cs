@@ -22,10 +22,10 @@ namespace CareerMonitoring.Api.Controllers
             _surveyReportRepository = surveyReportRepository;
         }
 
-        [HttpGet ("{surveyReportId}")]
-        public async Task<JsonResult> GetSurveyReport(int surveyReportId)
+        [HttpGet ("{surveyId}")]
+        public async Task<JsonResult> GetSurveyReport(int surveyId)
         {
-            var surveyReport = await _surveyReportRepository.GetByIdAsync(surveyReportId);
+            var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
             return Json(surveyReport);
         }
     }

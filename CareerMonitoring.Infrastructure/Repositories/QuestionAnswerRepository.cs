@@ -25,7 +25,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
 
         public async Task<ICollection<QuestionAnswer>> GetAllOpenQuestionAnswersBySurveyAnswerId (int surveyAnswerId)
         {
-            return _context.QuestionsAnswers.Where(x => x.SurveyAnswerId == surveyAnswerId && x.Select == "short-answer" || x.Select == "long-answer").ToList();
+            return await Task.FromResult(_context.QuestionsAnswers.Where(x => x.SurveyAnswerId == surveyAnswerId && x.Select == "short-answer" || x.Select == "long-answer").ToList());
         }
 
         public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyAnswerIdInOrderAsync (int surveyAnswerId, bool isTracking = true) {
