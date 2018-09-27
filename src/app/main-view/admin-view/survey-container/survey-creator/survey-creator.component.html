@@ -25,10 +25,10 @@
   </div>
   <div id="questions-container" formArrayName="questions">
     <div *ngFor="let question of invoiceForm.controls['questions'].controls; let i = index" [formGroupName]="i" class="question-field">
-      <div class="question-menu">
+      <!-- <div class="question-menu">
         <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="Fmenu"></fa-icon>
         <mat-menu #Fmenu="matMenu" [overlapTrigger]="false" [ngSwitch]="question.value.select">
-            <button mat-menu-item>Lorem ipsum</button>
+          <button mat-menu-item>Lorem ipsum</button>
           <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
             opcje</button>
           <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
@@ -36,7 +36,7 @@
           <button mat-menu-item (click)="openMoveControlDialog(question, 'rows')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.rows. length > 1">Przenieś
             wiersze</button>
         </mat-menu>
-      </div>
+      </div> -->
       <div class="question">
 
         <div class="select-container">
@@ -168,7 +168,12 @@
                   <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['choiceOptions'])"
                     *ngIf="field.controls['choiceOptions'].controls.length > 1"></fa-icon>
                 </div>
-                <app-button-single-control (change)="createChoiceControls(field.controls['choiceOptions'], 'kolumna')"></app-button-single-control>
+                <div class="addControl">
+                  <mat-radio-group [disabled]="true" ngModel [ngModelOptions]="{standalone: true}">
+                    <mat-radio-button></mat-radio-button>
+                  </mat-radio-group>
+                  <app-button-single-control (change)="createChoiceControls(field.controls['choiceOptions'], 'kolumna')"></app-button-single-control>
+                </div>
               </div>
             </div>
 
@@ -199,13 +204,27 @@
                       *ngIf="field.controls['choiceOptions'].controls.length > 1"></fa-icon>
                   </div>
                 </div>
-                <app-button-single-control (change)="createChoiceControls(field.controls['choiceOptions'], 'kolumna')"></app-button-single-control>
+                <div class="addControl">
+                  <div class="right">
+                    <mat-checkbox [disabled]="true" ngModel [ngModelOptions]="{standalone: true}"></mat-checkbox>
+                  </div>
+                  <app-button-single-control (change)="createChoiceControls(field.controls['choiceOptions'], 'kolumna')"></app-button-single-control>
+                </div>
               </div>
             </div>
-
+            <div class="add-cont" *ngSwitchCase="'single-choice'">
+              <mat-radio-group [disabled]="true" ngModel [ngModelOptions]="{standalone: true}">
+                <mat-radio-button></mat-radio-button>
+              </mat-radio-group>
+              <app-button-single-control *ngSwitchCase="'single-choice'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja')"></app-button-single-control>
+            </div>
+            <div class="add-cont" *ngSwitchCase="'multiple-choice'">
+              <div class="right">
+                <mat-checkbox [disabled]="true" ngModel [ngModelOptions]="{standalone: true}"></mat-checkbox>
+              </div>
+              <app-button-single-control *ngSwitchCase="'multiple-choice'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja')"></app-button-single-control>
+            </div>
             <app-button-single-control *ngSwitchCase="'dropdown-menu'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja')"></app-button-single-control>
-            <app-button-single-control *ngSwitchCase="'single-choice'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja')"></app-button-single-control>
-            <app-button-single-control *ngSwitchCase="'multiple-choice'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja')"></app-button-single-control>
           </div>
         </div>
 
@@ -230,19 +249,22 @@
               <mat-slide-toggle>Wymagane</mat-slide-toggle>
 
             </div>
-            <!-- <div id="question-menu">
-              <fa-icon [icon]="['fas', 'ellipsis-v']" [matMenuTriggerFor]="question_menu"></fa-icon>
-              <mat-menu #question_menu="matMenu" [overlapTrigger]="false">
-                <button mat-menu-item>Dodaj sekcję</button>
-                <button mat-menu-item>Duplikuj sekcję</button>
-                <button mat-menu-item>Przenieś sekcję</button>
-                <button mat-menu-item>Usuń sekcję</button>
-              </mat-menu>
-            </div> -->
+            <div id="question-menu">
+                <fa-icon [icon]="['fas', 'ellipsis-v']" [matMenuTriggerFor]="Fmenu"></fa-icon>
+                <mat-menu #Fmenu="matMenu" [overlapTrigger]="false" [ngSwitch]="question.value.select" yPosition="above">
+                  <button mat-menu-item>Lorem ipsum</button>
+                  <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
+                    opcje</button>
+                  <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
+                    kolumny</button>
+                  <button mat-menu-item (click)="openMoveControlDialog(question, 'rows')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.rows. length > 1">Przenieś
+                    wiersze</button>
+                </mat-menu>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <pre>{{invoiceForm.value | json }}</pre>
+  <!-- <pre>{{invoiceForm.value | json }}</pre> -->
 </form>

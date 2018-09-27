@@ -31,7 +31,6 @@ export class AppBarComponent implements OnInit, OnDestroy {
   info = {
     show: 'Podgląd',
     edit: 'Edytuj ankietę',
-    save: 'Zapisz ankietę',
     main: 'Strona główna ankiet'
   };
 
@@ -103,9 +102,6 @@ export class AppBarComponent implements OnInit, OnDestroy {
   }
   showSurvey(): void {
     this.sharedService.showSurveyButton(true);
-  }
-  saveSurvey(): void {
-    this.sharedService.saveSurveyButton(true);
   }
   openSidebar(): void {
     this.sharedService.toggleSideNav(true);

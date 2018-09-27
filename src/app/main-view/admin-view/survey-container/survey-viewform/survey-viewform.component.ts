@@ -52,6 +52,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   getSurvey(): void {
     this.surveyService.getSurveyWithId(this.id).subscribe(
       data => {
+        console.log(JSON.stringify(data));
         this.createQuestionData(data);
         this.title = data['title'];
         this.loaded = true;
@@ -126,7 +127,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   addRows(question) {
     const group = this.fb.group({
-      content: [question.content || this.defaultQuestion],
+      content: [question.content],
       select: [question.select],
       QuestionPosition: [question.questionPosition],
       FieldData: this.fb.array([])

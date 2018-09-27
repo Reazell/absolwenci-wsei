@@ -58,13 +58,12 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   inputs2: QueryList<ElementRef>;
 
   invoiceForm: FormGroup;
-  default = 'single-grid';
+  default = 'short-answer';
   disabled = true;
   index = 0;
   questionIndex = 0;
   id: number;
   // subs
-  saveSurveySub: Subscription;
   showSurveySub: Subscription;
   createSurveySub: Subscription;
   surveyIDSub: Subscription;
@@ -74,6 +73,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   private updateToApi = new Subject();
   public updateToApi$: Observable<any> = this.updateToApi.asObservable();
   //
+
   selects: Select[] = [
     {
       control: [
@@ -138,7 +138,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     // this.getSurveyId();
     this.subToObs();
     this.getSurvey();
-    this.saveSurveyOnClick();
     this.showSurveyOnClick();
     this.showSurveyDialog();
     this.showBackButton();
@@ -166,11 +165,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
 
   showBackButton(): void {
     this.sharedService.showBackButton(true);
-  }
-  saveSurveyOnClick(): void {
-    this.saveSurveySub = this.sharedService.saveButton.subscribe(() => {
-      this.onSubmit();
-    });
   }
   showSurveyOnClick(): void {
     this.showSurveySub = this.sharedService.showButton.subscribe(() => {
@@ -210,6 +204,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       Questions: this.invoiceForm.getRawValue().questions,
       id: this.id
     };
+    console.log(JSON.stringify(object));
     return this.surveyService.updateSurvey(object);
   }
   updateSurvey() {
@@ -765,7 +760,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.saveSurveySub.unsubscribe();
     this.showSurveySub.unsubscribe();
     this.showSurveyDialogSub.unsubscribe();
     this.sharedService.showCreatorButton(false);

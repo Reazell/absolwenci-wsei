@@ -11,7 +11,7 @@ import { SharedService } from './../../../../services/shared.service';
   styleUrls: ['./survey-result.component.scss']
 })
 export class SurveyResultComponent implements OnInit, OnDestroy {
-  data: Result;
+  data;
   sth;
   id: number;
   // subs
@@ -27,7 +27,7 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
     console.log(this.data);
   }
   createData() {
-    this.data = {
+ /*    this.data = {
       title: 'coś tam',
       totalAnswerCount: 30,
       questionsData: [
@@ -162,7 +162,7 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
           }
         }
       ]
-    };
+    }; */
   }
   ngOnInit() {
     this.getSurveyId();
@@ -179,6 +179,7 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
       data => {
         // this.sth = data.result;
         // this.createData();
+        this.data = data;
         console.log(data);
       },
       error => {

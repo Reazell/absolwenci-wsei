@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faChartBar, faEye, faSave } from '@fortawesome/free-regular-svg-icons';
+import { faChartBar, faEye } from '@fortawesome/free-regular-svg-icons';
 import {
   faArrowLeft,
   faBars,
@@ -59,7 +59,6 @@ library.add(
   faEllipsisV,
   faSearch,
   faEllipsisH,
-  faSave,
   faChartBar,
   faArrowLeft
 );

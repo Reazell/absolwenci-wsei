@@ -26,8 +26,6 @@
       <div id="survey-buttons">
         <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton" matTooltip="{{info.show}}" matTooltipPosition="below"
           (click)="showSurvey()"></fa-icon>
-        <fa-icon [icon]="['far', 'save']" *ngIf="showCreatorButton" matTooltip="{{info.save}}" matTooltipPosition="below"
-          (click)="saveSurvey()"></fa-icon>
         <fa-icon [icon]="['fas', 'pen']" *ngIf="showSendButton" matTooltip="{{info.edit}}" matTooltipPosition="below"
           (click)="editSurvey()"></fa-icon>
         <button mat-button id="save" *ngIf="showCreatorButton" (click)="sendSurvey()">WYŚLIJ</button>

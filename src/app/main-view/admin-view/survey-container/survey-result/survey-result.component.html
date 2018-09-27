@@ -1,24 +1,24 @@
 <div id="result-container">
   <div id="result-header">
     <div id="answer-title">
-      <span>{{data.title}}</span>
+      <span>{{data.surveyTitle}}</span>
     </div>
     <div id="answer-number">
-      <span>{{data.totalAnswerCount + ' ' + 'odpowiedzi'}}</span>
+      <span>{{data.answersNumber + ' ' + 'odpowiedzi'}}</span>
     </div>
     <!-- <div id="answer-toggle">
 
     </div> -->
   </div>
-  <div id="result-main" *ngFor="let question of data.questionsData; let i = index">
+  <div id="result-main" *ngFor="let question of data.questionsReports; let i = index">
     <div id="switch" [ngSwitch]="question.select">
       <div class="header">
-        <span id="question">{{question.question}}</span>
-        <span id="answer-count">{{question.answerCount + ' ' + 'odpowiedzi'}}</span>
+        <span id="question">{{question.content}}</span>
+        <span id="answer-count">{{question.answersNumber + ' ' + 'odpowiedzi'}}</span>
       </div>
 
       <div class="answer" *ngSwitchCase="'short-answer'">
-        <div class="answer-loop" *ngFor="let answer of question.answerData.datasets[0].data; let j = index">
+        <div class="answer-loop" *ngFor="let answer of question.dataSets; let j = index">
           <div class="answer-div" [ngClass]="j % 2 ? 'answer dark': 'answer light'">
             {{answer}}
           </div>

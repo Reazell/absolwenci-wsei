@@ -54,7 +54,7 @@ form {
       }
       .question {
         user-select: text;
-        padding: 10px 30px;
+        padding: 1px 30px;
         .select-container {
           display: flex;
           mat-form-field {
@@ -83,10 +83,6 @@ form {
                   width: 100%;
                   display: flex;
                   align-items: center;
-                  .right {
-                    display: inline-block;
-                    margin-right: 8px;
-                  }
                 }
               }
             }
@@ -110,10 +106,6 @@ form {
                 .loop {
                   .checkbox {
                     width: 100%;
-                    .right {
-                      display: inline-block;
-                      margin-right: 8px;
-                    }
                     mat-form-field {
                       width: 100%;
                     }
@@ -126,11 +118,18 @@ form {
                 div {
                   display: flex;
                   align-items: center;
+                  .right {
+                    margin-right: 8px;
+                  }
                   mat-form-field {
                     font-size: 13px;
                   }
                 }
               }
+            }
+            .add-cont {
+              display: flex;
+              align-items: center;
             }
             .answer {
               mat-form-field {
@@ -174,6 +173,10 @@ form {
           padding: 0px 10px;
         }
         #question-menu {
+          display: flex;
+          align-self: center;
+          padding-left: 15px;
+          margin-right: -20px;
         }
       }
     }
@@ -199,30 +202,14 @@ form {
   font-size: 20px;
   margin: 0 10px;
 }
-.standalone {
-  margin-left: 27px;
+.right {
+  margin-right: 8px;
 }
 fa-icon {
   font-size: 20px;
   color: $grey;
   cursor: pointer;
 }
-// .box {
-//   background: #bada55;
-//   border: 1px solid black;
-//   padding: 10px 20px;
-//   display: inline-block;
-
-//   &.dragging {
-//     background: coral;
-//   }
-
-//   &.sortable.dragging {
-//     background: none;
-//     border: 1px dashed black;
-//     color: transparent;
-//   }
-// }
 
 @media (max-width: 580px) {
   .select-container {

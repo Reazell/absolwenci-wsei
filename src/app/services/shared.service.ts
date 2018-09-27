@@ -7,7 +7,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class SharedService {
   // button clicked Subjects
   toggleSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  saveButton: Subject<boolean> = new Subject<boolean>();
   sendButton: Subject<boolean> = new Subject<boolean>();
   showButton: Subject<boolean> = new Subject<boolean>();
   editButton: Subject<boolean> = new Subject<boolean>();
@@ -28,9 +27,6 @@ export class SharedService {
   constructor(private router: Router) {}
 
   // button clicked actions
-  saveSurveyButton(x) {
-    this.saveButton.next(x);
-  }
   sendSurveyButton(x) {
     this.sendButton.next(x);
   }
