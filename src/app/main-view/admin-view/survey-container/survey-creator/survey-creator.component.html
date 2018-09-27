@@ -28,11 +28,12 @@
       <div class="question-menu">
         <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="Fmenu"></fa-icon>
         <mat-menu #Fmenu="matMenu" [overlapTrigger]="false" [ngSwitch]="question.value.select">
-          <button mat-menu-item (click)="openMoveControlDialog(question)" *ngIf="question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu'">Przenieś
+            <button mat-menu-item>Lorem ipsum</button>
+          <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
             opcje</button>
-          <button mat-menu-item (click)="openMoveControlDialog(question)" *ngIf="question.value.select === 'single-grid' || question.value.select === 'multiple-grid'">Przenieś
+          <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
             kolumny</button>
-          <button mat-menu-item (click)="openMoveControlDialog(question)" *ngIf="question.value.select === 'single-grid' || question.value.select === 'multiple-grid'">Przenieś
+          <button mat-menu-item (click)="openMoveControlDialog(question, 'rows')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.rows. length > 1">Przenieś
             wiersze</button>
         </mat-menu>
       </div>

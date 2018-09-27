@@ -145,36 +145,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     this.sharedService.showCreatorButton(true);
   }
 
-  updateSurveySubject(x?) {
-    this.updateToApi.next(x);
-  }
-  subToObs() {
-    this.updateToApi$
-      .pipe(
-        debounceTime(300),
-        switchMap(() => this.updateSurveyObs())
-      )
-      .subscribe(() => {});
-  }
-
-  updateSurveyObs() {
-    const object: Update = {
-      Title: this.invoiceForm.getRawValue().title,
-      Questions: this.invoiceForm.getRawValue().questions,
-      id: this.id
-    };
-    return this.surveyService.updateSurvey(object);
-  }
-  updateSurvey() {
-    this.updateSurveyObs().subscribe(
-      data => {
-        // console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
   getSurvey(): void {
     this.activatedRoute.data.map(data => data.cres).subscribe(
       (res: Survey) => {
@@ -221,48 +191,82 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       data: { id: this.id, content: this.invoiceForm.getRawValue() }
     });
   }
+
+  updateSurveySubject(x?) {
+    this.updateToApi.next(x);
+  }
+  subToObs() {
+    this.updateToApi$
+      .pipe(
+        debounceTime(300),
+        switchMap(() => this.updateSurveyObs())
+      )
+      .subscribe(() => {});
+  }
+
+  updateSurveyObs() {
+    const object: Update = {
+      Title: this.invoiceForm.getRawValue().title,
+      Questions: this.invoiceForm.getRawValue().questions,
+      id: this.id
+    };
+    return this.surveyService.updateSurvey(object);
+  }
+  updateSurvey() {
+    this.updateSurveyObs().subscribe(
+      data => {
+        // console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   openMoveQuestionDialog(): void {
     const array: QuestionData[] = this.invoiceForm.getRawValue().questions;
-    const dialogArr: MoveDialogData[] = [];
-    array.forEach(el => {
-      const obj: MoveDialogData = {
-        content: el.content,
-        position: el.QuestionPosition
-      };
-      dialogArr.push(obj);
-    });
-    const dialogRef = this.dialog.open(MoveQuestionDialogComponent, {
-      data: { content: dialogArr }
-    });
-    dialogRef.afterClosed().subscribe(res => {
-      if (res) {
-        this.setQPositionsOnMove(res);
-        this.updateSurveySubject();
-      }
-    });
-  }
-  openMoveControlDialog(question): void {
-    const array: ChoiceOptions[] = question.getRawValue().FieldData[0]
-      .choiceOptions;
-    /* KEYS: ["viewValue", "optionPosition", "value"] */
-    const sth = Object.keys(array[0]);
-    const nameArr = {
-      content: sth[0],
-      position: sth[1]
-    };
+    /* KEYS: ["content", "QuestionPosition", "select", "lastSelect", "FieldData"]*/
+    const nameArr = this.setPropertiesNames(array);
     this.openMoveDialog(array, nameArr).subscribe(res => {
       if (res) {
-        question.controls.FieldData.controls[0].controls.choiceOptions = this.setPositionOnMove(
-          question.controls.FieldData.controls[0].controls.choiceOptions,
+        this.invoiceForm.controls.questions = this.setPositionOnMove(
+          this.invoiceForm.controls.questions,
           res,
-          sth[1]
+          nameArr.position
         );
         this.updateSurveySubject();
       }
     });
   }
 
-  // universal
+  openMoveControlDialog(question: FormGroup, arrayName: string): void {
+    const array: ChoiceOptions[] = question.getRawValue().FieldData[0][
+      arrayName
+    ];
+    /* KEYS: ["viewValue", "optionPosition", "value"] */
+    const nameArr = this.setPropertiesNames(array);
+    this.openMoveDialog(array, nameArr).subscribe(res => {
+      if (res) {
+        question.controls.FieldData['controls'][0].controls[
+          arrayName
+        ] = this.setPositionOnMove(
+          question.controls.FieldData['controls'][0].controls[arrayName],
+          res,
+          nameArr.position
+        );
+        this.updateSurveySubject();
+      }
+    });
+  }
+
+  setPropertiesNames(array) {
+    let nameArr;
+    const propNameArr = Object.keys(array[0]);
+    return (nameArr = {
+      content: propNameArr[0],
+      position: propNameArr[1]
+    });
+  }
   openMoveDialog(array, nameArr): Observable<any> {
     const dialogArr: MoveDialogData[] = [];
     array.forEach(el => {
@@ -286,47 +290,17 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     for (let i = 0; i < length; i++) {
       const id = res[i].position;
       clonedArr.setControl(i, moveList[id]);
-      // change optionPosition to universal
       clonedMoveList[i]['controls'][controlName].setValue(i);
     }
     return clonedArr;
   }
 
-  // universal
-
-  setControlPositionsOnMove(res, question): void {
-    const controlArr: FormArray =
-      question.controls.FieldData.controls[0].controls.choiceOptions;
-    const clonedArr: FormArray = cloneDeep(controlArr);
-    const length: number = controlArr.length;
-    const controlsList: AbstractControl[] = controlArr.controls;
-    const clonedControlsList: AbstractControl[] = clonedArr.controls;
-    for (let i = 0; i < length; i++) {
-      const id = res[i].position;
-      clonedArr.setControl(i, controlsList[id]);
-      clonedControlsList[i]['controls'].optionPosition.setValue(i);
-    }
-    question.controls.FieldData.controls[0].controls.choiceOptions = clonedArr;
-  }
-  setQPositionsOnMove(res) {
-    const questionArr: FormArray = this.invoiceForm.controls
-      .questions as FormArray;
-    const clonedArr: FormArray = cloneDeep(questionArr);
-    const length: number = questionArr.length;
-    const questionsList: AbstractControl[] = questionArr.controls;
-    const clonedQuestionList: AbstractControl[] = clonedArr.controls;
-    for (let i = 0; i < length; i++) {
-      const id = res[i].position;
-      clonedArr.setControl(i, questionsList[id]);
-      clonedQuestionList[i]['controls'].QuestionPosition.setValue(i);
-    }
-    this.invoiceForm.controls.questions = clonedArr;
-  }
   // creating FormGroup  -- Main Form
   createQuestionData(form?: Survey): void {
     this.invoiceForm = this.fb.group(this.populateQuestionData(form));
     this.createQuestionField(form);
   }
+
   populateQuestionData(form?: Survey): MainForm {
     let group: MainForm;
     if (form) {
@@ -422,21 +396,22 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     return group;
   }
   populatequestionsControls(i: number, question?: Question): QuestionData {
+    /* DO NOT CHANGE PROPERTIES ORDER */
     let group: QuestionData;
     if (question) {
       group = {
         content: question.content,
+        QuestionPosition: question.questionPosition,
         select: question.select,
         lastSelect: undefined,
-        QuestionPosition: question.questionPosition,
         FieldData: this.fb.array([])
       };
     } else {
       group = {
         content: '',
+        QuestionPosition: i + 1,
         select: this.default,
         lastSelect: undefined,
-        QuestionPosition: i + 1,
         FieldData: this.fb.array([])
       };
     }
@@ -445,7 +420,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
   createFieldData(controls: any, question?: Question): void {
     if (question) {
       const fieldData: FieldData[] = question.fieldData;
-      // const i = -1;
       fieldData.forEach(data => {
         this.addGroup(controls.FieldData, controls.select.value, data);
       });
@@ -601,16 +575,17 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     }
   }
   populateRowControl(name: string, length: number, data?: Row): RowData {
+    /* DO NOT CHANGE PROPERTIES ORDER */
     let group: RowData;
     if (data) {
       group = {
-        rowPosition: data.rowPosition,
-        input: data.input
+        input: data.input,
+        rowPosition: data.rowPosition
       };
     } else {
       group = {
-        rowPosition: length,
-        input: `${name} ${length + 1}`
+        input: `${name} ${length + 1}`,
+        rowPosition: length
       };
     }
     return group;
@@ -634,17 +609,16 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     length: number,
     data?: ChoiceOptions | Choice
   ): ChoiceOptionsData {
+    /* DO NOT CHANGE PROPERTIES ORDER */
     let group: ChoiceOptionsData;
     if (data) {
       group = {
-        /* DO NOT CHANGE PROPERTIES ORDER */
         viewValue: data.viewValue,
         optionPosition: (data as Choice).optionPosition,
         value: { value: false, disabled: this.disabled }
       };
     } else {
       group = {
-        /* DO NOT CHANGE PROPERTIES ORDER */
         viewValue: `${name} ${length + 1}`,
         optionPosition: length,
         value: { value: false, disabled: this.disabled }
