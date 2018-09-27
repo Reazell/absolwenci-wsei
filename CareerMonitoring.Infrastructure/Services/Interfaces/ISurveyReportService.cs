@@ -9,9 +9,9 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces
         Task<int> CreateAsync(int surveyId, string surveyTitle);
 
         Task<SurveyReport> GetReportAsync(int surveyId);
-        /*Task AddDataSetValues(int surveyId, SurveyReport surveyReport);
-        Task<SurveyReport> GetByIdAsync(int id);
-        Task UpdateAsync(int id);
-        Task DeleteAsync(int id);*/
+        // Task AddDataSetValues(int surveyId, SurveyReport surveyReport);
+        // Task<SurveyReport> GetByIdAsync(int id);
+        Task<int> UpdateAsync(int surveyId, string surveyTitle);
+        // Task DeleteAsync(int id);
     }
 }

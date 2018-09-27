@@ -29,5 +29,10 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
         {
             AnswersNumber++;
         }
+
+        public void Update(string surveyTitle)
+        {
+            SurveyTitle = surveyTitle;
+        }
     }
 }

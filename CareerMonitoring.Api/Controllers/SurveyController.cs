@@ -67,6 +67,7 @@ namespace CareerMonitoring.Api.Controllers {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }
             }
+            await _surveyReportService.UpdateAsync(command.SurveyId, command.Title);
             return StatusCode (200);
         }
         private async Task AddChoiceOptionsAndRowsAsync (int questionId, string select, FieldDataToAdd fieldDataToAdd)
