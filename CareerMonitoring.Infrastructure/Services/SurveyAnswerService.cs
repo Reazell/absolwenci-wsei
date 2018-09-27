@@ -65,8 +65,10 @@ namespace CareerMonitoring.Infrastructure.Services
             var questionAnswer = new QuestionAnswer (questionPosition, content, select);
             surveyAnswer.AddQuestionAnswer (questionAnswer);
             await _questionAnswerRepository.AddAsync (questionAnswer);
-            var questionReport = await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content, questionAnswer.Select);
-            questionReport.AddAnswer();
+            if(questionAnswer.Content != ""){
+                var questionReport = await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content, questionAnswer.Select);
+                questionReport.AddAnswer();
+            }
             return questionAnswer.Id;
         }
 
