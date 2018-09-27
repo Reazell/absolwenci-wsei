@@ -242,35 +242,58 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     });
   }
   openMoveControlDialog(question): void {
-    console.log(question.getRawValue().FieldData[0].choiceOptions);
     const array: ChoiceOptions[] = question.getRawValue().FieldData[0]
       .choiceOptions;
+    /* KEYS: ["viewValue", "optionPosition", "value"] */
+    const sth = Object.keys(array[0]);
+    const nameArr = {
+      content: sth[0],
+      position: sth[1]
+    };
+    this.openMoveDialog(array, nameArr).subscribe(res => {
+      if (res) {
+        question.controls.FieldData.controls[0].controls.choiceOptions = this.setPositionOnMove(
+          question.controls.FieldData.controls[0].controls.choiceOptions,
+          res,
+          sth[1]
+        );
+        this.updateSurveySubject();
+      }
+    });
+  }
+
+  // universal
+  openMoveDialog(array, nameArr): Observable<any> {
     const dialogArr: MoveDialogData[] = [];
     array.forEach(el => {
       const obj: MoveDialogData = {
-        content: el.viewValue,
-        position: el.optionPosition
+        content: el[nameArr.content],
+        position: el[nameArr.position]
       };
       dialogArr.push(obj);
     });
     const dialogRef = this.dialog.open(MoveQuestionDialogComponent, {
       data: { content: dialogArr }
     });
-    dialogRef.afterClosed().subscribe(res => {
-      if (res) {
-        console.log(res);
-
-        this.setControlPositionsOnMove(res, question);
-        // this.updateSurveySubject();
-      }
-    });
+    return dialogRef.afterClosed();
   }
 
-  setPositionOnMove(array): void {
-    const moveArr: FormArray = array;
-    const clonedArr: FormArray = cloneDeep(moveArr);
-    const length: number = moveArr.length;
+  setPositionOnMove(array, res, controlName): FormArray {
+    const clonedArr: FormArray = cloneDeep(array);
+    const length: number = array.length;
+    const moveList: AbstractControl[] = array.controls;
+    const clonedMoveList: AbstractControl[] = clonedArr.controls;
+    for (let i = 0; i < length; i++) {
+      const id = res[i].position;
+      clonedArr.setControl(i, moveList[id]);
+      // change optionPosition to universal
+      clonedMoveList[i]['controls'][controlName].setValue(i);
+    }
+    return clonedArr;
   }
+
+  // universal
+
   setControlPositionsOnMove(res, question): void {
     const controlArr: FormArray =
       question.controls.FieldData.controls[0].controls.choiceOptions;
@@ -614,15 +637,17 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     let group: ChoiceOptionsData;
     if (data) {
       group = {
-        value: { value: false, disabled: this.disabled },
+        /* DO NOT CHANGE PROPERTIES ORDER */
         viewValue: data.viewValue,
-        optionPosition: (data as Choice).optionPosition
+        optionPosition: (data as Choice).optionPosition,
+        value: { value: false, disabled: this.disabled }
       };
     } else {
       group = {
-        value: { value: false, disabled: this.disabled },
+        /* DO NOT CHANGE PROPERTIES ORDER */
         viewValue: `${name} ${length + 1}`,
-        optionPosition: length
+        optionPosition: length,
+        value: { value: false, disabled: this.disabled }
       };
     }
     return group;

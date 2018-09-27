@@ -18,9 +18,8 @@ export class MoveQuestionDialogComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.data);
-    this.see(this.data.content);
   }
   see(x) {
-    // console.log(x);
+    console.log(x);
   }
 }
