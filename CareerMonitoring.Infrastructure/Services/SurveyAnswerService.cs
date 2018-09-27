@@ -165,16 +165,18 @@ namespace CareerMonitoring.Infrastructure.Services
             var questionAnswer = await _questionAnswerRepository.GetByIdAsync(fieldDataAnswer.QuestionAnswerId);
             if (choiceOptionAnswer.Value == true)
             {
-                var questionReport =
-                    await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content,
-                        questionAnswer.Select);
-                foreach (var dataSet in questionReport.DataSets)
-                {
-                    var index = dataSet._data[choiceOptionAnswer.OptionPosition];
-                    var labelCounter = int.Parse(index);
-                    labelCounter++;
-                    dataSet._data[choiceOptionAnswer.OptionPosition] = labelCounter.ToString();
-                    await _dataSetRepository.UpdateAsync(dataSet);
+                if(questionAnswer.Content != ""){
+                    var questionReport =
+                        await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content,
+                            questionAnswer.Select);
+                    foreach (var dataSet in questionReport.DataSets)
+                    {
+                        var index = dataSet._data[choiceOptionAnswer.OptionPosition];
+                        var labelCounter = int.Parse(index);
+                        labelCounter++;
+                        dataSet._data[choiceOptionAnswer.OptionPosition] = labelCounter.ToString();
+                        await _dataSetRepository.UpdateAsync(dataSet);
+                    }
                 }
             }
         }
