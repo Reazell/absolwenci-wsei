@@ -9,8 +9,7 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces
         Task<QuestionReport> GetByIdAsync (int id, bool isTracking = true);
         Task<QuestionReport> GetBySurveyReportAsync(int surveyReportId, string content, string select,
             bool isTracking = true);
-
-        Task<QuestionReport> GetByContentAndPositionAsync(int questionPosition, string select);
+        Task<QuestionReport> GetBySurveyReportContentAndPositionAsync(int surveyReportId, int questionPosition, string select);
         Task UpdateAsync (QuestionReport questionReport);
         Task DeleteAsync (QuestionReport questionReport);
     }

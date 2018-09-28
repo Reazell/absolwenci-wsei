@@ -58,15 +58,15 @@ namespace CareerMonitoring.Infrastructure.Services
             return surveyAnswer.Id;
         }
 
-        public async Task<int> AddQuestionAnswerToSurveyAnswerAsync(int surveyAnswerId, int questionPosition,
+        public async Task<int> AddQuestionAnswerToSurveyAnswerAsync(int surveyId, int surveyAnswerId, int questionPosition,
             string content, string select)
         {
             var surveyAnswer = await _surveyAnswerRepository.GetByIdAsync (surveyAnswerId);
             var questionAnswer = new QuestionAnswer (questionPosition, content, select);
             surveyAnswer.AddQuestionAnswer (questionAnswer);
             await _questionAnswerRepository.AddAsync (questionAnswer);
-
-            var questionReport = await _questionReportRepository.GetByContentAndPositionAsync(questionAnswer.QuestionPosition, questionAnswer.Select);
+            var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
+            var questionReport = await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id, questionAnswer.QuestionPosition, questionAnswer.Select);
             questionReport.AddAnswer();
 
             return questionAnswer.Id;
@@ -155,7 +155,7 @@ namespace CareerMonitoring.Infrastructure.Services
             }
         }
 
-        public async Task AddChoiceOptionsAnswerToFieldDataAnswerAsync(int fieldDataAnswerId, int optionPosition,
+        public async Task AddChoiceOptionsAnswerToFieldDataAnswerAsync(int surveyId, int fieldDataAnswerId, int optionPosition,
             bool value, string viewValue)
         {
             var fieldDataAnswer = await _fieldDataAnswerRepository.GetByIdAsync (fieldDataAnswerId);
@@ -166,8 +166,9 @@ namespace CareerMonitoring.Infrastructure.Services
             if (choiceOptionAnswer.Value == true)
             {
                 if(questionAnswer.Content != ""){
+                    var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
                     var questionReport =
-                        await _questionReportRepository.GetByContentAndPositionAsync(questionAnswer.QuestionPosition,
+                        await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id, questionAnswer.QuestionPosition,
                             questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
@@ -181,7 +182,7 @@ namespace CareerMonitoring.Infrastructure.Services
             }
         }
 
-        public async Task AddChoiceOptionAnswerToRowAnswerAsync(int rowAnswerId, int optionPosition, bool value,
+        public async Task AddChoiceOptionAnswerToRowAnswerAsync(int surveyId, int rowAnswerId, int optionPosition, bool value,
             string viewValue)
         {
             var rowAnswer = await _rowAnswerRepository.GetByIdAsync (rowAnswerId);
@@ -192,8 +193,9 @@ namespace CareerMonitoring.Infrastructure.Services
             var questionAnswer = await _questionAnswerRepository.GetByIdAsync(fieldDataAnswer.QuestionAnswerId);
             if (rowChoiceOptionAnswer.Value == true)
             {
+                var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
                 var questionReport =
-                    await _questionReportRepository.GetByContentAndPositionAsync(questionAnswer.QuestionPosition,
+                    await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id, questionAnswer.QuestionPosition,
                         questionAnswer.Select);
                 foreach (var dataSet in questionReport.DataSets)
                 {

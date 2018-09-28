@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.SurveyAnswer;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,7 @@ namespace CareerMonitoring.Api.Controllers {
 
         private async Task<IActionResult> AddChoiceOptionsAnswerAndRowAnswerAsync (int surveyId, int surveyAnswerId,
             string select, QuestionAnswerToAdd questionAnswer) {
-            var questionAnswerId = await _surveyAnswerService.AddQuestionAnswerToSurveyAnswerAsync (surveyAnswerId,
+            var questionAnswerId = await _surveyAnswerService.AddQuestionAnswerToSurveyAnswerAsync (surveyId, surveyAnswerId,
                 questionAnswer.QuestionPosition, questionAnswer.Content, questionAnswer.Select);
             if (questionAnswer.FieldData == null)
                 return BadRequest ("Question must contain FieldData");
@@ -43,21 +44,21 @@ namespace CareerMonitoring.Api.Controllers {
                     fieldDataAnswer.MaxLabel);
 
                 if (fieldDataAnswer.ChoiceOptions != null)
-                    await AddChoiceOptionsAnswerAsync(fieldDataAnswer, questionAnswer.Select, fieldDataAnswerId,
+                    await AddChoiceOptionsAnswerAsync(surveyId, fieldDataAnswer, questionAnswer.Select, fieldDataAnswerId,
                         questionAnswer);
                 if (fieldDataAnswer.Rows != null)
-                    await AddRowsAnswerAsync(fieldDataAnswer, questionAnswer.Select, questionAnswer, fieldDataAnswerId);
+                    await AddRowsAnswerAsync(surveyId, fieldDataAnswer, questionAnswer.Select, questionAnswer, fieldDataAnswerId);
             }
             return StatusCode (200);
         }
 
-        private async Task AddChoiceOptionsAnswerAsync (FieldDataAnswerToAdd fieldDataAnswer,
+        private async Task AddChoiceOptionsAnswerAsync (int surveyId, FieldDataAnswerToAdd fieldDataAnswer,
             string select, int fieldDataAnswerId, QuestionAnswerToAdd questionAnswer) {
             if (questionAnswer.Select == "single-choice" || questionAnswer.Select == "multiple-choice" ||
                 questionAnswer.Select == "dropdown-menu" || questionAnswer.Select == "linear-scale") {
                 var counter = 0; //temporary bugfix
                 foreach (var choiceOption in fieldDataAnswer.ChoiceOptions) {
-                    await _surveyAnswerService.AddChoiceOptionsAnswerToFieldDataAnswerAsync (fieldDataAnswerId,
+                    await _surveyAnswerService.AddChoiceOptionsAnswerToFieldDataAnswerAsync (surveyId, fieldDataAnswerId,
                         counter,
                         choiceOption.Value, choiceOption.ViewValue);
                     counter++;
@@ -65,23 +66,23 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        private async Task AddRowsAnswerAsync (FieldDataAnswerToAdd fieldDataAnswer,
+        private async Task AddRowsAnswerAsync (int surveyId, FieldDataAnswerToAdd fieldDataAnswer,
             string select, QuestionAnswerToAdd questionAnswer, int fieldDataAnswerId) {
             if (fieldDataAnswer.Rows != null) {
                 foreach (var rowAnswer in fieldDataAnswer.Rows) {
                     var rowAnswerId = await _surveyAnswerService.AddRowAnswerAsync(fieldDataAnswerId,
                         rowAnswer.RowPosition, rowAnswer.Input);
                     if (rowAnswer.ChoiceOptions != null) {
-                        await AddChoiceOptionAnswerToRow(rowAnswer, rowAnswerId);
+                        await AddChoiceOptionAnswerToRow(surveyId, rowAnswer, rowAnswerId);
                     }
                 }
             }
         }
 
-        private async Task AddChoiceOptionAnswerToRow (RowAnswerToAdd rowAnswer, int rowAnswerId) {
+        private async Task AddChoiceOptionAnswerToRow (int surveyId, RowAnswerToAdd rowAnswer, int rowAnswerId) {
             var counter = 0; //temporary bugfix
             foreach (var choiceOption in rowAnswer.ChoiceOptions) {
-                await _surveyAnswerService.AddChoiceOptionAnswerToRowAnswerAsync(rowAnswerId,
+                await _surveyAnswerService.AddChoiceOptionAnswerToRowAnswerAsync(surveyId, rowAnswerId,
                     choiceOption.OptionPosition,
                     choiceOption.Value, choiceOption.ViewValue);
                 counter++;
