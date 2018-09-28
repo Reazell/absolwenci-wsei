@@ -16,7 +16,7 @@
   <div id="form-title">
     <mat-form-field appearance="standard" id="title">
       <input matInput placeholder="Nazwa formularza" formControlName="title" autofocus (keyup)="updateSurveySubject()"
-        (keydown)="updateSurveySubject()">
+        (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
     </mat-form-field>
     <mat-form-field appearance="standard" id="description">
       <textarea matInput [rows]="1" matTextareaAutosize matAutosizeMaxRows=15 type="text" maxLength="1500" placeholder="Opis formularza"
@@ -25,23 +25,12 @@
   </div>
   <div id="questions-container" formArrayName="questions">
     <div *ngFor="let question of invoiceForm.controls['questions'].controls; let i = index" [formGroupName]="i" class="question-field">
-      <!-- <div class="question-menu">
-        <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="Fmenu"></fa-icon>
-        <mat-menu #Fmenu="matMenu" [overlapTrigger]="false" [ngSwitch]="question.value.select">
-          <button mat-menu-item>Lorem ipsum</button>
-          <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
-            opcje</button>
-          <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
-            kolumny</button>
-          <button mat-menu-item (click)="openMoveControlDialog(question, 'rows')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.rows. length > 1">Przenieś
-            wiersze</button>
-        </mat-menu>
-      </div> -->
       <div class="question">
 
         <div class="select-container">
           <mat-form-field appearance="standard">
-            <input matInput placeholder="Pytanie" formControlName="content" (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()">
+            <input matInput placeholder="Pytanie" formControlName="content" (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()"
+              (focus)="setSelection($event)">
           </mat-form-field>
           <mat-form-field appearance="standard">
             <mat-select placeholder="typ kontrolki" formControlName="select" name="control" (selectionChange)="changeControl(question)">
@@ -62,7 +51,7 @@
             <div class="choice answer" *ngSwitchCase="'short-answer'">
               <mat-form-field appearance="standard">
                 <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" (keyup)="updateSurveySubject()"
-                  (keydown)="updateSurveySubject()">
+                  (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
               </mat-form-field>
             </div>
 
@@ -77,7 +66,7 @@
               <div *ngFor="let input of field.controls.choiceOptions.controls; let k = index" [formGroupName]="k">
                 <mat-form-field appearance="standard">
                   <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs (keyup)="updateSurveySubject()"
-                    (keydown)="updateSurveySubject()">
+                    (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
                 </mat-form-field>
                 <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls.choiceOptions)"
                   *ngIf="field.controls.choiceOptions.controls.length > 1"></fa-icon>
@@ -104,11 +93,11 @@
               <div id="label-container" class="cont">
                 <mat-form-field appearance="standard">
                   <input matInput type="text" formControlName="minLabel" placeholder="Etykieta (opcjonalna)" maxlength="30"
-                    (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()">
+                    (focus)="setSelection($event)" (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()">
                 </mat-form-field>
                 <mat-form-field appearance="standard">
                   <input matInput type="text" formControlName="maxLabel" placeholder="Etykieta (opcjonalna)" maxlength="30"
-                    (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()">
+                    (focus)="setSelection($event)" (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()">
                 </mat-form-field>
               </div>
             </div>
@@ -120,7 +109,7 @@
                 </mat-radio-group>
                 <mat-form-field appearance="standard">
                   <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs (keyup)="updateSurveySubject()"
-                    (keydown)="updateSurveySubject()">
+                    (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
                 </mat-form-field>
                 <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls.choiceOptions)"
                   *ngIf="field.controls.choiceOptions.controls.length > 1"></fa-icon>
@@ -135,7 +124,7 @@
                   </div>
                   <mat-form-field appearance="standard">
                     <input matInput type="text" formControlName="viewValue" maxlength="20" #inputs (keyup)="updateSurveySubject()"
-                      (keydown)="updateSurveySubject()">
+                      (focus)="setSelection($event)" (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
                   </mat-form-field>
                   <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(j, field.controls.choiceOptions)"
                     *ngIf="field.controls.choiceOptions.controls.length > 1"></fa-icon>
@@ -148,7 +137,7 @@
                 <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
                   <mat-form-field appearance="standard">
                     <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs2 (keyup)="updateSurveySubject()"
-                      (keydown)="updateSurveySubject()">
+                      (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
                   </mat-form-field>
                   <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'], true)"
                     *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
@@ -163,7 +152,7 @@
                   </mat-radio-group>
                   <mat-form-field appearance="standard">
                     <input matInput type="text" [value]="radio.value.viewValue" formControlName="viewValue" maxlength="20"
-                      #inputs (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()">
+                      #inputs (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" (focus)="setSelection($event)">
                   </mat-form-field>
                   <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['choiceOptions'])"
                     *ngIf="field.controls['choiceOptions'].controls.length > 1"></fa-icon>
@@ -182,7 +171,7 @@
                 <div *ngFor="let input of field.controls['rows'].controls; let k = index" [formGroupName]="k">
                   <mat-form-field appearance="standard">
                     <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź" #inputs2 (keyup)="updateSurveySubject()"
-                      (keydown)="updateSurveySubject()">
+                      (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
                   </mat-form-field>
                   <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(k, field.controls['rows'], true)"
                     *ngIf="field.controls['rows'].controls.length > 1"></fa-icon>
@@ -198,7 +187,7 @@
                     </div>
                     <mat-form-field appearance="standard">
                       <input matInput type="text" [value]="check.value.viewValue" formControlName="viewValue" maxlength="20"
-                        #inputs (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()">
+                        #inputs (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" (focus)="setSelection($event)">
                     </mat-form-field>
                     <fa-icon class="delete" [icon]="['fas','times']" (click)="removeField(l, field.controls['choiceOptions'])"
                       *ngIf="field.controls['choiceOptions'].controls.length > 1"></fa-icon>
@@ -212,19 +201,22 @@
                 </div>
               </div>
             </div>
+
             <div class="add-cont" *ngSwitchCase="'single-choice'">
               <mat-radio-group [disabled]="true" ngModel [ngModelOptions]="{standalone: true}">
                 <mat-radio-button></mat-radio-button>
               </mat-radio-group>
               <app-button-single-control *ngSwitchCase="'single-choice'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja')"></app-button-single-control>
             </div>
+
             <div class="add-cont" *ngSwitchCase="'multiple-choice'">
               <div class="right">
                 <mat-checkbox [disabled]="true" ngModel [ngModelOptions]="{standalone: true}"></mat-checkbox>
               </div>
               <app-button-single-control *ngSwitchCase="'multiple-choice'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja')"></app-button-single-control>
             </div>
-            <app-button-single-control *ngSwitchCase="'dropdown-menu'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja')"></app-button-single-control>
+
+            <app-button-single-control *ngSwitchCase="'dropdown-menu'" (change)="createChoiceControls(field.controls.choiceOptions, 'opcja', $event)"></app-button-single-control>
           </div>
         </div>
 
@@ -250,21 +242,21 @@
 
             </div>
             <div id="question-menu">
-                <fa-icon [icon]="['fas', 'ellipsis-v']" [matMenuTriggerFor]="Fmenu"></fa-icon>
-                <mat-menu #Fmenu="matMenu" [overlapTrigger]="false" [ngSwitch]="question.value.select" yPosition="above">
-                  <button mat-menu-item>Lorem ipsum</button>
-                  <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
-                    opcje</button>
-                  <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
-                    kolumny</button>
-                  <button mat-menu-item (click)="openMoveControlDialog(question, 'rows')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.rows. length > 1">Przenieś
-                    wiersze</button>
-                </mat-menu>
+              <fa-icon [icon]="['fas', 'ellipsis-v']" [matMenuTriggerFor]="Fmenu"></fa-icon>
+              <mat-menu #Fmenu="matMenu" [overlapTrigger]="false" [ngSwitch]="question.value.select" yPosition="above">
+                <button mat-menu-item>Lorem ipsum</button>
+                <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
+                  opcje</button>
+                <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">Przenieś
+                  kolumny</button>
+                <button mat-menu-item (click)="openMoveControlDialog(question, 'rows')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.rows. length > 1">Przenieś
+                  wiersze</button>
+              </mat-menu>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+  <pre>{{invoiceForm.value | json }}</pre>
 </form>

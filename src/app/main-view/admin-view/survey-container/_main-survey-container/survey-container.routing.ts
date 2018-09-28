@@ -10,12 +10,6 @@ const surveyContainerRoutes: Routes = [
     component: SurveyContainerComponent,
     children: [
       {
-        path: 'create',
-        loadChildren:
-          './../survey-creator/survey-creator.module#SurveyCreatorModule',
-        canLoad: [AuthGuard]
-      },
-      {
         path: 'create/:id',
         loadChildren:
           './../survey-creator/survey-creator.module#SurveyCreatorModule',
@@ -36,6 +30,11 @@ const surveyContainerRoutes: Routes = [
         loadChildren:
           './../survey-result/survey-result.module#SurveyResultModule',
         canLoad: [AuthGuard]
+      },
+      {
+        path: 'response',
+        loadChildren:
+          './../survey-completed/survey-completed.module#SurveyCompletedModule'
       }
     ]
   }

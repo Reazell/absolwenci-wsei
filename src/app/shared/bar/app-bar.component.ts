@@ -10,14 +10,14 @@ import { SharedService } from '../../services/shared.service';
 })
 export class AppBarComponent implements OnInit, OnDestroy {
   // subs
-  userServiceSub: Subscription;
-  creatorSub: Subscription;
-  sendSub: Subscription;
-  adminMainSub: Subscription;
-  toggleSub: Subscription;
-  backSub: Subscription;
-  accountRoleSub: Subscription;
-  userInfoSub: Subscription;
+  userServiceSub: Subscription = new Subscription();
+  creatorSub: Subscription = new Subscription();
+  sendSub: Subscription = new Subscription();
+  adminMainSub: Subscription = new Subscription();
+  toggleSub: Subscription = new Subscription();
+  backSub: Subscription = new Subscription();
+  accountRoleSub: Subscription = new Subscription();
+  userInfoSub: Subscription = new Subscription();
 
   isLogged = false;
   showCreatorButton = false;

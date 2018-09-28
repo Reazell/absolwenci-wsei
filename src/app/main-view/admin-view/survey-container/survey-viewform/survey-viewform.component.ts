@@ -18,8 +18,8 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   title: string;
 
   // subs
-  surveyIDSub: Subscription;
-  editSurveySub: Subscription;
+  surveyIDSub: Subscription = new Subscription();
+  editSurveySub: Subscription = new Subscription();
 
   constructor(
     private surveyService: SurveyService,
@@ -127,7 +127,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   addRows(question) {
     const group = this.fb.group({
-      content: [question.content],
+      content: [question.content || this.defaultQuestion],
       select: [question.select],
       QuestionPosition: [question.questionPosition],
       FieldData: this.fb.array([])

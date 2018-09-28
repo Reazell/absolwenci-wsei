@@ -1,15 +1,9 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  QueryList,
-  ViewChildren
-} from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormArray,
   FormBuilder,
+  FormControlName,
   FormGroup
 } from '@angular/forms';
 import { MatDialog } from '@angular/material';
@@ -51,23 +45,21 @@ import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dial
   templateUrl: './survey-creator.component.html',
   styleUrls: ['./survey-creator.component.scss']
 })
-export class SurveyCreatorComponent implements OnInit, OnDestroy {
-  @ViewChildren('inputs')
-  inputs: QueryList<ElementRef>;
-  @ViewChildren('inputs2')
-  inputs2: QueryList<ElementRef>;
-
+export class SurveyCreatorComponent
+  implements OnInit, OnDestroy, AfterViewInit {
   invoiceForm: FormGroup;
   default = 'short-answer';
+  autofocus = false;
   disabled = true;
   index = 0;
   questionIndex = 0;
   id: number;
   // subs
-  showSurveySub: Subscription;
-  createSurveySub: Subscription;
-  surveyIDSub: Subscription;
-  showSurveyDialogSub: Subscription;
+  showSurveySub: Subscription = new Subscription();
+  createSurveySub: Subscription = new Subscription();
+  surveyIDSub: Subscription = new Subscription();
+  showSurveyDialogSub: Subscription = new Subscription();
+  viewChildrenSub: Subscription = new Subscription();
 
   //
   private updateToApi = new Subject();
@@ -133,9 +125,25 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog
   ) {}
-
+  ngAfterViewInit() {
+    this.autofocusField();
+  }
+  autofocusField() {
+    // tslint:disable-next-line:no-this-assignment
+    const that = this;
+    const originFormControlNameNgOnChanges =
+      FormControlName.prototype.ngOnChanges;
+    FormControlName.prototype.ngOnChanges = function() {
+      const result = originFormControlNameNgOnChanges.apply(this, arguments);
+      if (this.name === 'viewValue' && that.autofocus === true) {
+        this.control.nativeElement = this.valueAccessor._elementRef.nativeElement;
+        this.control.nativeElement.focus();
+        that.autofocus = false;
+      }
+      return result;
+    };
+  }
   ngOnInit(): void {
-    // this.getSurveyId();
     this.subToObs();
     this.getSurvey();
     this.showSurveyOnClick();
@@ -143,7 +151,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     this.showBackButton();
     this.sharedService.showCreatorButton(true);
   }
-
   getSurvey(): void {
     this.activatedRoute.data.map(data => data.cres).subscribe(
       (res: Survey) => {
@@ -204,7 +211,9 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       Questions: this.invoiceForm.getRawValue().questions,
       id: this.id
     };
-    console.log(JSON.stringify(object));
+    // console.log(JSON.stringify(object));
+    // console.log('update');
+    // console.log(object);
     return this.surveyService.updateSurvey(object);
   }
   updateSurvey() {
@@ -476,6 +485,7 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       }
     } else {
       this.addChoiceField(choiceOptionsField, name);
+      this.autofocus = true;
       this.updateSurveySubject();
     }
   }
@@ -565,8 +575,8 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     );
     selectArr.push(group);
     if (!data) {
-      this.autofocusField(this.inputs2, length);
       this.updateSurveySubject();
+      this.autofocus = true;
     }
   }
   populateRowControl(name: string, length: number, data?: Row): RowData {
@@ -595,9 +605,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       this.populateChoiceField(name, length, data)
     );
     selectArr.push(group);
-    if (!data) {
-      this.autofocusField(this.inputs);
-    }
   }
   populateChoiceField(
     name: string,
@@ -620,17 +627,6 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
       };
     }
     return group;
-  }
-  autofocusField(inputs: QueryList<ElementRef>, i?: number): void {
-    setTimeout(() => {
-      if (inputs && inputs.last) {
-        if (!i) {
-          inputs.last.nativeElement.focus();
-        } else {
-          inputs.toArray()[i].nativeElement.focus();
-        }
-      }
-    }, 0);
   }
 
   removeField(index: number, formArr: FormArray, row?: boolean): void {
@@ -740,6 +736,9 @@ export class SurveyCreatorComponent implements OnInit, OnDestroy {
     // }
   }
 
+  setSelection(e) {
+    e.target.select();
+  }
   createSurvey(): void {
     this.createSurveySub = this.surveyService
       .createSurvey(this.invoiceForm.getRawValue())

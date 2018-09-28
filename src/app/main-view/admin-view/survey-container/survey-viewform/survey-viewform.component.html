@@ -7,7 +7,7 @@
 
       <div class="select-container">
         <!-- <span>{{question.controls.content.value}}</span> -->
-        <span>{{question.controls.content.value.length > 0 ? question.controls.content.value : defaultQuestion}}</span>
+        <span>{{question.controls.content.value}}</span>
       </div>
 
       <div id="field-data" formArrayName="FieldData" [ngSwitch]="question.value.select">

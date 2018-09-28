@@ -12,8 +12,8 @@ import { SurveyService } from '../../survey-container/services/survey.services';
 export class SurveyListComponent implements OnInit, OnDestroy {
   loading = false;
   // subs
-  getAllSurveysSub: Subscription;
-  isLoadingSub: Subscription;
+  getAllSurveysSub: Subscription = new Subscription();
+  isLoadingSub: Subscription = new Subscription();
   surveyArr: Survey[];
   constructor(private surveyService: SurveyService, private router: Router) {}
 

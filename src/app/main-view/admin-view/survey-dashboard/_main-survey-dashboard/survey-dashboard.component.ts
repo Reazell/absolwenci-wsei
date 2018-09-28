@@ -17,7 +17,7 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
   smallScreen: boolean;
   showDetails = false;
   // subs
-  toggleSidebarSub: Subscription;
+  toggleSidebarSub: Subscription = new Subscription();
 
   constructor(private sharedService: SharedService) {}
   ngOnInit(): void {
