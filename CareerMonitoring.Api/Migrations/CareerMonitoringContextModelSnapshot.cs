@@ -307,6 +307,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<string>("LabelsList");
 
+                    b.Property<int>("QuestionPosition");
+
                     b.Property<string>("Select");
 
                     b.Property<int>("SurveyReportId");

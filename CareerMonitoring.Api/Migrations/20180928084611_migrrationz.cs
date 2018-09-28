@@ -349,6 +349,7 @@ namespace CareerMonitoring.Api.Migrations
                     Content = table.Column<string>(nullable: true),
                     Select = table.Column<string>(nullable: true),
                     AnswersNumber = table.Column<int>(nullable: false),
+                    QuestionPosition = table.Column<int>(nullable: false),
                     SurveyReportId = table.Column<int>(nullable: false),
                     LabelsList = table.Column<string>(nullable: true)
                 },

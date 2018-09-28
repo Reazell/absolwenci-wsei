@@ -10,6 +10,7 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
         public string Content { get; private set; }
         public string Select { get; private set; }
         public int AnswersNumber { get; private set; } = 0;
+        public int QuestionPosition { get; private set; }
         public int SurveyReportId { get; private set; }
         [NotMapped]
         public ICollection<string> Labels { get; set; } = new List<string>();
@@ -23,11 +24,12 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
 
         private QuestionReport () {}
 
-        public QuestionReport (string content, string select, int answersNumber)
+        public QuestionReport (string content, string select, int answersNumber, int questionPosition)
         {
             Content = content;
             Select = select;
             AnswersNumber = answersNumber;
+            QuestionPosition = questionPosition;
         }
 
         public void AddAnswer ()

@@ -31,7 +31,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
 
             foreach (var question in survey.Questions) {
-                var questionReport = new QuestionReport (question.Content, question.Select, 0);
+                var questionReport = new QuestionReport (question.Content, question.Select, 0, question.QuestionPosition);
                 surveyReport.AddQuestionReport (questionReport);
                 await _questionReportRepository.AddAsync (questionReport);
                 foreach (var fieldData in question.FieldData) {
@@ -204,7 +204,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
 
             foreach (var question in survey.Questions) {
-                var questionReport = new QuestionReport (question.Content, question.Select, 0);
+                var questionReport = new QuestionReport (question.Content, question.Select, 0, question.QuestionPosition);
                 surveyReport.AddQuestionReport (questionReport);
                 await _questionReportRepository.AddAsync (questionReport);
                 foreach (var fieldData in question.FieldData) {

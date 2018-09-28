@@ -38,9 +38,9 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await _context.QuestionReports.AsNoTracking().Include(x => x.DataSets).Where(x => x.SurveyReportId == surveyReportId && x.Content == content && x.Select == select).SingleOrDefaultAsync();
         }
 
-        public async Task<QuestionReport> GetByContentAndSelectAsync(string content, string select)
+        public async Task<QuestionReport> GetByContentAndPositionAsync(int questionPosition, string select)
         {
-            return await _context.QuestionReports.Include(x => x.DataSets).SingleOrDefaultAsync(x => x.Content == content && x.Select == select);
+            return await _context.QuestionReports.Include(x => x.DataSets).SingleOrDefaultAsync(x => x.QuestionPosition == questionPosition && x.Select == select);
         }
 
         public async Task UpdateAsync(QuestionReport questionReport)

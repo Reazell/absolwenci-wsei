@@ -65,10 +65,10 @@ namespace CareerMonitoring.Infrastructure.Services
             var questionAnswer = new QuestionAnswer (questionPosition, content, select);
             surveyAnswer.AddQuestionAnswer (questionAnswer);
             await _questionAnswerRepository.AddAsync (questionAnswer);
-            if(questionAnswer.Content != ""){
-                var questionReport = await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content, questionAnswer.Select);
-                questionReport.AddAnswer();
-            }
+
+            var questionReport = await _questionReportRepository.GetByContentAndPositionAsync(questionAnswer.QuestionPosition, questionAnswer.Select);
+            questionReport.AddAnswer();
+
             return questionAnswer.Id;
         }
 
@@ -167,7 +167,7 @@ namespace CareerMonitoring.Infrastructure.Services
             {
                 if(questionAnswer.Content != ""){
                     var questionReport =
-                        await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content,
+                        await _questionReportRepository.GetByContentAndPositionAsync(questionAnswer.QuestionPosition,
                             questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
@@ -193,7 +193,7 @@ namespace CareerMonitoring.Infrastructure.Services
             if (rowChoiceOptionAnswer.Value == true)
             {
                 var questionReport =
-                    await _questionReportRepository.GetByContentAndSelectAsync(questionAnswer.Content,
+                    await _questionReportRepository.GetByContentAndPositionAsync(questionAnswer.QuestionPosition,
                         questionAnswer.Select);
                 foreach (var dataSet in questionReport.DataSets)
                 {
