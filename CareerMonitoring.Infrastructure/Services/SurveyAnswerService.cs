@@ -21,7 +21,6 @@ namespace CareerMonitoring.Infrastructure.Services
         private readonly IQuestionReportRepository _questionReportRepository;
         private readonly ISurveyReportRepository _surveyReportRepository;
         private readonly IDataSetRepository _dataSetRepository;
-        private readonly ISurveyReportService _surveyReportService;
 
 
         public SurveyAnswerService (IMapper mapper,
@@ -33,8 +32,7 @@ namespace CareerMonitoring.Infrastructure.Services
         IRowChoiceOptionAnswerRepository rowChoiceOptionAnswerRepository,
         IQuestionReportRepository questionReportRepository,
         ISurveyReportRepository surveyReportRepository,
-        IDataSetRepository dataSetRepository,
-        ISurveyReportService surveyReportService)
+        IDataSetRepository dataSetRepository)
         {
             _mapper = mapper;
             _surveyAnswerRepository = surveyAnswerRepository;
@@ -46,7 +44,6 @@ namespace CareerMonitoring.Infrastructure.Services
             _questionReportRepository = questionReportRepository;
             _surveyReportRepository = surveyReportRepository;
             _dataSetRepository = dataSetRepository;
-            _surveyReportService = surveyReportService;
         }
 
         public async Task<int> CreateAsync(string surveyTitle, int surveyId)
@@ -58,7 +55,8 @@ namespace CareerMonitoring.Infrastructure.Services
             return surveyAnswer.Id;
         }
 
-        public async Task<int> AddQuestionAnswerToSurveyAnswerAsync(int surveyId, int surveyAnswerId, int questionPosition,
+        public async Task<int> AddQuestionAnswerToSurveyAnswerAsync(int surveyId, int surveyAnswerId,
+            int questionPosition,
             string content, string select)
         {
             var surveyAnswer = await _surveyAnswerRepository.GetByIdAsync (surveyAnswerId);
@@ -66,7 +64,9 @@ namespace CareerMonitoring.Infrastructure.Services
             surveyAnswer.AddQuestionAnswer (questionAnswer);
             await _questionAnswerRepository.AddAsync (questionAnswer);
             var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
-            var questionReport = await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id, questionAnswer.QuestionPosition, questionAnswer.Select);
+            var questionReport =
+                await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id,
+                    questionAnswer.QuestionPosition, questionAnswer.Select);
             questionReport.AddAnswer();
 
             return questionAnswer.Id;
@@ -88,8 +88,10 @@ namespace CareerMonitoring.Infrastructure.Services
                         questionAnswer.Content, questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
-                        dataSet.AddData(fieldDataAnswer.Input);
-                        await _dataSetRepository.UpdateAsync(dataSet);
+                        if(fieldDataAnswer.Input != null){
+                            dataSet.AddData(fieldDataAnswer.Input);
+                            await _dataSetRepository.UpdateAsync(dataSet);
+                        }
                     }
                     return fieldDataAnswer.Id;
                 }
@@ -103,8 +105,10 @@ namespace CareerMonitoring.Infrastructure.Services
                             questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
-                        dataSet.AddData(fieldDataAnswer.Input);
-                        await _dataSetRepository.UpdateAsync(dataSet);
+                        if(fieldDataAnswer.Input != null){
+                            dataSet.AddData(fieldDataAnswer.Input);
+                            await _dataSetRepository.UpdateAsync(dataSet);
+                        }
                     }
                     return fieldDataAnswer.Id;
                 }
@@ -155,7 +159,8 @@ namespace CareerMonitoring.Infrastructure.Services
             }
         }
 
-        public async Task AddChoiceOptionsAnswerToFieldDataAnswerAsync(int surveyId, int fieldDataAnswerId, int optionPosition,
+        public async Task AddChoiceOptionsAnswerToFieldDataAnswerAsync(int surveyId, int fieldDataAnswerId,
+            int optionPosition,
             bool value, string viewValue)
         {
             var fieldDataAnswer = await _fieldDataAnswerRepository.GetByIdAsync (fieldDataAnswerId);
@@ -168,7 +173,8 @@ namespace CareerMonitoring.Infrastructure.Services
                 if(questionAnswer.Content != ""){
                     var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
                     var questionReport =
-                        await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id, questionAnswer.QuestionPosition,
+                        await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id,
+                            questionAnswer.QuestionPosition,
                             questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
@@ -182,7 +188,8 @@ namespace CareerMonitoring.Infrastructure.Services
             }
         }
 
-        public async Task AddChoiceOptionAnswerToRowAnswerAsync(int surveyId, int rowAnswerId, int optionPosition, bool value,
+        public async Task AddChoiceOptionAnswerToRowAnswerAsync(int surveyId, int rowAnswerId, int optionPosition,
+            bool value,
             string viewValue)
         {
             var rowAnswer = await _rowAnswerRepository.GetByIdAsync (rowAnswerId);
@@ -195,7 +202,8 @@ namespace CareerMonitoring.Infrastructure.Services
             {
                 var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
                 var questionReport =
-                    await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id, questionAnswer.QuestionPosition,
+                    await _questionReportRepository.GetBySurveyReportContentAndPositionAsync(surveyReport.Id,
+                        questionAnswer.QuestionPosition,
                         questionAnswer.Select);
                 foreach (var dataSet in questionReport.DataSets)
                 {
