@@ -26,8 +26,10 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<IEnumerable<DataSet>> GetByQuestionReportAsync(int questionReportId, bool isTracking = true)
         {
             if(isTracking)
-                return await Task.FromResult(_context.DataSets.AsTracking().Where(x => x.QuestionReportId == questionReportId));
-            return await Task.FromResult(_context.DataSets.AsNoTracking().Where(x => x.QuestionReportId == questionReportId));
+                return await Task.FromResult(_context.DataSets.AsTracking()
+                    .Where(x => x.QuestionReportId == questionReportId));
+            return await Task.FromResult(_context.DataSets.AsNoTracking()
+                .Where(x => x.QuestionReportId == questionReportId));
         }
 
         public async Task UpdateAsync(DataSet dataSet)

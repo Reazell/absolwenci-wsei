@@ -1,12 +1,11 @@
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.SurveyAnswer;
-using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    //[Authorize]
+    [Authorize]
     public class SurveyAnswerController : ApiUserController {
         private readonly ISurveyAnswerService _surveyAnswerService;
 
@@ -32,7 +31,8 @@ namespace CareerMonitoring.Api.Controllers {
 
         private async Task<IActionResult> AddChoiceOptionsAnswerAndRowAnswerAsync (int surveyId, int surveyAnswerId,
             string select, QuestionAnswerToAdd questionAnswer) {
-            var questionAnswerId = await _surveyAnswerService.AddQuestionAnswerToSurveyAnswerAsync (surveyId, surveyAnswerId,
+            var questionAnswerId = await _surveyAnswerService.AddQuestionAnswerToSurveyAnswerAsync(surveyId,
+                surveyAnswerId,
                 questionAnswer.QuestionPosition, questionAnswer.Content, questionAnswer.Select);
             if (questionAnswer.FieldData == null)
                 return BadRequest ("Question must contain FieldData");
@@ -44,10 +44,12 @@ namespace CareerMonitoring.Api.Controllers {
                     fieldDataAnswer.MaxLabel);
 
                 if (fieldDataAnswer.ChoiceOptions != null)
-                    await AddChoiceOptionsAnswerAsync(surveyId, fieldDataAnswer, questionAnswer.Select, fieldDataAnswerId,
+                    await AddChoiceOptionsAnswerAsync(surveyId, fieldDataAnswer, questionAnswer.Select,
+                        fieldDataAnswerId,
                         questionAnswer);
                 if (fieldDataAnswer.Rows != null)
-                    await AddRowsAnswerAsync(surveyId, fieldDataAnswer, questionAnswer.Select, questionAnswer, fieldDataAnswerId);
+                    await AddRowsAnswerAsync(surveyId, fieldDataAnswer, questionAnswer.Select, questionAnswer,
+                        fieldDataAnswerId);
             }
             return StatusCode (200);
         }
@@ -58,7 +60,7 @@ namespace CareerMonitoring.Api.Controllers {
                 questionAnswer.Select == "dropdown-menu" || questionAnswer.Select == "linear-scale") {
                 var counter = 0; //temporary bugfix
                 foreach (var choiceOption in fieldDataAnswer.ChoiceOptions) {
-                    await _surveyAnswerService.AddChoiceOptionsAnswerToFieldDataAnswerAsync (surveyId, fieldDataAnswerId,
+                    await _surveyAnswerService.AddChoiceOptionsAnswerToFieldDataAnswerAsync(surveyId, fieldDataAnswerId,
                         counter,
                         choiceOption.Value, choiceOption.ViewValue);
                     counter++;

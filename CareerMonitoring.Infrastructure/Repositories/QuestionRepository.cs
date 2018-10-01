@@ -25,8 +25,10 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<IEnumerable<Question>> GetAllBySurveyIdInOrderAsync(int surveyId, bool isTracking = true)
         {
             if(isTracking)
-                return await Task.FromResult(_context.Questions.AsTracking ().Where(x => x.SurveyId == surveyId).OrderBy(q => q.QuestionPosition));
-            return await Task.FromResult(_context.Questions.AsNoTracking ().Where(x => x.SurveyId == surveyId).OrderBy(q => q.QuestionPosition));
+                return await Task.FromResult(_context.Questions.AsTracking().Where(x => x.SurveyId == surveyId)
+                    .OrderBy(q => q.QuestionPosition));
+            return await Task.FromResult(_context.Questions.AsNoTracking().Where(x => x.SurveyId == surveyId)
+                .OrderBy(q => q.QuestionPosition));
         }
 
         public async Task<Question> GetByIdAsync(int id, bool isTracking = true)
@@ -39,15 +41,20 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<Question> GetByContentAsync (int surveyId, string content, bool isTracking = true)
         {
             if(isTracking)
-                return await _context.Questions.AsTracking ().Where (x => x.SurveyId == surveyId).Where(x => x.Content == content).SingleOrDefaultAsync();
-            return await _context.Questions.AsNoTracking ().Where (x => x.SurveyId == surveyId).Where(x => x.Content == content).SingleOrDefaultAsync();
+                return await _context.Questions.AsTracking().Where(x => x.SurveyId == surveyId)
+                    .Where(x => x.Content == content).SingleOrDefaultAsync();
+            return await _context.Questions.AsNoTracking().Where(x => x.SurveyId == surveyId)
+                .Where(x => x.Content == content).SingleOrDefaultAsync();
         }
 
         public async Task<Question> GetBySurveyIdAsync (int surveyId, int questionPosition, bool isTracking = true)
         {
             if(isTracking)
-                return await _context.Questions.AsTracking ().Where (x => x.SurveyId == surveyId && x.QuestionPosition == questionPosition).SingleOrDefaultAsync();
-            return await _context.Questions.AsNoTracking ().Where (x => x.SurveyId == surveyId && x.QuestionPosition == questionPosition).SingleOrDefaultAsync();
+                return await _context.Questions.AsTracking()
+                    .Where(x => x.SurveyId == surveyId && x.QuestionPosition == questionPosition)
+                    .SingleOrDefaultAsync();
+            return await _context.Questions.AsNoTracking()
+                .Where(x => x.SurveyId == surveyId && x.QuestionPosition == questionPosition).SingleOrDefaultAsync();
         }
 
         public async Task UpdateAsync(Question question)

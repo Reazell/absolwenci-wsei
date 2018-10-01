@@ -40,19 +40,23 @@ namespace CareerMonitoring.Infrastructure.Repositories {
 
         public async Task<Survey> GetByTitleWithQuestionsAsync (string title, bool isTracking = true) {
             if (isTracking) {
-                return await _context.Surveys.AsTracking ().Include (x => x.Questions).SingleOrDefaultAsync (x => x.Title == title);
+                return await _context.Surveys.AsTracking().Include(x => x.Questions)
+                    .SingleOrDefaultAsync(x => x.Title == title);
             }
-            return await _context.Surveys.AsNoTracking ().Include (x => x.Questions).SingleOrDefaultAsync (x => x.Title == title);
+            return await _context.Surveys.AsNoTracking().Include(x => x.Questions)
+                .SingleOrDefaultAsync(x => x.Title == title);
         }
 
         public async Task<IEnumerable<Survey>> GetAllWithQuestionsAsync (bool isTracking = true) {
             if (isTracking) {
-                return await Task.FromResult (_context.Surveys.AsTracking ().Include (x => x.Questions).AsEnumerable ());
+                return await Task.FromResult(_context.Surveys.AsTracking().Include(x => x.Questions).AsEnumerable());
             }
             return await Task.FromResult (_context.Surveys.AsNoTracking ().Include (x => x.Questions).AsEnumerable ());
         }
 
-        public async Task<IEnumerable<Survey>> GetAllWithQuestionsFieldDataAndChoiceOptionsByTitleAsync (string title, bool isTracking = true) {
+        public async Task<IEnumerable<Survey>> GetAllWithQuestionsFieldDataAndChoiceOptionsByTitleAsync(string title,
+            bool isTracking = true)
+        {
             if (isTracking) {
                 return await Task.FromResult (_context.Surveys.AsTracking ()
                     .Include (x => x.Questions)

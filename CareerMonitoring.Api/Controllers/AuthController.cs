@@ -72,7 +72,8 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _authService.RegisterStudentAsync (command.Name, command.Surname, command.Email, command.IndexNumber, command.PhoneNumber, command.Password);
+                await _authService.RegisterStudentAsync(command.Name, command.Surname, command.Email,
+                    command.IndexNumber, command.PhoneNumber, command.Password);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);
@@ -87,7 +88,8 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _authService.RegisterEmployerAsync (command.Name, command.Surname, command.Email, command.PhoneNumber, command.Password,
+                await _authService.RegisterEmployerAsync(command.Name, command.Surname, command.Email,
+                    command.PhoneNumber, command.Password,
                     command.CompanyName, command.Location, command.CompanyDescription);
                 return StatusCode (201);
             } catch (Exception e) {
@@ -103,7 +105,8 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _authService.RegisterGraduateAsync (command.Name, command.Surname, command.Email, command.PhoneNumber, command.Password);
+                await _authService.RegisterGraduateAsync(command.Name, command.Surname, command.Email,
+                    command.PhoneNumber, command.Password);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);
@@ -118,7 +121,8 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _authService.RegisterCareerOfficeAsync (command.Name, command.Surname, command.Email, command.PhoneNumber, command.Password);
+                await _authService.RegisterCareerOfficeAsync(command.Name, command.Surname, command.Email,
+                    command.PhoneNumber, command.Password);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);
@@ -171,14 +175,17 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [HttpPost ("changePasswordByRestoringPassword")]
-        public async Task<IActionResult> ChangePasswordByRestoringPassword ([FromBody] ChangePasswordByRestoringPassword command) {
+        public async Task<IActionResult> ChangePasswordByRestoringPassword(
+            [FromBody] ChangePasswordByRestoringPassword command)
+        {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             var account = await _accountService.GetActiveWithAccountRestoringPasswordByTokenAsync (command.Token);
             if (account == null)
                 return Unauthorized ();
             try {
-                await _accountService.ChangePasswordByRestoringPassword (account.Email, command.Token, command.NewPassword);
+                await _accountService.ChangePasswordByRestoringPassword(account.Email, command.Token,
+                    command.NewPassword);
                 return Ok (new { message = "The password was changed" });
             } catch (Exception e) {
                 return NotFound (new { message = e.Message });

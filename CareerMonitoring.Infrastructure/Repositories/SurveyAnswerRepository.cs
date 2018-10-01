@@ -138,7 +138,8 @@ namespace CareerMonitoring.Infrastructure.Repositories
             .SingleOrDefaultAsync (x => x.SurveyTitle == surveyTitle);
         }
 
-        public async Task<ICollection<SurveyAnswer>> GetAllBySurveyIdWithQuestionsAsync (int surveyId, bool isTracking = true)
+        public async Task<ICollection<SurveyAnswer>> GetAllBySurveyIdWithQuestionsAsync(int surveyId,
+            bool isTracking = true)
         {
             if (isTracking)
             {

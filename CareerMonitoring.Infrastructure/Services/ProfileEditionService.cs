@@ -35,7 +35,9 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task AddEducationAsync (int accountId, string course, int year, string specialization, string nameOfUniveristy, bool graduated) {
+        public async Task AddEducationAsync(int accountId, string course, int year, string specialization,
+            string nameOfUniveristy, bool graduated)
+        {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
                 account.AddEducation (new Education (course, year, specialization, nameOfUniveristy, graduated));
@@ -45,7 +47,9 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task AddExperienceAsync (int accountId, string position, string companyName, string location, DateTime from, DateTime to, bool isCurrentJob) {
+        public async Task AddExperienceAsync(int accountId, string position, string companyName, string location,
+            DateTime from, DateTime to, bool isCurrentJob)
+        {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
                 account.AddExperience (new Experience (position, companyName, location, from, to, isCurrentJob));
