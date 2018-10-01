@@ -18,13 +18,31 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             await _context.SaveChangesAsync ();
         }
 
-        public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyAnswerIdInOrderAsync (int surveyAnswerId, bool isTracking = true) {
-            if (isTracking)
-                return await Task.FromResult (_context.QuestionsAnswers.AsTracking ().Where (x => x.SurveyAnswerId == surveyAnswerId).OrderBy (q => q.QuestionPosition));
-            return await Task.FromResult (_context.QuestionsAnswers.AsNoTracking ().Where (x => x.SurveyAnswerId == surveyAnswerId).OrderBy (q => q.QuestionPosition));
+        public int CountAllQuestionAnswersByQuestionId(int surveyAnswerId, int id)
+        {
+            return _context.QuestionsAnswers.Where(x => x.SurveyAnswerId == surveyAnswerId).Count(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyIdInOrderAsync (int surveyId, bool isTracking = true) {
+        public async Task<ICollection<QuestionAnswer>> GetAllOpenQuestionAnswersBySurveyAnswerId (int surveyAnswerId)
+        {
+            return await Task.FromResult(_context.QuestionsAnswers.Where(x =>
+                    x.SurveyAnswerId == surveyAnswerId && x.Select == "short-answer" || x.Select == "long-answer")
+                .ToList());
+        }
+
+        public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyAnswerIdInOrderAsync(int surveyAnswerId,
+            bool isTracking = true)
+        {
+            if (isTracking)
+                return await Task.FromResult(_context.QuestionsAnswers.AsTracking()
+                    .Where(x => x.SurveyAnswerId == surveyAnswerId).OrderBy(q => q.QuestionPosition));
+            return await Task.FromResult(_context.QuestionsAnswers.AsNoTracking()
+                .Where(x => x.SurveyAnswerId == surveyAnswerId).OrderBy(q => q.QuestionPosition));
+        }
+
+        public async Task<IEnumerable<QuestionAnswer>> GetAllBySurveyIdInOrderAsync(int surveyId,
+            bool isTracking = true)
+        {
             if (isTracking)
                 return await Task.FromResult (_context.QuestionsAnswers.AsTracking ()
                     .Include (x => x.SurveyAnswer)

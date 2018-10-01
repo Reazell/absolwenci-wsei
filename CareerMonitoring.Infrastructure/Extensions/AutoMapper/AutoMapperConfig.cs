@@ -1,6 +1,5 @@
 using AutoMapper;
 using CareerMonitoring.Core.Domains.Surveys;
-using CareerMonitoring.Core.Domains.SurveyScore;
 using CareerMonitoring.Infrastructure.DTO;
 using CareerMonitoring.Infrastructure.DTO.Survey;
 

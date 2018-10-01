@@ -21,11 +21,20 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.SaveChangesAsync ();
         }
 
-        public async Task<IEnumerable<ChoiceOptionAnswer>> GetAllByFieldDataIdInOrderAsync(int fieldDataAnswerId, bool isTracking = true)
+        public async Task<IEnumerable<ChoiceOptionAnswer>> GetAllByFieldDataIdInOrderAsync(int fieldDataAnswerId,
+            bool isTracking = true)
         {
             if(isTracking)
-                return await Task.FromResult(_context.ChoiceOptionsAnswers.AsTracking ().Where(x => x.FieldDataAnswerId == fieldDataAnswerId).OrderBy(q => q.OptionPosition));
-            return await Task.FromResult(_context.ChoiceOptionsAnswers.AsNoTracking ().Where(x => x.FieldDataAnswerId == fieldDataAnswerId).OrderBy(q => q.OptionPosition));
+                return await Task.FromResult(_context.ChoiceOptionsAnswers.AsTracking()
+                    .Where(x => x.FieldDataAnswerId == fieldDataAnswerId).OrderBy(q => q.OptionPosition));
+            return await Task.FromResult(_context.ChoiceOptionsAnswers.AsNoTracking()
+                .Where(x => x.FieldDataAnswerId == fieldDataAnswerId).OrderBy(q => q.OptionPosition));
+        }
+
+        public int CountMarkedByOptionPositionAsync(int fieldDataAnswerId, int optionPosition)
+        {
+            return _context.ChoiceOptionsAnswers.Where(x => x.Value == true && x.OptionPosition == optionPosition)
+                .Count(x => x.FieldDataAnswerId == fieldDataAnswerId);
         }
 
         public async Task UpdateAsync(ChoiceOptionAnswer choiceOptionAnswer)

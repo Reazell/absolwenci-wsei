@@ -28,16 +28,20 @@ namespace CareerMonitoring.Infrastructure.Repositories {
 
         public async Task<Account> GetByEmailAsync (string email, bool isTracking = true) {
             if (isTracking)
-                return await _context.Accounts.AsTracking ().SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
-            return await _context.Accounts.AsNoTracking ().SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
+                return await _context.Accounts.AsTracking()
+                    .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
+            return await _context.Accounts.AsNoTracking()
+                .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
         public async Task<Account> GetByActivationKeyAsync (Guid activationKey, bool isTracking = true) {
             if (isTracking)
                 return await _context.Accounts.AsTracking ().Include (x => x.AccountActivation).
-            SingleOrDefaultAsync (x => x.AccountActivation.ActivationKey == activationKey && x.AccountActivation.Active == false);
+            SingleOrDefaultAsync(x =>
+                        x.AccountActivation.ActivationKey == activationKey && x.AccountActivation.Active == false);
             return await _context.Accounts.AsNoTracking ().Include (x => x.AccountActivation).
-            SingleOrDefaultAsync (x => x.AccountActivation.ActivationKey == activationKey && x.AccountActivation.Active == false);
+            SingleOrDefaultAsync(x =>
+                    x.AccountActivation.ActivationKey == activationKey && x.AccountActivation.Active == false);
         }
 
         public async Task<Account> GetWithAccountRestoringPasswordAsync (int id, bool isTracking = true) {

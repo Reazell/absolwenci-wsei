@@ -1,8 +1,8 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Core.Domains.SurveyReport;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
-using CareerMonitoring.Core.Domains.SurveyScore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
@@ -18,6 +18,9 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<ChoiceOptionAnswer> ChoiceOptionsAnswers { get; set; }
         public DbSet<RowChoiceOptionAnswer> RowChoiceOptionsAnswers { get; set; }
         public DbSet<RowAnswer> RowAnswers { get; set; }
+        public DbSet<SurveyReport> SurveyReports { get; set; }
+        public DbSet<QuestionReport> QuestionReports { get; set; }
+        public DbSet<DataSet> DataSets { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
@@ -32,10 +35,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<Language> Languages { get; set; }
         public DbSet<ProfileLink> ProfileLinks { get; set; }
         public DbSet<Skill> Skills { get; set; }
-        public DbSet<SurveyScore> SurveyScores { get; set; }
-        public DbSet<FieldDataScore> FieldDataScores { get; set; }
-        public DbSet<QuestionScore> QuestionScores { get; set; }
-        public DbSet<ChoiceOptionScore> ChoiceScores { get; set; }
+        
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 
@@ -74,18 +74,22 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasForeignKey<ProfileLink> (b => b.AccountId);
             modelBuilder.Entity<Survey> ()
                 .HasMany (a => a.Questions)
-                .WithOne (b => b.Survey);
+                .WithOne (b => b.Survey)
+                .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<Question> ()
                 .HasMany (a => a.FieldData)
-                .WithOne (b => b.Question);
+                .WithOne (b => b.Question)
+                .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<FieldData> ()
                 .HasMany (a => a.Rows)
                 .WithOne (b => b.FieldData)
-                .HasForeignKey (s => s.FieldDataId);
+                .HasForeignKey (s => s.FieldDataId)
+                .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<FieldData> ()
                 .HasMany (a => a.ChoiceOptions)
                 .WithOne (b => b.FieldData)
-                .HasForeignKey (s => s.FieldDataId);
+                .HasForeignKey (s => s.FieldDataId)
+                .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<SurveyAnswer> ()
                 .HasMany (a => a.QuestionsAnswers)
                 .WithOne (b => b.SurveyAnswer);
@@ -106,20 +110,14 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .WithOne (b => b.RowAnswer)
                 .HasForeignKey (s => s.RowAnswerId)
                 .OnDelete (DeleteBehavior.Restrict);
-            modelBuilder.Entity<SurveyScore> ()
-                .HasMany (a => a.Questions)
-                .WithOne (b => b.Survey);
-            modelBuilder.Entity<QuestionScore> ()
-                .HasMany (a => a.FieldData)
-                .WithOne (b => b.Question);
-            modelBuilder.Entity<FieldDataScore> ()
-                .HasMany (a => a.Rows)
-                .WithOne (b => b.FieldData)
-                .HasForeignKey (s => s.FieldDataId);
-            modelBuilder.Entity<FieldDataScore> ()
-                .HasMany (a => a.ChoiceOptions)
-                .WithOne (b => b.FieldData)
-                .HasForeignKey (s => s.FieldDataId);
+            modelBuilder.Entity<SurveyReport> ()
+                .HasMany (a => a.QuestionsReports)
+                .WithOne (b => b.SurveyReport)
+                .HasForeignKey (s => s.SurveyReportId);
+            modelBuilder.Entity<QuestionReport> ()
+                .HasMany (a => a.DataSets)
+                .WithOne (b => b.QuestionReport)
+                .HasForeignKey (s => s.QuestionReportId);
         }
     }
 }

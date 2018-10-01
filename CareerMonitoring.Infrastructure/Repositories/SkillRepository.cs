@@ -27,8 +27,10 @@ namespace CareerMonitoring.Infrastructure.Repositories {
 
         public async Task<Skill> GetByNameAsync (string name, bool isTracking = true) {
             if (isTracking)
-                return await _context.Skills.AsTracking ().SingleOrDefaultAsync (x => x.Name.ToLowerInvariant () == name.ToLowerInvariant ());
-            return await _context.Skills.AsNoTracking ().SingleOrDefaultAsync (x => x.Name.ToLowerInvariant () == name.ToLowerInvariant ());
+                return await _context.Skills.AsTracking()
+                    .SingleOrDefaultAsync(x => x.Name.ToLowerInvariant() == name.ToLowerInvariant());
+            return await _context.Skills.AsNoTracking()
+                .SingleOrDefaultAsync(x => x.Name.ToLowerInvariant() == name.ToLowerInvariant());
         }
 
         public async Task<IEnumerable<Skill>> GetAllAsync (bool isTracking = true) {

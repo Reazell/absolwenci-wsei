@@ -29,8 +29,10 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<FieldDataAnswer> GetByQuestionIdAsync(int questionAnswerId, bool isTracking = true)
         {
             if(isTracking)
-                return await _context.FieldDataAnswers.AsTracking().SingleOrDefaultAsync (x => x.QuestionAnswerId == questionAnswerId);
-            return await _context.FieldDataAnswers.AsNoTracking().SingleOrDefaultAsync (x => x.QuestionAnswerId == questionAnswerId);
+                return await _context.FieldDataAnswers.AsTracking()
+                    .SingleOrDefaultAsync(x => x.QuestionAnswerId == questionAnswerId);
+            return await _context.FieldDataAnswers.AsNoTracking()
+                .SingleOrDefaultAsync(x => x.QuestionAnswerId == questionAnswerId);
         }
 
         public async Task UpdateAsync(FieldDataAnswer fieldDataAnswer)

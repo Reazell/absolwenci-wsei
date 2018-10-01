@@ -27,8 +27,10 @@ namespace CareerMonitoring.Infrastructure.Repositories {
 
         public async Task<Employer> GetByEmailAsync (string email, bool isTracking = true) {
             if (isTracking)
-                return await _context.Employers.AsTracking ().SingleOrDefaultAsync (x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
-            return await _context.Employers.AsNoTracking ().SingleOrDefaultAsync (x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
+                return await _context.Employers.AsTracking()
+                    .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
+            return await _context.Employers.AsNoTracking()
+                .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
         public async Task<IEnumerable<Employer>> GetAllAsync (bool isTracking = true) {

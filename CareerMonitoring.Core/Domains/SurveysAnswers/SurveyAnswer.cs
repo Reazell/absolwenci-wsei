@@ -7,7 +7,6 @@ namespace CareerMonitoring.Core.Domains.SurveysAnswers {
         public string SurveyTitle { get; private set; }
         public int SurveyId { get; private set; }
         public DateTime CreatedAt { get; private set; }
-        public bool Answered { get; private set; }
         public ICollection<QuestionAnswer> QuestionsAnswers { get; private set; } = new List<QuestionAnswer>();
 
         private SurveyAnswer () { }
@@ -21,6 +20,5 @@ namespace CareerMonitoring.Core.Domains.SurveysAnswers {
         public void AddQuestionAnswer (QuestionAnswer questionAnswer) {
             QuestionsAnswers.Add(questionAnswer);
         }
-
     }
 }
