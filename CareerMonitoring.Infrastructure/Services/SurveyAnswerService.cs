@@ -83,10 +83,9 @@ namespace CareerMonitoring.Infrastructure.Services
                         questionAnswer.Content, questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
-                        if(fieldDataAnswer.Input != null){
-                            dataSet.AddData(fieldDataAnswer.Input);
-                            await _dataSetRepository.UpdateAsync(dataSet);
-                        }
+                        if (fieldDataAnswer.Input == null) continue;
+                        dataSet.AddData(fieldDataAnswer.Input);
+                        await _dataSetRepository.UpdateAsync(dataSet);
                     }
                     return fieldDataAnswer.Id;
                 }
@@ -100,10 +99,9 @@ namespace CareerMonitoring.Infrastructure.Services
                             questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
-                        if(fieldDataAnswer.Input != null){
-                            dataSet.AddData(fieldDataAnswer.Input);
-                            await _dataSetRepository.UpdateAsync(dataSet);
-                        }
+                        if (fieldDataAnswer.Input == null) continue;
+                        dataSet.AddData(fieldDataAnswer.Input);
+                        await _dataSetRepository.UpdateAsync(dataSet);
                     }
                     return fieldDataAnswer.Id;
                 }
@@ -163,7 +161,7 @@ namespace CareerMonitoring.Infrastructure.Services
             fieldDataAnswer.AddChoiceOptionAnswer (choiceOptionAnswer);
             await _choiceOptionAnswerRepository.AddAsync (choiceOptionAnswer);
             var questionAnswer = await _questionAnswerRepository.GetByIdAsync(fieldDataAnswer.QuestionAnswerId);
-            if (choiceOptionAnswer.Value == true)
+            if (choiceOptionAnswer.Value)
             {
                 if(questionAnswer.Content != ""){
                     var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
@@ -202,17 +200,16 @@ namespace CareerMonitoring.Infrastructure.Services
                         questionAnswer.Select);
                 foreach (var dataSet in questionReport.DataSets)
                 {
-                    if(dataSet.Label == rowChoiceOptionAnswer.ViewValue){
-                        var index = dataSet._data[rowChoiceOptionAnswer.RowAnswer.RowPosition];
-                        var labelCounter = int.Parse(index);
-                        labelCounter++;
-                        dataSet._data[rowAnswer.RowPosition] = labelCounter.ToString();
-                        await _dataSetRepository.UpdateAsync(dataSet);
-                    }
+                    if (dataSet.Label != rowChoiceOptionAnswer.ViewValue) continue;
+                    var index = dataSet._data[rowChoiceOptionAnswer.RowAnswer.RowPosition];
+                    var labelCounter = int.Parse(index);
+                    labelCounter++;
+                    dataSet._data[rowAnswer.RowPosition] = labelCounter.ToString();
+                    await _dataSetRepository.UpdateAsync(dataSet);
                 }
             }
         }
-
+        
         public async Task<int> AddRowAnswerAsync (int fieldDataId, int rowPosition, string input)
         {
             var fieldDataAnswer = await _fieldDataAnswerRepository.GetByIdAsync (fieldDataId);

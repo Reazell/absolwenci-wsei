@@ -20,7 +20,6 @@ namespace CareerMonitoring.Infrastructure.Services {
             _questionReportRepository = questionReportRepository;
         }
 
-        //R E F A C T O R I N G
         public async Task<int> CreateAsync (int surveyId, string surveyTitle) {
             var surveyReport = new SurveyReport (surveyId, surveyTitle);
             await _surveyReportRepository.AddAsync (surveyReport);
