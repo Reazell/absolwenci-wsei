@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
@@ -11,7 +10,6 @@ namespace CareerMonitoring.Infrastructure.Services
 {
     public class SurveyAnswerService : ISurveyAnswerService
     {
-        private IMapper _mapper;
         private readonly ISurveyAnswerRepository _surveyAnswerRepository;
         private readonly IQuestionAnswerRepository _questionAnswerRepository;
         private readonly IFieldDataAnswerRepository _fieldDataAnswerRepository;
@@ -23,8 +21,7 @@ namespace CareerMonitoring.Infrastructure.Services
         private readonly IDataSetRepository _dataSetRepository;
 
 
-        public SurveyAnswerService (IMapper mapper,
-        ISurveyAnswerRepository surveyAnswerRepository,
+        public SurveyAnswerService (ISurveyAnswerRepository surveyAnswerRepository,
         IQuestionAnswerRepository questionAnswerRepository,
         IFieldDataAnswerRepository fieldDataAnswerRepository,
         IChoiceOptionAnswerRepository choiceOptionAnswerRepository,
@@ -34,7 +31,6 @@ namespace CareerMonitoring.Infrastructure.Services
         ISurveyReportRepository surveyReportRepository,
         IDataSetRepository dataSetRepository)
         {
-            _mapper = mapper;
             _surveyAnswerRepository = surveyAnswerRepository;
             _questionAnswerRepository = questionAnswerRepository;
             _fieldDataAnswerRepository = fieldDataAnswerRepository;
@@ -155,7 +151,7 @@ namespace CareerMonitoring.Infrastructure.Services
                     return fieldDataAnswer.Id;
                 }
                 default:
-                    throw new System.Exception("invalid select value");
+                    throw new Exception("invalid select value");
             }
         }
 

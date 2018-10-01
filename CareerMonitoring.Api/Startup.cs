@@ -104,8 +104,6 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IChoiceOptionAnswerRepository, ChoiceOptionAnswerRepository> ();
             services.AddScoped<IRowAnswerRepository, RowAnswerRepository> ();
             services.AddScoped<IRowChoiceOptionAnswerRepository, RowChoiceOptionAnswerRepository> ();
-            services.AddScoped<ISurveyScoreRepository, SurveyScoreRepository> ();
-            services.AddScoped<IQuestionScoreRepository, QuestionScoreRepository> ();
             services.AddScoped<ISurveyReportRepository, SurveyReportRepository> ();
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
@@ -122,7 +120,6 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IProfileEditionService, ProfileEditionService> ();
             services.AddScoped<ISurveyService, SurveyService> ();
             services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
-            services.AddScoped<ISurveyScoreService, SurveyScoreService> ();
             services.AddScoped<ISurveyReportService, SurveyReportService> ();
 
             #endregion
