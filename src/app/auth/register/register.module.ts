@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { MaterialsModule } from '../../materials/materials.module';
-import { SharedService } from '../../services/shared.service';
 import { RegisterComponent } from './register.component';
 
 export const routes: Routes = [{ path: '', component: RegisterComponent }];

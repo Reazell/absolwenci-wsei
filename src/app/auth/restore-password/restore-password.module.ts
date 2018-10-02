@@ -4,7 +4,6 @@ import { RestorePasswordComponent } from './restore-password.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialsModule } from '../../materials/materials.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { ProgressBarModule } from 'primeng/progressbar';
 
 export const routes: Routes = [
@@ -18,7 +17,6 @@ export const routes: Routes = [
     MaterialsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
     ProgressBarModule
   ],
   declarations: [RestorePasswordComponent]

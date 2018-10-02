@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SurveySentComponent } from './survey-sent/survey-sent.component';
 import { SurveyViewformComponent } from './survey-viewform.component';
 
 const surveyViewformRoutes: Routes = [

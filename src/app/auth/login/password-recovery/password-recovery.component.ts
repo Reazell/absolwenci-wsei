@@ -1,13 +1,13 @@
-import { SharedService } from '../../../services/shared.service';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
-  FormBuilder,
   AbstractControl,
+  FormBuilder,
+  FormGroup,
   Validators
 } from '@angular/forms';
-import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { SharedService } from '../../../services/shared.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-password-recovery',
@@ -26,7 +26,7 @@ export class PasswordRecoveryComponent implements OnInit {
   email: AbstractControl;
   emailErrorStr: string;
   // tslint:disable-next-line:max-line-length
-  emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   constructor(
     private fb: FormBuilder,

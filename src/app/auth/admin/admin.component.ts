@@ -1,13 +1,13 @@
-import { SharedService } from '../../services/shared.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
+  AbstractControl,
+  FormBuilder,
   FormGroup,
   NgForm,
-  FormBuilder,
-  Validators,
-  AbstractControl
+  Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from '../../services/shared.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   loginErrorMessage = '';
 
   // tslint:disable-next-line:max-line-length
-  emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +40,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     private authenticationService: AuthenticationService,
     private userService: UserService,
     private sharedService: SharedService
-  ) {}
+  ) {
+  }
 
   ngOnDestroy() {
     this.userService.passMailData(this.email.value);
@@ -79,10 +80,10 @@ export class AdminComponent implements OnInit, OnDestroy {
     } else {
       this.loading = true;
       this.authenticationService
-        // login with credentials from form
+      // login with credentials from form
         .login(this.email.value, this.password.value)
         .subscribe(
-          data => {
+          () => {
             // if login is successful, redirect to app
             this.router.navigateByUrl(`/app/admin`);
           },

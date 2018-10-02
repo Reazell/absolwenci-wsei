@@ -101,7 +101,7 @@ form {
             .form {
               display: flex;
               .cont {
-                margin: 0px 10px;
+                margin: 0 10px;
                 width: 50%;
                 .loop {
                   .checkbox {
@@ -170,7 +170,7 @@ form {
         #required-container {
           display: flex;
           align-items: center;
-          padding: 0px 10px;
+          padding: 0 10px;
         }
         #question-menu {
           display: flex;
@@ -184,7 +184,7 @@ form {
 }
 
 .breakH {
-  height: 0px;
+  height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   margin: 8px;
 }
@@ -247,7 +247,7 @@ fa-icon {
           padding: 10px 20px;
           .select-container {
             mat-form-field {
-              margin: 0px;
+              margin: 0;
             }
           }
           #field-data {
@@ -256,12 +256,12 @@ fa-icon {
                 display: block;
                 .cont {
                   width: 100%;
-                  margin: 0px;
+                  margin: 0;
                 }
               }
               .form {
                 .cont {
-                  margin: 0px;
+                  margin: 0;
                 }
               }
             }
@@ -269,7 +269,7 @@ fa-icon {
         }
       }
       .menu-container {
-        margin: 0px;
+        margin: 0;
       }
     }
   }

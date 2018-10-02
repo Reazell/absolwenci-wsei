@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { MaterialsModule } from '../../materials/materials.module';
-import { SharedService } from '../../services/shared.service';
 import { AdminComponent } from './admin.component';
 
 export const routes: Routes = [{ path: '', component: AdminComponent }];

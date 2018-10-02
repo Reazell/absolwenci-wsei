@@ -1,8 +1,8 @@
-import { AuthComponent } from './auth.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { GuidGuard } from './other/guid.auth';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './auth.component';
 import { AuthGuard } from './other/guard.auth';
+import { GuidGuard } from './other/guid.auth';
 // import { AuthGuard } from './auth/guard.auth';
 
 const authRoutes: Routes = [

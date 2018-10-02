@@ -10,7 +10,7 @@
       <img src="./../../../assets/logo-wsei.png" alt="logo WSEI">
     </div>
   </div>
-  <ul id="menu" *ngIf="isLogged === false">
+  <ul class="menu" *ngIf="isLogged === false">
     <li class="menu-item" [routerLink]="['/auth/login']">Logowanie</li>
     <li class="menu-item" [routerLink]="['/info/student']">Student</li>
     <li class="menu-item" [routerLink]="['/info/graduate']">Absolwent</li>
@@ -19,19 +19,20 @@
   </ul>
   <div id="profile-container" *ngIf="isLogged === true" [ngSwitch]="accountRole">
     <div id="career-offices" *ngSwitchCase="'careerOffice'">
-      <ul id="menu" *ngIf="showAdminMenu === true">
+      <ul class="menu" *ngIf="showAdminMenu === true">
         <li class="menu-item" [routerLink]="['/app/admin']">Panel Główny</li>
         <li class="menu-item" [routerLink]="['/app/admin/survey-dashboard']">Ankiety</li>
       </ul>
       <div id="survey-buttons">
         <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton" matTooltip="{{info.show}}" matTooltipPosition="below"
-          (click)="showSurvey()"></fa-icon>
+                 (click)="showSurvey()"></fa-icon>
         <fa-icon [icon]="['fas', 'pen']" *ngIf="showSendButton" matTooltip="{{info.edit}}" matTooltipPosition="below"
-          (click)="editSurvey()"></fa-icon>
+                 (click)="editSurvey()"></fa-icon>
         <button mat-button id="save" *ngIf="showCreatorButton" (click)="sendSurvey()">WYŚLIJ</button>
       </div>
     </div>
-    <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger" *ngIf="showUserInfo === true">
+    <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger"
+         *ngIf="showUserInfo === true">
       <!-- <div id="userDisplayName">{{account?.name}} {{account?.surname}}</div> -->
       <img src="./../../../assets/profile-image.png">
     </div>
@@ -39,3 +40,4 @@
       <app-user-info></app-user-info>
     </mat-menu>
   </div>
+</div>

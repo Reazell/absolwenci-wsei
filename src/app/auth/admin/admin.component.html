@@ -3,8 +3,8 @@
   <form #log="ngForm" (ngSubmit)=onSubmit(log) [formGroup]="logForm">
     <div id="header">
       <span>
-        Logowanie admina</span>
-
+        Logowanie admina
+      </span>
     </div>
     <div id="form-container">
       <div id="logErr">
@@ -17,7 +17,8 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput autocomplete="current-password" placeholder="Hasło" type="password" id="password" formControlName="password">
+        <input matInput autocomplete="current-password" placeholder="Hasło" type="password" id="password"
+               formControlName="password">
         <mat-error *ngIf="inputError(password)">{{passwordErrorStr}}</mat-error>
       </mat-form-field>
 

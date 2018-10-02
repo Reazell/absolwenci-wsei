@@ -1,14 +1,14 @@
-import { UserService } from '../../../auth/services/user.service';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  Validators,
   AbstractControl,
-  NgForm,
+  FormBuilder,
+  FormControl,
   FormGroup,
-  FormControl
+  NgForm,
+  Validators
 } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../../../auth/services/user.service';
 import { SharedService } from '../../../services/shared.service';
 @Component({
   selector: 'app-main-settings',
@@ -40,14 +40,14 @@ export class MainSettingsComponent implements OnInit {
   countryErrorStr: string;
   emailErrorStr: string;
   passwordErrorStr: string;
-  passwordConfirmErrorStr: string;
+  // passwordConfirmErrorStr: string;
   albumIDErrorStr: string;
   phoneNumErrorStr: string;
   companyNameErrorStr: string;
   locationErrorStr: string;
   companyDescriptionErrorStr: string;
   registrationError = false;
-  registrationErrorMessage: Array<string>;
+  registrationErrorMessage: string[];
 
   profileType: string;
 
@@ -67,8 +67,8 @@ export class MainSettingsComponent implements OnInit {
   ];
 
   // tslint:disable-next-line:max-line-length
-  emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  namePattern = /^([a-zA-ZąęćłóśźżĄĘĆŁÓŚŹŻ\\']){0,}$/;
+  emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  namePattern = /^([a-zA-ZąęćłóśźżĄĘĆŁÓŚŹŻ\\'])*$/;
   surnamePattern = /^([a-zA-ZąęćłóśźżĄĘĆŁÓŚŹŻ]+[\s\-\\'])*[a-zA-ZąęćłóśźżĄĘĆŁÓŚŹŻ]+$/;
 
   constructor(

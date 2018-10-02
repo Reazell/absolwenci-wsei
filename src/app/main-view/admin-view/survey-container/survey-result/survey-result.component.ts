@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Result } from '../models/survey-result.model';
 import { SurveyService } from '../services/survey.services';
 import { SharedService } from './../../../../services/shared.service';
 
@@ -314,7 +313,7 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
     this.surveyIDSub.unsubscribe();
     this.sharedService.showBackButton(false);
   }
-  see(x) {
+  static see(x) {
     console.log(x);
   }
 }

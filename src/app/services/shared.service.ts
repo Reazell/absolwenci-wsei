@@ -7,7 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class SharedService {
   // button clicked Subjects
   toggleSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  sendButton: Subject<boolean> = new Subject<boolean>();
+  // sendButton: Subject<boolean> = new Subject<boolean>();
   showButton: Subject<boolean> = new Subject<boolean>();
   editButton: Subject<boolean> = new Subject<boolean>();
 
@@ -24,43 +24,53 @@ export class SharedService {
 
   // input error variable
   controlArray: string[];
-  constructor(private router: Router) {}
+
+  constructor(private router: Router) {
+  }
 
   // button clicked actions
-  sendSurveyButton(x) {
-    this.sendButton.next(x);
-  }
-  showSurveyButton(x) {
+
+  // sendSurveyButton(x) {
+  //   this.sendButton.next(x);
+  // }
+  showSurveyButton(x): void {
     this.showButton.next(x);
   }
-  routeToEdit(x) {
+
+  routeToEdit(x): void {
     this.editButton.next(x);
   }
 
   // showing elements
-  showBackButton(x) {
+  showBackButton(x): void {
     this.showBack.next(x);
   }
-  showToggleButton(x) {
+
+  showToggleButton(x): void {
     this.showToggle.next(x);
   }
-  showCreatorButton(x) {
+
+  showCreatorButton(x): void {
     this.showCreator.next(x);
   }
-  showSendButton(x) {
+
+  showSendButton(x): void {
     this.showSend.next(x);
   }
-  showAdminMain(x) {
+
+  showAdminMain(x): void {
     this.showAdminMenu.next(x);
   }
-  showSendSurveyDialog(x) {
+
+  showSendSurveyDialog(x): void {
     this.showSurveyDialog.next(x);
   }
-  showUser(x) {
+
+  showUser(x): void {
     this.showUserInfo.next(x);
   }
 
-  routeSwitch(role) {
+  routeSwitch(role): void {
     switch (role) {
       case 'student':
         this.router.navigateByUrl('/app/student');

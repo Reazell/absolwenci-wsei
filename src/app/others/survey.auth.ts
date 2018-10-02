@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { CanLoad, Router } from '@angular/router';
 import { SurveyService } from '../main-view/admin-view/survey-container/services/survey.services';
 

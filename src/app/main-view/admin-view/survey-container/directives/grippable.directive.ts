@@ -1,9 +1,6 @@
 import {
   AfterContentInit,
-  ContentChild,
   Directive,
-  ElementRef,
-  forwardRef
 } from '@angular/core';
 
 @Directive({
@@ -12,5 +9,7 @@ import {
 export class GrippableDirective implements AfterContentInit {
   ngAfterContentInit() {
   }
-  constructor(public element: ElementRef) {}
+
+  constructor() {
+  }
 }

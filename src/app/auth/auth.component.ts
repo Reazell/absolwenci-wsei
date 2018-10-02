@@ -1,8 +1,8 @@
-import { basicTransition } from './other/router.animations';
 import {
   Component,
   OnInit
 } from '@angular/core';
+import { basicTransition } from './other/router.animations';
 
 @Component({
   selector: 'app-auth',
