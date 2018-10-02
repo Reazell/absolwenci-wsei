@@ -31,6 +31,7 @@ using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -65,18 +66,23 @@ namespace CareerMonitoring.Api {
             services.AddDbContext<CareerMonitoringContext> (options =>
                 options.UseSqlServer (Configuration.GetConnectionString ("CareerMonitoringDatabase"),
                     b => b.MigrationsAssembly ("CareerMonitoring.Api")));
-            var key = Encoding.ASCII.GetBytes (Configuration.GetSection ("JWTSettings:Key").Value);
-            services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer (options => {
-                    options.TokenValidationParameters = new TokenValidationParameters {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey (key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-
-                    };
+            //var key = Encoding.ASCII.GetBytes (Configuration.GetSection ("JWTSettings:Key").Value);
+            var domain = $"https://{Configuration["Auth0:Domain"]}/";
+            services.AddAuthentication (/*JwtBearerDefaults.AuthenticationScheme*/ options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                }
+                ).AddJwtBearer (options => {
+                /*options.TokenValidationParameters = new TokenValidationParameters {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey (key),
+                ValidateIssuer = false,
+                ValidateAudience = false*/
+                options.Authority = domain;
+                options.Audience = Configuration["Auth0:ApiIdentifier"];
                 });
-            services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
+            //services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
             services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration")
                 .Get<EmailConfiguration>());
             services.AddSingleton (AutoMapperConfig.Initialize ());
@@ -87,6 +93,8 @@ namespace CareerMonitoring.Api {
                 options => options.AddPolicy("employer", policy => policy.RequireRole("employer")));
             services.AddAuthorization(options =>
                 options.AddPolicy("careerOffice", policy => policy.RequireRole("careerOffice")));
+            /*services.AddAuthorization(options => options.AddPolicy("read:messages",
+                policy => policy.Requirements.Add(new HasScopeRequirement("read:messages", domain))));*/
 
             #endregion
             #region Repositories
@@ -153,6 +161,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmailFactory, EmailFactory> ();
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
+            services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
             #endregion
         }
@@ -176,7 +185,12 @@ namespace CareerMonitoring.Api {
 
             app.UseCors (x => x.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ().AllowCredentials ());
             app.UseAuthentication ();
-            app.UseMvc ();
+            app.UseMvc (routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

@@ -12,6 +12,7 @@ using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -21,14 +22,14 @@ using Newtonsoft.Json.Linq;
 namespace CareerMonitoring.Api.Controllers {
     public class AuthController : ApiUserController {
         private readonly IAuthService _authService;
-        private readonly IJWTSettings _jwtSettings;
+        //private readonly IJWTSettings _jwtSettings;
         private readonly IAccountService _accountService;
 
         public AuthController (IAuthService authService,
-            IJWTSettings jwtSettings,
+            /*IJWTSettings jwtSettings,*/
             IAccountService accountService) {
             _authService = authService;
-            _jwtSettings = jwtSettings;
+            //_jwtSettings = jwtSettings;
             _accountService = accountService;
         }
 
@@ -57,11 +58,11 @@ namespace CareerMonitoring.Api.Controllers {
             var account = await _authService.LoginAsync (command.Email, command.Password);
             if (account == null)
                 return Unauthorized ();
-            var token = new TokenDto {
+            /*var token = new TokenDto {
                 Token = await GenerateToken (account, _jwtSettings)
             };
-            var loginResult = new { LoginData = token, account.Role };
-            return Json (loginResult);
+            var loginResult = new { LoginData = token, account.Role };*/
+            return Challenge(new AuthenticationProperties() {RedirectUri = "/"});
         }
 
         [HttpPost ("students")]
