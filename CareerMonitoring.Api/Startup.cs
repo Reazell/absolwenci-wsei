@@ -56,7 +56,7 @@ namespace CareerMonitoring.Api {
             services.AddMvc (opt => {
                     opt.Filters.Add (typeof (ValidatorActionFilter));
                 }).AddFluentValidation ()
-                .AddJsonOptions(options =>
+                .AddJsonOptions (options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             #region DbContextAndSettings
@@ -77,16 +77,16 @@ namespace CareerMonitoring.Api {
                     };
                 });
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
-            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration")
-                .Get<EmailConfiguration>());
+            services.AddSingleton<IEmailConfiguration> (Configuration.GetSection ("EmailConfiguration")
+                .Get<EmailConfiguration> ());
             services.AddSingleton (AutoMapperConfig.Initialize ());
-            services.AddAuthorization(options => options.AddPolicy("student", policy => policy.RequireRole("student")));
-            services.AddAuthorization(
-                options => options.AddPolicy("graduate", policy => policy.RequireRole("graduate")));
-            services.AddAuthorization(
-                options => options.AddPolicy("employer", policy => policy.RequireRole("employer")));
-            services.AddAuthorization(options =>
-                options.AddPolicy("careerOffice", policy => policy.RequireRole("careerOffice")));
+            services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
+            services.AddAuthorization (
+                options => options.AddPolicy ("graduate", policy => policy.RequireRole ("graduate")));
+            services.AddAuthorization (
+                options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
+            services.AddAuthorization (options =>
+                options.AddPolicy ("careerOffice", policy => policy.RequireRole ("careerOffice")));
 
             #endregion
             #region Repositories
@@ -112,6 +112,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyReportRepository, SurveyReportRepository> ();
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
+            services.AddScoped<IImportDataRepository, ImportDataRepository> ();
 
             #endregion
             #region Services
@@ -153,6 +154,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmailFactory, EmailFactory> ();
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
+            services.AddScoped<IExcelFactory, ExcelFactory> ();
 
             #endregion
         }

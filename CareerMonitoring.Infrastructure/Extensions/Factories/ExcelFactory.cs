@@ -20,7 +20,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         public async Task ImportExcelFile (FileInfo file) {
 
             using (ExcelPackage package = new ExcelPackage (file)) {
-                ExcelWorksheet workSheet = package.Workbook.Worksheets["Customer"];
+                ExcelWorksheet workSheet = package.Workbook.Worksheets["ImportData"];
                 int totalRows = workSheet.Dimension.Rows;
 
                 List<ImportData> importDataList = new List<ImportData> ();
@@ -29,7 +29,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                     importDataList.Add (new ImportData {
                         Name = workSheet.Cells[i, 1].Value.ToString (),
                             Surname = workSheet.Cells[i, 2].Value.ToString (),
-                            Email = workSheet.Cells[i, 3].Value.ToString ()
+                            Email = workSheet.Cells[i, 3].Value.ToString ().ToLowerInvariant ()
                     });
                 }
                 await _importDataRepository.AddAllAsync (importDataList);
