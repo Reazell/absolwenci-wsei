@@ -1,36 +1,39 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
-using Microsoft.AspNetCore.Hosting;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
+using OfficeOpenXml;
+// using EPPlus.Core;
 
 namespace CareerMonitoring.Infrastructure.Extensions.Factories {
     public class ExcelFactory : IExcelFactory {
-        private readonly IHostingEnvironment _hostingEnvironment;
-        public ExcelFactory () {
-
+        private readonly IImportDataRepository _importDataRepository;
+        public ExcelFactory (IImportDataRepository importDataRepository) {
+            _importDataRepository = importDataRepository;
         }
-        public Task<string> ImportExcelFile (string fileName) {
-            string sWebRootFolder = _hostingEnvironment.WebRootPath;
-            FileInfo file = new FileInfo (Path.Combine (sWebRootFolder, fileName));
+
+        public async Task ImportExcelFile (FileInfo file) {
 
             using (ExcelPackage package = new ExcelPackage (file)) {
-                StringBuilder sb = new StringBuilder ();
-                ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
-                int rowCount = worksheet.Dimension.Rows;
-                int ColCount = worksheet.Dimension.Columns;
-                bool bHeaderRow = true;
-                for (int row = 1; row <= rowCount; row++) {
-                    for (int col = 1; col <= ColCount; col++) {
-                        if (bHeaderRow) {
-                            sb.Append (worksheet.Cells[row, col].Value.ToString () + "\t");
-                        } else {
-                            sb.Append (worksheet.Cells[row, col].Value.ToString () + "\t");
-                        }
-                    }
-                    sb.Append (Environment.NewLine);
+                ExcelWorksheet workSheet = package.Workbook.Worksheets["Customer"];
+                int totalRows = workSheet.Dimension.Rows;
+
+                List<ImportData> importDataList = new List<ImportData> ();
+
+                for (int i = 2; i <= totalRows; i++) {
+                    importDataList.Add (new ImportData {
+                        Name = workSheet.Cells[i, 1].Value.ToString (),
+                            Surname = workSheet.Cells[i, 2].Value.ToString (),
+                            Email = workSheet.Cells[i, 3].Value.ToString ()
+                    });
                 }
+                await _importDataRepository.AddAllAsync (importDataList);
             }
-            return sb.ToString ();
         }
     }
 }
