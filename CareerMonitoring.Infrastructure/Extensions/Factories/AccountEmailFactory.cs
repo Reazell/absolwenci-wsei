@@ -40,12 +40,26 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             await _emailFactory.SendEmailAsync (message);
         }
 
-        public async Task SendEmailToAllAsync (string subject, string body)
-        {
-            var accounts = await _accountRepository.GetAllAsync();
-            foreach(var account in accounts)
-            {
-                if(account.Role != "careerOffice"){
+        public async Task SendEmailToAllAsync (string subject, string body) {
+            var accounts = await _accountRepository.GetAllAsync ();
+            foreach (var account in accounts) {
+                if (account.Role != "careerOffice") {
+                    var message = new MimeMessage ();
+                    message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
+                    message.To.Add (new MailboxAddress (account.Name, account.Email));
+                    message.Subject = subject;
+                    message.Body = new TextPart ("html") {
+                        Text = body
+                    };
+                    await _emailFactory.SendEmailAsync (message);
+                }
+            }
+        }
+
+        public async Task SendEmailToAllUnregisteredAsync (string subject, string body) {
+            var accounts = await _accountRepository.GetAllAsync ();
+            foreach (var account in accounts) {
+                if (account.Role != "careerOffice") {
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (account.Name, account.Email));

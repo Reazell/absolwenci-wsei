@@ -15,14 +15,14 @@ using OfficeOpenXml;
 
 namespace CareerMonitoring.Infrastructure.Extensions.Factories {
     public class ImportFileFactory : IImportFileFactory {
-        private readonly IImportDataRepository _importDataRepository;
+        private readonly IUnregisteredUserRepository _unregisteredUserRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IMapper _mapper;
 
-        public ImportFileFactory (IImportDataRepository importDataRepository,
+        public ImportFileFactory (IUnregisteredUserRepository unregisteredUserRepository,
             IHostingEnvironment hostingEnvironment,
             IMapper mapper) {
-            _importDataRepository = importDataRepository;
+            _unregisteredUserRepository = unregisteredUserRepository;
             _hostingEnvironment = hostingEnvironment;
             _mapper = mapper;
         }
@@ -45,18 +45,18 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             return fullFileLocation;
         }
 
-        public async Task<IEnumerable<ImportDataDto>> ImportExcelFileAndGetImportDataAsync (string fullFileLocation) {
+        public async Task<IEnumerable<UnregisteredUserDto>> ImportExcelFileAndGetImportDataAsync (string fullFileLocation) {
             FileInfo fileInfo = new FileInfo (fullFileLocation);
-            List<ImportDataDto> importDataListDto = new List<ImportDataDto> ();
+            List<UnregisteredUserDto> importDataListDto = new List<UnregisteredUserDto> ();
 
             using (ExcelPackage package = new ExcelPackage (fileInfo)) {
                 var workSheet = package.Workbook.Worksheets[1];
                 int totalRows = workSheet.Dimension.Rows;
 
-                List<ImportData> importDataList = new List<ImportData> ();
+                List<UnregisteredUser> importDataList = new List<UnregisteredUser> ();
 
                 for (int i = 2; i <= totalRows; i++) {
-                    var importData = new ImportData ();
+                    var importData = new UnregisteredUser ();
                     importData.SetName (workSheet.Cells[i, 1].Value.ToString ());
                     importData.SetSurname (workSheet.Cells[i, 2].Value.ToString ());
                     importData.SetCourse (workSheet.Cells[i, 3].Value.ToString ());
@@ -65,10 +65,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                     importData.SetEmail (workSheet.Cells[i, 6].Value.ToString ().ToLowerInvariant ());
                     importDataList.Add (importData);
 
-                    importDataListDto.Add (_mapper.Map<ImportDataDto> (importData));
+                    importDataListDto.Add (_mapper.Map<UnregisteredUserDto> (importData));
                 }
 
-                await _importDataRepository.AddAllAsync (importDataList);
+                await _unregisteredUserRepository.AddAllAsync (importDataList);
             }
             return importDataListDto;
         }

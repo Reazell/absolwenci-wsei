@@ -114,7 +114,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyReportRepository, SurveyReportRepository> ();
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
-            services.AddScoped<IImportDataRepository, ImportDataRepository> ();
+            services.AddScoped<IUnregisteredUserRepository, UnregisteredUserRepository> ();
 
             #endregion
             #region Services
@@ -149,7 +149,7 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<AddLanguage>, AddLanguageValidator> ();
             services.AddTransient<IValidator<AddProfileLink>, AddProfileLinkValidator> ();
             services.AddTransient<IValidator<AddSkill>, AddSkillValidator> ();
-            services.AddTransient<IValidator<ImportData>, ImportDataValidator> ();
+            services.AddTransient<IValidator<UnregisteredUser>, UnregisteredUserValidator> ();
 
             #endregion
             #region Factories

@@ -2,8 +2,8 @@ using CareerMonitoring.Core.Domains.ImportFile;
 using FluentValidation;
 
 namespace CareerMonitoring.Infrastructure.Validators.ImportFile {
-    public class ImportDataValidator : AbstractValidator<ImportData> {
-        public ImportDataValidator () {
+    public class UnregisteredUserValidator : AbstractValidator<UnregisteredUser> {
+        public UnregisteredUserValidator () {
             RuleFor (reg => reg.Name)
                 .MinimumLength (3)
                 .Matches (@"^[a-zA-ZàáąâäãåąčććęęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄČĆĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'-]+(\s{1}[a-zA-ZàáąâäãåąčććęęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄČĆĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'-]+)*$")

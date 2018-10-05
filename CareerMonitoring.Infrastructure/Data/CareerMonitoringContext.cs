@@ -36,7 +36,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<Language> Languages { get; set; }
         public DbSet<ProfileLink> ProfileLinks { get; set; }
         public DbSet<Skill> Skills { get; set; }
-        public DbSet<ImportData> ImportData { get; set; }
+        public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 

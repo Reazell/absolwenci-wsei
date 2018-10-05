@@ -13,7 +13,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.AutoMapper {
                 cfg.CreateMap<FieldData, FieldDataDto> ();
                 cfg.CreateMap<ChoiceOption, ChoiceOptionDto> ();
                 cfg.CreateMap<Row, RowDto> ();
-                cfg.CreateMap<ImportData, ImportDataDto> ();
+                cfg.CreateMap<UnregisteredUser, UnregisteredUserDto> ();
             })
             .CreateMapper ();
     }
