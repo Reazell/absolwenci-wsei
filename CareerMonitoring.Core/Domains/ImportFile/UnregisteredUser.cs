@@ -9,6 +9,7 @@ namespace CareerMonitoring.Core.Domains.ImportFile {
         public DateTime DateOfCompletion { get; private set; }
         public string TypeOfStudy { get; private set; }
         public string Email { get; private set; }
+        public string Role { get; private set; }
 
         public UnregisteredUser () { }
 
@@ -20,6 +21,7 @@ namespace CareerMonitoring.Core.Domains.ImportFile {
             SetDateOfCompletion (dateOfCompletion);
             SetTypeOfStudy (typeOfStudy);
             SetEmail (email);
+            Role = "unregisteredUser";
         }
 
         public void SetName (string name) {

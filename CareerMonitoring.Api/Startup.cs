@@ -89,6 +89,8 @@ namespace CareerMonitoring.Api {
                 options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
             services.AddAuthorization (options =>
                 options.AddPolicy ("careerOffice", policy => policy.RequireRole ("careerOffice")));
+            services.AddAuthorization (options =>
+                options.AddPolicy ("unregisteredUser", policy => policy.RequireRole ("unregisteredUser")));
 
             #endregion
             #region Repositories
