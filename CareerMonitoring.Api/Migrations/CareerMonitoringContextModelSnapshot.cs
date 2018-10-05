@@ -195,15 +195,34 @@ namespace CareerMonitoring.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Course");
+
+                    b.Property<DateTime>("DateOfCompletion");
+
                     b.Property<string>("Email");
 
                     b.Property<string>("Name");
 
                     b.Property<string>("Surname");
 
+                    b.Property<string>("TypeOfStudy");
+
                     b.HasKey("Id");
 
                     b.ToTable("ImportData");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.ImportFile.UploadFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("File");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UploadFiles");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.JobOffer", b =>

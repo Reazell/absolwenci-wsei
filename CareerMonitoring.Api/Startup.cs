@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Api.ActionFilters;
+using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.CareerOffice;
 using CareerMonitoring.Infrastructure.Commands.Email;
@@ -26,6 +27,7 @@ using CareerMonitoring.Infrastructure.Validators.CareerOffice;
 using CareerMonitoring.Infrastructure.Validators.Email;
 using CareerMonitoring.Infrastructure.Validators.Employer;
 using CareerMonitoring.Infrastructure.Validators.Graduate;
+using CareerMonitoring.Infrastructure.Validators.ImportFile;
 using CareerMonitoring.Infrastructure.Validators.ProfileEdition;
 using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
@@ -147,6 +149,7 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<AddLanguage>, AddLanguageValidator> ();
             services.AddTransient<IValidator<AddProfileLink>, AddProfileLinkValidator> ();
             services.AddTransient<IValidator<AddSkill>, AddSkillValidator> ();
+            services.AddTransient<IValidator<ImportData>, ImportDataValidator> ();
 
             #endregion
             #region Factories
@@ -154,7 +157,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmailFactory, EmailFactory> ();
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
-            services.AddScoped<IExcelFactory, ExcelFactory> ();
+            services.AddScoped<IImportFileFactory, ImportFileFactory> ();
 
             #endregion
         }

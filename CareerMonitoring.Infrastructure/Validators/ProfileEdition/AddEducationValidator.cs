@@ -7,7 +7,7 @@ namespace CareerMonitoring.Infrastructure.Validators.ProfileEdition {
             RuleFor (reg => reg.Course)
                 .NotNull ()
                 .NotEmpty ()
-                .MaximumLength (30)
+                .MaximumLength (50)
                 .MinimumLength (3)
                 .WithMessage ("Course cannot be null or empty.");
             RuleFor (reg => reg.Year)
@@ -18,7 +18,7 @@ namespace CareerMonitoring.Infrastructure.Validators.ProfileEdition {
                 .WithMessage ("Year cannot be null or empty");
             RuleFor (reg => reg.Specialization)
                 .NotEmpty ()
-                .MaximumLength (30)
+                .MaximumLength (50)
                 .MinimumLength (3)
                 .WithMessage ("Specialization cannot be null or empty.");
             RuleFor (reg => reg.NameOfUniversity)
