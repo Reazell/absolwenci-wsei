@@ -10,11 +10,11 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 // tslint:disable-next-line:no-submodule-imports no-implicit-dependencies
 import * as cloneDeep from 'lodash/cloneDeep';
+import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/filter';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
-import { Observable, Subject } from '../../../../../../node_modules/rxjs';
 import { SharedService } from '../../../../services/shared.service';
 import {
   ChoiceOptions,
@@ -744,7 +744,7 @@ export class SurveyCreatorComponent
       .createSurvey(this.invoiceForm.getRawValue())
       .subscribe(
         data => {
-          this.router.navigate(['/app/admin/survey-dashboard']);
+          this.router.navigate(['/app/admin/d']);
         },
         error => {
           console.log(error);

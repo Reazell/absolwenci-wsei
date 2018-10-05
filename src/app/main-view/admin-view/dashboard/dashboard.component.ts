@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { SharedService } from '../../../../services/shared.service';
+import { SharedService } from '../../../services/shared.service';
 
 @Component({
-  selector: 'app-survey-dashboard',
-  templateUrl: './survey-dashboard.component.html',
-  styleUrls: ['./survey-dashboard.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class SurveyDashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav')
   sidenav;
   show = true;
@@ -35,7 +35,7 @@ export class SurveyDashboardComponent implements OnInit, OnDestroy {
   showUserInfo(): void {
     this.sharedService.showUser(true);
   }
-  showToggleButton() {
+  showToggleButton(): void {
     this.sharedService.showToggleButton(true);
   }
   showAdminMenu(): void {

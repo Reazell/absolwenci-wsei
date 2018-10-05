@@ -7,8 +7,8 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SortablejsModule } from 'angular-sortablejs/dist';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { SortablejsModule } from '../../../../../../node_modules/angular-sortablejs/dist';
 import { MaterialsModule } from '../../../../materials/materials.module';
 import { DraggableModule } from '../directives/draggable.module';
 import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';

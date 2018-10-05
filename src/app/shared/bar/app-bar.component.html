@@ -3,7 +3,7 @@
     <div class="sideButton" *ngIf="showToogleButton === true" (click)="openSidebar()">
       <fa-icon [icon]="['fas','bars']"></fa-icon>
     </div>
-    <div class="sideButton" [routerLink]="['app/admin/survey-dashboard']" *ngIf="showBackButton === true">
+    <div class="sideButton" [routerLink]="['app/admin/d']" *ngIf="showBackButton === true">
       <fa-icon [icon]="['fas','arrow-left']" matTooltip="{{info.main}}" matTooltipPosition="below"></fa-icon>
     </div>
     <div id="logo">
@@ -21,7 +21,8 @@
     <div id="career-offices" *ngSwitchCase="'careerOffice'">
       <ul class="menu" *ngIf="showAdminMenu === true">
         <li class="menu-item" [routerLink]="['/app/admin']">Panel Główny</li>
-        <li class="menu-item" [routerLink]="['/app/admin/survey-dashboard']">Ankiety</li>
+        <li class="menu-item" [routerLink]="['/app/admin/d/']">Ankiety</li>
+        <li class="menu-item" [routerLink]="['/app/admin/d/users']">Użytkownicy</li>
       </ul>
       <div id="survey-buttons">
         <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton" matTooltip="{{info.show}}" matTooltipPosition="below"

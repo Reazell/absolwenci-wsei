@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from '../../../../../../node_modules/rxjs/internal/Subject';
 import { AppConfig } from '../../../../app.config';
 import { Update } from '../models/survey-creator.models';
 import { Survey } from '../models/survey.model';

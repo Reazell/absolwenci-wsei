@@ -8,9 +8,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
+import { Employer, Graduate, Student } from '../other/user.model';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
-import { Employer, Graduate, Student } from './../other/user.model';
 
 @Component({
   selector: 'app-register',

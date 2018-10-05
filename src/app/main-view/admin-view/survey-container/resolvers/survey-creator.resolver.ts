@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Survey } from '../models/survey.model';
 import { SurveyService } from '../services/survey.services';
-import { Survey } from './../models/survey.model';
 
 @Injectable()
 export class SurveyCreatorResolver implements Resolve<Survey> {

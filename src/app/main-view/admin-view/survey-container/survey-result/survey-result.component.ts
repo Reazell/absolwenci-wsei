@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SharedService } from '../../../../services/shared.service';
 import { SurveyService } from '../services/survey.services';
-import { SharedService } from './../../../../services/shared.service';
 
 @Component({
   selector: 'app-survey-result',
@@ -313,7 +313,7 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
     this.surveyIDSub.unsubscribe();
     this.sharedService.showBackButton(false);
   }
-  static see(x) {
+  see(x) {
     console.log(x);
   }
 }

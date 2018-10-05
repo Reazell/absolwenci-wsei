@@ -6,7 +6,7 @@ import {
   NavigationStart,
   Router,
   RouterEvent
-} from '../../node_modules/@angular/router';
+} from '@angular/router';
 
 @Component({
   selector: 'app-root',

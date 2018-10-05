@@ -8,17 +8,21 @@ const adminRoutes: Routes = [
     path: '',
     component: AdminViewComponent,
     children: [
+      // {
+      //   path: '',
+      //   loadChildren:
+      //     './../admin-dashboard/admin-dashboard.module#AdminDashboardModule',
+      //   canLoad: [AuthGuard]
+      // },
+      // {
+      //   path: 'survey-dashboard',
+      //   loadChildren:
+      //     './../survey-dashboard/_main-survey-dashboard/survey-dashboard.module#SurveyDashboardModule',
+      //   canLoad: [AuthGuard]
+      // },
       {
-        path: '',
-        loadChildren:
-          './../admin-dashboard/admin-dashboard.module#AdminDashboardModule',
-        canLoad: [AuthGuard]
-      },
-      {
-        path: 'survey-dashboard',
-        loadChildren:
-          './../survey-dashboard/_main-survey-dashboard/survey-dashboard.module#SurveyDashboardModule',
-        canLoad: [AuthGuard]
+        path: 'd',
+        loadChildren: './../dashboard/dashboard.module#DashboardModule'
       },
       {
         path: 'survey',

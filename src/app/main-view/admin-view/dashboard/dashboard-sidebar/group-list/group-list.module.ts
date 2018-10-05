@@ -1,18 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule } from '@angular/material';
+import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MaterialsModule } from '../../../../materials/materials.module';
+import { MaterialsModule } from './../../../../../materials/materials.module';
 import { GroupListComponent } from './group-list.component';
+
+export const routes: Routes = [{ path: '', component: GroupListComponent }];
 
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule,
     FontAwesomeModule,
-    MaterialsModule
+    MaterialsModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [GroupListComponent],
   exports: [GroupListComponent]
 })
-export class GroupListModule { }
+export class GroupListModule {}

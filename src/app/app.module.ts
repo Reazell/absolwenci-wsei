@@ -26,7 +26,7 @@ import {
   faTrash,
   faUserAlt
 } from '@fortawesome/free-solid-svg-icons';
-import { SortablejsModule } from 'angular-sortablejs';
+import { SortablejsModule } from 'angular-sortablejs/dist';
 import { AppComponent } from './app.component';
 import { AppConfig } from './app.config';
 import { AppRoutingModule } from './app.routing';
