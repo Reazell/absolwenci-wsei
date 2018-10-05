@@ -7,5 +7,6 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces {
         Task SendActivationEmailAsync (Account account, Guid activationKey);
         Task SendRecoveringPasswordEmailAsync (Account account, Guid token);
         Task SendEmailToAllAsync (string subejct, string body);
+        Task SendEmailToAllUnregisteredAsync (string subejct, string body);
     }
 }
