@@ -7,7 +7,7 @@
     #sidenav {
       overflow-x: hidden;
       display: grid;
-      grid-template-rows: 40px 0 auto;
+      grid-template-rows: 40px auto;
       grid-template-columns: 250px;
       border-right: 1px solid rgba(0, 0, 0, 0.09);
       app-survey-search {

@@ -3,16 +3,14 @@ import { Router } from '@angular/router';
 import { SurveyService } from '../../survey-container/services/survey.services';
 
 @Component({
-  selector: 'app-manage-bar',
-  templateUrl: './manage-bar.component.html',
-  styleUrls: ['./manage-bar.component.scss']
+  selector: 'app-survey-bar',
+  templateUrl: './survey-bar.component.html',
+  styleUrls: ['./survey-bar.component.scss']
 })
-export class ManageBarComponent implements OnInit {
-  constructor(private router: Router, private surveyService: SurveyService) {
-  }
+export class SurveyBarComponent implements OnInit {
+  constructor(private router: Router, private surveyService: SurveyService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   redirectToNew(): void {
     this.surveyService.isCreatorLoading(true);

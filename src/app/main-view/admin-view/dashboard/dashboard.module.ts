@@ -1,12 +1,13 @@
-import { DashboardSidebarModule } from './dashboard-sidebar/dashboard-sidebar.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material';
-import { MaterialsModule } from '../../../materials/materials.module';
 import { SharedModule } from '../../../shared/shared.module';
+import { DashboardContentModule } from './dashboard-content/dashboard-content.module';
+import { DashboardSidenavModule } from './dashboard-sidenav/dashboard-sidenav.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard.routing';
-import { ManageBarModule } from './manage-bar/manage-bar.module';
+// import { GroupListModule } from './group-list/group-list.module';
+// import { SurveyBarModule } from './survey-bar/survey-bar.module';
 import { SurveyListModule } from './survey-list/survey-list.module';
 import { SurveySearchModule } from './survey-search/survey-search.module';
 
@@ -14,13 +15,14 @@ import { SurveySearchModule } from './survey-search/survey-search.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MaterialsModule,
     SurveySearchModule,
-    ManageBarModule,
     SurveyListModule,
     MatSidenavModule,
     SharedModule,
-    DashboardSidebarModule
+    DashboardSidenavModule,
+    DashboardContentModule
+    // SurveyBarModule,
+    // GroupListModule
   ],
   declarations: [DashboardComponent],
   exports: [DashboardComponent]

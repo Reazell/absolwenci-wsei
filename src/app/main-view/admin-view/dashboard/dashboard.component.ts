@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { SharedService } from '../../../services/shared.service';
 
@@ -16,10 +17,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isSidebarOpened = true;
   smallScreen: boolean;
   showDetails = false;
+
   // subs
   toggleSidebarSub: Subscription = new Subscription();
 
-  constructor(private sharedService: SharedService) {}
+  constructor(private sharedService: SharedService, private router: Router) {}
   ngOnInit(): void {
     this.showUserInfo();
     this.showToggleButton();

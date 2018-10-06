@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     loadChildren: './info/info.module#InfoModule'
   },
 
-  // { path: '**', redirectTo: '/auth/login' }
+  { path: '**', redirectTo: '/auth/login' }
 ];
 
 @NgModule({
