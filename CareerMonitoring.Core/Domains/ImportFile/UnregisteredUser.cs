@@ -11,7 +11,9 @@ namespace CareerMonitoring.Core.Domains.ImportFile {
         public string Email { get; private set; }
         public string Role { get; private set; }
 
-        public UnregisteredUser () { }
+        public UnregisteredUser () {
+            Role = "unregisteredUser";
+        }
 
         public UnregisteredUser (string name, string surname, string email) {
             SetName (name);

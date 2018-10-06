@@ -132,6 +132,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyService, SurveyService> ();
             services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
             services.AddScoped<ISurveyReportService, SurveyReportService> ();
+            services.AddScoped<IUnregisteredUserService, UnregisteredUserService> ();
 
             #endregion
             #region Validations

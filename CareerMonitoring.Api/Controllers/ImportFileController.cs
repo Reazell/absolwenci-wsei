@@ -38,7 +38,7 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [HttpPost]
-        [Route ("UnregisteredUsers")]
+        [Route ("unregisteredUsers")]
         public async Task<IActionResult> AddUnregisteredUser ([FromBody] AddUnregisteredUser command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
