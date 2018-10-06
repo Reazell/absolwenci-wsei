@@ -11,6 +11,7 @@ using CareerMonitoring.Infrastructure.Commands.CareerOffice;
 using CareerMonitoring.Infrastructure.Commands.Email;
 using CareerMonitoring.Infrastructure.Commands.Employer;
 using CareerMonitoring.Infrastructure.Commands.Graduate;
+using CareerMonitoring.Infrastructure.Commands.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
@@ -151,7 +152,7 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<AddLanguage>, AddLanguageValidator> ();
             services.AddTransient<IValidator<AddProfileLink>, AddProfileLinkValidator> ();
             services.AddTransient<IValidator<AddSkill>, AddSkillValidator> ();
-            services.AddTransient<IValidator<UnregisteredUser>, UnregisteredUserValidator> ();
+            services.AddTransient<IValidator<AddUnregisteredUser>, AddUnregisteredUserValidator> ();
 
             #endregion
             #region Factories
