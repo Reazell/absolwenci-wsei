@@ -37,6 +37,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                 }
             }
         }
+        
         public async Task SendSurveyEmailToUnregisteredUsersAsync (int surveyId) {
             var unregisteredUsers = await _unregisteredUserRepository.GetAllAsync ();
             foreach (var unregisteredUser in unregisteredUsers) {
