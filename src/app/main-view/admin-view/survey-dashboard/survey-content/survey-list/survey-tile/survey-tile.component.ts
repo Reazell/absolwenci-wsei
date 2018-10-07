@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SurveyModel } from '../../../survey-container/models/survey.model';
+import { SurveyModel } from '../../../../survey-container/models/survey.model';
 
 @Component({
   selector: 'app-survey-tile',

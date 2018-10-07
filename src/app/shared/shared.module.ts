@@ -7,8 +7,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialsModule } from '../materials/materials.module';
 import { AppBarComponent } from './bar/app-bar.component';
 import { UserInfoComponent } from './bar/user-info/user-info.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
-import { ProxyRouteComponent } from './proxy-route/proxy-route.component';
 
 @NgModule({
   imports: [
@@ -24,8 +24,8 @@ import { ProxyRouteComponent } from './proxy-route/proxy-route.component';
     AppBarComponent,
     UserInfoComponent,
     LoadingScreenComponent,
-    ProxyRouteComponent
+    ConfirmDialogComponent
   ],
-  exports: [AppBarComponent, LoadingScreenComponent, ProxyRouteComponent]
+  exports: [AppBarComponent, LoadingScreenComponent]
 })
 export class SharedModule {}

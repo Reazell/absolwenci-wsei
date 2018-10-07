@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardContentComponent } from './dashboard-content.component';
+import { DashboardSidenavComponent } from './dashboard-sidenav.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardContentComponent,
+    component: DashboardSidenavComponent,
     // children: [
     //   {
     //     path: '',
@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardContentRoutingModule {}
+export class DashboardSidenavRoutingModule {}

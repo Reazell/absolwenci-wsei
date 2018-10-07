@@ -10,7 +10,6 @@ export class SharedService {
   // sendButton: Subject<boolean> = new Subject<boolean>();
   showButton: Subject<boolean> = new Subject<boolean>();
   editButton: Subject<boolean> = new Subject<boolean>();
-
   // showing elements Subjects
   showBack: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showToggle: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -25,14 +24,10 @@ export class SharedService {
   // input error variable
   controlArray: string[];
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   // button clicked actions
 
-  // sendSurveyButton(x) {
-  //   this.sendButton.next(x);
-  // }
   showSurveyButton(x): void {
     this.showButton.next(x);
   }

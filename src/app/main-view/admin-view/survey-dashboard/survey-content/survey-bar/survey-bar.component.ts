@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SurveyService } from '../../survey-container/services/survey.services';
+import { SurveyService } from '../../../survey-container/services/survey.services';
 
 @Component({
   selector: 'app-survey-bar',

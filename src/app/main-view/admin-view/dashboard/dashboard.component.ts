@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { SharedService } from '../../../services/shared.service';
 
@@ -11,6 +11,8 @@ import { SharedService } from '../../../services/shared.service';
 export class DashboardComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav')
   sidenav;
+  @ViewChild(RouterOutlet)
+  outlet: RouterOutlet;
   show = true;
   loading = true;
   showingMailView = false;
@@ -20,8 +22,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   // subs
   toggleSidebarSub: Subscription = new Subscription();
+  outletDeactivateSub: Subscription = new Subscription();
 
-  constructor(private sharedService: SharedService, private router: Router) {}
+  constructor(private sharedService: SharedService) {}
   ngOnInit(): void {
     this.showUserInfo();
     this.showToggleButton();

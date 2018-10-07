@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../../auth/services/user.service';
 import { SharedService } from '../../services/shared.service';
@@ -36,7 +37,8 @@ export class AppBarComponent implements OnInit, OnDestroy {
 
   constructor(
     private sharedService: SharedService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -107,6 +109,10 @@ export class AppBarComponent implements OnInit, OnDestroy {
     this.sharedService.toggleSideNav(true);
   }
 
+  redirectTo(data: string): void {
+    const url = '/app/admin/d/' + data;
+    this.router.navigate([url]);
+  }
   ngOnDestroy(): void {
     this.userServiceSub.unsubscribe();
     this.creatorSub.unsubscribe();

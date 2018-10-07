@@ -7,6 +7,6 @@ import { DashboardContentRoutingModule } from './dashboard-content.routing';
 @NgModule({
   imports: [CommonModule, SharedModule, DashboardContentRoutingModule],
   declarations: [DashboardContentComponent],
-  exports: [DashboardContentComponent]
+  // exports: [DashboardContentComponent]
 })
 export class DashboardContentModule {}

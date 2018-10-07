@@ -2,11 +2,10 @@
   <div [ngClass]="loading === true ? 'surveyList opacity' : 'surveyList'">
     <div id="container" *ngFor="let survey of surveyArr">
       <app-survey-tile [survey]=survey (click)="openCreator(survey)"></app-survey-tile>
-      <!-- <app-survey-tile></app-survey-tile> -->
       <button mat-icon-button (click)="openResult(survey)">
         <fa-icon [icon]="['far','chart-bar']"></fa-icon>
       </button>
-      <button mat-icon-button (click)="deleteSurvey(survey.id)">
+      <button mat-icon-button (click)="openConfimDeleteDialog(survey.id)">
         <fa-icon class="delete" [icon]="['fas','times']"></fa-icon>
       </button>
 

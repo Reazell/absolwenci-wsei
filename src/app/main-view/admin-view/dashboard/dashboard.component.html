@@ -1,19 +1,19 @@
+<router-outlet></router-outlet>
 <div id="survey-module">
   <mat-sidenav-container id="wrapper">
-
     <mat-sidenav id="sidenav" #sidenav [mode]="isLargeScreen() ? 'side': 'over'" [(opened)]="isSidebarOpened">
-      <!-- <app-survey-search></app-survey-search> -->
-      <!-- <app-group-list></app-group-list> -->
-      <!-- <router-outlet name="sidebar"></router-outlet> -->
-      <!-- <router-outlet></router-outlet> -->
-      <app-dashboard-sidenav></app-dashboard-sidenav>
+      <!-- <app-survey-search></app-survey-search>
+      <app-group-list></app-group-list> -->
+      <!-- <app-dashboard-sidenav> -->
+      <router-outlet name="s"></router-outlet>
+      <!-- </app-dashboard-sidenav> -->
     </mat-sidenav>
     <mat-sidenav-content id="content">
-      <!-- <app-survey-bar></app-survey-bar> -->
-      <!-- <router-outlet name="manage"></router-outlet> -->
-      <!-- <router-outlet></router-outlet> -->
-      <app-dashboard-content></app-dashboard-content>
-      <app-survey-list (loading)="setLoader()"></app-survey-list>
+      <!-- <app-survey-bar></app-survey-bar>
+      <app-survey-list (loading)="setLoader()"></app-survey-list> -->
+      <!-- <app-dashboard-content> -->
+      <router-outlet name="m"></router-outlet>
+      <!-- </app-dashboard-content> -->
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

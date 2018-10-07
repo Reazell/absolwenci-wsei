@@ -10,9 +10,8 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 // tslint:disable-next-line:no-submodule-imports no-implicit-dependencies
 import * as cloneDeep from 'lodash/cloneDeep';
-import { Observable, Subject } from 'rxjs';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/filter';
+import { Subject } from 'rxjs/internal/Subject';
+import { Observable } from 'rxjs/Observable';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
 import { SharedService } from '../../../../services/shared.service';

@@ -21,19 +21,18 @@
     <div id="career-offices" *ngSwitchCase="'careerOffice'">
       <ul class="menu" *ngIf="showAdminMenu === true">
         <li class="menu-item" [routerLink]="['/app/admin']">Panel Główny</li>
-        <li class="menu-item" [routerLink]="['/app/admin/d/']">Ankiety</li>
-        <li class="menu-item" [routerLink]="['/app/admin/d/users']">Użytkownicy</li>
+        <li class="menu-item" (click)="redirectTo('survey')">Ankiety</li>
+        <li class="menu-item" (click)="redirectTo('users')">Użytkownicy</li>
       </ul>
       <div id="survey-buttons">
         <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton" matTooltip="{{info.show}}" matTooltipPosition="below"
-                 (click)="showSurvey()"></fa-icon>
+          (click)="showSurvey()"></fa-icon>
         <fa-icon [icon]="['fas', 'pen']" *ngIf="showSendButton" matTooltip="{{info.edit}}" matTooltipPosition="below"
-                 (click)="editSurvey()"></fa-icon>
+          (click)="editSurvey()"></fa-icon>
         <button mat-button id="save" *ngIf="showCreatorButton" (click)="sendSurvey()">WYŚLIJ</button>
       </div>
     </div>
-    <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger"
-         *ngIf="showUserInfo === true">
+    <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger" *ngIf="showUserInfo === true">
       <!-- <div id="userDisplayName">{{account?.name}} {{account?.surname}}</div> -->
       <img src="./../../../assets/profile-image.png">
     </div>

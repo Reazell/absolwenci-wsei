@@ -1,9 +1,9 @@
 <div id="send-survey-container">
   <div>
     <div id="header">
-      <span>{{data.content.title}}</span>
+      <span mat-dialog-title>{{data.content.title}}</span>
     </div>
-    <div id="content-container">
+    <div id="content-container" mat-dialog-content>
       <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog.value) [formGroup]="dialogForm">
         <div id="form-container">
 
@@ -14,8 +14,7 @@
             <button mat-button type="submit">
               <div id="button">
                 <span>Wyślij wszystkim</span>
-                <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8"
-                                   *ngIf="loader === true"></p-progressSpinner>
+                <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>
               </div>
             </button>
           </div>

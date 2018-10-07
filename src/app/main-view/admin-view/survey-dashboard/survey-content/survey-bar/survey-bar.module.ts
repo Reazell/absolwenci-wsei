@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MaterialsModule } from '../../../../materials/materials.module';
-import { GroupListComponent } from './group-list.component';
+import { MaterialsModule } from '../../../../../materials/materials.module';
+import { SurveyBarComponent } from './survey-bar.component';
 
-export const routes: Routes = [{ path: '', component: GroupListComponent }];
+export const routes: Routes = [{ path: '', component: SurveyBarComponent }];
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ export const routes: Routes = [{ path: '', component: GroupListComponent }];
     MaterialsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GroupListComponent],
-  exports: [GroupListComponent]
+  declarations: [SurveyBarComponent],
+  exports: [ SurveyBarComponent]
 })
-export class GroupListModule {}
+export class SurveyBarModule {}

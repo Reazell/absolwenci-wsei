@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { Survey } from '../../survey-container/models/survey.model';
-import { SurveyService } from '../../survey-container/services/survey.services';
+import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
+import { Survey } from '../../../survey-container/models/survey.model';
+import { SurveyService } from '../../../survey-container/services/survey.services';
 
 @Component({
   selector: 'app-survey-list',
@@ -15,7 +18,11 @@ export class SurveyListComponent implements OnInit, OnDestroy {
   getAllSurveysSub: Subscription = new Subscription();
   isLoadingSub: Subscription = new Subscription();
   surveyArr: Survey[];
-  constructor(private surveyService: SurveyService, private router: Router) {}
+  constructor(
+    private surveyService: SurveyService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getAllSurveys();
@@ -82,6 +89,19 @@ export class SurveyListComponent implements OnInit, OnDestroy {
         console.log(error);
       }
     );
+  }
+  openConfimDeleteDialog(id: number): void {
+    this.openSurveyDialog().subscribe((res: boolean) => {
+      if (res === true) {
+        this.deleteSurvey(id);
+      }
+    });
+  }
+  openSurveyDialog(): Observable<boolean> {
+    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
+      ConfirmDialogComponent
+    );
+    return dialogRef.afterClosed();
   }
   ngOnDestroy(): void {
     this.loading = false;
