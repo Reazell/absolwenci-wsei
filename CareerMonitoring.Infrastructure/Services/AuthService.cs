@@ -50,14 +50,15 @@ namespace CareerMonitoring.Infrastructure.Services {
             return account;
         }
 
-        public async Task RegisterStudentAsync(string name, string surname, string email, string indexNumber,
-            string phoneNumber, string password)
+        public async Task RegisterStudentAsync(string name, string surname, string email,
+            string indexNumber, string phoneNumber, string password)
         {
             if (await _studentService.ExistByEmailAsync (email.ToLowerInvariant ()))
                 throw new Exception ("User of given email already exist.");
             // if (!await _studentService.UserExistByIndexNumberAsync (indexNumber))
             //     throw new Exception ("Given index number does not exist.");
-            var student = new Student (name, surname, email, indexNumber, phoneNumber, password);
+            var student = new Student (name, surname, email,
+            indexNumber, phoneNumber, password);
             var activationKey = Guid.NewGuid ();
             student.AddAccountActivation (new AccountActivation (activationKey));
             await _studentRepository.AddAsync (student);

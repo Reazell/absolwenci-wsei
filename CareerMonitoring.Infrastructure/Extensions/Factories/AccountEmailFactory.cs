@@ -12,7 +12,9 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         private readonly IEmailConfiguration _emailConfiguration;
         private readonly IAccountRepository _accountRepository;
 
-        public AccountEmailFactory (IEmailFactory emailFactory, IEmailConfiguration emailConfiguration, IAccountRepository accountRepository) {
+        public AccountEmailFactory(IEmailFactory emailFactory, IEmailConfiguration emailConfiguration,
+            IAccountRepository accountRepository)
+        {
             _emailFactory = emailFactory;
             _emailConfiguration = emailConfiguration;
             _accountRepository = accountRepository;

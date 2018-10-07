@@ -8,16 +8,21 @@ namespace CareerMonitoring.Api.Controllers {
     [Authorize]
     public class SurveyAnswerController : ApiUserController {
         private readonly ISurveyAnswerService _surveyAnswerService;
+        private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;
 
-        public SurveyAnswerController(ISurveyAnswerService surveyAnswerService)
+        public SurveyAnswerController(ISurveyAnswerService surveyAnswerService,
+            ISurveyUserIdentifierService surveyUserIdentifierService)
         {
             _surveyAnswerService = surveyAnswerService;
+            _surveyUserIdentifierService = surveyUserIdentifierService;
         }
 
-        [HttpPost ("surveys")]
-        public async Task<IActionResult> CreateSurveyAnswer ([FromBody] SurveyAnswerToAdd command) {
+        [HttpPost ("{email}")]
+        public async Task<IActionResult> CreateSurveyAnswer (string email, [FromBody] SurveyAnswerToAdd command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
+            if (!await _surveyUserIdentifierService.VerifySurveyUser(email, command.SurveyId))
+                return BadRequest("you cannot answer to this survey");
             var surveyAnswerId = await _surveyAnswerService.CreateAsync (command.SurveyTitle, command.SurveyId);
             if (command.Questions == null)
                 return BadRequest ("Cannot create empty survey");

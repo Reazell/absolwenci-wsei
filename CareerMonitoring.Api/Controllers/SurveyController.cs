@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Survey;
+using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,16 +10,22 @@ namespace CareerMonitoring.Api.Controllers {
     public class SurveyController : ApiUserController {
         private readonly ISurveyService _surveyService;
         private readonly ISurveyReportService _surveyReportService;
+        private readonly IEncryptorFactory _encryptorFactory;
 
-        public SurveyController (ISurveyService surveyService, ISurveyReportService surveyReportService) {
+        public SurveyController (ISurveyService surveyService,
+            ISurveyReportService surveyReportService,
+            IEncryptorFactory encryptorFactory) {
             _surveyService = surveyService;
             _surveyReportService = surveyReportService;
+            _encryptorFactory = encryptorFactory;
         }
 
-        [HttpGet ("{surveyId}")]
-        public async Task<IActionResult> GetSurvey (int surveyId) {
+        [HttpPost ("{surveyId}/{email}")]
+        public async Task<IActionResult> GetSurvey (int surveyId, string email) {
             var survey = await _surveyService.GetByIdAsync (surveyId);
-            return Json (survey);
+            var Email = _encryptorFactory.DecryptStringValue(email);
+            var result = new { Result = survey, Email};
+            return Json (result);
         }
 
         [HttpGet ("surveys")]

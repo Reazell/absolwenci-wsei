@@ -13,6 +13,11 @@ namespace CareerMonitoring.Core.Domains {
             IndexNumber = indexNumber;
         }
 
+        public Student(string email, string indexNumber) : base(email)
+        {
+            IndexNumber = indexNumber;
+        }
+
         public void Update (string name, string surname, string email, string phoneNumber) {
             Name = name;
             Surname = surname;

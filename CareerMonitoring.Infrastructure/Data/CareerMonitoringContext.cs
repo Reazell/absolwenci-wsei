@@ -12,6 +12,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<FieldData> FieldData { get; set; }
         public DbSet<ChoiceOption> ChoiceOptions { get; set; }
         public DbSet<Row> Rows { get; set; }
+        public DbSet<SurveyUserIdentifier> SurveyUserIdentifiers { get; set; }
         public DbSet<SurveyAnswer> SurveyAnswers { get; set; }
         public DbSet<QuestionAnswer> QuestionsAnswers { get; set; }
         public DbSet<FieldDataAnswer> FieldDataAnswers { get; set; }

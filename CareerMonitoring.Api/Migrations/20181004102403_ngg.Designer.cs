@@ -4,14 +4,16 @@ using CareerMonitoring.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CareerMonitoring.Api.Migrations
 {
     [DbContext(typeof(CareerMonitoringContext))]
-    partial class CareerMonitoringContextModelSnapshot : ModelSnapshot
+    [Migration("20181004102403_ngg")]
+    partial class ngg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -438,23 +440,6 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Surveys");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Surveys.SurveyUserIdentifier", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Answered");
-
-                    b.Property<int>("SurveyId");
-
-                    b.Property<string>("UserEmail");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SurveyUserIdentifiers");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveysAnswers.ChoiceOptionAnswer", b =>
