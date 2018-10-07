@@ -70,6 +70,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
 
                 await _unregisteredUserRepository.AddAllAsync (importDataList);
             }
+            Directory.Delete (fileInfo.DirectoryName, true);
             return importDataListDto;
         }
 
