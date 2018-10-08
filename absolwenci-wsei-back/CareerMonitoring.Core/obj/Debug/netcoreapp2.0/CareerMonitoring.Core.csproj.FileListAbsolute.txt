@@ -16,3 +16,12 @@ C:\Users\Filip\Desktop\Absolwenci-Wsei\absolwenci-wsei\CareerMonitoring.Core\obj
 C:\Users\Filip\Desktop\Absolwenci-Wsei\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfo.cs
 C:\Users\Filip\Desktop\Absolwenci-Wsei\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
 C:\Users\Filip\Desktop\Absolwenci-Wsei\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.deps.json
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.csprojAssemblyReference.cache
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.csproj.CoreCompileInputs.cache
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfoInputs.cache
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfo.cs
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\gabriela.oskroba\Desktop\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
