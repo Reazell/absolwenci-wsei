@@ -77,26 +77,26 @@ const routes: Routes = [
         ]
       },
       {
-        path: dashboards.users
-        // children: [
-        //   {
-        //     path: '',
-        //     redirectTo: usersString,
-        //     pathMatch: 'full'
-        //   },
-        //   {
-        //     path: outletPath,
-        //     outlet: outlets.sidebar,
-        //     loadChildren:
-        //       // './dashboard-sidenav/dashboard-sidenav.module#DashboardSidenavModule'
-        //   },
-        //   {
-        //     path: outletPath,
-        //     outlet: outlets.manage,
-        //     loadChildren:
-        //       // './dashboard-content/dashboard-content.module#DashboardContentModule'
-        //   }
-        // ]
+        path: dashboards.users,
+        children: [
+          {
+            path: '',
+            redirectTo: usersString,
+            pathMatch: 'full'
+          },
+          {
+            path: outletPath,
+            outlet: outlets.sidebar,
+            loadChildren:
+            './../../main-view/admin-view/users-dashboard/users-sidenav/users-sidenav.module#UsersSidenavModule'
+          },
+          {
+            path: outletPath,
+            outlet: outlets.manage,
+            loadChildren:
+            './../../main-view/admin-view/users-dashboard/users-content/users-content.module#UsersContentModule'
+          }
+        ]
       }
     ]
   }
