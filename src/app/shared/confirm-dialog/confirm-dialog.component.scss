@@ -1,0 +1,19 @@
+@import './../../../styles/colors.scss';
+
+#dialog-container {
+  #header-container {
+    span {
+      color: #4c4c4c;
+    }
+  }
+  #dialog-main {
+    span {
+      span {
+        color: $warn;
+      }
+    }
+  }
+  #dialog-menu {
+    justify-content: flex-end;
+  }
+}
