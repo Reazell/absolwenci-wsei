@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AdminSidenavComponent } from './admin-sidenav.component';
 
 export const routes: Routes = [{ path: '', component: AdminSidenavComponent }];
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [AdminSidenavComponent]
 })

@@ -14368,11 +14368,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Api\\CareerMonitoring.Api.csproj",
+      "projectUniqueName": "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Api\\CareerMonitoring.Api.csproj",
       "projectName": "CareerMonitoring.Api",
-      "projectPath": "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Api\\CareerMonitoring.Api.csproj",
+      "projectPath": "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Api\\CareerMonitoring.Api.csproj",
       "packagesPath": "C:\\Users\\gabriela.oskroba\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Api\\obj\\",
+      "outputPath": "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -14391,8 +14391,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj": {
-              "projectPath": "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj"
+            "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj"
             }
           }
         }

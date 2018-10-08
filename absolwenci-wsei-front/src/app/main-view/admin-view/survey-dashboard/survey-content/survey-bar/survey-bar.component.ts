@@ -20,6 +20,7 @@ export class SurveyBarComponent implements OnInit {
     };
     this.surveyService.createSurvey(obj).subscribe(
       data => {
+        console.log(data);
         const string: string = '/app/admin/survey/create/' + data;
         this.router.navigateByUrl(string);
         this.surveyService.isCreatorLoading(false);

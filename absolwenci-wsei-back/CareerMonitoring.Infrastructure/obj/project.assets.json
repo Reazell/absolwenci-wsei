@@ -9646,11 +9646,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
       "projectName": "CareerMonitoring.Infrastructure",
-      "projectPath": "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\gabriela.oskroba\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9669,8 +9669,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj": {
-              "projectPath": "c:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj"
+            "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj": {
+              "projectPath": "C:\\Users\\gabriela.oskroba\\Desktop\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj"
             }
           }
         }
