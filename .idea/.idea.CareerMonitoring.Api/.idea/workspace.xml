@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="612b6e95-d63a-49c6-92b1-00d54dcb5cc4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.vs/ProjectSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/slnx.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/karma.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/protractor.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/account-activation/account-activation.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/account-activation/account-activation.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/account-activation/account-activation.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/account-activation/account-activation.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/admin/admin.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/admin/admin.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/admin/admin.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/admin/admin.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/login.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/login.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/login.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/login.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/password-recovery/password-recovery.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/password-recovery/password-recovery.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/password-recovery/password-recovery.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/login/password-recovery/password-recovery.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/other/guard.auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/other/guid.auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/other/jwt.interceptor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/other/profiles.animations.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/other/role.auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/other/router.animations.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/other/user.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/password-change/password-change.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/password-change/password-change.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/password-change/password-change.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/password-change/password-change.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/register/register.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/register/register.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/register/register.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/register/register.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/restore-password/restore-password.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/restore-password/restore-password.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/restore-password/restore-password.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/restore-password/restore-password.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/services/authentication.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/services/user.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/contact/contact.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/contact/contact.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/contact/contact.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/contact/contact.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/employer/employer.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/employer/employer.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/employer/employer.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/employer/employer.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/graduate/graduate.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/graduate/graduate.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/graduate/graduate.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/graduate/graduate.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/info.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/info.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/info.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/info.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/info.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/student/student.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/student/student.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/student/student.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/info/student/student.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-dashboard/admin-content/admin-content.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-dashboard/admin-content/admin-content.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-dashboard/admin-content/admin-content.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-dashboard/admin-content/admin-content.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-dashboard/admin-sidenav/admin-sidenav.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-dashboard/admin-sidenav/admin-sidenav.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-dashboard/admin-sidenav/admin-sidenav.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-dashboard/admin-sidenav/admin-sidenav.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-view.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-view.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-view.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-view.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/admin-view.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/directives/draggable-helper.directive.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/directives/draggable.directive.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/directives/draggable.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/directives/grippable.directive.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/directives/sortable-list.directive.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/directives/sortable.directive.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/models/survey-creator.models.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/models/survey-result.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/models/survey.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/resolvers/survey-creator.resolver.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/services/survey.services.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-completed/survey-completed.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-completed/survey-completed.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-completed/survey-completed.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-completed/survey-completed.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-container.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-container.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-container.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-container.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-container.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/move-question-dialog/move-question-dialog.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/move-question-dialog/move-question-dialog.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/move-question-dialog/move-question-dialog.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/send-survey-dialog/send-survey-dialog.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/send-survey-dialog/send-survey-dialog.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/send-survey-dialog/send-survey-dialog.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/survey-creator-component/button-single-control/button-single-control.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/survey-creator-component/button-single-control/button-single-control.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/survey-creator-component/button-single-control/button-single-control.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/survey-creator.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/survey-creator.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/survey-creator.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/survey-creator.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-creator/survey-creator.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-result/survey-result.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-result/survey-result.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-result/survey-result.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-result/survey-result.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-result/survey-result.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-viewform/survey-sent/survey-sent.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-viewform/survey-sent/survey-sent.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-viewform/survey-sent/survey-sent.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-viewform/survey-viewform.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-viewform/survey-viewform.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-viewform/survey-viewform.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-viewform/survey-viewform.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-container/survey-viewform/survey-viewform.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-bar/survey-bar.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-bar/survey-bar.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-bar/survey-bar.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-bar/survey-bar.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-content.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-content.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-content.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-content.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-list/survey-list.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-list/survey-list.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-list/survey-list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-list/survey-list.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-list/survey-tile/survey-tile.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-list/survey-tile/survey-tile.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-content/survey-list/survey-tile/survey-tile.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/group-list/group-list.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/group-list/group-list.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/group-list/group-list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/group-list/group-list.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/survey-search/survey-search.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/survey-search/survey-search.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/survey-search/survey-search.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/survey-search/survey-search.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/survey-sidenav.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/survey-sidenav.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/survey-sidenav.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/admin-view/survey-dashboard/survey-sidenav/survey-sidenav.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/employer-view/employer-view.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/employer-view/employer-view.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/employer-view/employer-view.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/employer-view/employer-view.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/employer-view/employer-view.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/graduate-view/graduate-view.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/graduate-view/graduate-view.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/graduate-view/graduate-view.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/graduate-view/graduate-view.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/graduate-view/graduate-view.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/main-view.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/main-view.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/main-view.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/main-view.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/main-view.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/main-settings/main-settings.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/main-settings/main-settings.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/main-settings/main-settings.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/profile-settings/profile-settings.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/profile-settings/profile-settings.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/profile-settings/profile-settings.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/settings.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/settings.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/settings.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/settings.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/settings/settings.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/student-view/student-view.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/student-view/student-view.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/student-view/student-view.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/student-view/student-view.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-view/student-view/student-view.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/materials/materials.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/user.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/others/route.auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/others/survey.auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/shared.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/bar/app-bar.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/bar/app-bar.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/bar/app-bar.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/bar/app-bar.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/bar/user-info/user-info.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/bar/user-info/user-info.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/bar/user-info/user-info.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/confirm-dialog/confirm-dialog.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/confirm-dialog/confirm-dialog.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/confirm-dialog/confirm-dialog.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/confirm-dialog/confirm-dialog.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/dashboard/dashboard.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/dashboard/dashboard.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/dashboard/dashboard.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/dashboard/dashboard.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/dashboard/dashboard.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/data/shared.data.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/loading-screen/loading-screen.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/loading-screen/loading-screen.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/loading-screen/loading-screen.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/loading-screen/loading-screen.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/models/shared.models.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/1920-156.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/logo-wsei.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/profile-image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/polyfills.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/colors.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/material-theme.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tsconfig.spec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/typings.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1718655238">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="612b6e95-d63a-49c6-92b1-00d54dcb5cc4" name="Default Changelist" comment="" />
+      <created>1539006763481</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539006763481</updated>
+      <workItem from="1539006767087" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Key Promoter X" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
