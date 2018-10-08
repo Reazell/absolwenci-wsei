@@ -5,11 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialsModule } from '../../../../../materials/materials.module';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
-import { SharedModule } from '../../../../../shared/shared.module';
+import { ConfirmDialogModule } from '../../../../../shared/confirm-dialog/confirm-dialog.module';
 import { SurveyListComponent } from './survey-list.component';
 import { SurveyTileComponent } from './survey-tile/survey-tile.component';
-
-export const routes: Routes = [{ path: '', component: SurveyListComponent }];
 
 @NgModule({
   imports: [
@@ -18,8 +16,7 @@ export const routes: Routes = [{ path: '', component: SurveyListComponent }];
     FontAwesomeModule,
     MaterialsModule,
     MatProgressSpinnerModule,
-    SharedModule,
-    RouterModule.forChild(routes)
+    ConfirmDialogModule
   ],
   entryComponents: [ConfirmDialogComponent],
   declarations: [SurveyListComponent, SurveyTileComponent],

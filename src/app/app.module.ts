@@ -37,7 +37,8 @@ import { AuthenticationService } from './auth/services/authentication.service';
 import { UserService } from './auth/services/user.service';
 import { MaterialsModule } from './materials/materials.module';
 import { SharedService } from './services/shared.service';
-import { SharedModule } from './shared/shared.module';
+import { BarModule } from './shared/bar/app-bar.module';
+import { LoadingScreenModule } from './shared/loading-screen/loading-screen.module';
 
 library.add(
   faTimes,
@@ -71,10 +72,11 @@ library.add(
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    SharedModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    SortablejsModule.forRoot({ animation: 150 }),
+    BarModule,
+    LoadingScreenModule,
+    SortablejsModule.forRoot({ animation: 150 })
   ],
   providers: [
     AuthenticationService,

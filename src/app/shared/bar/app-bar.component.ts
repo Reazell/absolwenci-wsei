@@ -111,7 +111,7 @@ export class AppBarComponent implements OnInit, OnDestroy {
 
   redirectTo(data: string): void {
     const url = '/app/admin/d/' + data;
-    this.router.navigate([url]);
+    this.router.navigateByUrl(url);
   }
   ngOnDestroy(): void {
     this.userServiceSub.unsubscribe();

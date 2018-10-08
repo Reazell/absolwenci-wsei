@@ -11,7 +11,7 @@ const mainRoutes: Routes = [
     children: [
       {
         path: 'admin',
-        loadChildren: './admin-view/_main-admin-view/admin-view.module#AdminViewModule',
+        loadChildren: './admin-view/admin-view.module#AdminViewModule',
         canLoad: [AuthGuard],
         canActivate: [RoleGuard],
         data: {
