@@ -11,13 +11,16 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         private readonly IEmailFactory _emailFactory;
         private readonly IEmailConfiguration _emailConfiguration;
         private readonly IAccountRepository _accountRepository;
+        private readonly IUnregisteredUserRepository _unregisteredUserRepository;
 
-        public AccountEmailFactory(IEmailFactory emailFactory, IEmailConfiguration emailConfiguration,
-            IAccountRepository accountRepository)
-        {
+        public AccountEmailFactory (IEmailFactory emailFactory,
+            IEmailConfiguration emailConfiguration,
+            IAccountRepository accountRepository,
+            IUnregisteredUserRepository unregisteredUserRepository) {
             _emailFactory = emailFactory;
             _emailConfiguration = emailConfiguration;
             _accountRepository = accountRepository;
+            _unregisteredUserRepository = unregisteredUserRepository;
         }
 
         public async Task SendActivationEmailAsync (Account account, Guid activationKey) {
@@ -42,15 +45,29 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             await _emailFactory.SendEmailAsync (message);
         }
 
-        public async Task SendEmailToAllAsync (string subject, string body)
-        {
-            var accounts = await _accountRepository.GetAllAsync();
-            foreach(var account in accounts)
-            {
-                if(account.Role != "careerOffice"){
+        public async Task SendEmailToAllAsync (string subject, string body) {
+            var accounts = await _accountRepository.GetAllAsync ();
+            foreach (var account in accounts) {
+                if (account.Role != "careerOffice") {
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (account.Name, account.Email));
+                    message.Subject = subject;
+                    message.Body = new TextPart ("html") {
+                        Text = body
+                    };
+                    await _emailFactory.SendEmailAsync (message);
+                }
+            }
+        }
+
+        public async Task SendEmailToAllUnregisteredAsync (string subject, string body) {
+            var unregisteredUsers = await _unregisteredUserRepository.GetAllAsync ();
+            foreach (var unregisteredUser in unregisteredUsers) {
+                if (unregisteredUser.Role != "careerOffice") {
+                    var message = new MimeMessage ();
+                    message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
+                    message.To.Add (new MailboxAddress (unregisteredUser.Name, unregisteredUser.Email));
                     message.Subject = subject;
                     message.Body = new TextPart ("html") {
                         Text = body

@@ -5,11 +5,13 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using CareerMonitoring.Api.ActionFilters;
+using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.CareerOffice;
 using CareerMonitoring.Infrastructure.Commands.Email;
 using CareerMonitoring.Infrastructure.Commands.Employer;
 using CareerMonitoring.Infrastructure.Commands.Graduate;
+using CareerMonitoring.Infrastructure.Commands.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
@@ -19,7 +21,6 @@ using CareerMonitoring.Infrastructure.Extensions.Encryptors;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
-using CareerMonitoring.Infrastructure.Extensions.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
@@ -29,6 +30,7 @@ using CareerMonitoring.Infrastructure.Validators.CareerOffice;
 using CareerMonitoring.Infrastructure.Validators.Email;
 using CareerMonitoring.Infrastructure.Validators.Employer;
 using CareerMonitoring.Infrastructure.Validators.Graduate;
+using CareerMonitoring.Infrastructure.Validators.ImportFile;
 using CareerMonitoring.Infrastructure.Validators.ProfileEdition;
 using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
@@ -59,7 +61,7 @@ namespace CareerMonitoring.Api {
             services.AddMvc (opt => {
                     opt.Filters.Add (typeof (ValidatorActionFilter));
                 }).AddFluentValidation ()
-                .AddJsonOptions(options =>
+                .AddJsonOptions (options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             #region DbContextAndSettings
@@ -80,16 +82,18 @@ namespace CareerMonitoring.Api {
                     };
                 });
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
-            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration")
-                .Get<EmailConfiguration>());
+            services.AddSingleton<IEmailConfiguration> (Configuration.GetSection ("EmailConfiguration")
+                .Get<EmailConfiguration> ());
             services.AddSingleton (AutoMapperConfig.Initialize ());
-            services.AddAuthorization(options => options.AddPolicy("student", policy => policy.RequireRole("student")));
-            services.AddAuthorization(
-                options => options.AddPolicy("graduate", policy => policy.RequireRole("graduate")));
-            services.AddAuthorization(
-                options => options.AddPolicy("employer", policy => policy.RequireRole("employer")));
-            services.AddAuthorization(options =>
-                options.AddPolicy("careerOffice", policy => policy.RequireRole("careerOffice")));
+            services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
+            services.AddAuthorization (
+                options => options.AddPolicy ("graduate", policy => policy.RequireRole ("graduate")));
+            services.AddAuthorization (
+                options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
+            services.AddAuthorization (options =>
+                options.AddPolicy ("careerOffice", policy => policy.RequireRole ("careerOffice")));
+            services.AddAuthorization (options =>
+                options.AddPolicy ("unregisteredUser", policy => policy.RequireRole ("unregisteredUser")));
 
             #endregion
             #region Repositories
@@ -116,6 +120,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
             services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository>();
+            services.AddScoped<IUnregisteredUserRepository, UnregisteredUserRepository> ();
 
             #endregion
             #region Services
@@ -131,6 +136,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
             services.AddScoped<ISurveyReportService, SurveyReportService> ();
             services.AddScoped<ISurveyUserIdentifierService, SurveyUserIdentifierService> ();
+            services.AddScoped<IUnregisteredUserService, UnregisteredUserService> ();
 
             #endregion
             #region Validations
@@ -151,6 +157,7 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<AddLanguage>, AddLanguageValidator> ();
             services.AddTransient<IValidator<AddProfileLink>, AddProfileLinkValidator> ();
             services.AddTransient<IValidator<AddSkill>, AddSkillValidator> ();
+            services.AddTransient<IValidator<AddUnregisteredUser>, AddUnregisteredUserValidator> ();
 
             #endregion
             #region Factories
@@ -159,6 +166,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
             services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
+            services.AddScoped<IImportFileFactory, ImportFileFactory> ();
 
             #endregion
         }

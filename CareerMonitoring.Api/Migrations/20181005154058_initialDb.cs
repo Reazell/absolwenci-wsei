@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CareerMonitoring.Api.Migrations
 {
-    public partial class migrrationz : Migration
+    public partial class initialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,6 +34,24 @@ namespace CareerMonitoring.Api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Accounts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ImportData",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Surname = table.Column<string>(nullable: true),
+                    Course = table.Column<string>(nullable: true),
+                    DateOfCompletion = table.Column<DateTime>(nullable: false),
+                    TypeOfStudy = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImportData", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,17 +100,16 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SurveyScores",
+                name: "UploadFiles",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false)
+                    File = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SurveyScores", x => x.Id);
+                    table.PrimaryKey("PK_UploadFiles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -387,28 +404,6 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "QuestionScores",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    QuestionPosition = table.Column<int>(nullable: false),
-                    Content = table.Column<string>(nullable: true),
-                    Select = table.Column<string>(nullable: true),
-                    SurveyId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_QuestionScores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_QuestionScores_SurveyScores_SurveyId",
-                        column: x => x.SurveyId,
-                        principalTable: "SurveyScores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "FieldDataAnswers",
                 columns: table => new
                 {
@@ -471,31 +466,6 @@ namespace CareerMonitoring.Api.Migrations
                         name: "FK_FieldData_Questions_QuestionId",
                         column: x => x.QuestionId,
                         principalTable: "Questions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FieldDataScores",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    MinValue = table.Column<int>(nullable: false),
-                    MaxValue = table.Column<int>(nullable: false),
-                    MinLabel = table.Column<string>(nullable: true),
-                    MaxLabel = table.Column<string>(nullable: true),
-                    Input = table.Column<string>(nullable: true),
-                    InputScore = table.Column<int>(nullable: false),
-                    QuestionId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FieldDataScores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FieldDataScores_QuestionScores_QuestionId",
-                        column: x => x.QuestionId,
-                        principalTable: "QuestionScores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -587,50 +557,6 @@ namespace CareerMonitoring.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ChoiceScores",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    OptionPosition = table.Column<int>(nullable: false),
-                    ViewValue = table.Column<string>(nullable: true),
-                    PercentageValue = table.Column<double>(nullable: false),
-                    NumericalValue = table.Column<double>(nullable: false),
-                    FieldDataId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ChoiceScores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ChoiceScores_FieldDataScores_FieldDataId",
-                        column: x => x.FieldDataId,
-                        principalTable: "FieldDataScores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RowScores",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    RowPosition = table.Column<int>(nullable: false),
-                    Input = table.Column<string>(nullable: true),
-                    FieldDataId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RowScores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RowScores_FieldDataScores_FieldDataId",
-                        column: x => x.FieldDataId,
-                        principalTable: "FieldDataScores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RowChoiceOptionsAnswers",
                 columns: table => new
                 {
@@ -680,11 +606,6 @@ namespace CareerMonitoring.Api.Migrations
                 column: "FieldDataAnswerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChoiceScores_FieldDataId",
-                table: "ChoiceScores",
-                column: "FieldDataId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Courses_AccountId",
                 table: "Courses",
                 column: "AccountId");
@@ -713,11 +634,6 @@ namespace CareerMonitoring.Api.Migrations
                 name: "IX_FieldDataAnswers_QuestionAnswerId",
                 table: "FieldDataAnswers",
                 column: "QuestionAnswerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FieldDataScores_QuestionId",
-                table: "FieldDataScores",
-                column: "QuestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobOffers_EmployerId",
@@ -751,11 +667,6 @@ namespace CareerMonitoring.Api.Migrations
                 column: "SurveyAnswerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_QuestionScores_SurveyId",
-                table: "QuestionScores",
-                column: "SurveyId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_RowAnswers_FieldDataAnswerId",
                 table: "RowAnswers",
                 column: "FieldDataAnswerId");
@@ -768,11 +679,6 @@ namespace CareerMonitoring.Api.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Rows_FieldDataId",
                 table: "Rows",
-                column: "FieldDataId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RowScores_FieldDataId",
-                table: "RowScores",
                 column: "FieldDataId");
 
             migrationBuilder.CreateIndex(
@@ -799,9 +705,6 @@ namespace CareerMonitoring.Api.Migrations
                 name: "ChoiceOptionsAnswers");
 
             migrationBuilder.DropTable(
-                name: "ChoiceScores");
-
-            migrationBuilder.DropTable(
                 name: "Courses");
 
             migrationBuilder.DropTable(
@@ -812,6 +715,9 @@ namespace CareerMonitoring.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Experiences");
+
+            migrationBuilder.DropTable(
+                name: "ImportData");
 
             migrationBuilder.DropTable(
                 name: "JobOffers");
@@ -829,10 +735,10 @@ namespace CareerMonitoring.Api.Migrations
                 name: "Rows");
 
             migrationBuilder.DropTable(
-                name: "RowScores");
+                name: "Skills");
 
             migrationBuilder.DropTable(
-                name: "Skills");
+                name: "UploadFiles");
 
             migrationBuilder.DropTable(
                 name: "QuestionReports");
@@ -842,9 +748,6 @@ namespace CareerMonitoring.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "FieldData");
-
-            migrationBuilder.DropTable(
-                name: "FieldDataScores");
 
             migrationBuilder.DropTable(
                 name: "Accounts");
@@ -859,16 +762,10 @@ namespace CareerMonitoring.Api.Migrations
                 name: "Questions");
 
             migrationBuilder.DropTable(
-                name: "QuestionScores");
-
-            migrationBuilder.DropTable(
                 name: "QuestionsAnswers");
 
             migrationBuilder.DropTable(
                 name: "Surveys");
-
-            migrationBuilder.DropTable(
-                name: "SurveyScores");
 
             migrationBuilder.DropTable(
                 name: "SurveyAnswers");

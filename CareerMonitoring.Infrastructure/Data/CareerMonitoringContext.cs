@@ -1,5 +1,6 @@
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Core.Domains.SurveyReport;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
@@ -36,7 +37,7 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<Language> Languages { get; set; }
         public DbSet<ProfileLink> ProfileLinks { get; set; }
         public DbSet<Skill> Skills { get; set; }
-        
+        public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 
