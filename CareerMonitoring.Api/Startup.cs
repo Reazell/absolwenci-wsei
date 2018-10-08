@@ -19,6 +19,7 @@ using CareerMonitoring.Infrastructure.Extensions.Encryptors;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
+using CareerMonitoring.Infrastructure.Extensions.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
@@ -157,7 +158,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmailFactory, EmailFactory> ();
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
-            services.AddScoped<IEncryptorFactory, EncryptorFactory>();
+            services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
 
             #endregion
         }

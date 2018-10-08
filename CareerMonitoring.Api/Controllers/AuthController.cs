@@ -11,6 +11,7 @@ using CareerMonitoring.Infrastructure.Commands.Employer;
 using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Extension.JWT;
+using CareerMonitoring.Infrastructure.Extensions.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
