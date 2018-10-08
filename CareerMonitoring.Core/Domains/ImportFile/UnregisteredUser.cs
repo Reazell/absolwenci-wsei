@@ -15,13 +15,6 @@ namespace CareerMonitoring.Core.Domains.ImportFile {
             Role = "unregisteredUser";
         }
 
-        public UnregisteredUser (string name, string surname, string email) {
-            SetName (name);
-            SetSurname (surname);
-            SetEmail (email);
-            Role = "unregisteredUser";
-        }
-
         public UnregisteredUser (string name, string surname, string course,
             DateTime dateOfCompletion, string typeOfStudy, string email) {
             SetName (name);
@@ -57,9 +50,13 @@ namespace CareerMonitoring.Core.Domains.ImportFile {
             Email = email;
         }
 
-        public void Update (string name, string surname, string email) {
+        public void Update (string name, string surname, string course,
+            DateTime dateOfCompletion, string typeOfStudy, string email) {
             SetName (name);
             SetSurname (surname);
+            SetCourse (course);
+            SetDateOfCompletion (dateOfCompletion);
+            SetTypeOfStudy (typeOfStudy);
             SetEmail (email);
         }
     }

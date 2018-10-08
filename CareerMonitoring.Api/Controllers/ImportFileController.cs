@@ -37,14 +37,58 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
+        [HttpGet]
+        [Route ("unregisteredUsers")]
+        public async Task<IActionResult> GetAllUnregisteredUsers () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                var unregisteredUsers = await _unregisteredUserService.GetAllAsync ();
+                return Json (unregisteredUsers);
+
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
         [HttpPost]
         [Route ("unregisteredUsers")]
         public async Task<IActionResult> AddUnregisteredUser ([FromBody] AddUnregisteredUser command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _unregisteredUserService.CreateAsync (command.Name, command.Surname, command.Email);
+                await _unregisteredUserService.CreateAsync (command.Name, command.Surname, command.Course,
+                    command.DateOfCompletion, command.TypeOfStudy, command.Email);
                 return StatusCode (201);
+
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route ("unregisteredUsers/{id}")]
+        public async Task<IActionResult> UpdateUnregisteredUser ([FromBody] AddUnregisteredUser command, int id) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _unregisteredUserService.UpdateAsync (id, command.Name, command.Surname, command.Course,
+                    command.DateOfCompletion, command.TypeOfStudy, command.Email);
+                return StatusCode (200);
+
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Route ("unregisteredUsers/{id}")]
+        public async Task<IActionResult> DeleteUnregisteredUser (int id) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _unregisteredUserService.DeleteAsync (id);
+                return StatusCode (202);
 
             } catch (Exception e) {
                 return BadRequest (e.Message);
