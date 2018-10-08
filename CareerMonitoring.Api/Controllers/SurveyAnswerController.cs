@@ -21,8 +21,10 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> CreateSurveyAnswer (string email, [FromBody] SurveyAnswerToAdd command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            if (!await _surveyUserIdentifierService.VerifySurveyUser(email, command.SurveyId))
-                return BadRequest("you cannot answer to this survey");
+            if (await _surveyUserIdentifierService.VerifySurveyUser(email, command.SurveyId) == "unauthorized")
+                return Unauthorized();
+            else if (await _surveyUserIdentifierService.VerifySurveyUser(email, command.SurveyId) == "answered")
+                return BadRequest("you already answered to that survey");
             var surveyAnswerId = await _surveyAnswerService.CreateAsync (command.SurveyTitle, command.SurveyId);
             if (command.Questions == null)
                 return BadRequest ("Cannot create empty survey");

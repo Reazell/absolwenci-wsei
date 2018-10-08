@@ -20,8 +20,14 @@ namespace CareerMonitoring.Api.Controllers {
             _encryptorFactory = encryptorFactory;
         }
 
-        [HttpPost ("{surveyId}/{email}")]
+        [HttpGet ("{surveyId}")]
         public async Task<IActionResult> GetSurvey (int surveyId, string email) {
+            var survey = await _surveyService.GetByIdAsync (surveyId);
+            return Json (survey);
+        }
+
+        [HttpGet ("{surveyId}/{email}")]
+        public async Task<IActionResult> GetSurveyWithEmail (int surveyId, string email) {
             var survey = await _surveyService.GetByIdAsync (surveyId);
             var Email = _encryptorFactory.DecryptStringValue(email);
             var result = new { Result = survey, Email};

@@ -23,16 +23,18 @@ namespace CareerMonitoring.Infrastructure.Services
             await _surveyUserIdentifierRepository.AddAsync(identifier);
         }
 
-        public Task<bool> VerifySurveyUser(string userEmail, int surveyId)
+        public Task<string> VerifySurveyUser(string userEmail, int surveyId)
         {
-            
             var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail);
             if (identifier != null && !identifier.Answered)
             {
                 identifier.MarkAsAnswered();
-                return Task.FromResult(true);
+                return Task.FromResult("authorized");
             }
-            return Task.FromResult(false);
+            if(identifier != null && identifier.Answered){
+                return Task.FromResult("answered");
+            }
+            return Task.FromResult("unauthorized");
 
         }
     }
