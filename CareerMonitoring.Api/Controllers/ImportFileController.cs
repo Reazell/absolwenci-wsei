@@ -68,7 +68,7 @@ namespace CareerMonitoring.Api.Controllers {
 
         [HttpPut]
         [Route ("unregisteredUsers/{id}")]
-        public async Task<IActionResult> UpdateUnregisteredUser ([FromBody] AddUnregisteredUser command, int id) {
+        public async Task<IActionResult> UpdateUnregisteredUser ([FromBody] UpdateUnregisteredUser command, int id) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
