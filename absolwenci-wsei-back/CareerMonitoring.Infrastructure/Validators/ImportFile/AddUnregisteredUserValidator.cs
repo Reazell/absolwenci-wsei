@@ -19,7 +19,7 @@ namespace CareerMonitoring.Infrastructure.Validators.ImportFile {
                 .NotNull ()
                 .WithMessage ("Surname cannot be null.");
             RuleFor (reg => reg.Course)
-                .MaximumLength (50)
+                .MaximumLength (70)
                 .MinimumLength (3)
                 .WithMessage ("Course cannot be null or empty.")
                 .NotNull ()
@@ -30,7 +30,7 @@ namespace CareerMonitoring.Infrastructure.Validators.ImportFile {
                 .NotNull ()
                 .WithMessage ("Date of completion cannot be null.");
             RuleFor (reg => reg.TypeOfStudy)
-                .MaximumLength (50)
+                .MaximumLength (70)
                 .MinimumLength (3)
                 .NotNull ()
                 .WithMessage ("Type of study cannot be null.");

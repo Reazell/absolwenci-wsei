@@ -21,8 +21,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             IAccountRepository accountRepository,
             ISurveyUserIdentifierService surveyUserIdentifierService,
             IEncryptorFactory encryptorFactory,
-            IUnregisteredUserRepository unregisteredUserRepository)
-        {
+            IUnregisteredUserRepository unregisteredUserRepository) {
             _surveyUserIdentifierService = surveyUserIdentifierService;
             _encryptorFactory = encryptorFactory;
             _emailConfiguration = emailConfiguration;
@@ -43,7 +42,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                         Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}/{_encryptorFactory.EncryptStringValue(account.Email)}\">link</a> ."
                     };
                     await _emailFactory.SendEmailAsync (message);
-                    await _surveyUserIdentifierService.CreateAsync(account.Email, surveyId);
+                    await _surveyUserIdentifierService.CreateAsync (account.Email, surveyId);
                 }
             }
         }
