@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SurveyService } from '../../../main-view/admin-view/survey-container/services/survey.services';
 
 @Component({
@@ -12,28 +11,34 @@ export class DashboardBarComponent implements OnInit {
   groupTitle;
   @Input()
   buttonDets;
+  @Output()
+  buttonClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private surveyService: SurveyService) {}
+  constructor(private surveyService: SurveyService) {}
 
   ngOnInit() {}
 
-  redirectToNew(): void {
+  // redirectToNew(): void {
+  //   this.surveyService.isCreatorLoading(true);
+  //   const obj = {
+  //     title: '',
+  //     questions: []
+  //   };
+  //   this.surveyService.createSurvey(obj).subscribe(
+  //     data => {
+  //       console.log(data);
+  //       const string: string = '/app/admin/survey/create/' + data;
+  //       this.router.navigateByUrl(string);
+  //       this.surveyService.isCreatorLoading(false);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+  onButtonClick() {
     this.surveyService.isCreatorLoading(true);
-    const obj = {
-      title: '',
-      questions: []
-    };
-    this.surveyService.createSurvey(obj).subscribe(
-      data => {
-        console.log(data);
-        const string: string = '/app/admin/survey/create/' + data;
-        this.router.navigateByUrl(string);
-        this.surveyService.isCreatorLoading(false);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.buttonClick.emit(true);
   }
 
   searchSurveyList(searchString: string): void {

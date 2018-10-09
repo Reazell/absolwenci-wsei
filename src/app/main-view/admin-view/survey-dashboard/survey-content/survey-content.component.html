@@ -1,2 +1,7 @@
-<app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets></app-dashboard-bar>
-<app-survey-list></app-survey-list>
+<app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets (buttonClick)="redirectToNew()"></app-dashboard-bar>
+<app-dashboard-list>
+  <!-- <ng-template let-item> -->
+    <app-survey-tile [survey]="items$ | async" ></app-survey-tile>
+    <!-- (click)="openCreator(item)" -->
+  <!-- </ng-template> -->
+</app-dashboard-list>

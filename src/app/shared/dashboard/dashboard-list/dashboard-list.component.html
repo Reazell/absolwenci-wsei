@@ -1,0 +1,20 @@
+<div id="survey-container">
+  <div [ngClass]="loading === true ? 'surveyList opacity' : 'surveyList'">
+    <div id="container" *ngFor="let item of itemArr">
+      <!-- <app-survey-tile [survey]=survey (click)="openCreator(survey)"></app-survey-tile> -->
+      <ng-content *ngTemplateOutlet="parentTemplate; context: { $implicit: item }"></ng-content>
+      <!-- <button mat-icon-button (click)="openResult(survey)"> -->
+      <button mat-icon-button (click)="resultButtonClick()">
+        <fa-icon [icon]="['far','chart-bar']"></fa-icon>
+      </button>
+      <!-- <button mat-icon-button (click)="openConfimDeleteDialog(survey.id)"> -->
+      <button mat-icon-button (click)="dialogButtonClick()">
+        <fa-icon class="delete" [icon]="['fas','times']"></fa-icon>
+      </button>
+
+    </div>
+  </div>
+  <div id="overlay" *ngIf="loading === true">
+    <mat-spinner [diameter]="40"></mat-spinner>
+  </div>
+</div>

@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardBarModule } from './../../../../shared/dashboard/dashboard-bar/dashboard-bar.module';
+import { DashboardListModule } from './../../../../shared/dashboard/dashboard-list/dashboard-list.module';
 import { SurveyContentComponent } from './survey-content.component';
-import { SurveyListModule } from './survey-list/survey-list.module';
+import { SurveyTileComponent } from './survey-tile/survey-tile.component';
 
 export const routes: Routes = [{ path: '', component: SurveyContentComponent }];
 
@@ -11,9 +12,9 @@ export const routes: Routes = [{ path: '', component: SurveyContentComponent }];
   imports: [
     CommonModule,
     DashboardBarModule,
-    SurveyListModule,
+    DashboardListModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SurveyContentComponent]
+  declarations: [SurveyContentComponent, SurveyTileComponent]
 })
 export class SurveyContentModule {}
