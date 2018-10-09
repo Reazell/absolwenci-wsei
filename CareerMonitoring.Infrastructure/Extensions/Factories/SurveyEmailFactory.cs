@@ -57,9 +57,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                     message.To.Add (new MailboxAddress (unregisteredUser.Name, unregisteredUser.Email));
                     message.Subject = "Monitorowanie karier - ankieta";
                     message.Body = new TextPart ("html") {
-                        Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}\">link</a> ."
+                        Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}/{_encryptorFactory.EncryptStringValue(unregisteredUser.Email)}\">link</a> ."
                     };
                     await _emailFactory.SendEmailAsync (message);
+                    await _surveyUserIdentifierService.CreateAsync(unregisteredUser.Email, surveyId);
                 }
             }
         }
