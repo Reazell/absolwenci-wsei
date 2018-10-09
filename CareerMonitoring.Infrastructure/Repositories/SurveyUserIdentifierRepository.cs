@@ -16,7 +16,7 @@ namespace CareerMonitoring.Infrastructure.Repositories
 
         public SurveyUserIdentifierRepository(CareerMonitoringContext context)
         {
-            context = _context;
+            _context = context;
         }
 
         public async Task AddAsync(SurveyUserIdentifier surveyUserIdentifier)
