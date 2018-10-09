@@ -31,7 +31,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             if (file == null && file.Length < 0)
                 throw new Exception ("File not selected");
 
-            var path = Path.Combine (_hostingEnvironment.WebRootPath, "uploads", file.FileName).ToLower ();
+            var path = Path.Combine (_hostingEnvironment.WebRootPath, file.FileName).ToLower ();
 
             if (!Directory.Exists (path)) {
                 Directory.CreateDirectory (path);

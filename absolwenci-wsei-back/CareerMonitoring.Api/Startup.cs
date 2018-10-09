@@ -158,6 +158,7 @@ namespace CareerMonitoring.Api {
             services.AddTransient<IValidator<AddProfileLink>, AddProfileLinkValidator> ();
             services.AddTransient<IValidator<AddSkill>, AddSkillValidator> ();
             services.AddTransient<IValidator<AddUnregisteredUser>, AddUnregisteredUserValidator> ();
+            services.AddTransient<IValidator<UpdateUnregisteredUser>, UpdateUnregisteredUserValidator> ();
 
             #endregion
             #region Factories

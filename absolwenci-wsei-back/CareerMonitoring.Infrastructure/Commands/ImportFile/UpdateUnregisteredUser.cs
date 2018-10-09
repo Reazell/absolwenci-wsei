@@ -1,7 +1,7 @@
 using System;
 
 namespace CareerMonitoring.Infrastructure.Commands.ImportFile {
-    public class AddUnregisteredUser {
+    public class UpdateUnregisteredUser {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Course { get; set; }
