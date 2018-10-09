@@ -16,7 +16,6 @@ import { DashboardListComponent } from './dashboard-list.component';
     MatProgressSpinnerModule,
     ConfirmDialogModule
   ],
-  // entryComponents: [ConfirmDialogComponent],
   declarations: [DashboardListComponent],
   exports: [DashboardListComponent]
 })

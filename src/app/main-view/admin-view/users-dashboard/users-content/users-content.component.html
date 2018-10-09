@@ -1,4 +1,7 @@
 <app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets></app-dashboard-bar>
-<p>
-  users-content works!
-</p>
+<app-dashboard-list [itemArr]=" items$ | async" (dialogButton)="openConfimDeleteDialog($event)" (resultButton)="openResult($event)">
+  <ng-template let-item>
+    <!-- <app-survey-tile [survey]="item" (openCreator)="openCreator(item)"></app-survey-tile> -->
+    <app-users-list></app-users-list>
+  </ng-template>
+</app-dashboard-list>

@@ -12,9 +12,9 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+// import { Survey } from '../../../main-view/admin-view/survey-container/models/survey.model';
+import { SurveyService } from '../../../main-view/admin-view/survey-container/services/survey.services';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
-import { Survey } from './../../../main-view/admin-view/survey-container/models/survey.model';
-import { SurveyService } from './../../../main-view/admin-view/survey-container/services/survey.services';
 
 @Component({
   selector: 'app-dashboard-list',
@@ -25,9 +25,9 @@ export class DashboardListComponent implements OnInit, OnDestroy {
   @Input()
   itemArr;
   @Output()
-  resultButton: EventEmitter<boolean> = new EventEmitter<boolean>();
+  resultButton: EventEmitter<any> = new EventEmitter<any>();
   @Output()
-  dialogButton: EventEmitter<boolean> = new EventEmitter<boolean>();
+  dialogButton: EventEmitter<number> = new EventEmitter<number>();
   @ContentChild(TemplateRef)
   parentTemplate;
   loading = false;
@@ -46,16 +46,19 @@ export class DashboardListComponent implements OnInit, OnDestroy {
     this.isLoadingFromOutside();
     // this.filterSurveyList();
   }
-  resultButtonClick() {
-    this.resultButton.emit(true);
+  resultButtonClick(item: any): void {
+    this.resultButton.emit(item);
   }
-  dialogButtonClick() {
-    this.dialogButton.emit(true);
+  dialogButtonClick(id: number) {
+    console.log(id);
+
+    this.dialogButton.emit(id);
   }
 
   isLoadingFromOutside(): void {
     this.isLoadingSub = this.surveyService.openingCreatorLoader.subscribe(
       data => {
+        console.log(data);
         this.loading = data;
       }
     );

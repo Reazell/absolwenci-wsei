@@ -5,8 +5,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { Survey } from '../../survey-container/models/survey.model';
+import { SurveyService } from '../../survey-container/services/survey.services';
 import { ConfirmDialogComponent } from './../../../../shared/confirm-dialog/confirm-dialog.component';
-import { SurveyService } from './../../survey-container/services/survey.services';
 
 @Component({
   selector: 'app-survey-content',
@@ -51,7 +51,6 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
         console.log(data);
         const string: string = '/app/admin/survey/create/' + data;
         this.router.navigateByUrl(string);
-        this.surveyService.isCreatorLoading(false);
       },
       error => {
         console.log(error);
@@ -81,8 +80,7 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   getAllSurveys(): void {
     this.saveSurveysFromApi();
     this.getAllSurveysSub = this.surveyService.savedSurveys.subscribe(
-      data => {
-        console.log(data);
+      (data: Survey[]) => {
         if (data) {
           this._items$.next(data);
         }
@@ -90,7 +88,6 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
       error => {
         console.log(error);
       }
-      // this._items$
     );
   }
   // subToObs() {
@@ -103,11 +100,11 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   //       console.log(res);
   //     });
   // }
-  openCreator(survey): void {
+  openCreator(survey: Survey): void {
     this.loading = true;
     this.router.navigateByUrl('/app/admin/survey/create/' + survey.id);
   }
-  openResult(survey): void {
+  openResult(survey: Survey): void {
     this.loading = true;
     this.router.navigateByUrl('/app/admin/survey/result/' + survey.id);
   }
