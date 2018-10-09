@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AppConfig } from '../../app.config';
 
 @Injectable()
-export class UserService {
+export class AccountService {
   mail: string;
   isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(undefined);
   role: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);

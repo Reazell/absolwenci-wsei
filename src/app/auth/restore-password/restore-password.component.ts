@@ -1,13 +1,13 @@
 import { Component} from '@angular/core';
 import {
-  FormGroup,
   AbstractControl,
   FormBuilder,
+  FormGroup,
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
 import { SharedService } from '../../services/shared.service';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-restore-password',
@@ -25,7 +25,7 @@ export class RestorePasswordComponent {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService
   ) {
     this.passwordForm = this.fb.group({
@@ -42,7 +42,7 @@ export class RestorePasswordComponent {
   onSubmit(form) {
     if (form.valid) {
       this.loader = true;
-      this.userService
+      this.accountService
         .changePasswordByRestoringPassword(this.token, this.password.value)
         .subscribe(
           data => {

@@ -33,8 +33,8 @@ import { AppRoutingModule } from './app.routing';
 import { AuthGuard } from './auth/other/guard.auth';
 import { GuidGuard } from './auth/other/guid.auth';
 import { JwtInterceptor } from './auth/other/jwt.interceptor';
+import { AccountService } from './auth/services/account.service';
 import { AuthenticationService } from './auth/services/authentication.service';
-import { UserService } from './auth/services/user.service';
 import { MaterialsModule } from './materials/materials.module';
 import { SharedService } from './services/shared.service';
 import { BarModule } from './shared/bar/app-bar.module';
@@ -80,7 +80,7 @@ library.add(
   ],
   providers: [
     AuthenticationService,
-    UserService,
+    AccountService,
     SharedService,
     AuthGuard,
     GuidGuard,

@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
+import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
 
 /**
  * Sign in user.
@@ -49,13 +49,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService
   ) {}
 
   ngOnDestroy() {
     if (this.recoveryRoute === true) {
-      this.userService.passMailData(this.email.value);
+      this.accountService.passMailData(this.email.value);
     }
     this.sharedService.deleteControlArray();
   }
@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         .subscribe(
           data => {
             console.log(data);
-            this.userService.isLoggedNext(true);
+            this.accountService.isLoggedNext(true);
             // if login is successful, redirect to app
             this.routeSwitch(data.role);
           },

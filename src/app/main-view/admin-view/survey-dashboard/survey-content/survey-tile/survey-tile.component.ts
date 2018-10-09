@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SurveyModel } from '../../../survey-container/models/survey.model';
-import { SurveyService } from './../../../survey-container/services/survey.services';
+import { SurveyService } from '../../../survey-container/services/survey.services';
 
 @Component({
   selector: 'app-survey-tile',

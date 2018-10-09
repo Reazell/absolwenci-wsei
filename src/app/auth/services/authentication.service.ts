@@ -2,7 +2,7 @@ import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { AppConfig } from '../../app.config';
-import { UserService } from './user.service';
+import { AccountService } from './account.service';
 
 /**
  * Service for authentication - log in and log out.
@@ -15,7 +15,7 @@ export class AuthenticationService {
   constructor(
     private http: HttpClient,
     private config: AppConfig,
-    private userService: UserService
+    private userService: AccountService
   ) { }
 
   /**

@@ -19,11 +19,11 @@ export class SurveyService {
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   saveSurveyAnswer(survey, id) {
-    const obj = {
-      SurveyTitle: survey.title,
-      SurveyId: id,
-      Questions: survey.questions
-    };
+    // const obj = {
+    //   SurveyTitle: survey.title,
+    //   SurveyId: id,
+    //   Questions: survey.questions
+    // };
     // console.log(JSON.stringify(obj));
     return this.http
       .post<any>(this.config.apiUrl + '/surveyanswer/surveys', {
@@ -46,10 +46,10 @@ export class SurveyService {
       });
   }
   createSurvey(survey) {
-    const obj = {
-      Title: survey.title,
-      Questions: survey.questions
-    };
+    // const obj = {
+    //   Title: survey.title,
+    //   Questions: survey.questions
+    // };
     // console.log(JSON.stringify(obj));
     return this.http
       .post<any>(this.config.apiUrl + '/survey/surveys', {
@@ -61,11 +61,11 @@ export class SurveyService {
       });
   }
   updateSurvey(object: Update): Observable<any> {
-    const obj = {
-      surveyId: object.id,
-      Title: object.Title,
-      Questions: object.Questions
-    };
+    // const obj = {
+    //   surveyId: object.id,
+    //   Title: object.Title,
+    //   Questions: object.Questions
+    // };
     // console.log(JSON.stringify(obj));
     return this.http
       .put<Update>(this.config.apiUrl + '/survey', {

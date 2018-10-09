@@ -18,26 +18,7 @@ export class DashboardBarComponent implements OnInit {
 
   ngOnInit() {}
 
-  // redirectToNew(): void {
-  //   this.surveyService.isCreatorLoading(true);
-  //   const obj = {
-  //     title: '',
-  //     questions: []
-  //   };
-  //   this.surveyService.createSurvey(obj).subscribe(
-  //     data => {
-  //       console.log(data);
-  //       const string: string = '/app/admin/survey/create/' + data;
-  //       this.router.navigateByUrl(string);
-  //       this.surveyService.isCreatorLoading(false);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
   onButtonClick() {
-    this.surveyService.isCreatorLoading(true);
     this.buttonClick.emit(true);
   }
 

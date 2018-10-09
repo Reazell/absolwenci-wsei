@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../services/shared.service';
-import { UserService } from '../../services/user.service';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-password-recovery',
@@ -30,14 +30,14 @@ export class PasswordRecoveryComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService,
     private router: Router
   ) {}
 
   ngOnInit() {
     // get mail string
-    this.mail = this.userService.getMailData();
+    this.mail = this.accountService.getMailData();
 
     // form declaring
     this.passForm = this.fb.group({
@@ -57,7 +57,7 @@ export class PasswordRecoveryComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     console.log(this.email.value);
-    this.userService.sendRestorePasswordEmail(this.email.value).subscribe(
+    this.accountService.sendRestorePasswordEmail(this.email.value).subscribe(
       data => {
         this.router.navigateByUrl('auth/login');
       },

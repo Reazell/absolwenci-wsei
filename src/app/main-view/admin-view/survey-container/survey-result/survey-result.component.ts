@@ -225,7 +225,6 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
       answersNumber: data.answersNumber,
       questionReports: this.populateQuestionReports(data.questionsReports)
     };
-    console.log(data);
   }
   populateQuestionReports(reports) {
     const reportsArr = [];

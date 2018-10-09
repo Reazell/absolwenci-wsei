@@ -1,0 +1,63 @@
+<div id="send-survey-container">
+  <div>
+    <div id="header">
+      <span mat-dialog-title>Dodaj użytkownika</span>
+    </div>
+    <div id="content-container" mat-dialog-content>
+      <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog.value) [formGroup]="dialogForm">
+        <div id="form-container">
+
+          <!-- <mat-form-field>
+            <input matInput placeholder="Temat wiadomości" formControlName="subject">
+          </mat-form-field> -->
+          <div class="group half">
+            <mat-form-field>
+              <input matInput placeholder="Imię" formControlName="name">
+              <!-- <mat-error *ngIf="inputError(albumID)">{{albumIDErrorStr}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="group half">
+            <mat-form-field>
+              <input matInput placeholder="Nazwisko" formControlName="surname">
+              <!-- <mat-error *ngIf="inputError(phoneNum)">{{phoneNumErrorStr}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="group half">
+            <mat-form-field>
+              <input matInput placeholder="E-mail" formControlName="email">
+              <!-- <mat-error *ngIf="inputError(companyName)">{{companyNameErrorStr}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="group half">
+            <mat-form-field>
+              <input matInput placeholder="Kierunek studiów" formControlName="course">
+              <!-- <mat-error *ngIf="inputError(location)">{{locationErrorStr}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="group half">
+            <mat-form-field>
+              <input matInput placeholder="Specjalizacja" formControlName="typeofStudy">
+              <!-- <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="group half">
+            <mat-form-field>
+              <input matInput placeholder="Wybierz datę zakończenia studiów" [matDatepicker]="picker" formControlName="dateOfCompletion">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <!-- <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div id="button-container">
+            <button mat-button type="submit">
+              <div id="button">
+                <span>Wyślij wszystkim</span>
+                <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>
+              </div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

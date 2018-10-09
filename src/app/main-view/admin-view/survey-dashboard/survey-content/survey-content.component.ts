@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import { Survey } from '../../survey-container/models/survey.model';
 import { SurveyService } from '../../survey-container/services/survey.services';
-import { ConfirmDialogComponent } from './../../../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-survey-content',
@@ -26,7 +26,6 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
     []
   );
   get items$(): Observable<Survey[]> {
-    // console.log(this._items$.value);
     return this._items$.asObservable();
   }
   constructor(
@@ -42,13 +41,13 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   }
 
   redirectToNew(): void {
+    this.surveyService.isCreatorLoading(true);
     const obj = {
       title: '',
       questions: []
     };
     this.surveyService.createSurvey(obj).subscribe(
       data => {
-        console.log(data);
         const string: string = '/app/admin/survey/create/' + data;
         this.router.navigateByUrl(string);
       },

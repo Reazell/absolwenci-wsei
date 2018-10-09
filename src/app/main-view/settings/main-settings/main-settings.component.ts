@@ -8,7 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../../auth/services/user.service';
+import { AccountService } from '../../../auth/services/account.service';
 import { SharedService } from '../../../services/shared.service';
 @Component({
   selector: 'app-main-settings',
@@ -74,7 +74,7 @@ export class MainSettingsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService
   ) {
     this.getProfileType();
@@ -156,7 +156,7 @@ export class MainSettingsComponent implements OnInit {
       this.loading = true;
       this.createUser();
       console.log(this.user);
-      this.userService.updateProfile(this.user).subscribe(
+      this.accountService.updateProfile(this.user).subscribe(
         data => {
           console.log(data);
         },

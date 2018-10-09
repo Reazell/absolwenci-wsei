@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
+import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-admin',
@@ -38,13 +38,13 @@ export class AdminComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService
   ) {
   }
 
   ngOnDestroy() {
-    this.userService.passMailData(this.email.value);
+    this.accountService.passMailData(this.email.value);
     this.sharedService.deleteControlArray();
   }
 

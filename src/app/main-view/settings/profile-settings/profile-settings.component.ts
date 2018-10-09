@@ -1,14 +1,14 @@
-import { UserService } from '../../../auth/services/user.service';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  Validators,
   AbstractControl,
-  NgForm,
+  FormBuilder,
+  FormControl,
   FormGroup,
-  FormControl
+  NgForm,
+  Validators
 } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountService } from '../../../auth/services/account.service';
 import { SharedService } from '../../../services/shared.service';
 
 @Component({
@@ -111,7 +111,7 @@ export class ProfileSettingsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService
   ) {
     this.getProfileType();
@@ -137,11 +137,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   isMajorDisabled() {
     // console.log(this.majorsDropdown);
-    if (this.majorsDropdown.length === 0) {
-      this.majorDisabled = true;
-    } else {
-      this.majorDisabled = false;
-    }
+    this.majorDisabled = this.majorsDropdown.length === 0 ? true : false;
   }
   setMajorDropdown(degree) {
     switch (degree) {
@@ -190,7 +186,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.loading = true;
       this.createUser();
       console.log(this.user);
-      this.userService.updateProfile(this.user).subscribe(
+      this.accountService.updateProfile(this.user).subscribe(
         data => {
           console.log(data);
         },

@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
+import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-password-change',
@@ -41,7 +41,7 @@ export class PasswordChangeComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService
   ) {}
 
@@ -75,13 +75,13 @@ export class PasswordChangeComponent implements OnInit {
       this.newPassword.markAsTouched();
     } else {
       this.loading = true;
-      this.userService
+      this.accountService
         // login with credentials from form
         .changePassword(this.oldPassword.value, this.newPassword.value)
         .subscribe(
           data => {
             // console.log(data);
-            this.userService.isLoggedNext(false);
+            this.accountService.isLoggedNext(false);
             this.router.navigateByUrl('auth/login');
           },
           error => {

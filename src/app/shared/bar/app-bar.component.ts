@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { UserService } from '../../auth/services/user.service';
+import { AccountService } from '../../auth/services/account.service';
 import { SharedService } from '../../services/shared.service';
 
 @Component({
@@ -37,7 +37,7 @@ export class AppBarComponent implements OnInit, OnDestroy {
 
   constructor(
     private sharedService: SharedService,
-    private userService: UserService,
+    private accountService: AccountService,
     private router: Router
   ) {}
 
@@ -53,12 +53,12 @@ export class AppBarComponent implements OnInit, OnDestroy {
   }
 
   loggedAccountRole(): void {
-    this.accountRoleSub = this.userService.role.subscribe(role => {
+    this.accountRoleSub = this.accountService.role.subscribe(role => {
       this.accountRole = role;
     });
   }
   checkIfLogged(): void {
-    this.userServiceSub = this.userService.isLogged.subscribe(data => {
+    this.userServiceSub = this.accountService.isLogged.subscribe(data => {
       this.isLogged = data;
     });
   }

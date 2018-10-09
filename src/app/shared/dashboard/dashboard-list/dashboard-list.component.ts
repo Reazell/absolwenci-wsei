@@ -58,7 +58,6 @@ export class DashboardListComponent implements OnInit, OnDestroy {
   isLoadingFromOutside(): void {
     this.isLoadingSub = this.surveyService.openingCreatorLoader.subscribe(
       data => {
-        console.log(data);
         this.loading = data;
       }
     );

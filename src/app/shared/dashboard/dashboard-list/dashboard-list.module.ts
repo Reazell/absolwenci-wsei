@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MaterialsModule } from '../../../materials/materials.module';
 import { ConfirmDialogModule } from '../../confirm-dialog/confirm-dialog.module';
-import { MaterialsModule } from './../../../materials/materials.module';
 import { DashboardListComponent } from './dashboard-list.component';
 
 @NgModule({

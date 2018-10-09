@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
-import { UserService } from '../services/user.service';
+import { AccountService } from '../services/account.service';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
   constructor(
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService,
     private router: Router
   ) {}
@@ -16,10 +16,10 @@ export class RoleGuard implements CanActivate {
     const currentRole: string = JSON.parse(localStorage.getItem('currentUser'))
       .role;
     if (currentRole === expectedRole) {
-      this.userService.setRoleSubject(expectedRole);
+      this.accountService.setRoleSubject(expectedRole);
       return true;
     } else {
-      if (this.userService.isLogged.value === true) {
+      if (this.accountService.isLogged.value === true) {
         console.log(currentRole);
         this.sharedService.routeSwitch(currentRole);
       } else {

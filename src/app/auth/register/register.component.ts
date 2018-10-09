@@ -9,8 +9,8 @@ import {
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { Employer, Graduate, Student } from '../other/user.model';
+import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService,
+    private accountService: AccountService,
     private sharedService: SharedService,
     private authService: AuthenticationService
   ) {}
@@ -189,7 +189,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       console.log(this.profileName.value);
       switch (this.profileName.value) {
         case 'Student':
-          this.userService.createStudent(this.user).subscribe(
+          this.accountService.createStudent(this.user).subscribe(
             data => {
               this.router.navigateByUrl('/auth/login');
             },
@@ -203,7 +203,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           );
           break;
         case 'Employer':
-          this.userService.createEmployer(this.user).subscribe(
+          this.accountService.createEmployer(this.user).subscribe(
             data => {
               this.router.navigateByUrl('/auth/login');
             },
@@ -216,7 +216,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           );
           break;
         case 'Graduate':
-          this.userService.createGraduate(this.user).subscribe(
+          this.accountService.createGraduate(this.user).subscribe(
             data => {
               this.router.navigateByUrl('/auth/login');
             },

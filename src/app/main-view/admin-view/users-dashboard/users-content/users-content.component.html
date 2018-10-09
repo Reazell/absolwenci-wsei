@@ -1,7 +1,7 @@
-<app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets></app-dashboard-bar>
-<app-dashboard-list [itemArr]=" items$ | async" (dialogButton)="openConfimDeleteDialog($event)" (resultButton)="openResult($event)">
+<app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets (buttonClick)="openAddUserDialog()"></app-dashboard-bar>
+<app-dashboard-list [itemArr]=" items$ | async">
   <ng-template let-item>
     <!-- <app-survey-tile [survey]="item" (openCreator)="openCreator(item)"></app-survey-tile> -->
-    <app-users-list></app-users-list>
+    <app-users-tile></app-users-tile>
   </ng-template>
 </app-dashboard-list>
