@@ -26,7 +26,7 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
     []
   );
   get items$(): Observable<Survey[]> {
-    console.log(this._items$.value);
+    // console.log(this._items$.value);
     return this._items$.asObservable();
   }
   constructor(
@@ -79,17 +79,18 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
     );
   }
   getAllSurveys(): void {
-    // this.saveSurveysFromApi();
+    this.saveSurveysFromApi();
     this.getAllSurveysSub = this.surveyService.savedSurveys.subscribe(
-      // data => {
-      //   if (data) {
-      //     this.surveyArr = data;
-      //   }
-      // },
-      // error => {
-      //   console.log(error);
-      // }
-      this._items$
+      data => {
+        console.log(data);
+        if (data) {
+          this._items$.next(data);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+      // this._items$
     );
   }
   // subToObs() {
