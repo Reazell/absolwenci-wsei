@@ -1,1 +1,0 @@
-# absolwenci-wsei
