@@ -4,7 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { AppConfig } from '../../../../app.config';
 import {
   RegisteredUser,
-  UnregisteredUser
+  UnregisteredUser,
+  UnregisteredUserModel
 } from '../../../../models/user.model';
 
 @Injectable()
@@ -18,10 +19,16 @@ export class UserService {
         return data;
       });
   }
-  saveUnregisteredUser(user) {
+  saveUnregisteredUser(user: UnregisteredUserModel) {
+    console.log(user);
     return this.http
       .post<any>(this.config.apiUrl + '/importfile/unregisteredUsers', {
-        user
+        Name: user.name,
+        Surname: user.surname,
+        Email: user.email,
+        Course: user.course,
+        TypeOfStudy: user.typeOfStudy,
+        DateOfCompletion: user.dateOfCompletion
       })
       .map(data => {
         return data;

@@ -1,34 +1,37 @@
 // tslint:disable:max-classes-per-file
-export class SurveyModel implements Survey {
-  title: string;
-  id: number;
-  createdAt: string;
-  created_date: string;
-  created_time: string;
-  // answered: boolean;
-  questions: Question[];
-
-  constructor(survey: Survey) {
-    this.title = survey.title;
-    this.id = survey.id;
-    // this.answered = survey.answered;
-    this.questions = survey.questions;
-    this.createdAt = survey.createdAt;
-    this.created_date = this.createdAt
-      .split('T')[0]
-      .split('-')
-      .reverse()
-      .join('-');
-    this.created_time = this.createdAt.split('T')[1].split('.')[0];
-  }
-}
-
 export class Survey {
   title: string;
   id: number;
   createdAt: string;
   // answered: boolean;
   questions: Question[];
+  constructor(
+    title: string,
+    id: number,
+    questions: Question[],
+    createdAt?: string
+  ) {
+    this.title = title;
+    this.id = id;
+    this.createdAt = createdAt;
+    this.questions = questions;
+  }
+}
+
+export class SurveyModel extends Survey {
+  created_date: string;
+  created_time: string;
+  questions: Question[];
+
+  constructor(survey: Survey) {
+    super(survey.title, survey.id, survey.questions);
+    this.created_date = survey.createdAt
+      .split('T')[0]
+      .split('-')
+      .reverse()
+      .join('-');
+    this.created_time = survey.createdAt.split('T')[1].split('.')[0];
+  }
 }
 
 export class Question {

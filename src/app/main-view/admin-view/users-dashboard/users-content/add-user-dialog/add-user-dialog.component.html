@@ -4,7 +4,7 @@
       <span mat-dialog-title>Dodaj użytkownika</span>
     </div>
     <div id="content-container" mat-dialog-content>
-      <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog.value) [formGroup]="dialogForm">
+      <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog) [formGroup]="dialogForm">
         <div id="form-container">
 
           <!-- <mat-form-field>
@@ -36,15 +36,15 @@
           </div>
           <div class="group half">
             <mat-form-field>
-              <input matInput placeholder="Specjalizacja" formControlName="typeofStudy">
+              <input matInput placeholder="Specjalizacja" formControlName="typeOfStudy">
               <!-- <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error> -->
             </mat-form-field>
           </div>
           <div class="group half">
-            <mat-form-field>
-              <input matInput placeholder="Wybierz datę zakończenia studiów" [matDatepicker]="picker" formControlName="dateOfCompletion">
+            <mat-form-field color="primary">
+              <input matInput placeholder="Wybierz datę zakończenia studiów" [matDatepicker]="picker" formControlName="completionDate">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <mat-datepicker #picker startView="multi-year" disabled="false"></mat-datepicker>
               <!-- <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error> -->
             </mat-form-field>
           </div>

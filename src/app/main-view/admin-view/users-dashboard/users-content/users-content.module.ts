@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { MatNativeDateModule } from '../../../../../../node_modules/@angular/material';
+// import { MatNativeDateModule } from '../../../../../../node_modules/@angular/material';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import { DashboardBarModule } from '../../../../shared/dashboard/dashboard-bar/dashboard-bar.module';
 import { DashboardListModule } from '../../../../shared/dashboard/dashboard-list/dashboard-list.module';
@@ -25,7 +25,7 @@ export const routes: Routes = [{ path: '', component: UsersContentComponent }];
     ReactiveFormsModule,
     ProgressSpinnerModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    // MatNativeDateModule
   ],
   entryComponents: [ConfirmDialogComponent, AddUserDialogComponent],
   declarations: [

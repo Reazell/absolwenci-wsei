@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UnregisteredUser } from '../../../../../models/user.model';
+import * as _moment from 'moment';
+import {
+  UnregisteredUser,
+  UnregisteredUserModel
+} from '../../../../../models/user.model';
 import { UserService } from '../../../survey-container/services/user.services';
 
 @Component({
@@ -10,6 +14,7 @@ import { UserService } from '../../../survey-container/services/user.services';
 })
 export class AddUserDialogComponent implements OnInit {
   dialogForm: FormGroup;
+  loader = false;
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit() {
@@ -42,14 +47,14 @@ export class AddUserDialogComponent implements OnInit {
           // Validators.pattern(this.passwordPattern)
         ])
       ],
-      typeofStudy: [
+      typeOfStudy: [
         '',
         Validators.compose([
           Validators.required
           // this.matchPassword
         ])
       ],
-      dateOfCompletion: [
+      completionDate: [
         '',
         Validators.compose([
           Validators.required
@@ -58,23 +63,22 @@ export class AddUserDialogComponent implements OnInit {
       ]
     });
   }
-  onSubmit(value) {
+  onSubmit(form) {
+    const value: UnregisteredUser = form.value;
     console.log(value);
-    const unregUser: UnregisteredUser = {
-      Name: value.name,
-      Surname: value.surname,
-      Email: value.email,
-      Course: value.course,
-      TypeOfStudy: value.typeOfStudy,
-      CompletionDate: value.dateOfCompletion
-    };
-    this.userService.saveUnregisteredUser(unregUser).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.loader = true;
+    if (form.valid) {
+      const unregUser: UnregisteredUserModel = new UnregisteredUserModel(value);
+      console.log(JSON.stringify(unregUser));
+      this.userService.saveUnregisteredUser(unregUser).subscribe(
+        data => {
+          // console.log(data);
+          this.loader = false;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

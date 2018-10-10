@@ -154,6 +154,7 @@ export class SurveyCreatorComponent
     this.activatedRoute.data.map(data => data.cres).subscribe(
       (res: Survey) => {
         if (res) {
+          console.log(res);
           this.id = res.id;
           if (res.questions.length === 0) {
             this.createQuestionData();
