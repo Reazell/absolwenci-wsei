@@ -10,6 +10,10 @@ namespace CareerMonitoring.Core.Domains {
         protected ProfileLink () { }
 
         public ProfileLink (string content) {
+            SetContent(content);
+        }
+
+        public void SetContent (string content) {
             Content = content;
         }
     }

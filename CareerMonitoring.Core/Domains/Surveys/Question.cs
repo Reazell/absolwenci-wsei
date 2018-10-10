@@ -13,8 +13,20 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         private Question () { }
 
         public Question (int questionPosition, string content, string select) {
+            SetQuestionPosition(questionPosition);
+            SetContent(content);
+            SetSelect(select);
+        }
+
+        public void SetQuestionPosition (int questionPosition) {
             QuestionPosition = questionPosition;
+        }
+
+        public void SetContent (string content) {
             Content = content;
+        }
+
+        public void SetSelect (string select) {
             Select = select;
         }
 
