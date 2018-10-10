@@ -17,6 +17,9 @@ namespace CareerMonitoring.Api.Controllers {
 
         [HttpPost ("emails")]
         public async Task<IActionResult> SendEmailToAll ([FromBody] EmailToSend command) {
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState);
+            }
             await _accountEmailFactory.SendEmailToAllAsync (command.Subject, command.Body);
             await _accountEmailFactory.SendEmailToAllUnregisteredAsync (command.Subject, command.Body);
             return StatusCode (201);
@@ -26,6 +29,7 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> SendSurveyEmail (int surveyId) {
             await _surveyEmailFactory.SendSurveyEmailAsync (surveyId);
             await _surveyEmailFactory.SendSurveyEmailToUnregisteredUsersAsync (surveyId);
+
             return StatusCode (200);
         }
     }

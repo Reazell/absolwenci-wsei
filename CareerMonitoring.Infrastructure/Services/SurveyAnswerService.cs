@@ -83,7 +83,9 @@ namespace CareerMonitoring.Infrastructure.Services
                         questionAnswer.Content, questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
-                        if (fieldDataAnswer.Input == null) continue;
+                        if (fieldDataAnswer.Input == null) {
+                            continue;
+                        }
                         dataSet.AddData(fieldDataAnswer.Input);
                         await _dataSetRepository.UpdateAsync(dataSet);
                     }
@@ -99,7 +101,9 @@ namespace CareerMonitoring.Infrastructure.Services
                             questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
-                        if (fieldDataAnswer.Input == null) continue;
+                        if (fieldDataAnswer.Input == null) {
+                            continue;
+                        }
                         dataSet.AddData(fieldDataAnswer.Input);
                         await _dataSetRepository.UpdateAsync(dataSet);
                     }

@@ -49,14 +49,13 @@ namespace CareerMonitoring.Api.Controllers {
                 return BadRequest ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 var questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
-                    question.Content, question.Select);
+                question.Content, question.Select);
                 if(question.FieldData == null)
                     return BadRequest ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
-                    await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
+                await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }
             }
-
             await _surveyReportService.CreateAsync(surveyId, command.Title);
             return Json(surveyId);
         }
@@ -77,7 +76,7 @@ namespace CareerMonitoring.Api.Controllers {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }
             }
-            await _surveyReportService.UpdateAsync(command.SurveyId, command.Title);
+                await _surveyReportService.UpdateAsync(command.SurveyId, command.Title);
             return StatusCode (200);
         }
         private async Task AddChoiceOptionsAndRowsAsync (int questionId, string select, FieldDataToAdd fieldDataToAdd)
@@ -102,7 +101,7 @@ namespace CareerMonitoring.Api.Controllers {
         private async Task AddChoiceOptionsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
         {
             if(fieldDataToAdd.ChoiceOptions != null){
-                var counter = 0; //temporary bugfix
+                var counter = 0;
                 foreach (var choiceOption in fieldDataToAdd.ChoiceOptions)
                 {
                     await _surveyService.AddChoiceOptionsAsync(fieldDataId, counter,
