@@ -8,18 +8,15 @@
       align-items: center;
       width: 100%;
       cursor: pointer;
-      app-survey-tile {
-        width: 90%;
-      }
-      button {
-        margin: 0 3px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      button:hover {
-        background-color: #0000001f;
-      }
+      // button {
+      //   margin: 0 3px;
+      //   display: flex;
+      //   justify-content: center;
+      //   align-items: center;
+      // }
+      // button:hover {
+      //   background-color: #0000001f;
+      // }
     }
     #container:hover {
       background-color: #eaeaea;

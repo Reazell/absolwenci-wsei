@@ -1,6 +1,12 @@
 <app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets (buttonClick)="redirectToNew()"></app-dashboard-bar>
-<app-dashboard-list [itemArr]=" items$ | async" (dialogButton)="openConfimDeleteDialog($event)" (resultButton)="openResult($event)">
+<app-dashboard-list [itemArr]=" items$ | async">
   <ng-template let-item>
-    <app-survey-tile [survey]="item" (openCreator)="openCreator(item)"></app-survey-tile>
+    <!-- <app-survey-tile [survey]="item" (openCreator)="openCreator(item)"></app-survey-tile> -->
+    <app-dashboard-tile [item_tile]=item (tileClick)="openCreator(item)">
+      <app-survey-tile [survey]=item></app-survey-tile>
+    </app-dashboard-tile>
+    <app-icon-button [type]="'far'" [icon]="'chart-bar'" (buttonClick)="openResult(item)"></app-icon-button>
+    <app-icon-button [type]="'fas'" [icon]="'times'" (buttonClick)="openConfimDeleteDialog(item.id)"></app-icon-button>
+
   </ng-template>
 </app-dashboard-list>

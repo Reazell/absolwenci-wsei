@@ -24,7 +24,7 @@ export const routes: Routes = [{ path: '', component: UsersContentComponent }];
     MaterialsModule,
     ReactiveFormsModule,
     ProgressSpinnerModule,
-    MatDatepickerModule,
+    MatDatepickerModule
     // MatNativeDateModule
   ],
   entryComponents: [ConfirmDialogComponent, AddUserDialogComponent],

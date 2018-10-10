@@ -32,6 +32,9 @@ export class UsersContentComponent implements OnInit {
   ngOnInit() {
     this.getAllUsers();
   }
+  see() {
+    console.log('click');
+  }
   getAllUsers() {
     this.getAllUsersSub = this.userService.getAllUsers().subscribe(
       (data: Array<RegisteredUser | UnregisteredUser>) => {

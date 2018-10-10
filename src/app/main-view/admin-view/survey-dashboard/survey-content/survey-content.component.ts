@@ -100,11 +100,10 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   //     });
   // }
   openCreator(survey: Survey): void {
-    this.loading = true;
+    this.surveyService.isCreatorLoading(true);
     this.router.navigateByUrl('/app/admin/survey/create/' + survey.id);
   }
   openResult(survey: Survey): void {
-    this.loading = true;
     this.router.navigateByUrl('/app/admin/survey/result/' + survey.id);
   }
 
@@ -132,6 +131,6 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
     return dialogRef.afterClosed();
   }
   ngOnDestroy(): void {
-    this.loading = false;
+    this.surveyService.isCreatorLoading(false);
   }
 }

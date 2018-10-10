@@ -1,20 +1,16 @@
 import {
   Component,
   ContentChild,
-  EventEmitter,
   Input,
   OnDestroy,
   OnInit,
-  Output,
   TemplateRef
 } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 // import { Survey } from '../../../main-view/admin-view/survey-container/models/survey.model';
 import { SurveyService } from '../../../main-view/admin-view/survey-container/services/survey.services';
-import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-dashboard-list',
@@ -24,10 +20,6 @@ import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.comp
 export class DashboardListComponent implements OnInit, OnDestroy {
   @Input()
   itemArr;
-  @Output()
-  resultButton: EventEmitter<any> = new EventEmitter<any>();
-  @Output()
-  dialogButton: EventEmitter<number> = new EventEmitter<number>();
   @ContentChild(TemplateRef)
   parentTemplate;
   loading = false;
@@ -45,14 +37,6 @@ export class DashboardListComponent implements OnInit, OnDestroy {
     // this.getAllSurveys();
     this.isLoadingFromOutside();
     // this.filterSurveyList();
-  }
-  resultButtonClick(item: any): void {
-    this.resultButton.emit(item);
-  }
-  dialogButtonClick(id: number) {
-    console.log(id);
-
-    this.dialogButton.emit(id);
   }
 
   isLoadingFromOutside(): void {

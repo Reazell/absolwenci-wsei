@@ -18,8 +18,4 @@ export class SurveyTileComponent implements OnInit {
   ngOnInit() {
     this.surveyModel = new SurveyModel(this.survey);
   }
-  openCreatorClick() {
-    this.surveyService.isCreatorLoading(true);
-    this.openCreator.emit(true);
-  }
 }

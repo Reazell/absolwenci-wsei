@@ -9,17 +9,12 @@ import { UnregisteredUser, UnregisteredUserModel } from './../../../../../models
 export class UsersTileComponent implements OnInit {
   @Input()
   user: UnregisteredUser;
-  // @Output()
-  // openCreator: EventEmitter<boolean> = new EventEmitter<boolean>();
   unregisteredUser: UnregisteredUserModel;
-  // constructor(private surveyService: SurveyService) {}
   constructor() {}
 
   ngOnInit() {
     this.unregisteredUser = new UnregisteredUserModel(this.user);
   }
   openCreatorClick() {
-    // this.surveyService.isCreatorLoading(true);
-    // this.openCreator.emit(true);
   }
 }
