@@ -54,7 +54,7 @@ export class AddUserDialogComponent implements OnInit {
           // this.matchPassword
         ])
       ],
-      completionDate: [
+      dateOfCompletion: [
         '',
         Validators.compose([
           Validators.required
@@ -69,14 +69,15 @@ export class AddUserDialogComponent implements OnInit {
     this.loader = true;
     if (form.valid) {
       const unregUser: UnregisteredUserModel = new UnregisteredUserModel(value);
-      console.log(JSON.stringify(unregUser));
+      console.log(unregUser);
       this.userService.saveUnregisteredUser(unregUser).subscribe(
         data => {
-          // console.log(data);
+          console.log(data);
           this.loader = false;
         },
         error => {
           console.log(error);
+          this.loader = false;
         }
       );
     }

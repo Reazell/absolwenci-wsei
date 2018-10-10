@@ -5,7 +5,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
-import { Survey } from '../../survey-container/models/survey.model';
+import {
+  Survey,
+  SurveyModel
+} from '../../survey-container/models/survey.model';
 import { SurveyService } from '../../survey-container/services/survey.services';
 
 @Component({
@@ -89,16 +92,6 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
       }
     );
   }
-  // subToObs() {
-  //   this.updateToApi$
-  //     .pipe(
-  //       debounceTime(300),
-  //       switchMap(() => this.updateSurvey())
-  //     )
-  //     .subscribe(res => {
-  //       console.log(res);
-  //     });
-  // }
   openCreator(survey: Survey): void {
     this.surveyService.isCreatorLoading(true);
     this.router.navigateByUrl('/app/admin/survey/create/' + survey.id);
@@ -129,6 +122,9 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
       ConfirmDialogComponent
     );
     return dialogRef.afterClosed();
+  }
+  changeSurveyToModel(item: Survey) {
+    return new SurveyModel(item);
   }
   ngOnDestroy(): void {
     this.surveyService.isCreatorLoading(false);

@@ -24,7 +24,7 @@ export class RegisteredUser extends User {
 
 export class UnregisteredUser extends User {
   course: string;
-  dateOfCompletion: Moment | string;
+  dateOfCompletion?: Moment | string;
   typeOfStudy: string;
   constructor(
     name: string,
@@ -47,23 +47,12 @@ export class UnregisteredUserModel extends UnregisteredUser {
   // typeOfStudy: string;
   constructor(user: UnregisteredUser) {
     super(user.name, user.surname, user.email, user.course, user.typeOfStudy);
-    // this.course = user.course;
-    // this.typeOfStudy = user.typeOfStudy;
-    // this.DateOfCompletion = _moment(user.CompletionDate.toISOString())['_i'].slice(0, -1);
-    // let date;
-    // if (user.dateOfCompletion as Moment) {
-    //   date: string = _moment((user.dateOfCompletion as Moment).toISOString())[
-    //     '_i'
-    //   ].slice(0, -1);
-    // }
-    const bool = this.isDataString(user.dateOfCompletion);
-    const date: string = bool
+    const date: string = this.isDataString(user.dateOfCompletion)
       ? (user.dateOfCompletion as string)
-      : _moment((user.dateOfCompletion as Moment).toISOString()).toString();
+      : _moment((user.dateOfCompletion as Moment).toISOString())['_i'];
     const created_date: string = date
       .split('T')[0]
       .split('-')
-      .reverse()
       .join('-');
     const created_time: string = date.split('T')[1].split('.')[0];
     this.completionDate = created_date + ' ' + created_time;

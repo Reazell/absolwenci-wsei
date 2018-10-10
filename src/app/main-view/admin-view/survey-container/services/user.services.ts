@@ -28,7 +28,7 @@ export class UserService {
         Email: user.email,
         Course: user.course,
         TypeOfStudy: user.typeOfStudy,
-        DateOfCompletion: user.dateOfCompletion
+        DateOfCompletion: user.completionDate
       })
       .map(data => {
         return data;

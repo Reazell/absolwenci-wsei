@@ -42,7 +42,7 @@
           </div>
           <div class="group half">
             <mat-form-field color="primary">
-              <input matInput placeholder="Wybierz datę zakończenia studiów" [matDatepicker]="picker" formControlName="completionDate">
+              <input matInput placeholder="Wybierz datę zakończenia studiów" [matDatepicker]="picker" formControlName="dateOfCompletion">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker startView="multi-year" disabled="false"></mat-datepicker>
               <!-- <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error> -->

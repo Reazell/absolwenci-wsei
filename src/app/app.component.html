@@ -1,6 +1,24 @@
 <div id="appContainer">
   <div id="menuBar">
-    <app-bar></app-bar>
+    <app-bar
+    [toolTipInfo]=toolTipInfo
+    [isLogged]=isLogged
+    [accountRole]=accountRole
+    [wseiIMG]=wseiIMG
+    [profileIMG]=profileIMG
+    [_showCreatorButton]=showCreatorButton
+    [_showSendButton]=showSendButton
+    [_showAdminMenu]=showAdminMenu
+    [_showToggleButton]=showToggleButton
+    [_showBackButton]=showBackButton
+    [_showUserInfo]=showUserInfo
+    (showSurveyButton)="showSurvey()"
+    (editSurveyButton)="editSurvey()"
+    (openSidebarButton)="openSidebar()"
+    (redirectToButton)="redirectTo()"
+    (sendSurveyDialog)="sendSurvey()"
+    >
+  </app-bar>
   </div>
   <div id="mainContainer">
     <router-outlet ></router-outlet>
