@@ -18,8 +18,9 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task CreateAsync (string name, string surname, string course,
             DateTime dateOfCompletion, string typeOfStudy, string email) {
-            if (await ExistByEmailAsync (email))
+            if (await ExistByEmailAsync (email)){
                 throw new Exception ("User of given email already exist in database.");
+            }
             await _unregisteredUserRepository.AddAsync (new UnregisteredUser (name, surname, course, dateOfCompletion, typeOfStudy, email));
         }
 

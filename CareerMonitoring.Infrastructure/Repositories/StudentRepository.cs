@@ -20,29 +20,47 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Student> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Students.AsTracking ().SingleOrDefaultAsync (x => x.Id == id);
-            return await _context.Students.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
+            if (isTracking){
+                return await _context.Students
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Students
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<Student> GetByIndexNumberAsync (string indexNumber, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Students.AsTracking ().SingleOrDefaultAsync (x => x.IndexNumber == indexNumber);
-            return await _context.Students.AsNoTracking ().SingleOrDefaultAsync (x => x.IndexNumber == indexNumber);
+            if (isTracking){
+                return await _context.Students
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.IndexNumber == indexNumber);
+            }
+            return await _context.Students
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.IndexNumber == indexNumber);
         }
 
         public async Task<Student> GetByEmailAsync (string email, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Students.AsTracking()
+            if (isTracking){
+                return await _context.Students
+                    .AsTracking()
                     .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
-            return await _context.Students.AsNoTracking()
+            }
+            return await _context.Students
+                .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
         public async Task<IEnumerable<Student>> GetAllAsync (bool isTracking = true) {
-            if (isTracking)
-                return await Task.FromResult (_context.Students.AsTracking ().AsEnumerable ());
-            return await Task.FromResult (_context.Students.AsNoTracking ().AsEnumerable ());
+            if (isTracking){
+                return await Task.FromResult (_context.Students
+                    .AsTracking ()
+                    .AsEnumerable ());
+            }
+            return await Task.FromResult (_context.Students
+                .AsNoTracking ()
+                .AsEnumerable ());
         }
 
         public async Task UpdateAsync (Student student) {

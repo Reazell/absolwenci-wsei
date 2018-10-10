@@ -43,8 +43,9 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task<Account> LoginAsync (string email, string password) {
             var account = await _accountRepository.GetByEmailAsync (email, false);
-            if (account == null || !account.Activated || account.Deleted)
+            if (account == null || !account.Activated || account.Deleted){
                 return null;
+            }
             if (!VerifyPasswordHash (password, account.PasswordHash, account.PasswordSalt))
                 return null;
             return account;

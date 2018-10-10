@@ -20,23 +20,36 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Employer> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Employers.AsTracking ().SingleOrDefaultAsync (x => x.Id == id);
-            return await _context.Employers.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
+            if (isTracking){
+                return await _context.Employers
+                .AsTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Employers
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<Employer> GetByEmailAsync (string email, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Employers.AsTracking()
+            if (isTracking){
+                return await _context.Employers
+                    .AsTracking()
                     .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
-            return await _context.Employers.AsNoTracking()
+            }
+            return await _context.Employers
+                .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
         public async Task<IEnumerable<Employer>> GetAllAsync (bool isTracking = true) {
-            if (isTracking)
-                return await Task.FromResult (_context.Employers.AsTracking ().AsEnumerable ());
-            return await Task.FromResult (_context.Employers.AsNoTracking ().AsEnumerable ());
+            if (isTracking){
+                return await Task.FromResult (_context.Employers
+                    .AsTracking ()
+                    .AsEnumerable ());
+            }
+            return await Task.FromResult (_context.Employers
+                .AsNoTracking ()
+                .AsEnumerable ());
         }
 
         public async Task UpdateAsync (Employer employer) {

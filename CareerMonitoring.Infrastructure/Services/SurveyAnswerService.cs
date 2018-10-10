@@ -209,7 +209,7 @@ namespace CareerMonitoring.Infrastructure.Services
                 }
             }
         }
-        
+
         public async Task<int> AddRowAnswerAsync (int fieldDataId, int rowPosition, string input)
         {
             var fieldDataAnswer = await _fieldDataAnswerRepository.GetByIdAsync (fieldDataId);

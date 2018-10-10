@@ -25,19 +25,29 @@ namespace CareerMonitoring.Infrastructure.Repositories
 
         public async Task<QuestionReport> GetByIdAsync (int id, bool isTracking = true)
         {
-            if(isTracking)
-                return await _context.QuestionReports.AsTracking().SingleOrDefaultAsync (x => x.Id == id);
-            return await _context.QuestionReports.AsNoTracking().SingleOrDefaultAsync (x => x.Id == id);
+            if(isTracking){
+                return await _context.QuestionReports
+                    .AsTracking()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.QuestionReports
+                .AsNoTracking()
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<QuestionReport> GetBySurveyReportAsync(int surveyReportId, string content, string select,
             bool isTracking = true)
         {
-            if(isTracking)
-                return await _context.QuestionReports.AsTracking().Include(x => x.DataSets)
+            if(isTracking){
+                return await _context.QuestionReports
+                    .AsTracking()
+                    .Include(x => x.DataSets)
                     .Where(x => x.SurveyReportId == surveyReportId && x.Content == content && x.Select == select)
                     .SingleOrDefaultAsync();
-            return await _context.QuestionReports.AsNoTracking().Include(x => x.DataSets)
+            }
+            return await _context.QuestionReports
+                .AsNoTracking()
+                .Include(x => x.DataSets)
                 .Where(x => x.SurveyReportId == surveyReportId && x.Content == content && x.Select == select)
                 .SingleOrDefaultAsync();
         }
@@ -45,8 +55,9 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<QuestionReport> GetBySurveyReportContentAndPositionAsync(int surveyReportId,
             int questionPosition, string select)
         {
-            return await _context.QuestionReports.Include(x => x.DataSets).SingleOrDefaultAsync(x =>
-                x.SurveyReportId == surveyReportId && x.QuestionPosition == questionPosition && x.Select == select);
+            return await _context.QuestionReports
+                .Include(x => x.DataSets)
+                .SingleOrDefaultAsync(x => x.SurveyReportId == surveyReportId && x.QuestionPosition == questionPosition && x.Select == select);
         }
 
         public async Task UpdateAsync(QuestionReport questionReport)

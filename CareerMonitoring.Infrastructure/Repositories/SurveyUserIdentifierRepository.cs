@@ -27,8 +27,7 @@ namespace CareerMonitoring.Infrastructure.Repositories
 
         public SurveyUserIdentifier GetBySurveyIdAndUserEmailAsync(int surveyId, string userEmail)
         {
-            return _context
-                .SurveyUserIdentifiers
+            return _context.SurveyUserIdentifiers
                 .SingleOrDefault(x => x.SurveyId == surveyId && x.UserEmail == userEmail);
         }
 
