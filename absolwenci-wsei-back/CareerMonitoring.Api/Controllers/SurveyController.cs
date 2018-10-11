@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Survey;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
@@ -23,129 +22,111 @@ namespace CareerMonitoring.Api.Controllers {
 
         [HttpGet ("{surveyId}")]
         public async Task<IActionResult> GetSurvey (int surveyId, string email) {
-            try {
-                var survey = await _surveyService.GetByIdAsync (surveyId);
-                return Json (survey);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
+            var survey = await _surveyService.GetByIdAsync (surveyId);
+            return Json (survey);
         }
 
         [HttpGet ("{surveyId}/{email}")]
         public async Task<IActionResult> GetSurveyWithEmail (int surveyId, string email) {
-            try {
-                var survey = await _surveyService.GetByIdAsync (surveyId);
-                var Email = _encryptorFactory.DecryptStringValue (email);
-                var result = new { Result = survey, Email };
-                return Json (result);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
+            var survey = await _surveyService.GetByIdAsync (surveyId);
+            var Email = _encryptorFactory.DecryptStringValue(email);
+            var result = new { Result = survey, Email};
+            return Json (result);
         }
 
         [HttpGet ("surveys")]
         public async Task<IActionResult> GetAllSurveys () {
-            try {
-                var surveys = await _surveyService.GetAllAsync ();
-                return Json (surveys);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
+            var surveys = await _surveyService.GetAllAsync ();
+            return Json (surveys);
         }
 
         [HttpPost ("surveys")]
         public async Task<IActionResult> CreateSurvey ([FromBody] SurveyToAdd command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-
-            try {
-                var surveyId = await _surveyService.CreateAsync (command.Title);
-                if (command.Questions == null)
-                    return BadRequest ("Cannot create empty survey");
-                foreach (var question in command.Questions) {
-                    var questionId = await _surveyService.AddQuestionToSurveyAsync (surveyId, question.QuestionPosition,
-                        question.Content, question.Select);
-                    if (question.FieldData == null)
-                        return BadRequest ("Question must contain FieldData");
-                    foreach (var fieldData in question.FieldData) {
-                        await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
-                    }
+            var surveyId = await _surveyService.CreateAsync (command.Title);
+            if(command.Questions == null)
+                return BadRequest ("Cannot create empty survey");
+            foreach (var question in command.Questions) {
+                var questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
+                    question.Content, question.Select);
+                if(question.FieldData == null)
+                    return BadRequest ("Question must contain FieldData");
+                foreach (var fieldData in question.FieldData) {
+                    await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }
-
-                await _surveyReportService.CreateAsync (surveyId, command.Title);
-                return Json (surveyId);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
             }
+
+            await _surveyReportService.CreateAsync(surveyId, command.Title);
+            return Json(surveyId);
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-
-            try {
-                var surveyId = await _surveyService.UpdateAsync (command.SurveyId, command.Title);
-                if (command.Questions == null)
-                    return BadRequest ("Cannot create empty survey");
-                foreach (var question in command.Questions) {
-                    var questionId = await _surveyService.AddQuestionToSurveyAsync (surveyId, question.QuestionPosition,
-                        question.Content, question.Select);
-                    if (question.FieldData == null)
-                        return BadRequest ("Question must contain FieldData");
-                    foreach (var fieldData in question.FieldData) {
-                        await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
-                    }
+            var surveyId = await _surveyService.UpdateAsync (command.SurveyId, command.Title);
+            if(command.Questions == null)
+                return BadRequest ("Cannot create empty survey");
+            foreach (var question in command.Questions) {
+                var questionId = await _surveyService.AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
+                    question.Content, question.Select);
+                if(question.FieldData == null)
+                    return BadRequest ("Question must contain FieldData");
+                foreach (var fieldData in question.FieldData) {
+                    await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }
-                await _surveyReportService.UpdateAsync (command.SurveyId, command.Title);
-                return StatusCode (200);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
             }
+            await _surveyReportService.UpdateAsync(command.SurveyId, command.Title);
+            return StatusCode (200);
         }
-        private async Task AddChoiceOptionsAndRowsAsync (int questionId, string select, FieldDataToAdd fieldDataToAdd) {
+        private async Task AddChoiceOptionsAndRowsAsync (int questionId, string select, FieldDataToAdd fieldDataToAdd)
+        {
             var fieldDataId = await _surveyService.AddFieldDataToQuestionAsync (questionId,
                 fieldDataToAdd.Input,
                 fieldDataToAdd.MinValue,
                 fieldDataToAdd.MaxValue,
                 fieldDataToAdd.MinLabel,
                 fieldDataToAdd.MaxLabel);
-            if (select == "single-grid" || select == "multiple-grid") {
-                await AddRowsAsync (fieldDataToAdd, select, fieldDataId);
-                await AddChoiceOptionsAsync (fieldDataToAdd, select, fieldDataId);
-            } else if (select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" ||
-                select == "single-grid" || select == "multiple-grid")
-                await AddChoiceOptionsAsync (fieldDataToAdd, select, fieldDataId);
+            if (select == "single-grid" || select == "multiple-grid"){
+                await AddRowsAsync(fieldDataToAdd, select, fieldDataId);
+                await AddChoiceOptionsAsync(fieldDataToAdd, select, fieldDataId);
+            }
+
+            else if (select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" ||
+                     select == "single-grid" || select == "multiple-grid")
+                await AddChoiceOptionsAsync(fieldDataToAdd, select, fieldDataId);
             else
                 await Task.CompletedTask;
         }
-        private async Task AddChoiceOptionsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId) {
-            if (fieldDataToAdd.ChoiceOptions != null) {
+        private async Task AddChoiceOptionsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
+        {
+            if(fieldDataToAdd.ChoiceOptions != null){
                 var counter = 0; //temporary bugfix
-                foreach (var choiceOption in fieldDataToAdd.ChoiceOptions) {
-                    await _surveyService.AddChoiceOptionsAsync (fieldDataId, counter,
+                foreach (var choiceOption in fieldDataToAdd.ChoiceOptions)
+                {
+                    await _surveyService.AddChoiceOptionsAsync(fieldDataId, counter,
                         choiceOption.Value, choiceOption.ViewValue);
                     counter++;
                 }
             }
         }
 
-        private async Task AddRowsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId) {
-            if (fieldDataToAdd.Rows == null)
+        private async Task AddRowsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
+        {
+            if(fieldDataToAdd.Rows == null)
                 await Task.CompletedTask;
-            foreach (var row in fieldDataToAdd.Rows) {
+            foreach (var row in fieldDataToAdd.Rows)
+            {
                 await _surveyService.AddRowAsync (fieldDataId, row.RowPosition, row.Input);
             }
         }
 
         [HttpDelete ("{surveyId}")]
-        public async Task<IActionResult> DeleteSurvey (int surveyId) {
-            try {
-                await _surveyService.DeleteAsync (surveyId);
-                return StatusCode (200);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
+        public async Task<IActionResult> DeleteSurvey (int surveyId)
+        {
+            await _surveyService.DeleteAsync(surveyId);
+            return StatusCode(200);
         }
     }
 }

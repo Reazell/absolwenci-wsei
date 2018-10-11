@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.ImportFile;
-using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -20,7 +19,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task CreateAsync (string name, string surname, string course,
             DateTime dateOfCompletion, string typeOfStudy, string email) {
             if (await ExistByEmailAsync (email))
-                throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
+                throw new Exception ("User of given email already exist in database.");
             await _unregisteredUserRepository.AddAsync (new UnregisteredUser (name, surname, course, dateOfCompletion, typeOfStudy, email));
         }
 

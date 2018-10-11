@@ -75,12 +75,10 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         public void AddAccountActivation (AccountActivation accountActivation) {
             AccountActivation = accountActivation;
         }
-        
         public void ChangeAccountRestoringPassword (Guid token) {
             if (AccountRestoringPassword != null)
                 AccountRestoringPassword.ResetState (token);
         }
-
         public void AddAccountRestoringPassword (AccountRestoringPassword accountRestoringPassword) {
             if (accountRestoringPassword != null)
                 AccountRestoringPassword = accountRestoringPassword;
@@ -99,35 +97,30 @@ namespace CareerMonitoring.Core.Domains.Abstract {
             else
                 throw new Exception ("Role have to equal student or graduate in order to add a education.");
         }
-
         public void AddExperience (Experience experience) {
             if (Role == "student" || Role == "graduate")
                 Experiences.Add (experience);
             else
                 throw new Exception ("Role have to equal student or graduate in order to add experience.");
         }
-
         public void AddCertificate (Certificate certificate) {
             if (Role == "student" || Role == "graduate")
                 Certificates.Add (certificate);
             else
                 throw new Exception ("Role have to equal student or graduate in order to add certificate.");
         }
-
         public void AddSkill (Skill skill) {
             if (Role == "student" || Role == "graduate")
                 Skills.Add (skill);
             else
                 throw new Exception ("Role have to equal student or graduate in order to add a skill.");
         }
-
         public void AddCourse (Course course) {
             if (Role == "student" || Role == "graduate")
                 Courses.Add (course);
             else
                 throw new Exception ("Role have to equal student or graduate in order to add course.");
         }
-
         public void AddLanguage (Language language) {
             if (Role == "student" || Role == "graduate")
                 Languages.Add (language);

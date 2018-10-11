@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
-using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -22,7 +21,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                 account.AddCertificate (new Certificate (accountId, title, dateOfReceived));
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
-                throw new InccorectRoleException (e.Message, e);
+                throw new Exception (e.Message);
             }
         }
 
@@ -32,29 +31,31 @@ namespace CareerMonitoring.Infrastructure.Services {
                 account.AddCourse (new Course (name));
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
-                throw new InccorectRoleException (e.Message, e);
+                throw new Exception (e.Message);
             }
         }
 
-        public async Task AddEducationAsync (int accountId, string course, int year, string specialization,
-            string nameOfUniveristy, bool graduated) {
+        public async Task AddEducationAsync(int accountId, string course, int year, string specialization,
+            string nameOfUniveristy, bool graduated)
+        {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
                 account.AddEducation (new Education (course, year, specialization, nameOfUniveristy, graduated));
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
-                throw new InccorectRoleException (e.Message, e);
+                throw new Exception (e.Message);
             }
         }
 
-        public async Task AddExperienceAsync (int accountId, string position, string companyName, string location,
-            DateTime from, DateTime to, bool isCurrentJob) {
+        public async Task AddExperienceAsync(int accountId, string position, string companyName, string location,
+            DateTime from, DateTime to, bool isCurrentJob)
+        {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
                 account.AddExperience (new Experience (position, companyName, location, from, to, isCurrentJob));
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
-                throw new InccorectRoleException (e.Message, e);
+                throw new Exception (e.Message);
             }
         }
 
@@ -64,7 +65,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                 account.AddLanguage (new Language (name, proficiency));
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
-                throw new InccorectRoleException (e.Message, e);
+                throw new Exception (e.Message);
             }
         }
 
@@ -74,7 +75,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                 account.AddProfileLink (new ProfileLink (content));
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
-                throw new InccorectRoleException (e.Message, e);
+                throw new Exception (e.Message);
             }
         }
 
@@ -85,7 +86,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                 account.AddSkill (skill);
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
-                throw new InccorectRoleException (e.Message, e);
+                throw new Exception (e.Message);
             }
         }
     }

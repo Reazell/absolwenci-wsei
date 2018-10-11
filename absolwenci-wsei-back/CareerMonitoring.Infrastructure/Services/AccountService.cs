@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
-using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
@@ -26,7 +25,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             _graduateRepository = graduateRepository;
             _accountEmailFactory = accountEmailFactory;
         }
-        public async Task<bool> ExistsByIdAsync (int id) =>
+                public async Task<bool> ExistsByIdAsync (int id) =>
             await _accountRepository.GetByIdAsync (id) != null;
 
         public async Task<bool> ExistsByEmailAsync (string email) =>
@@ -39,7 +38,8 @@ namespace CareerMonitoring.Infrastructure.Services {
             return account;
         }
 
-        public async Task<Account> GetActiveWithAccountRestoringPasswordByTokenAsync (Guid token, bool isTracking = true) {
+        public async Task<Account> GetActiveWithAccountRestoringPasswordByTokenAsync(Guid token, bool isTracking = true)
+        {
             var account = await _accountRepository.GetWithAccountRestoringPasswordByTokenAsync (token, isTracking);
             if (account == null || account.Deleted || !account.Activated)
                 return null;
@@ -49,7 +49,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task ActivateAsync (Guid activationKey) {
             var account = await _accountRepository.GetByActivationKeyAsync (activationKey);
             if (account == null) {
-                throw new IncorrectValueException ("Your activation key is incorrect.");
+                throw new Exception ("Your activation key is incorrect.");
             }
             account.Activate (account.AccountActivation);
             await _accountRepository.UpdateAsync (account);
@@ -76,9 +76,9 @@ namespace CareerMonitoring.Infrastructure.Services {
             var account = await _accountRepository.GetWithAccountRestoringPasswordByTokenAsync (token);
             if (account == null || account.AccountRestoringPassword == null ||
                 account.AccountRestoringPassword.Restored)
-                throw new IncorrectValueException ("Your token is incorrect.");
+                throw new Exception ("Your token is incorrect");
             if (account.Email.ToLowerInvariant () != accountEmail.ToLowerInvariant ())
-                throw new InvalidValueException ($"Invalid email: {accountEmail}");
+                throw new Exception ("Invalid email address");
             await UpdatePasswordAsync (account, newPassword);
             account.AccountRestoringPassword.PasswordRestoring ();
             await _accountRepository.UpdateAsync (account);
@@ -93,7 +93,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             string phoneNumber, string companyName, string location, string companyDescription) {
             var account = await _accountRepository.GetByIdAsync (id);
             if (account == null) {
-                throw new ObjectDoesNotExistException ($"Account with id: '{id}' does not exist.");
+                throw new System.Exception ($"Account with id: '{id}' does not exist.");
             }
             if (account.GetType () == typeof (Student)) {
                 var student = (Student) account;
