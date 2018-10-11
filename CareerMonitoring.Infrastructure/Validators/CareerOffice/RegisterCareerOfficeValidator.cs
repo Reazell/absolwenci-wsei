@@ -20,14 +20,14 @@ namespace CareerMonitoring.Infrastructure.Validators.CareerOffice {
                 .MinimumLength (5);
             RuleFor (reg => reg.PhoneNumber)
                 .NotNull ()
-                .Matches (@"^\+(?:[0-9]●?){10,10}[0-9]$")
-                .WithMessage ("Phone number is invalid.");
+                .Matches (@"(?:[0-9]){9,9}$")
+                .WithMessage ("Phone number should contain exactly 9 digits.");
             RuleFor (reg => reg.Password)
                 .NotNull ()
                 .Must (u => !string.IsNullOrEmpty (u) && u.Contains (""))
                 .WithMessage ("Password should not contain space")
-                .Matches (@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,50}$")
-                .WithMessage ("Passoword must consist of 8-50 characters and at least: one number, one upper case, one lower case  and one unique character such as '!#$%&?' ");
+                .Matches (@"^(?=.*\d)(?=.*[^\d]).{6,30}$")
+                .WithMessage ("Passoword must consist of 6-30 characters and at least one number");
         }
     }
 }
