@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/absolwenci-wsei-back/CareerMonitoring.Api/CareerMonitoring.Api.csproj"
+                "${workspaceFolder}/CareerMonitoring.Api/CareerMonitoring.Api.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
