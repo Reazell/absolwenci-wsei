@@ -12,13 +12,13 @@ export class SharedService {
   editButton: Subject<boolean> = new Subject<boolean>();
   // showing elements Subjects
   showBack: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  showToggle: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  showToggle: Subject<boolean> = new Subject<boolean>();
   showSurveyDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
   showCreator: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showSend: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  showAdminMenu: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  showAdminMenu: Subject<boolean> = new Subject<boolean>();
   showUserInfo: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   // input error variable

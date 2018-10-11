@@ -2,16 +2,16 @@
   <div id="menuBar">
     <app-bar
     [toolTipInfo]=toolTipInfo
-    [isLogged]=isLogged
-    [accountRole]=accountRole
-    [wseiIMG]=wseiIMG
+    [isLogged]="isLogged$ | async"
+    [accountRole]="accountRole$ | async"
+    [logoIMG]=logoIMG
     [profileIMG]=profileIMG
-    [_showCreatorButton]=showCreatorButton
-    [_showSendButton]=showSendButton
-    [_showAdminMenu]=showAdminMenu
-    [_showToggleButton]=showToggleButton
-    [_showBackButton]=showBackButton
-    [_showUserInfo]=showUserInfo
+    [showCreatorButton]="showCreatorButton$ | async"
+    [showSendButton]="showSendButton$ | async"
+    [showAdmin]="showAdminMenu$ | async"
+    [showToggleButton]= "showToggleButton$ | async"
+    [showBackButton]= "showBackButton$ | async"
+    [showUserInfo]="showUserInfo$ | async"
     (showSurveyButton)="showSurvey()"
     (editSurveyButton)="editSurvey()"
     (openSidebarButton)="openSidebar()"

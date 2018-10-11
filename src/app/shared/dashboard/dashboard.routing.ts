@@ -26,6 +26,7 @@ const outletString =
 const adminString = mainString + dashboards.main + outletString;
 const surveyString = mainString + dashboards.survey + outletString;
 const usersString = mainString + dashboards.users + outletString;
+// console.log(usersString);
 
 const routes: Routes = [
   {

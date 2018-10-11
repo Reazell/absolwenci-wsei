@@ -15,29 +15,106 @@ import { AppBarTooltip } from '../models/shared.models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppBarComponent {
+  private _showAdmin: boolean;
+  private _showSendButton: boolean;
+  private _showToggleButton: boolean;
+  private _isLogged: boolean;
+  private _accountRole: string;
+  private _showCreatorButton: boolean;
+  private _showAdminMenu: boolean;
+  private _showBackButton: boolean;
+  private _showUserInfo: boolean;
+
   // inputs
   @Input()
   toolTipInfo: AppBarTooltip;
   @Input()
-  isLogged: boolean;
-  @Input()
-  accountRole: string;
-  @Input()
-  wseiIMG: string;
+  logoIMG: string;
   @Input()
   profileIMG: string;
+
+  // get set inputs
+
   @Input()
-  _showCreatorButton: boolean;
+  set isLogged(isLogged) {
+    console.log('isLogged ', isLogged);
+    this._isLogged = isLogged;
+  }
+  get isLogged() {
+    return this._isLogged;
+  }
+
   @Input()
-  _showSendButton: boolean;
+  set accountRole(accountRole) {
+    console.log('accountRole ', accountRole);
+    this._accountRole = accountRole;
+  }
+  get accountRole() {
+    return this._accountRole;
+  }
+
   @Input()
-  _showAdminMenu: boolean;
+  set showCreatorButton(showCreatorButton) {
+    console.log('showCreatorButton ', showCreatorButton);
+    this._showCreatorButton = showCreatorButton;
+  }
+  get showCreatorButton() {
+    return this._showCreatorButton;
+  }
+
   @Input()
-  _showToggleButton: boolean;
+  set showSendButton(showSendButton) {
+    console.log('showSendButton ', showSendButton);
+    this._showSendButton = showSendButton;
+  }
+  get showSendButton() {
+    return this._showSendButton;
+  }
+
   @Input()
-  _showBackButton: boolean;
+  set showAdminMenu(showAdminMenu) {
+    console.log('showAdminMenu ', showAdminMenu);
+    this._showAdminMenu = showAdminMenu;
+  }
+  get showAdminMenu() {
+    return this._showAdminMenu;
+  }
+
   @Input()
-  _showUserInfo: boolean;
+  set showToggleButton(showToggleButton) {
+    console.log('showToggleButton ', showToggleButton);
+    this._showToggleButton = showToggleButton;
+  }
+  get showToggleButton() {
+    return this._showToggleButton;
+  }
+
+  @Input()
+  set showBackButton(showBackButton) {
+    console.log('showBackButton ', showBackButton);
+    this._showBackButton = showBackButton;
+  }
+  get showBackButton() {
+    return this._showBackButton;
+  }
+
+  @Input()
+  set showUserInfo(showUserInfo) {
+    console.log('showUserInfo ', showUserInfo);
+    this._showUserInfo = showUserInfo;
+  }
+  get showUserInfo() {
+    return this._showUserInfo;
+  }
+
+  @Input()
+  set showAdmin(showAdmin) {
+    console.log('showAdmin ', showAdmin);
+        this._showAdmin = showAdmin;
+  }
+  get showAdmin() {
+    return this._showAdmin;
+  }
 
   // outputs
   @Output()
@@ -192,4 +269,3 @@ export class AppBarComponent {
 //     this.adminMainSub.unsubscribe();
 //   }
 // }
-
