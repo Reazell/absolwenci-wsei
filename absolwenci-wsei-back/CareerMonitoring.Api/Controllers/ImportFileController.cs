@@ -7,11 +7,13 @@ using CareerMonitoring.Infrastructure.Commands.ImportFile;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 
 namespace CareerMonitoring.Api.Controllers {
+    [Authorize]
     public class ImportFileController : ApiUserController {
         private readonly IImportFileFactory _importFileFactory;
         private readonly IUnregisteredUserService _unregisteredUserService;
@@ -22,8 +24,7 @@ namespace CareerMonitoring.Api.Controllers {
             _unregisteredUserService = unregisteredUserService;
         }
 
-        [HttpPost]
-        [Route ("import")]
+        [HttpPost ("import")]
         public async Task<IActionResult> ImportFile ([FromForm] ImportFile command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -37,8 +38,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpGet]
-        [Route ("unregisteredUsers")]
+        [HttpGet ("unregisteredUsers")]
         public async Task<IActionResult> GetAllUnregisteredUsers () {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -51,8 +51,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpPost]
-        [Route ("unregisteredUsers")]
+        [HttpPost ("unregisteredUsers")]
         public async Task<IActionResult> AddUnregisteredUser ([FromBody] AddUnregisteredUser command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -66,8 +65,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpPut]
-        [Route ("unregisteredUsers/{id}")]
+        [HttpPut ("unregisteredUsers/{id}")]
         public async Task<IActionResult> UpdateUnregisteredUser ([FromBody] UpdateUnregisteredUser command, int id) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -81,8 +79,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpDelete]
-        [Route ("unregisteredUsers/{id}")]
+        [HttpDelete ("unregisteredUsers/{id}")]
         public async Task<IActionResult> DeleteUnregisteredUser (int id) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
