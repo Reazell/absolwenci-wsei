@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -153,10 +154,12 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task DeleteAsync (int surveyId) {
-            var survey = await _surveyRepository.GetByIdAsync (surveyId);
-            if (survey == null)
+            try {
+                var survey = await _surveyRepository.GetByIdAsync (surveyId);
+                await _surveyRepository.DeleteAsync (survey);
+            } catch (NullReferenceException) {
                 throw new ObjectDoesNotExistException ($"Survey with given Id: {surveyId} does not exist.");
-            await _surveyRepository.DeleteAsync (survey);
+            }
         }
     }
 }

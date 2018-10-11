@@ -24,11 +24,16 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public async Task<IEnumerable<RowChoiceOptionAnswer>> GetAllByFieldDataIdInOrderAsync(int rowAnswerId,
             bool isTracking = true)
         {
-            if(isTracking)
-                return await Task.FromResult(_context.RowChoiceOptionsAnswers.AsTracking()
-                    .Where(x => x.RowAnswerId == rowAnswerId).OrderBy(q => q.OptionPosition));
-            return await Task.FromResult(_context.RowChoiceOptionsAnswers.AsNoTracking()
-                .Where(x => x.RowAnswerId == rowAnswerId).OrderBy(q => q.OptionPosition));
+            if(isTracking){
+                return await Task.FromResult(_context.RowChoiceOptionsAnswers
+                    .AsTracking()
+                    .Where(x => x.RowAnswerId == rowAnswerId)
+                    .OrderBy(q => q.OptionPosition));
+            }
+            return await Task.FromResult(_context.RowChoiceOptionsAnswers
+                .AsNoTracking()
+                .Where(x => x.RowAnswerId == rowAnswerId)
+                .OrderBy(q => q.OptionPosition));
         }
 
         public async Task UpdateAsync(RowChoiceOptionAnswer rowChoiceOptionAnswer)

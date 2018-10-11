@@ -24,11 +24,6 @@ namespace CareerMonitoring.Infrastructure.Validators.ImportFile {
                 .WithMessage ("Course cannot be null or empty.")
                 .NotNull ()
                 .WithMessage ("Course cannot be null.");
-            RuleFor (reg => reg.DateOfCompletion)
-                .LessThan (p => DateTime.Now)
-                .WithMessage ("Date of completion cannot be greater than current date.")
-                .NotNull ()
-                .WithMessage ("Date of completion cannot be null.");
             RuleFor (reg => reg.TypeOfStudy)
                 .MaximumLength (70)
                 .MinimumLength (3)

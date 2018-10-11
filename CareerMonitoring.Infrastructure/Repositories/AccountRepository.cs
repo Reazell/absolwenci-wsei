@@ -21,48 +21,72 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Account> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Accounts.AsTracking ().SingleOrDefaultAsync (x => x.Id == id);
-            return await _context.Accounts.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
+            if (isTracking){
+                return await _context.Accounts
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Accounts
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<Account> GetByEmailAsync (string email, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Accounts.AsTracking()
+            if (isTracking){
+                return await _context.Accounts
+                    .AsTracking()
                     .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
-            return await _context.Accounts.AsNoTracking()
+            }
+            return await _context.Accounts
+                .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
         public async Task<Account> GetByActivationKeyAsync (Guid activationKey, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Accounts.AsTracking ().Include (x => x.AccountActivation).
-            SingleOrDefaultAsync(x =>
+            if (isTracking){
+                return await _context.Accounts
+                    .AsTracking ()
+                    .Include (x => x.AccountActivation)
+                    .SingleOrDefaultAsync(x =>
                         x.AccountActivation.ActivationKey == activationKey && x.AccountActivation.Active == false);
-            return await _context.Accounts.AsNoTracking ().Include (x => x.AccountActivation).
-            SingleOrDefaultAsync(x =>
+            }
+            return await _context.Accounts
+                .AsNoTracking ()
+                .Include (x => x.AccountActivation)
+                .SingleOrDefaultAsync(x =>
                     x.AccountActivation.ActivationKey == activationKey && x.AccountActivation.Active == false);
         }
 
         public async Task<Account> GetWithAccountRestoringPasswordAsync (int id, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Accounts.AsTracking ().Include (x => x.AccountRestoringPassword).
-            SingleOrDefaultAsync (x => x.Id == id);
-            return await _context.Accounts.AsNoTracking ().Include (x => x.AccountRestoringPassword).
-            SingleOrDefaultAsync (x => x.Id == id);
+            if (isTracking){
+                return await _context.Accounts
+                    .AsTracking ()
+                    .Include (x => x.AccountRestoringPassword)
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Accounts
+                .AsNoTracking ()
+                .Include (x => x.AccountRestoringPassword)
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<Account> GetWithAccountRestoringPasswordByTokenAsync (Guid token, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Accounts.Include (x => x.AccountRestoringPassword).AsTracking ().
-            SingleOrDefaultAsync (x => x.AccountRestoringPassword.Token == token);
-            return await _context.Accounts.Include (x => x.AccountRestoringPassword).AsNoTracking ().
-            SingleOrDefaultAsync (x => x.AccountRestoringPassword.Token == token);
+            if (isTracking){
+                return await _context.Accounts
+                    .Include (x => x.AccountRestoringPassword)
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.AccountRestoringPassword.Token == token);
+            }
+            return await _context.Accounts
+                    .Include (x => x.AccountRestoringPassword)
+                    .AsNoTracking ()
+                    .SingleOrDefaultAsync (x => x.AccountRestoringPassword.Token == token);
         }
 
         public async Task<Account> GetWithProfileEditionByIdAsync (int id, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Accounts.AsTracking ()
+            if (isTracking){
+                return await _context.Accounts
+                    .AsTracking ()
                     .Include (x => x.Certificates)
                     .Include (x => x.Courses)
                     .Include (x => x.Educations)
@@ -71,6 +95,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                     .Include (x => x.ProfileLink)
                     .Include (x => x.Skills)
                     .SingleOrDefaultAsync (x => x.Id == id);
+            }
             return await _context.Accounts.AsNoTracking ()
                 .Include (x => x.Certificates)
                 .Include (x => x.Courses)
@@ -83,8 +108,11 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<IEnumerable<Account>> GetAllAsync (bool isTracking = true) {
-            if (isTracking)
-                return await Task.FromResult (_context.Accounts.AsTracking ().AsEnumerable ());
+            if (isTracking){
+                return await Task.FromResult (_context.Accounts
+                    .AsTracking ()
+                    .AsEnumerable ());
+            }
             return await Task.FromResult (_context.Accounts.AsNoTracking ().AsEnumerable ());
         }
 

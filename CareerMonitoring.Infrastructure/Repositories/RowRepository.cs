@@ -29,20 +29,30 @@ namespace CareerMonitoring.Infrastructure.Repositories
 
         public async Task<IEnumerable<Row>> GetAllByFieldDataIdInOrderAsync(int fieldDataId, bool isTracking = true)
         {
-            if(isTracking)
-                return await Task.FromResult(_context.Rows.AsTracking().Where(x => x.FieldDataId == fieldDataId)
+            if(isTracking){
+                return await Task.FromResult(_context.Rows
+                    .AsTracking()
+                    .Where(x => x.FieldDataId == fieldDataId)
                     .OrderBy(q => q.RowPosition));
-            return await Task.FromResult(_context.Rows.AsNoTracking().Where(x => x.FieldDataId == fieldDataId)
+            }
+            return await Task.FromResult(_context.Rows
+                .AsNoTracking()
+                .Where(x => x.FieldDataId == fieldDataId)
                 .OrderBy(q => q.RowPosition));
         }
 
         public async Task<Row> GetByFieldDataIdAsync (int fieldDataId, int rowPosition, bool isTracking = true)
         {
-            if(isTracking)
-                return await _context.Rows.AsTracking().Where(x => x.FieldDataId == fieldDataId)
-                    .Where(x => x.RowPosition == rowPosition).SingleOrDefaultAsync();
-            return await _context.Rows.AsNoTracking().Where(x => x.FieldDataId == fieldDataId)
-                .Where(x => x.RowPosition == rowPosition).SingleOrDefaultAsync();
+            if(isTracking){
+                return await _context.Rows
+                    .AsTracking()
+                    .Where(x => x.FieldDataId == fieldDataId && x.RowPosition == rowPosition)
+                    .SingleOrDefaultAsync();
+            }
+            return await _context.Rows
+                .AsNoTracking()
+                .Where(x => x.FieldDataId == fieldDataId && x.RowPosition == rowPosition)
+                .SingleOrDefaultAsync();
         }
 
         public async Task UpdateAsync(Row row)

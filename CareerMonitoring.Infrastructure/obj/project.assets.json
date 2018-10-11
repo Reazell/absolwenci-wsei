@@ -4640,10 +4640,10 @@
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
         "LICENSE.TXT",
+        "Microsoft.NETCore.Platforms.2.0.0.nupkg.sha512",
+        "Microsoft.NETCore.Platforms.nuspec",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-        "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -9727,5 +9727,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Wystąpił problem podczas czytania pliku pamięci podręcznej C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\obj\\CareerMonitoring.Infrastructure.csproj.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -20,23 +20,36 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Skill> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Skills.AsTracking ().SingleOrDefaultAsync (x => x.Id == id);
-            return await _context.Skills.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
+            if (isTracking){
+                return await _context.Skills
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Skills
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<Skill> GetByNameAsync (string name, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Skills.AsTracking()
+            if (isTracking){
+                return await _context.Skills
+                    .AsTracking()
                     .SingleOrDefaultAsync(x => x.Name.ToLowerInvariant() == name.ToLowerInvariant());
-            return await _context.Skills.AsNoTracking()
+            }
+            return await _context.Skills
+                .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Name.ToLowerInvariant() == name.ToLowerInvariant());
         }
 
         public async Task<IEnumerable<Skill>> GetAllAsync (bool isTracking = true) {
-            if (isTracking)
-                return await Task.FromResult (_context.Skills.AsTracking ().AsEnumerable ());
-            return await Task.FromResult (_context.Skills.AsNoTracking ().AsEnumerable ());
+            if (isTracking){
+                return await Task.FromResult (_context.Skills
+                    .AsTracking ()
+                    .AsEnumerable ());
+            }
+            return await Task.FromResult (_context.Skills
+                .AsNoTracking ()
+                .AsEnumerable ());
         }
 
         public async Task UpdateAsync (Skill skill) {

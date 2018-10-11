@@ -17,11 +17,35 @@ namespace CareerMonitoring.Core.Domains {
 
         public Experience (string position, string companyName, string location,
             DateTime from, DateTime to, bool isCurrentJob) {
+            SetPosition(position);
+            SetCompanyName(companyName);
+            SetLocation(location);
+            SetFrom(from);
+            SetTo(to);
+            SetIsCurrentJob(isCurrentJob);
+        }
+
+        public void SetPosition (string position) {
             Position = position;
+        }
+
+        public void SetCompanyName (string companyName) {
             CompanyName = companyName;
+        }
+
+        public void SetLocation (string location) {
             Location = location;
+        }
+
+        public void SetFrom (DateTime from) {
             From = from;
+        }
+
+        public void SetTo (DateTime to) {
             To = to;
+        }
+
+        public void SetIsCurrentJob (bool isCurrentJob) {
             IsCurrentJob = isCurrentJob;
         }
     }
