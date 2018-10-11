@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
@@ -54,11 +55,11 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task RegisterStudentAsync (string name, string surname, string email, string indexNumber,
             string phoneNumber, string password) {
             if (await _studentService.ExistByEmailAsync (email.ToLowerInvariant ()))
-                throw new Exception ("User of given email already exist.");
+                throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
             // if (!await _studentService.UserExistByIndexNumberAsync (indexNumber))
             //     throw new Exception ("Given index number does not exist.");
             var student = new Student (name, surname, email,
-            indexNumber, phoneNumber, password);
+                indexNumber, phoneNumber, password);
             var activationKey = Guid.NewGuid ();
             student.AddAccountActivation (new AccountActivation (activationKey));
             await _studentRepository.AddAsync (student);
@@ -68,7 +69,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task RegisterGraduateAsync (string name, string surname, string email, string phoneNumber,
             string password) {
             if (await _graduateService.ExistByEmailAsync (email.ToLowerInvariant ()))
-                throw new Exception ("User of given email already exist.");
+                throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
             var graduate = new Graduate (name, surname, email, phoneNumber, password);
             var activationKey = Guid.NewGuid ();
             graduate.AddAccountActivation (new AccountActivation (activationKey));
@@ -79,7 +80,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task RegisterCareerOfficeAsync (string name, string surname, string email, string phoneNumber,
             string password) {
             if (await _careerOfficeService.ExistByEmailAsync (email.ToLowerInvariant ()))
-                throw new Exception ("User of given email already exist.");
+                throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
             var careerOffice = new CareerOffice (name, surname, email, phoneNumber, password);
             var activationKey = Guid.NewGuid ();
             careerOffice.AddAccountActivation (new AccountActivation (activationKey));
@@ -91,7 +92,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             string password, string companyName,
             string location, string companyDescription) {
             if (await _employerService.ExistByEmailAsync (email.ToLowerInvariant ()))
-                throw new Exception ("User of given email already exist.");
+                throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
             var employer = new Employer (name, surname, email, phoneNumber, password, companyName, location,
                 companyDescription);
             var activationKey = Guid.NewGuid ();

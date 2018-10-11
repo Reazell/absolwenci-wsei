@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.ImportFile;
+using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -19,10 +20,9 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task CreateAsync (string name, string surname, string course,
             string dateOfCompletion, string typeOfStudy, string email) {
-            if (await ExistByEmailAsync (email)){
-                throw new Exception ("User of given email already exist in database.");
-            }
-            DateTime dateTimeOfCompletion = DateTime.ParseExact(dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            if (await ExistByEmailAsync (email))
+                throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
+                 DateTime dateTimeOfCompletion = DateTime.ParseExact(dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             if(dateTimeOfCompletion > DateTime.UtcNow){
                 throw new Exception("Date of completion cannot be greater than current date.");
             }

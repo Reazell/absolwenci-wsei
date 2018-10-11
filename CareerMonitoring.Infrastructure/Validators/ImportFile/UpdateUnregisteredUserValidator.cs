@@ -14,11 +14,11 @@ namespace CareerMonitoring.Infrastructure.Validators.ImportFile {
                 .Matches (@"^[a-zA-ZàáąâäãåąčććęęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄČĆĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'-]+(\s{1}[a-zA-ZàáąâäãåąčććęęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄČĆĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'-]+)*$")
                 .WithMessage ("Surname should contain only letters with one space between words.");
             RuleFor (reg => reg.Course)
-                .MaximumLength (50)
+                .MaximumLength (70)
                 .MinimumLength (3)
                 .WithMessage ("Course cannot be null or empty.");
             RuleFor (reg => reg.TypeOfStudy)
-                .MaximumLength (50)
+                .MaximumLength (70)
                 .MinimumLength (3);
             RuleFor (reg => reg.Email)
                 .EmailAddress ()

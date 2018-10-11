@@ -23,8 +23,12 @@
           <e p="SurveyReportController.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20181011092831_migrr.cs" t="Include" />
-          <e p="20181011092831_migrr.Designer.cs" t="Include" />
+          <e p="20181008163150_kadhglkh.cs" t="Include" />
+          <e p="20181008163150_kadhglkh.Designer.cs" t="Include" />
+          <e p="20181011092831_migrr.cs~d9e6a06ecfa7b8d210ec3aebb2d021fcbf04da80" t="Include" />
+          <e p="20181011092831_migrr.cs~HEAD" t="Include" />
+          <e p="20181011092831_migrr.Designer.cs~d9e6a06ecfa7b8d210ec3aebb2d021fcbf04da80" t="Include" />
+          <e p="20181011092831_migrr.Designer.cs~HEAD" t="Include" />
           <e p="CareerMonitoringContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -184,6 +188,14 @@
           </e>
           <e p="Exception" t="Include">
             <e p="ExceptionsHelper.cs" t="Include" />
+          </e>
+          <e p="ExceptionHandling" t="Include">
+            <e p="ExceptionsHelper.cs" t="Include" />
+            <e p="InccorectRoleException.cs" t="Include" />
+            <e p="IncorrectValueException.cs" t="Include" />
+            <e p="InvalidValueException.cs" t="Include" />
+            <e p="ObjectAlreadyExistException.cs" t="Include" />
+            <e p="ObjectDoesNotExistException.cs" t="Include" />
           </e>
           <e p="Factories" t="Include">
             <e p="AccountEmailFactory.cs" t="Include" />

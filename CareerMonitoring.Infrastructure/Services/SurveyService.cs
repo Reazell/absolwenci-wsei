@@ -7,6 +7,7 @@ using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Infrastructure.Commands.Survey;
 using CareerMonitoring.Infrastructure.DTO;
+using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 
@@ -39,9 +40,8 @@ namespace CareerMonitoring.Infrastructure.Services {
             return survey.Id;
         }
 
-        public async Task<int> AddQuestionToSurveyAsync(int surveyId, int questionPosition, string content,
-            string select)
-        {
+        public async Task<int> AddQuestionToSurveyAsync (int surveyId, int questionPosition, string content,
+            string select) {
             var survey = await _surveyRepository.GetByIdAsync (surveyId);
             var question = new Question (questionPosition, content, select);
             survey.AddQuestion (question);
@@ -49,9 +49,8 @@ namespace CareerMonitoring.Infrastructure.Services {
             return question.Id;
         }
 
-        public async Task<int> AddFieldDataToQuestionAsync(int questionId, string input, int minValue, int maxValue,
-            string minLabel, string maxLabel)
-        {
+        public async Task<int> AddFieldDataToQuestionAsync (int questionId, string input, int minValue, int maxValue,
+            string minLabel, string maxLabel) {
             var question = await _questionRepository.GetByIdAsync (questionId);
             switch (question.Select) {
                 case "short-answer":
@@ -111,7 +110,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                         return fieldData.Id;
                     }
                 default:
-                    throw new System.Exception ("invalid select value");
+                    throw new InvalidValueException ("Invalid select value");
             }
         }
 
@@ -146,8 +145,8 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task<int> UpdateAsync (int surveyId, string title) {
             var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
-            foreach(var question in survey.Questions.ToList()){
-                await _questionRepository.DeleteAsync(question);
+            foreach (var question in survey.Questions.ToList ()) {
+                await _questionRepository.DeleteAsync (question);
             }
             survey.Update (title);
             await _surveyRepository.UpdateAsync (survey);
@@ -155,16 +154,11 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task DeleteAsync (int surveyId) {
-            var survey = await _surveyRepository.GetByIdAsync (surveyId);
-            // if (survey == null){
-            //     throw new System.Exception ("survey with given Id does not exist");
-            // }
-            try{
-            await _surveyRepository.DeleteAsync (survey);
-            }
-            catch(NullReferenceException)
-            {
-                throw new Exception("survey with given Id does not exist");
+            try {
+                var survey = await _surveyRepository.GetByIdAsync (surveyId);
+                await _surveyRepository.DeleteAsync (survey);
+            } catch (NullReferenceException) {
+                throw new ObjectDoesNotExistException ($"Survey with given Id: {surveyId} does not exist.");
             }
         }
     }

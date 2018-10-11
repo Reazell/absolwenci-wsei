@@ -1,48 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec3c93c4-469a-4531-b7b5-655f0b8cae22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.runtimeconfig.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/CareerMonitoring.Core.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/CareerMonitoring.Core.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/CareerMonitoring.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/CareerMonitoring.Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.runtimeconfig.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/CareerMonitoring.Infrastructure.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/CareerMonitoring.Infrastructure.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/CareerMonitoring.Infrastructure.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/CareerMonitoring.Infrastructure.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/project.assets.json" afterDir="false" />
-    </list>
+    <list default="true" id="ec3c93c4-469a-4531-b7b5-655f0b8cae22" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,23 +18,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="2" />
+          <entry key="cs" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="2" />
+          <entry key="C#" value="4" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Startup.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+            <state relative-caret-position="378">
+              <caret line="70" column="6" selection-start-line="70" selection-start-column="6" selection-end-line="70" selection-end-column="6" />
               <folding>
                 <marker date="1539274469276" expanded="false" signature="6:2434" ph="..." />
                 <marker date="1539274469276" expanded="true" signature="2467:11344" ph="{...}" />
@@ -100,14 +59,94 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/AuthController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-225">
+              <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+              <folding>
+                <marker date="1539083770616" expanded="true" signature="6:816" ph="..." />
+                <marker date="1539083770616" expanded="true" signature="861:9039" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="915:9037" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="1219:1356" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="1451:2341" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="1643:2186" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="1703:1919" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="2447:2939" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="2735:2818" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="3067:3719" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="3386:3626" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="3647:3709" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="3850:4569" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="4169:4476" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="4497:4559" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="4700:5332" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="5019:5239" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="5260:5322" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="5475:6111" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="5794:6018" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="6039:6101" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="6242:6724" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="6281:6443" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="6460:6615" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="6636:6714" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="6876:7425" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="7136:7309" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="7330:7415" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="7560:8194" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="7876:8078" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="8099:8184" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="8396:9030" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="8687:8921" ph="{...}" />
+                <marker date="1539083770616" expanded="true" signature="8942:9020" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/ImportFileController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+              <folding>
+                <marker date="1539277853386" expanded="false" signature="6:525" ph="..." />
+                <marker date="1539277853386" expanded="true" signature="570:3850" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="646:3848" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="926:1053" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="1185:1680" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="1288:1587" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="1608:1670" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="1806:2154" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="1909:2061" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="2082:2144" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="2315:2758" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="2418:2665" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="2686:2748" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="2937:3384" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="3040:3291" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="3312:3374" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="3523:3841" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="3626:3748" ph="{...}" />
+                <marker date="1539277853386" expanded="true" signature="3769:3831" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Validators/Account/SignInValidator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/ImportFileController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/ApiUserController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/SurveyController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/AuthController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -139,7 +178,17 @@
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="CareerMonitoring.Api" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Extensions" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -216,7 +265,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="755000" />
+    <option name="totallyTimeSpent" value="972000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -229,19 +278,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16979866" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="REST Client" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -249,13 +289,21 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Key Promoter X" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="11" />
+      <window_info anchor="bottom" id="REST Client" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Key Promoter X" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="6" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,7 +329,6 @@
           <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
           <folding>
             <marker date="1539274469332" expanded="false" signature="6:76" ph="..." />
-            <marker date="1539274469332" expanded="true" signature="136:761" ph="{...}" />
             <marker date="1539274469332" expanded="true" signature="199:758" ph="{...}" />
             <marker date="1539274469332" expanded="true" signature="235:752" ph="{...}" />
           </folding>
@@ -290,8 +337,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Startup.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+        <state relative-caret-position="378">
+          <caret line="70" column="6" selection-start-line="70" selection-start-column="6" selection-end-line="70" selection-end-column="6" />
           <folding>
             <marker date="1539274469276" expanded="false" signature="6:2434" ph="..." />
             <marker date="1539274469276" expanded="true" signature="2467:11344" ph="{...}" />
@@ -311,6 +358,80 @@
             <marker date="1539274469276" expanded="true" signature="10614:11136" ph="{...}" />
             <marker date="1539274469276" expanded="true" signature="10666:11116" ph="{...}" />
             <marker date="1539274469276" expanded="true" signature="10894:11094" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/AuthController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225">
+          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+          <folding>
+            <marker date="1539083770616" expanded="true" signature="6:816" ph="..." />
+            <marker date="1539083770616" expanded="true" signature="861:9039" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="915:9037" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="1219:1356" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="1451:2341" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="1643:2186" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="1703:1919" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="2447:2939" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="2735:2818" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="3067:3719" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="3386:3626" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="3647:3709" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="3850:4569" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="4169:4476" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="4497:4559" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="4700:5332" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="5019:5239" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="5260:5322" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="5475:6111" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="5794:6018" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="6039:6101" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="6242:6724" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="6281:6443" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="6460:6615" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="6636:6714" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="6876:7425" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="7136:7309" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="7330:7415" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="7560:8194" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="7876:8078" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="8099:8184" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="8396:9030" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="8687:8921" ph="{...}" />
+            <marker date="1539083770616" expanded="true" signature="8942:9020" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Extensions/Exception/ExceptionsHelper.cs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/ImportFileController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <marker date="1539277853386" expanded="false" signature="6:525" ph="..." />
+            <marker date="1539277853386" expanded="true" signature="570:3850" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="646:3848" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="926:1053" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="1185:1680" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="1288:1587" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="1608:1670" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="1806:2154" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="1909:2061" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="2082:2144" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="2315:2758" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="2418:2665" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="2686:2748" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="2937:3384" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="3040:3291" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="3312:3374" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="3523:3841" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="3626:3748" ph="{...}" />
+            <marker date="1539277853386" expanded="true" signature="3769:3831" ph="{...}" />
           </folding>
         </state>
       </provider>

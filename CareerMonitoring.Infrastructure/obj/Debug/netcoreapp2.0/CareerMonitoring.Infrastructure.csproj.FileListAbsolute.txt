@@ -40,3 +40,20 @@ C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructur
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CopyComplete
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+<<<<<<< HEAD:CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csproj.FileListAbsolute.txt
+=======
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csprojAssemblyReference.cache
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.AssemblyInfo.cs
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.deps.json
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.runtimeconfig.json
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.runtimeconfig.dev.json
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CopyComplete
+>>>>>>> d9e6a06ecfa7b8d210ec3aebb2d021fcbf04da80:CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csproj.FileListAbsolute.txt

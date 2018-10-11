@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.SurveyAnswer;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
@@ -20,43 +21,48 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> CreateSurveyAnswer (string email, [FromBody] SurveyAnswerToAdd command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId) == "unauthorized")
-                return Unauthorized ();
-            else if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId) == "answered")
-                return BadRequest ("you already answered to that survey");
-            var surveyAnswerId = await _surveyAnswerService.CreateAsync (command.SurveyTitle, command.SurveyId);
-            if (command.Questions == null)
-                return BadRequest ("Cannot create empty survey");
-            foreach (var questionAnswer in command.Questions) {
-                await AddChoiceOptionsAnswerAndRowAnswerAsync (command.SurveyId, surveyAnswerId, questionAnswer.Select,
-                    questionAnswer);
+            try {
+                if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId) == "unauthorized")
+                    return Unauthorized ();
+                else if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId) == "answered")
+                    return BadRequest ("you already answered to that survey");
+                var surveyAnswerId = await _surveyAnswerService.CreateAsync (command.SurveyTitle, command.SurveyId);
+                if (command.Questions == null)
+                    return BadRequest ("Cannot create empty survey");
+                foreach (var questionAnswer in command.Questions) {
+                    await AddChoiceOptionsAnswerAndRowAnswerAsync (command.SurveyId, surveyAnswerId, questionAnswer.Select,
+                        questionAnswer);
+                }
+
+                return StatusCode (201);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
             }
-            return StatusCode (201);
         }
 
         private async Task<IActionResult> AddChoiceOptionsAnswerAndRowAnswerAsync (int surveyId, int surveyAnswerId,
             string select, QuestionAnswerToAdd questionAnswer) {
-            var questionAnswerId = await _surveyAnswerService.AddQuestionAnswerToSurveyAnswerAsync (surveyId,
-                surveyAnswerId,
-                questionAnswer.QuestionPosition, questionAnswer.Content, questionAnswer.Select);
-            if (questionAnswer.FieldData == null)
-                return BadRequest ("Question must contain FieldData");
-            foreach (var fieldDataAnswer in questionAnswer.FieldData) {
-                var fieldDataAnswerId = await _surveyAnswerService.AddFieldDataAnswerToQuestionAnswerAsync (surveyId,
-                    questionAnswerId,
-                    fieldDataAnswer.Input,
-                    fieldDataAnswer.MinLabel,
-                    fieldDataAnswer.MaxLabel);
+                var questionAnswerId = await _surveyAnswerService.AddQuestionAnswerToSurveyAnswerAsync (surveyId,
+                    surveyAnswerId,
+                    questionAnswer.QuestionPosition, questionAnswer.Content, questionAnswer.Select);
+                if (questionAnswer.FieldData == null)
+                    return BadRequest ("Question must contain FieldData");
+                foreach (var fieldDataAnswer in questionAnswer.FieldData) {
+                    var fieldDataAnswerId = await _surveyAnswerService.AddFieldDataAnswerToQuestionAnswerAsync (surveyId,
+                        questionAnswerId,
+                        fieldDataAnswer.Input,
+                        fieldDataAnswer.MinLabel,
+                        fieldDataAnswer.MaxLabel);
 
-                if (fieldDataAnswer.ChoiceOptions != null)
-                    await AddChoiceOptionsAnswerAsync (surveyId, fieldDataAnswer, questionAnswer.Select,
-                        fieldDataAnswerId,
-                        questionAnswer);
-                if (fieldDataAnswer.Rows != null)
-                    await AddRowsAnswerAsync (surveyId, fieldDataAnswer, questionAnswer.Select, questionAnswer,
-                        fieldDataAnswerId);
-            }
-            return StatusCode (200);
+                    if (fieldDataAnswer.ChoiceOptions != null)
+                        await AddChoiceOptionsAnswerAsync (surveyId, fieldDataAnswer, questionAnswer.Select,
+                            fieldDataAnswerId,
+                            questionAnswer);
+                    if (fieldDataAnswer.Rows != null)
+                        await AddRowsAnswerAsync (surveyId, fieldDataAnswer, questionAnswer.Select, questionAnswer,
+                            fieldDataAnswerId);
+                }
+                return StatusCode (200);
         }
 
         private async Task AddChoiceOptionsAnswerAsync (int surveyId, FieldDataAnswerToAdd fieldDataAnswer,

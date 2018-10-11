@@ -520,10 +520,10 @@
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
         "LICENSE.TXT",
+        "Microsoft.NETCore.Platforms.2.0.0.nupkg.sha512",
+        "Microsoft.NETCore.Platforms.nuspec",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-        "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -670,11 +670,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD:CareerMonitoring.Core/obj/project.assets.json
       "projectUniqueName": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "projectName": "CareerMonitoring.Core",
       "projectPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "packagesPath": "C:\\Users\\Filip\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "projectName": "CareerMonitoring.Core",
+      "projectPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "packagesPath": "C:\\Users\\amado\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
+>>>>>>> d9e6a06ecfa7b8d210ec3aebb2d021fcbf04da80:CareerMonitoring.Core/obj/project.assets.json
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -718,5 +726,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Wystąpił problem podczas czytania pliku pamięci podręcznej C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\CareerMonitoring.Core.csproj.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
