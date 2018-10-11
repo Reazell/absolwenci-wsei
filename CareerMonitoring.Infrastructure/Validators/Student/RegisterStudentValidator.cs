@@ -21,7 +21,7 @@ namespace CareerMonitoring.Infrastructure.Validators.User {
             RuleFor (eg => eg.IndexNumber)
                 .NotEmpty ()
                 .WithMessage ("Index number cannot be empty.")
-                .NotNull () //poprawic walidacje indeksu
+                .NotNull ()
                 .WithMessage ("Index Number is invalid.");
             RuleFor (reg => reg.PhoneNumber)
                 .NotNull ()
