@@ -12,8 +12,23 @@ namespace CareerMonitoring.Core.Domains {
         protected Certificate () { }
 
         public Certificate (int accountId, string title, DateTime dateOfReceived) {
+            SetAccountId(accountId);
+            SetTitle(title);
+            SetDateOfReceived(dateOfReceived);
+        }
+
+        private void SetAccountId (int accountId)
+        {
             AccountId = accountId;
+        }
+
+        private void SetTitle (string title)
+        {
             Title = title;
+        }
+
+        private void SetDateOfReceived (DateTime dateOfReceived)
+        {
             DateOfReceived = dateOfReceived;
         }
     }

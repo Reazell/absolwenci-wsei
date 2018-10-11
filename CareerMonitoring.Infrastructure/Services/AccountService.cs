@@ -34,15 +34,17 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task<Account> GetActiveByEmailAsync (string email, bool isTracking = true) {
             var account = await _accountRepository.GetByEmailAsync (email, isTracking);
-            if (account == null || account.Deleted || !account.Activated)
+            if (account == null || account.Deleted || !account.Activated){
                 return null;
+            }
             return account;
         }
 
         public async Task<Account> GetActiveWithAccountRestoringPasswordByTokenAsync (Guid token, bool isTracking = true) {
             var account = await _accountRepository.GetWithAccountRestoringPasswordByTokenAsync (token, isTracking);
-            if (account == null || account.Deleted || !account.Activated)
+            if (account == null || account.Deleted || !account.Activated){
                 return null;
+            }
             return account;
         }
 
@@ -59,10 +61,12 @@ namespace CareerMonitoring.Infrastructure.Services {
             var token = Guid.NewGuid ();
             var accountToPaswordRestor = await _accountRepository.GetWithAccountRestoringPasswordAsync (account.Id);
             if (accountToPaswordRestor.AccountRestoringPassword != null && accountToPaswordRestor.Activated == true &&
-                accountToPaswordRestor.Deleted == false)
+                accountToPaswordRestor.Deleted == false){
                 accountToPaswordRestor.ChangeAccountRestoringPassword (token);
-            else
+            }
+            else{
                 accountToPaswordRestor.AddAccountRestoringPassword (new AccountRestoringPassword (token));
+            }
             await _accountEmailFactory.SendRecoveringPasswordEmailAsync (accountToPaswordRestor, token);
             await _accountRepository.UpdateAsync (accountToPaswordRestor);
         }

@@ -24,13 +24,33 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         }
 
         public FieldData (string input) {
-            Input = input;
+            SetInput(input);
         }
 
         public FieldData (int minValue, int maxValue, string minLabel, string maxLabel) {
+            SetMinValue(minValue);
+            SetMaxValue(maxValue);
+            SetMinLabel(minLabel);
+            SetMaxLabel(maxLabel);
+        }
+
+        public void SetInput (string input) {
+            Input = input;
+        }
+
+        public void SetMinValue(int minValue) {
             MinValue = minValue;
+        }
+
+        public void SetMaxValue (int maxValue) {
             MaxValue = maxValue;
+        }
+
+        public void SetMinLabel (string minLabel) {
             MinLabel = minLabel;
+        }
+
+        public void SetMaxLabel (string maxLabel) {
             MaxLabel = maxLabel;
         }
     }

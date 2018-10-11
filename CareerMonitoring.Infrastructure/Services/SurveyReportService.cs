@@ -125,7 +125,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         {
             return await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
         }
-        
+
         public async Task<int> UpdateAsync (int surveyId, string surveyTitle) {
            var SurveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
             await _surveyReportRepository.DeleteAsync(SurveyReport);

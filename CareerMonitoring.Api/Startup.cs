@@ -21,6 +21,7 @@ using CareerMonitoring.Infrastructure.Extensions.Encryptors;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
+using CareerMonitoring.Infrastructure.Extensions.URL;
 using CareerMonitoring.Infrastructure.Repositories;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
@@ -84,6 +85,7 @@ namespace CareerMonitoring.Api {
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
             services.AddSingleton<IEmailConfiguration> (Configuration.GetSection ("EmailConfiguration")
                 .Get<EmailConfiguration> ());
+            services.AddSingleton<IURLSettings> (Configuration.GetSection ("Url").Get<URLSettings> ());
             services.AddSingleton (AutoMapperConfig.Initialize ());
             services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
             services.AddAuthorization (

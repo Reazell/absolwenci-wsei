@@ -11,8 +11,12 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         private Survey () { }
 
         public Survey (string title) {
-            Title = title;
+            SetTitle(title);
             CreatedAt = DateTime.UtcNow;
+        }
+
+        public void SetTitle (string title) {
+            Title = title;
         }
 
         public void AddQuestion (Question question) {
@@ -20,7 +24,7 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         }
 
         public void Update (string title) {
-            Title = title;
+            SetTitle(title);
             CreatedAt = DateTime.UtcNow;
         }
     }

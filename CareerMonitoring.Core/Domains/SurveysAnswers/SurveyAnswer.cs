@@ -12,9 +12,17 @@ namespace CareerMonitoring.Core.Domains.SurveysAnswers {
         private SurveyAnswer () { }
 
         public SurveyAnswer (string surveyTitle, int surveyId) {
-            SurveyTitle = surveyTitle;
-            SurveyId = surveyId;
+            SetSurveyTitle(surveyTitle);
+            SetSurveyId(surveyId);
             CreatedAt = DateTime.UtcNow;
+        }
+
+        public void SetSurveyTitle (string surveyTitle) {
+            SurveyTitle = surveyTitle;
+        }
+
+        public void SetSurveyId (int surveyId) {
+            SurveyId = surveyId;
         }
 
         public void AddQuestionAnswer (QuestionAnswer questionAnswer) {

@@ -10,6 +10,11 @@ namespace CareerMonitoring.Core.Domains {
         protected Course () { }
 
         public Course (string name) {
+            SetName(name);
+        }
+
+        public void SetName (string name)
+        {
             Name = name;
         }
     }

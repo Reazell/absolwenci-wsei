@@ -6,6 +6,10 @@ namespace CareerMonitoring.Core.Domains {
         protected Skill () { }
 
         public Skill (string name) {
+            SetName(name);
+        }
+
+        public void SetName (string name) {
             Name = name;
         }
     }

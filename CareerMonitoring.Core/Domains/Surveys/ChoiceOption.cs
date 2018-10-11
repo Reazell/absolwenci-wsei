@@ -10,8 +10,20 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         private ChoiceOption () { }
 
         public ChoiceOption (int optionPosition, bool value, string viewValue) {
+            SetOptionPosition(optionPosition);
+            SetValue(value);
+            SetViewValue(viewValue);
+        }
+
+        public void SetOptionPosition (int optionPosition) {
             OptionPosition = optionPosition;
+        }
+
+        public void SetValue (bool value) {
             Value = value;
+        }
+
+        public void SetViewValue (string viewValue) {
             ViewValue = viewValue;
         }
     }

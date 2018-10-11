@@ -16,7 +16,7 @@ namespace CareerMonitoring.Infrastructure.Repositories
 
         public SurveyUserIdentifierRepository(CareerMonitoringContext context)
         {
-            context = _context;
+            _context = context;
         }
 
         public async Task AddAsync(SurveyUserIdentifier surveyUserIdentifier)
@@ -27,8 +27,7 @@ namespace CareerMonitoring.Infrastructure.Repositories
 
         public SurveyUserIdentifier GetBySurveyIdAndUserEmailAsync(int surveyId, string userEmail)
         {
-            return _context
-                .SurveyUserIdentifiers
+            return _context.SurveyUserIdentifiers
                 .SingleOrDefault(x => x.SurveyId == surveyId && x.UserEmail == userEmail);
         }
 

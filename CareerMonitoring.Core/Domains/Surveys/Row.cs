@@ -9,7 +9,15 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         private Row () { }
 
         public Row (int rowPosition, string input) {
+            SetRowPosition(rowPosition);
+            SetInput(input);
+        }
+
+        public void SetRowPosition (int rowPosition) {
             RowPosition = rowPosition;
+        }
+
+        public void SetInput (string input) {
             Input = input;
         }
     }

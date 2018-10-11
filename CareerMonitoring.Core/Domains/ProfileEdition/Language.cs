@@ -11,7 +11,15 @@ namespace CareerMonitoring.Core.Domains {
         protected Language () { }
 
         public Language (string name, string proficiency) {
+            SetName(name);
+            SetProficiency(proficiency);
+        }
+
+        public void SetName (string name) {
             Name = name;
+        }
+
+        public void SetProficiency (string proficiency) {
             Proficiency = proficiency;
         }
     }

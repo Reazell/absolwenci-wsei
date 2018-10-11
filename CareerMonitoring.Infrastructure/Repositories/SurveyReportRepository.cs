@@ -24,20 +24,36 @@ namespace CareerMonitoring.Infrastructure.Repositories
 
         public async Task<SurveyReport> GetByIdAsync (int surveyReportId, bool isTracking = true)
         {
-            if(isTracking)
-                return await _context.SurveyReports.AsTracking().Where(x => x.Id == surveyReportId)
-                    .Include(x => x.QuestionsReports).ThenInclude(x => x.DataSets).SingleOrDefaultAsync();
-            return await _context.SurveyReports.AsNoTracking().Where(x => x.Id == surveyReportId)
+            if(isTracking){
+                return await _context.SurveyReports
+                    .AsTracking()
+                    .Where(x => x.Id == surveyReportId)
+                    .Include(x => x.QuestionsReports)
+                    .ThenInclude(x => x.DataSets)
+                    .SingleOrDefaultAsync();
+            }
+            return await _context.SurveyReports
+                .AsNoTracking()
+                .Where(x => x.Id == surveyReportId)
                 .SingleOrDefaultAsync();
         }
 
         public async Task<SurveyReport> GetBySurveyIdAsync(int surveyId, bool isTracking = true)
         {
-            if(isTracking)
-                return await _context.SurveyReports.AsTracking().Where(x => x.SurveyId == surveyId)
-                    .Include(x => x.QuestionsReports).ThenInclude(x => x.DataSets).SingleOrDefaultAsync();
-            return await _context.SurveyReports.AsNoTracking().Where(x => x.SurveyId == surveyId)
-                .Include(x => x.QuestionsReports).ThenInclude(x => x.DataSets).SingleOrDefaultAsync();
+            if(isTracking){
+                return await _context.SurveyReports
+                    .AsTracking()
+                    .Where(x => x.SurveyId == surveyId)
+                    .Include(x => x.QuestionsReports)
+                    .ThenInclude(x => x.DataSets)
+                    .SingleOrDefaultAsync();
+            }
+            return await _context.SurveyReports
+                .AsNoTracking()
+                .Where(x => x.SurveyId == surveyId)
+                .Include(x => x.QuestionsReports)
+                .ThenInclude(x => x.DataSets)
+                .SingleOrDefaultAsync();
         }
 
         public async Task UpdateAsync(SurveyReport surveyReport)

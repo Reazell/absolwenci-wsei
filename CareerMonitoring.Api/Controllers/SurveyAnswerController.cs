@@ -69,7 +69,7 @@ namespace CareerMonitoring.Api.Controllers {
             string select, int fieldDataAnswerId, QuestionAnswerToAdd questionAnswer) {
             if (questionAnswer.Select == "single-choice" || questionAnswer.Select == "multiple-choice" ||
                 questionAnswer.Select == "dropdown-menu" || questionAnswer.Select == "linear-scale") {
-                var counter = 0; //temporary bugfix
+                var counter = 0;
                 foreach (var choiceOption in fieldDataAnswer.ChoiceOptions) {
                     await _surveyAnswerService.AddChoiceOptionsAnswerToFieldDataAnswerAsync (surveyId, fieldDataAnswerId,
                         counter,
@@ -93,7 +93,7 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         private async Task AddChoiceOptionAnswerToRow (int surveyId, RowAnswerToAdd rowAnswer, int rowAnswerId) {
-            var counter = 0; //temporary bugfix
+            var counter = 0;
             foreach (var choiceOption in rowAnswer.ChoiceOptions) {
                 await _surveyAnswerService.AddChoiceOptionAnswerToRowAnswerAsync (surveyId, rowAnswerId,
                     choiceOption.OptionPosition,

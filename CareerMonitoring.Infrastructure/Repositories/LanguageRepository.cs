@@ -20,23 +20,36 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Language> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Languages.AsTracking ().SingleOrDefaultAsync (x => x.Id == id);
-            return await _context.Languages.AsNoTracking ().SingleOrDefaultAsync (x => x.Id == id);
+            if (isTracking){
+                return await _context.Languages
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Languages
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
         }
 
         public async Task<Language> GetByNameAsync (string name, bool isTracking = true) {
-            if (isTracking)
-                return await _context.Languages.AsTracking()
+            if (isTracking){
+                return await _context.Languages
+                    .AsTracking()
                     .SingleOrDefaultAsync(x => x.Name.ToLowerInvariant() == name.ToLowerInvariant());
-            return await _context.Languages.AsNoTracking()
+            }
+            return await _context.Languages
+                .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Name.ToLowerInvariant() == name.ToLowerInvariant());
         }
 
         public async Task<IEnumerable<Language>> GetAllAsync (bool isTracking = true) {
-            if (isTracking)
-                return await Task.FromResult (_context.Languages.AsTracking ().AsEnumerable ());
-            return await Task.FromResult (_context.Languages.AsNoTracking ().AsEnumerable ());
+            if (isTracking){
+                return await Task.FromResult (_context.Languages
+                    .AsTracking ()
+                    .AsEnumerable ());
+            }
+            return await Task.FromResult (_context.Languages
+                .AsNoTracking ()
+                .AsEnumerable ());
         }
 
         public async Task UpdateAsync (Language language) {

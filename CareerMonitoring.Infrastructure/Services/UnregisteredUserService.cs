@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
@@ -21,6 +22,10 @@ namespace CareerMonitoring.Infrastructure.Services {
             DateTime dateOfCompletion, string typeOfStudy, string email) {
             if (await ExistByEmailAsync (email))
                 throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
+                 DateTime dateTimeOfCompletion = DateTime.ParseExact(dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            if(dateTimeOfCompletion > DateTime.UtcNow){
+                throw new Exception("Date of completion cannot be greater than current date.");
+            }
             await _unregisteredUserRepository.AddAsync (new UnregisteredUser (name, surname, course, dateOfCompletion, typeOfStudy, email));
         }
 
@@ -29,9 +34,13 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task UpdateAsync (int id, string name, string surname, string course,
-            DateTime dateOfCompletion, string typeOfStudy, string email) {
+            string dateOfCompletion, string typeOfStudy, string email) {
             var unregisteredUser = await _unregisteredUserRepository.GetByIdAsync (id);
-            unregisteredUser.Update (name, surname, course, dateOfCompletion, typeOfStudy, email);
+            DateTime dateTimeOfCompletion = DateTime.ParseExact(dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            if(dateTimeOfCompletion > DateTime.UtcNow){
+                throw new Exception("Date of completion cannot be greater than current date.");
+            }
+            unregisteredUser.Update (name, surname, course, dateTimeOfCompletion, typeOfStudy, email);
             await _unregisteredUserRepository.UpdateAsync (unregisteredUser);
         }
 

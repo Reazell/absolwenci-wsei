@@ -45,6 +45,11 @@ namespace CareerMonitoring.Core.Domains.Abstract {
             Email = email;
         }
 
+        public void SetEmail(string email)
+        {
+            Email = email;
+        }
+
         public void Activate (AccountActivation accountActivation) {
             if (!accountActivation.Active) {
                 Activated = true;
