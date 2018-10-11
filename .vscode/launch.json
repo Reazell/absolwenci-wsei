@@ -9,10 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-<<<<<<< HEAD
             // If you have changed target frameworks, make sure to update the program path.
-=======
->>>>>>> 9e106cdd36116923c3c63a19581e560a1bbce879
             "program": "${workspaceFolder}/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll",
             "args": [],
             "cwd": "${workspaceFolder}/CareerMonitoring.Api",

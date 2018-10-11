@@ -25,3 +25,12 @@ C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debu
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfo.cs
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
 C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.deps.json
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.csprojAssemblyReference.cache
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.csproj.CoreCompileInputs.cache
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfoInputs.cache
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfo.cs
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb

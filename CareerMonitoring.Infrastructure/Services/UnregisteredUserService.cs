@@ -19,14 +19,14 @@ namespace CareerMonitoring.Infrastructure.Services {
             await _unregisteredUserRepository.GetByEmailAsync (email, false) != null;
 
         public async Task CreateAsync (string name, string surname, string course,
-            DateTime dateOfCompletion, string typeOfStudy, string email) {
+            string dateOfCompletion, string typeOfStudy, string email) {
             if (await ExistByEmailAsync (email))
                 throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
                  DateTime dateTimeOfCompletion = DateTime.ParseExact(dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             if(dateTimeOfCompletion > DateTime.UtcNow){
                 throw new Exception("Date of completion cannot be greater than current date.");
             }
-            await _unregisteredUserRepository.AddAsync (new UnregisteredUser (name, surname, course, dateOfCompletion, typeOfStudy, email));
+            await _unregisteredUserRepository.AddAsync (new UnregisteredUser (name, surname, course, dateTimeOfCompletion, typeOfStudy, email));
         }
 
         public async Task<IEnumerable<UnregisteredUser>> GetAllAsync () {
