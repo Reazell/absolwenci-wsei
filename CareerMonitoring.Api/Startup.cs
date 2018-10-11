@@ -85,7 +85,7 @@ namespace CareerMonitoring.Api {
             services.AddSingleton<IJWTSettings> (Configuration.GetSection ("JWTSettings").Get<JWTSettings> ());
             services.AddSingleton<IEmailConfiguration> (Configuration.GetSection ("EmailConfiguration")
                 .Get<EmailConfiguration> ());
-            services.AddSingleton<IURLSettings> (Configuration.GetSection ("Url").Get<IURLSettings> ());
+            //services.AddSingleton<IURLSettings> (Configuration.GetSection ("Url").Get<IURLSettings> ());
             services.AddSingleton (AutoMapperConfig.Initialize ());
             services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
             services.AddAuthorization (
