@@ -66,20 +66,6 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .AsNoTracking ()
                 .Include (x => x.Questions)
                 .AsEnumerable ());
-<<<<<<< HEAD:CareerMonitoring.Infrastructure/Repositories/SurveyRepository.cs
-        }
-
-        public async Task<Survey> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking){
-                return await _context.Surveys
-                    .AsTracking ()
-                    .SingleOrDefaultAsync (x => x.Id == id);
-            }
-            return await _context.Surveys
-                .AsNoTracking ()
-                .SingleOrDefaultAsync (x => x.Id == id);
-=======
->>>>>>> d9e6a06ecfa7b8d210ec3aebb2d021fcbf04da80:CareerMonitoring.Infrastructure/Repositories/SurveyRepository.cs
         }
 
         public async Task<Survey> GetByIdAsync (int id, bool isTracking = true) {

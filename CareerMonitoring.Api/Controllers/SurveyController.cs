@@ -42,6 +42,7 @@ namespace CareerMonitoring.Api.Controllers {
 
         [HttpPost ("surveys")]
         public async Task<IActionResult> CreateSurvey ([FromBody] SurveyToAdd command) {
+
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             var surveyId = await _surveyService.CreateAsync (command.Title);
