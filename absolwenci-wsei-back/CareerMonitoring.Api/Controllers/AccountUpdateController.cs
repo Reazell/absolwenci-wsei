@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
+using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,9 +23,13 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> AccountUpdate (int id, [FromBody] UpdateAccount command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            await _accountService.UpdateAsync (id, command.Name, command.Surname, command.Email,
-                command.PhoneNumber, command.CompanyName, command.Location, command.CompanyDescription);
-            return Json ("Account updated");
+            try {
+                await _accountService.UpdateAsync (id, command.Name, command.Surname, command.Email,
+                    command.PhoneNumber, command.CompanyName, command.Location, command.CompanyDescription);
+                return StatusCode (200);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
         }
 
         [Authorize]
