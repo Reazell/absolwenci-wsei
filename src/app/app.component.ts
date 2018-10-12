@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -9,6 +9,7 @@ import {
 } from '@angular/router';
 import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { AccountService } from './auth/services/account.service';
+import { AuthenticationService } from './auth/services/authentication.service';
 import { SharedService } from './services/shared.service';
 import { AppBarTooltip } from './shared/models/shared.models';
 
@@ -17,7 +18,7 @@ import { AppBarTooltip } from './shared/models/shared.models';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   // subs
   userServiceSub: Subscription = new Subscription();
   creatorSub: Subscription = new Subscription();
@@ -89,20 +90,13 @@ export class AppComponent implements OnInit {
   loading: boolean;
   logoIMG = './../../../assets/logo-wsei.png';
   profileIMG = './../../../assets/profile-image.png';
-  // isLogged = false;
-  showCreatorButton = false;
-  showSendButton = false;
-  showAdminMenu = false;
-  showToggleButton = false;
-  showBackButton = false;
-  showUserInfo = false;
-  // accountRole: string;
   toolTipInfo: AppBarTooltip = new AppBarTooltip();
 
   constructor(
     private router: Router,
     private accountService: AccountService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private authenticationService: AuthenticationService
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event);
@@ -119,12 +113,8 @@ export class AppComponent implements OnInit {
     this.showBack();
   }
 
-  // showing bar buttons
-
   loggedAccountRole(): void {
     this.accountRoleSub = this.accountService.role.subscribe(role => {
-      // this.accountRole = role;
-      console.log(role);
       Promise.resolve(null).then(() => this._accountRole$.next(role));
     });
   }
@@ -133,7 +123,8 @@ export class AppComponent implements OnInit {
       Promise.resolve(null).then(() => this._isLogged$.next(data));
     });
   }
-  // showing elements
+
+  // showing bar buttons
   showUser(): void {
     this.userInfoSub = this.sharedService.showUserInfo.subscribe(data => {
       Promise.resolve(null).then(() => this._showUserInfo$.next(data));
@@ -165,6 +156,7 @@ export class AppComponent implements OnInit {
     });
   }
 
+  // bar buttons actions
   editSurvey(): void {
     this.sharedService.routeToEdit(true);
   }
@@ -183,6 +175,16 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl(url);
   }
 
+  logout() {
+    this.authenticationService.logout();
+  }
+  routeSwitch() {
+    this.accountRole$.subscribe(data => {
+      this.sharedService.routeSwitch(data);
+    });
+  }
+
+  // loading component handler
   navigationInterceptor(event: RouterEvent): void {
     if (event instanceof NavigationStart) {
       this.loading = true;
@@ -193,5 +195,15 @@ export class AppComponent implements OnInit {
     ) {
       this.loading = false;
     }
+  }
+  ngOnDestroy() {
+    this.userServiceSub.unsubscribe();
+    this.creatorSub.unsubscribe();
+    this.sendSub.unsubscribe();
+    this.adminMainSub.unsubscribe();
+    this.toggleSub.unsubscribe();
+    this.backSub.unsubscribe();
+    this.accountRoleSub.unsubscribe();
+    this.userInfoSub.unsubscribe();
   }
 }

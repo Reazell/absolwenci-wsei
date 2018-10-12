@@ -19,7 +19,7 @@ const surveyContainerRoutes: Routes = [
         }
       },
       {
-        path: 'viewform/:id',
+        path: 'viewform/:id/:hash',
         loadChildren:
           './survey-viewform/survey-viewform.module#SurveyViewformModule'
         // canLoad: [SurveyGuard],
@@ -34,7 +34,7 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'response',
         loadChildren:
-          './survey-completed/survey-completed.module#SurveyCompletedModule'
+          './survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
       }
     ]
   }

@@ -13,8 +13,9 @@ import { SurveyService } from '../services/survey.services';
 export class SurveyViewformComponent implements OnInit, OnDestroy {
   invoiceForm: FormGroup;
   defaultQuestion = 'Brak pytania';
-  loaded = false;
+  loader = false;
   id: number;
+  hash: string;
   title: string;
 
   // subs
@@ -30,13 +31,12 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.getSurveyId();
     this.showAdminMenu();
     this.showUserInfo();
-    this.getSurveyId();
     this.sharedService.showSendButton(true);
     this.editSurvey();
   }
-
   showAdminMenu(): void {
     this.sharedService.showAdminMain(false);
   }
@@ -46,16 +46,19 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   getSurveyId(): void {
     this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
       this.id = Number(params['id']);
+      this.hash = params['hash'] + '=';
+      console.log(this.hash);
       this.getSurvey();
     });
   }
   getSurvey(): void {
-    this.surveyService.getSurveyWithId(this.id).subscribe(
+    this.surveyService.getSurveyWithIdAndHash(this.id, this.hash).subscribe(
       data => {
-        console.log(JSON.stringify(data));
-        this.createQuestionData(data);
-        this.title = data['title'];
-        this.loaded = true;
+        // console.log(JSON.stringify(data));
+        this.createQuestionData(data.result);
+        this.title = data.result['title'];
+        this.loader = true;
+        // this.ref.markForCheck();
       },
       error => {
         console.log(error);
@@ -67,7 +70,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     // console.log(this.invoiceForm.getRawValue());
 
     this.surveyService
-      .saveSurveyAnswer(this.invoiceForm.getRawValue(), this.id)
+      .saveSurveyAnswer(this.invoiceForm.getRawValue(), this.id, this.hash)
       .subscribe(
         data => {
           console.log(data);
@@ -83,6 +86,9 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     });
   }
 
+  routeToSurveyCompleted() {
+    this.router.navigateByUrl('./formResponse');
+  }
   routeToEditSurvey(): void {
     this.router.navigateByUrl('/app/admin/create/' + this.id);
   }

@@ -211,7 +211,7 @@ export class SurveyCreatorComponent
       Questions: this.invoiceForm.getRawValue().questions,
       id: this.id
     };
-    // console.log(JSON.stringify(object));
+    console.log(JSON.stringify(object));
     // console.log('update');
     // console.log(object);
     return this.surveyService.updateSurvey(object);

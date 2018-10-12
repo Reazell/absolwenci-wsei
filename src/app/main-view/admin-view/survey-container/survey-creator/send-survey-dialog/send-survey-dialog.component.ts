@@ -22,7 +22,8 @@ export class SendSurveyDialogComponent implements OnInit {
     private surveyService: SurveyService,
     private fb: FormBuilder
   ) {
-    this.url = 'http://localhost:4200/app/admin/survey/viewform/' + this.data.id;
+    this.url =
+      'http://localhost:4200/app/admin/survey/viewform/' + this.data.id;
   }
 
   ngOnInit() {
@@ -78,19 +79,31 @@ export class SendSurveyDialogComponent implements OnInit {
   }
 
   onSubmit(value) {
-    const sendObj = {
-      Subject: value.subject,
-      Body: this.toMailTable
-    };
-    console.log(sendObj);
+    // const sendObj = {
+    //   Subject: value.subject,
+    //   Body: this.toMailTable
+    // };
+    // console.log(sendObj);
+    // this.loader = true;
+    // this.surveyService.sendSurvey(sendObj).subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.loader = false;
+    //     this.dialog.close();
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
     this.loader = true;
-    this.surveyService.sendSurvey(sendObj).subscribe(
+    this.surveyService.sendSpecificSurvey(this.data.id).subscribe(
       data => {
         console.log(data);
         this.loader = false;
         this.dialog.close();
       },
       error => {
+        this.loader = false;
         console.log(error);
       }
     );

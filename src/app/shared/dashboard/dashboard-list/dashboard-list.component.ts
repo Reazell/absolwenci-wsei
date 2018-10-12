@@ -29,7 +29,6 @@ export class DashboardListComponent implements OnInit, OnDestroy {
   // surveyArr: Survey[];
   constructor(
     private surveyService: SurveyService,
-    private router: Router,
     public dialog: MatDialog
   ) {}
 

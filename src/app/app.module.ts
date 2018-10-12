@@ -44,9 +44,9 @@ import { GuidGuard } from './auth/other/guid.auth';
 import { JwtInterceptor } from './auth/other/jwt.interceptor';
 import { AccountService } from './auth/services/account.service';
 import { AuthenticationService } from './auth/services/authentication.service';
+import { BarModule } from './core/bar/app-bar.module';
 import { MaterialsModule } from './materials/materials.module';
 import { SharedService } from './services/shared.service';
-import { BarModule } from './shared/bar/app-bar.module';
 import { LoadingScreenModule } from './shared/loading-screen/loading-screen.module';
 
 library.add(

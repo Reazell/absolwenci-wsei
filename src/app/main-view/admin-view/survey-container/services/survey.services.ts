@@ -18,7 +18,7 @@ export class SurveyService {
   filterSurveyListInput: Subject<string> = new Subject<string>();
   constructor(private http: HttpClient, private config: AppConfig) {}
 
-  saveSurveyAnswer(survey, id) {
+  saveSurveyAnswer(survey, id, hash) {
     // const obj = {
     //   SurveyTitle: survey.title,
     //   SurveyId: id,
@@ -26,7 +26,7 @@ export class SurveyService {
     // };
     // console.log(JSON.stringify(obj));
     return this.http
-      .post<any>(this.config.apiUrl + '/surveyanswer/surveys', {
+      .post<any>(this.config.apiUrl + '/surveyanswer/' + hash, {
         SurveyTitle: survey.title,
         SurveyId: id,
         Questions: survey.questions
@@ -41,6 +41,13 @@ export class SurveyService {
         Subject: survey.Subject,
         Body: survey.Body
       })
+      .map(data => {
+        return data;
+      });
+  }
+  sendSpecificSurvey(id: number): Observable<any> {
+    return this.http
+      .post<any>(this.config.apiUrl + '/email/survey-emails/' + id, {})
       .map(data => {
         return data;
       });
@@ -68,7 +75,7 @@ export class SurveyService {
     // };
     // console.log(JSON.stringify(obj));
     return this.http
-      .put<Update>(this.config.apiUrl + '/survey', {
+      .put<Update>(this.config.apiUrl + '/survey/surveys', {
         surveyId: object.id,
         Title: object.Title,
         Questions: object.Questions
@@ -94,6 +101,13 @@ export class SurveyService {
   getSurveyWithId(id: number): Observable<Survey> {
     return this.http
       .get<Survey>(this.config.apiUrl + '/survey/' + id)
+      .map(data => {
+        return data;
+      });
+  }
+  getSurveyWithIdAndHash(id: number, hash: string): Observable<any> {
+    return this.http
+      .get<any>(this.config.apiUrl + '/survey/' + id + '/' + hash)
       .map(data => {
         return data;
       });
