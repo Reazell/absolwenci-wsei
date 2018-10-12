@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.Surveys;
+using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
@@ -15,20 +16,22 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;
         private readonly IEncryptorFactory _encryptorFactory;
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
+        private readonly IEmailContent _emailContent;
 
         public SurveyEmailFactory (IEmailConfiguration emailConfiguration,
             IEmailFactory emailFactory,
             IAccountRepository accountRepository,
             ISurveyUserIdentifierService surveyUserIdentifierService,
             IEncryptorFactory encryptorFactory,
-            IUnregisteredUserRepository unregisteredUserRepository)
-        {
+            IUnregisteredUserRepository unregisteredUserRepository,
+            IEmailContent emailContent) {
             _surveyUserIdentifierService = surveyUserIdentifierService;
             _encryptorFactory = encryptorFactory;
             _emailConfiguration = emailConfiguration;
             _emailFactory = emailFactory;
             _accountRepository = accountRepository;
             _unregisteredUserRepository = unregisteredUserRepository;
+            _emailContent = emailContent;
         }
 
         public async Task SendSurveyEmailAsync (int surveyId) {
@@ -40,10 +43,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                     message.To.Add (new MailboxAddress (account.Name, account.Email));
                     message.Subject = "Monitorowanie karier - ankieta";
                     message.Body = new TextPart ("html") {
-                        Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}/{_encryptorFactory.EncryptStringValue(account.Email)}\">link</a> ."
+                        Text = _emailContent.SurveyEmail (surveyId, account.Email)
                     };
                     await _emailFactory.SendEmailAsync (message);
-                    await _surveyUserIdentifierService.CreateAsync(account.Email, surveyId);
+                    await _surveyUserIdentifierService.CreateAsync (account.Email, surveyId);
                 }
             }
         }
@@ -57,10 +60,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                     message.To.Add (new MailboxAddress (unregisteredUser.Name, unregisteredUser.Email));
                     message.Subject = "Monitorowanie karier - ankieta";
                     message.Body = new TextPart ("html") {
-                        Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}/{_encryptorFactory.EncryptStringValue(unregisteredUser.Email)}\">link</a> ."
+                        Text = _emailContent.SurveyEmail (surveyId, unregisteredUser.Email)
                     };
                     await _emailFactory.SendEmailAsync (message);
-                    await _surveyUserIdentifierService.CreateAsync(unregisteredUser.Email, surveyId);
+                    await _surveyUserIdentifierService.CreateAsync (unregisteredUser.Email, surveyId);
                 }
             }
         }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    [Authorize]
+    // [Authorize]
     public class AccountUpdateController : ApiUserController {
         private readonly IAccountService _accountService;
         private readonly IProfileEditionService _profileEditionService;

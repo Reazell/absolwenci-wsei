@@ -16,7 +16,10 @@ using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Extension.JWT;
+using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.AutoMapper;
+using CareerMonitoring.Infrastructure.Extensions.Email;
+using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories;
@@ -121,7 +124,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyReportRepository, SurveyReportRepository> ();
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
-            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository>();
+            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository> ();
             services.AddScoped<IUnregisteredUserRepository, UnregisteredUserRepository> ();
 
             #endregion
@@ -170,6 +173,12 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
             services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
             services.AddScoped<IImportFileFactory, ImportFileFactory> ();
+
+            #endregion
+
+            #region Extensions
+
+            services.AddScoped<IEmailContent, EmailContent> ();
 
             #endregion
         }
