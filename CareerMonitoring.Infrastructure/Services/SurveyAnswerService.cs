@@ -46,7 +46,7 @@ namespace CareerMonitoring.Infrastructure.Services
         {
             var surveyAnswerId = await CreateAsync (command.SurveyTitle, command.SurveyId);
             if (command.Questions == null)
-                throw new Exception ("Cannot create empty survey");
+                throw new NullReferenceException ("Cannot create empty survey");
             foreach (var questionAnswer in command.Questions) {
                 await AddChoiceOptionsAnswerAndRowAnswerAsync (command.SurveyId, surveyAnswerId, questionAnswer.Select,
                     questionAnswer);
@@ -60,7 +60,7 @@ namespace CareerMonitoring.Infrastructure.Services
                     surveyAnswerId,
                     questionAnswer.QuestionPosition, questionAnswer.Content, questionAnswer.Select);
                 if (questionAnswer.FieldData == null)
-                    throw new Exception ("Question must contain FieldData");
+                    throw new NullReferenceException ("Question must contain FieldData");
                 foreach (var fieldDataAnswer in questionAnswer.FieldData) {
                     var fieldDataAnswerId = await AddFieldDataAnswerToQuestionAnswerAsync (surveyId,
                         questionAnswerId,

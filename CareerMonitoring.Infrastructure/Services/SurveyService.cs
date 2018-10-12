@@ -38,12 +38,12 @@ namespace CareerMonitoring.Infrastructure.Services {
         {
             var surveyId = await CreateAsync (command.Title);
             if(command.Questions == null)
-                throw new IncorrectValueException ("Cannot create empty survey");
+                throw new NullReferenceException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
                 question.Content, question.Select);
                 if(question.FieldData == null)
-                    throw new Exception ("Question must contain FieldData");
+                    throw new NullReferenceException ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }
@@ -55,12 +55,12 @@ namespace CareerMonitoring.Infrastructure.Services {
         {
             var surveyId = await UpdateAsync (command.SurveyId, command.Title);
             if(command.Questions == null)
-                throw new Exception ("Cannot create empty survey");
+                throw new NullReferenceException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
                 question.Content, question.Select);
                 if(question.FieldData == null)
-                    throw new Exception ("Question must contain FieldData");
+                    throw new NullReferenceException ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
                 }

@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.SurveyAnswer;
+using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +11,14 @@ namespace CareerMonitoring.Api.Controllers {
     public class SurveyAnswerController : ApiUserController {
         private readonly ISurveyAnswerService _surveyAnswerService;
         private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;
+        private readonly IEncryptorFactory _encryptorFactory;
 
         public SurveyAnswerController (ISurveyAnswerService surveyAnswerService,
-            ISurveyUserIdentifierService surveyUserIdentifierService) {
+            ISurveyUserIdentifierService surveyUserIdentifierService,
+            IEncryptorFactory encryptorFactory) {
             _surveyAnswerService = surveyAnswerService;
             _surveyUserIdentifierService = surveyUserIdentifierService;
+            _encryptorFactory = encryptorFactory;
         }
 
         [HttpPost ("{email}")]
@@ -22,9 +26,10 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId) == "unauthorized")
+                var decryptedEmail = _encryptorFactory.DecryptStringValue(email);
+                if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId) == "unauthorized")
                     return Unauthorized ();
-                else if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId) == "answered")
+                else if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId) == "answered")
                     return BadRequest ("you already answered to that survey");
                 await _surveyAnswerService.CreateSurveyAnswerAsync(command);
                 return StatusCode (201);
