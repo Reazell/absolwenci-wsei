@@ -671,11 +671,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "projectUniqueName": "c:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "projectName": "CareerMonitoring.Core",
-      "projectPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "projectPath": "c:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "packagesPath": "C:\\Users\\amado\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
+      "outputPath": "c:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -721,13 +721,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Wystąpił problem podczas czytania pliku pamięci podręcznej C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\CareerMonitoring.Core.csproj.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 
 namespace CareerMonitoring.Api.Controllers {
-    [Authorize]
+    // [Authorize]
     public class ImportFileController : ApiUserController {
         private readonly IImportFileFactory _importFileFactory;
         private readonly IUnregisteredUserService _unregisteredUserService;
