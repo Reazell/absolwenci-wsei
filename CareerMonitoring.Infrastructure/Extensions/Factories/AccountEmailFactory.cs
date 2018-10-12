@@ -29,7 +29,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             message.To.Add (new MailboxAddress (account.Name, account.Email));
             message.Subject = "Monitorowanie karier - aktywacja konta.";
             message.Body = new TextPart ("html") {
-                Text = $"Oto mail wygenerowany automatycznie, potwierdzający Twoją rejestrację w aplikacji <b>Monitorowanie karier</b><br/> Kliknij w <a href=\"http://localhost:4200/api/auth/activation/{activationKey}\">link aktywacyjny</a>, dzięki czemu aktywujesz swoje konto w serwisie."
+                Text = $"Oto mail wygenerowany automatycznie, potwierdzający Twoją rejestrację w aplikacji <b>Monitorowanie karier</b><br/> Kliknij w <a href=\"http://localhost:4200/auth/activation/{activationKey}\">link aktywacyjny</a>, dzięki czemu aktywujesz swoje konto w serwisie."
             };
             await _emailFactory.SendEmailAsync (message);
         }
@@ -40,7 +40,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             message.To.Add (new MailboxAddress (account.Name.ToString (), account.Email.ToString ()));
             message.Subject = "Monitorowanie Karier - przywracanie hasla";
             message.Body = new TextPart ("html") {
-                Text = $"Witaj, {account.Name}.Ten mail został wygenerowany automatycznie.</b><br/> Kliknij w <a href=\"http://localhost:4200/api/auth/recoveringPassword/{token}\">link </a>, aby zmienić swoje hasło."
+                Text = $"Witaj, {account.Name}.Ten mail został wygenerowany automatycznie.</b><br/> Kliknij w <a href=\"http://localhost:4200/auth/recoveringPassword/{token}\">link </a>, aby zmienić swoje hasło."
             };
             await _emailFactory.SendEmailAsync (message);
         }

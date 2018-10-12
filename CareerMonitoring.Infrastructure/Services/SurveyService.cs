@@ -38,7 +38,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         {
             var surveyId = await CreateAsync (command.Title);
             if(command.Questions == null)
-                throw new Exception ("Cannot create empty survey");
+                throw new IncorrectValueException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
                 question.Content, question.Select);
