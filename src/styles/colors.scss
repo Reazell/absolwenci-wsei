@@ -2,7 +2,8 @@
 @import '~@angular/material/theming';
 
 $primary: mat-color($my-app-primary, 500);
-$warn: mat-color($my-app-warn, 800);
+$warn: mat-color($my-app-warn);
+$warn-light: #ff6c61;
 $primary-light: #8bc34a;
 $primary-very-light: #c2e697;
 $primary-gradient: #a3d26c;

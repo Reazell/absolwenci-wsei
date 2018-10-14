@@ -153,6 +153,7 @@ export class SurveyCreatorComponent
   getSurvey(): void {
     this.activatedRoute.data.map(data => data.cres).subscribe(
       (res: Survey) => {
+        this.surveyService.isCreatorLoading(false);
         if (res) {
           console.log(res);
           this.id = res.id;
@@ -166,6 +167,7 @@ export class SurveyCreatorComponent
       },
       error => {
         console.log(error);
+        this.surveyService.isCreatorLoading(false);
       }
     );
   }
@@ -211,7 +213,7 @@ export class SurveyCreatorComponent
       Questions: this.invoiceForm.getRawValue().questions,
       id: this.id
     };
-    console.log(JSON.stringify(object));
+    // console.log(JSON.stringify(object));
     // console.log('update');
     // console.log(object);
     return this.surveyService.updateSurvey(object);

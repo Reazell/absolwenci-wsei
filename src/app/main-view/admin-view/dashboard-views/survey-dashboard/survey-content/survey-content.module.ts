@@ -16,7 +16,7 @@ export const routes: Routes = [{ path: '', component: SurveyContentComponent }];
     DashboardBarModule,
     DashboardListModule,
     RouterModule.forChild(routes),
-    IconButtonModule
+    IconButtonModule,
   ],
   entryComponents: [ConfirmDialogComponent],
   declarations: [SurveyContentComponent, SurveyTileComponent]

@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { SharedService } from '../../../../services/shared.service';
+import { Survey } from '../models/survey.model';
 import { SurveyService } from '../services/survey.services';
 
 @Component({
@@ -31,7 +32,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.getSurveyId();
+    this.getSurvey();
     this.showAdminMenu();
     this.showUserInfo();
     this.sharedService.showSendButton(true);
@@ -43,32 +44,49 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   showUserInfo(): void {
     this.sharedService.showUser(false);
   }
-  getSurveyId(): void {
-    this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
-      this.id = Number(params['id']);
-      this.hash = params['hash'] + '=';
-      console.log(this.hash);
-      this.getSurvey();
-    });
-  }
+  // getSurveyId(): void {
+  //   this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
+  //     this.id = Number(params['id']);
+  //     this.hash = params['hash'] + '=';
+  //     console.log(this.hash);
+  //     this.getSurvey();
+  //   });
+  // }
+  // getSurvey(): void {
+  //   this.surveyService.getSurveyWithIdAndHash(this.id, this.hash).subscribe(
+  //     data => {
+  //       // console.log(JSON.stringify(data));
+  //       this.createQuestionData(data.result);
+  //       this.title = data.result['title'];
+  //       this.loader = true;
+  //       // this.ref.markForCheck();
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
   getSurvey(): void {
-    this.surveyService.getSurveyWithIdAndHash(this.id, this.hash).subscribe(
-      data => {
-        // console.log(JSON.stringify(data));
-        this.createQuestionData(data.result);
-        this.title = data.result['title'];
-        this.loader = true;
-        // this.ref.markForCheck();
+    this.activatedRoute.data.map(data => data.cres).subscribe(
+      res => {
+        if (res) {
+          this.createQuestionData(res.result);
+          this.title = res.result['title'];
+          this.id = Number(this.activatedRoute.snapshot.params['id']);
+          this.hash = this.activatedRoute.snapshot.params['hash'] + '==';
+          console.log(this.hash);
+          this.loader = true;
+          this.surveyService.isCreatorLoading(false);
+        }
       },
       error => {
         console.log(error);
+        this.surveyService.isCreatorLoading(false);
       }
     );
   }
   sendSurvey(): void {
-    console.log(JSON.stringify(this.invoiceForm.getRawValue().questions));
-    // console.log(this.invoiceForm.getRawValue());
-
     this.surveyService
       .saveSurveyAnswer(this.invoiceForm.getRawValue(), this.id, this.hash)
       .subscribe(

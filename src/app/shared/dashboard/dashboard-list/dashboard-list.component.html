@@ -1,16 +1,13 @@
 <div id="survey-container">
   <div [ngClass]="loading === true ? 'surveyList opacity' : 'surveyList'">
     <div id="container" *ngFor="let item of itemArr">
-      <ng-content *ngTemplateOutlet="parentTemplate; context: { $implicit: item }"></ng-content>
-      <!-- <button mat-icon-button (click)="resultButtonClick(item)">
-        <fa-icon [icon]="['far','chart-bar']"></fa-icon>
-      </button>
-      <button mat-icon-button (click)="dialogButtonClick(item.id)">
-        <fa-icon class="delete" [icon]="['fas','times']"></fa-icon>
-      </button> -->
-
+      <div class="survey-item">
+        <ng-content *ngTemplateOutlet="parentTemplate; context: { $implicit: item }"></ng-content>
+      </div>
+      <div class="break"></div>
     </div>
   </div>
+
   <div id="overlay" *ngIf="loading === true">
     <mat-spinner [diameter]="40"></mat-spinner>
   </div>

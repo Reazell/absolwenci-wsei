@@ -37,11 +37,11 @@
         <p-chart type="pie" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
       </div>
 
-      <div *ngSwitchCase="'linear-scale'">
+      <div *ngSwitchDefault>
         <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
       </div>
 
-      <div *ngSwitchCase="'single-choice'">
+      <!-- <div *ngSwitchCase="'single-choice'">
         <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
       </div>
 
@@ -55,7 +55,7 @@
 
       <div *ngSwitchCase="'multiple-grid'">
         <p-chart type="bar" [data]="question.answersData" *ngIf="question.answersNumber > 0"></p-chart>
-      </div>
+      </div> -->
 
       <span *ngIf="question.answersNumber === 0"> Na razie nie ma odpowiedzi na to pytanie.
       </span>

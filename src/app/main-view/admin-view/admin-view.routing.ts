@@ -8,12 +8,6 @@ const adminRoutes: Routes = [
     path: '',
     component: AdminViewComponent,
     children: [
-      // {
-      //   path: '',
-      //   loadChildren:
-      //     './admin-dashboard/admin-dashboard.module#AdminDashboardModule',
-      //   canLoad: [AuthGuard]
-      // },
       {
         path: '',
         redirectTo: 'd',

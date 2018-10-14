@@ -15,7 +15,7 @@ import { DashboardTileComponent } from './dashboard-tile/dashboard-tile.componen
     FontAwesomeModule,
     MaterialsModule,
     MatProgressSpinnerModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
   ],
   declarations: [DashboardListComponent, DashboardTileComponent],
   exports: [DashboardListComponent, DashboardTileComponent]

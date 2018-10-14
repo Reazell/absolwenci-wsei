@@ -45,13 +45,15 @@ const routes: Routes = [
             path: outletPath,
             outlet: outlets.sidebar,
             loadChildren:
-              './../../main-view/admin-view/dashboard-views/admin-dashboard/admin-sidenav/admin-sidenav.module#AdminSidenavModule'
+              './../../main-view/admin-view/dashboard-views/admin-dashboard/admin-sidenav/admin-sidenav.module#AdminSidenavModule',
+            data: { preload: true, delay: true }
           },
           {
             path: outletPath,
             outlet: outlets.manage,
             loadChildren:
-              './../../main-view/admin-view/dashboard-views/admin-dashboard/admin-content/admin-content.module#AdminContentModule'
+              './../../main-view/admin-view/dashboard-views/admin-dashboard/admin-content/admin-content.module#AdminContentModule',
+            data: { preload: true, delay: true }
           }
         ]
       },
@@ -67,13 +69,15 @@ const routes: Routes = [
             path: outletPath,
             outlet: outlets.sidebar,
             loadChildren:
-              './../../main-view/admin-view/dashboard-views/survey-dashboard/survey-sidenav/survey-sidenav.module#SurveySidenavModule'
+              './../../main-view/admin-view/dashboard-views/survey-dashboard/survey-sidenav/survey-sidenav.module#SurveySidenavModule',
+            data: { preload: true, delay: true }
           },
           {
             path: outletPath,
             outlet: outlets.manage,
             loadChildren:
-              './../../main-view/admin-view/dashboard-views/survey-dashboard/survey-content/survey-content.module#SurveyContentModule'
+              './../../main-view/admin-view/dashboard-views/survey-dashboard/survey-content/survey-content.module#SurveyContentModule',
+            data: { preload: true, delay: true }
           }
         ]
       },
@@ -89,13 +93,15 @@ const routes: Routes = [
             path: outletPath,
             outlet: outlets.sidebar,
             loadChildren:
-            './../../main-view/admin-view/dashboard-views/users-dashboard/users-sidenav/users-sidenav.module#UsersSidenavModule'
+              './../../main-view/admin-view/dashboard-views/users-dashboard/users-sidenav/users-sidenav.module#UsersSidenavModule',
+            data: { preload: true, delay: true }
           },
           {
             path: outletPath,
             outlet: outlets.manage,
             loadChildren:
-            './../../main-view/admin-view/dashboard-views/users-dashboard/users-content/users-content.module#UsersContentModule'
+              './../../main-view/admin-view/dashboard-views/users-dashboard/users-content/users-content.module#UsersContentModule',
+            data: { preload: true, delay: true }
           }
         ]
       }

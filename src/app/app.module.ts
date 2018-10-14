@@ -23,8 +23,9 @@ import {
   faCog,
   faEllipsisH,
   faEllipsisV,
-  faGraduationCap,
+  faFileExcel,
   // faGripHorizontal,
+  faGraduationCap,
   faGripVertical,
   faPen,
   faPlus,
@@ -42,6 +43,7 @@ import { AppRoutingModule } from './app.routing';
 import { AuthGuard } from './auth/other/guard.auth';
 import { GuidGuard } from './auth/other/guid.auth';
 import { JwtInterceptor } from './auth/other/jwt.interceptor';
+import { PreloadSelectedModulesList } from './auth/other/preload';
 import { AccountService } from './auth/services/account.service';
 import { AuthenticationService } from './auth/services/authentication.service';
 import { BarModule } from './core/bar/app-bar.module';
@@ -69,7 +71,8 @@ library.add(
   faSearch,
   faEllipsisH,
   faChartBar,
-  faArrowLeft
+  faArrowLeft,
+  faFileExcel
 );
 
 @NgModule({
@@ -94,6 +97,7 @@ library.add(
     AuthGuard,
     GuidGuard,
     AppConfig,
+    PreloadSelectedModulesList,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

@@ -22,14 +22,15 @@
     <div id="career-offices" *ngSwitchCase="'careerOffice'">
       <ul class="menu" *ngIf="showAdmin === true">
         <li class="menu-item" (click)="redirectTo('main')">Panel Główny</li>
-        <li class="menu-item" (click)="redirectTo('survey')">Ankiety</li>
+        <li class="menu-item" [matMenuTriggerFor]="surveyInfo"
+          #surveyTrigger="matMenuTrigger">Ankiety</li>
         <li class="menu-item" (click)="redirectTo('users')">Użytkownicy</li>
       </ul>
       <div id="survey-buttons">
-        <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton === true" matTooltip="{{toolTipInfo.show}}" matTooltipPosition="below"
-          (click)="showSurvey()"></fa-icon>
-        <fa-icon [icon]="['fas', 'pen']" *ngIf="showSendButton === true" matTooltip="{{toolTipInfo.edit}}" matTooltipPosition="below"
-          (click)="editSurvey()"></fa-icon>
+        <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton === true" matTooltip="{{toolTipInfo.show}}"
+          matTooltipPosition="below" (click)="showSurvey()"></fa-icon>
+        <fa-icon [icon]="['fas', 'pen']" *ngIf="showSendButton === true" matTooltip="{{toolTipInfo.edit}}"
+          matTooltipPosition="below" (click)="editSurvey()"></fa-icon>
         <button mat-button id="save" *ngIf="showCreatorButton === true" (click)="sendSurvey()">WYŚLIJ</button>
       </div>
     </div>
@@ -40,6 +41,10 @@
     </div>
     <mat-menu #userInfo="matMenu" id="sth" [overlapTrigger]="false">
       <app-user-info (logout)="emitLogout()" (routeSwitch)="emitRouteSwitch()"></app-user-info>
+    </mat-menu>
+    <mat-menu #surveyInfo="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)="redirectTo('survey')">Szablony</button>
+      <button mat-menu-item>Historia</button>
     </mat-menu>
   </div>
 </div>

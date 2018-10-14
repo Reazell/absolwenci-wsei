@@ -83,7 +83,8 @@
                       {{control.value}}
                     </mat-option>
                   </mat-select>
-
+                </mat-form-field>
+                <mat-form-field appearance="standard">
                   <mat-select placeholder="typ kontrolki" formControlName="maxValue" name="control" (selectionChange)="updateSurveySubject()">
                     <mat-option *ngFor="let control of maxValue" [value]="control.value">
                       {{control.value}}

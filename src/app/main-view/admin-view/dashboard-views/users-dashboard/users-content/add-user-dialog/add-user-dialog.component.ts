@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as _moment from 'moment';
 import { UnregisteredUser, UnregisteredUserModel } from './../../../../../../models/user.model';
 import { UserService } from './../../../../survey-container/services/user.services';
 
@@ -12,6 +11,8 @@ import { UserService } from './../../../../survey-container/services/user.servic
 export class AddUserDialogComponent implements OnInit {
   dialogForm: FormGroup;
   loader = false;
+  selected = 1;
+
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit() {

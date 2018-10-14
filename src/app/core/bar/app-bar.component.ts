@@ -3,8 +3,10 @@ import {
   Component,
   EventEmitter,
   Input,
-  Output
+  Output,
+  ViewChild
 } from '@angular/core';
+import { MatMenuTrigger } from '../../../../node_modules/@angular/material';
 import { AppBarTooltip } from './../../shared/models/shared.models';
 
 @Component({
@@ -14,6 +16,9 @@ import { AppBarTooltip } from './../../shared/models/shared.models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppBarComponent {
+  @ViewChild(MatMenuTrigger)
+  trigger: MatMenuTrigger;
+
   private _showAdmin: boolean;
   private _showSendButton: boolean;
   private _showToggleButton: boolean;
@@ -117,6 +122,7 @@ export class AppBarComponent {
   redirectToButton: EventEmitter<string> = new EventEmitter<string>();
   @Output()
   sendSurveyDialog: EventEmitter<boolean> = new EventEmitter<boolean>();
+  // @Output()
 
   // child outputs
   @Output()
@@ -150,5 +156,14 @@ export class AppBarComponent {
   }
   emitRouteSwitch() {
     this.routeSwitch.emit(true);
+  }
+
+  // actions
+
+  openHoveredMenu() {
+    this.trigger.openMenu();
+  }
+  closeHoveredMenu() {
+    this.trigger.closeMenu();
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/other/guard.auth';
+import { PreloadSelectedModulesList } from './auth/other/preload';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
@@ -13,13 +14,17 @@ const appRoutes: Routes = [
   {
     path: 'info',
     loadChildren: './info/info.module#InfoModule'
-  },
+  }
 
   // { path: '**', redirectTo: '/auth/login' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [
+    RouterModule.forRoot(appRoutes, {
+      preloadingStrategy: PreloadSelectedModulesList
+    })
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -5,10 +5,14 @@ import { Survey } from '../models/survey.model';
 import { SurveyService } from '../services/survey.services';
 
 @Injectable()
-export class SurveyCreatorResolver implements Resolve<Survey> {
+export class SurveyViewformResolver implements Resolve<any> {
   constructor(private surveyService: SurveyService) {}
-  resolve(route: ActivatedRouteSnapshot): Observable<Survey> {
+  resolve(route: ActivatedRouteSnapshot): Observable<any> {
     this.surveyService.isCreatorLoading(true);
-    return this.surveyService.getSurveyWithId(Number(route.params['id']));
+    const hash = route.params['hash'] + '==';
+    return this.surveyService.getSurveyWithIdAndHash(
+      Number(route.params['id']),
+      hash
+    );
   }
 }

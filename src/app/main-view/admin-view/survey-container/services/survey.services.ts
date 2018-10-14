@@ -114,7 +114,7 @@ export class SurveyService {
   }
   getSurveyReport(id: number): Observable<any> {
     return this.http
-      .get<any>(this.config.apiUrl + '/surveyreport/' + id)
+      .get<any>(this.config.apiUrl + '/surveyreport/surveyReports/' + id)
       .map(data => {
         return data;
       });

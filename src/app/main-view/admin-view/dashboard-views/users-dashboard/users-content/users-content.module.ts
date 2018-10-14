@@ -3,15 +3,19 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule, Routes } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FileUploadModule } from 'primeng/components/fileupload/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { MatTabsModule } from '../../../../../../../node_modules/@angular/material';
 import { MaterialsModule } from './../../../../../materials/materials.module';
 import { ConfirmDialogComponent } from './../../../../../shared/confirm-dialog/confirm-dialog.component';
 import { DashboardBarModule } from './../../../../../shared/dashboard/dashboard-bar/dashboard-bar.module';
 import { DashboardListModule } from './../../../../../shared/dashboard/dashboard-list/dashboard-list.module';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
+import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab.component';
+import { ImportUserTabComponent } from './add-user-dialog/import-user-tab/import-user-tab.component';
 import { UsersContentComponent } from './users-content.component';
 import { UsersTileComponent } from './users-tile/users-tile.component';
-
 export const routes: Routes = [{ path: '', component: UsersContentComponent }];
 
 @NgModule({
@@ -23,14 +27,18 @@ export const routes: Routes = [{ path: '', component: UsersContentComponent }];
     MaterialsModule,
     ReactiveFormsModule,
     ProgressSpinnerModule,
-    MatDatepickerModule
-    // MatNativeDateModule
+    MatDatepickerModule,
+    MatTabsModule,
+    FileUploadModule,
+    FontAwesomeModule
   ],
   entryComponents: [ConfirmDialogComponent, AddUserDialogComponent],
   declarations: [
     UsersContentComponent,
     UsersTileComponent,
-    AddUserDialogComponent
+    AddUserDialogComponent,
+    AddUserTabComponent,
+    ImportUserTabComponent
   ]
 })
 export class UsersContentModule {}

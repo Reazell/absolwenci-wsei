@@ -12,6 +12,13 @@ import {
 export class UserService {
   constructor(private http: HttpClient, private config: AppConfig) {}
 
+  importUsers(file): Observable<any> {
+    return this.http
+      .post<any>(this.config.apiUrl + '/importfile/import', file)
+      .map(data => {
+        return data;
+      });
+  }
   getAllUsers(): Observable<Array<UnregisteredUser | RegisteredUser>> {
     return this.http
       .get<any[]>(this.config.apiUrl + '/importfile/unregisteredUsers')

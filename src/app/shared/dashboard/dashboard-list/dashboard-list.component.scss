@@ -3,14 +3,25 @@
   .surveyList {
     display: flex;
     flex-direction: column-reverse;
+    margin: 0 25px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
     #container {
-      display: flex;
-      align-items: center;
+      height: 100%;
       width: 100%;
-      cursor: pointer;
-    }
-    #container:hover {
-      background-color: #eaeaea;
+      .survey-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+      }
+      .survey-item:hover {
+        background-color: #eaeaea;
+      }
+      .break {
+        height: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+        // margin: 8px;
+      }
     }
   }
   #overlay {
