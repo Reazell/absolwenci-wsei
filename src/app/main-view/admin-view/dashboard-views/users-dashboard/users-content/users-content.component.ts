@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { RegisteredUser, UnregisteredUser } from './../../../../../models/user.model';
-import { UserService } from './../../../survey-container/services/user.services';
+import { RegisteredUser, UnregisteredUser } from '../../../../../models/user.model';
+import { UserService } from '../../../survey-container/services/user.services';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 
 @Component({

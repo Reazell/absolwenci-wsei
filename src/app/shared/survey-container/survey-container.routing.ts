@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../../../auth/other/guard.auth';
-import { SurveyCreatorResolver } from './resolvers/survey-creator.resolver';
-import { SurveyResultResolver } from './resolvers/survey-result.resolver';
-import { SurveyViewformResolver } from './resolvers/survey-viewform.resolver';
+import { AuthGuard } from '../../auth/other/guard.auth';
+import { SurveyCreatorResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-creator.resolver';
+import { SurveyResultResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-result.resolver';
+import { SurveyViewformResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-viewform.resolver';
 import { SurveyContainerComponent } from './survey-container.component';
 
 const surveyContainerRoutes: Routes = [
@@ -14,7 +14,7 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'create/:id',
         loadChildren:
-          './survey-creator/survey-creator.module#SurveyCreatorModule',
+          './../../main-view/admin-view/survey-container/survey-creator/survey-creator.module#SurveyCreatorModule',
         canLoad: [AuthGuard],
         resolve: {
           cres: SurveyCreatorResolver
@@ -22,9 +22,16 @@ const surveyContainerRoutes: Routes = [
         data: { preload: true, delay: true }
       },
       {
+        path: 'viewform/:id',
+        loadChildren:
+          './../../survey-viewform/survey-viewform.module#SurveyViewformModule'
+        // canLoad: [SurveyGuard],
+        // canLoad: [RouteGuard]
+      },
+      {
         path: 'viewform/:id/:hash',
         loadChildren:
-          './survey-viewform/survey-viewform.module#SurveyViewformModule',
+          './../../survey-viewform/survey-viewform.module#SurveyViewformModule',
         resolve: {
           cres: SurveyViewformResolver
         },
@@ -34,7 +41,8 @@ const surveyContainerRoutes: Routes = [
       },
       {
         path: 'result/:id',
-        loadChildren: './survey-result/survey-result.module#SurveyResultModule',
+        loadChildren:
+          './../../main-view/admin-view/survey-container/survey-result.module#SurveyResultModule',
         canLoad: [AuthGuard],
         resolve: {
           cres: SurveyResultResolver

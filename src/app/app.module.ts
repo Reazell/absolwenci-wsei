@@ -47,6 +47,8 @@ import { PreloadSelectedModulesList } from './auth/other/preload';
 import { AccountService } from './auth/services/account.service';
 import { AuthenticationService } from './auth/services/authentication.service';
 import { BarModule } from './core/bar/app-bar.module';
+import { SurveyViewformResolver } from './main-view/admin-view/survey-container/resolvers/survey-viewform.resolver';
+import { SurveyService } from './main-view/admin-view/survey-container/services/survey.services';
 import { MaterialsModule } from './materials/materials.module';
 import { SharedService } from './services/shared.service';
 import { LoadingScreenModule } from './shared/loading-screen/loading-screen.module';
@@ -97,6 +99,8 @@ library.add(
     AuthGuard,
     GuidGuard,
     AppConfig,
+    SurveyService,
+    SurveyViewformResolver,
     PreloadSelectedModulesList,
     {
       provide: HTTP_INTERCEPTORS,

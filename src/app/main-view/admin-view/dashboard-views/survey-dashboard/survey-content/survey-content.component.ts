@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { ConfirmDialogComponent } from './../../../../../shared/confirm-dialog/confirm-dialog.component';
-import { Survey, SurveyModel } from './../../../survey-container/models/survey.model';
-import { SurveyService } from './../../../survey-container/services/survey.services';
+import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
+import { Survey, SurveyModel } from '../../../survey-container/models/survey.model';
+import { SurveyService } from '../../../survey-container/services/survey.services';
 
 @Component({
   selector: 'app-survey-content',

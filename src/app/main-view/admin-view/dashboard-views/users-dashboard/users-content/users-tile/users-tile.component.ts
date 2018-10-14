@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UnregisteredUser, UnregisteredUserModel } from './../../../../../../models/user.model';
+import { UnregisteredUser, UnregisteredUserModel } from '../../../../../../models/user.model';
 
 @Component({
   selector: 'app-users-tile',

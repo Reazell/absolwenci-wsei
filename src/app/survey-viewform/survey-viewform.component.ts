@@ -2,9 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { SharedService } from '../../../../services/shared.service';
-import { Survey } from '../models/survey.model';
-import { SurveyService } from '../services/survey.services';
+import { SurveyService } from '../main-view/admin-view/survey-container/services/survey.services';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-survey-viewform',

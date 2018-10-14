@@ -22,7 +22,7 @@ const adminRoutes: Routes = [
       {
         path: 'survey',
         loadChildren:
-          './survey-container/survey-container.module#SurveyContainerModule',
+          './../../shared/survey-container/survey-container.module#SurveyContainerModule',
         canLoad: [AuthGuard]
       }
     ]

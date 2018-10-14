@@ -6,7 +6,7 @@ import {
   MatRadioModule
 } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MaterialsModule } from '../../../../materials/materials.module';
+import { MaterialsModule } from '../materials/materials.module';
 import { SurveySentComponent } from './survey-sent/survey-sent.component';
 import { SurveyViewformComponent } from './survey-viewform.component';
 import { SurveyViewformRoutingModule } from './survey-viewform.routing';

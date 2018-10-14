@@ -7,7 +7,7 @@ import {
   Router,
   RouterEvent
 } from '@angular/router';
-import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { AccountService } from './auth/services/account.service';
 import { AuthenticationService } from './auth/services/authentication.service';
 import { SharedService } from './services/shared.service';

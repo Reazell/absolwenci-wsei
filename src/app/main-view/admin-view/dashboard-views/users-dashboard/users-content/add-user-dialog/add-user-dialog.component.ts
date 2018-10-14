@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UnregisteredUser, UnregisteredUserModel } from './../../../../../../models/user.model';
-import { UserService } from './../../../../survey-container/services/user.services';
+import { UnregisteredUser, UnregisteredUserModel } from '../../../../../../models/user.model';
+import { UserService } from '../../../../survey-container/services/user.services';
 
 @Component({
   selector: 'app-add-user-dialog',

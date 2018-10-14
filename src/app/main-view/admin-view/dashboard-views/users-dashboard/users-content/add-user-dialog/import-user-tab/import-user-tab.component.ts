@@ -10,7 +10,7 @@ import {
   UnregisteredUser,
   UnregisteredUserModel
 } from '../../../../../../../models/user.model';
-import { UserService } from './../../../../../survey-container/services/user.services';
+import { UserService } from '../../../../../survey-container/services/user.services';
 
 @Component({
   selector: 'app-import-user-tab',

@@ -755,8 +755,7 @@ export class SurveyCreatorComponent
   }
 
   showSurvey(): void {
-    const string: string =
-      'http://localhost:4200/app/admin/survey/viewform/' + this.id;
+    const string: string = 'http://localhost:4200/survey/viewform/' + this.id;
     window.open(string, '_blank');
   }
 

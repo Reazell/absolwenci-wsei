@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { SurveyCreatorResolver } from './resolvers/survey-creator.resolver';
-import { SurveyResultResolver } from './resolvers/survey-result.resolver';
-import { SurveyViewformResolver } from './resolvers/survey-viewform.resolver';
+import { SurveyCreatorResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-creator.resolver';
+import { SurveyResultResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-result.resolver';
 import { SurveyContainerComponent } from './survey-container.component';
 import { SurveyContainerRoutingModule } from './survey-container.routing';
 
@@ -11,7 +10,6 @@ import { SurveyContainerRoutingModule } from './survey-container.routing';
   declarations: [SurveyContainerComponent],
   providers: [
     SurveyCreatorResolver,
-    SurveyViewformResolver,
     SurveyResultResolver
   ]
 })
