@@ -14,9 +14,14 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [HttpGet ("surveyReports/{surveyId}")]
-        public async Task<JsonResult> GetSurveyReport (int surveyId) {
-            var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync (surveyId);
-            return Json (surveyReport);
+        public async Task<IActionResult> GetSurveyReport (int surveyId) {
+            try{
+                var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync (surveyId);
+                return Json (surveyReport);
+            }
+            catch(Exception e){
+                return BadRequest (e.Message);
+            }
         }
     }
 }

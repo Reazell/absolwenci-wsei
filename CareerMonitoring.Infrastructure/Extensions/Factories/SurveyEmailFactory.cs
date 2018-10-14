@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.Abstract;
+using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
@@ -36,8 +38,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
 
         public async Task SendSurveyEmailAsync (int surveyId) {
             var accounts = await _accountRepository.GetAllAsync ();
+            List<Account> accountsToIdentify = new List<Account>();
             foreach (var account in accounts) {
                 if (account.Role != "careerOffice") {
+                    accountsToIdentify.Add(account);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (account.Name, account.Email));
@@ -49,12 +53,18 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                     await _surveyUserIdentifierService.CreateAsync (account.Email, surveyId);
                 }
             }
+            foreach (var accountToIdentify in accountsToIdentify)
+            {
+                await _surveyUserIdentifierService.CreateAsync(accountToIdentify.Email, surveyId);
+            }
         }
 
         public async Task SendSurveyEmailToUnregisteredUsersAsync (int surveyId) {
             var unregisteredUsers = await _unregisteredUserRepository.GetAllAsync ();
+            List<UnregisteredUser> unregisteredUsersToIdentify = new List<UnregisteredUser>();
             foreach (var unregisteredUser in unregisteredUsers) {
                 if (unregisteredUser.Role != "careerOffice") {
+                    unregisteredUsersToIdentify.Add(unregisteredUser);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (unregisteredUser.Name, unregisteredUser.Email));
@@ -65,6 +75,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                     await _emailFactory.SendEmailAsync (message);
                     await _surveyUserIdentifierService.CreateAsync (unregisteredUser.Email, surveyId);
                 }
+            }
+            foreach (var unregisteredUserToIdentify in unregisteredUsersToIdentify)
+            {
+                await _surveyUserIdentifierService.CreateAsync(unregisteredUserToIdentify.Email, surveyId);
             }
         }
     }

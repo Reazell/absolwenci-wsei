@@ -15,6 +15,7 @@ using CareerMonitoring.Infrastructure.Commands.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
+using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.AutoMapper;
