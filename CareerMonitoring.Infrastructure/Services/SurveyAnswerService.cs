@@ -67,7 +67,6 @@ namespace CareerMonitoring.Infrastructure.Services
                         fieldDataAnswer.Input,
                         fieldDataAnswer.MinLabel,
                         fieldDataAnswer.MaxLabel);
-
                     if (fieldDataAnswer.ChoiceOptions != null)
                         await AddChoiceOptionsAnswerAsync (surveyId, fieldDataAnswer, questionAnswer.Select,
                             fieldDataAnswerId,
@@ -158,9 +157,8 @@ namespace CareerMonitoring.Infrastructure.Services
                         questionAnswer.Content, questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
-                        if (fieldDataAnswer.Input == null) {
-                            continue;
-                        }
+                        if(input == "")
+                            questionReport.DeleteAnswer();
                         dataSet.AddData(fieldDataAnswer.Input);
                         await _dataSetRepository.UpdateAsync(dataSet);
                     }
@@ -176,9 +174,8 @@ namespace CareerMonitoring.Infrastructure.Services
                             questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets)
                     {
-                        if (fieldDataAnswer.Input == null) {
-                            continue;
-                        }
+                        if(input == "")
+                            questionReport.DeleteAnswer();
                         dataSet.AddData(fieldDataAnswer.Input);
                         await _dataSetRepository.UpdateAsync(dataSet);
                     }
