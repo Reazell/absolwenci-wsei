@@ -73,7 +73,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
           this.createQuestionData(res.result);
           this.title = res.result['title'];
           this.id = Number(this.activatedRoute.snapshot.params['id']);
-          this.hash = this.activatedRoute.snapshot.params['hash'] + '==';
+          this.hash = this.activatedRoute.snapshot.params['hash'];
           console.log(this.hash);
           this.loader = true;
           this.surveyService.isCreatorLoading(false);

@@ -675,41 +675,11 @@ export class SurveyCreatorComponent
         case 'single-choice':
         case 'multiple-choice':
         case 'dropdown-menu':
-          switch (select) {
-            case 'single-choice':
-            case 'multiple-choice':
-            case 'dropdown-menu':
-              break;
-            case 'single-grid':
-            case 'multiple-grid':
-              const control: ChoiceOptions[] = fieldData.controls[0][
-                'controls'
-              ].choiceOptions.getRawValue();
-              this.fieldRemoving(fieldData, select, control);
-              break;
-            default:
-              this.fieldRemoving(fieldData, select);
-              break;
-          }
+          this.choiceSwitch(select, fieldData);
           break;
         case 'single-grid':
         case 'multiple-grid':
-          switch (select) {
-            case 'single-grid':
-            case 'multiple-grid':
-              break;
-            case 'single-choice':
-            case 'multiple-choice':
-            case 'dropdown-menu':
-              const control: ChoiceOptions[] = fieldData.controls[0][
-                'controls'
-              ].choiceOptions.getRawValue();
-              this.fieldRemoving(fieldData, select, control);
-              break;
-            default:
-              this.fieldRemoving(fieldData, select);
-              break;
-          }
+          this.gridSwitch(select, fieldData);
           break;
         default:
           this.fieldRemoving(fieldData, select);
@@ -718,6 +688,43 @@ export class SurveyCreatorComponent
       this.updateSurveySubject();
     }
   }
+  choiceSwitch(select, fieldData) {
+    switch (select) {
+      case 'single-choice':
+      case 'multiple-choice':
+      case 'dropdown-menu':
+        break;
+      case 'single-grid':
+      case 'multiple-grid':
+        const control: ChoiceOptions[] = fieldData.controls[0][
+          'controls'
+        ].choiceOptions.getRawValue();
+        this.fieldRemoving(fieldData, select, control);
+        break;
+      default:
+        this.fieldRemoving(fieldData, select);
+        break;
+    }
+  }
+  gridSwitch(select, fieldData) {
+    switch (select) {
+      case 'single-grid':
+      case 'multiple-grid':
+        break;
+      case 'single-choice':
+      case 'multiple-choice':
+      case 'dropdown-menu':
+        const control: ChoiceOptions[] = fieldData.controls[0][
+          'controls'
+        ].choiceOptions.getRawValue();
+        this.fieldRemoving(fieldData, select, control);
+        break;
+      default:
+        this.fieldRemoving(fieldData, select);
+        break;
+    }
+  }
+
   fieldRemoving(
     fieldData: FormArray,
     select: string,

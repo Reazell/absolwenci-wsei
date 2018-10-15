@@ -9,7 +9,7 @@ export class SurveyViewformResolver implements Resolve<any> {
   constructor(private surveyService: SurveyService) {}
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     this.surveyService.isCreatorLoading(true);
-    const hash = route.params['hash'] + '==';
+    const hash = route.params['hash'];
     return this.surveyService.getSurveyWithIdAndHash(
       Number(route.params['id']),
       hash

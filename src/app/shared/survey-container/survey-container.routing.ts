@@ -42,7 +42,7 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'result/:id',
         loadChildren:
-          './../survey-container/survey-container.module#SurveyContainerModule',
+          './../../main-view/admin-view/survey-container/survey-result/survey-result.module#SurveyResultModule',
         canLoad: [AuthGuard],
         resolve: {
           cres: SurveyResultResolver
@@ -52,7 +52,8 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'response',
         loadChildren:
-          './survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
+          // './survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
+          './../../survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
       }
     ]
   }
