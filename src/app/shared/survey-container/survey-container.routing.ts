@@ -42,7 +42,7 @@ const surveyContainerRoutes: Routes = [
       {
         path: 'result/:id',
         loadChildren:
-          './../../main-view/admin-view/survey-container/survey-result.module#SurveyResultModule',
+          './../survey-container/survey-container.module#SurveyContainerModule',
         canLoad: [AuthGuard],
         resolve: {
           cres: SurveyResultResolver
