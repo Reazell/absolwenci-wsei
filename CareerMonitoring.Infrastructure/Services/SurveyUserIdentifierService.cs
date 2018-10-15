@@ -31,10 +31,16 @@ namespace CareerMonitoring.Infrastructure.Services
             }
             if (identifier != null && !identifier.Answered)
             {
-                identifier.MarkAsAnswered();
                 return Task.FromResult("authorized");
             }
             return Task.FromResult("unauthorized");
+        }
+
+        public Task MarkAnswered(string userEmail, int surveyId)
+        {
+            var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail);
+            identifier.MarkAsAnswered();
+            return Task.CompletedTask;
         }
     }
 }
