@@ -3,19 +3,20 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CareerMonitoring.Infrastructure.Extensions.Encryptors
 {
     public class EncryptorFactory : IEncryptorFactory
     {
-        public string EncryptStringValue(string value)
+        public string EncryptStringValue(string text)
         {
-            return Eramake.eCryptography.Encrypt(value);
+            return text;
         }
 
-        public string DecryptStringValue(string value)
+        public string DecryptStringValue(string text)
         {
-            return Eramake.eCryptography.Decrypt(value);
+            return text;
         }
     }
 }
