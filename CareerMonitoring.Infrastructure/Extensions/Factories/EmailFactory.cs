@@ -18,7 +18,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                 await client.ConnectAsync (_emailConfiguration.SmtpServer, _emailConfiguration.SmtpPort);
                 client.AuthenticationMechanisms.Remove ("XOAUTH2");
                 await client.AuthenticateAsync(_emailConfiguration.SmtpUsername,
-                    _encryptorFactory.DecryptStringValue(_emailConfiguration.SmtpPassword));
+                   /*  _encryptorFactory.DecryptStringValue*/_emailConfiguration.SmtpPassword);
                 await client.SendAsync (mimeMessage);
                 await client.DisconnectAsync (true);
             }
