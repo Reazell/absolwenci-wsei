@@ -31,6 +31,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             if (file == null && file.Length < 0)
                 throw new Exception ("File not selected");
 
+            if (!Directory.Exists ("wwwroot")) {
+                Directory.CreateDirectory ("wwwroot");
+            }
+
             var path = Path.Combine (_hostingEnvironment.WebRootPath, file.FileName).ToLower ();
 
             if (!Directory.Exists (path)) {
