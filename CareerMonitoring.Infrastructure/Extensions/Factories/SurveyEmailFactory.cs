@@ -17,13 +17,15 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;
         private readonly IEncryptorFactory _encryptorFactory;
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
+        private readonly IEmailToPassRepository _emailToPassRepository;
 
         public SurveyEmailFactory (IEmailConfiguration emailConfiguration,
             IEmailFactory emailFactory,
             IAccountRepository accountRepository,
             ISurveyUserIdentifierService surveyUserIdentifierService,
             IEncryptorFactory encryptorFactory,
-            IUnregisteredUserRepository unregisteredUserRepository)
+            IUnregisteredUserRepository unregisteredUserRepository,
+            IEmailToPassRepository emailToPassRepository)
         {
             _surveyUserIdentifierService = surveyUserIdentifierService;
             _encryptorFactory = encryptorFactory;
@@ -31,13 +33,17 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             _emailFactory = emailFactory;
             _accountRepository = accountRepository;
             _unregisteredUserRepository = unregisteredUserRepository;
+            _emailToPassRepository = emailToPassRepository;
         }
 
         public async Task SendSurveyEmailAsync (int surveyId) {
+            
             var accounts = await _accountRepository.GetAllAsync ();
             List<Account> accountsToIdentify = new List<Account>();
             foreach (var account in accounts) {
                 if (account.Role != "careerOffice") {
+                    var emailToPass = new EmailToPass(account.Email, surveyId);
+                    await _emailToPassRepository.AddAsync(emailToPass);
                     accountsToIdentify.Add(account);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
@@ -60,6 +66,8 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             List<UnregisteredUser> unregisteredUsersToIdentify = new List<UnregisteredUser>();
             foreach (var unregisteredUser in unregisteredUsers) {
                 if (unregisteredUser.Role != "careerOffice") {
+                    var emailToPass = new EmailToPass(unregisteredUser.Email, surveyId);
+                    await _emailToPassRepository.AddAsync(emailToPass);
                     unregisteredUsersToIdentify.Add(unregisteredUser);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));

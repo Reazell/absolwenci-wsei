@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Survey;
 using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ namespace CareerMonitoring.Api.Controllers {
         private readonly ISurveyService _surveyService;
         private readonly ISurveyReportService _surveyReportService;
         private readonly IEncryptorFactory _encryptorFactory;
+        private readonly IEmailToPassRepository _emailToPassRepository;
 
         public SurveyController (ISurveyService surveyService,
             ISurveyReportService surveyReportService,
@@ -32,12 +34,13 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpGet ("{surveyId}/{email}")]
-        public async Task<IActionResult> GetSurveyWithEmail (int surveyId, string email) {
+        [HttpGet ("{surveyId}")]
+        public async Task<IActionResult> GetSurveyWithEmail (int surveyId/*, string email*/) {
             try{
                 var survey = await _surveyService.GetByIdAsync (surveyId);
-                var Email = _encryptorFactory.DecryptStringValue(email);
-                var result = new { Result = survey, Email};
+                //var Email = _encryptorFactory.DecryptStringValue(email);
+                var emailToPass = await _emailToPassRepository.GetBySurveyIdAsync(surveyId);
+                var result = new { Result = survey, emailToPass};
                 return Json (result);
             }
             catch(Exception e){

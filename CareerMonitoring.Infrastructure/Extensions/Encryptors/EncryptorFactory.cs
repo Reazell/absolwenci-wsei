@@ -11,6 +11,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Encryptors
     {
         public string EncryptStringValue(string text)
         {
+            
             return text;
         }
 
