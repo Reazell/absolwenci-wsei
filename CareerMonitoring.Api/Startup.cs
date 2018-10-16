@@ -15,8 +15,8 @@ using CareerMonitoring.Infrastructure.Commands.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
-using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extension.JWT;
+using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.AutoMapper;
 using CareerMonitoring.Infrastructure.Extensions.Email;
@@ -52,6 +52,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using static CareerMonitoring.Infrastructure.Extension.Exception.ExceptionsHelper;
+using NLog.Extensions.Logging;
+using NLog.Web;
 
 namespace CareerMonitoring.Api {
     public class Startup {
@@ -185,7 +187,11 @@ namespace CareerMonitoring.Api {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure (IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
+            loggerFactory.AddNLog ();
+            app.AddNLogWeb ();
+            env.ConfigureNLog ("nlog.config");
+
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
             } else {
