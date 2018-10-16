@@ -27,11 +27,12 @@ namespace CareerMonitoring.Api.Controllers {
                 return BadRequest (ModelState);
             try {
                 var decryptedEmail = _encryptorFactory.DecryptStringValue(email);
-                if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId) == "unauthorized")
-                    return Unauthorized ();
-                else if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId) == "answered")
+                if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId) == "answered")
                     return BadRequest ("you already answered to that survey");
+                else if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId) == "unauthorized")
+                    return Unauthorized ();
                 await _surveyAnswerService.CreateSurveyAnswerAsync(command);
+                await _surveyUserIdentifierService.MarkAnswered(email, command.SurveyId);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);

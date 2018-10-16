@@ -56,5 +56,10 @@ namespace CareerMonitoring.Core.Domains.SurveyReport {
         public void AddDataSet (DataSet dataSet) {
             DataSets.Add (dataSet);
         }
+
+        public void DeleteAnswer ()
+        {
+            AnswersNumber--;
+        }
     }
 }
