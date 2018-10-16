@@ -1,15 +1,333 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+  <component name="ChangeListManager">
+    <list default="true" id="ee24cd87-cab8-4672-aade-1a07a583d16d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/ChoiceOptionTemplate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/FieldDataTemplate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/QuestionTemplate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/RowTemplate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.absolwenci-wsei/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.absolwenci-wsei/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.absolwenci-wsei/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.absolwenci-wsei/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Api/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="100353956">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="13" />
+          <entry key="json" value="1" />
+          <entry key="targets" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="13" />
+          <entry key="JSON" value="1" />
+          <entry key="MsBuild targets file" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="57" />
+          <entry key="targets" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="57" />
+          <entry key="MsBuild targets file" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages" />
+      <usages-collector id="statistics.js.language.service.starts" />
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="absolwenci-wsei" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/SurveyAnswerController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1539713339675" expanded="false" signature="6:309" ph="..." />
+                <marker date="1539713339675" expanded="true" signature="432:2066" ph="{...}" />
+                <marker date="1539713339675" expanded="true" signature="848:1037" ph="{...}" />
+                <marker date="1539713339675" expanded="true" signature="1183:2060" ph="{...}" />
+                <marker date="1539713339675" expanded="true" signature="1286:1967" ph="{...}" />
+                <marker date="1539713339675" expanded="true" signature="1988:2050" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/SurveyController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+              <folding>
+                <marker date="1539465834026" expanded="false" signature="6:303" ph="..." />
+                <marker date="1539465834026" expanded="true" signature="422:3580" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="776:937" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="1052:1299" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="1069:1197" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="1228:1289" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="1431:1811" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="1448:1709" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="1740:1801" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="1901:2141" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="1918:2039" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="2070:2131" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="2261:2689" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="2278:2587" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="2618:2679" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="2811:3234" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="2828:3132" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="3163:3224" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="3340:3574" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="3357:3472" ph="{...}" />
+                <marker date="1539465834026" expanded="true" signature="3503:3564" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Extensions/Encryptors/EncryptorFactory.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding>
+                <marker date="1539713339667" expanded="false" signature="6:202" ph="..." />
+                <marker date="1539713339667" expanded="true" signature="323:534" ph="{...}" />
+                <marker date="1539713339667" expanded="true" signature="383:428" ph="{...}" />
+                <marker date="1539713339667" expanded="true" signature="483:528" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+              <folding>
+                <marker date="1539715296687" expanded="false" signature="6:92" ph="..." />
+                <marker date="1539715296687" expanded="true" signature="149:984" ph="{...}" />
+                <marker date="1539715296687" expanded="true" signature="183:982" ph="{...}" />
+                <marker date="1539715296687" expanded="true" signature="543:624" ph="{...}" />
+                <marker date="1539715296687" expanded="true" signature="670:708" ph="{...}" />
+                <marker date="1539715296687" expanded="true" signature="786:851" ph="{...}" />
+                <marker date="1539715296687" expanded="true" signature="895:976" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/Surveys/Survey.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="28" selection-end-column="9" />
+              <folding>
+                <marker date="1539277989405" expanded="false" signature="6:47" ph="..." />
+                <marker date="1539277989405" expanded="true" signature="123:837" ph="{...}" />
+                <marker date="1539277989405" expanded="true" signature="438:519" ph="{...}" />
+                <marker date="1539277989405" expanded="true" signature="565:603" ph="{...}" />
+                <marker date="1539277989405" expanded="true" signature="657:706" ph="{...}" />
+                <marker date="1539277989405" expanded="true" signature="750:831" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/QuestionTemplate.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <folding>
+                <marker date="1539713933572" expanded="true" signature="91:112" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/FieldDataTemplate.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+              <folding>
+                <marker date="1539713965735" expanded="true" signature="92:113" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/ChoiceOptionTemplate.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+              <folding>
+                <marker date="1539714064275" expanded="true" signature="95:116" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/RowTemplate.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+              <folding>
+                <marker date="1539714095189" expanded="true" signature="86:107" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/Surveys/Survey.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/QuestionTemplate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/FieldDataTemplate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/ChoiceOptionTemplate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/RowTemplate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Services/UnregisteredUserService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/SurveyAnswerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Services/SurveyUserIdentifierService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Extensions/Encryptors/EncryptorFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/SurveyController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/QuestionTemplate.cs" />
+        <option value="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/FieldDataTemplate.cs" />
+        <option value="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/ChoiceOptionTemplate.cs" />
+        <option value="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/RowTemplate.cs" />
+        <option value="$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" />
+        <option value="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/Microsoft.Common.CurrentVersion.targets" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2514" />
+    <option name="y" value="-14" />
+    <option name="width" value="1536" />
+    <option name="height" value="830" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="FileSystemExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="FileSystemExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="absolwenci-wsei" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="absolwenci-wsei" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="CareerMonitoring.Core" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="absolwenci-wsei" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="CareerMonitoring.Infrastructure" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
@@ -35,5 +353,242 @@
         <option name="Build" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee24cd87-cab8-4672-aade-1a07a583d16d" name="Default Changelist" comment="" />
+      <created>1539713165705</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539713165705</updated>
+      <workItem from="1539713168620" duration="2691000" />
+      <workItem from="1539716028206" duration="129000" />
+      <workItem from="1539716158514" duration="278000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3098000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" order="0" sideWeight="0.50161815" side_tool="true" weight="0.20255864" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49838188" visible="true" weight="0.20255864" />
+      <window_info id="Structure" order="2" sideWeight="0.50161815" side_tool="true" weight="0.20255864" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="REST Client" order="2" weight="0.329718" />
+      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.329718" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.3286334" />
+      <window_info anchor="bottom" id="NuGet" order="8" weight="0.329718" />
+      <window_info anchor="bottom" id="Message" order="9" />
+      <window_info anchor="bottom" id="Find" order="10" />
+      <window_info anchor="bottom" id="Run" order="11" />
+      <window_info anchor="bottom" id="Debug" order="12" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="15" weight="0.329718" />
+      <window_info anchor="right" id="Key Promoter X" order="0" />
+      <window_info anchor="right" id="Database" order="1" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="2" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="3" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/appsettings.Development.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-347" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="313" selection-start-line="313" selection-end-line="313" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Services/UnregisteredUserService.cs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Services/SurveyUserIdentifierService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="21" column="75" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/SurveyAnswerController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1539713339675" expanded="false" signature="6:309" ph="..." />
+            <marker date="1539713339675" expanded="true" signature="432:2066" ph="{...}" />
+            <marker date="1539713339675" expanded="true" signature="848:1037" ph="{...}" />
+            <marker date="1539713339675" expanded="true" signature="1183:2060" ph="{...}" />
+            <marker date="1539713339675" expanded="true" signature="1286:1967" ph="{...}" />
+            <marker date="1539713339675" expanded="true" signature="1988:2050" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Api/Controllers/SurveyController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+          <folding>
+            <marker date="1539465834026" expanded="false" signature="6:303" ph="..." />
+            <marker date="1539465834026" expanded="true" signature="422:3580" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="776:937" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="1052:1299" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="1069:1197" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="1228:1289" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="1431:1811" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="1448:1709" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="1740:1801" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="1901:2141" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="1918:2039" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="2070:2131" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="2261:2689" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="2278:2587" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="2618:2679" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="2811:3234" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="2828:3132" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="3163:3224" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="3340:3574" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="3357:3472" ph="{...}" />
+            <marker date="1539465834026" expanded="true" signature="3503:3564" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Infrastructure/Extensions/Encryptors/EncryptorFactory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding>
+            <marker date="1539713339667" expanded="false" signature="6:202" ph="..." />
+            <marker date="1539713339667" expanded="true" signature="323:534" ph="{...}" />
+            <marker date="1539713339667" expanded="true" signature="383:428" ph="{...}" />
+            <marker date="1539713339667" expanded="true" signature="483:528" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/Surveys/Survey.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="28" selection-end-column="9" />
+          <folding>
+            <marker date="1539277989405" expanded="false" signature="6:47" ph="..." />
+            <marker date="1539277989405" expanded="true" signature="123:837" ph="{...}" />
+            <marker date="1539277989405" expanded="true" signature="438:519" ph="{...}" />
+            <marker date="1539277989405" expanded="true" signature="565:603" ph="{...}" />
+            <marker date="1539277989405" expanded="true" signature="657:706" ph="{...}" />
+            <marker date="1539277989405" expanded="true" signature="750:831" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/QuestionTemplate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding>
+            <marker date="1539713933572" expanded="true" signature="91:112" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/FieldDataTemplate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <marker date="1539713965735" expanded="true" signature="92:113" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/ChoiceOptionTemplate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <marker date="1539714064275" expanded="true" signature="95:116" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/RowTemplate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <marker date="1539714095189" expanded="true" signature="86:107" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/Microsoft.Common.CurrentVersion.targets">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding>
+            <marker date="1539715296687" expanded="false" signature="6:92" ph="..." />
+            <marker date="1539715296687" expanded="true" signature="149:984" ph="{...}" />
+            <marker date="1539715296687" expanded="true" signature="183:982" ph="{...}" />
+            <marker date="1539715296687" expanded="true" signature="543:624" ph="{...}" />
+            <marker date="1539715296687" expanded="true" signature="670:708" ph="{...}" />
+            <marker date="1539715296687" expanded="true" signature="786:851" ph="{...}" />
+            <marker date="1539715296687" expanded="true" signature="895:976" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

@@ -91,6 +91,13 @@
             <e p="RowChoiceOptionAnswer.cs" t="Include" />
             <e p="SurveyAnswer.cs" t="Include" />
           </e>
+          <e p="SurveyTemplates" t="Include">
+            <e p="ChoiceOptionTemplate.cs" t="Include" />
+            <e p="FieldDataTemplate.cs" t="Include" />
+            <e p="QuestionTemplate.cs" t="Include" />
+            <e p="RowTemplate.cs" t="Include" />
+            <e p="SurveyTemplate.cs" t="Include" />
+          </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
