@@ -14,7 +14,7 @@ namespace CareerMonitoring.Core.Domains.Surveys
             UserEmail = userEmail;
             SurveyId = surveyId;
         }
-        
+
         public void MarkAsAnswered()
         {
             Answered = true;
