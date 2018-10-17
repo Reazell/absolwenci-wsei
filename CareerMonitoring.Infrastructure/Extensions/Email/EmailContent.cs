@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 
 namespace CareerMonitoring.Infrastructure.Extensions.Email {
     public class EmailContent : IEmailContent {

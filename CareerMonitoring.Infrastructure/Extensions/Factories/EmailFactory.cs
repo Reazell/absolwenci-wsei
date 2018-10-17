@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using MailKit.Net.Smtp;
 using MimeKit;
