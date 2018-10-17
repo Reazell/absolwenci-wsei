@@ -13,7 +13,6 @@ namespace CareerMonitoring.Api.Controllers {
         private readonly ISurveyService _surveyService;
         private readonly ISurveyReportService _surveyReportService;
         private readonly IEncryptorFactory _encryptorFactory;
-        private readonly IEmailToPassRepository _emailToPassRepository;
 
         public SurveyController (ISurveyService surveyService,
             ISurveyReportService surveyReportService,
@@ -34,13 +33,12 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpGet ("{surveyId}")]
-        public async Task<IActionResult> GetSurveyWithEmail (int surveyId/*, string email*/) {
+        [HttpGet ("{surveyId}/{email}/{userId}")]
+        public async Task<IActionResult> GetSurveyWithEmail (int surveyId, string email) {
             try{
                 var survey = await _surveyService.GetByIdAsync (surveyId);
-                //var Email = _encryptorFactory.DecryptStringValue(email);
-                var emailToPass = await _emailToPassRepository.GetBySurveyIdAsync(surveyId);
-                var result = new { Result = survey, emailToPass};
+                var Email = _encryptorFactory.DecryptStringValue(email);
+                var result = new { Result = survey};
                 return Json (result);
             }
             catch(Exception e){

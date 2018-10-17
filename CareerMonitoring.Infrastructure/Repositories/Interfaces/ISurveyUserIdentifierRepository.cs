@@ -9,7 +9,7 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces
     public interface ISurveyUserIdentifierRepository
     {
         Task AddAsync(SurveyUserIdentifier surveyUserIdentifier);
-        SurveyUserIdentifier GetBySurveyIdAndUserEmailAsync(int surveyId, string userEmail);
+        SurveyUserIdentifier GetBySurveyIdAndUserEmailAsync(int surveyId, string userEmail, int userId);
         Task DeleteAsync(SurveyUserIdentifier surveyUserIdentifier);
     }
 }

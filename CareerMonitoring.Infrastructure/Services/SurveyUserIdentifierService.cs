@@ -17,15 +17,15 @@ namespace CareerMonitoring.Infrastructure.Services
             _surveyUserIdentifierRepository = surveyUserIdentifierRepository;
         }
 
-        public async Task CreateAsync(string userEmail, int surveyId)
+        public async Task CreateAsync(string userEmail, int surveyId, int userId)
         {
-            var identifier = new SurveyUserIdentifier(userEmail, surveyId);
+            var identifier = new SurveyUserIdentifier(userEmail, surveyId, userId);
             await _surveyUserIdentifierRepository.AddAsync(identifier);
         }
 
-        public Task<string> VerifySurveyUser(string userEmail, int surveyId)
+        public Task<string> VerifySurveyUser(string userEmail, int surveyId, int userId)
         {
-            var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail);
+            var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail, userId);
             if(identifier != null && identifier.Answered){
                 return Task.FromResult("answered");
             }
@@ -36,9 +36,9 @@ namespace CareerMonitoring.Infrastructure.Services
             return Task.FromResult("unauthorized");
         }
 
-        public Task MarkAnswered(string userEmail, int surveyId)
+        public Task MarkAnswered(string userEmail, int surveyId, int userId)
         {
-            var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail);
+            var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail, userId);
             identifier.MarkAsAnswered();
             return Task.CompletedTask;
         }

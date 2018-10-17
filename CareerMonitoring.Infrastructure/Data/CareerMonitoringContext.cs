@@ -44,7 +44,6 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<ProfileLink> ProfileLinks { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
-        public DbSet<EmailToPass> EmailsToPass { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 

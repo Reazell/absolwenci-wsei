@@ -170,7 +170,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmailFactory, EmailFactory> ();
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
-            services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
+            //services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
             services.AddScoped<IImportFileFactory, ImportFileFactory> ();
 
             #endregion

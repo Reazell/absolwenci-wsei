@@ -17,15 +17,13 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;
         private readonly IEncryptorFactory _encryptorFactory;
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
-        private readonly IEmailToPassRepository _emailToPassRepository;
 
         public SurveyEmailFactory (IEmailConfiguration emailConfiguration,
             IEmailFactory emailFactory,
             IAccountRepository accountRepository,
             ISurveyUserIdentifierService surveyUserIdentifierService,
             IEncryptorFactory encryptorFactory,
-            IUnregisteredUserRepository unregisteredUserRepository,
-            IEmailToPassRepository emailToPassRepository)
+            IUnregisteredUserRepository unregisteredUserRepository)
         {
             _surveyUserIdentifierService = surveyUserIdentifierService;
             _encryptorFactory = encryptorFactory;
@@ -33,31 +31,27 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             _emailFactory = emailFactory;
             _accountRepository = accountRepository;
             _unregisteredUserRepository = unregisteredUserRepository;
-            _emailToPassRepository = emailToPassRepository;
         }
 
         public async Task SendSurveyEmailAsync (int surveyId) {
-            
             var accounts = await _accountRepository.GetAllAsync ();
             List<Account> accountsToIdentify = new List<Account>();
             foreach (var account in accounts) {
                 if (account.Role != "careerOffice") {
-                    var emailToPass = new EmailToPass(account.Email, surveyId);
-                    await _emailToPassRepository.AddAsync(emailToPass);
                     accountsToIdentify.Add(account);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (account.Name, account.Email));
                     message.Subject = "Monitorowanie karier - ankieta";
                     message.Body = new TextPart ("html") {
-                        Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/app/admin/survey/viewform/{surveyId}/{_encryptorFactory.EncryptStringValue(account.Email)}\">link</a> ."
+                        Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/app/admin/survey/viewform/{surveyId}/{account.Email}/{account.Id}\">link</a> ."
                     };
                     await _emailFactory.SendEmailAsync (message);
                 }
             }
             foreach (var accountToIdentify in accountsToIdentify)
             {
-                await _surveyUserIdentifierService.CreateAsync(accountToIdentify.Email, surveyId);
+                await _surveyUserIdentifierService.CreateAsync(accountToIdentify.Email, surveyId, accountToIdentify.Id);
             }
         }
 
@@ -66,22 +60,20 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             List<UnregisteredUser> unregisteredUsersToIdentify = new List<UnregisteredUser>();
             foreach (var unregisteredUser in unregisteredUsers) {
                 if (unregisteredUser.Role != "careerOffice") {
-                    var emailToPass = new EmailToPass(unregisteredUser.Email, surveyId);
-                    await _emailToPassRepository.AddAsync(emailToPass);
                     unregisteredUsersToIdentify.Add(unregisteredUser);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (unregisteredUser.Name, unregisteredUser.Email));
                     message.Subject = "Monitorowanie karier - ankieta";
                     message.Body = new TextPart ("html") {
-                        Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/app/admin/survey/viewform/{surveyId}/{_encryptorFactory.EncryptStringValue(unregisteredUser.Email)}\">link</a> ."
+                        Text = $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten <a href=\"http://localhost:4200/app/admin/survey/viewform/{surveyId}/{unregisteredUser.Email}/{unregisteredUser.Id}\">link</a> ."
                     };
                     await _emailFactory.SendEmailAsync (message);
                 }
             }
             foreach (var unregisteredUserToIdentify in unregisteredUsersToIdentify)
             {
-                await _surveyUserIdentifierService.CreateAsync(unregisteredUserToIdentify.Email, surveyId);
+                await _surveyUserIdentifierService.CreateAsync(unregisteredUserToIdentify.Email, surveyId, unregisteredUserToIdentify.Id);
             }
         }
     }

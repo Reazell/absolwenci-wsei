@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareerMonitoring.Api.Migrations
 {
     [DbContext(typeof(CareerMonitoringContext))]
-    [Migration("20181016193537_migrr")]
-    partial class migrr
+    [Migration("20181017114235_xyz")]
+    partial class xyz
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -478,6 +478,8 @@ namespace CareerMonitoring.Api.Migrations
                     b.Property<int>("SurveyId");
 
                     b.Property<string>("UserEmail");
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
