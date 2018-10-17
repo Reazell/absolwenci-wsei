@@ -229,6 +229,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             fieldDataAnswer.AddChoiceOptionAnswer (choiceOptionAnswer);
             await _choiceOptionAnswerRepository.AddAsync (choiceOptionAnswer);
             var questionAnswer = await _questionAnswerRepository.GetByIdAsync (fieldDataAnswer.QuestionAnswerId);
+            var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync (surveyId);
+            var questionReport =
+                await _questionReportRepository.GetBySurveyReportContentAndPositionAsync (surveyReport.Id,
+                    questionAnswer.QuestionPosition,
+                    questionAnswer.Select);
             if (!questionAnswer.IsRequired) {
                 var counter = 0;
                 foreach (var ChoiceOptionAnswer in fieldDataAnswer.ChoiceOptionAnswers) {
@@ -237,22 +242,12 @@ namespace CareerMonitoring.Infrastructure.Services {
                     }
                 }
                 if (counter == 0) {
-                    var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync (surveyId);
-                    var questionReport =
-                        await _questionReportRepository.GetBySurveyReportContentAndPositionAsync (surveyReport.Id,
-                            questionAnswer.QuestionPosition,
-                            questionAnswer.Select);
                     questionReport.DeleteAnswer();
                     await Task.CompletedTask;
                 }
             }
             if (choiceOptionAnswer.Value) {
                 if (questionAnswer.Content != "") {
-                    var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync (surveyId);
-                    var questionReport =
-                        await _questionReportRepository.GetBySurveyReportContentAndPositionAsync (surveyReport.Id,
-                            questionAnswer.QuestionPosition,
-                            questionAnswer.Select);
                     foreach (var dataSet in questionReport.DataSets) {
                         var index = dataSet._data[choiceOptionAnswer.OptionPosition];
                         var labelCounter = int.Parse (index);
@@ -273,6 +268,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             rowAnswer.AddChoiceOptionAnswer (rowChoiceOptionAnswer);
             await _rowChoiceOptionAnswerRepository.AddAsync (rowChoiceOptionAnswer);
             var questionAnswer = await _questionAnswerRepository.GetByIdAsync (fieldDataAnswer.QuestionAnswerId);
+            var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync (surveyId);
+            var questionReport =
+                await _questionReportRepository.GetBySurveyReportContentAndPositionAsync (surveyReport.Id,
+                    questionAnswer.QuestionPosition,
+                    questionAnswer.Select);
             if (!questionAnswer.IsRequired) {
                 var counter = 0;
                 foreach (var RowChoiceOptionAnswer in rowAnswer.RowChoiceOptionAnswers) {
@@ -281,21 +281,11 @@ namespace CareerMonitoring.Infrastructure.Services {
                     }
                 }
                 if (counter == 0) {
-                    var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync (surveyId);
-                    var questionReport =
-                        await _questionReportRepository.GetBySurveyReportContentAndPositionAsync (surveyReport.Id,
-                            questionAnswer.QuestionPosition,
-                            questionAnswer.Select);
                     questionReport.DeleteAnswer();
                     await Task.CompletedTask;
                 }
             }
             if (rowChoiceOptionAnswer.Value == true) {
-                var surveyReport = await _surveyReportRepository.GetBySurveyIdAsync (surveyId);
-                var questionReport =
-                    await _questionReportRepository.GetBySurveyReportContentAndPositionAsync (surveyReport.Id,
-                        questionAnswer.QuestionPosition,
-                        questionAnswer.Select);
                 foreach (var dataSet in questionReport.DataSets) {
                     if (dataSet.Label != rowChoiceOptionAnswer.ViewValue) continue;
                     var index = dataSet._data[rowChoiceOptionAnswer.RowAnswer.RowPosition];
