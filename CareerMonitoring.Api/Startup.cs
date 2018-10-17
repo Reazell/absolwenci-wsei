@@ -20,8 +20,6 @@ using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.AutoMapper;
 using CareerMonitoring.Infrastructure.Extensions.Email;
 using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.URL;
@@ -51,14 +49,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using static CareerMonitoring.Infrastructure.Extension.Exception.ExceptionsHelper;
-<<<<<<< HEAD
 using CareerMonitoring.Infrastructure.Extensions.JWT;
-=======
 using NLog.Extensions.Logging;
 using NLog.Web;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate;
->>>>>>> 351aeead1d06638f95f81040c04adb4d9cc31c56
 
 namespace CareerMonitoring.Api {
     public class Startup {
@@ -132,7 +127,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyReportRepository, SurveyReportRepository> ();
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
-            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository> ();
+            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository>();
             services.AddScoped<IUnregisteredUserRepository, UnregisteredUserRepository> ();
 
             #endregion
@@ -179,29 +174,13 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmailFactory, EmailFactory> ();
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
-<<<<<<< HEAD
-            //services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
-            services.AddScoped<IImportFileFactory, ImportFileFactory> ();
-=======
-            services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
             services.AddScoped<IImportFileAggregate, ImportFileAggregate> ();
-
-            #endregion
-
-            #region Extensions
-
-            services.AddScoped<IEmailContent, EmailContent> ();
->>>>>>> 351aeead1d06638f95f81040c04adb4d9cc31c56
 
             #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure (IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
-            loggerFactory.AddNLog ();
-            app.AddNLogWeb ();
-            env.ConfigureNLog ("nlog.config");
-
+        public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
             } else {

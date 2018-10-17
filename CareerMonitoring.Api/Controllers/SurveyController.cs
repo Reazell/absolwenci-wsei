@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Survey;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -12,14 +11,11 @@ namespace CareerMonitoring.Api.Controllers {
     public class SurveyController : ApiUserController {
         private readonly ISurveyService _surveyService;
         private readonly ISurveyReportService _surveyReportService;
-        private readonly IEncryptorFactory _encryptorFactory;
 
         public SurveyController (ISurveyService surveyService,
-            ISurveyReportService surveyReportService,
-            IEncryptorFactory encryptorFactory) {
+            ISurveyReportService surveyReportService) {
             _surveyService = surveyService;
             _surveyReportService = surveyReportService;
-            _encryptorFactory = encryptorFactory;
         }
 
         [HttpGet ("{surveyId}")]

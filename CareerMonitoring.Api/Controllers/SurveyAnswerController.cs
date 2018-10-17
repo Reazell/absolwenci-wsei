@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.SurveyAnswer;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,14 +9,11 @@ namespace CareerMonitoring.Api.Controllers {
     public class SurveyAnswerController : ApiUserController {
         private readonly ISurveyAnswerService _surveyAnswerService;
         private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;
-        private readonly IEncryptorFactory _encryptorFactory;
 
         public SurveyAnswerController (ISurveyAnswerService surveyAnswerService,
-            ISurveyUserIdentifierService surveyUserIdentifierService,
-            IEncryptorFactory encryptorFactory) {
+            ISurveyUserIdentifierService surveyUserIdentifierService) {
             _surveyAnswerService = surveyAnswerService;
             _surveyUserIdentifierService = surveyUserIdentifierService;
-            _encryptorFactory = encryptorFactory;
         }
 
         [HttpPost ("{email}/{userId}")]
@@ -25,10 +21,9 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                var decryptedEmail = _encryptorFactory.DecryptStringValue(email);
-                if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId, userId) == "answered")
+                if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId, userId) == "answered")
                     return BadRequest ("you already answered to that survey");
-                else if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId, userId) == "unauthorized")
+                else if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId, userId) == "unauthorized")
                     return Unauthorized ();
                 await _surveyAnswerService.CreateSurveyAnswerAsync(command);
                 await _surveyUserIdentifierService.MarkAnswered(email, command.SurveyId, userId);
