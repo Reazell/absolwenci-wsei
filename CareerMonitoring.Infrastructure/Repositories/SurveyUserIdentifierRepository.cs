@@ -25,10 +25,10 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public SurveyUserIdentifier GetBySurveyIdAndUserEmailAsync(int surveyId, string userEmail)
+        public SurveyUserIdentifier GetBySurveyIdAndUserEmailAsync(int surveyId, string userEmail, int userId)
         {
             return _context.SurveyUserIdentifiers
-                .SingleOrDefault(x => x.SurveyId == surveyId && x.UserEmail == userEmail);
+                .SingleOrDefault(x => x.SurveyId == surveyId && x.UserEmail == userEmail && x.UserId == userId);
         }
 
         public async Task DeleteAsync(SurveyUserIdentifier surveyUserIdentifier)

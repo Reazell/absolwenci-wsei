@@ -1,7 +1,11 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
+<<<<<<< HEAD
     "signature": "7cbfaf37cb0d6732a45e8526a3998e2dcd22bd0e"
+=======
+    "signature": "211abeb7cfd6386f486c3a5914d5abbeb9260301"
+>>>>>>> 6539f0f9a660e068a2f5b24d581580168b020ead
   },
   "compilationOptions": {},
   "targets": {
@@ -11,6 +15,7 @@
           "AutoMapper": "7.0.1",
           "CareerMonitoring.Core": "1.0.0",
           "EPPlus.Core": "1.5.4",
+          "Eramake.eCryptography": "1.1.6",
           "FluentValidation.AspNetCore": "8.0.0",
           "MailKit": "2.0.6",
           "Microsoft.EntityFrameworkCore.Design": "2.1.1",
@@ -55,6 +60,14 @@
           "lib/netstandard2.0/EPPlus.Core.dll": {
             "assemblyVersion": "1.5.4.0",
             "fileVersion": "1.5.4.0"
+          }
+        }
+      },
+      "Eramake.eCryptography/1.1.6": {
+        "runtime": {
+          "lib/net45/eCryptography.dll": {
+            "assemblyVersion": "1.0.0.1",
+            "fileVersion": "1.0.0.1"
           }
         }
       },
@@ -2470,6 +2483,13 @@
       "sha512": "sha512-QGa4Qxm+9ND+tlgsa9bWWQrBZ096shez5DDhkUE5OsPqdQIO8kfMq2dAOBkOE1JrB0ZSFeIIspBoIsb9kCx3iA==",
       "path": "epplus.core/1.5.4",
       "hashPath": "epplus.core.1.5.4.nupkg.sha512"
+    },
+    "Eramake.eCryptography/1.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nyj1noN2q/hAKz3waqTLZnu6fGgTpyd0Z7pOSgwwYTF1WUGbKiXjTr2jChWHSef3J3QyHMNh8EjtMWb7AOkecw==",
+      "path": "eramake.ecryptography/1.1.6",
+      "hashPath": "eramake.ecryptography.1.1.6.nupkg.sha512"
     },
     "FluentValidation/8.0.0": {
       "type": "package",

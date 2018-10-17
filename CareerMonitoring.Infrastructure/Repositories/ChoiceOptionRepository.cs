@@ -44,7 +44,7 @@ namespace CareerMonitoring.Infrastructure.Repositories
                 .OrderBy(q => q.OptionPosition));
         }
 
-        public async Task<ChoiceOption> GetByFieldDataIdAsync(int fieldDataId, int optionPosition, bool isTracking = true)
+        public async Task<ChoiceOption> GetByFieldDataIdAsync(int fieldDataId, int optionPosition, bool isTracking=true)
         {
             if(isTracking){
                 return await _context.ChoiceOptions

@@ -38,10 +38,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
 
         public async Task SendSurveyEmailAsync (int surveyId) {
             var accounts = await _accountRepository.GetAllAsync ();
-            List<Account> accountsToIdentify = new List<Account>();
+            List<Account> accountsToIdentify = new List<Account> ();
             foreach (var account in accounts) {
                 if (account.Role != "careerOffice") {
-                    accountsToIdentify.Add(account);
+                    accountsToIdentify.Add (account);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (account.Name, account.Email));
@@ -50,21 +50,20 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                         Text = _emailContent.SurveyEmail (surveyId, account.Email)
                     };
                     await _emailFactory.SendEmailAsync (message);
-                    await _surveyUserIdentifierService.CreateAsync (account.Email, surveyId);
+                    await _surveyUserIdentifierService.CreateAsync (account.Email, surveyId, account.Id);
                 }
             }
-            foreach (var accountToIdentify in accountsToIdentify)
-            {
-                await _surveyUserIdentifierService.CreateAsync(accountToIdentify.Email, surveyId);
+            foreach (var accountToIdentify in accountsToIdentify) {
+                await _surveyUserIdentifierService.CreateAsync (accountToIdentify.Email, surveyId, accountToIdentify.Id);
             }
         }
 
         public async Task SendSurveyEmailToUnregisteredUsersAsync (int surveyId) {
             var unregisteredUsers = await _unregisteredUserRepository.GetAllAsync ();
-            List<UnregisteredUser> unregisteredUsersToIdentify = new List<UnregisteredUser>();
+            List<UnregisteredUser> unregisteredUsersToIdentify = new List<UnregisteredUser> ();
             foreach (var unregisteredUser in unregisteredUsers) {
                 if (unregisteredUser.Role != "careerOffice") {
-                    unregisteredUsersToIdentify.Add(unregisteredUser);
+                    unregisteredUsersToIdentify.Add (unregisteredUser);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
                     message.To.Add (new MailboxAddress (unregisteredUser.Name, unregisteredUser.Email));
@@ -73,12 +72,11 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                         Text = _emailContent.SurveyEmail (surveyId, unregisteredUser.Email)
                     };
                     await _emailFactory.SendEmailAsync (message);
-                    await _surveyUserIdentifierService.CreateAsync (unregisteredUser.Email, surveyId);
+                    await _surveyUserIdentifierService.CreateAsync (unregisteredUser.Email, surveyId, unregisteredUser.Id);
                 }
             }
-            foreach (var unregisteredUserToIdentify in unregisteredUsersToIdentify)
-            {
-                await _surveyUserIdentifierService.CreateAsync(unregisteredUserToIdentify.Email, surveyId);
+            foreach (var unregisteredUserToIdentify in unregisteredUsersToIdentify) {
+                await _surveyUserIdentifierService.CreateAsync (unregisteredUserToIdentify.Email, surveyId, unregisteredUserToIdentify.Id);
             }
         }
     }

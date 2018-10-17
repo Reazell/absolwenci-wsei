@@ -55,6 +55,7 @@ using NLog.Extensions.Logging;
 using NLog.Web;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate;
+using CareerMonitoring.Infrastructure.Extensions.JWT;
 
 namespace CareerMonitoring.Api {
     public class Startup {
@@ -175,7 +176,6 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IEmailFactory, EmailFactory> ();
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
-            services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
             services.AddScoped<IImportFileAggregate, ImportFileAggregate> ();
 
             #endregion

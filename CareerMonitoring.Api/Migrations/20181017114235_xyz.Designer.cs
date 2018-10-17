@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CareerMonitoring.Api.Migrations
 {
     [DbContext(typeof(CareerMonitoringContext))]
-    [Migration("20181011092831_migrr")]
-    partial class migrr
+    [Migration("20181017114235_xyz")]
+    partial class xyz
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -479,6 +479,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<string>("UserEmail");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("Id");
 
                     b.ToTable("SurveyUserIdentifiers");
@@ -602,6 +604,107 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SurveyAnswers");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.ChoiceOptionTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FieldDataTemplateId");
+
+                    b.Property<int>("OptionPosition");
+
+                    b.Property<bool>("Value");
+
+                    b.Property<string>("ViewValue");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FieldDataTemplateId");
+
+                    b.ToTable("ChoiceOptionTemplates");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.FieldDataTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Input");
+
+                    b.Property<string>("MaxLabel");
+
+                    b.Property<int>("MaxValue");
+
+                    b.Property<string>("MinLabel");
+
+                    b.Property<int>("MinValue");
+
+                    b.Property<int>("QuestionTemplateId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionTemplateId");
+
+                    b.ToTable("FieldDataTemplates");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.QuestionTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("QuestionPosition");
+
+                    b.Property<string>("Select");
+
+                    b.Property<int>("SurveyTemplateId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyTemplateId");
+
+                    b.ToTable("QuestionTemplates");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.RowTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FieldDataTemplateId");
+
+                    b.Property<string>("Input");
+
+                    b.Property<int>("RowPosition");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FieldDataTemplateId");
+
+                    b.ToTable("RowTemplates");
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.SurveyTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SurveyTemplates");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.CareerOffice", b =>
@@ -814,6 +917,38 @@ namespace CareerMonitoring.Api.Migrations
                         .WithMany("RowChoiceOptionAnswers")
                         .HasForeignKey("RowAnswerId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.ChoiceOptionTemplate", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveyTemplates.FieldDataTemplate", "FieldDataTemplate")
+                        .WithMany("ChoiceOptionTemplates")
+                        .HasForeignKey("FieldDataTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.FieldDataTemplate", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveyTemplates.QuestionTemplate", "QuestionTemplate")
+                        .WithMany("FieldDataTemplates")
+                        .HasForeignKey("QuestionTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.QuestionTemplate", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveyTemplates.SurveyTemplate", "SurveyTemplate")
+                        .WithMany("QuestionTemplates")
+                        .HasForeignKey("SurveyTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyTemplates.RowTemplate", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.SurveyTemplates.FieldDataTemplate", "FieldDataTemplate")
+                        .WithMany("RowTemplates")
+                        .HasForeignKey("FieldDataTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

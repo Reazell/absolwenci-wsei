@@ -118,6 +118,8 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task<int> AddQuestionToSurveyAsync (int surveyId, int questionPosition, string content,
             string select) {
             var survey = await _surveyRepository.GetByIdAsync (surveyId);
+            if(content == "")
+                content = "Brak pytania";
             var question = new Question (questionPosition, content, select);
             survey.AddQuestion (question);
             await _questionRepository.AddAsync (question);

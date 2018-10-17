@@ -1,9 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
@@ -16,9 +14,7 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.7.0" />
     <PackageReference Include="NLog.Extensions.Logging" Version="1.3.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\CareerMonitoring.Core\CareerMonitoring.Core.csproj" />
   </ItemGroup>
-
 </Project>

@@ -80,7 +80,7 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         public void AddAccountActivation (AccountActivation accountActivation) {
             AccountActivation = accountActivation;
         }
-        
+
         public void ChangeAccountRestoringPassword (Guid token) {
             if (AccountRestoringPassword != null)
                 AccountRestoringPassword.ResetState (token);

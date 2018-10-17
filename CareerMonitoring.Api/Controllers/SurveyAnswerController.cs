@@ -20,17 +20,18 @@ namespace CareerMonitoring.Api.Controllers {
             _encryptorFactory = encryptorFactory;
         }
 
-        [HttpPost ("{email}")]
-        public async Task<IActionResult> CreateSurveyAnswer (string email, [FromBody] SurveyAnswerToAdd command) {
+        [HttpPost ("{email}/{userId}")]
+        public async Task<IActionResult> CreateSurveyAnswer (string email, int userId, [FromBody] SurveyAnswerToAdd command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
                 var decryptedEmail = _encryptorFactory.DecryptStringValue(email);
-                if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId) == "unauthorized")
-                    return Unauthorized ();
-                else if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId) == "answered")
+                if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId, userId) == "answered")
                     return BadRequest ("you already answered to that survey");
+                else if (await _surveyUserIdentifierService.VerifySurveyUser (decryptedEmail, command.SurveyId, userId) == "unauthorized")
+                    return Unauthorized ();
                 await _surveyAnswerService.CreateSurveyAnswerAsync(command);
+                await _surveyUserIdentifierService.MarkAnswered(email, command.SurveyId, userId);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);
