@@ -1,4 +1,5 @@
 using System;
+using CareerMonitoring.Core.Domains.Surveys;
 
 namespace CareerMonitoring.Core.Domains.ImportFile {
     public class UnregisteredUser {

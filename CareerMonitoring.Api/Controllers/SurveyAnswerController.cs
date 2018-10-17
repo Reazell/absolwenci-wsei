@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    [Authorize]
     public class SurveyAnswerController : ApiUserController {
         private readonly ISurveyAnswerService _surveyAnswerService;
         private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;

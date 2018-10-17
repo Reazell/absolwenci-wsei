@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.DTO.ImportFile;
-using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
+using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using OfficeOpenXml;
 
-namespace CareerMonitoring.Infrastructure.Extensions.Factories {
-    public class ImportFileFactory : IImportFileFactory {
+namespace CareerMonitoring.Infrastructure.Extensions.Aggregate {
+    public class ImportFileAggregate : IImportFileAggregate {
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IMapper _mapper;
 
-        public ImportFileFactory (IUnregisteredUserRepository unregisteredUserRepository,
+        public ImportFileAggregate (IUnregisteredUserRepository unregisteredUserRepository,
             IHostingEnvironment hostingEnvironment,
             IMapper mapper) {
             _unregisteredUserRepository = unregisteredUserRepository;
@@ -30,6 +30,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         public async Task<string> UploadFileAndGetFullFileLocationAsync (IFormFile file) {
             if (file == null && file.Length < 0)
                 throw new Exception ("File not selected");
+
+            if (!Directory.Exists ("wwwroot")) {
+                Directory.CreateDirectory ("wwwroot");
+            }
 
             var path = Path.Combine (_hostingEnvironment.WebRootPath, file.FileName).ToLower ();
 
