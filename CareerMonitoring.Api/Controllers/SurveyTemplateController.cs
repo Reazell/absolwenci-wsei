@@ -1,31 +1,25 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Survey;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
-using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CareerMonitoring.Api.Controllers {
-    //[Authorize]
-    public class SurveyController : ApiUserController {
-        private readonly ISurveyService _surveyService;
-        private readonly ISurveyReportService _surveyReportService;
-        private readonly IEncryptorFactory _encryptorFactory;
+namespace CareerMonitoring.Api.Controllers
+{
+    [Authorize]
+    public class SurveyTemplateController : ApiUserController
+    {
+        private readonly ISurveyTemplateService _surveyTemplateService;
 
-        public SurveyController (ISurveyService surveyService,
-            ISurveyReportService surveyReportService,
-            IEncryptorFactory encryptorFactory) {
-            _surveyService = surveyService;
-            _surveyReportService = surveyReportService;
-            _encryptorFactory = encryptorFactory;
+        public SurveyTemplateController (ISurveyTemplateService surveyTemplateService) {
+            _surveyTemplateService = surveyTemplateService;
         }
 
         [HttpGet ("{surveyId}")]
         public async Task<IActionResult> GetSurvey (int surveyId, string email) {
             try{
-                var survey = await _surveyService.GetByIdAsync (surveyId);
+                var survey = await _surveyTemplateService.GetByIdAsync (surveyId);
                 return Json (survey);
             }
             catch(Exception e){
@@ -36,7 +30,7 @@ namespace CareerMonitoring.Api.Controllers {
         [HttpGet ("{surveyId}/{email}/{userId}")]
         public async Task<IActionResult> GetSurveyWithEmail (int surveyId) {
             try{
-                var survey = await _surveyService.GetByIdAsync (surveyId);
+                var survey = await _surveyTemplateService.GetByIdAsync (surveyId);
                 return Json (survey);
             }
             catch(Exception e){
@@ -47,7 +41,7 @@ namespace CareerMonitoring.Api.Controllers {
         [HttpGet ("surveys")]
         public async Task<IActionResult> GetAllSurveys () {
             try{
-                var surveys = await _surveyService.GetAllAsync ();
+                var surveys = await _surveyTemplateService.GetAllAsync ();
                 return Json (surveys);
             }
             catch(Exception e){
@@ -60,9 +54,8 @@ namespace CareerMonitoring.Api.Controllers {
             try{
                 if (!ModelState.IsValid)
                     return BadRequest (ModelState);
-                var surveyId = await _surveyService.CreateSurveyAsync (command);
-                await _surveyReportService.CreateAsync(surveyId, command.Title);
-                return Json(surveyId);
+                var surveyTemplateId = await _surveyTemplateService.CreateSurveyAsync (command);
+                return Json(surveyTemplateId);
             }
             catch(Exception e){
                 return BadRequest(e.Message);
@@ -74,8 +67,7 @@ namespace CareerMonitoring.Api.Controllers {
             try{
                 if (!ModelState.IsValid)
                     return BadRequest (ModelState);
-                await _surveyService.UpdateSurveyAsync (command);
-                await _surveyReportService.UpdateAsync(command.SurveyId, command.Title);
+                await _surveyTemplateService.UpdateSurveyAsync (command);
                 return StatusCode (200);
             }
             catch(Exception e){
@@ -86,7 +78,7 @@ namespace CareerMonitoring.Api.Controllers {
         [HttpDelete ("{surveyId}")]
         public async Task<IActionResult> DeleteSurvey (int surveyId){
             try{
-                await _surveyService.DeleteAsync(surveyId);
+                await _surveyTemplateService.DeleteAsync(surveyId);
                 return StatusCode(200);
             }
             catch(Exception e){
