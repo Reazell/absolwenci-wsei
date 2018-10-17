@@ -6,6 +6,7 @@ using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using NLog;
 
 namespace CareerMonitoring.Infrastructure.Services {
     public class AuthService : IAuthService {
