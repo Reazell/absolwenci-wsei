@@ -118,6 +118,11 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IFieldDataRepository, FieldDataRepository> ();
             services.AddScoped<IChoiceOptionRepository, ChoiceOptionRepository> ();
             services.AddScoped<IRowRepository, RowRepository> ();
+            services.AddScoped<ISurveyTemplateRepository, SurveyTemplateRepository> ();
+            services.AddScoped<IQuestionTemplateRepository, QuestionTemplateRepository> ();
+            services.AddScoped<IFieldDataTemplateRepository, FieldDataTemplateRepository> ();
+            services.AddScoped<IChoiceOptionTemplateRepository, ChoiceOptionTemplateRepository> ();
+            services.AddScoped<IRowTemplateRepository, RowTemplateRepository> ();
             services.AddScoped<ISurveyAnswerRepository, SurveyAnswerRepository> ();
             services.AddScoped<IQuestionAnswerRepository, QuestionAnswerRepository> ();
             services.AddScoped<IFieldDataAnswerRepository, FieldDataAnswerRepository> ();
@@ -141,6 +146,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
             services.AddScoped<IProfileEditionService, ProfileEditionService> ();
             services.AddScoped<ISurveyService, SurveyService> ();
+            services.AddScoped<ISurveyTemplateService, SurveyTemplateService> ();
             services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
             services.AddScoped<ISurveyReportService, SurveyReportService> ();
             services.AddScoped<ISurveyUserIdentifierService, SurveyUserIdentifierService> ();

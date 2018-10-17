@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SurveyTemplateController : ApiUserController
     {
         private readonly ISurveyTemplateService _surveyTemplateService;

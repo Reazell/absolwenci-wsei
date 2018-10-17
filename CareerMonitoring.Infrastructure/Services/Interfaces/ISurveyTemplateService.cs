@@ -9,7 +9,7 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces
     {
         Task<int> CreateSurveyAsync (SurveyToAdd command);
         Task<int> CreateAsync (string title);
-        Task<int> AddQuestionToSurveyAsync (int surveyTemplateId, int questionPosition, string content, string select);
+        Task<int> AddQuestionToSurveyAsync (int surveyTemplateId, int questionPosition, string content, string select, bool isRequired);
         Task<int> AddFieldDataToQuestionAsync (int questionTemplateId, string input, int minValue, int maxValue, string minLabel,
             string maxLabel);
         Task AddChoiceOptionsAsync (int fieldDataTemplateId, int optionPosition, bool value, string viewValue);

@@ -41,7 +41,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                 throw new NullReferenceException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
-                question.Content, question.Select);
+                question.Content, question.Select, question.IsRequired);
                 if(question.FieldData == null)
                     throw new NullReferenceException ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
@@ -58,7 +58,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                 throw new NullReferenceException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
-                question.Content, question.Select);
+                question.Content, question.Select, question.IsRequired);
                 if(question.FieldData == null)
                     throw new NullReferenceException ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
@@ -116,11 +116,11 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task<int> AddQuestionToSurveyAsync (int surveyId, int questionPosition, string content,
-            string select) {
+            string select, bool isRequired) {
             var survey = await _surveyRepository.GetByIdAsync (surveyId);
             if(content == "")
                 content = "Brak pytania";
-            var question = new Question (questionPosition, content, select);
+            var question = new Question (questionPosition, content, select, isRequired);
             survey.AddQuestion (question);
             await _questionRepository.AddAsync (question);
             return question.Id;
