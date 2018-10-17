@@ -4,6 +4,7 @@ using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Core.Domains.SurveyReport;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Core.Domains.SurveysAnswers;
+using CareerMonitoring.Core.Domains.SurveyTemplates;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerMonitoring.Infrastructure.Data {
@@ -14,6 +15,11 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<ChoiceOption> ChoiceOptions { get; set; }
         public DbSet<Row> Rows { get; set; }
         public DbSet<SurveyUserIdentifier> SurveyUserIdentifiers { get; set; }
+        public DbSet<SurveyTemplate> SurveyTemplates { get; set; }
+        public DbSet<QuestionTemplate> QuestionTemplates { get; set; }
+        public DbSet<FieldDataTemplate> FieldDataTemplates { get; set; }
+        public DbSet<ChoiceOptionTemplate> ChoiceOptionTemplates { get; set; }
+        public DbSet<RowTemplate> RowTemplates { get; set; }
         public DbSet<SurveyAnswer> SurveyAnswers { get; set; }
         public DbSet<QuestionAnswer> QuestionsAnswers { get; set; }
         public DbSet<FieldDataAnswer> FieldDataAnswers { get; set; }
@@ -92,6 +98,24 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasMany (a => a.ChoiceOptions)
                 .WithOne (b => b.FieldData)
                 .HasForeignKey (s => s.FieldDataId)
+                .OnDelete (DeleteBehavior.Cascade);
+            modelBuilder.Entity<SurveyTemplate> ()
+                .HasMany (a => a.QuestionTemplates)
+                .WithOne (b => b.SurveyTemplate)
+                .OnDelete (DeleteBehavior.Cascade);
+            modelBuilder.Entity<QuestionTemplate> ()
+                .HasMany (a => a.FieldDataTemplates)
+                .WithOne (b => b.QuestionTemplate)
+                .OnDelete (DeleteBehavior.Cascade);
+            modelBuilder.Entity<FieldDataTemplate> ()
+                .HasMany (a => a.RowTemplates)
+                .WithOne (b => b.FieldDataTemplate)
+                .HasForeignKey (s => s.FieldDataTemplateId)
+                .OnDelete (DeleteBehavior.Cascade);
+            modelBuilder.Entity<FieldDataTemplate> ()
+                .HasMany (a => a.ChoiceOptionTemplates)
+                .WithOne (b => b.FieldDataTemplate)
+                .HasForeignKey (s => s.FieldDataTemplateId)
                 .OnDelete (DeleteBehavior.Cascade);
             modelBuilder.Entity<SurveyAnswer> ()
                 .HasMany (a => a.QuestionsAnswers)

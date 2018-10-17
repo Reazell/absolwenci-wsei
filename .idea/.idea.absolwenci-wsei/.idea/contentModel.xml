@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+<<<<<<< HEAD
     <e p="C:\Users\filip.lipowiecki\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\filip.lipowiecki\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_absolwenci-wsei.-999976760.00" t="ExcludeRecursive" />
     <e p="C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei" t="IncludeFlat">
+=======
+    <e p="C:\Users\Filip\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Filip\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_absolwenci-wsei.-1228027292.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Filip\Desktop\absolwenci-wsei" t="IncludeFlat">
+>>>>>>> FL01
       <e p="CareerMonitoring.Api" t="IncludeRecursive">
         <e p="ActionFilters" t="Include">
           <e p="ValidatorActionFilter.cs" t="Include" />
@@ -77,7 +83,10 @@
           </e>
           <e p="Surveys" t="Include">
             <e p="ChoiceOption.cs" t="Include" />
+<<<<<<< HEAD
             <e p="EmailToPass.cs" t="Include" />
+=======
+>>>>>>> FL01
             <e p="FieldData.cs" t="Include" />
             <e p="Question.cs" t="Include" />
             <e p="Row.cs" t="Include" />
@@ -92,6 +101,16 @@
             <e p="RowChoiceOptionAnswer.cs" t="Include" />
             <e p="SurveyAnswer.cs" t="Include" />
           </e>
+<<<<<<< HEAD
+=======
+          <e p="SurveyTemplates" t="Include">
+            <e p="ChoiceOptionTemplate.cs" t="Include" />
+            <e p="FieldDataTemplate.cs" t="Include" />
+            <e p="QuestionTemplate.cs" t="Include" />
+            <e p="RowTemplate.cs" t="Include" />
+            <e p="SurveyTemplate.cs" t="Include" />
+          </e>
+>>>>>>> FL01
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -234,7 +253,10 @@
           <e p="ChoiceOptionAnswerRepository.cs" t="Include" />
           <e p="ChoiceOptionRepository.cs" t="Include" />
           <e p="DataSetRepository.cs" t="Include" />
+<<<<<<< HEAD
           <e p="EmailToPassRepository.cs" t="Include" />
+=======
+>>>>>>> FL01
           <e p="EmployerRepository.cs" t="Include" />
           <e p="FieldDataAnswerRepository.cs" t="Include" />
           <e p="FieldDataRepository.cs" t="Include" />
@@ -245,7 +267,10 @@
             <e p="IChoiceOptionAnswerRepository.cs" t="Include" />
             <e p="IChoiceOptionRepository.cs" t="Include" />
             <e p="IDataSetRepository.cs" t="Include" />
+<<<<<<< HEAD
             <e p="IEmailToPassRepository.cs" t="Include" />
+=======
+>>>>>>> FL01
             <e p="IEmployerRepository.cs" t="Include" />
             <e p="IFieldDataAnswerRepository.cs" t="Include" />
             <e p="IFieldDataRepository.cs" t="Include" />

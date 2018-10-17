@@ -49,6 +49,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using static CareerMonitoring.Infrastructure.Extension.Exception.ExceptionsHelper;
+using CareerMonitoring.Infrastructure.Extensions.JWT;
 
 namespace CareerMonitoring.Api {
     public class Startup {
