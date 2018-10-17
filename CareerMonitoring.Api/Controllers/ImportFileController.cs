@@ -4,21 +4,23 @@ using System.IO;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.ImportFile;
-using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
+using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using NLog;
 using OfficeOpenXml;
 
 namespace CareerMonitoring.Api.Controllers {
-    // [Authorize]
+    // [Authorize (Policy = "careerOffice")]
     public class ImportFileController : ApiUserController {
-        private readonly IImportFileFactory _importFileFactory;
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger ();
+        private readonly IImportFileAggregate _importFileFactory;
         private readonly IUnregisteredUserService _unregisteredUserService;
 
-        public ImportFileController (IImportFileFactory importFileFactory,
+        public ImportFileController (IImportFileAggregate importFileFactory,
             IUnregisteredUserService unregisteredUserService) {
             _importFileFactory = importFileFactory;
             _unregisteredUserService = unregisteredUserService;

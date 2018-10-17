@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.DTO.ImportFile;
-using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
+using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using OfficeOpenXml;
 
-namespace CareerMonitoring.Infrastructure.Extensions.Factories {
-    public class ImportFileFactory : IImportFileFactory {
+namespace CareerMonitoring.Infrastructure.Extensions.Aggregate {
+    public class ImportFileAggregate : IImportFileAggregate {
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IMapper _mapper;
 
-        public ImportFileFactory (IUnregisteredUserRepository unregisteredUserRepository,
+        public ImportFileAggregate (IUnregisteredUserRepository unregisteredUserRepository,
             IHostingEnvironment hostingEnvironment,
             IMapper mapper) {
             _unregisteredUserRepository = unregisteredUserRepository;

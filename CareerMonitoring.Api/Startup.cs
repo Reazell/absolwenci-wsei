@@ -17,7 +17,6 @@ using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
-using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.AutoMapper;
 using CareerMonitoring.Infrastructure.Extensions.Email;
 using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
@@ -54,6 +53,8 @@ using Microsoft.IdentityModel.Tokens;
 using static CareerMonitoring.Infrastructure.Extension.Exception.ExceptionsHelper;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
+using CareerMonitoring.Infrastructure.Extensions.Aggregate;
 
 namespace CareerMonitoring.Api {
     public class Startup {
@@ -175,7 +176,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
             services.AddScoped<IEncryptorFactory, EncryptorFactory> ();
-            services.AddScoped<IImportFileFactory, ImportFileFactory> ();
+            services.AddScoped<IImportFileAggregate, ImportFileAggregate> ();
 
             #endregion
 
