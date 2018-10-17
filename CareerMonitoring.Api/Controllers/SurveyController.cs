@@ -1,24 +1,21 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Commands.Survey;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    //[Authorize]
+    // [Authorize(Policy = "careerOffice")]
     public class SurveyController : ApiUserController {
         private readonly ISurveyService _surveyService;
         private readonly ISurveyReportService _surveyReportService;
-        private readonly IEncryptorFactory _encryptorFactory;
 
         public SurveyController (ISurveyService surveyService,
-            ISurveyReportService surveyReportService,
-            IEncryptorFactory encryptorFactory) {
+            ISurveyReportService surveyReportService) {
             _surveyService = surveyService;
             _surveyReportService = surveyReportService;
-            _encryptorFactory = encryptorFactory;
         }
 
         [HttpGet ("{surveyId}")]
@@ -32,13 +29,11 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpGet ("{surveyId}/{email}")]
-        public async Task<IActionResult> GetSurveyWithEmail (int surveyId, string email) {
+        [HttpGet ("{surveyId}/{email}/{userId}")]
+        public async Task<IActionResult> GetSurveyWithEmail (int surveyId) {
             try{
                 var survey = await _surveyService.GetByIdAsync (surveyId);
-                var Email = _encryptorFactory.DecryptStringValue(email);
-                var result = new { Result = survey, Email};
-                return Json (result);
+                return Json (survey);
             }
             catch(Exception e){
                 return BadRequest(e.Message);

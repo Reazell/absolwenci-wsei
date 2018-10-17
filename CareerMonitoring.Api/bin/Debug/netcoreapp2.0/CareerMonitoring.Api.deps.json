@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "838ec5d2c643386078bea0404182f0602a8977ea"
+    "signature": "9fb98162f2292aa8013bd895f1f95e50d95de90a"
   },
   "compilationOptions": {
     "defines": [
@@ -27,7 +27,6 @@
           "AutoMapper": "7.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "5.0.1",
           "CareerMonitoring.Infrastructure": "1.0.0",
-          "DotNetCore.NPOI": "1.2.1",
           "EPPlus.Core": "1.5.4",
           "FluentValidation.AspNetCore": "8.0.0",
           "Microsoft.AspNetCore.All": "2.0.5",
@@ -35,7 +34,9 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.1.1",
           "Microsoft.NETCore.App": "2.0.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
+          "NLog.Extensions.Logging": "1.3.0",
+          "NLog.Web.AspNetCore": "4.7.0"
         },
         "runtime": {
           "CareerMonitoring.Api.dll": {}
@@ -73,72 +74,12 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "DotNetCore.NPOI/1.2.1": {
-        "dependencies": {
-          "DotNetCore.NPOI.Core": "1.2.1",
-          "DotNetCore.NPOI.OpenXml4Net": "1.2.1",
-          "DotNetCore.NPOI.OpenXmlFormats": "1.2.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/NPOI.OOXML.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/NPOI.OOXML.dll": {}
-        }
-      },
-      "DotNetCore.NPOI.Core/1.2.1": {
-        "dependencies": {
-          "SharpZipLib": "1.0.0",
-          "System.Drawing.Common": "4.5.0",
-          "System.Text.Encoding.CodePages": "4.5.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/NPOI.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/NPOI.dll": {}
-        }
-      },
-      "DotNetCore.NPOI.OpenXml4Net/1.2.1": {
-        "dependencies": {
-          "DotNetCore.NPOI.Core": "1.2.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/NPOI.OpenXml4Net.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/NPOI.OpenXml4Net.dll": {}
-        }
-      },
-      "DotNetCore.NPOI.OpenXmlFormats/1.2.1": {
-        "dependencies": {
-          "DotNetCore.NPOI.OpenXml4Net": "1.2.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/NPOI.OpenXmlFormats.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/NPOI.OpenXmlFormats.dll": {}
-        }
-      },
       "EPPlus.Core/1.5.4": {
         "dependencies": {
           "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Data.SqlClient": "4.5.1",
-          "System.Drawing.Common": "4.5.0",
+          "System.Drawing.Common": "4.5.0-preview1-25914-04",
           "System.Reflection": "4.3.0",
           "System.Security.Claims": "4.3.0",
           "System.Security.Cryptography.Pkcs": "4.5.0",
@@ -157,17 +98,6 @@
         },
         "compile": {
           "lib/netstandard2.0/EPPlus.Core.dll": {}
-        }
-      },
-      "Eramake.eCryptography/1.1.6": {
-        "runtime": {
-          "lib/net45/eCryptography.dll": {
-            "assemblyVersion": "1.0.0.1",
-            "fileVersion": "1.0.0.1"
-          }
-        },
-        "compile": {
-          "lib/net45/eCryptography.dll": {}
         }
       },
       "FluentValidation/8.0.0": {
@@ -3167,25 +3097,6 @@
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/4.5.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
-          }
-        }
-      },
       "MimeKit/2.0.6": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
@@ -3233,6 +3144,49 @@
         },
         "compile": {
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
+        }
+      },
+      "NLog/4.5.10": {
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.5.10.8381"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/NLog.dll": {}
+        }
+      },
+      "NLog.Extensions.Logging/1.3.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "2.1.1",
+          "NLog": "4.5.10"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.Extensions.Logging.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.3.0.804"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/NLog.Extensions.Logging.dll": {}
+        }
+      },
+      "NLog.Web.AspNetCore/4.7.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.0",
+          "Microsoft.AspNetCore.Http": "2.1.0",
+          "Microsoft.AspNetCore.Routing.Abstractions": "2.1.0",
+          "NLog.Extensions.Logging": "1.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.Web.AspNetCore.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.7.930.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/NLog.Web.AspNetCore.dll": {}
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -3447,17 +3401,6 @@
             "assetType": "native",
             "fileVersion": "4.6.25512.1"
           }
-        }
-      },
-      "SharpZipLib/1.0.0": {
-        "runtime": {
-          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {
-            "assemblyVersion": "1.0.0.999",
-            "fileVersion": "1.0.0.999"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
         }
       },
       "SQLitePCLRaw.bundle_green/1.1.7": {
@@ -3902,15 +3845,14 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Drawing.Common/4.5.0": {
+      "System.Drawing.Common/4.5.0-preview1-25914-04": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "Microsoft.Win32.SystemEvents": "4.5.0"
+          "Microsoft.NETCore.Platforms": "2.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/System.Drawing.Common.dll": {
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
+            "fileVersion": "4.6.25914.4"
           }
         },
         "runtimeTargets": {
@@ -3918,13 +3860,13 @@
             "rid": "unix",
             "assetType": "runtime",
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
+            "fileVersion": "4.6.25914.4"
           },
           "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
             "rid": "win",
             "assetType": "runtime",
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
+            "fileVersion": "4.6.25914.4"
           }
         },
         "compile": {
@@ -5098,13 +5040,14 @@
           "AutoMapper": "7.0.1",
           "CareerMonitoring.Core": "1.0.0",
           "EPPlus.Core": "1.5.4",
-          "Eramake.eCryptography": "1.1.6",
           "FluentValidation.AspNetCore": "8.0.0",
           "MailKit": "2.0.6",
           "Microsoft.EntityFrameworkCore.Design": "2.1.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.1.1",
-          "MimeKit": "2.0.6"
+          "MimeKit": "2.0.6",
+          "NLog.Extensions.Logging": "1.3.0",
+          "NLog.Web.AspNetCore": "4.7.0"
         },
         "runtime": {
           "CareerMonitoring.Infrastructure.dll": {}
@@ -5308,47 +5251,12 @@
       "path": "automapper.extensions.microsoft.dependencyinjection/5.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.5.0.1.nupkg.sha512"
     },
-    "DotNetCore.NPOI/1.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-5M2x2mt+JOTByhzSH6PtcDOepZswmb6Uu2rjiOx5l3lKc7AP9kbmhN7WLKakGVSNhnOMgXbFXulIRRflPeNb/g==",
-      "path": "dotnetcore.npoi/1.2.1",
-      "hashPath": "dotnetcore.npoi.1.2.1.nupkg.sha512"
-    },
-    "DotNetCore.NPOI.Core/1.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-K8hlUP5yCxCK2JNROBBGAM50EtRshBe+RglFrrJkrbygR3o1HsruvHk6NlEFI+pYV9brDVqRc8xsYz5ZfeLfgQ==",
-      "path": "dotnetcore.npoi.core/1.2.1",
-      "hashPath": "dotnetcore.npoi.core.1.2.1.nupkg.sha512"
-    },
-    "DotNetCore.NPOI.OpenXml4Net/1.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-LxHszYfzPwg+ibE70gR7HrLlOtMHhWWEXLOTcW6KkwyJJ9eisCfrSkfbGvJnvfQHxmL9RXfZ+KV+B0/OeZ7kmw==",
-      "path": "dotnetcore.npoi.openxml4net/1.2.1",
-      "hashPath": "dotnetcore.npoi.openxml4net.1.2.1.nupkg.sha512"
-    },
-    "DotNetCore.NPOI.OpenXmlFormats/1.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-bim3nwQ5b/6bAoWa7DhHTYwz9w5dmMDwqn27LgcE8Sa/eYh672BOfT6SaKFuxQT1+X0Au3WhTwH1RgO/4aTNtg==",
-      "path": "dotnetcore.npoi.openxmlformats/1.2.1",
-      "hashPath": "dotnetcore.npoi.openxmlformats.1.2.1.nupkg.sha512"
-    },
     "EPPlus.Core/1.5.4": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-QGa4Qxm+9ND+tlgsa9bWWQrBZ096shez5DDhkUE5OsPqdQIO8kfMq2dAOBkOE1JrB0ZSFeIIspBoIsb9kCx3iA==",
       "path": "epplus.core/1.5.4",
       "hashPath": "epplus.core.1.5.4.nupkg.sha512"
-    },
-    "Eramake.eCryptography/1.1.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-nyj1noN2q/hAKz3waqTLZnu6fGgTpyd0Z7pOSgwwYTF1WUGbKiXjTr2jChWHSef3J3QyHMNh8EjtMWb7AOkecw==",
-      "path": "eramake.ecryptography/1.1.6",
-      "hashPath": "eramake.ecryptography.1.1.6.nupkg.sha512"
     },
     "FluentValidation/8.0.0": {
       "type": "package",
@@ -6596,13 +6504,6 @@
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
     },
-    "Microsoft.Win32.SystemEvents/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-aXrCxI6PdEEJkqIDRYCe2oBRZ1gto5Ac1Y/WuahG/CD+PB5rAVFU7VpkBILBUQQG/NBtxbIRM0Q61m5uJQLTPw==",
-      "path": "microsoft.win32.systemevents/4.5.0",
-      "hashPath": "microsoft.win32.systemevents.4.5.0.nupkg.sha512"
-    },
     "MimeKit/2.0.6": {
       "type": "package",
       "serviceable": true,
@@ -6623,6 +6524,27 @@
       "sha512": "sha512-5PYT/IqQ+UK31AmZiSS102R6EsTo+LGTSI8bp7WAUqDKaF4wHXD8U9u4WxTI1vc64tYi++8p3dk3WWNqPFgldw==",
       "path": "newtonsoft.json.bson/1.0.1",
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512"
+    },
+    "NLog/4.5.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IXZEFeDj/R3OL6bCcLNVFVFlBxp4zey9X2RdmISG+P9hp0uivIgkN6nBqCIE6yF0dRrUBye84uaD7emNVmqAnQ==",
+      "path": "nlog/4.5.10",
+      "hashPath": "nlog.4.5.10.nupkg.sha512"
+    },
+    "NLog.Extensions.Logging/1.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0LkprrGi/rKoIax6VpHbNCfpnf89PH8C6uOGJDIqAMt/LPdzcFpam1BRVPimJC0gEULLd2tlkovvQXcom+2TtQ==",
+      "path": "nlog.extensions.logging/1.3.0",
+      "hashPath": "nlog.extensions.logging.1.3.0.nupkg.sha512"
+    },
+    "NLog.Web.AspNetCore/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QHT1QfyGYselgNVY23KI8tL3rwgWH8Xkb37x0DsDB3sW0fYVHyvxoWZIp8AkYH75zNFZnMTROAChDRuNTwUG3Q==",
+      "path": "nlog.web.aspnetcore/4.7.0",
+      "hashPath": "nlog.web.aspnetcore.4.7.0.nupkg.sha512"
     },
     "NuGet.Frameworks/4.7.0": {
       "type": "package",
@@ -6791,13 +6713,6 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
-    },
-    "SharpZipLib/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-38egGevtPMQn/6olZZUteKUC7+BD47LdCGKo9Vyj17+HWDwiqPXsyJu55q9WSybhwVKwt0q2FLhiuJjZfQpsHw==",
-      "path": "sharpziplib/1.0.0",
-      "hashPath": "sharpziplib.1.0.0.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_green/1.1.7": {
       "type": "package",
@@ -7030,12 +6945,12 @@
       "path": "system.diagnostics.tracing/4.3.0",
       "hashPath": "system.diagnostics.tracing.4.3.0.nupkg.sha512"
     },
-    "System.Drawing.Common/4.5.0": {
+    "System.Drawing.Common/4.5.0-preview1-25914-04": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-uYixYbB0vzxSbc9B7jzwwUA8Upodaj3g2ZNnREWW6zoBw9DltzltcEa1g0I4u6ARqVJ0t4E3yJAWw5h2gvJlhQ==",
-      "path": "system.drawing.common/4.5.0",
-      "hashPath": "system.drawing.common.4.5.0.nupkg.sha512"
+      "sha512": "sha512-2jJby4+hzxON5gSOaDaOJZ2J6lIPBJqbWn37souvi+uDtknGFYRi//mUSPbW0Hp5HW2YMMFE6iRHTgc4YPOmuw==",
+      "path": "system.drawing.common/4.5.0-preview1-25914-04",
+      "hashPath": "system.drawing.common.4.5.0-preview1-25914-04.nupkg.sha512"
     },
     "System.Dynamic.Runtime/4.3.0": {
       "type": "package",

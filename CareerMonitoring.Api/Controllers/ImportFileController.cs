@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.ImportFile;
+using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
@@ -15,10 +16,10 @@ using OfficeOpenXml;
 namespace CareerMonitoring.Api.Controllers {
     [Authorize]
     public class ImportFileController : ApiUserController {
-        private readonly IImportFileFactory _importFileFactory;
+        private readonly IImportFileAggregate _importFileFactory;
         private readonly IUnregisteredUserService _unregisteredUserService;
 
-        public ImportFileController (IImportFileFactory importFileFactory,
+        public ImportFileController (IImportFileAggregate importFileFactory,
             IUnregisteredUserService unregisteredUserService) {
             _importFileFactory = importFileFactory;
             _unregisteredUserService = unregisteredUserService;

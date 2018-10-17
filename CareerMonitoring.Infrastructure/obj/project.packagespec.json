@@ -1,10 +1,17 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
+<<<<<<< HEAD
+    "projectUniqueName": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
+    "projectName": "CareerMonitoring.Infrastructure",
+    "projectPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
+    "outputPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\obj\\",
+=======
     "projectUniqueName": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
     "projectName": "CareerMonitoring.Infrastructure",
     "projectPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
     "outputPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\obj\\",
+>>>>>>> FL01
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -15,8 +22,13 @@
     "frameworks": {
       "netcoreapp2.0": {
         "projectReferences": {
+<<<<<<< HEAD
+          "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj": {
+            "projectPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj"
+=======
           "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj": {
             "projectPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj"
+>>>>>>> FL01
           }
         }
       }

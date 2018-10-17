@@ -10,5 +10,8 @@ namespace CareerMonitoring.Api.Controllers {
         protected string UserEmail => User?.Identity?.IsAuthenticated == true ?
             (User.Claims.ToList ().ElementAt (1).Value) :
             "";
+        protected string UserRole => User?.Identity?.IsAuthenticated == true ?
+            (User.Claims.ToList ().ElementAt (2).Value) :
+            "";
     }
 }

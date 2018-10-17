@@ -95,49 +95,49 @@ namespace CareerMonitoring.Core.Domains.Abstract {
             if (Role == "student" || Role == "graduate")
                 ProfileLink = profileLink;
             else
-                throw new Exception ("Role have to equal student or graduate in order to add a profile link.");
+                throw new Exception ("Inccorect role.");
         }
 
         public void AddEducation (Education education) {
             if (Role == "student" || Role == "graduate")
                 Educations.Add (education);
             else
-                throw new Exception ("Role have to equal student or graduate in order to add a education.");
+                throw new Exception ("Inccorect role.");
         }
 
         public void AddExperience (Experience experience) {
             if (Role == "student" || Role == "graduate")
                 Experiences.Add (experience);
             else
-                throw new Exception ("Role have to equal student or graduate in order to add experience.");
+                throw new Exception ("Inccorect role.");
         }
 
         public void AddCertificate (Certificate certificate) {
             if (Role == "student" || Role == "graduate")
                 Certificates.Add (certificate);
             else
-                throw new Exception ("Role have to equal student or graduate in order to add certificate.");
+                throw new Exception ("Inccorect role.");
         }
 
         public void AddSkill (Skill skill) {
             if (Role == "student" || Role == "graduate")
                 Skills.Add (skill);
             else
-                throw new Exception ("Role have to equal student or graduate in order to add a skill.");
+                throw new Exception ("Inccorect role.");
         }
 
         public void AddCourse (Course course) {
             if (Role == "student" || Role == "graduate")
                 Courses.Add (course);
             else
-                throw new Exception ("Role have to equal student or graduate in order to add course.");
+                throw new Exception ("Inccorect role.");
         }
 
         public void AddLanguage (Language language) {
             if (Role == "student" || Role == "graduate")
                 Languages.Add (language);
             else
-                throw new Exception ("Role have to equal student or graduate in order to add language.");
+                throw new Exception ("Inccorect role.");
         }
     }
 }

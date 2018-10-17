@@ -32,7 +32,6 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [Authorize(Policy = "student")]
         [HttpPut ("accounts/certificate")]
         public async Task<IActionResult> AddCertificate ([FromBody] AddCertificate command) {
             if (!ModelState.IsValid)

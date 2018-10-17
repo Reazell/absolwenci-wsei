@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using MailKit.Net.Smtp;
 using MimeKit;
@@ -7,11 +6,9 @@ using MimeKit;
 namespace CareerMonitoring.Infrastructure.Extensions.Factories {
     public class EmailFactory : IEmailFactory {
         private readonly IEmailConfiguration _emailConfiguration;
-        private readonly IEncryptorFactory _encryptorFactory;
 
-        public EmailFactory (IEmailConfiguration emailConfiguration, IEncryptorFactory encryptorFactory) {
+        public EmailFactory (IEmailConfiguration emailConfiguration) {
             _emailConfiguration = emailConfiguration;
-            _encryptorFactory = encryptorFactory;
         }
         public async Task SendEmailAsync (MimeMessage mimeMessage) {
             using (var client = new SmtpClient ()) {
