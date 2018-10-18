@@ -1,21 +1,21 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
-import { Survey, SurveyModel } from '../../../survey-container/models/survey.model';
+import {
+  Survey,
+  SurveyModel
+} from '../../../survey-container/models/survey.model';
 import { SurveyService } from '../../../survey-container/services/survey.services';
 
 @Component({
-  selector: 'app-survey-content',
-  templateUrl: './survey-content.component.html',
-  styleUrls: ['./survey-content.component.scss']
+  selector: 'app-survey-sent-content',
+  templateUrl: './survey-sent-content.component.html',
+  styleUrls: ['./survey-sent-content.component.scss']
 })
-export class SurveyContentComponent implements OnInit, OnDestroy {
-  groupTitle = 'Szablony';
-  buttonDets = 'Stwórz nowy szablon';
+export class SurveySentContentComponent implements OnInit, OnDestroy {
+  groupTitle = 'Grupa ankiet 1';
   loading = false;
   surveyArr: Survey[];
   // subs
@@ -40,25 +40,8 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
     this.filterSurveyList();
   }
 
-  redirectToNew(): void {
-    this.surveyService.isCreatorLoading(true);
-    const obj = {
-      title: '',
-      questions: []
-    };
-    this.surveyService.createSurvey(obj).subscribe(
-      data => {
-        const string: string = '/app/admin/survey/create/' + data;
-        this.router.navigateByUrl(string);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
   saveSurveysFromApi(): void {
-    this.surveyService.saveSurveysFromApi();
+    this.surveyService.saveSentSurveysFromApi();
   }
   filterSurveyList(): void {
     this.surveyService.filterSurveyListInput.subscribe(data => {
@@ -78,7 +61,7 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   }
   getAllSurveys(): void {
     this.saveSurveysFromApi();
-    this.getAllSurveysSub = this.surveyService.savedSurveys.subscribe(
+    this.getAllSurveysSub = this.surveyService.savedSentSurveys.subscribe(
       (data: Survey[]) => {
         if (data) {
           this._items$.next(data);
@@ -89,9 +72,9 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
       }
     );
   }
-  openCreator(survey: Survey): void {
+  openPreview(survey: Survey): void {
     this.surveyService.isCreatorLoading(true);
-    this.router.navigateByUrl('/app/admin/survey/create/' + survey.id);
+    this.router.navigateByUrl( '/app/admin/survey/viewform/'  + survey.id);
   }
   openResult(survey: Survey): void {
     this.router.navigateByUrl('/app/admin/survey/result/' + survey.id);

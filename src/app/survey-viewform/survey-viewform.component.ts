@@ -33,40 +33,16 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getSurvey();
-    this.showAdminMenu();
     this.showUserInfo();
     this.sharedService.showSendButton(true);
     this.editSurvey();
   }
-  showAdminMenu(): void {
-    this.sharedService.showAdminMain(false);
+  showAdminMenu(x): void {
+    this.sharedService.showAdminMain(x);
   }
   showUserInfo(): void {
     this.sharedService.showUser(false);
   }
-  // getSurveyId(): void {
-  //   this.surveyIDSub = this.activatedRoute.params.subscribe(params => {
-  //     this.id = Number(params['id']);
-  //     this.hash = params['hash'] + '=';
-  //     console.log(this.hash);
-  //     this.getSurvey();
-  //   });
-  // }
-  // getSurvey(): void {
-  //   this.surveyService.getSurveyWithIdAndHash(this.id, this.hash).subscribe(
-  //     data => {
-  //       // console.log(JSON.stringify(data));
-  //       this.createQuestionData(data.result);
-  //       this.title = data.result['title'];
-  //       this.loader = true;
-  //       // this.ref.markForCheck();
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
   getSurvey(): void {
     this.activatedRoute.data.map(data => data.cres).subscribe(
       res => {
@@ -76,9 +52,13 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
           this.id = Number(this.activatedRoute.snapshot.params['id']);
           this.id2 = Number(this.activatedRoute.snapshot.params['id2']);
           this.hash = this.activatedRoute.snapshot.params['hash'];
-          console.log(this.hash);
           this.loader = true;
           this.surveyService.isCreatorLoading(false);
+          if (!this.id2) {
+            this.showBackButton(true);
+          } else {
+            this.showAdminMenu(false);
+          }
         }
       },
       error => {
@@ -86,6 +66,9 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
         this.surveyService.isCreatorLoading(false);
       }
     );
+  }
+  showBackButton(x): void {
+    this.sharedService.showBackButton(x);
   }
   sendSurvey(): void {
     this.surveyService
@@ -120,6 +103,11 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sharedService.showSendButton(false);
     this.editSurveySub.unsubscribe();
+    if (!this.id2) {
+      this.showBackButton(false);
+    } else {
+      this.showAdminMenu(true);
+    }
   }
 
   updateSelection(choiceOptions, radio, e?): void {
@@ -144,7 +132,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       // Created_Time: [data.Created_Time],
       questions: this.fb.array([])
     });
-    data.questions.forEach(question => {
+    data.questionTemplates.forEach(question => {
       this.createQuestion(question);
     });
   }
@@ -167,7 +155,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   createFieldData(question, controls) {
-    question.fieldData.forEach(data => {
+    question.fieldDataTemplates.forEach(data => {
       this.addGroup(controls.FieldData, controls.select.value, data);
     });
   }

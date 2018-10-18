@@ -3,7 +3,7 @@
     <div class="sideButton" *ngIf="showToggleButton === true" (click)="openSidebar()">
       <fa-icon [icon]="['fas','bars']"></fa-icon>
     </div>
-    <div class="sideButton" (click)="redirectTo('survey')" *ngIf="showBackButton === true">
+    <div class="sideButton" (click)="redirectTo('sent')" *ngIf="showBackButton === true">
       <fa-icon [icon]="['fas','arrow-left']" matTooltip="{{toolTipInfo.main}}" matTooltipPosition="below"></fa-icon>
     </div>
     <div id="logo">
@@ -44,7 +44,7 @@
     </mat-menu>
     <mat-menu #surveyInfo="matMenu" [overlapTrigger]="false">
       <button mat-menu-item (click)="redirectTo('survey')">Szablony</button>
-      <button mat-menu-item>Historia</button>
+      <button mat-menu-item (click)="redirectTo('sent')">Historia</button>
     </mat-menu>
   </div>
 </div>

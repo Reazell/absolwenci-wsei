@@ -13,6 +13,9 @@ export class SurveyService {
   savedSurveys: BehaviorSubject<Survey[]> = new BehaviorSubject<Survey[]>(
     undefined
   );
+  savedSentSurveys: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(
+    undefined
+  );
   openingCreatorLoader: Subject<boolean> = new Subject<boolean>();
   // openedSurvey: any;
   filterSurveyListInput: Subject<string> = new Subject<string>();
@@ -59,7 +62,7 @@ export class SurveyService {
     // };
     // console.log(JSON.stringify(obj));
     return this.http
-      .post<any>(this.config.apiUrl + '/survey/surveys', {
+      .post<any>(this.config.apiUrl + '/surveytemplate/surveys', {
         Title: survey.title,
         Questions: survey.questions
       })
@@ -75,10 +78,10 @@ export class SurveyService {
     // };
     // console.log(JSON.stringify(obj));
     return this.http
-      .put<Update>(this.config.apiUrl + '/survey/surveys', {
+      .put<Update>(this.config.apiUrl + '/surveytemplate/surveys', {
         surveyId: object.id,
         Title: object.Title,
-        Questions: object.Questions
+        Questions: object.QuestionTemplates
       })
       .map(data => {
         return data;
@@ -86,21 +89,28 @@ export class SurveyService {
   }
   deleteSurvey(id: number) {
     return this.http
-      .delete<any>(this.config.apiUrl + '/survey/' + id)
+      .delete<any>(this.config.apiUrl + '/surveytemplate/' + id)
       .map(data => {
         return data;
       });
   }
   getAllSurveys(): Observable<Survey[]> {
     return this.http
-      .get<Survey[]>(this.config.apiUrl + '/survey/surveys')
+      .get<Survey[]>(this.config.apiUrl + '/surveytemplate/surveys')
+      .map(data => {
+        return data;
+      });
+  }
+  getAllSentSurveys(): Observable<any[]> {
+    return this.http
+      .get<any[]>(this.config.apiUrl + '/survey/surveys')
       .map(data => {
         return data;
       });
   }
   getSurveyWithId(id: number): Observable<Survey> {
     return this.http
-      .get<Survey>(this.config.apiUrl + '/survey/' + id)
+      .get<Survey>(this.config.apiUrl + '/surveytemplate/' + id)
       .map(data => {
         return data;
       });
@@ -126,6 +136,11 @@ export class SurveyService {
   saveSurveysFromApi(): void {
     this.getAllSurveys().subscribe(data => {
       this.savedSurveys.next(data);
+    });
+  }
+  saveSentSurveysFromApi(): void {
+    this.getAllSentSurveys().subscribe(data => {
+      this.savedSentSurveys.next(data);
     });
   }
   isCreatorLoading(x: boolean): void {

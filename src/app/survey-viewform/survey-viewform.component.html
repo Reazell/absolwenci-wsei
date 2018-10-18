@@ -153,9 +153,9 @@
         </div>
       </div>
     </div>
-    <button mat-raised-button id="send" (click)="sendSurvey()">PRZEŚLIJ</button>
+    <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="id2">PRZEŚLIJ</button>
     <!-- <button mat-raised-button id="send" [routerLink]="['formResponse']">PRZEŚLIJ</button> -->
 
-    <pre>{{invoiceForm.value | json }}</pre>
+    <!-- <pre>{{invoiceForm.value | json }}</pre> -->
   </div>
 </form>

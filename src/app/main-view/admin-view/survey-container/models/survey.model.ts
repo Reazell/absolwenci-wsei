@@ -4,27 +4,27 @@ export class Survey {
   id: number;
   createdAt: string;
   // answered: boolean;
-  questions: Question[];
+  questionTemplates: Question[];
   constructor(
     title: string,
     id: number,
-    questions: Question[],
+    questionTemplates: Question[],
     createdAt?: string
   ) {
     this.title = title;
     this.id = id;
     this.createdAt = createdAt;
-    this.questions = questions;
+    this.questionTemplates = questionTemplates;
   }
 }
 
 export class SurveyModel extends Survey {
   created_date: string;
   created_time: string;
-  questions: Question[];
+  questionTemplates: Question[];
 
   constructor(survey: Survey) {
-    super(survey.title, survey.id, survey.questions);
+    super(survey.title, survey.id, survey.questionTemplates);
     this.created_date = survey.createdAt
       .split('T')[0]
       .split('-')
@@ -40,7 +40,7 @@ export class Question {
   questionPosition: number;
   content: string;
   select: string;
-  fieldData: FieldData[];
+  fieldDataTemplates: FieldData[];
 }
 
 export class FieldData {
@@ -52,7 +52,7 @@ export class FieldData {
   minValue: number;
   questionId: number;
   rows: Row[];
-  choiceOptions: Choice[];
+  choiceOptionTemplates: Choice[];
 }
 
 export class Row {

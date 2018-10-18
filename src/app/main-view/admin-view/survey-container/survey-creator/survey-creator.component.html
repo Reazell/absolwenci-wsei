@@ -8,7 +8,7 @@
         <button mat-menu-item>Duplikuj sekcję</button>
         <button mat-menu-item>Przenieś sekcję</button>-->
         <button mat-menu-item>Lorem ipsum</button>
-        <button *ngIf="invoiceForm.controls['questions'].length > 1" mat-menu-item (click)="openMoveQuestionDialog()">
+        <button *ngIf="invoiceForm.controls['questionTemplates'].length > 1" mat-menu-item (click)="openMoveQuestionDialog()">
           Przenieś
           pytania
         </button>
@@ -25,8 +25,9 @@
         (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" formControlName="description"></textarea>
     </mat-form-field>
   </div>
-  <div id="questions-container" formArrayName="questions">
-    <div *ngFor="let question of invoiceForm.controls['questions'].controls; let i = index" [formGroupName]="i" class="question-field">
+  <div id="questions-container" formArrayName="questionTemplates">
+    <div *ngFor="let question of invoiceForm.controls['questionTemplates'].controls; let i = index" [formGroupName]="i"
+      class="question-field">
       <div class="question">
 
         <div class="select-container">
@@ -266,5 +267,5 @@
       </div>
     </div>
   </div>
-  <pre>{{invoiceForm.value | json }}</pre>
+  <!-- <pre>{{invoiceForm.value | json }}</pre> -->
 </form>

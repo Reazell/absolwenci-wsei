@@ -5,7 +5,8 @@ import { DashboardComponent } from './dashboard.component';
 const dashboards = {
   main: 'main',
   survey: 'survey',
-  users: 'users'
+  users: 'users',
+  sent: 'sent'
 };
 const outlets = {
   sidebar: 's',
@@ -26,6 +27,7 @@ const outletString =
 const adminString = mainString + dashboards.main + outletString;
 const surveyString = mainString + dashboards.survey + outletString;
 const usersString = mainString + dashboards.users + outletString;
+const sentString = mainString + dashboards.sent + outletString;
 // console.log(usersString);
 
 const routes: Routes = [
@@ -77,6 +79,32 @@ const routes: Routes = [
             outlet: outlets.manage,
             loadChildren:
               './../../main-view/admin-view/dashboard-views/survey-dashboard/survey-content/survey-content.module#SurveyContentModule',
+            data: { preload: true, delay: true }
+          }
+        ]
+      },
+      {
+        path: dashboards.sent,
+        children: [
+          {
+            path: '',
+            redirectTo: sentString,
+            pathMatch: 'full'
+          },
+          {
+            path: outletPath,
+            outlet: outlets.sidebar,
+            loadChildren:
+              // tslint:disable-next-line:max-line-length
+              './../../main-view/admin-view/dashboard-views/survey-sent-dashboard/survey-sent-sidenav/survey-sent-sidenav.module#SurveySentSidenavModule',
+            data: { preload: true, delay: true }
+          },
+          {
+            path: outletPath,
+            outlet: outlets.manage,
+            loadChildren:
+              // tslint:disable-next-line:max-line-length
+              './../../main-view/admin-view/dashboard-views/survey-sent-dashboard/survey-sent-content/survey-sent-content.module#SurveySentContentModule',
             data: { preload: true, delay: true }
           }
         ]

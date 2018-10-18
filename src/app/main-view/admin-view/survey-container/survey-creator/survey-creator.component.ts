@@ -157,10 +157,10 @@ export class SurveyCreatorComponent
         if (res) {
           console.log(res);
           this.id = res.id;
-          if (res.questions.length === 0) {
+          if (res.questionTemplates.length === 0) {
             this.createQuestionData();
             this.updateSurveySubject();
-          } else if (res.questions.length > 0) {
+          } else if (res.questionTemplates.length > 0) {
             this.createQuestionData(res);
           }
         }
@@ -210,7 +210,7 @@ export class SurveyCreatorComponent
   updateSurveyObs() {
     const object: Update = {
       Title: this.invoiceForm.getRawValue().title,
-      Questions: this.invoiceForm.getRawValue().questions,
+      QuestionTemplates: this.invoiceForm.getRawValue().questionTemplates,
       id: this.id
     };
     // console.log(JSON.stringify(object));
@@ -230,13 +230,13 @@ export class SurveyCreatorComponent
   }
 
   openMoveQuestionDialog(): void {
-    const array: QuestionData[] = this.invoiceForm.getRawValue().questions;
+    const array: QuestionData[] = this.invoiceForm.getRawValue().questionTemplates;
     /* KEYS: ["content", "QuestionPosition", "select", "lastSelect", "FieldData"]*/
     const nameArr = this.setPropertiesNames(array);
     this.openMoveDialog(array, nameArr).subscribe(res => {
       if (res) {
-        this.invoiceForm.controls.questions = this.setPositionOnMove(
-          this.invoiceForm.controls.questions,
+        this.invoiceForm.controls.questionTemplates = this.setPositionOnMove(
+          this.invoiceForm.controls.questionTemplates,
           res,
           nameArr.position
         );
@@ -313,22 +313,22 @@ export class SurveyCreatorComponent
       group = {
         title: form.title,
         description: '',
-        questions: this.fb.array([])
+        questionTemplates: this.fb.array([])
       };
     } else {
       group = {
         title: 'Formularz bez nazwy',
         description: '',
-        questions: this.fb.array([])
+        questionTemplates: this.fb.array([])
       };
     }
     return group;
   }
   createQuestionField(form?: Survey): void {
     if (form) {
-      const questions: Question[] = form.questions;
+      const questionTemplates: Question[] = form.questionTemplates;
       const i = -1;
-      questions.forEach(question => {
+      questionTemplates.forEach(question => {
         this.addQuestion(i, question);
       });
     } else {
@@ -337,10 +337,10 @@ export class SurveyCreatorComponent
   }
 
   addQuestion(i: number, question?: Question): void {
-    const group: FormGroup = this.addquestionsControls(i, question);
+    const group: FormGroup = this.addQuestionsControls(i, question);
     if (question) {
       const questionArr: FormArray = this.invoiceForm.controls
-        .questions as FormArray;
+        .questionTemplates as FormArray;
       questionArr.push(group);
     } else {
       this.setNewQuestionPositions(i, group);
@@ -354,7 +354,7 @@ export class SurveyCreatorComponent
   }
   setNewQuestionPositions(index: number, object?: FormGroup) {
     const questionArr: FormArray = this.invoiceForm.controls
-      .questions as FormArray;
+      .questionTemplates as FormArray;
     const length: number = questionArr.length;
     const newIndex: number = index + 1;
     if (index !== length - 1) {
@@ -370,7 +370,7 @@ export class SurveyCreatorComponent
   }
   removeQuestion(i: number): void {
     const questionArr: FormArray = this.invoiceForm.controls
-      .questions as FormArray;
+      .questionTemplates as FormArray;
     const length: number = questionArr.controls.length;
     if (length > 1) {
       questionArr.removeAt(i);
@@ -379,7 +379,7 @@ export class SurveyCreatorComponent
       }
     } else {
       questionArr.removeAt(0);
-      const group = this.addquestionsControls(-1);
+      const group = this.addQuestionsControls(-1);
       questionArr.push(group);
     }
     this.updateSurveySubject();
@@ -394,14 +394,14 @@ export class SurveyCreatorComponent
     }
   }
 
-  addquestionsControls(i: number, question?: Question): FormGroup {
+  addQuestionsControls(i: number, question?: Question): FormGroup {
     const group: FormGroup = this.fb.group(
-      this.populatequestionsControls(i, question)
+      this.populateQuestionsControls(i, question)
     );
     this.createFieldData(group.controls, question);
     return group;
   }
-  populatequestionsControls(i: number, question?: Question): QuestionData {
+  populateQuestionsControls(i: number, question?: Question): QuestionData {
     /* DO NOT CHANGE PROPERTIES ORDER */
     let group: QuestionData;
     if (question) {
@@ -425,7 +425,7 @@ export class SurveyCreatorComponent
   }
   createFieldData(controls: any, question?: Question): void {
     if (question) {
-      const fieldData: FieldData[] = question.fieldData;
+      const fieldData: FieldData[] = question.fieldDataTemplates;
       fieldData.forEach(data => {
         this.addGroup(controls.FieldData, controls.select.value, data);
       });
@@ -492,7 +492,7 @@ export class SurveyCreatorComponent
     }
   }
   isFieldData(data: FieldData | ChoiceOptions[]): data is FieldData {
-    return (data as FieldData).choiceOptions !== undefined;
+    return (data as FieldData).choiceOptionTemplates !== undefined;
   }
   addInput(fieldData: FormArray): void {
     const group: FormGroup = this.fb.group({

@@ -37,7 +37,7 @@ export class Tooltip {
 export class Update {
   id: number;
   Title: string;
-  Questions: Question[];
+  QuestionTemplates: Question[];
 }
 
 export class QuestionData {
@@ -68,7 +68,7 @@ export class ChoiceOptionsData {
 export class MainForm {
   title: string;
   description: string;
-  questions: FormArray;
+  questionTemplates: FormArray;
 }
 export class RowData {
   rowPosition: number;
