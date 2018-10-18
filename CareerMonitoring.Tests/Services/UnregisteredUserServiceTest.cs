@@ -17,16 +17,13 @@ namespace CareerMonitoring.Tests.Services
             //Arrange
             var unregisteredUserRepositoryMock = new Mock<IUnregisteredUserRepository>();
             var unregisteredUserService = new UnregisteredUserService(unregisteredUserRepositoryMock.Object);
-            
             //Act
             await unregisteredUserService.CreateAsync("john", "johnson", "Informatyka i ekonometria", "2018-01-01 00:00:00", "dzienne",
                 "john@gmail.com");
-            
             //Assert
             unregisteredUserRepositoryMock.Verify(x=>x.AddAsync(It.IsAny<UnregisteredUser>()),Times.Once());
 
         }
-        
 //        [Fact]
 //        public async Task Get_all_async_should_invoke_get_all_async_on_user_repository()
 //        {
@@ -41,10 +38,8 @@ namespace CareerMonitoring.Tests.Services
 //            unregisteredUsersList.Add((unregisteredUser2));
 //            var unregisteredUserRepositoryMock = new Mock<IUnregisteredUserRepository>().Setup(x=>x.GetAllAsync().Result(unregisteredUsersList));
 //            var unregisteredUserService = new UnregisteredUserService(unregisteredUserRepositoryMock);
-//            
 //            //Act
 //            var unregisteredUsers = await unregisteredUserService.GetAllAsync();
-//            
 //            //Assert
 //            unregisteredUserRepositoryMock.Verify(x=>x.GetAllAsync(It.IsInRange(),Times.Once());
 //
