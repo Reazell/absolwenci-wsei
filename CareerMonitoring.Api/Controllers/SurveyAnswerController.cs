@@ -17,7 +17,7 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [HttpPost ("{email}")]
-        public async Task<IActionResult> CreateSurveyAnswer (string email, int userId, [FromBody] SurveyAnswerToAdd command) {
+        public async Task<IActionResult> CreateSurveyAnswer (string email, [FromBody] SurveyAnswerToAdd command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
@@ -27,7 +27,6 @@ namespace CareerMonitoring.Api.Controllers {
                 else if (verification == "unauthorized")
                     return Unauthorized ();
                 await _surveyAnswerService.CreateSurveyAnswerAsync(command);
-                //await _surveyUserIdentifierService.MarkAnswered(email, command.SurveyId);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);

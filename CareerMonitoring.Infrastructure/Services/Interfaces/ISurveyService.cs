@@ -16,7 +16,7 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces {
         Task<IEnumerable<Survey>> GetAllAsync ();
         Task<Survey> GetByIdAsync (int surveyId);
         Task<Survey> GetByTitleAsync (string title);
-        Task<int> UpdateAsync (int surveyId, string title);
+        //Task<int> UpdateAsync (int surveyId, string title);
         //Task UpdateSurveyAsync (SurveyToUpdate command);
         Task DeleteAsync (int surveyId);
     }

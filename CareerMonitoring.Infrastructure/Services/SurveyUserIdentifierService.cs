@@ -20,25 +20,18 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task<string> VerifySurveyUser (string userEmail, int surveyId) {
-            var counter = 0;
             var identifiers = await _surveyUserIdentifierRepository.GetAllBySurveyIdAsync (surveyId);
             foreach (var identifier in identifiers) {
                 if (VerifyEmailHash (userEmail, identifier.UserEmailHash)) {
-                    counter++;
-                }
-                if (identifier != null && identifier.Answered) {
-                    return await Task.FromResult ("answered");
-                }
-                if (identifier != null && !identifier.Answered) {
                     identifier.MarkAsAnswered ();
                     await _surveyUserIdentifierRepository.UpdateAsync (identifier);
-                    return await Task.FromResult ("authorized");
+                    return await Task.FromResult("authorized");
                 }
-                if(counter == 0){
-                    return await Task.FromResult ("unauthorized");
+                if(VerifyEmailHash (userEmail, identifier.UserEmailHash) && identifier.Answered) {
+                    return await Task.FromResult("answered");
                 }
             }
-            return "";
+            return "unauthorized";
         }
 
         private bool VerifyEmailHash (string input, string hash) {
