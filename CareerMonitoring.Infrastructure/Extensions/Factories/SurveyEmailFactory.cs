@@ -46,7 +46,6 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                         Text = _emailContent.SurveyEmail (surveyId, account.Email, account.Id)
                     };
                     await _emailFactory.SendEmailAsync (message);
-                    await _surveyUserIdentifierService.CreateAsync (account.Email, surveyId, account.Id);
                 }
             }
             foreach (var accountToIdentify in accountsToIdentify)
@@ -69,7 +68,6 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
                         Text = _emailContent.SurveyEmail (surveyId, unregisteredUser.Email, unregisteredUser.Id)
                     };
                     await _emailFactory.SendEmailAsync (message);
-                    await _surveyUserIdentifierService.CreateAsync (unregisteredUser.Email, surveyId, unregisteredUser.Id);
                 }
             }
             foreach (var unregisteredUserToIdentify in unregisteredUsersToIdentify)
