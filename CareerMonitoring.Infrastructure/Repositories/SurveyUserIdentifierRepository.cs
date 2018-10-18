@@ -31,6 +31,12 @@ namespace CareerMonitoring.Infrastructure.Repositories
                 .SingleOrDefault(x => x.SurveyId == surveyId && x.UserEmail == userEmail && x.UserId == userId);
         }
 
+        public async Task UpdateAsync(SurveyUserIdentifier surveyUserIdentifier)
+        {
+            _context.Update(surveyUserIdentifier);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(SurveyUserIdentifier surveyUserIdentifier)
         {
             _context.Remove(surveyUserIdentifier);

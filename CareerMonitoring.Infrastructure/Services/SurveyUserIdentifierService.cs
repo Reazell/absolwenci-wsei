@@ -36,11 +36,12 @@ namespace CareerMonitoring.Infrastructure.Services
             return Task.FromResult("unauthorized");
         }
 
-        public Task MarkAnswered(string userEmail, int surveyId, int userId)
+        public async Task MarkAnswered(string userEmail, int surveyId, int userId)
         {
             var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail, userId);
             identifier.MarkAsAnswered();
-            return Task.CompletedTask;
+            await _surveyUserIdentifierRepository.UpdateAsync(identifier);
+            await Task.CompletedTask;
         }
     }
 }

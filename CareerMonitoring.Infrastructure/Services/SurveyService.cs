@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Surveys;
+using CareerMonitoring.Core.Domains.SurveyTemplates;
 using CareerMonitoring.Infrastructure.Commands.Survey;
 using CareerMonitoring.Infrastructure.DTO;
 using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
@@ -19,92 +20,88 @@ namespace CareerMonitoring.Infrastructure.Services {
         private readonly IFieldDataRepository _fieldDataRepository;
         private readonly IChoiceOptionRepository _choiceOptionRepository;
         private readonly IRowRepository _rowRepository;
+        private readonly ISurveyTemplateRepository _surveyTemplateRepository;
 
         public SurveyService (IMapper mapper,
             ISurveyRepository surveyRepository,
             IQuestionRepository questionRepository,
             IFieldDataRepository fieldDataRepository,
             IChoiceOptionRepository choiceOptionRepository,
-            IRowRepository rowRepository) {
+            IRowRepository rowRepository,
+            ISurveyTemplateRepository surveyTemplateRepository) {
             _mapper = mapper;
             _surveyRepository = surveyRepository;
             _questionRepository = questionRepository;
             _fieldDataRepository = fieldDataRepository;
             _choiceOptionRepository = choiceOptionRepository;
             _rowRepository = rowRepository;
+            _surveyTemplateRepository = surveyTemplateRepository;
         }
 
-        public async Task<int> CreateSurveyAsync (SurveyToAdd command)
-        {
+        public async Task<int> CreateSurveyAsync (int surveyTemplateId) {
+            var command = await _surveyTemplateRepository.GetByIdWithQuestionTemplatesAsync (surveyTemplateId);
             var surveyId = await CreateAsync (command.Title);
-            if(command.Questions == null)
+            if (command.QuestionTemplates == null)
                 throw new NullReferenceException ("Cannot create empty survey");
-            foreach (var question in command.Questions) {
-                var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
-                question.Content, question.Select, question.IsRequired);
-                if(question.FieldData == null)
+            foreach (var question in command.QuestionTemplates) {
+                var questionId = await AddQuestionToSurveyAsync (surveyId, question.QuestionPosition,
+                    question.Content, question.Select, question.IsRequired);
+                if (question.FieldDataTemplates == null)
                     throw new NullReferenceException ("Question must contain FieldData");
-                foreach (var fieldData in question.FieldData) {
-                    await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
+                foreach (var fieldDataTemplate in question.FieldDataTemplates) {
+                    await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldDataTemplate);
                 }
             }
             return surveyId;
         }
 
-        public async Task UpdateSurveyAsync (SurveyToUpdate command)
-        {
-            var surveyId = await UpdateAsync (command.SurveyId, command.Title);
-            if(command.Questions == null)
-                throw new NullReferenceException ("Cannot create empty survey");
-            foreach (var question in command.Questions) {
-                var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
-                question.Content, question.Select, question.IsRequired);
-                if(question.FieldData == null)
-                    throw new NullReferenceException ("Question must contain FieldData");
-                foreach (var fieldData in question.FieldData) {
-                    await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
-                }
-            }
-        }
+        // public async Task UpdateSurveyAsync (SurveyToUpdate command)
+        // {
+        //     var surveyId = await UpdateAsync (command.SurveyId, command.Title);
+        //     if(command.Questions == null)
+        //         throw new NullReferenceException ("Cannot create empty survey");
+        //     foreach (var question in command.Questions) {
+        //         var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
+        //         question.Content, question.Select, question.IsRequired);
+        //         if(question.FieldData == null)
+        //             throw new NullReferenceException ("Question must contain FieldData");
+        //         foreach (var fieldData in question.FieldData) {
+        //             await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
+        //         }
+        //     }
+        // }
 
-        private async Task AddChoiceOptionsAndRowsAsync (int questionId, string select, FieldDataToAdd fieldDataToAdd)
-        {
+        private async Task AddChoiceOptionsAndRowsAsync (int questionId, string select, FieldDataTemplate fieldDataToAdd) {
             var fieldDataId = await AddFieldDataToQuestionAsync (questionId,
                 fieldDataToAdd.Input,
                 fieldDataToAdd.MinValue,
                 fieldDataToAdd.MaxValue,
                 fieldDataToAdd.MinLabel,
                 fieldDataToAdd.MaxLabel);
-            if (select == "single-grid" || select == "multiple-grid"){
-                await AddRowsAsync(fieldDataToAdd, select, fieldDataId);
-                await AddChoiceOptionsAsync(fieldDataToAdd, select, fieldDataId);
-            }
-
-            else if (select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" ||
-                     select == "single-grid" || select == "multiple-grid")
-                await AddChoiceOptionsAsync(fieldDataToAdd, select, fieldDataId);
+            if (select == "single-grid" || select == "multiple-grid") {
+                await AddRowsAsync (fieldDataToAdd, select, fieldDataId);
+                await AddChoiceOptionsAsync (fieldDataToAdd, select, fieldDataId);
+            } else if (select == "single-choice" || select == "multiple-choice" || select == "dropdown-menu" ||
+                select == "single-grid" || select == "multiple-grid")
+                await AddChoiceOptionsAsync (fieldDataToAdd, select, fieldDataId);
             else
                 await Task.CompletedTask;
         }
-        private async Task AddChoiceOptionsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
-        {
-            if(fieldDataToAdd.ChoiceOptions != null){
+        private async Task AddChoiceOptionsAsync (FieldDataTemplate fieldDataToAdd, string select, int fieldDataId) {
+            if (fieldDataToAdd.ChoiceOptionTemplates != null) {
                 var counter = 0;
-                foreach (var choiceOption in fieldDataToAdd.ChoiceOptions)
-                {
-                    await AddChoiceOptionsAsync(fieldDataId, counter,
+                foreach (var choiceOption in fieldDataToAdd.ChoiceOptionTemplates) {
+                    await AddChoiceOptionsAsync (fieldDataId, counter,
                         choiceOption.Value, choiceOption.ViewValue);
                     counter++;
                 }
             }
         }
 
-        private async Task AddRowsAsync (FieldDataToAdd fieldDataToAdd, string select, int fieldDataId)
-        {
-            if(fieldDataToAdd.Rows == null)
+        private async Task AddRowsAsync (FieldDataTemplate fieldDataToAdd, string select, int fieldDataId) {
+            if (fieldDataToAdd.RowTemplates == null)
                 await Task.CompletedTask;
-            foreach (var row in fieldDataToAdd.Rows)
-            {
+            foreach (var row in fieldDataToAdd.RowTemplates) {
                 await AddRowAsync (fieldDataId, row.RowPosition, row.Input);
             }
         }
@@ -118,7 +115,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task<int> AddQuestionToSurveyAsync (int surveyId, int questionPosition, string content,
             string select, bool isRequired) {
             var survey = await _surveyRepository.GetByIdAsync (surveyId);
-            if(content == "")
+            if (content == "")
                 content = "Brak pytania";
             var question = new Question (questionPosition, content, select, isRequired);
             survey.AddQuestion (question);

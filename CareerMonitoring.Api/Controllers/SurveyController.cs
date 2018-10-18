@@ -51,33 +51,33 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpPost ("surveys")]
-        public async Task<IActionResult> CreateSurvey ([FromBody] SurveyToAdd command) {
-            try{
-                if (!ModelState.IsValid)
-                    return BadRequest (ModelState);
-                var surveyId = await _surveyService.CreateSurveyAsync (command);
-                await _surveyReportService.CreateAsync(surveyId, command.Title);
-                return Json(surveyId);
-            }
-            catch(Exception e){
-                return BadRequest(e.Message);
-            }
-        }
+        // [HttpPost ("surveys")]
+        // public async Task<IActionResult> CreateSurvey ([FromBody] SurveyToAdd command) {
+        //     try{
+        //         if (!ModelState.IsValid)
+        //             return BadRequest (ModelState);
+        //         var surveyId = await _surveyService.CreateSurveyAsync (command);
+        //         await _surveyReportService.CreateAsync(surveyId, command.Title);
+        //         return Json(surveyId);
+        //     }
+        //     catch(Exception e){
+        //         return BadRequest(e.Message);
+        //     }
+        // }
 
-        [HttpPut ("surveys")]
-        public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command) {
-            try{
-                if (!ModelState.IsValid)
-                    return BadRequest (ModelState);
-                await _surveyService.UpdateSurveyAsync (command);
-                await _surveyReportService.UpdateAsync(command.SurveyId, command.Title);
-                return StatusCode (200);
-            }
-            catch(Exception e){
-                return BadRequest(e.Message);
-            }
-        }
+        // [HttpPut ("surveys")]
+        // public async Task<IActionResult> UpdateSurvey ([FromBody] SurveyToUpdate command) {
+        //     try{
+        //         if (!ModelState.IsValid)
+        //             return BadRequest (ModelState);
+        //         await _surveyService.UpdateSurveyAsync (command);
+        //         await _surveyReportService.UpdateAsync(command.SurveyId, command.Title);
+        //         return StatusCode (200);
+        //     }
+        //     catch(Exception e){
+        //         return BadRequest(e.Message);
+        //     }
+        // }
 
         [HttpDelete ("{surveyId}")]
         public async Task<IActionResult> DeleteSurvey (int surveyId){
