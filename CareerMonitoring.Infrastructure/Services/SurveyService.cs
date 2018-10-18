@@ -21,6 +21,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         private readonly IChoiceOptionRepository _choiceOptionRepository;
         private readonly IRowRepository _rowRepository;
         private readonly ISurveyTemplateRepository _surveyTemplateRepository;
+        private readonly ISurveyReportService _surveyReportService;
 
         public SurveyService (IMapper mapper,
             ISurveyRepository surveyRepository,
@@ -28,7 +29,8 @@ namespace CareerMonitoring.Infrastructure.Services {
             IFieldDataRepository fieldDataRepository,
             IChoiceOptionRepository choiceOptionRepository,
             IRowRepository rowRepository,
-            ISurveyTemplateRepository surveyTemplateRepository) {
+            ISurveyTemplateRepository surveyTemplateRepository,
+            ISurveyReportService surveyReportService) {
             _mapper = mapper;
             _surveyRepository = surveyRepository;
             _questionRepository = questionRepository;
@@ -36,6 +38,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             _choiceOptionRepository = choiceOptionRepository;
             _rowRepository = rowRepository;
             _surveyTemplateRepository = surveyTemplateRepository;
+            _surveyReportService = surveyReportService;
         }
 
         public async Task<int> CreateSurveyAsync (int surveyTemplateId) {
@@ -52,6 +55,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldDataTemplate);
                 }
             }
+            await _surveyReportService.CreateAsync(surveyId, command.Title);
             return surveyId;
         }
 
