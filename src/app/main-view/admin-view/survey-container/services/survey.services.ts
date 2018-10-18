@@ -18,7 +18,7 @@ export class SurveyService {
   filterSurveyListInput: Subject<string> = new Subject<string>();
   constructor(private http: HttpClient, private config: AppConfig) {}
 
-  saveSurveyAnswer(survey, id, hash) {
+  saveSurveyAnswer(survey, id, hash, id2) {
     // const obj = {
     //   SurveyTitle: survey.title,
     //   SurveyId: id,
@@ -26,7 +26,7 @@ export class SurveyService {
     // };
     // console.log(JSON.stringify(obj));
     return this.http
-      .post<any>(this.config.apiUrl + '/surveyanswer/' + hash, {
+      .post<any>(this.config.apiUrl + '/surveyanswer/' + hash + '/' + id2, {
         SurveyTitle: survey.title,
         SurveyId: id,
         Questions: survey.questions
@@ -105,9 +105,13 @@ export class SurveyService {
         return data;
       });
   }
-  getSurveyWithIdAndHash(id: number, hash: string): Observable<any> {
+  getSurveyWithIdAndHash(
+    id: number,
+    hash: string,
+    id2: number
+  ): Observable<any> {
     return this.http
-      .get<any>(this.config.apiUrl + '/survey/' + id + '/' + hash)
+      .get<any>(this.config.apiUrl + '/survey/' + id + '/' + hash + '/' + id2)
       .map(data => {
         return data;
       });

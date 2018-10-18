@@ -15,6 +15,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   defaultQuestion = 'Brak pytania';
   loader = false;
   id: number;
+  id2: number;
   hash: string;
   title: string;
 
@@ -70,9 +71,10 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     this.activatedRoute.data.map(data => data.cres).subscribe(
       res => {
         if (res) {
-          this.createQuestionData(res.result);
-          this.title = res.result['title'];
+          this.createQuestionData(res);
+          this.title = res['title'];
           this.id = Number(this.activatedRoute.snapshot.params['id']);
+          this.id2 = Number(this.activatedRoute.snapshot.params['id2']);
           this.hash = this.activatedRoute.snapshot.params['hash'];
           console.log(this.hash);
           this.loader = true;
@@ -87,7 +89,12 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
   sendSurvey(): void {
     this.surveyService
-      .saveSurveyAnswer(this.invoiceForm.getRawValue(), this.id, this.hash)
+      .saveSurveyAnswer(
+        this.invoiceForm.getRawValue(),
+        this.id,
+        this.hash,
+        this.id2
+      )
       .subscribe(
         data => {
           console.log(data);

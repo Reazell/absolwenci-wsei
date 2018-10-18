@@ -29,7 +29,7 @@ const surveyContainerRoutes: Routes = [
         // canLoad: [RouteGuard]
       },
       {
-        path: 'viewform/:id/:hash',
+        path: 'viewform/:id/:hash/:id2',
         loadChildren:
           './../../survey-viewform/survey-viewform.module#SurveyViewformModule',
         resolve: {
