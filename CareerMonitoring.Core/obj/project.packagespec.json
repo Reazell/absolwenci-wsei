@@ -1,19 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-<<<<<<< HEAD
-    "projectUniqueName": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+    "projectUniqueName": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
     "projectName": "CareerMonitoring.Core",
-    "projectPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
-    "outputPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
-=======
-    "projectUniqueName": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
-    "projectName": "CareerMonitoring.Core",
-    "projectPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
-    "outputPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
->>>>>>> FL01
+    "projectPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+    "outputPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback",
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [

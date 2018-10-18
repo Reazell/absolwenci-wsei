@@ -12,3 +12,8 @@ c:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\obj\Debug\netcorea
 c:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\obj\Debug\netcoreapp2.0\CareerMonitoring.Tests.AssemblyInfo.cs
 c:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\obj\Debug\netcoreapp2.0\CareerMonitoring.Tests.dll
 c:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\obj\Debug\netcoreapp2.0\CareerMonitoring.Tests.pdb
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+C:\Users\amado\Desktop\absolwenci-wsei\CareerMonitoring.Tests\obj\Debug\netcoreapp2.0\CareerMonitoring.Tests.csproj.CopyComplete

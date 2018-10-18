@@ -38,15 +38,6 @@
           "lib/netstandard2.0/EPPlus.Core.dll": {}
         }
       },
-      "Eramake.eCryptography/1.1.6": {
-        "type": "package",
-        "compile": {
-          "lib/net45/eCryptography.dll": {}
-        },
-        "runtime": {
-          "lib/net45/eCryptography.dll": {}
-        }
-      },
       "FluentValidation/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -3319,16 +3310,6 @@
         "lib/netstandard1.3/EPPlus.Core.xml",
         "lib/netstandard2.0/EPPlus.Core.dll",
         "lib/netstandard2.0/EPPlus.Core.xml"
-      ]
-    },
-    "Eramake.eCryptography/1.1.6": {
-      "sha512": "nyj1noN2q/hAKz3waqTLZnu6fGgTpyd0Z7pOSgwwYTF1WUGbKiXjTr2jChWHSef3J3QyHMNh8EjtMWb7AOkecw==",
-      "type": "package",
-      "path": "eramake.ecryptography/1.1.6",
-      "files": [
-        "eramake.ecryptography.1.1.6.nupkg.sha512",
-        "eramake.ecryptography.nuspec",
-        "lib/net45/eCryptography.dll"
       ]
     },
     "FluentValidation/8.0.0": {
@@ -9750,7 +9731,6 @@
       "AutoMapper >= 7.0.1",
       "CareerMonitoring.Core >= 1.0.0",
       "EPPlus.Core >= 1.5.4",
-      "Eramake.eCryptography >= 1.1.6",
       "FluentValidation.AspNetCore >= 8.0.0",
       "MailKit >= 2.0.6",
       "Microsoft.EntityFrameworkCore.Design >= 2.1.1",
@@ -9764,7 +9744,7 @@
   },
   "packageFolders": {
     "C:\\Users\\amado\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -9777,7 +9757,7 @@
       "outputPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
@@ -9817,10 +9797,6 @@
           "EPPlus.Core": {
             "target": "Package",
             "version": "[1.5.4, )"
-          },
-          "Eramake.eCryptography": {
-            "target": "Package",
-            "version": "[1.1.6, )"
           },
           "FluentValidation.AspNetCore": {
             "target": "Package",
@@ -9868,17 +9844,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Pakiet „Eramake.eCryptography 1.1.6” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1” zamiast platformy docelowej projektu „.NETCoreApp,Version=v2.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
-      "libraryId": "Eramake.eCryptography",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    }
-  ]
+  }
 }
