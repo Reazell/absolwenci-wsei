@@ -664,12 +664,18 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\filip.lipowiecki\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\amado\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback": {},
+>>>>>>> AC01
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "projectName": "CareerMonitoring.Core",
       "projectPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
@@ -677,6 +683,16 @@
       "outputPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+=======
+      "projectUniqueName": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "projectName": "CareerMonitoring.Core",
+      "projectPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "packagesPath": "C:\\Users\\amado\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\amado\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback",
+>>>>>>> AC01
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [

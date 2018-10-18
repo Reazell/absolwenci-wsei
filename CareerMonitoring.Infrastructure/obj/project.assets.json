@@ -9749,7 +9749,12 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\filip.lipowiecki\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\amado\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback": {},
+>>>>>>> AC01
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -9762,6 +9767,10 @@
       "outputPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+<<<<<<< HEAD
+=======
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback",
+>>>>>>> AC01
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
