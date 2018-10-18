@@ -46,7 +46,6 @@ namespace CareerMonitoring.Api.Controllers
                 return BadRequest(ModelState);
             try
             {
-
                 var surveyId = _surveyService.CreateSurveyAsync(surveyTemplateId).Result;
                 await _surveyEmailFactory.SendSurveyEmailAsync(surveyId);
                 await _surveyEmailFactory.SendSurveyEmailToUnregisteredUsersAsync(surveyId);

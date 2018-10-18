@@ -16,17 +16,18 @@ namespace CareerMonitoring.Api.Controllers {
             _surveyUserIdentifierService = surveyUserIdentifierService;
         }
 
-        [HttpPost ("{email}/{userId}")]
+        [HttpPost ("{email}")]
         public async Task<IActionResult> CreateSurveyAnswer (string email, int userId, [FromBody] SurveyAnswerToAdd command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId, userId) == "answered")
+                var verification = await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId);
+                if (verification == "answered")
                     return BadRequest ("you already answered to that survey");
-                else if (await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId, userId) == "unauthorized")
+                else if (verification == "unauthorized")
                     return Unauthorized ();
                 await _surveyAnswerService.CreateSurveyAnswerAsync(command);
-                await _surveyUserIdentifierService.MarkAnswered(email, command.SurveyId, userId);
+                //await _surveyUserIdentifierService.MarkAnswered(email, command.SurveyId);
                 return StatusCode (201);
             } catch (Exception e) {
                 return BadRequest (e.Message);

@@ -14,9 +14,9 @@ namespace CareerMonitoring.Infrastructure.Extensions.Email {
                 $" <a href=\"http://localhost:4200/api/auth/recoveringPassword/{token}\">link </a>, aby zmienić swoje hasło.";
         }
 
-        public string SurveyEmail (int surveyId, string email, int userId) {
+        public string SurveyEmail (int surveyId, string email) {
             return $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten" +
-                $" <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}/{email}/{userId}\">link</a> .";
+                $" <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}/{email}\">link</a> .";
         }
 
     }
