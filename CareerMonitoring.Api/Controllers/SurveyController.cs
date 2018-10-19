@@ -29,7 +29,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [HttpGet ("{surveyId}/{email}/{userId}")]
+        [HttpGet ("{surveyId}/{email}")]
         public async Task<IActionResult> GetSurveyWithEmail (int surveyId) {
             try{
                 var survey = await _surveyService.GetByIdAsync (surveyId);
