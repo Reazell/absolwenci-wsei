@@ -52,7 +52,8 @@ namespace CareerMonitoring.Api.Controllers
             try
             {
                 var surveyId = _surveyService.CreateSurveyAsync(surveyTemplateId).Result;
-                await _surveyReportService.CreateAsync(surveyId);
+                var survey = await _surveyService.GetByIdAsync(surveyId);
+                await _surveyReportService.CreateAsync(surveyId, survey.Title);
                 await _surveyEmailFactory.SendSurveyEmailAsync(surveyId);
                 await _surveyEmailFactory.SendSurveyEmailToUnregisteredUsersAsync(surveyId);
                 return StatusCode(200);

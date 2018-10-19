@@ -477,9 +477,7 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<int>("SurveyId");
 
-                    b.Property<string>("UserEmail");
-
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserEmailHash");
 
                     b.HasKey("Id");
 

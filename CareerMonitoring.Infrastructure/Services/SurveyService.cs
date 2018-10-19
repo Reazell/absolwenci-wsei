@@ -55,7 +55,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldDataTemplate);
                 }
             }
-            await _surveyReportService.CreateAsync(surveyId, command.Title);
+            //await _surveyReportService.CreateAsync(surveyId, command.Title);
             return surveyId;
         }
 
