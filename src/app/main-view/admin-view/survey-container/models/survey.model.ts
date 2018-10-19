@@ -38,6 +38,7 @@ export class Question {
   id: number;
   surveyId: number;
   questionPosition: number;
+  isRequired: boolean;
   content: string;
   select: string;
   fieldDataTemplates: FieldData[];

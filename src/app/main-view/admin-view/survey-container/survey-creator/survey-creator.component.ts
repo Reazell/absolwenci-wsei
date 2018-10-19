@@ -230,7 +230,8 @@ export class SurveyCreatorComponent
   }
 
   openMoveQuestionDialog(): void {
-    const array: QuestionData[] = this.invoiceForm.getRawValue().questionTemplates;
+    const array: QuestionData[] = this.invoiceForm.getRawValue()
+      .questionTemplates;
     /* KEYS: ["content", "QuestionPosition", "select", "lastSelect", "FieldData"]*/
     const nameArr = this.setPropertiesNames(array);
     this.openMoveDialog(array, nameArr).subscribe(res => {
@@ -409,6 +410,7 @@ export class SurveyCreatorComponent
         content: question.content,
         QuestionPosition: question.questionPosition,
         select: question.select,
+        isRequired: question.isRequired,
         lastSelect: undefined,
         FieldData: this.fb.array([])
       };
@@ -417,6 +419,7 @@ export class SurveyCreatorComponent
         content: '',
         QuestionPosition: i + 1,
         select: this.default,
+        isRequired: true,
         lastSelect: undefined,
         FieldData: this.fb.array([])
       };
@@ -476,7 +479,7 @@ export class SurveyCreatorComponent
     if (data) {
       const bool: boolean = this.isFieldData(data);
       if (bool) {
-        const choiceData: Choice[] = (data as FieldData).choiceOptions;
+        const choiceData: Choice[] = (data as FieldData).choiceOptionTemplates;
         choiceData.forEach(choice => {
           this.addChoiceField(choiceOptionsField, name, choice);
         });
@@ -524,7 +527,7 @@ export class SurveyCreatorComponent
     if (data) {
       const bool: boolean = this.isFieldData(data);
       if (bool) {
-        const options: Choice[] = (data as FieldData).choiceOptions;
+        const options: Choice[] = (data as FieldData).choiceOptionTemplates;
         const rowArr: Row[] = (data as FieldData).rows;
         options.forEach(column => {
           this.addChoiceField(choiceData, 'kolumna', column);

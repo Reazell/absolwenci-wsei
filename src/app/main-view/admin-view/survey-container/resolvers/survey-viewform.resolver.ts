@@ -9,12 +9,11 @@ export class SurveyViewformResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     this.surveyService.isCreatorLoading(true);
     const id = Number(route.params['id']);
-    const id2 = Number(route.params['id2']);
-    if (id2) {
+    const hash =  route.params['hash'];
+    if (hash) {
       return this.surveyService.getSurveyWithIdAndHash(
         id,
-        route.params['hash'],
-        id2
+       hash
       );
     } else {
       return this.surveyService.getSurveyWithId(id);

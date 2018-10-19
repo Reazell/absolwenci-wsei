@@ -241,7 +241,7 @@
             </div>
             <div class="breakV"></div>
             <div id="required-container">
-              <mat-slide-toggle>Wymagane</mat-slide-toggle>
+              <mat-slide-toggle formControlName="isRequired">Wymagane</mat-slide-toggle>
 
             </div>
             <div id="question-menu">
@@ -267,5 +267,5 @@
       </div>
     </div>
   </div>
-  <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+  <pre>{{invoiceForm.value | json }}</pre>
 </form>

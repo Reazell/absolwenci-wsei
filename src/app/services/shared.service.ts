@@ -84,11 +84,13 @@ export class SharedService {
 
   inputError(control: AbstractControl) {
     // retrieve controls names into array to show errors for user
-    const parent = control['_parent'];
     if (control.touched === true || control.dirty === true) {
-      if (parent instanceof FormGroup) {
-        let errorObj: { controlName: string; errorStr: string };
-        let errorStr: string;
+      const parent = control['_parent'];
+      if (
+        parent instanceof FormGroup &&
+        control.errors !== null &&
+        control.touched
+      ) {
         let controlName: string;
 
         const controls = parent.controls;
@@ -103,46 +105,51 @@ export class SharedService {
             break;
           }
         }
-
-        if (control.errors !== null && control.touched) {
-          switch (controlName) {
-            case 'lastName':
-              controlName = 'last name';
-              break;
-            case 'phoneNum':
-              controlName = 'phone boolean';
-              break;
-            case 'companyName':
-              controlName = 'company name';
-              break;
-            case 'oldPassword':
-              controlName = 'old password';
-              break;
-            case 'newPassword':
-              controlName = 'new password';
-              break;
-          }
-          if (control.value !== undefined && control.value.length === 0) {
-            errorStr = 'Enter your ' + controlName;
-          } else {
-            if (controlName === 'password' || controlName === 'newPassword') {
-              errorStr =
-                // tslint:disable-next-line:max-line-length
-                'Użyj co najmniej ośmiu znaków, w tym jednocześnie liter, cyfr i symboli: !#$%&?';
-            } else {
-              errorStr = 'Enter valid ' + controlName;
-            }
-          }
-          errorObj = {
-            errorStr,
-            controlName
-          };
-          return errorObj;
-        }
+        controlName = this.controlNameAdjustSwitch(controlName);
+        return this.setErrorString(control, controlName);
       }
     }
   }
-
+  controlNameAdjustSwitch(controlName) {
+    switch (controlName) {
+      case 'lastName':
+        controlName = 'last name';
+        break;
+      case 'phoneNum':
+        controlName = 'phone boolean';
+        break;
+      case 'companyName':
+        controlName = 'company name';
+        break;
+      case 'oldPassword':
+        controlName = 'old password';
+        break;
+      case 'newPassword':
+        controlName = 'new password';
+        break;
+    }
+    return controlName;
+  }
+  setErrorString(control: AbstractControl, controlName: string) {
+    let errorObj: { controlName: string; errorStr: string };
+    let errorStr: string;
+    if (control.value !== undefined && control.value.length === 0) {
+      errorStr = 'Wpisz ' + controlName;
+    } else {
+      if (controlName === 'password' || controlName === 'newPassword') {
+        errorStr =
+          // tslint:disable-next-line:max-line-length
+          'Użyj co najmniej ośmiu znaków, w tym jednocześnie liter, cyfr i symboli: !#$%&?';
+      } else {
+        errorStr = 'Nieprawidłowe ' + controlName;
+      }
+    }
+    errorObj = {
+      errorStr,
+      controlName
+    };
+    return errorObj;
+  }
   deleteControlArray() {
     this.controlArray = undefined;
   }

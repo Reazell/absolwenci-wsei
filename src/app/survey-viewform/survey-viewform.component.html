@@ -17,13 +17,16 @@
           <div class="choice answer" *ngSwitchCase="'short-answer'">
             <mat-form-field appearance="standard">
               <input matInput type="text" formControlName="input" placeholder="Twoja odpowiedź">
+              <!-- <mat-error>{{defaultError}}</mat-error> -->
             </mat-form-field>
+            <div class="error"> {{ defaultError }} </div>
           </div>
 
           <div class="choice answer" *ngSwitchCase="'long-answer'">
             <mat-form-field appearance="standard">
               <textarea matInput [rows]="1" type="text" formControlName="input" placeholder="Twoja odpowiedź"
                 matTextareaAutosize></textarea>
+              <!-- <mat-error>{{defaultError}}</mat-error> -->
             </mat-form-field>
           </div>
 
@@ -153,9 +156,9 @@
         </div>
       </div>
     </div>
-    <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="id2">PRZEŚLIJ</button>
+    <button mat-raised-button id="send" (click)="sendSurvey()" *ngIf="hash">PRZEŚLIJ</button>
     <!-- <button mat-raised-button id="send" [routerLink]="['formResponse']">PRZEŚLIJ</button> -->
 
-    <!-- <pre>{{invoiceForm.value | json }}</pre> -->
+    <pre>{{invoiceForm.value | json }}</pre>
   </div>
 </form>

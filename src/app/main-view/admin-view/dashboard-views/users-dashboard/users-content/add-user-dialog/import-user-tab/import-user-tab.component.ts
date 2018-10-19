@@ -51,6 +51,14 @@ export class ImportUserTabComponent implements OnInit {
     this.userService.importUsers(body).subscribe(
       data => {
         console.log(data);
+        // this.userService.getAllUsers().subscribe(
+        //   res => {
+        //     console.log(res);
+        //   },
+        //   error => {
+        //     console.log(error);
+        //   }
+        // );
       },
       error => {
         console.log(error);

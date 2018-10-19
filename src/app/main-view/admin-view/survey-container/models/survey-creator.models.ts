@@ -44,6 +44,7 @@ export class QuestionData {
   content: string;
   select: string;
   lastSelect: string;
+  isRequired: boolean;
   QuestionPosition: number;
   FieldData: FormArray;
 }
