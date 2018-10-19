@@ -9,14 +9,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace CareerMonitoring.Api.Controllers {
     // [Authorize(Policy = "careerOffice")]
     public class SurveyController : ApiUserController {
-        // private readonly ISurveyService _surveyService;
-        // private readonly ISurveyReportService _surveyReportService;
+        private readonly ISurveyService _surveyService;
+        private readonly ISurveyReportService _surveyReportService;
 
-        // public SurveyController (ISurveyService surveyService,
-        //     ISurveyReportService surveyReportService) {
-        //     _surveyService = surveyService;
-        //     _surveyReportService = surveyReportService;
-        // }
+        public SurveyController (ISurveyService surveyService,
+            ISurveyReportService surveyReportService) {
+            _surveyService = surveyService;
+            _surveyReportService = surveyReportService;
+        }
 
         [HttpGet ("{surveyId}")]
         public async Task<IActionResult> GetSurvey (int surveyId, string email) {
