@@ -19,17 +19,30 @@ namespace CareerMonitoring.Infrastructure.Services {
             await _surveyUserIdentifierRepository.AddAsync (identifier);
         }
 
-        public async Task<string> VerifySurveyUser (string userEmail, int surveyId) {
-            var identifiers = await _surveyUserIdentifierRepository.GetAllBySurveyIdAsync (surveyId);
-            foreach (var identifier in identifiers) {
-                if (VerifyEmailHash (userEmail, identifier.UserEmailHash)) {
-                    identifier.MarkAsAnswered ();
-                    await _surveyUserIdentifierRepository.UpdateAsync (identifier);
-                    return await Task.FromResult("authorized");
+        public async Task<string> VerifySurveyUser(string userEmail, int surveyId)
+        {
+            var identifiers = await _surveyUserIdentifierRepository.GetAllBySurveyIdAsync(surveyId);
+            List<SurveyUserIdentifier> Identifiers = new List<SurveyUserIdentifier>();
+            foreach (var identifier in identifiers)
+            {
+
+                if (VerifyEmailHash(userEmail, identifier.UserEmailHash))
+                {
+                    if (!identifier.Answered)
+                    {
+                        Identifiers.Add(identifier);
+                    }
+                    else
+                    {
+                        return await Task.FromResult("answered");
+                    }
                 }
-                if(VerifyEmailHash (userEmail, identifier.UserEmailHash) && identifier.Answered) {
-                    return await Task.FromResult("answered");
-                }
+            }
+            foreach (var identifier in Identifiers)
+            {
+                identifier.MarkAsAnswered();
+                await _surveyUserIdentifierRepository.UpdateAsync(identifier);
+                return await Task.FromResult("authorized");
             }
             return "unauthorized";
         }
