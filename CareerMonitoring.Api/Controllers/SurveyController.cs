@@ -18,38 +18,38 @@ namespace CareerMonitoring.Api.Controllers {
         //     _surveyReportService = surveyReportService;
         // }
 
-        // [HttpGet ("{surveyId}")]
-        // public async Task<IActionResult> GetSurvey (int surveyId, string email) {
-        //     try{
-        //         var survey = await _surveyService.GetByIdAsync (surveyId);
-        //         return Json (survey);
-        //     }
-        //     catch(Exception e){
-        //         return BadRequest(e.Message);
-        //     }
-        // }
+        [HttpGet ("{surveyId}")]
+        public async Task<IActionResult> GetSurvey (int surveyId, string email) {
+            try{
+                var survey = await _surveyService.GetByIdAsync (surveyId);
+                return Json (survey);
+            }
+            catch(Exception e){
+                return BadRequest(e.Message);
+            }
+        }
 
-        // [HttpGet ("{surveyId}/{email}/{userId}")]
-        // public async Task<IActionResult> GetSurveyWithEmail (int surveyId) {
-        //     try{
-        //         var survey = await _surveyService.GetByIdAsync (surveyId);
-        //         return Json (survey);
-        //     }
-        //     catch(Exception e){
-        //         return BadRequest(e.Message);
-        //     }
-        // }
+        [HttpGet ("{surveyId}/{email}/{userId}")]
+        public async Task<IActionResult> GetSurveyWithEmail (int surveyId) {
+            try{
+                var survey = await _surveyService.GetByIdAsync (surveyId);
+                return Json (survey);
+            }
+            catch(Exception e){
+                return BadRequest(e.Message);
+            }
+        }
 
-        // [HttpGet ("surveys")]
-        // public async Task<IActionResult> GetAllSurveys () {
-        //     try{
-        //         var surveys = await _surveyService.GetAllAsync ();
-        //         return Json (surveys);
-        //     }
-        //     catch(Exception e){
-        //         return BadRequest(e.Message);
-        //     }
-        // }
+        [HttpGet ("surveys")]
+        public async Task<IActionResult> GetAllSurveys () {
+            try{
+                var surveys = await _surveyService.GetAllAsync ();
+                return Json (surveys);
+            }
+            catch(Exception e){
+                return BadRequest(e.Message);
+            }
+        }
 
         // // [HttpPost ("surveys")]
         // // public async Task<IActionResult> CreateSurvey ([FromBody] SurveyToAdd command) {
