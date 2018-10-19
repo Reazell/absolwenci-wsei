@@ -14,12 +14,17 @@ namespace CareerMonitoring.Api.Controllers
         private readonly IAccountEmailFactory _accountEmailFactory;
         private readonly ISurveyEmailFactory _surveyEmailFactory;
         private readonly ISurveyService _surveyService;
+        private readonly ISurveyReportService _surveyReportService;
 
-        public EmailController(IAccountEmailFactory accountEmailFactory, ISurveyEmailFactory surveyEmailFactory, ISurveyService surveyService)
+        public EmailController(IAccountEmailFactory accountEmailFactory,
+        ISurveyEmailFactory surveyEmailFactory,
+        ISurveyService surveyService,
+        ISurveyReportService surveyReportService)
         {
             _accountEmailFactory = accountEmailFactory;
             _surveyEmailFactory = surveyEmailFactory;
             _surveyService = surveyService;
+            _surveyReportService = surveyReportService;
         }
 
         [HttpPost("emails")]
@@ -47,6 +52,7 @@ namespace CareerMonitoring.Api.Controllers
             try
             {
                 var surveyId = _surveyService.CreateSurveyAsync(surveyTemplateId).Result;
+                await _surveyReportService.CreateAsync(surveyId);
                 await _surveyEmailFactory.SendSurveyEmailAsync(surveyId);
                 await _surveyEmailFactory.SendSurveyEmailToUnregisteredUsersAsync(surveyId);
                 return StatusCode(200);

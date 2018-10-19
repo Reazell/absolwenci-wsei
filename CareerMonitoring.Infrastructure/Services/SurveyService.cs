@@ -221,15 +221,15 @@ namespace CareerMonitoring.Infrastructure.Services {
             return survey;
         }
 
-        public async Task<int> UpdateAsync (int surveyId, string title) {
-            var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
-            foreach (var question in survey.Questions.ToList ()) {
-                await _questionRepository.DeleteAsync (question);
-            }
-            survey.Update (title);
-            await _surveyRepository.UpdateAsync (survey);
-            return survey.Id;
-        }
+        // public async Task<int> UpdateAsync (int surveyId, string title) {
+        //     var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
+        //     foreach (var question in survey.Questions.ToList ()) {
+        //         await _questionRepository.DeleteAsync (question);
+        //     }
+        //     survey.Update (title);
+        //     await _surveyRepository.UpdateAsync (survey);
+        //     return survey.Id;
+        // }
 
         public async Task DeleteAsync (int surveyId) {
             try {
