@@ -103,43 +103,69 @@ export class SharedService {
             break;
           }
         }
-        controlName = this.controlNameAdjustSwitch(controlName);
-        return this.setErrorString(control, controlName);
+        const translatedControlName = this.controlNameAdjustSwitch(controlName);
+        return this.setErrorString(control, controlName, translatedControlName);
       }
     }
   }
   controlNameAdjustSwitch(controlName) {
     switch (controlName) {
+      case 'name':
+        controlName = 'imię';
+        break;
+      case 'surname':
       case 'lastName':
-        controlName = 'last name';
+        controlName = 'nazwisko';
         break;
       case 'phoneNum':
-        controlName = 'phone boolean';
+        controlName = 'numer telefonu';
         break;
       case 'companyName':
-        controlName = 'company name';
+        controlName = 'nazwa firmy';
+        break;
+      case 'password':
+        controlName = 'hasło';
         break;
       case 'oldPassword':
-        controlName = 'old password';
+        controlName = 'stare hasło';
         break;
       case 'newPassword':
-        controlName = 'new password';
+        controlName = 'nowe hasło';
+        break;
+      case 'email':
+        controlName = 'email';
+        break;
+      case 'course':
+        controlName = 'kurs';
+        break;
+      case 'typeOfStudy':
+        controlName = 'typ studiów';
+        break;
+      case 'dateOfCompletion':
+        controlName = 'data zakończenia';
         break;
     }
     return controlName;
   }
-  setErrorString(control: AbstractControl, controlName: string) {
-    let errorObj: { controlName: string; errorStr: string };
+  setErrorString(
+    control: AbstractControl,
+    controlName: string,
+    translatedControlName: string
+  ) {
+    let errorObj: {
+      controlName: string;
+      errorStr: string;
+    };
     let errorStr: string;
     if (control.value !== undefined && control.value.length === 0) {
-      errorStr = 'Wpisz ' + controlName;
+      errorStr = 'Wpisz ' + translatedControlName;
     } else {
       if (controlName === 'password' || controlName === 'newPassword') {
         errorStr =
           // tslint:disable-next-line:max-line-length
           'Użyj co najmniej ośmiu znaków, w tym jednocześnie liter, cyfr i symboli: !#$%&?';
       } else {
-        errorStr = 'Nieprawidłowe ' + controlName;
+        errorStr = translatedControlName;
       }
     }
     errorObj = {

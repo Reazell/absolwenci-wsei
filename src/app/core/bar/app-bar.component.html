@@ -37,7 +37,7 @@
       <img src={{profileIMG}} alt="zdjęcie profilowe">
     </div>
     <mat-menu #userInfo="matMenu" id="sth" [overlapTrigger]="false">
-      <app-user-info (logout)="emitLogout()" (routeSwitch)="emitRouteSwitch()"></app-user-info>
+      <app-user-info (logout)="emitLogout()" (routeSwitch)="emitRouteSwitch($event)" [name]=profileName></app-user-info>
     </mat-menu>
     <mat-menu #surveyInfo="matMenu" [overlapTrigger]="false">
       <button mat-menu-item (click)="redirectTo('survey')">Szablony</button>

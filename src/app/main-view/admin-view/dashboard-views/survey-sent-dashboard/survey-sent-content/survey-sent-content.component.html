@@ -1,5 +1,5 @@
 <app-dashboard-bar [groupTitle]=groupTitle></app-dashboard-bar>
-<app-dashboard-list [itemArr]=" items$ | async">
+<app-dashboard-list [itemArr]=" items$ | async"  [emptyListInfo]=emptyListInfo>
   <ng-template let-item>
     <app-dashboard-tile [item_tile]=item (tileClick)="openPreview(item)">
       <app-survey-sent-tile [survey]=changeSurveyToModel(item)></app-survey-sent-tile>

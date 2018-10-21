@@ -1,5 +1,5 @@
 <app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets (buttonClick)="redirectToNew()"></app-dashboard-bar>
-<app-dashboard-list [itemArr]=" items$ | async">
+<app-dashboard-list [itemArr]=" items$ | async" [emptyListInfo]=emptyListInfo>
   <ng-template let-item>
     <app-dashboard-tile [item_tile]=item (tileClick)="openCreator(item)">
       <app-survey-tile [survey]=changeSurveyToModel(item)></app-survey-tile>

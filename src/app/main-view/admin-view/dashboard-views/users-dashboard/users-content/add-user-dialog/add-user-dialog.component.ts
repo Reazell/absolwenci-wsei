@@ -12,63 +12,17 @@ import { UserService } from '../../../../survey-container/services/user.services
   styleUrls: ['./add-user-dialog.component.scss']
 })
 export class AddUserDialogComponent implements OnInit {
-  dialogForm: FormGroup;
   loader = false;
   selected = 0;
 
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
-  ngOnInit() {
-    this.dialogForm = this.fb.group({
-      name: [
-        '',
-        Validators.compose([
-          Validators.required
-          // Validators.pattern(this.namePattern)
-        ])
-      ],
-      surname: [
-        '',
-        Validators.compose([
-          Validators.required
-          // Validators.pattern(this.surnamePattern)
-        ])
-      ],
-      email: [
-        '',
-        Validators.compose([
-          Validators.required
-          // Validators.pattern(this.emailPattern)
-        ])
-      ],
-      course: [
-        '',
-        Validators.compose([
-          Validators.required
-          // Validators.pattern(this.passwordPattern)
-        ])
-      ],
-      typeOfStudy: [
-        '',
-        Validators.compose([
-          Validators.required
-          // this.matchPassword
-        ])
-      ],
-      dateOfCompletion: [
-        '',
-        Validators.compose([
-          Validators.required
-          // this.matchPassword
-        ])
-      ]
-    });
-  }
+  ngOnInit() {}
   onSubmit(form) {
-    const value: UnregisteredUser = form.value;
-    console.log(value);
-    this.loader = true;
     if (form.valid) {
+      const value: UnregisteredUser = form.value;
+      console.log(value);
+      this.loader = true;
       const unregUser: UnregisteredUserModel = new UnregisteredUserModel(value);
       console.log(unregUser);
       this.userService.saveUnregisteredUser(unregUser).subscribe(

@@ -23,12 +23,17 @@ export class ImportUserTabComponent implements OnInit {
   @ViewChildren('progress')
   progress: ElementRef;
   attachmentsLength = 0;
-
+  loading: boolean;
+  completed: boolean;
+  readyStatus = 'GOTOWE';
+  errorStatus = 'BŁĄD PRZESŁANIA';
+  status: string;
   constructor(private userService: UserService) {}
 
   ngOnInit() {}
 
   removeAttachment(event, i) {
+    console.log(i);
     this.fileInput.remove(event, i);
     this.attachmentsLength = this.fileInput.files.length;
   }
@@ -36,36 +41,28 @@ export class ImportUserTabComponent implements OnInit {
     return this.fileInput.formatSize(bytes);
   }
   uploadFiles(fileObj) {
+    this.loading = true;
     console.log(fileObj);
     const files = fileObj.files;
     const body = new FormData();
-    // files.forEach(file => {
-    //   body.append('File', file);
-    // });
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < files.length; i++) {
-      const ff = files[i];
-      body.append('File', ff);
+    for (const file of files) {
+      body.append('File', file);
     }
-    console.log(body);
     this.userService.importUsers(body).subscribe(
-      data => {
-        console.log(data);
-        // this.userService.getAllUsers().subscribe(
-        //   res => {
-        //     console.log(res);
-        //   },
-        //   error => {
-        //     console.log(error);
-        //   }
-        // );
+      () => {
+        this.status = this.readyStatus;
+        this.completed = true;
+        this.loading = false;
       },
-      error => {
-        console.log(error);
+      () => {
+        this.status = this.errorStatus;
+        this.completed = true;
+        this.loading = false;
       }
     );
   }
   onFileSelect(event) {
+    this.completed = false;
     const progress = this.progress['_results'];
     const filesLength = this.fileInput.files.length;
     let value: number;
@@ -78,7 +75,8 @@ export class ImportUserTabComponent implements OnInit {
       };
       reader.onprogress = e => {
         if (e.lengthComputable) {
-          value = Math.round((e.loaded * 100) / e.total);
+          const val = (e.loaded * 100) / e.total;
+          value = Math.round(val);
           progress[i].nativeElement.style.width = value + '%';
         }
       };

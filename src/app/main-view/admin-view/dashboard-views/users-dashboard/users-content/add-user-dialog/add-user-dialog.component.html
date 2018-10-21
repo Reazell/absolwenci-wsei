@@ -8,7 +8,7 @@
         <mat-tab label="Dodaj absolwenta">
           <ng-template matTabContent>
             <!-- Content 1 - Loaded: {{getTimeLoaded(1) | date:'medium'}} -->
-            <app-add-user-tab [dialogForm]=dialogForm [loader]=loader (submit)=onSubmit($event)></app-add-user-tab>
+            <app-add-user-tab [loader]=loader (submit)=onSubmit($event)></app-add-user-tab>
           </ng-template>
         </mat-tab>
         <mat-tab label="Import pliku">

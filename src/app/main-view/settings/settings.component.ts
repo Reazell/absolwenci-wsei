@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 
 @Component({
@@ -7,7 +12,7 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
   userInfo = {
     id: 2,
     name: 'Gabriela',
@@ -28,9 +33,16 @@ export class SettingsComponent implements OnInit {
   constructor(private sharedService: SharedService) {}
 
   ngOnInit() {
-    this.backButton();
+    this.backButton(true);
+    this.toggleButton();
   }
-  backButton() {
-    this.sharedService.showBackButton(true);
+  backButton(x: boolean): void {
+    this.sharedService.showBackButton(x);
+  }
+  toggleButton(): void {
+    this.sharedService.showToggleButton(false);
+  }
+  ngOnDestroy() {
+    this.backButton(false);
   }
 }

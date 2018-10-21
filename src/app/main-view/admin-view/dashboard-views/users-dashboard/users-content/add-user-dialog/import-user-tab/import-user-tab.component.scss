@@ -4,6 +4,16 @@
   p-fileUpload {
     width: 100%;
     min-height: 100%;
+    #loading-container {
+      margin: 0 10px;
+      display: flex;
+      align-items: center;
+      #ready {
+        color: #45535c;
+        font-size: 15px;
+        font-weight: 600;
+      }
+    }
     ::ng-deep .ui-fileupload-buttonbar {
       display: flex;
       width: 100%;
@@ -92,7 +102,7 @@
       cursor: pointer;
       display: flex;
       width: 100%;
-
+      flex-wrap: nowrap !important;
       .progress-bar.loading {
         opacity: 1;
       }
@@ -148,8 +158,8 @@
         }
       }
     }
-  }
-  .attachment:hover {
-    background-color: #eaeaea;
+    .attachment:hover {
+      background-color: #eaeaea;
+    }
   }
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { RegisteredUser, UnregisteredUser } from '../../../../../models/user.model';
+import {
+  RegisteredUser,
+  UnregisteredUser
+} from '../../../../../models/user.model';
 import { UserService } from '../../../survey-container/services/user.services';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 
@@ -13,7 +16,7 @@ import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.compon
 export class UsersContentComponent implements OnInit {
   groupTitle = 'Grupa użytkowników 1';
   buttonDets = 'Dodaj nowego użytkownika';
-
+  emptyListInfo = 'Brak niezarejestrowanych użytkowników';
   // tslint:disable-next-line:max-line-length
   private _items$: BehaviorSubject<
     Array<RegisteredUser | UnregisteredUser>

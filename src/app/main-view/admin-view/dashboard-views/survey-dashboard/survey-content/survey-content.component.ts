@@ -19,6 +19,7 @@ import { SurveyService } from '../../../survey-container/services/survey.service
 export class SurveyContentComponent implements OnInit, OnDestroy {
   groupTitle = 'Szablony';
   buttonDets = 'Stwórz nowy szablon';
+  emptyListInfo = 'Brak szablonów';
   loading = false;
   surveyArr: SurveyTemplate[];
   // subs

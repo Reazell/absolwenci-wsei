@@ -18,7 +18,7 @@ import { AppBarTooltip } from '../../shared/models/shared.models';
 export class AppBarComponent {
   @ViewChild(MatMenuTrigger)
   trigger: MatMenuTrigger;
-
+  private _url = '/app/admin/d/';
   private _showAdmin: boolean;
   private _showSendButton: boolean;
   private _showToggleButton: boolean;
@@ -29,6 +29,7 @@ export class AppBarComponent {
   private _showAdminMenu: boolean;
   private _showBackButton: boolean;
   private _showUserInfo: boolean;
+  profileName = 'in progress';
   // inputs
   @Input()
   toolTipInfo: AppBarTooltip;
@@ -133,13 +134,13 @@ export class AppBarComponent {
   @Output()
   logout: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
-  routeSwitch: EventEmitter<boolean> = new EventEmitter<boolean>();
+  routeSwitch: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}
 
   // emit button actions
   redirectTo(data: string): void {
-    this.redirectToButton.emit(data);
+    this.redirectToButton.emit(this._url + data);
   }
   backTo(): void {
     this.backToButton.emit(true);
@@ -159,7 +160,7 @@ export class AppBarComponent {
   emitLogout() {
     this.logout.emit(true);
   }
-  emitRouteSwitch() {
-    this.routeSwitch.emit(true);
+  emitRouteSwitch(data: string) {
+    this.routeSwitch.emit(data);
   }
 }

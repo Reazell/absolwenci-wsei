@@ -14,6 +14,7 @@ import { SurveySurvey } from './../../../survey-container/models/survey.model';
 })
 export class SurveySentContentComponent implements OnInit, OnDestroy {
   groupTitle = 'Grupa ankiet 1';
+  emptyListInfo = 'Brak wysłanych ankiet';
   loading = false;
   surveyArr: SurveySurvey[];
   // subs

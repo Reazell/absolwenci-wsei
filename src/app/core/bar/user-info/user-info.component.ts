@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  Input,
   Output
 } from '@angular/core';
 
@@ -12,18 +13,19 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserInfoComponent {
+  @Input()
+  name: string;
   @Output()
   logout: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
-  routeSwitch: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor(
-  ) {}
+  routeSwitch: EventEmitter<string> = new EventEmitter<string>();
+  constructor() {}
 
   emitLogout() {
     this.logout.emit(true);
   }
 
-  emitRouteSwitch() {
-    this.routeSwitch.emit(true);
+  emitRouteSwitch(data: string) {
+    this.routeSwitch.emit(data);
   }
 }

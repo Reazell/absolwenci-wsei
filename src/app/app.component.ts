@@ -189,8 +189,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   redirectTo(data: string): void {
     this.loadingOverlay = true;
-    const url: string = '/app/admin/d/' + data;
-    this.router.navigateByUrl(url);
+    console.log(data);
+    // const url: string = '/app/admin/d/' + data;
+    this.router.navigateByUrl(data);
   }
 
   backTo(): void {
@@ -213,10 +214,12 @@ export class AppComponent implements OnInit, OnDestroy {
   logout(): void {
     this.authenticationService.logout();
   }
-  routeSwitch(): void {
-    this.accountRole$.subscribe((data: string) => {
-      this.sharedService.routeSwitch(data);
-    });
+  routeSwitch(e: string): void {
+    // this.accountRole$.subscribe((data: string) => {
+    //   this.sharedService.routeSwitch(data);
+    // });
+    console.log('e', e);
+    this.redirectTo(e);
   }
 
   // loading component handler

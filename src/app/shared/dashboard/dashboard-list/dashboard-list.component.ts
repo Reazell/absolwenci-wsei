@@ -19,6 +19,8 @@ import { SurveyService } from '../../../main-view/admin-view/survey-container/se
 export class DashboardListComponent implements OnInit, OnDestroy {
   @Input()
   itemArr;
+  @Input()
+  emptyListInfo: string;
   @ContentChild(TemplateRef)
   parentTemplate;
   loading = false;

@@ -1,7 +1,9 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { BehaviorSubject } from '../../../../node_modules/rxjs/BehaviorSubject';
 import { AppConfig } from '../../app.config';
+import { User } from '../other/user.model';
 import { AccountService } from './account.service';
 
 /**
@@ -12,6 +14,9 @@ import { AccountService } from './account.service';
  */
 @Injectable()
 export class AuthenticationService {
+  profileData: BehaviorSubject<User> = new BehaviorSubject<
+  User
+>(undefined);
   constructor(
     private http: HttpClient,
     private config: AppConfig,
@@ -54,5 +59,12 @@ export class AuthenticationService {
   activateAccount(token: string) {
     const string = '/auth/activation/' + token;
     return this.http.get(this.config.apiUrl + string);
+  }
+  setProfileData() {
+    // return this.http
+    // .get<User>(this.config.apiUrl + '/surveytemplate/' + id)
+    // .map(data => {
+    //   return data;
+    // });
   }
 }

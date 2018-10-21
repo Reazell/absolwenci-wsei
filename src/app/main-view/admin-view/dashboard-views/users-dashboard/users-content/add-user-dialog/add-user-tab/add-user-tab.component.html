@@ -7,31 +7,31 @@
     <div class="group half">
       <mat-form-field>
         <input matInput placeholder="Imię" formControlName="name">
-        <!-- <mat-error *ngIf="inputError(albumID)">{{albumIDErrorStr}}</mat-error> -->
+        <mat-error *ngIf="inputError(name)">{{ nameErrorStr }}</mat-error>
       </mat-form-field>
     </div>
     <div class="group half">
       <mat-form-field>
         <input matInput placeholder="Nazwisko" formControlName="surname">
-        <!-- <mat-error *ngIf="inputError(phoneNum)">{{phoneNumErrorStr}}</mat-error> -->
+        <mat-error *ngIf="inputError(surname)">{{surnameErrorStr}}</mat-error>
       </mat-form-field>
     </div>
     <div class="group half">
       <mat-form-field>
         <input matInput placeholder="E-mail" formControlName="email">
-        <!-- <mat-error *ngIf="inputError(companyName)">{{companyNameErrorStr}}</mat-error> -->
+        <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
       </mat-form-field>
     </div>
     <div class="group half">
       <mat-form-field>
         <input matInput placeholder="Kierunek studiów" formControlName="course">
-        <!-- <mat-error *ngIf="inputError(location)">{{locationErrorStr}}</mat-error> -->
+        <mat-error *ngIf="inputError(course)">{{courseErrorStr}}</mat-error>
       </mat-form-field>
     </div>
     <div class="group half">
       <mat-form-field>
         <input matInput placeholder="Specjalizacja" formControlName="typeOfStudy">
-        <!-- <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error> -->
+        <mat-error *ngIf="inputError(typeOfStudy)">{{typeOfStudyErrorStr}}</mat-error>
       </mat-form-field>
     </div>
     <div class="group half">
@@ -39,7 +39,7 @@
         <input matInput placeholder="Wybierz datę zakończenia studiów" [matDatepicker]="picker" formControlName="dateOfCompletion">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker startView="multi-year" disabled="false"></mat-datepicker>
-        <!-- <mat-error *ngIf="inputError(companyDescription)">{{companyDescriptionErrorStr}}</mat-error> -->
+        <mat-error *ngIf="inputError(dateOfCompletion)">{{dateOfCompletionErrorStr}}</mat-error>
       </mat-form-field>
     </div>
     <div id="button-container">
