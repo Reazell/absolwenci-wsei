@@ -36,30 +36,6 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: dashboards.main,
-        children: [
-          {
-            path: '',
-            redirectTo: adminString,
-            pathMatch: 'full'
-          },
-          {
-            path: outletPath,
-            outlet: outlets.sidebar,
-            loadChildren:
-              './../../main-view/admin-view/dashboard-views/admin-dashboard/admin-sidenav/admin-sidenav.module#AdminSidenavModule',
-            data: { preload: true, delay: true }
-          },
-          {
-            path: outletPath,
-            outlet: outlets.manage,
-            loadChildren:
-              './../../main-view/admin-view/dashboard-views/admin-dashboard/admin-content/admin-content.module#AdminContentModule',
-            data: { preload: true, delay: true }
-          }
-        ]
-      },
-      {
         path: dashboards.survey,
         children: [
           {
@@ -133,6 +109,10 @@ const routes: Routes = [
           }
         ]
       }
+      // {
+      //   path: '**',
+      //   redirectTo: dashboards.survey
+      // }
     ]
   }
 ];

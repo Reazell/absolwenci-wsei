@@ -1,7 +1,5 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../services/shared.service';
 import { basicTransition } from './other/router.animations';
 
 @Component({
@@ -11,8 +9,12 @@ import { basicTransition } from './other/router.animations';
   animations: [basicTransition]
 })
 export class AuthComponent implements OnInit {
-  constructor() {}
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit() {
+    this.showToggle(false);
+  }
+  showToggle(x: boolean): void {
+    this.sharedService.showToggleButton(x);
   }
 }

@@ -8,9 +8,19 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { QuestionData } from '../main-view/admin-view/survey-container/models/survey-creator.models';
+import {
+  MainFormSurvey,
+  MainFormTemplate,
+  QuestionData
+} from '../main-view/admin-view/survey-container/models/survey-creator.models';
 import { SurveyService } from '../main-view/admin-view/survey-container/services/survey.services';
 import { SharedService } from '../services/shared.service';
+import {
+  FieldDataSurvey,
+  FieldDataTemplate,
+  QuestionSurvey,
+  QuestionTemplate
+} from './../main-view/admin-view/survey-container/models/survey.model';
 
 @Component({
   selector: 'app-survey-viewform',
@@ -24,15 +34,16 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   showError = false;
   id: number;
   hash: string;
+  isPreviewed: boolean;
   title: string;
   defaultError = 'Odpowiedź na to pytanie jest wymagana';
   singleGridError = 'To pytanie wymaga jednej odpowiedzi w każdym wierszu';
   multipleGridError =
     'To pytanie wymaga co najmniej jednej odpowiedzi w każdym wierszu';
-
   // subs
   surveyIDSub: Subscription = new Subscription();
-  editSurveySub: Subscription = new Subscription();
+
+  nameof = <T>(name: keyof T) => name;
 
   constructor(
     private surveyService: SurveyService,
@@ -46,7 +57,6 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     this.getSurvey();
     this.showUserInfo();
     this.sharedService.showSendButton(true);
-    this.editSurvey();
   }
   showAdminMenu(x): void {
     this.sharedService.showAdminMain(x);
@@ -58,16 +68,23 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     this.activatedRoute.data.map(data => data.cres).subscribe(
       res => {
         if (res) {
+          const params = this.activatedRoute.snapshot.params;
           console.log(res);
-
+          this.loader = true;
+          this.id = Number(params['id']);
+          this.hash = params['hash'];
+          if (params['preview'] === 's') {
+            this.isPreviewed = true;
+          } else if (params['preview'] === 't') {
+            this.isPreviewed = false;
+          }
+          // this.preview = this.activatedRoute.snapshot.params['preview'];
           this.createQuestionData(res);
           this.title = res['title'];
-          this.id = Number(this.activatedRoute.snapshot.params['id']);
-          this.hash = this.activatedRoute.snapshot.params['hash'];
-          this.loader = true;
           this.surveyService.isCreatorLoading(false);
           if (!this.hash) {
             this.showBackButton(true);
+            this.showPreview(true);
           } else {
             this.showAdminMenu(false);
           }
@@ -79,8 +96,11 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       }
     );
   }
-  showBackButton(x): void {
+  showBackButton(x: boolean): void {
     this.sharedService.showBackButton(x);
+  }
+  showPreview(x: boolean): void {
+    this.sharedService.showPreviewDiv(x);
   }
   sendSurvey(): void {
     if (this.invoiceForm.valid) {
@@ -100,27 +120,23 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       console.log(this.invoiceForm);
     }
   }
-  editSurvey(): void {
-    this.editSurveySub = this.sharedService.editButton.subscribe(() => {
-      this.routeToEditSurvey();
-    });
-  }
 
   routeToSurveyCompleted() {
     this.router.navigateByUrl('./formResponse');
   }
   routeToEditSurvey(): void {
-    this.router.navigateByUrl('/app/admin/create/' + this.id);
+    this.router.navigateByUrl('/app/admin/survey/create/' + this.id);
   }
 
   ngOnDestroy(): void {
     this.sharedService.showSendButton(false);
-    this.editSurveySub.unsubscribe();
     if (!this.hash) {
       this.showBackButton(false);
-    } else {
-      this.showAdminMenu(true);
+      this.showPreview(false);
     }
+    // else {
+    this.showAdminMenu(true);
+    // }
   }
 
   updateSelection(choiceOptions, radio, e?): void {
@@ -139,13 +155,18 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   createQuestionData(data) {
+    let propertyName;
     this.invoiceForm = this.fb.group({
       title: [data.title],
       // Created_Date: [data.Created_Date],
       // Created_Time: [data.Created_Time],
       questions: this.fb.array([])
     });
-    data.questions.forEach(question => {
+    propertyName =
+      this.hash || this.isPreviewed
+        ? this.nameof<MainFormSurvey>('questions')
+        : this.nameof<MainFormTemplate>('questionTemplates');
+    data[propertyName].forEach(question => {
       this.createQuestion(question);
     });
   }
@@ -169,7 +190,11 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
 
   createFieldData(question, controls) {
-    question.fieldData.forEach(data => {
+    const propertyName: string =
+      this.hash || this.isPreviewed
+        ? this.nameof<QuestionSurvey>('fieldData')
+        : this.nameof<QuestionTemplate>('fieldDataTemplates');
+    question[propertyName].forEach(data => {
       this.addGroup(
         controls.FieldData,
         controls.select.value,
@@ -206,7 +231,11 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       choiceOptions: this.fb.array([])
     });
     FieldData.push(group);
-    data.choiceOptions.forEach(choiceOptions => {
+    const propertyName =
+      this.hash || this.isPreviewed
+        ? this.nameof<FieldDataSurvey>('choiceOptions')
+        : this.nameof<FieldDataTemplate>('choiceOptionTemplates');
+    data[propertyName].forEach(choiceOptions => {
       // this.addCheckField(group.controls.choiceOptions, choiceOptions);
       this.createViewValue(
         group.controls.choiceOptions,
@@ -242,26 +271,40 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       rows: this.fb.array([])
     });
     fieldData.push(group);
-    const rowLength = oldFieldData.rows.length;
+    const propertyName =
+      this.hash || this.isPreviewed
+        ? this.nameof<FieldDataSurvey>('rows')
+        : this.nameof<FieldDataTemplate>('rowTemplates');
+    const rowLength = oldFieldData[propertyName].length;
 
     for (let i = 0; i < rowLength; i++) {
-      this.createGrid(group.controls.rows, oldFieldData, i, isRequired);
+      this.createGrid(
+        group.controls.rows,
+        oldFieldData,
+        i,
+        isRequired,
+        propertyName
+      );
     }
   }
 
-  createGrid(rows, oldFieldData, i, isRequired) {
+  createGrid(rows, oldFieldData, i, isRequired, propertyName) {
     const group = this.fb.group({
-      rowPosition: oldFieldData.rows[i].rowPosition,
-      input: oldFieldData.rows[i].input,
+      rowPosition: oldFieldData[propertyName][i].rowPosition,
+      input: oldFieldData[propertyName][i].input,
       choiceOptions: this.fb.array([])
     });
     rows.push(group);
-    const colLength = oldFieldData.choiceOptions.length;
+    const propertyNameChoice =
+      this.hash || this.isPreviewed
+        ? this.nameof<FieldDataSurvey>('choiceOptions')
+        : this.nameof<FieldDataTemplate>('choiceOptionTemplates');
+    const colLength = oldFieldData[propertyNameChoice].length;
     for (let j = 0; j < colLength; j++) {
       this.createViewValue(
         group.controls.choiceOptions,
-        oldFieldData.choiceOptions[j].viewValue,
-        oldFieldData.choiceOptions[j].optionPosition,
+        oldFieldData[propertyNameChoice][j].viewValue,
+        oldFieldData[propertyNameChoice][j].optionPosition,
         isRequired
       );
     }

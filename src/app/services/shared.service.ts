@@ -9,7 +9,6 @@ export class SharedService {
   toggleSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   // sendButton: Subject<boolean> = new Subject<boolean>();
   showButton: Subject<boolean> = new Subject<boolean>();
-  editButton: Subject<boolean> = new Subject<boolean>();
   // showing elements Subjects
   showBack: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showToggle: Subject<boolean> = new Subject<boolean>();
@@ -19,6 +18,7 @@ export class SharedService {
   showCreator: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showSend: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showAdminMenu: Subject<boolean> = new Subject<boolean>();
+  showPreview: Subject<boolean> = new Subject<boolean>();
   showUserInfo: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   // input error variable
@@ -30,10 +30,6 @@ export class SharedService {
 
   showSurveyButton(x): void {
     this.showButton.next(x);
-  }
-
-  routeToEdit(x): void {
-    this.editButton.next(x);
   }
 
   // showing elements
@@ -56,7 +52,9 @@ export class SharedService {
   showAdminMain(x): void {
     this.showAdminMenu.next(x);
   }
-
+  showPreviewDiv(x): void {
+    this.showPreview.next(x);
+  }
   showSendSurveyDialog(x): void {
     this.showSurveyDialog.next(x);
   }
@@ -77,7 +75,7 @@ export class SharedService {
         this.router.navigateByUrl('/app/graduate');
         break;
       case 'careerOffice':
-        this.router.navigateByUrl('/app/admin');
+        this.router.navigateByUrl('/app/admin/d/survey/(s:a//m:a)');
         break;
     }
   }

@@ -11,7 +11,9 @@
   width: 100vw;
   height: 100vh;
 }
-
+app-loading-overlay {
+  z-index: 50;
+}
 #menuBar {
   position: fixed;
   top: 0;
@@ -25,10 +27,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
 }
 
-#mainContainer {
+.mainContainer {
   // background-color: $primary-light;
   height: calc(100% - 60px);
   width: 100%;
   margin-top: 60px;
   overflow-y: auto;
+}
+.opacity {
+  opacity: 0.5;
 }

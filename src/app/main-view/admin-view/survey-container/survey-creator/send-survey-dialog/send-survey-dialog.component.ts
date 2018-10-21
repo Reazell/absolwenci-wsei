@@ -23,7 +23,7 @@ export class SendSurveyDialogComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.url =
-      'http://localhost:4200/app/admin/survey/viewform/' + this.data.id;
+      'http://localhost:4200/app/admin/survey/viewform/s/' + this.data.id;
   }
 
   ngOnInit() {

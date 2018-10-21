@@ -5,14 +5,14 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/Observable';
 import { AppConfig } from '../../../../app.config';
 import { Update } from '../models/survey-creator.models';
-import { Survey } from '../models/survey.model';
+import { SurveySurvey, SurveyTemplate } from './../models/survey.model';
 
 @Injectable()
 export class SurveyService {
   controlArray: string[];
-  savedSurveys: BehaviorSubject<Survey[]> = new BehaviorSubject<Survey[]>(
-    undefined
-  );
+  savedSurveys: BehaviorSubject<SurveyTemplate[]> = new BehaviorSubject<
+    SurveyTemplate[]
+  >(undefined);
   savedSentSurveys: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(
     undefined
   );
@@ -94,9 +94,9 @@ export class SurveyService {
         return data;
       });
   }
-  getAllSurveys(): Observable<Survey[]> {
+  getAllSurveys(): Observable<SurveyTemplate[]> {
     return this.http
-      .get<Survey[]>(this.config.apiUrl + '/surveytemplate/surveys')
+      .get<SurveyTemplate[]>(this.config.apiUrl + '/surveytemplate/surveys')
       .map(data => {
         return data;
       });
@@ -108,17 +108,21 @@ export class SurveyService {
         return data;
       });
   }
-  getSurveyWithId(id: number): Observable<Survey> {
+  getSurveyTemplateWithId(id: number): Observable<SurveyTemplate> {
     return this.http
-      .get<Survey>(this.config.apiUrl + '/surveytemplate/' + id)
+      .get<SurveyTemplate>(this.config.apiUrl + '/surveytemplate/' + id)
       .map(data => {
         return data;
       });
   }
-  getSurveyWithIdAndHash(
-    id: number,
-    hash: string
-  ): Observable<any> {
+  getSentSurveyWithId(id: number): Observable<SurveySurvey> {
+    return this.http
+      .get<SurveySurvey>(this.config.apiUrl + '/survey/' + id)
+      .map(data => {
+        return data;
+      });
+  }
+  getSurveyWithIdAndHash(id: number, hash: string): Observable<any> {
     return this.http
       .get<any>(this.config.apiUrl + '/survey/' + id + '/' + hash)
       .map(data => {

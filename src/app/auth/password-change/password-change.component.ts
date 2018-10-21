@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,14 +9,13 @@ import {
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { AccountService } from '../services/account.service';
-import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-password-change',
   templateUrl: './password-change.component.html',
   styleUrls: ['./password-change.component.scss']
 })
-export class PasswordChangeComponent implements OnInit {
+export class PasswordChangeComponent implements OnInit, OnDestroy {
   // declare form
   passwordForm: FormGroup;
   oldPassword: AbstractControl;
@@ -40,12 +39,35 @@ export class PasswordChangeComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService,
     private accountService: AccountService,
     private sharedService: SharedService
   ) {}
 
   ngOnInit() {
+    this.declareForm();
+    this.showBack(true);
+    this.showAdminMenu(true);
+    this.showProfile(true);
+    this.setProfile();
+  }
+  showBack(x: boolean): void {
+    this.sharedService.showBackButton(x);
+  }
+  showAdminMenu(x: boolean): void {
+    this.sharedService.showAdminMain(x);
+  }
+  showProfile(x: boolean): void {
+    this.sharedService.showUser(x);
+  }
+  setProfile() {
+    this.accountService.setRoleSubject('careerOffice');
+  }
+  ngOnDestroy() {
+    this.showBack(false);
+    // this.showAdminMenu(false);
+    this.showProfile(false);
+  }
+  declareForm() {
     // form declaration
     this.passwordForm = this.fb.group({
       oldPassword: ['', Validators.compose([Validators.required])],
@@ -67,7 +89,6 @@ export class PasswordChangeComponent implements OnInit {
     this.newPassword = this.passwordForm.controls['newPassword'];
     this.confirmPassword = this.passwordForm.controls['confirmPassword'];
   }
-
   onSubmit(form: NgForm): void {
     if (!form.valid) {
       // showing possible errors

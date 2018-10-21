@@ -23,12 +23,12 @@ export class AppBarComponent {
   private _showSendButton: boolean;
   private _showToggleButton: boolean;
   private _isLogged: boolean;
+  private _isPreview: boolean;
   private _accountRole: string;
   private _showCreatorButton: boolean;
   private _showAdminMenu: boolean;
   private _showBackButton: boolean;
   private _showUserInfo: boolean;
-
   // inputs
   @Input()
   toolTipInfo: AppBarTooltip;
@@ -46,7 +46,13 @@ export class AppBarComponent {
   get isLogged() {
     return this._isLogged;
   }
-
+  @Input()
+  set isPreview(isPreview) {
+    this._isPreview = isPreview;
+  }
+  get isPreview() {
+    return this._isPreview;
+  }
   @Input()
   set accountRole(accountRole) {
     this._accountRole = accountRole;
@@ -115,14 +121,13 @@ export class AppBarComponent {
   @Output()
   showSurveyButton: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
-  editSurveyButton: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output()
   openSidebarButton: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
   redirectToButton: EventEmitter<string> = new EventEmitter<string>();
   @Output()
   sendSurveyDialog: EventEmitter<boolean> = new EventEmitter<boolean>();
-  // @Output()
+  @Output()
+  backToButton: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   // child outputs
   @Output()
@@ -136,14 +141,14 @@ export class AppBarComponent {
   redirectTo(data: string): void {
     this.redirectToButton.emit(data);
   }
+  backTo(): void {
+    this.backToButton.emit(true);
+  }
   showSurvey(): void {
     this.showSurveyButton.emit(true);
   }
   sendSurvey(): void {
     this.sendSurveyDialog.emit(true);
-  }
-  editSurvey(): void {
-    this.editSurveyButton.emit(true);
   }
   openSidebar(): void {
     this.openSidebarButton.emit(true);
@@ -156,14 +161,5 @@ export class AppBarComponent {
   }
   emitRouteSwitch() {
     this.routeSwitch.emit(true);
-  }
-
-  // actions
-
-  openHoveredMenu() {
-    this.trigger.openMenu();
-  }
-  closeHoveredMenu() {
-    this.trigger.closeMenu();
   }
 }

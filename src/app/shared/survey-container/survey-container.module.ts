@@ -8,9 +8,6 @@ import { SurveyContainerRoutingModule } from './survey-container.routing';
 @NgModule({
   imports: [CommonModule, SurveyContainerRoutingModule],
   declarations: [SurveyContainerComponent],
-  providers: [
-    SurveyCreatorResolver,
-    SurveyResultResolver
-  ]
+  providers: [SurveyCreatorResolver, SurveyResultResolver]
 })
 export class SurveyContainerModule {}

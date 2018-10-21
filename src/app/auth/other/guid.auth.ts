@@ -16,8 +16,6 @@ import {
  */
 @Injectable()
 export class GuidGuard implements CanActivate {
-  href: string[];
-  token: string;
   constructor(private router: Router) {}
 
   /**
@@ -28,11 +26,13 @@ export class GuidGuard implements CanActivate {
    * @returns {boolean} If true guid is valid
    * @memberof GuidGuard
    */
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    this.href = state.url.split('/');
-    this.token = this.href[this.href.length - 1];
-    this.token = this.token.replace(/-/g, '');
-    if (this.token.length === 32) {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
+    let token = route.params['token'];
+    token = token.replace(/-/g, '');
+    if (token.length === 32) {
       return true;
     }
     // not logged in so redirect to login page with previous url

@@ -9,14 +9,16 @@ export class SurveyViewformResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     this.surveyService.isCreatorLoading(true);
     const id = Number(route.params['id']);
-    const hash =  route.params['hash'];
-    if (hash) {
-      return this.surveyService.getSurveyWithIdAndHash(
-        id,
-       hash
-      );
+    const hash = route.params['hash'];
+    const preview = route.params['preview'];
+    if (hash && preview === 's') {
+      return this.surveyService.getSurveyWithIdAndHash(id, hash);
     } else {
-      return this.surveyService.getSurveyWithId(id);
+      if (preview === 's') {
+        return this.surveyService.getSentSurveyWithId(id);
+      } else if (preview === 't') {
+        return this.surveyService.getSurveyTemplateWithId(id);
+      }
     }
   }
 }

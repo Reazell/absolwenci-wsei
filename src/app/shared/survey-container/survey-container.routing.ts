@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../../auth/other/guard.auth';
+import { ViewformGuard } from '../../auth/other/viewform.auth';
 import { SurveyCreatorResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-creator.resolver';
 import { SurveyResultResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-result.resolver';
 import { SurveyViewformResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-viewform.resolver';
@@ -22,25 +23,23 @@ const surveyContainerRoutes: Routes = [
         data: { preload: true, delay: true }
       },
       {
-        path: 'viewform/:id',
+        path: 'viewform/:preview/:id/:hash',
         loadChildren:
           './../../survey-viewform/survey-viewform.module#SurveyViewformModule',
+        canActivate: [ViewformGuard],
         resolve: {
           cres: SurveyViewformResolver
-        }
-        // canLoad: [SurveyGuard],
-        // canLoad: [RouteGuard]
+        },
+        data: { preload: true, delay: true }
       },
       {
-        path: 'viewform/:id/:hash',
+        path: 'viewform/:preview/:id',
         loadChildren:
           './../../survey-viewform/survey-viewform.module#SurveyViewformModule',
         resolve: {
           cres: SurveyViewformResolver
         },
-        data: { preload: true, delay: true }
-        // canLoad: [SurveyGuard],
-        // canLoad: [RouteGuard]
+        canLoad: [AuthGuard]
       },
       {
         path: 'result/:id',
@@ -64,6 +63,7 @@ const surveyContainerRoutes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(surveyContainerRoutes)],
+  providers: [ViewformGuard],
   exports: [RouterModule]
 })
 export class SurveyContainerRoutingModule {}

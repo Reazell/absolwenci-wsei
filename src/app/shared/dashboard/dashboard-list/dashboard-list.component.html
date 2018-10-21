@@ -8,7 +8,5 @@
     </div>
   </div>
 
-  <div id="overlay" *ngIf="loading === true">
-    <mat-spinner [diameter]="40"></mat-spinner>
-  </div>
+  <app-loading-overlay *ngIf="loading === true"></app-loading-overlay>
 </div>

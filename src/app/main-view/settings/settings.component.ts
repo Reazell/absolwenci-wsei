@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent implements OnInit {
-  selected = 1;
   userInfo = {
     id: 2,
     name: 'Gabriela',
@@ -24,7 +25,12 @@ export class SettingsComponent implements OnInit {
     companyDescription: ''
   };
 
-  constructor() {}
+  constructor(private sharedService: SharedService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.backButton();
+  }
+  backButton() {
+    this.sharedService.showBackButton(true);
+  }
 }

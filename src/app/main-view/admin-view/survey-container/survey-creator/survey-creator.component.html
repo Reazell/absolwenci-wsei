@@ -2,13 +2,12 @@
   <div id="section-name">
     <span></span>
     <div id="menu">
-      <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="form_menu"></fa-icon>
+      <fa-icon [icon]="['fas', 'ellipsis-h']" [matMenuTriggerFor]="form_menu" *ngIf="invoiceForm.controls['questionTemplates'].length > 1"></fa-icon>
       <mat-menu #form_menu="matMenu" [overlapTrigger]="false">
         <!-- <button mat-menu-item>Dodaj sekcję</button>
         <button mat-menu-item>Duplikuj sekcję</button>
         <button mat-menu-item>Przenieś sekcję</button>-->
-        <button mat-menu-item>Lorem ipsum</button>
-        <button *ngIf="invoiceForm.controls['questionTemplates'].length > 1" mat-menu-item (click)="openMoveQuestionDialog()">
+        <button mat-menu-item (click)="openMoveQuestionDialog()">
           Przenieś
           pytania
         </button>
@@ -20,10 +19,10 @@
       <input matInput placeholder="Nazwa formularza" formControlName="title" autofocus (keyup)="updateSurveySubject()"
         (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
     </mat-form-field>
-    <mat-form-field appearance="standard" id="description">
+    <!-- <mat-form-field appearance="standard" id="description">
       <textarea matInput [rows]="1" matTextareaAutosize matAutosizeMaxRows=15 type="text" maxLength="1500" placeholder="Opis formularza"
         (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" formControlName="description"></textarea>
-    </mat-form-field>
+    </mat-form-field> -->
   </div>
   <div id="questions-container" formArrayName="questionTemplates">
     <div *ngFor="let question of invoiceForm.controls['questionTemplates'].controls; let i = index" [formGroupName]="i"
@@ -245,14 +244,13 @@
 
             </div>
             <div id="question-menu">
-              <fa-icon [icon]="['fas', 'ellipsis-v']" [matMenuTriggerFor]="Fmenu"></fa-icon>
+              <fa-icon [icon]="['fas', 'ellipsis-v']" [matMenuTriggerFor]="Fmenu" *ngIf="((question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions.length > 1)||((question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions.length > 1) || ((question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.rows. length > 1)"></fa-icon>
               <mat-menu #Fmenu="matMenu" [overlapTrigger]="false" [ngSwitch]="question.value.select" yPosition="above">
-                <button mat-menu-item>Lorem ipsum</button>
-                <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">
+                <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-choice' || question.value.select === 'multiple-choice' || question.value.select === 'dropdown-menu') && question.controls.FieldData['controls'][0].controls.choiceOptions.length > 1">
                   Przenieś
                   opcje
                 </button>
-                <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions. length > 1">
+                <button mat-menu-item (click)="openMoveControlDialog(question, 'choiceOptions')" *ngIf="(question.value.select === 'single-grid' || question.value.select === 'multiple-grid') && question.controls.FieldData['controls'][0].controls.choiceOptions.length > 1">
                   Przenieś
                   kolumny
                 </button>
@@ -267,5 +265,5 @@
       </div>
     </div>
   </div>
-  <pre>{{invoiceForm.value | json }}</pre>
+  <!-- <pre>{{invoiceForm.value | json }}</pre> -->
 </form>

@@ -1,21 +1,19 @@
 // tslint:disable:max-classes-per-file
-export class Survey {
+class Survey {
   title: string;
   id: number;
   createdAt: string;
-  // answered: boolean;
-  questionTemplates: Question[];
-  constructor(
-    title: string,
-    id: number,
-    questionTemplates: Question[],
-    createdAt?: string
-  ) {
+  constructor(title: string, id: number, createdAt?: string) {
     this.title = title;
     this.id = id;
     this.createdAt = createdAt;
-    this.questionTemplates = questionTemplates;
   }
+}
+export class SurveySurvey extends Survey {
+  questions: QuestionSurvey[];
+}
+export class SurveyTemplate extends Survey {
+  questionTemplates: QuestionTemplate[];
 }
 
 export class SurveyModel extends Survey {
@@ -24,7 +22,7 @@ export class SurveyModel extends Survey {
   questionTemplates: Question[];
 
   constructor(survey: Survey) {
-    super(survey.title, survey.id, survey.questionTemplates);
+    super(survey.title, survey.id);
     this.created_date = survey.createdAt
       .split('T')[0]
       .split('-')
@@ -34,17 +32,22 @@ export class SurveyModel extends Survey {
   }
 }
 
-export class Question {
+class Question {
   id: number;
   surveyId: number;
   questionPosition: number;
   isRequired: boolean;
   content: string;
   select: string;
-  fieldDataTemplates: FieldData[];
+}
+export class QuestionSurvey extends Question {
+  fieldData: FieldDataSurvey[];
+}
+export class QuestionTemplate extends Question {
+  fieldDataTemplates: FieldDataTemplate[];
 }
 
-export class FieldData {
+class FieldData {
   id: number;
   input: string;
   maxLabel: string;
@@ -52,8 +55,14 @@ export class FieldData {
   maxValue: number;
   minValue: number;
   questionId: number;
+}
+export class FieldDataSurvey extends FieldData {
+  choiceOptions: Choice[];
   rows: Row[];
+}
+export class FieldDataTemplate extends FieldData {
   choiceOptionTemplates: Choice[];
+  rowTemplates: Row[];
 }
 
 export class Row {

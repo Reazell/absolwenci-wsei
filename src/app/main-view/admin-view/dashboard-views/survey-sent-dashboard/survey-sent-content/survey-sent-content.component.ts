@@ -3,11 +3,9 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
-import {
-  Survey,
-  SurveyModel
-} from '../../../survey-container/models/survey.model';
+import { SurveyModel } from '../../../survey-container/models/survey.model';
 import { SurveyService } from '../../../survey-container/services/survey.services';
+import { SurveySurvey } from './../../../survey-container/models/survey.model';
 
 @Component({
   selector: 'app-survey-sent-content',
@@ -17,15 +15,15 @@ import { SurveyService } from '../../../survey-container/services/survey.service
 export class SurveySentContentComponent implements OnInit, OnDestroy {
   groupTitle = 'Grupa ankiet 1';
   loading = false;
-  surveyArr: Survey[];
+  surveyArr: SurveySurvey[];
   // subs
   getAllSurveysSub: Subscription = new Subscription();
   isLoadingSub: Subscription = new Subscription();
 
-  private _items$: BehaviorSubject<Survey[]> = new BehaviorSubject<Survey[]>(
+  private _items$: BehaviorSubject<SurveySurvey[]> = new BehaviorSubject<SurveySurvey[]>(
     []
   );
-  get items$(): Observable<Survey[]> {
+  get items$(): Observable<SurveySurvey[]> {
     return this._items$.asObservable();
   }
   constructor(
@@ -62,7 +60,7 @@ export class SurveySentContentComponent implements OnInit, OnDestroy {
   getAllSurveys(): void {
     this.saveSurveysFromApi();
     this.getAllSurveysSub = this.surveyService.savedSentSurveys.subscribe(
-      (data: Survey[]) => {
+      (data: SurveySurvey[]) => {
         if (data) {
           this._items$.next(data);
         }
@@ -72,11 +70,11 @@ export class SurveySentContentComponent implements OnInit, OnDestroy {
       }
     );
   }
-  openPreview(survey: Survey): void {
+  openPreview(survey: SurveySurvey): void {
     this.surveyService.isCreatorLoading(true);
-    this.router.navigateByUrl( '/app/admin/survey/viewform/'  + survey.id);
+    this.router.navigateByUrl('/app/admin/survey/viewform/s/' + survey.id);
   }
-  openResult(survey: Survey): void {
+  openResult(survey: SurveySurvey): void {
     this.router.navigateByUrl('/app/admin/survey/result/' + survey.id);
   }
 
@@ -103,7 +101,7 @@ export class SurveySentContentComponent implements OnInit, OnDestroy {
     );
     return dialogRef.afterClosed();
   }
-  changeSurveyToModel(item: Survey) {
+  changeSurveyToModel(item: SurveySurvey) {
     return new SurveyModel(item);
   }
   ngOnDestroy(): void {

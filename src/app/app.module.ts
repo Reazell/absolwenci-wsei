@@ -51,6 +51,7 @@ import { SurveyViewformResolver } from './main-view/admin-view/survey-container/
 import { SurveyService } from './main-view/admin-view/survey-container/services/survey.services';
 import { MaterialsModule } from './materials/materials.module';
 import { SharedService } from './services/shared.service';
+import { LoadingOverlayModule } from './shared/loading-overlay/loading-overlay.module';
 import { LoadingScreenModule } from './shared/loading-screen/loading-screen.module';
 
 library.add(
@@ -88,6 +89,7 @@ library.add(
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    LoadingOverlayModule,
     BarModule,
     LoadingScreenModule,
     SortablejsModule.forRoot({ animation: 150 })

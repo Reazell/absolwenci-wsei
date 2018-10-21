@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   show = true;
   loading = true;
   showingMailView = false;
-  isSidebarOpened = true;
+  isSidebarOpened = false;
   smallScreen: boolean;
   showDetails = false;
 
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(private sharedService: SharedService) {}
   ngOnInit(): void {
     this.showUserInfo();
-    this.showToggleButton();
+    this.showToggleButton(true);
     this.toggleSidebar();
   }
   toggleSidebar(): void {
@@ -40,8 +40,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   showUserInfo(): void {
     this.sharedService.showUser(true);
   }
-  showToggleButton(): void {
-    this.sharedService.showToggleButton(true);
+  showToggleButton(x: boolean): void {
+    this.sharedService.showToggleButton(x);
   }
   showAdminMenu(): void {
     this.sharedService.showAdminMain(true);
@@ -58,15 +58,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
       return false;
     } else {
       if (this.isSidebarOpened === false) {
-        this.isSidebarOpened = true;
+        // this.isSidebarOpened = true;
       }
       return true;
     }
   }
-  setLoader() {
+  setLoader(): void {
     this.loading = false;
   }
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.toggleSidebarSub.unsubscribe();
+    // this.showToggleButton(false);
   }
 }

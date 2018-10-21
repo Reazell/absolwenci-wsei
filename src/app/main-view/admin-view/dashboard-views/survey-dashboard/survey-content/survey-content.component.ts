@@ -5,7 +5,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
-import { Survey, SurveyModel } from '../../../survey-container/models/survey.model';
+import {
+  SurveyModel,
+  SurveyTemplate
+} from '../../../survey-container/models/survey.model';
 import { SurveyService } from '../../../survey-container/services/survey.services';
 
 @Component({
@@ -17,15 +20,15 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   groupTitle = 'Szablony';
   buttonDets = 'Stwórz nowy szablon';
   loading = false;
-  surveyArr: Survey[];
+  surveyArr: SurveyTemplate[];
   // subs
   getAllSurveysSub: Subscription = new Subscription();
   isLoadingSub: Subscription = new Subscription();
 
-  private _items$: BehaviorSubject<Survey[]> = new BehaviorSubject<Survey[]>(
-    []
-  );
-  get items$(): Observable<Survey[]> {
+  private _items$: BehaviorSubject<SurveyTemplate[]> = new BehaviorSubject<
+    SurveyTemplate[]
+  >([]);
+  get items$(): Observable<SurveyTemplate[]> {
     return this._items$.asObservable();
   }
   constructor(
@@ -79,7 +82,7 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   getAllSurveys(): void {
     this.saveSurveysFromApi();
     this.getAllSurveysSub = this.surveyService.savedSurveys.subscribe(
-      (data: Survey[]) => {
+      (data: SurveyTemplate[]) => {
         if (data) {
           this._items$.next(data);
         }
@@ -89,11 +92,11 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
       }
     );
   }
-  openCreator(survey: Survey): void {
+  openCreator(survey: SurveyTemplate): void {
     this.surveyService.isCreatorLoading(true);
     this.router.navigateByUrl('/app/admin/survey/create/' + survey.id);
   }
-  openResult(survey: Survey): void {
+  openResult(survey: SurveyTemplate): void {
     this.router.navigateByUrl('/app/admin/survey/result/' + survey.id);
   }
 
@@ -120,7 +123,7 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
     );
     return dialogRef.afterClosed();
   }
-  changeSurveyToModel(item: Survey) {
+  changeSurveyToModel(item: SurveyTemplate) {
     return new SurveyModel(item);
   }
   ngOnDestroy(): void {

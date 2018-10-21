@@ -1,6 +1,6 @@
 // tslint:disable:max-classes-per-file
 import { FormArray } from '@angular/forms';
-import { Question } from './survey.model';
+import { QuestionTemplate } from './survey.model';
 
 export class Control {
   value: any;
@@ -37,7 +37,7 @@ export class Tooltip {
 export class Update {
   id: number;
   Title: string;
-  QuestionTemplates: Question[];
+  QuestionTemplates: QuestionTemplate[];
 }
 
 export class QuestionData {
@@ -68,7 +68,13 @@ export class ChoiceOptionsData {
 
 export class MainForm {
   title: string;
-  description: string;
+  // description: string;
+  questionTemplates: FormArray;
+}
+export class MainFormSurvey extends MainForm {
+  questions: FormArray;
+}
+export class MainFormTemplate extends MainForm {
   questionTemplates: FormArray;
 }
 export class RowData {
