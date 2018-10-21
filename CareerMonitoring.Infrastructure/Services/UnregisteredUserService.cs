@@ -35,6 +35,10 @@ namespace CareerMonitoring.Infrastructure.Services {
             return await _unregisteredUserRepository.GetAllAsync ();
         }
 
+        public async Task<UnregisteredUser> GetByIdAsync (int id) {
+            return await _unregisteredUserRepository.GetByIdAsync(id);
+        }
+
         public async Task UpdateAsync (int id, string name, string surname, string course,
             string dateOfCompletion, string typeOfStudy, string email) {
             var unregisteredUser = await _unregisteredUserRepository.GetByIdAsync (id);

@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 
 namespace CareerMonitoring.Api.Controllers {
-    [Authorize]
+    [Authorize (Policy = "careerOffice")]
     public class ImportFileController : ApiUserController {
         private readonly IImportFileAggregate _importFileFactory;
         private readonly IUnregisteredUserService _unregisteredUserService;
@@ -33,6 +33,19 @@ namespace CareerMonitoring.Api.Controllers {
                 var fullFileLocation = await _importFileFactory.UploadFileAndGetFullFileLocationAsync (command.File);
                 var importDataList = await _importFileFactory.ImportExcelFileAndGetImportDataAsync (fullFileLocation);
                 return Json (importDataList);
+
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpGet ("unregisteredUsers/{unregisteredUserId}")]
+        public async Task<IActionResult> GetUnregisteredUser (int unregisteredUserId) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                var unregisteredUser = await _unregisteredUserService.GetByIdAsync (unregisteredUserId);
+                return Json (unregisteredUser);
 
             } catch (Exception e) {
                 return BadRequest (e.Message);

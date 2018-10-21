@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers
 {
-    // [Authorize(Policy = "careerOffice")]
+    [Authorize(Policy = "careerOffice")]
     public class EmailController : ApiUserController
     {
         private readonly IAccountEmailFactory _accountEmailFactory;

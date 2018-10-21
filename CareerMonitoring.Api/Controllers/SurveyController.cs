@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    // [Authorize(Policy = "careerOffice")]
+    [Authorize(Policy = "careerOffice")]
     public class SurveyController : ApiUserController {
         private readonly ISurveyService _surveyService;
         private readonly ISurveyReportService _surveyReportService;

@@ -62,8 +62,14 @@ namespace CareerMonitoring.Api.Controllers {
             var token = new TokenDto {
                 Token = await GenerateToken (account, _jwtSettings)
             };
-            var loginResult = new { LoginData = token, account.Role };
-            return Json (loginResult);
+            if(account.Role == "careerOffice"){
+                var loginResult = new { LoginData = token, account.Role, account.Name, account.Surname, account.Email, account.PhoneNumber};
+                return Json (loginResult);
+            }
+            else{
+                var loginResult = new { LoginData = token, account.Role};
+                return Json (loginResult);
+            }
         }
 
         [HttpPost ("students")]
