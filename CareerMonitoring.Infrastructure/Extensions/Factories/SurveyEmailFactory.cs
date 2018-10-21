@@ -4,7 +4,6 @@ using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Core.Domains.Surveys;
 using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
@@ -16,7 +15,6 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         private readonly IEmailFactory _emailFactory;
         private readonly IAccountRepository _accountRepository;
         private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;
-        private readonly IEncryptorFactory _encryptorFactory;
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
         private readonly IEmailContent _emailContent;
 
@@ -24,11 +22,9 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             IEmailFactory emailFactory,
             IAccountRepository accountRepository,
             ISurveyUserIdentifierService surveyUserIdentifierService,
-            IEncryptorFactory encryptorFactory,
             IUnregisteredUserRepository unregisteredUserRepository,
             IEmailContent emailContent) {
             _surveyUserIdentifierService = surveyUserIdentifierService;
-            _encryptorFactory = encryptorFactory;
             _emailConfiguration = emailConfiguration;
             _emailFactory = emailFactory;
             _accountRepository = accountRepository;

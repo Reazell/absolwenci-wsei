@@ -1,13 +1,10 @@
 using System;
 using System.Threading.Tasks;
 using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 
 namespace CareerMonitoring.Infrastructure.Extensions.Email {
     public class EmailContent : IEmailContent {
-        private readonly IEncryptorFactory _encryptorFactory;
-        public EmailContent (IEncryptorFactory encryptorFactory) {
-            _encryptorFactory = encryptorFactory;
+        public EmailContent () {
         }
 
         public string ActivationEmail (Guid activationKey) {
@@ -22,7 +19,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Email {
 
         public string SurveyEmail (int surveyId, string email) {
             return $"Witaj! Biuro karier WSEI zaprasza do wypełnienia krótkiej ankiety. Aby przejść do ankiety klinkij w ten" +
-                $" <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}/{_encryptorFactory.EncryptStringValue(email)}\">link</a> .";
+                $" <a href=\"http://localhost:4200/api/survey/surveys/{surveyId}/{(email)}\">link</a> .";
         }
 
     }

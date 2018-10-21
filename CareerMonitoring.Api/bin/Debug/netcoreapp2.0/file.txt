@@ -220,3 +220,14 @@ ORDER BY [t10].[Id]
 2018-10-16 16:07:05.8453|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor|Executing ObjectResult, writing value of type 'System.String'.
 2018-10-16 16:07:05.8531|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CareerMonitoring.Api.Controllers.AccountUpdateController.AddEducation (CareerMonitoring.Api) in 451.456ms
 2018-10-16 16:07:05.8773|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 525.829ms 400 text/plain; charset=utf-8
+2018-10-21 20:43:36.2616|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/  
+2018-10-21 20:43:37.2449|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1000.2771ms 404 
+2018-10-21 20:43:37.4117|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2018-10-21 20:43:37.4469|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2018-10-21 20:43:37.4641|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 45.8678ms 404 
+2018-10-21 20:43:37.4641|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 43.6299ms 0 
+2018-10-21 20:43:51.6764|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5000/api/ImportFile/import multipart/form-data; boundary=--------------------------874738251499163027173411 10341
+2018-10-21 20:43:51.8871|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Route matched with {action = "ImportFile", controller = "ImportFile"}. Executing action CareerMonitoring.Api.Controllers.ImportFileController.ImportFile (CareerMonitoring.Api)
+2018-10-21 20:43:52.1793|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CareerMonitoring.Api.Controllers.ImportFileController.ImportFile (CareerMonitoring.Api) in 262.5758ms
+2018-10-21 20:43:52.2753|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request
+2018-10-21 20:43:52.4019|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 706.2223ms 500 text/html; charset=utf-8

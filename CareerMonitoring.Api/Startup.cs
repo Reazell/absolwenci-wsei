@@ -20,8 +20,6 @@ using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.AutoMapper;
 using CareerMonitoring.Infrastructure.Extensions.Email;
 using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors;
-using CareerMonitoring.Infrastructure.Extensions.Encryptors.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Factories;
 using CareerMonitoring.Infrastructure.Extensions.Factories.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.URL;
