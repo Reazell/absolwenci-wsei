@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 
 namespace CareerMonitoring.Api.Controllers {
-    //[Authorize (Policy = "careerOffice")]
+    [Authorize (Policy = "careerOffice")]
     public class ImportFileController : ApiUserController {
         private readonly IImportFileAggregate _importFileFactory;
         private readonly IUnregisteredUserService _unregisteredUserService;
