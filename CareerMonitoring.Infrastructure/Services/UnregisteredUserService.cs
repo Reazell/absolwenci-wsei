@@ -12,9 +12,12 @@ namespace CareerMonitoring.Infrastructure.Services {
     public class UnregisteredUserService : IUnregisteredUserService {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger ();
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
+        private readonly IAccountService _accountService;
 
-        public UnregisteredUserService (IUnregisteredUserRepository unregisteredUserRepository) {
+        public UnregisteredUserService (IUnregisteredUserRepository unregisteredUserRepository,
+            IAccountService accountService) {
             _unregisteredUserRepository = unregisteredUserRepository;
+            _accountService = accountService;
         }
 
         public async Task<bool> ExistByEmailAsync (string email) =>
@@ -22,7 +25,7 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task CreateAsync (string name, string surname, string course,
             string dateOfCompletion, string typeOfStudy, string email) {
-            if (await ExistByEmailAsync (email))
+            if (await ExistByEmailAsync (email) || await _accountService.ExistsByEmailAsync(email))
                 throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
             DateTime dateTimeOfCompletion = DateTime.ParseExact (dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             if (dateTimeOfCompletion > DateTime.UtcNow) {
