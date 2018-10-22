@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
-using FluentAssertions;
 using Moq;
-using OfficeOpenXml.ConditionalFormatting;
 using Xunit;
 
 namespace CareerMonitoring.Tests.Services {
@@ -29,5 +24,4 @@ namespace CareerMonitoring.Tests.Services {
 
         }
     }
-
 }
