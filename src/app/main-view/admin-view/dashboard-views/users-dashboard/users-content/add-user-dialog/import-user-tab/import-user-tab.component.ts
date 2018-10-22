@@ -5,7 +5,7 @@ import {
   ViewChild,
   ViewChildren
 } from '@angular/core';
-import { FileUpload } from '../../../../../../../../../node_modules/primeng/fileupload';
+import { FileUpload } from 'primeng/fileupload';
 import {
   UnregisteredUser,
   UnregisteredUserModel

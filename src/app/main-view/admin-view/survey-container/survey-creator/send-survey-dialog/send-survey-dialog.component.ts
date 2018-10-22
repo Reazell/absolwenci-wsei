@@ -35,7 +35,7 @@ export class SendSurveyDialogComponent implements OnInit {
     // connecting controls with form inputs
     this.subject = this.dialogForm.controls['subject'];
 
-    console.log(this.data);
+    // console.log(this.data);
     this.toMailTable = `
     <div style="padding: 10px;">
   <table width="100%">

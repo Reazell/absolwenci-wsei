@@ -8,12 +8,12 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../auth/services/account.service';
-import { SharedService } from '../../../services/shared.service';
 import {
   ProfileDataStorage,
   UserProfile
-} from './../../../auth/other/user.model';
+} from '../../../auth/other/user.model';
+import { AccountService } from '../../../auth/services/account.service';
+import { SharedService } from '../../../services/shared.service';
 @Component({
   selector: 'app-main-settings',
   templateUrl: './main-settings.component.html',
@@ -169,12 +169,9 @@ export class MainSettingsComponent implements OnInit {
     // }
   }
   onSubmit(form: FormGroup): void {
-    console.log(form);
     if (!form.valid) {
     } else {
-      console.log('valid');
       this.loading = true;
-      console.log(this.user);
       this.accountService.updateProfile(this.createUser()).subscribe(
         data => {
           console.log(data);

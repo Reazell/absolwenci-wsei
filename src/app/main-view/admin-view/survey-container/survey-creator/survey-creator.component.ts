@@ -14,7 +14,9 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/Observable';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
+import { SendSurveyDialog } from '../../../../data/shared.data';
 import { SharedService } from '../../../../services/shared.service';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import {
   ChoiceOptions,
   ChoiceOptionsData,
@@ -28,15 +30,16 @@ import {
   Update,
   Value
 } from '../models/survey-creator.models';
-import { Choice, Row } from '../models/survey.model';
-import { SurveyService } from '../services/survey.services';
 import {
+  Choice,
   FieldDataTemplate,
   QuestionTemplate,
+  Row,
   SurveyTemplate
-} from './../models/survey.model';
+} from '../models/survey.model';
+import { SurveyService } from '../services/survey.services';
 import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
-import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
+// import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 
 @Component({
   selector: 'app-survey-creator',
@@ -189,8 +192,11 @@ export class SurveyCreatorComponent
     );
   }
   openSurveyDialog(): void {
-    this.dialog.open(SendSurveyDialogComponent, {
-      data: { id: this.id, content: this.invoiceForm.getRawValue() }
+    // const dataModel: ConfirmDataDialog = {
+    //  dialogTitle:
+    // }
+    this.dialog.open(ConfirmDialogComponent, {
+      data: SendSurveyDialog
     });
   }
 

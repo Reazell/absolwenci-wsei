@@ -6,9 +6,9 @@ import {
 } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Subscription } from 'rxjs/Subscription';
+import { UserProfile } from '../../auth/other/user.model';
+import { AccountService } from '../../auth/services/account.service';
 import { SharedService } from '../../services/shared.service';
-import { UserProfile } from './../../auth/other/user.model';
-import { AccountService } from './../../auth/services/account.service';
 
 @Component({
   selector: 'app-settings',

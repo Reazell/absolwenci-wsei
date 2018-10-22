@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/Observable';
 import { AppConfig } from '../../../../app.config';
 import { Update } from '../models/survey-creator.models';
-import { SurveySurvey, SurveyTemplate } from './../models/survey.model';
+import { SurveySurvey, SurveyTemplate } from '../models/survey.model';
 
 @Injectable()
 export class SurveyService {

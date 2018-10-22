@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FileUploadModule } from 'primeng/components/fileupload/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { MatTabsModule } from '../../../../../../../node_modules/@angular/material';
 import { MaterialsModule } from '../../../../../materials/materials.module';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
 import { DashboardBarModule } from '../../../../../shared/dashboard/dashboard-bar/dashboard-bar.module';

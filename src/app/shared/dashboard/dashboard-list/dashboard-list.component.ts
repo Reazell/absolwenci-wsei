@@ -25,7 +25,7 @@ export class DashboardListComponent implements OnInit, OnDestroy {
     this._itemArr = itemArr;
   }
   get itemArr() {
-    if (this._itemArr && this._itemArr.length > 0) {
+    if (this._itemArr) {
       this.fetching = false;
     }
     return this._itemArr;
@@ -40,7 +40,6 @@ export class DashboardListComponent implements OnInit, OnDestroy {
   isLoadingSub: Subscription = new Subscription();
 
   constructor(private surveyService: SurveyService, public dialog: MatDialog) {
-    console.log(this.itemArr);
   }
 
   ngOnInit(): void {

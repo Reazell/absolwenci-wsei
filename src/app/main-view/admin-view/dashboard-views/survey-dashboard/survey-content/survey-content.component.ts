@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { DeleteTemplateDialog } from '../../../../../data/shared.data';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
 import {
   SurveyModel,
@@ -28,7 +29,7 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
 
   private _items$: BehaviorSubject<SurveyTemplate[]> = new BehaviorSubject<
     SurveyTemplate[]
-  >([]);
+  >(undefined);
   get items$(): Observable<SurveyTemplate[]> {
     return this._items$.asObservable();
   }
@@ -120,7 +121,8 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   }
   openSurveyDialog(): Observable<boolean> {
     const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
-      ConfirmDialogComponent
+      ConfirmDialogComponent,
+      { data: DeleteTemplateDialog }
     );
     return dialogRef.afterClosed();
   }

@@ -8,9 +8,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
+import { UserProfile } from '../other/user.model';
 import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
-import { UserProfile } from './../other/user.model';
 
 /**
  * Sign in user.
@@ -103,7 +103,9 @@ export class LoginComponent implements OnInit, OnDestroy {
             console.log(error);
             // set error message from api to loginErrorMessage
             this.loginError = true;
-            this.loginErrorMessage = 'Nieprawidłowy mail lub hasło';
+            this.loginErrorMessage = this.accountService.setLoginErrorString(
+              error.status
+            );
             this.loading = false;
           }
         );

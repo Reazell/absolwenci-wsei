@@ -1,7 +1,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { BehaviorSubject } from '../../../../node_modules/rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AppConfig } from '../../app.config';
 import { User } from '../other/user.model';
 import { AccountService } from './account.service';

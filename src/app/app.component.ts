@@ -11,8 +11,8 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { UserProfile } from './auth/other/user.model';
 import { AccountService } from './auth/services/account.service';
 import { AuthenticationService } from './auth/services/authentication.service';
+import { AppBarTooltip } from './models/shared.models';
 import { SharedService } from './services/shared.service';
-import { AppBarTooltip } from './shared/models/shared.models';
 
 @Component({
   selector: 'app-root',
@@ -127,7 +127,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.profileDataSub = this.accountService.profileData.subscribe(
       (user: UserProfile) => {
         if (user) {
-          console.log(user);
+          // console.log(user);
           const name = user.firstName + ' ' + user.lastName;
           Promise.resolve(null).then(() => this._profileData$.next(name));
         }

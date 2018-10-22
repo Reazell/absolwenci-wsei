@@ -9,3 +9,9 @@ export class AppBarTooltip {
   edit: 'Edytuj ankietę';
   main: 'Strona główna ankiet';
 }
+export class ConfirmDataDialog {
+  dialogTitle: string;
+  boldContent: string;
+  boldWarn: boolean;
+  buttonText: string;
+}

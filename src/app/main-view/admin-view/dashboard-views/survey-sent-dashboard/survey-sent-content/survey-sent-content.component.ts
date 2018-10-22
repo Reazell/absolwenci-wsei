@@ -3,9 +3,8 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
-import { SurveyModel } from '../../../survey-container/models/survey.model';
+import { SurveyModel, SurveySurvey } from '../../../survey-container/models/survey.model';
 import { SurveyService } from '../../../survey-container/services/survey.services';
-import { SurveySurvey } from './../../../survey-container/models/survey.model';
 
 @Component({
   selector: 'app-survey-sent-content',
@@ -22,7 +21,7 @@ export class SurveySentContentComponent implements OnInit, OnDestroy {
   isLoadingSub: Subscription = new Subscription();
 
   private _items$: BehaviorSubject<SurveySurvey[]> = new BehaviorSubject<SurveySurvey[]>(
-    []
+    undefined
   );
   get items$(): Observable<SurveySurvey[]> {
     return this._items$.asObservable();

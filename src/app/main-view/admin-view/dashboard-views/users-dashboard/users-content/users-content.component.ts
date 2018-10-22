@@ -20,7 +20,7 @@ export class UsersContentComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   private _items$: BehaviorSubject<
     Array<RegisteredUser | UnregisteredUser>
-  > = new BehaviorSubject<Array<RegisteredUser | UnregisteredUser>>([]);
+  > = new BehaviorSubject<Array<RegisteredUser | UnregisteredUser>>(undefined);
   get items$(): Observable<Array<RegisteredUser | UnregisteredUser>> {
     return this._items$.asObservable();
   }

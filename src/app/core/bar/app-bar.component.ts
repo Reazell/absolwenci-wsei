@@ -6,8 +6,8 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { MatMenuTrigger } from '../../../../node_modules/@angular/material';
-import { AppBarTooltip } from '../../shared/models/shared.models';
+import { MatMenuTrigger } from '@angular/material';
+import { AppBarTooltip } from '../../models/shared.models';
 
 @Component({
   selector: 'app-bar',

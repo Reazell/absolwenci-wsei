@@ -40,8 +40,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     private authenticationService: AuthenticationService,
     private accountService: AccountService,
     private sharedService: SharedService
-  ) {
-  }
+  ) {}
 
   ngOnDestroy() {
     this.accountService.passMailData(this.email.value);
@@ -80,7 +79,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     } else {
       this.loading = true;
       this.authenticationService
-      // login with credentials from form
+        // login with credentials from form
         .login(this.email.value, this.password.value)
         .subscribe(
           () => {
@@ -91,7 +90,9 @@ export class AdminComponent implements OnInit, OnDestroy {
             console.log(error);
             // set error message from api to loginErrorMessage
             this.loginError = true;
-            this.loginErrorMessage = 'Nieprawidłowy mail lub hasło';
+            this.loginErrorMessage = this.accountService.setLoginErrorString(
+              error.status
+            );
             this.loading = false;
           }
         );

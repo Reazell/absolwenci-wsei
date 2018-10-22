@@ -1,6 +1,6 @@
+import { PreloadingStrategy, Route } from '@angular/router';
 import { Observable, of, timer } from 'rxjs';
-import { PreloadingStrategy, Route } from '../../../../node_modules/@angular/router';
-import { flatMap } from '../../../../node_modules/rxjs/operators';
+import { flatMap } from 'rxjs/operators';
 
 export class PreloadSelectedModulesList implements PreloadingStrategy {
   preload(route: Route, load: () => Observable<any>): Observable<any> {

@@ -8,8 +8,11 @@
   }
   #dialog-main {
     span {
-      span {
+      .red {
         color: $warn;
+      }
+      .primary{
+        color: $primary;
       }
     }
   }

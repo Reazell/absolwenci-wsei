@@ -13,14 +13,14 @@ import {
   MainFormTemplate,
   QuestionData
 } from '../main-view/admin-view/survey-container/models/survey-creator.models';
-import { SurveyService } from '../main-view/admin-view/survey-container/services/survey.services';
-import { SharedService } from '../services/shared.service';
 import {
   FieldDataSurvey,
   FieldDataTemplate,
   QuestionSurvey,
   QuestionTemplate
-} from './../main-view/admin-view/survey-container/models/survey.model';
+} from '../main-view/admin-view/survey-container/models/survey.model';
+import { SurveyService } from '../main-view/admin-view/survey-container/services/survey.services';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-survey-viewform',

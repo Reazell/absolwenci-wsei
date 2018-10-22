@@ -113,4 +113,13 @@ export class AccountService {
     this.mail = undefined;
     return mail;
   }
+  setLoginErrorString(status: number): string {
+    switch (status) {
+      case 0:
+      case 500:
+        return 'Błąd połączenia!';
+      case 400:
+        return 'Nieprawidłowy mail lub hasło';
+    }
+  }
 }

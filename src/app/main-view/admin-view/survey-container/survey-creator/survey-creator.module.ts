@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SortablejsModule } from 'angular-sortablejs/dist';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MaterialsModule } from '../../../../materials/materials.module';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import { DraggableModule } from '../directives/draggable.module';
 import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
 import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
@@ -38,6 +39,6 @@ import { SurveyCreatorRoutingModule } from './survey-creator.routing';
     ButtonSingleControlComponent,
     MoveQuestionDialogComponent
   ],
-  entryComponents: [SendSurveyDialogComponent, MoveQuestionDialogComponent]
+  entryComponents: [ConfirmDialogComponent, MoveQuestionDialogComponent]
 })
 export class SurveyCreatorModule {}

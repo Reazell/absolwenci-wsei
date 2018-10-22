@@ -109,7 +109,9 @@ export class PasswordChangeComponent implements OnInit, OnDestroy {
             // console.log(error);
             // set error message from api to loginErrorMessage
             this.loginError = true;
-            this.loginErrorMessage = 'Nieprawidłowy mail lub hasło';
+            this.loginErrorMessage = this.accountService.setLoginErrorString(
+              error.status
+            );
             this.loading = false;
           }
         );
