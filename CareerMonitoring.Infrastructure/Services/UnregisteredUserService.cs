@@ -25,7 +25,7 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task CreateAsync (string name, string surname, string course,
             string dateOfCompletion, string typeOfStudy, string email) {
-            if (await ExistByEmailAsync (email) || await _accountService.ExistsByEmailAsync(email))
+            if (await ExistByEmailAsync (email) || await _accountService.ExistsByEmailAsync (email))
                 throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
             DateTime dateTimeOfCompletion = DateTime.ParseExact (dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             if (dateTimeOfCompletion > DateTime.UtcNow) {
@@ -39,7 +39,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task<UnregisteredUser> GetByIdAsync (int id) {
-            return await _unregisteredUserRepository.GetByIdAsync(id);
+            return await _unregisteredUserRepository.GetByIdAsync (id);
         }
 
         public async Task UpdateAsync (int id, string name, string surname, string course,

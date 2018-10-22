@@ -41,24 +41,8 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
-        public async Task<IEnumerable<Employer>> GetAllAsync (bool isTracking = true) {
-            if (isTracking){
-                return await Task.FromResult (_context.Employers
-                    .AsTracking ()
-                    .AsEnumerable ());
-            }
-            return await Task.FromResult (_context.Employers
-                .AsNoTracking ()
-                .AsEnumerable ());
-        }
-
         public async Task UpdateAsync (Employer employer) {
             _context.Employers.Update (employer);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task DeleteAsync (Employer employer) {
-            _context.Employers.Remove (employer);
             await _context.SaveChangesAsync ();
         }
     }

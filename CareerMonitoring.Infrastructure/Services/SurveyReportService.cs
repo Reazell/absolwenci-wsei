@@ -27,7 +27,7 @@ namespace CareerMonitoring.Infrastructure.Services {
 
             foreach (var question in survey.Questions) {
                 var questionReport =
-                    new QuestionReport(question.Content, question.Select, 0, question.QuestionPosition);
+                    new QuestionReport (question.Content, question.Select, 0, question.QuestionPosition);
                 surveyReport.AddQuestionReport (questionReport);
                 await _questionReportRepository.AddAsync (questionReport);
                 foreach (var fieldData in question.FieldData) {
@@ -38,11 +38,10 @@ namespace CareerMonitoring.Infrastructure.Services {
                                 var dataSet = new DataSet ();
                                 questionReport.AddDataSet (dataSet);
                                 await _dataSetRepository.AddAsync (dataSet);
-                                await _questionReportRepository.UpdateAsync(questionReport);
-                                foreach(var label in questionReport.Labels)
-                                {
-                                    dataSet.AddData("0");
-                                    await _dataSetRepository.UpdateAsync(dataSet);
+                                await _questionReportRepository.UpdateAsync (questionReport);
+                                foreach (var label in questionReport.Labels) {
+                                    dataSet.AddData ("0");
+                                    await _dataSetRepository.UpdateAsync (dataSet);
                                 }
                             }
                             break;
@@ -54,11 +53,10 @@ namespace CareerMonitoring.Infrastructure.Services {
                                 var dataSet = new DataSet ();
                                 questionReport.AddDataSet (dataSet);
                                 await _dataSetRepository.AddAsync (dataSet);
-                                await _questionReportRepository.UpdateAsync(questionReport);
-                                foreach(var label in questionReport.Labels)
-                                {
-                                    dataSet.AddData("0");
-                                    await _dataSetRepository.UpdateAsync(dataSet);
+                                await _questionReportRepository.UpdateAsync (questionReport);
+                                foreach (var label in questionReport.Labels) {
+                                    dataSet.AddData ("0");
+                                    await _dataSetRepository.UpdateAsync (dataSet);
                                 }
                             }
                             break;
@@ -70,30 +68,27 @@ namespace CareerMonitoring.Infrastructure.Services {
                                 var dataSet = new DataSet (question.Content);
                                 questionReport.AddDataSet (dataSet);
                                 await _dataSetRepository.AddAsync (dataSet);
-                                await _questionReportRepository.UpdateAsync(questionReport);
-                                foreach(var label in questionReport.Labels)
-                                {
-                                    dataSet.AddData("0");
-                                    await _dataSetRepository.UpdateAsync(dataSet);
+                                await _questionReportRepository.UpdateAsync (questionReport);
+                                foreach (var label in questionReport.Labels) {
+                                    dataSet.AddData ("0");
+                                    await _dataSetRepository.UpdateAsync (dataSet);
                                 }
                             }
                             break;
                         case "multiple-grid":
                         case "single-grid":
                             {
-                                foreach(var row in fieldData.Rows)
-                                {
+                                foreach (var row in fieldData.Rows) {
                                     questionReport.AddLabel (row.Input);
                                 }
                                 foreach (var choiceOption in fieldData.ChoiceOptions) {
                                     var dataSet = new DataSet (choiceOption.ViewValue);
                                     questionReport.AddDataSet (dataSet);
                                     await _dataSetRepository.AddAsync (dataSet);
-                                    await _questionReportRepository.UpdateAsync(questionReport);
-                                    foreach(var row in fieldData.Rows)
-                                    {
-                                        dataSet.AddData("0");
-                                        await _dataSetRepository.UpdateAsync(dataSet);
+                                    await _questionReportRepository.UpdateAsync (questionReport);
+                                    foreach (var row in fieldData.Rows) {
+                                        dataSet.AddData ("0");
+                                        await _dataSetRepository.UpdateAsync (dataSet);
                                     }
                                 }
                             }
@@ -107,119 +102,10 @@ namespace CareerMonitoring.Infrastructure.Services {
                                 var dataSet = new DataSet (question.Content);
                                 questionReport.AddDataSet (dataSet);
                                 await _dataSetRepository.AddAsync (dataSet);
-                                await _questionReportRepository.UpdateAsync(questionReport);
-                                foreach(var label in questionReport.Labels)
-                                {
-                                    dataSet.AddData("0");
-                                    await _dataSetRepository.UpdateAsync(dataSet);
-                                }
-                            }
-                            break;
-                    }
-                }
-            }
-            return surveyReport.Id;
-        }
-
-        public async Task<SurveyReport> GetReportAsync(int surveyId)
-        {
-            return await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
-        }
-
-        public async Task<int> UpdateAsync (int surveyId, string surveyTitle) {
-           var SurveyReport = await _surveyReportRepository.GetBySurveyIdAsync(surveyId);
-            await _surveyReportRepository.DeleteAsync(SurveyReport);
-            var surveyReport = new SurveyReport (surveyId, surveyTitle);
-            await _surveyReportRepository.AddAsync (surveyReport);
-            var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
-
-            foreach (var question in survey.Questions) {
-                var questionReport =
-                    new QuestionReport(question.Content, question.Select, 0, question.QuestionPosition);
-                surveyReport.AddQuestionReport (questionReport);
-                await _questionReportRepository.AddAsync (questionReport);
-                foreach (var fieldData in question.FieldData) {
-                    switch (questionReport.Select) {
-                        case "short-answer":
-                        case "long-answer":
-                            {
-                                var dataSet = new DataSet ();
-                                questionReport.AddDataSet (dataSet);
-                                await _dataSetRepository.AddAsync (dataSet);
-                                await _questionReportRepository.UpdateAsync(questionReport);
-                                foreach(var label in questionReport.Labels)
-                                {
-                                    dataSet.AddData("0");
-                                    await _dataSetRepository.UpdateAsync(dataSet);
-                                }
-                            }
-                            break;
-                        case "dropdown-menu":
-                            {
-                                foreach (var choiceOption in fieldData.ChoiceOptions) {
-                                    questionReport.AddLabel (choiceOption.ViewValue);
-                                }
-                                var dataSet = new DataSet ();
-                                questionReport.AddDataSet (dataSet);
-                                await _dataSetRepository.AddAsync (dataSet);
-                                await _questionReportRepository.UpdateAsync(questionReport);
-                                foreach(var label in questionReport.Labels)
-                                {
-                                    dataSet.AddData("0");
-                                    await _dataSetRepository.UpdateAsync(dataSet);
-                                }
-                            }
-                            break;
-                        case "linear-scale":
-                            {
-                                for (var i = 1; i <= fieldData.MaxValue; i++) {
-                                    questionReport.AddLabel (i.ToString ());
-                                }
-                                var dataSet = new DataSet (question.Content);
-                                questionReport.AddDataSet (dataSet);
-                                await _dataSetRepository.AddAsync (dataSet);
-                                await _questionReportRepository.UpdateAsync(questionReport);
-                                foreach(var label in questionReport.Labels)
-                                {
-                                    dataSet.AddData("0");
-                                    await _dataSetRepository.UpdateAsync(dataSet);
-                                }
-                            }
-                            break;
-                        case "multiple-grid":
-                        case "single-grid":
-                            {
-                                foreach(var row in fieldData.Rows)
-                                {
-                                    questionReport.AddLabel (row.Input);
-                                }
-                                foreach (var choiceOption in fieldData.ChoiceOptions) {
-                                    var dataSet = new DataSet (choiceOption.ViewValue);
-                                    questionReport.AddDataSet (dataSet);
-                                    await _dataSetRepository.AddAsync (dataSet);
-                                    await _questionReportRepository.UpdateAsync(questionReport);
-                                    foreach(var row in fieldData.Rows)
-                                    {
-                                        dataSet.AddData("0");
-                                        await _dataSetRepository.UpdateAsync(dataSet);
-                                    }
-                                }
-                            }
-                            break;
-                        case "single-choice":
-                        case "multiple-choice":
-                            {
-                                foreach (var choiceOption in fieldData.ChoiceOptions) {
-                                    questionReport.AddLabel (choiceOption.ViewValue);
-                                }
-                                var dataSet = new DataSet (question.Content);
-                                questionReport.AddDataSet (dataSet);
-                                await _dataSetRepository.AddAsync (dataSet);
-                                await _questionReportRepository.UpdateAsync(questionReport);
-                                foreach(var label in questionReport.Labels)
-                                {
-                                    dataSet.AddData("0");
-                                    await _dataSetRepository.UpdateAsync(dataSet);
+                                await _questionReportRepository.UpdateAsync (questionReport);
+                                foreach (var label in questionReport.Labels) {
+                                    dataSet.AddData ("0");
+                                    await _dataSetRepository.UpdateAsync (dataSet);
                                 }
                             }
                             break;

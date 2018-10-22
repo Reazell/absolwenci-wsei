@@ -20,7 +20,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Graduate> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking){
+            if (isTracking) {
                 return await _context.Graduates
                     .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Id == id);
@@ -31,35 +31,14 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Graduate> GetByEmailAsync (string email, bool isTracking = true) {
-            if (isTracking){
+            if (isTracking) {
                 return await _context.Graduates
-                    .AsTracking()
-                    .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
             }
             return await _context.Graduates
-                .AsNoTracking()
-                .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
-        }
-
-        public async Task<IEnumerable<Graduate>> GetAllAsync (bool isTracking = true) {
-            if (isTracking){
-                return await Task.FromResult (_context.Graduates
-                    .AsTracking ()
-                    .AsEnumerable ());
-            }
-            return await Task.FromResult (_context.Graduates
                 .AsNoTracking ()
-                .AsEnumerable ());
-        }
-
-        public async Task UpdateAsync (Graduate graduate) {
-            _context.Graduates.Update (graduate);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task DeleteAsync (Graduate graduate) {
-            _context.Graduates.Remove (graduate);
-            await _context.SaveChangesAsync ();
+                .SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
         }
     }
 }

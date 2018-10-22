@@ -29,10 +29,10 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         protected Account () { }
 
         public Account (string name, string surname, string email, string phoneNumber, string password) {
-            Name = name;
-            Surname = surname;
-            Email = email;
-            PhoneNumber = phoneNumber;
+            SetName (name);
+            SetSurname (surname);
+            SetEmail (email);
+            SetPhoneNumber (phoneNumber);
             CreatePasswordHash (password);
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
@@ -40,14 +40,21 @@ namespace CareerMonitoring.Core.Domains.Abstract {
             Activated = false;
         }
 
-        public Account(string email)
-        {
+        public Account (string email) {
             Email = email;
         }
 
-        public void SetEmail(string email)
-        {
+        public void SetName (string name) {
+            Name = name;
+        }
+        public void SetSurname (string surname) {
+            Surname = surname;
+        }
+        public void SetEmail (string email) {
             Email = email;
+        }
+        public void SetPhoneNumber (string phoneNumber) {
+            PhoneNumber = phoneNumber;
         }
 
         public void Activate (AccountActivation accountActivation) {

@@ -81,30 +81,6 @@ namespace CareerMonitoring.Infrastructure.Repositories
                 .SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public async Task<IEnumerable<SurveyTemplate>> GetAllWithQuestionTemplatesFieldDataTemplatesAndChoiceOptionTemplatesByTitleAsync (string title,
-            bool isTracking = true) {
-            if (isTracking) {
-                return await Task.FromResult (_context.SurveyTemplates
-                    .AsTracking ()
-                    .Include (x => x.QuestionTemplates)
-                    .ThenInclude (x => x.FieldDataTemplates)
-                    .ThenInclude (x => x.ChoiceOptionTemplates)
-                    .Include (x => x.QuestionTemplates)
-                    .ThenInclude (x => x.FieldDataTemplates)
-                    .ThenInclude (x => x.RowTemplates)
-                    .AsEnumerable ());
-            }
-            return await Task.FromResult (_context.SurveyTemplates
-                .AsNoTracking ()
-                .Include (x => x.QuestionTemplates)
-                .ThenInclude (x => x.FieldDataTemplates)
-                .ThenInclude (x => x.ChoiceOptionTemplates)
-                .Include (x => x.QuestionTemplates)
-                .ThenInclude (x => x.FieldDataTemplates)
-                .ThenInclude (x => x.RowTemplates)
-                .AsEnumerable ());
-        }
-
         public async Task UpdateAsync (SurveyTemplate surveyTemplate) {
             _context.SurveyTemplates.Update (surveyTemplate);
             await _context.SaveChangesAsync ();

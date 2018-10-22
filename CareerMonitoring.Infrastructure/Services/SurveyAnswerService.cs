@@ -242,7 +242,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                     }
                 }
                 if (counter == 0) {
-                    questionReport.DeleteAnswer();
+                    questionReport.DeleteAnswer ();
                     await Task.CompletedTask;
                 }
             }
@@ -281,7 +281,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                     }
                 }
                 if (counter == 0) {
-                    questionReport.DeleteAnswer();
+                    questionReport.DeleteAnswer ();
                     await Task.CompletedTask;
                 }
             }
@@ -303,21 +303,6 @@ namespace CareerMonitoring.Infrastructure.Services {
             fieldDataAnswer.AddRow (rowAnswer);
             await _rowAnswerRepository.AddAsync (rowAnswer);
             return rowAnswer.Id;
-        }
-
-        public async Task<IEnumerable<SurveyAnswer>> GetAllAsync () {
-            var surveyAnswers = await _surveyAnswerRepository.GetAllWithQuestionsAsync ();
-            return surveyAnswers;
-        }
-
-        public async Task<SurveyAnswer> GetBySurveyIdAsync (int surveyId) {
-            var surveyAnswer = await _surveyAnswerRepository.GetByIdWithQuestionsAsync (surveyId);
-            return surveyAnswer;
-        }
-
-        public async Task<SurveyAnswer> GetBySurveyTitleAsync (string surveyTitle) {
-            var surveyAnswer = await _surveyAnswerRepository.GetByTitleWithQuestionsAsync (surveyTitle);
-            return surveyAnswer;
         }
 
         public async Task DeleteAsync (int surveyAnswerId) {

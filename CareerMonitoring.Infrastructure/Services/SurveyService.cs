@@ -55,25 +55,8 @@ namespace CareerMonitoring.Infrastructure.Services {
                     await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldDataTemplate);
                 }
             }
-            //await _surveyReportService.CreateAsync(surveyId, command.Title);
             return surveyId;
         }
-
-        // public async Task UpdateSurveyAsync (SurveyToUpdate command)
-        // {
-        //     var surveyId = await UpdateAsync (command.SurveyId, command.Title);
-        //     if(command.Questions == null)
-        //         throw new NullReferenceException ("Cannot create empty survey");
-        //     foreach (var question in command.Questions) {
-        //         var questionId = await AddQuestionToSurveyAsync(surveyId, question.QuestionPosition,
-        //         question.Content, question.Select, question.IsRequired);
-        //         if(question.FieldData == null)
-        //             throw new NullReferenceException ("Question must contain FieldData");
-        //         foreach (var fieldData in question.FieldData) {
-        //             await AddChoiceOptionsAndRowsAsync (questionId, question.Select, fieldData);
-        //         }
-        //     }
-        // }
 
         private async Task AddChoiceOptionsAndRowsAsync (int questionId, string select, FieldDataTemplate fieldDataToAdd) {
             var fieldDataId = await AddFieldDataToQuestionAsync (questionId,
@@ -214,30 +197,6 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task<Survey> GetByIdAsync (int surveyId) {
             var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
             return survey;
-        }
-
-        public async Task<Survey> GetByTitleAsync (string title) {
-            var survey = await _surveyRepository.GetByTitleWithQuestionsAsync (title);
-            return survey;
-        }
-
-        // public async Task<int> UpdateAsync (int surveyId, string title) {
-        //     var survey = await _surveyRepository.GetByIdWithQuestionsAsync (surveyId);
-        //     foreach (var question in survey.Questions.ToList ()) {
-        //         await _questionRepository.DeleteAsync (question);
-        //     }
-        //     survey.Update (title);
-        //     await _surveyRepository.UpdateAsync (survey);
-        //     return survey.Id;
-        // }
-
-        public async Task DeleteAsync (int surveyId) {
-            try {
-                var survey = await _surveyRepository.GetByIdAsync (surveyId);
-                await _surveyRepository.DeleteAsync (survey);
-            } catch (NullReferenceException) {
-                throw new ObjectDoesNotExistException ($"Survey with given Id: {surveyId} does not exist.");
-            }
         }
     }
 }

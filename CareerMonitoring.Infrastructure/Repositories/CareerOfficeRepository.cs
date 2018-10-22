@@ -40,25 +40,5 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
-        public async Task<IEnumerable<CareerOffice>> GetAllAsync (bool isTracking = true) {
-            if (isTracking){
-                return await Task.FromResult (_context.CareerOffices
-                    .AsTracking ()
-                    .AsEnumerable ());
-            }
-            return await Task.FromResult (_context.CareerOffices
-                .AsNoTracking ()
-                .AsEnumerable ());
-        }
-
-        public async Task UpdateAsync (CareerOffice careerOffice) {
-            _context.CareerOffices.Update (careerOffice);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task DeleteAsync (CareerOffice careerOffice) {
-            _context.CareerOffices.Remove (careerOffice);
-            await _context.SaveChangesAsync ();
-        }
     }
 }

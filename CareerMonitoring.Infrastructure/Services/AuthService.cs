@@ -45,7 +45,7 @@ namespace CareerMonitoring.Infrastructure.Services {
 
         public async Task<Account> LoginAsync (string email, string password) {
             var account = await _accountRepository.GetByEmailAsync (email, false);
-            if (account == null || !account.Activated || account.Deleted){
+            if (account == null || !account.Activated || account.Deleted) {
                 return null;
             }
             if (!VerifyPasswordHash (password, account.PasswordHash, account.PasswordSalt))
@@ -57,8 +57,6 @@ namespace CareerMonitoring.Infrastructure.Services {
             string phoneNumber, string password) {
             if (await _studentService.ExistByEmailAsync (email.ToLowerInvariant ()))
                 throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
-            // if (!await _studentService.UserExistByIndexNumberAsync (indexNumber))
-            //     throw new Exception ("Given index number does not exist.");
             var student = new Student (name, surname, email,
                 indexNumber, phoneNumber, password);
             var activationKey = Guid.NewGuid ();

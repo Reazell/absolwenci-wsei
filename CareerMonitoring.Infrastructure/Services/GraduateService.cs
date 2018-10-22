@@ -10,9 +10,6 @@ namespace CareerMonitoring.Infrastructure.Services {
             _graduateRepository = graduateRepository;
         }
 
-        public async Task<bool> ExistByIdAsync (int id) =>
-            await _graduateRepository.GetByIdAsync (id, false) != null;
-
         public async Task<bool> ExistByEmailAsync (string email) =>
             await _graduateRepository.GetByEmailAsync (email, false) != null;
     }

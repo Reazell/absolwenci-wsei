@@ -15,11 +15,6 @@ namespace CareerMonitoring.Infrastructure.Repositories {
             _context = context;
         }
 
-        public async Task AddAsync (Account account) {
-            await _context.Accounts.AddAsync (account);
-            await _context.SaveChangesAsync ();
-        }
-
         public async Task<Account> GetByIdAsync (int id, bool isTracking = true) {
             if (isTracking){
                 return await _context.Accounts

@@ -5,57 +5,28 @@ using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CareerMonitoring.Infrastructure.Repositories
-{
-    public class FieldDataTemplateRepository : IFieldDataTemplateRepository
-    {
+namespace CareerMonitoring.Infrastructure.Repositories {
+    public class FieldDataTemplateRepository : IFieldDataTemplateRepository {
         private readonly CareerMonitoringContext _context;
-        public FieldDataTemplateRepository (CareerMonitoringContext context)
-        {
+
+        public FieldDataTemplateRepository (CareerMonitoringContext context) {
             _context = context;
         }
 
-        public async Task AddAsync(FieldDataTemplate fieldDataTemplate)
-        {
+        public async Task AddAsync (FieldDataTemplate fieldDataTemplate) {
             await _context.FieldDataTemplates.AddAsync (fieldDataTemplate);
             await _context.SaveChangesAsync ();
         }
 
-        public async Task<FieldDataTemplate> GetByIdAsync (int id, bool isTracking = true)
-        {
-            if(isTracking){
+        public async Task<FieldDataTemplate> GetByIdAsync (int id, bool isTracking = true) {
+            if (isTracking) {
                 return await _context.FieldDataTemplates
-                    .AsTracking()
+                    .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Id == id);
             }
             return await _context.FieldDataTemplates
-                .AsNoTracking()
+                .AsNoTracking ()
                 .SingleOrDefaultAsync (x => x.Id == id);
-        }
-        public async Task<FieldDataTemplate> GetByQuestionIdAsync(int questionTemplateId, bool isTracking = true)
-        {
-            if(isTracking){
-                return await _context.FieldDataTemplates
-                    .AsTracking()
-                    .Where(x => x.QuestionTemplateId == questionTemplateId)
-                    .SingleOrDefaultAsync();
-            }
-            return await _context.FieldDataTemplates
-                .AsNoTracking()
-                .Where(x => x.QuestionTemplateId == questionTemplateId)
-                .SingleOrDefaultAsync();
-        }
-
-        public async Task UpdateAsync(FieldDataTemplate fieldDataTemplate)
-        {
-            _context.FieldDataTemplates.Update (fieldDataTemplate);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task DeleteAsync(FieldDataTemplate fieldDataTemplate)
-        {
-            _context.FieldDataTemplates.Remove (fieldDataTemplate);
-            await _context.SaveChangesAsync ();
         }
     }
 }
