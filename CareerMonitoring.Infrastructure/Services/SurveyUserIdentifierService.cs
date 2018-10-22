@@ -1,46 +1,57 @@
-﻿using CareerMonitoring.Core.Domains.Surveys;
-using CareerMonitoring.Infrastructure.Repositories.Interfaces;
-using CareerMonitoring.Infrastructure.Services.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using CareerMonitoring.Core.Domains.Surveys;
+using CareerMonitoring.Infrastructure.Repositories.Interfaces;
+using CareerMonitoring.Infrastructure.Services.Interfaces;
 
-namespace CareerMonitoring.Infrastructure.Services
-{
-    public class SurveyUserIdentifierService : ISurveyUserIdentifierService
-    {
+namespace CareerMonitoring.Infrastructure.Services {
+    public class SurveyUserIdentifierService : ISurveyUserIdentifierService {
         private readonly ISurveyUserIdentifierRepository _surveyUserIdentifierRepository;
 
-        public SurveyUserIdentifierService(ISurveyUserIdentifierRepository surveyUserIdentifierRepository)
-        {
+        public SurveyUserIdentifierService (ISurveyUserIdentifierRepository surveyUserIdentifierRepository) {
             _surveyUserIdentifierRepository = surveyUserIdentifierRepository;
         }
 
-        public async Task CreateAsync(string userEmail, int surveyId, int userId)
-        {
-            var identifier = new SurveyUserIdentifier(userEmail, surveyId, userId);
-            await _surveyUserIdentifierRepository.AddAsync(identifier);
+        public async Task CreateAsync (string userEmail, int surveyId) {
+            var identifier = new SurveyUserIdentifier (userEmail, surveyId);
+            await _surveyUserIdentifierRepository.AddAsync (identifier);
         }
 
-        public Task<string> VerifySurveyUser(string userEmail, int surveyId, int userId)
+        public async Task<string> VerifySurveyUser(string userEmail, int surveyId)
         {
-            var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail, userId);
-            if(identifier != null && identifier.Answered){
-                return Task.FromResult("answered");
-            }
-            if (identifier != null && !identifier.Answered)
+            var identifiers = await _surveyUserIdentifierRepository.GetAllBySurveyIdAsync(surveyId);
+            List<SurveyUserIdentifier> Identifiers = new List<SurveyUserIdentifier>();
+            foreach (var identifier in identifiers)
             {
-                return Task.FromResult("authorized");
+
+                if (VerifyEmailHash(userEmail, identifier.UserEmailHash))
+                {
+                    if (!identifier.Answered)
+                    {
+                        Identifiers.Add(identifier);
+                    }
+                    else
+                    {
+                        return await Task.FromResult("answered");
+                    }
+                }
             }
-            return Task.FromResult("unauthorized");
+            foreach (var identifier in Identifiers)
+            {
+                identifier.MarkAsAnswered();
+                await _surveyUserIdentifierRepository.UpdateAsync(identifier);
+                return await Task.FromResult("authorized");
+            }
+            return "unauthorized";
         }
 
-        public Task MarkAnswered(string userEmail, int surveyId, int userId)
-        {
-            var identifier = _surveyUserIdentifierRepository.GetBySurveyIdAndUserEmailAsync(surveyId, userEmail, userId);
-            identifier.MarkAsAnswered();
-            return Task.CompletedTask;
+        private bool VerifyEmailHash (string input, string hash) {
+            if (input == null || hash == null) {
+                return false;
+            }
+            return input.Equals (hash);
         }
     }
 }

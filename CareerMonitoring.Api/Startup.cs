@@ -49,11 +49,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using static CareerMonitoring.Infrastructure.Extension.Exception.ExceptionsHelper;
+using CareerMonitoring.Infrastructure.Extensions.JWT;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate;
-using CareerMonitoring.Infrastructure.Extensions.JWT;
 
 namespace CareerMonitoring.Api {
     public class Startup {
@@ -118,6 +118,11 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IFieldDataRepository, FieldDataRepository> ();
             services.AddScoped<IChoiceOptionRepository, ChoiceOptionRepository> ();
             services.AddScoped<IRowRepository, RowRepository> ();
+            services.AddScoped<ISurveyTemplateRepository, SurveyTemplateRepository> ();
+            services.AddScoped<IQuestionTemplateRepository, QuestionTemplateRepository> ();
+            services.AddScoped<IFieldDataTemplateRepository, FieldDataTemplateRepository> ();
+            services.AddScoped<IChoiceOptionTemplateRepository, ChoiceOptionTemplateRepository> ();
+            services.AddScoped<IRowTemplateRepository, RowTemplateRepository> ();
             services.AddScoped<ISurveyAnswerRepository, SurveyAnswerRepository> ();
             services.AddScoped<IQuestionAnswerRepository, QuestionAnswerRepository> ();
             services.AddScoped<IFieldDataAnswerRepository, FieldDataAnswerRepository> ();
@@ -127,7 +132,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyReportRepository, SurveyReportRepository> ();
             services.AddScoped<IQuestionReportRepository, QuestionReportRepository> ();
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
-            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository> ();
+            services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository>();
             services.AddScoped<IUnregisteredUserRepository, UnregisteredUserRepository> ();
 
             #endregion
@@ -141,6 +146,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
             services.AddScoped<IProfileEditionService, ProfileEditionService> ();
             services.AddScoped<ISurveyService, SurveyService> ();
+            services.AddScoped<ISurveyTemplateService, SurveyTemplateService> ();
             services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
             services.AddScoped<ISurveyReportService, SurveyReportService> ();
             services.AddScoped<ISurveyUserIdentifierService, SurveyUserIdentifierService> ();
@@ -175,22 +181,13 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IAccountEmailFactory, AccountEmailFactory> ();
             services.AddScoped<ISurveyEmailFactory, SurveyEmailFactory> ();
             services.AddScoped<IImportFileAggregate, ImportFileAggregate> ();
-
-            #endregion
-
-            #region Extensions
-
             services.AddScoped<IEmailContent, EmailContent> ();
 
             #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure (IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) {
-            loggerFactory.AddNLog ();
-            app.AddNLogWeb ();
-            env.ConfigureNLog ("nlog.config");
-
+        public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
             } else {

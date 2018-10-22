@@ -25,10 +25,21 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public SurveyUserIdentifier GetBySurveyIdAndUserEmailAsync(int surveyId, string userEmail, int userId)
+        // public SurveyUserIdentifier GetBySurveyIdAndUserEmailAsync(int surveyId, string userEmail, int userId)
+        // {
+        //     return _context.SurveyUserIdentifiers
+        //         .SingleOrDefault(x => x.SurveyId == surveyId && x.UserEmail == userEmail && x.UserId == userId);
+        // }
+
+        public async Task <IEnumerable<SurveyUserIdentifier>> GetAllBySurveyIdAsync(int surveyId)
         {
-            return _context.SurveyUserIdentifiers
-                .SingleOrDefault(x => x.SurveyId == surveyId && x.UserEmail == userEmail && x.UserId == userId);
+            return await Task.FromResult(_context.SurveyUserIdentifiers.Where(x => x.SurveyId == surveyId));
+        }
+
+        public async Task UpdateAsync(SurveyUserIdentifier surveyUserIdentifier)
+        {
+            _context.Update(surveyUserIdentifier);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(SurveyUserIdentifier surveyUserIdentifier)

@@ -418,6 +418,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<bool>("IsRequired");
+
                     b.Property<int>("QuestionPosition");
 
                     b.Property<string>("Select");
@@ -475,9 +477,7 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<int>("SurveyId");
 
-                    b.Property<string>("UserEmail");
-
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserEmailHash");
 
                     b.HasKey("Id");
 
@@ -533,6 +533,8 @@ namespace CareerMonitoring.Api.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content");
+
+                    b.Property<bool>("IsRequired");
 
                     b.Property<int>("QuestionPosition");
 
@@ -657,6 +659,8 @@ namespace CareerMonitoring.Api.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content");
+
+                    b.Property<bool>("IsRequired");
 
                     b.Property<int>("QuestionPosition");
 

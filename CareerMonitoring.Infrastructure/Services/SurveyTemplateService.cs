@@ -41,7 +41,7 @@ namespace CareerMonitoring.Infrastructure.Services
                 throw new NullReferenceException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 var questionTemplateId = await AddQuestionToSurveyAsync(surveyTemplateId, question.QuestionPosition,
-                question.Content, question.Select);
+                question.Content, question.Select, question.IsRequired);
                 if(question.FieldData == null)
                     throw new NullReferenceException ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
@@ -58,7 +58,7 @@ namespace CareerMonitoring.Infrastructure.Services
                 throw new NullReferenceException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
                 var questionId = await AddQuestionToSurveyAsync(surveyTemplateId, question.QuestionPosition,
-                question.Content, question.Select);
+                question.Content, question.Select, question.IsRequired);
                 if(question.FieldData == null)
                     throw new NullReferenceException ("Question must contain FieldData");
                 foreach (var fieldData in question.FieldData) {
@@ -116,11 +116,11 @@ namespace CareerMonitoring.Infrastructure.Services
         }
 
         public async Task<int> AddQuestionToSurveyAsync (int surveyTemplateId, int questionPosition, string content,
-            string select) {
+            string select, bool isRequired) {
             var surveyTemplate = await _surveyTemplateRepository.GetByIdAsync (surveyTemplateId);
             if(content == "")
                 content = "Brak pytania";
-            var questionTemplate = new QuestionTemplate (questionPosition, content, select);
+            var questionTemplate = new QuestionTemplate (questionPosition, content, select, isRequired);
             surveyTemplate.AddQuestionTemplate (questionTemplate);
             await _questionTemplateRepository.AddAsync (questionTemplate);
             return questionTemplate.Id;

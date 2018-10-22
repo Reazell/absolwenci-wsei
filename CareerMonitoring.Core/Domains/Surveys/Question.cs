@@ -6,16 +6,18 @@ namespace CareerMonitoring.Core.Domains.Surveys {
         public int QuestionPosition { get; private set; }
         public string Content { get; private set; }
         public string Select { get; private set; }
+        public bool IsRequired { get; private set; }
         public int SurveyId { get; private set; }
         public Survey Survey { get; private set; }
         public ICollection<FieldData> FieldData { get; private set; } = new List<FieldData>();
 
         private Question () { }
 
-        public Question (int questionPosition, string content, string select) {
+        public Question (int questionPosition, string content, string select, bool isRequired) {
             SetQuestionPosition(questionPosition);
             SetContent(content);
             SetSelect(select);
+            SetIsRequired(isRequired);
         }
 
         public void SetQuestionPosition (int questionPosition) {
@@ -28,6 +30,10 @@ namespace CareerMonitoring.Core.Domains.Surveys {
 
         public void SetSelect (string select) {
             Select = select;
+        }
+
+        public void SetIsRequired (bool isRequired) {
+            IsRequired = isRequired;
         }
 
         public void AddFieldData (FieldData fieldData)
