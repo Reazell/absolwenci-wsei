@@ -242,7 +242,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                     }
                 }
                 if (counter == 0) {
-                    questionReport.DeleteAnswer();
+                    questionReport.DeleteAnswer ();
                     await Task.CompletedTask;
                 }
             }
@@ -281,7 +281,7 @@ namespace CareerMonitoring.Infrastructure.Services {
                     }
                 }
                 if (counter == 0) {
-                    questionReport.DeleteAnswer();
+                    questionReport.DeleteAnswer ();
                     await Task.CompletedTask;
                 }
             }
@@ -303,6 +303,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             fieldDataAnswer.AddRow (rowAnswer);
             await _rowAnswerRepository.AddAsync (rowAnswer);
             return rowAnswer.Id;
+        }
+
+        public async Task DeleteAsync (int surveyAnswerId) {
+            var surveyAnswer = await _surveyAnswerRepository.GetByIdAsync (surveyAnswerId);
+            await _surveyAnswerRepository.DeleteAsync (surveyAnswer);
         }
     }
 }

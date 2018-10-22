@@ -15,7 +15,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Skill> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking){
+            if (isTracking) {
                 return await _context.Skills
                     .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Id == id);

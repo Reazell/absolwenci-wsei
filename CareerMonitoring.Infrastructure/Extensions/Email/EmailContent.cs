@@ -4,6 +4,9 @@ using CareerMonitoring.Infrastructure.Extensions.Email.Interfaces;
 
 namespace CareerMonitoring.Infrastructure.Extensions.Email {
     public class EmailContent : IEmailContent {
+        public EmailContent () {
+        }
+
         public string ActivationEmail (Guid activationKey) {
             return $"Oto mail wygenerowany automatycznie, potwierdzający Twoją rejestrację w aplikacji <b>Monitorowanie karier</b><br/> Kliknij w" +
                 $" <a href=\"http://localhost:4200/api/auth/activation/{activationKey}\">link aktywacyjny</a>, dzięki czemu aktywujesz swoje konto w serwisie.";

@@ -44,8 +44,9 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public async Task<SurveyAnswer> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking) {
+        public async Task<SurveyAnswer> GetByIdAsync(int id, bool isTracking = true)
+        {
+            if (isTracking){
                 return await _context.SurveyAnswers
                     .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Id == id);
@@ -79,8 +80,9 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .SingleOrDefaultAsync (x => x.SurveyTitle == surveyTitle);
         }
 
-        public async Task<IEnumerable<SurveyAnswer>> GetAllWithQuestionsAsync (bool isTracking = true) {
-            if (isTracking) {
+        public async Task<IEnumerable<SurveyAnswer>> GetAllWithQuestionsAsync(bool isTracking = true)
+        {
+            if (isTracking){
                 return await Task.FromResult (_context.SurveyAnswers
                     .AsTracking ()
                     .Include (x => x.QuestionsAnswers)
@@ -104,7 +106,8 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .AsEnumerable ());
         }
 
-        public async Task DeleteAsync (SurveyAnswer surveyAnswer) {
+        public async Task DeleteAsync(SurveyAnswer surveyAnswer)
+        {
             _context.SurveyAnswers.Remove (surveyAnswer);
             await _context.SaveChangesAsync ();
         }

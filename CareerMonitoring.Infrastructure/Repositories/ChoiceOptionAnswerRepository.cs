@@ -9,9 +9,11 @@ using Microsoft.EntityFrameworkCore;
 namespace CareerMonitoring.Infrastructure.Repositories {
     public class ChoiceOptionAnswerRepository : IChoiceOptionAnswerRepository {
         private readonly CareerMonitoringContext _context;
+
         public ChoiceOptionAnswerRepository (CareerMonitoringContext context) {
             _context = context;
         }
+
         public async Task AddAsync (ChoiceOptionAnswer choiceOptionAnswer) {
             await _context.ChoiceOptionsAnswers.AddAsync (choiceOptionAnswer);
             await _context.SaveChangesAsync ();

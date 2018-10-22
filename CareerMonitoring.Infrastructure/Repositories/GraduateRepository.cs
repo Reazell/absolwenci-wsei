@@ -20,7 +20,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Graduate> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking){
+            if (isTracking) {
                 return await _context.Graduates
                     .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Id == id);
@@ -31,7 +31,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<Graduate> GetByEmailAsync (string email, bool isTracking = true) {
-            if (isTracking){
+            if (isTracking) {
                 return await _context.Graduates
                     .AsTracking()
                     .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());

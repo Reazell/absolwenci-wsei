@@ -33,11 +33,12 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         public async Task<CareerOffice> GetByEmailAsync (string email, bool isTracking = true) {
             if (isTracking) {
                 return await _context.CareerOffices
-                    .AsTracking ()
-                    .SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
+                    .AsTracking()
+                    .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
             }
-            return await _context.CareerOffices.AsNoTracking ()
-                .SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
+            return await _context.CareerOffices.AsNoTracking()
+                .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
+
     }
 }

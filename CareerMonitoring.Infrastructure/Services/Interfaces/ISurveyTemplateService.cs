@@ -16,7 +16,6 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces
         Task AddRowAsync (int fieldDataTemplateId, int rowPosition, string input);
         Task<IEnumerable<SurveyTemplate>> GetAllAsync ();
         Task<SurveyTemplate> GetByIdAsync (int surveyTemplateId);
-        Task<SurveyTemplate> GetByTitleAsync (string title);
         Task<int> UpdateAsync (int surveyTemplateId, string title);
         Task UpdateSurveyAsync (SurveyToUpdate command);
         Task DeleteAsync (int surveyTemplateId);

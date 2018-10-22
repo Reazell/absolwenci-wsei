@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+<<<<<<< HEAD
     <e p="C:\Users\filip.lipowiecki\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\filip.lipowiecki\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_absolwenci-wsei.-999976760.00" t="ExcludeRecursive" />
     <e p="C:\Users\filip.lipowiecki\Desktop\absolwenci-wsei" t="IncludeFlat">
+=======
+    <e p="C:\Users\amado\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\amado\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_absolwenci-wsei.-1483223948.00" t="ExcludeRecursive" />
+    <e p="C:\Users\amado\Desktop\absolwenci-wsei" t="IncludeFlat">
+>>>>>>> AC01
       <e p="CareerMonitoring.Api" t="IncludeRecursive">
         <e p="ActionFilters" t="Include">
           <e p="ValidatorActionFilter.cs" t="Include" />
@@ -362,9 +368,12 @@
             <e p="RegisterStudentValidator.cs" t="Include" />
           </e>
         </e>
+<<<<<<< HEAD
       </e>
       <e p="CareerMonitoring.Tests" t="IncludeRecursive">
         <e p="CareerMonitoring.Tests.csproj" t="IncludeRecursive" />
+=======
+>>>>>>> AC01
       </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>

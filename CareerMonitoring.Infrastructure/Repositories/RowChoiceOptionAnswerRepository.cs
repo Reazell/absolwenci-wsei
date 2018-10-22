@@ -6,17 +6,14 @@ using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CareerMonitoring.Infrastructure.Repositories
-{
-    public class RowChoiceOptionAnswerRepository : IRowChoiceOptionAnswerRepository
-    {
+namespace CareerMonitoring.Infrastructure.Repositories {
+    public class RowChoiceOptionAnswerRepository : IRowChoiceOptionAnswerRepository {
         private readonly CareerMonitoringContext _context;
-        public RowChoiceOptionAnswerRepository (CareerMonitoringContext context)
-        {
+
+        public RowChoiceOptionAnswerRepository (CareerMonitoringContext context) {
             _context = context;
         }
-        public async Task AddAsync(RowChoiceOptionAnswer rowChoiceOptionAnswer)
-        {
+        public async Task AddAsync (RowChoiceOptionAnswer rowChoiceOptionAnswer) {
             await _context.RowChoiceOptionsAnswers.AddAsync (rowChoiceOptionAnswer);
             await _context.SaveChangesAsync ();
         }

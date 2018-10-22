@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CareerMonitoring.Infrastructure.Repositories {
     public class QuestionAnswerRepository : IQuestionAnswerRepository {
         private readonly CareerMonitoringContext _context;
+
         public QuestionAnswerRepository (CareerMonitoringContext context) {
             _context = context;
         }
@@ -19,7 +20,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<QuestionAnswer> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking){
+            if (isTracking) {
                 return await _context.QuestionsAnswers
                     .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Id == id);
