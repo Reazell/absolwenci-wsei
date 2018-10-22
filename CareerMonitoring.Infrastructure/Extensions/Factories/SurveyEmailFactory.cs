@@ -87,7 +87,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             {
                 hash.Append(bytes[i].ToString("x2"));
             }
-            return bytes.ToString();
+            return hash.ToString();
         }
     }
 }

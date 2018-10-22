@@ -32,7 +32,7 @@ namespace CareerMonitoring.Core.Domains.Surveys
             {
                 hash.Append(bytes[i].ToString("x2"));
             }
-            return bytes.ToString();
+            return hash.ToString();
         }
     }
 }
