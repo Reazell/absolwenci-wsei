@@ -664,23 +664,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Filip\\.nuget\\packages\\": {},
+    "C:\\Users\\filip.lipowiecki\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "projectUniqueName": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "projectName": "CareerMonitoring.Core",
-      "projectPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
-      "packagesPath": "C:\\Users\\Filip\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Filip\\Desktop\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
+      "projectPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "packagesPath": "C:\\Users\\filip.lipowiecki\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\filip.lipowiecki\\Desktop\\absolwenci-wsei\\CareerMonitoring.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Filip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\filip.lipowiecki\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -718,13 +718,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Wystąpił problem podczas czytania pliku pamięci podręcznej C:\\Users\\Filip\\Desktop\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\CareerMonitoring.Core.csproj.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
