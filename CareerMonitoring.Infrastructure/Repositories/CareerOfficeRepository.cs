@@ -20,7 +20,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<CareerOffice> GetByIdAsync (int id, bool isTracking = true) {
-            if (isTracking){
+            if (isTracking) {
                 return await _context.CareerOffices
                     .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Id == id);
@@ -31,34 +31,13 @@ namespace CareerMonitoring.Infrastructure.Repositories {
         }
 
         public async Task<CareerOffice> GetByEmailAsync (string email, bool isTracking = true) {
-            if (isTracking){
+            if (isTracking) {
                 return await _context.CareerOffices
-                    .AsTracking()
-                    .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
-            }
-            return await _context.CareerOffices.AsNoTracking()
-                .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
-        }
-
-        public async Task<IEnumerable<CareerOffice>> GetAllAsync (bool isTracking = true) {
-            if (isTracking){
-                return await Task.FromResult (_context.CareerOffices
                     .AsTracking ()
-                    .AsEnumerable ());
+                    .SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
             }
-            return await Task.FromResult (_context.CareerOffices
-                .AsNoTracking ()
-                .AsEnumerable ());
-        }
-
-        public async Task UpdateAsync (CareerOffice careerOffice) {
-            _context.CareerOffices.Update (careerOffice);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task DeleteAsync (CareerOffice careerOffice) {
-            _context.CareerOffices.Remove (careerOffice);
-            await _context.SaveChangesAsync ();
+            return await _context.CareerOffices.AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
         }
     }
 }

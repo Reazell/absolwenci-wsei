@@ -7,66 +7,16 @@ using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CareerMonitoring.Infrastructure.Repositories
-{
-    public class ChoiceOptionRepository : IChoiceOptionRepository
-    {
+namespace CareerMonitoring.Infrastructure.Repositories {
+    public class ChoiceOptionRepository : IChoiceOptionRepository {
         private readonly CareerMonitoringContext _context;
 
-        public ChoiceOptionRepository (CareerMonitoringContext context)
-        {
+        public ChoiceOptionRepository (CareerMonitoringContext context) {
             _context = context;
         }
 
-        public async Task AddAsync(ChoiceOption choiceOption)
-        {
+        public async Task AddAsync (ChoiceOption choiceOption) {
             await _context.ChoiceOptions.AddAsync (choiceOption);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task<ChoiceOption> GetByIdAsync (int id)
-        {
-            return await _context.ChoiceOptions.SingleOrDefaultAsync(x => x.Id == id);
-        }
-
-        public async Task<IEnumerable<ChoiceOption>> GetAllByFieldDataIdInOrderAsync(int fieldDataId,
-            bool isTracking = true)
-        {
-            if(isTracking){
-                return await Task.FromResult(_context.ChoiceOptions
-                    .AsTracking()
-                    .Where(x => x.FieldDataId == fieldDataId)
-                    .OrderBy(q => q.OptionPosition));
-            }
-            return await Task.FromResult(_context.ChoiceOptions
-                .AsNoTracking()
-                .Where(x => x.FieldDataId == fieldDataId)
-                .OrderBy(q => q.OptionPosition));
-        }
-
-        public async Task<ChoiceOption> GetByFieldDataIdAsync(int fieldDataId, int optionPosition, bool isTracking=true)
-        {
-            if(isTracking){
-                return await _context.ChoiceOptions
-                    .AsTracking()
-                    .Where(x => x.FieldDataId == fieldDataId && x.OptionPosition == optionPosition)
-                    .SingleOrDefaultAsync();
-            }
-            return await _context.ChoiceOptions
-                .AsNoTracking()
-                .Where(x => x.FieldDataId == fieldDataId && x.OptionPosition == optionPosition)
-                .SingleOrDefaultAsync();
-        }
-
-        public async Task UpdateAsync(ChoiceOption choiceOption)
-        {
-            _context.ChoiceOptions.Update (choiceOption);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task DeleteAsync(ChoiceOption choiceOption)
-        {
-            _context.ChoiceOptions.Update (choiceOption);
             await _context.SaveChangesAsync ();
         }
     }

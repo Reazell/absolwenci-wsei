@@ -59,6 +59,5 @@ namespace CareerMonitoring.Infrastructure.Services {
             Logger.Info ($"Deleting unregistered user with Id {unregisteredUser.Id}.");
             await _unregisteredUserRepository.DeleteAsync (unregisteredUser);
         }
-
     }
 }

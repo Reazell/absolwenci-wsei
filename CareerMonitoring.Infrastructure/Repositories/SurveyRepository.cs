@@ -79,35 +79,6 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Survey>> GetAllWithQuestionsFieldDataAndChoiceOptionsByTitleAsync (string title,
-            bool isTracking = true) {
-            if (isTracking) {
-                return await Task.FromResult (_context.Surveys
-                    .AsTracking ()
-                    .Include (x => x.Questions)
-                    .ThenInclude (x => x.FieldData)
-                    .ThenInclude (x => x.ChoiceOptions)
-                    .Include (x => x.Questions)
-                    .ThenInclude (x => x.FieldData)
-                    .ThenInclude (x => x.Rows)
-                    .AsEnumerable ());
-            }
-            return await Task.FromResult (_context.Surveys
-                .AsNoTracking ()
-                .Include (x => x.Questions)
-                .ThenInclude (x => x.FieldData)
-                .ThenInclude (x => x.ChoiceOptions)
-                .Include (x => x.Questions)
-                .ThenInclude (x => x.FieldData)
-                .ThenInclude (x => x.Rows)
-                .AsEnumerable ());
-        }
-
-        public async Task UpdateAsync (Survey survey) {
-            _context.Surveys.Update (survey);
-            await _context.SaveChangesAsync ();
-        }
-
         public async Task DeleteAsync (Survey survey) {
             _context.Surveys.Remove (survey);
             await _context.SaveChangesAsync ();

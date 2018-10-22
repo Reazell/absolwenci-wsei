@@ -22,21 +22,6 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.SaveChangesAsync ();
         }
 
-        public async Task<IEnumerable<RowAnswer>> GetAllByFieldDataIdInOrderAsync(int fieldDataAnswerId,
-            bool isTracking = true)
-        {
-            if(isTracking){
-                return await Task.FromResult(_context.RowAnswers
-                    .AsTracking()
-                    .Where(x => x.FieldDataAnswerId == fieldDataAnswerId)
-                    .OrderBy(q => q.RowPosition));
-            }
-            return await Task.FromResult(_context.RowAnswers
-                .AsNoTracking()
-                .Where(x => x.FieldDataAnswerId == fieldDataAnswerId)
-                .OrderBy(q => q.RowPosition));
-        }
-
         public async Task<RowAnswer> GetByIdAsync(int id, bool isTracking = true)
         {
             if(isTracking){
@@ -47,18 +32,6 @@ namespace CareerMonitoring.Infrastructure.Repositories
             return await _context.RowAnswers
                 .AsNoTracking ()
                 .SingleOrDefaultAsync(x => x.Id == id);
-        }
-
-        public async Task UpdateAsync(RowAnswer rowAnswer)
-        {
-            _context.RowAnswers.Update (rowAnswer);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task DeleteAsync(RowAnswer rowAnswer)
-        {
-            _context.RowAnswers.Update (rowAnswer);
-            await _context.SaveChangesAsync ();
         }
     }
 }

@@ -7,8 +7,6 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces
     {
         Task AddAsync (SurveyReport surveyReport);
         Task<SurveyReport> GetBySurveyIdAsync (int surveyId, bool isTracking = true);
-        Task<SurveyReport> GetByIdAsync (int surveyId, bool isTracking = true);
-        Task UpdateAsync (SurveyReport surveyReport);
         Task DeleteAsync (SurveyReport surveyReport);
     }
 }

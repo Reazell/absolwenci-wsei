@@ -20,32 +20,5 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.RowChoiceOptionsAnswers.AddAsync (rowChoiceOptionAnswer);
             await _context.SaveChangesAsync ();
         }
-
-        public async Task<IEnumerable<RowChoiceOptionAnswer>> GetAllByFieldDataIdInOrderAsync(int rowAnswerId,
-            bool isTracking = true)
-        {
-            if(isTracking){
-                return await Task.FromResult(_context.RowChoiceOptionsAnswers
-                    .AsTracking()
-                    .Where(x => x.RowAnswerId == rowAnswerId)
-                    .OrderBy(q => q.OptionPosition));
-            }
-            return await Task.FromResult(_context.RowChoiceOptionsAnswers
-                .AsNoTracking()
-                .Where(x => x.RowAnswerId == rowAnswerId)
-                .OrderBy(q => q.OptionPosition));
-        }
-
-        public async Task UpdateAsync(RowChoiceOptionAnswer rowChoiceOptionAnswer)
-        {
-            _context.RowChoiceOptionsAnswers.Update (rowChoiceOptionAnswer);
-            await _context.SaveChangesAsync ();
-        }
-
-        public async Task DeleteAsync(RowChoiceOptionAnswer rowChoiceOptionAnswer)
-        {
-            _context.RowChoiceOptionsAnswers.Update (rowChoiceOptionAnswer);
-            await _context.SaveChangesAsync ();
-        }
     }
 }

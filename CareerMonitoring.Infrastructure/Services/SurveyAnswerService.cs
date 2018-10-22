@@ -304,25 +304,5 @@ namespace CareerMonitoring.Infrastructure.Services {
             await _rowAnswerRepository.AddAsync (rowAnswer);
             return rowAnswer.Id;
         }
-
-        public async Task<IEnumerable<SurveyAnswer>> GetAllAsync () {
-            var surveyAnswers = await _surveyAnswerRepository.GetAllWithQuestionsAsync ();
-            return surveyAnswers;
-        }
-
-        public async Task<SurveyAnswer> GetBySurveyIdAsync (int surveyId) {
-            var surveyAnswer = await _surveyAnswerRepository.GetByIdWithQuestionsAsync (surveyId);
-            return surveyAnswer;
-        }
-
-        public async Task<SurveyAnswer> GetBySurveyTitleAsync (string surveyTitle) {
-            var surveyAnswer = await _surveyAnswerRepository.GetByTitleWithQuestionsAsync (surveyTitle);
-            return surveyAnswer;
-        }
-
-        public async Task DeleteAsync (int surveyAnswerId) {
-            var surveyAnswer = await _surveyAnswerRepository.GetByIdAsync (surveyAnswerId);
-            await _surveyAnswerRepository.DeleteAsync (surveyAnswer);
-        }
     }
 }

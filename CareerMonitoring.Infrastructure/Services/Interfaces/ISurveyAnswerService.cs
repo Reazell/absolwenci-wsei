@@ -16,9 +16,5 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces {
         Task AddChoiceOptionAnswerToRowAnswerAsync (int surveyId, int rowAnswerId, int optionPosition, bool value,
             string viewValue);
         Task<int> AddRowAnswerAsync (int fieldDataAnswerId, int rowPosition, string input);
-        Task<IEnumerable<SurveyAnswer>> GetAllAsync ();
-        Task<SurveyAnswer> GetBySurveyIdAsync (int surveyId);
-        Task<SurveyAnswer> GetBySurveyTitleAsync (string surveyTitle);
-        Task DeleteAsync (int surveyAnswerId);
     }
 }

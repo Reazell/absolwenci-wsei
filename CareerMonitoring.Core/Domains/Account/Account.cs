@@ -29,6 +29,9 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         protected Account () { }
 
         public Account (string name, string surname, string email, string phoneNumber, string password) {
+            SetName(name);
+            SetSurname(surname);
+            SetEmail(email);
             Name = name;
             Surname = surname;
             Email = email;
@@ -48,6 +51,14 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         public void SetEmail(string email)
         {
             Email = email;
+        }
+
+        public void SetName(string name){
+            Name = name;
+        }
+
+        public void SetSurname(string surname){
+            Surname = surname;
         }
 
         public void Activate (AccountActivation accountActivation) {

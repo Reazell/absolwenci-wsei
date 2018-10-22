@@ -9,8 +9,6 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces {
         Task<Survey> GetByIdAsync(int id, bool isTracking = true);
         Task<Survey> GetByTitleWithQuestionsAsync (string title, bool isTracking = true);
         Task<IEnumerable<Survey>> GetAllWithQuestionsAsync (bool isTracking = true);
-        Task<IEnumerable<Survey>> GetAllWithQuestionsFieldDataAndChoiceOptionsByTitleAsync (string title, bool isTracking = true);
-        Task UpdateAsync (Survey survey);
         Task DeleteAsync (Survey survey);
     }
 }
