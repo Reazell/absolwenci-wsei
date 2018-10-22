@@ -40,5 +40,10 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
         }
 
+        public async Task UpdateAsync (CareerOffice careerOffice) {
+            _context.CareerOffices.Update(careerOffice);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

@@ -7,5 +7,6 @@ namespace CareerMonitoring.Infrastructure.Repositories.Interfaces {
         Task AddAsync (CareerOffice careerOffice);
         Task<CareerOffice> GetByIdAsync (int id, bool isTracking = true);
         Task<CareerOffice> GetByEmailAsync (string email, bool isTracking = true);
+        Task UpdateAsync (CareerOffice careerOffice);
     }
 }

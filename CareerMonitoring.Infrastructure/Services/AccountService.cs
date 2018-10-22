@@ -14,17 +14,20 @@ namespace CareerMonitoring.Infrastructure.Services {
         private readonly IEmployerRepository _employerRepository;
         private readonly IGraduateRepository _graduateRepository;
         private readonly IAccountEmailFactory _accountEmailFactory;
+        private readonly ICareerOfficeRepository _careerOfficeRepository;
 
         public AccountService (IAccountRepository accountRepository,
             IStudentRepository studentRepository,
             IEmployerRepository employerRepository,
             IGraduateRepository graduateRepository,
-            IAccountEmailFactory accountEmailFactory) {
+            IAccountEmailFactory accountEmailFactory,
+            ICareerOfficeRepository careerOfficeRepository) {
             _accountRepository = accountRepository;
             _studentRepository = studentRepository;
             _employerRepository = employerRepository;
             _graduateRepository = graduateRepository;
             _accountEmailFactory = accountEmailFactory;
+            _careerOfficeRepository = careerOfficeRepository;
         }
 
         public async Task<bool> ExistsByEmailAsync (string email) =>
@@ -108,6 +111,12 @@ namespace CareerMonitoring.Infrastructure.Services {
                 employer.Update (name, surname, phoneNumber, companyName, location, companyDescription);
                 await _employerRepository.UpdateAsync (employer);
                 account = employer;
+            }
+            if (account.GetType () == typeof (CareerOffice)) {
+                var careerOffice = (CareerOffice) account;
+                careerOffice.Update (name, email, surname, phoneNumber);
+                await _careerOfficeRepository.UpdateAsync(careerOffice);
+                account = careerOffice;
             }
             await _accountRepository.UpdateAsync (account);
         }
