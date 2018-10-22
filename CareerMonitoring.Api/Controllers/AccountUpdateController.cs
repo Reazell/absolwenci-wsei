@@ -19,12 +19,12 @@ namespace CareerMonitoring.Api.Controllers {
             _profileEditionService = profileEditionService;
         }
 
-        [HttpPut ("accounts/{id}")]
-        public async Task<IActionResult> AccountUpdate (int id, [FromBody] UpdateAccount command) {
+        [HttpPut ("accounts")]
+        public async Task<IActionResult> AccountUpdate ([FromBody] UpdateAccount command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _accountService.UpdateAsync (id, command.Name, command.Surname, command.Email,
+                await _accountService.UpdateAsync (UserId, command.Name, command.Surname, command.Email,
                     command.PhoneNumber, command.CompanyName, command.Location, command.CompanyDescription);
                 return StatusCode (200);
             } catch (Exception e) {
