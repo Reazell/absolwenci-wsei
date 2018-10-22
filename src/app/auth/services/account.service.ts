@@ -2,12 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AppConfig } from '../../app.config';
+import { UserProfile } from '../other/user.model';
 
 @Injectable()
 export class AccountService {
   mail: string;
   isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(undefined);
   role: BehaviorSubject<string> = new BehaviorSubject<string>(undefined);
+  profileData: BehaviorSubject<UserProfile> = new BehaviorSubject<UserProfile>(
+    undefined
+  );
   constructor(private http: HttpClient, private config: AppConfig) {}
 
   isLoggedNext(x) {
@@ -15,6 +19,17 @@ export class AccountService {
   }
   setRoleSubject(x) {
     this.role.next(x);
+  }
+
+  setProfileData() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const _profileData = {
+      firstName: user.name,
+      lastName: user.surname,
+      email: user.email,
+      phoneNum: user.phoneNumber
+    };
+    this.profileData.next(_profileData);
   }
   // create new user
 
@@ -78,9 +93,9 @@ export class AccountService {
   // update user data
 
   updateProfile(user) {
-    return this.http.put(this.config.apiUrl + `/accountupdate/${user.id}`, {
-      Name: user.name,
-      Surname: user.surname,
+    return this.http.put(this.config.apiUrl + '/accountupdate/accounts', {
+      Name: user.firstName,
+      Surname: user.lastName,
       Email: user.email,
       PhoneNumber: user.phoneNum,
       CompanyName: user.companyName,

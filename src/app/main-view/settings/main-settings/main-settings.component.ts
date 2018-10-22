@@ -10,15 +10,30 @@ import {
 import { Router } from '@angular/router';
 import { AccountService } from '../../../auth/services/account.service';
 import { SharedService } from '../../../services/shared.service';
+import {
+  ProfileDataStorage,
+  UserProfile
+} from './../../../auth/other/user.model';
 @Component({
   selector: 'app-main-settings',
   templateUrl: './main-settings.component.html',
   styleUrls: ['./main-settings.component.scss']
 })
 export class MainSettingsComponent implements OnInit {
+  created = false;
+  loading = false;
+  loader = true;
+  private _userInfo: UserProfile;
   @Input()
-  userInfo;
-  panelOpenState = false;
+  set userInfo(userInfo) {
+    this._userInfo = userInfo;
+    if (userInfo) {
+      this.setValue();
+    }
+  }
+  get userInfo() {
+    return this._userInfo;
+  }
 
   // declare form
   regForm: FormGroup;
@@ -52,19 +67,17 @@ export class MainSettingsComponent implements OnInit {
   profileType: string;
 
   // user object sent to API
-  user: any = {};
-  // loader
-  loading = false;
+  user: UserProfile;
   // profiles tooltip
-  profiles = [
-    { value: 'Student', icon: 'pen', message: 'Student' },
-    {
-      value: 'Graduate',
-      icon: 'graduation-cap',
-      message: 'Absolwent'
-    },
-    { value: 'Employer', icon: 'briefcase', message: 'Pracodawca' }
-  ];
+  // profiles = [
+  //   { value: 'Student', icon: 'pen', message: 'Student' },
+  //   {
+  //     value: 'Graduate',
+  //     icon: 'graduation-cap',
+  //     message: 'Absolwent'
+  //   },
+  //   { value: 'Employer', icon: 'briefcase', message: 'Pracodawca' }
+  // ];
 
   // tslint:disable-next-line:max-line-length
   emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -73,7 +86,6 @@ export class MainSettingsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private accountService: AccountService,
     private sharedService: SharedService
   ) {
@@ -81,33 +93,34 @@ export class MainSettingsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formDeclaration();
+  }
+  formDeclaration() {
     // form declaration
     this.regForm = this.fb.group({
       name: [
-        this.userInfo.name,
+        '',
         Validators.compose([
           Validators.required,
           Validators.pattern(this.namePattern)
         ])
       ],
       lastName: [
-        this.userInfo.surname,
+        '',
         Validators.compose([
           Validators.required,
           Validators.pattern(this.surnamePattern)
         ])
       ],
       email: [
-        this.userInfo.email,
+        '',
         Validators.compose([
           Validators.required,
           Validators.pattern(this.emailPattern)
         ])
       ],
-      profileName: [this.profileType, Validators.required],
-      phoneNum: [this.userInfo.phoneNum, Validators.required]
+      phoneNum: ['', Validators.required]
     });
-
     // connecting controls with form inputs
     this.setAdditionalControls();
     this.name = this.regForm.controls['name'];
@@ -117,48 +130,55 @@ export class MainSettingsComponent implements OnInit {
     this.passwordConfirm = this.regForm.controls['passwordConfirm'];
     this.profileName = this.regForm.controls['profileName'];
     this.phoneNum = this.regForm.controls['phoneNum'];
+    this.created = true;
   }
-
+  setValue() {
+    this.name.setValue(this._userInfo.firstName);
+    this.lastName.setValue(this._userInfo.lastName);
+    this.email.setValue(this._userInfo.email);
+    this.phoneNum.setValue(this._userInfo.phoneNum);
+    this.loader = false;
+  }
   getProfileType() {
     this.profileType = JSON.parse(localStorage.getItem('currentUser')).role;
-    // console.log(this.profileType);
   }
 
   setAdditionalControls() {
-    if (this.profileType === 'student') {
-      this.regForm.addControl(
-        'albumID',
-        new FormControl(this.userInfo.albumID, Validators.required)
-      );
-      this.albumID = this.regForm.controls['albumID'];
-    } else if (this.profileType === 'employer') {
-      this.regForm.addControl(
-        'companyName',
-        new FormControl(this.userInfo.companyName, Validators.required)
-      );
-      this.regForm.addControl(
-        'location',
-        new FormControl(this.userInfo.location, Validators.required)
-      );
-      this.regForm.addControl(
-        'companyDescription',
-        new FormControl(this.userInfo.companyDescription)
-      );
-      this.companyName = this.regForm.controls['companyName'];
-      this.location = this.regForm.controls['location'];
-      this.companyDescription = this.regForm.controls['companyDescription'];
-    }
+    // if (this.profileType === 'student') {
+    //   this.regForm.addControl(
+    //     'albumID',
+    //     new FormControl(this.userInfo.albumID, Validators.required)
+    //   );
+    //   this.albumID = this.regForm.controls['albumID'];
+    // } else if (this.profileType === 'employer') {
+    //   this.regForm.addControl(
+    //     'companyName',
+    //     new FormControl(this.userInfo.companyName, Validators.required)
+    //   );
+    //   this.regForm.addControl(
+    //     'location',
+    //     new FormControl(this.userInfo.location, Validators.required)
+    //   );
+    //   this.regForm.addControl(
+    //     'companyDescription',
+    //     new FormControl(this.userInfo.companyDescription)
+    //   );
+    //   this.companyName = this.regForm.controls['companyName'];
+    //   this.location = this.regForm.controls['location'];
+    //   this.companyDescription = this.regForm.controls['companyDescription'];
+    // }
   }
-  onSubmit(form: NgForm): void {
+  onSubmit(form: FormGroup): void {
+    console.log(form);
     if (!form.valid) {
-      console.log('not valid');
     } else {
+      console.log('valid');
       this.loading = true;
-      this.createUser();
       console.log(this.user);
-      this.accountService.updateProfile(this.user).subscribe(
+      this.accountService.updateProfile(this.createUser()).subscribe(
         data => {
           console.log(data);
+          this.setLocalStorage();
         },
         error => {
           console.log(error);
@@ -166,25 +186,41 @@ export class MainSettingsComponent implements OnInit {
       );
     }
   }
-
-  createUser(): void {
-    this.user.id = this.userInfo.id;
-    this.user.name = this.name.value;
-    this.user.surname = this.lastName.value;
-    this.user.email = this.email.value;
-    this.user.profileName = this.profileName.value;
-    this.user.phoneNum = this.phoneNum.value;
-
-    switch (this.profileName.value) {
-      case 'Student':
-        this.user.albumID = this.albumID.value;
-        break;
-      case 'Employer':
-        this.user.companyName = this.companyName.value;
-        this.user.location = this.location.value;
-        this.user.companyDescription = this.companyDescription.value;
-        break;
-    }
+  setLocalStorage() {
+    const user: ProfileDataStorage = JSON.parse(
+      localStorage.getItem('currentUser')
+    );
+    this.createProfileDataStorage(user);
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.setProfileData();
+  }
+  setProfileData() {
+    this.accountService.setProfileData();
+  }
+  createUser() {
+    const _user: UserProfile = {
+      firstName: this.name.value,
+      lastName: this.lastName.value,
+      email: this.email.value,
+      phoneNum: this.phoneNum.value
+    };
+    return _user;
+    // switch (this.profileName.value) {
+    //   case 'Student':
+    //     this.user.albumID = this.albumID.value;
+    //     break;
+    //   case 'Employer':
+    //     this.user.companyName = this.companyName.value;
+    //     this.user.location = this.location.value;
+    //     this.user.companyDescription = this.companyDescription.value;
+    //     break;
+    // }
+  }
+  createProfileDataStorage(user: ProfileDataStorage): void {
+    user.name = this.name.value;
+    user.surname = this.lastName.value;
+    user.email = this.email.value;
+    user.phoneNumber = this.phoneNum.value;
   }
 
   inputError(control: AbstractControl): boolean {
@@ -197,7 +233,7 @@ export class MainSettingsComponent implements OnInit {
         case 'name':
           this.nameErrorStr = errorObj.errorStr;
           break;
-        case 'last name':
+        case 'lastName':
           this.lastNameErrorStr = errorObj.errorStr;
           break;
         case 'email':
@@ -206,10 +242,10 @@ export class MainSettingsComponent implements OnInit {
         case 'password':
           this.passwordErrorStr = errorObj.errorStr;
           break;
-        case 'albumID':
-          this.albumIDErrorStr = errorObj.errorStr;
-          break;
-        case 'phone number':
+        // case 'albumID':
+        //   this.albumIDErrorStr = errorObj.errorStr;
+        //   break;
+        case 'phoneNum':
           this.phoneNumErrorStr = errorObj.errorStr;
           break;
       }

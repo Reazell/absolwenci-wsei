@@ -4,10 +4,10 @@
       <div id="avatar">
         <img src="./../../../assets/profile-image.png">
       </div>
-      <div id="avatar-info">
-        <h2 id="name">{{userInfo.name + ' ' + userInfo.surname}}</h2>
+      <div id="avatar-info" *ngIf="userInfo$">
+        <h2 id="name">{{userName}}</h2>
         <div id="degree-info">
-          <span>opis profilu</span>
+          <span>{{email}}</span>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
           <span class="tab-name">Ustawienia</span>
         </ng-template>
         <ng-template matTabContent>
-          <app-main-settings [userInfo]=userInfo></app-main-settings>
+          <app-main-settings [userInfo]="userInfo$ | async"></app-main-settings>
         </ng-template>
       </mat-tab>
     </mat-tab-group>

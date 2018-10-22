@@ -4,7 +4,11 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { SharedService } from '../../services/shared.service';
+import { UserProfile } from './../../auth/other/user.model';
+import { AccountService } from './../../auth/services/account.service';
 
 @Component({
   selector: 'app-settings',
@@ -13,28 +17,39 @@ import { SharedService } from '../../services/shared.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent implements OnInit, OnDestroy {
-  userInfo = {
-    id: 2,
-    name: 'Gabriela',
-    surname: 'Oskroba',
-    email: 'gabi97_97@o2.pl',
-    phoneNum: '+48123123123',
-    albumID: '10610',
-    degree: 'IT',
-    major: 'gamedev',
-    mode: 'extramural',
-    year: 3,
-    initialSemester: 'winter',
-    companyName: 'WSEI',
-    location: 'Kraków',
-    companyDescription: ''
-  };
+  // userInfo: UserProfile;
+  userInfoSub: Subscription = new Subscription();
+  userName: string;
+  email: string;
+  private _userInfo$: BehaviorSubject<UserProfile> = new BehaviorSubject<
+    UserProfile
+  >(undefined);
+  get userInfo$(): Observable<UserProfile> {
+    if (this._userInfo$ && this._userInfo$.value) {
+      this.setUserName();
+    }
+    return this._userInfo$.asObservable();
+  }
+  setUserName() {
+    this.userName =
+      this._userInfo$.value.firstName + ' ' + this._userInfo$.value.lastName;
+    this.email = this._userInfo$.value.email;
+  }
 
-  constructor(private sharedService: SharedService) {}
+  constructor(
+    private sharedService: SharedService,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit() {
     this.backButton(true);
     this.toggleButton();
+    this.getUserInfo();
+  }
+  getUserInfo() {
+    this.userInfoSub = this.accountService.profileData.subscribe(data => {
+      Promise.resolve(null).then(() => this._userInfo$.next(data));
+    });
   }
   backButton(x: boolean): void {
     this.sharedService.showBackButton(x);

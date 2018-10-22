@@ -17,22 +17,35 @@ import { SurveyService } from '../../../main-view/admin-view/survey-container/se
   styleUrls: ['./dashboard-list.component.scss']
 })
 export class DashboardListComponent implements OnInit, OnDestroy {
-  @Input()
-  itemArr;
-  @Input()
-  emptyListInfo: string;
   @ContentChild(TemplateRef)
   parentTemplate;
+  private _itemArr: any[];
+  @Input()
+  set itemArr(itemArr) {
+    this._itemArr = itemArr;
+  }
+  get itemArr() {
+    if (this._itemArr && this._itemArr.length > 0) {
+      this.fetching = false;
+    }
+    return this._itemArr;
+  }
+  @Input()
+  emptyListInfo: string;
+
   loading = false;
-  // // subs
+  fetching = true;
+
+  // subs
   isLoadingSub: Subscription = new Subscription();
 
-  constructor(private surveyService: SurveyService, public dialog: MatDialog) {}
+  constructor(private surveyService: SurveyService, public dialog: MatDialog) {
+    console.log(this.itemArr);
+  }
 
   ngOnInit(): void {
     this.isLoadingFromOutside();
   }
-
   isLoadingFromOutside(): void {
     this.isLoadingSub = this.surveyService.openingCreatorLoader.subscribe(
       data => {
@@ -40,18 +53,6 @@ export class DashboardListComponent implements OnInit, OnDestroy {
       }
     );
   }
-  // saveSurveysFromApi(): void {
-  //   this.surveyService.saveSurveysFromApi();
-  // }
-  // filterSurveyList(): void {
-  //   this.surveyService.filterSurveyListInput.subscribe(data => {
-  //     // this.surveyArr.filter(filtered => console.log(filtered));
-  //     this.surveyArr.filter(sth => {
-  //       console.log(data);
-  //       console.log(sth);
-  //     });
-  //   });
-  // }
   ngOnDestroy(): void {
     this.loading = false;
     this.isLoadingSub.unsubscribe();

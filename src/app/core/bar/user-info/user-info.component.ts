@@ -3,6 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnInit,
   Output
 } from '@angular/core';
 
@@ -12,7 +13,7 @@ import {
   styleUrls: ['./user-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserInfoComponent {
+export class UserInfoComponent implements OnInit {
   @Input()
   name: string;
   @Output()
@@ -20,7 +21,9 @@ export class UserInfoComponent {
   @Output()
   routeSwitch: EventEmitter<string> = new EventEmitter<string>();
   constructor() {}
-
+  ngOnInit() {
+    console.log(name);
+  }
   emitLogout() {
     this.logout.emit(true);
   }

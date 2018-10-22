@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { UserProfile } from './../other/user.model';
 
 /**
  * Sign in user.

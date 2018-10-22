@@ -6,8 +6,8 @@
       </div>
       <div class="break"></div>
     </div>
-    <div id="empty" *ngIf="itemArr.length === 0"> {{ emptyListInfo}}</div>
+    <div id="empty" *ngIf="fetching === false && itemArr.length === 0"> {{ emptyListInfo}}</div>
   </div>
 
-  <app-loading-overlay *ngIf="loading === true"></app-loading-overlay>
+  <app-loading-overlay *ngIf="loading === true || fetching === true"></app-loading-overlay>
 </div>

@@ -8,6 +8,7 @@ import {
   RouterEvent
 } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { UserProfile } from './auth/other/user.model';
 import { AccountService } from './auth/services/account.service';
 import { AuthenticationService } from './auth/services/authentication.service';
 import { SharedService } from './services/shared.service';
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
   accountRoleSub: Subscription = new Subscription();
   userInfoSub: Subscription = new Subscription();
   previewSub: Subscription = new Subscription();
-
+  profileDataSub: Subscription = new Subscription();
   // subjects
   private _showAdminMenu$: BehaviorSubject<boolean> = new BehaviorSubject<
     boolean
@@ -58,8 +59,13 @@ export class AppComponent implements OnInit, OnDestroy {
   private _accountRole$: BehaviorSubject<string> = new BehaviorSubject<string>(
     undefined
   );
-
+  private _profileData$: BehaviorSubject<string> = new BehaviorSubject<string>(
+    undefined
+  );
   // subjects' getters
+  get profileData$(): Observable<string> {
+    return this._profileData$.asObservable();
+  }
   get showAdminMenu$(): Observable<boolean> {
     return this._showAdminMenu$.asObservable();
   }
@@ -115,8 +121,19 @@ export class AppComponent implements OnInit, OnDestroy {
     this.showToggle();
     this.showBack();
     this.checkIfPreviewed();
+    this.getProfileData();
   }
-
+  getProfileData() {
+    this.profileDataSub = this.accountService.profileData.subscribe(
+      (user: UserProfile) => {
+        if (user) {
+          console.log(user);
+          const name = user.firstName + ' ' + user.lastName;
+          Promise.resolve(null).then(() => this._profileData$.next(name));
+        }
+      }
+    );
+  }
   loggedAccountRole(): void {
     this.accountRoleSub = this.accountService.role.subscribe((role: string) => {
       Promise.resolve(null).then(() => this._accountRole$.next(role));

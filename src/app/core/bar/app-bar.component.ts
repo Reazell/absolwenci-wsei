@@ -29,7 +29,8 @@ export class AppBarComponent {
   private _showAdminMenu: boolean;
   private _showBackButton: boolean;
   private _showUserInfo: boolean;
-  profileName = 'in progress';
+  // profileName = 'in progress';
+  private _profileName: string;
   // inputs
   @Input()
   toolTipInfo: AppBarTooltip;
@@ -61,7 +62,13 @@ export class AppBarComponent {
   get accountRole() {
     return this._accountRole;
   }
-
+  @Input()
+  set profileName(profileName) {
+    this._profileName = profileName;
+  }
+  get profileName() {
+    return this._profileName;
+  }
   @Input()
   set showCreatorButton(showCreatorButton) {
     this._showCreatorButton = showCreatorButton;

@@ -29,9 +29,11 @@ import {
 })
 export class SurveyViewformComponent implements OnInit, OnDestroy {
   invoiceForm: FormGroup;
+  inputErrorArr: number[] = [];
   defaultQuestion = 'Brak pytania';
   loader = false;
   showError = false;
+  submitted = false;
   id: number;
   hash: string;
   isPreviewed: boolean;
@@ -113,6 +115,18 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
           },
           error => {
             console.log(error);
+            const nameArr: string[] = Object.keys(error.error);
+            // console.log(nameArr);
+            nameArr.forEach((err: string) => {
+              const n: number = err.indexOf('[') + 1;
+              this.inputErrorArr.push(Number(err.charAt(n)));
+            });
+            // console.log(this.inputErrorArr);
+            // this.inputErrorArr = error;
+            // error.error.forEach(err => {
+
+            // });
+            this.submitted = true;
           }
         );
     } else {
@@ -250,7 +264,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
       input: ''
     });
     if (isRequired) {
-      group.controls.input.setValidators([Validators.required]);
+      // group.controls.input.setValidators([Validators.required]);
     }
     FieldData.push(group);
   }
@@ -352,5 +366,66 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   }
   see(x) {
     console.log(x);
+  }
+  controlError(question, i) {
+    const bool1 = this.controlErrorFromApi(i);
+    const bool2 = this.controlEmpty(question);
+    return bool1 && bool2;
+  }
+  controlErrorFromApi(i): boolean {
+    // console.log()
+    return this.inputErrorArr.includes(i) && this.submitted;
+  }
+  controlEmpty(question: any): boolean {
+    const field = question.controls.FieldData.controls[0];
+    const select = question.value.select;
+    let isEmpty = false;
+    switch (select) {
+      case 'short-answer':
+      case 'long-answer':
+        if (field.controls.input.value.length === 0) {
+          isEmpty = true;
+          return isEmpty;
+        }
+        return isEmpty;
+      case 'dropdown-menu':
+      case 'single-choice':
+      case 'multiple-choice':
+      case 'linear-scale':
+        const controlArr = field.controls.choiceOptions.controls;
+        let broke = false;
+        controlArr.forEach(val => {
+          if (val.value.value === true) {
+            broke = true;
+            return;
+          }
+        });
+        if (!broke) {
+          isEmpty = true;
+        }
+        return isEmpty;
+      case 'single-grid':
+      case 'multiple-grid':
+        let gridBroke = false;
+        const rowArr = field.controls.rows.controls;
+        rowArr.forEach(row => {
+          const colArr = row.controls.choiceOptions.controls;
+          colArr.forEach(col => {
+            if (col.value.value === true) {
+              gridBroke = true;
+              return;
+            }
+          });
+          if (gridBroke) {
+            return;
+          }
+        });
+        if (!gridBroke) {
+          isEmpty = true;
+        }
+        return isEmpty;
+      default:
+        return isEmpty;
+    }
   }
 }
