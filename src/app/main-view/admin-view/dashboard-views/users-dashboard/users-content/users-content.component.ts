@@ -42,7 +42,7 @@ export class UsersContentComponent implements OnInit {
     this.saveUsersFromApi();
     this.getAllUsersSub = this.userService.savedUnregisteredUsers.subscribe(
       (data: Array<RegisteredUser | UnregisteredUser>) => {
-        console.log(data);
+        // console.log(data);
         if (data) {
           this._items$.next(data);
         }
@@ -66,14 +66,24 @@ export class UsersContentComponent implements OnInit {
     });
   }
   openUserUpdateDialog(survey): void {
-    console.log(survey);
-    this.openUpdateDialog(survey).subscribe((res: boolean) => {
+    // console.log(survey);
+    this.openUpdateDialog(survey).subscribe((res: any) => {
+      console.log(res);
       if (res) {
-        this.updateUnregisteredUser(survey);
+        this.updateUnregisteredUser(survey.id, res);
       }
     });
   }
-  updateUnregisteredUser(survey) {}
+  updateUnregisteredUser(id, user) {
+    this.userService.updateUserById(id, user).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   deleteUnregisteredUser(id: number): void {
     // console.log(id);
     this.userService.deleteUserById(id).subscribe(

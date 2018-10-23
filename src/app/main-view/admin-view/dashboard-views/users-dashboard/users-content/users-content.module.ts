@@ -39,13 +39,13 @@ export const routes: Routes = [{ path: '', component: UsersContentComponent }];
     IconButtonModule,
     ConfirmDialogModule
   ],
-  entryComponents: [ConfirmDialogComponent, AddUserDialogComponent],
+  entryComponents: [ConfirmDialogComponent, AddUserDialogComponent, AddUserTabComponent],
   declarations: [
     UsersContentComponent,
     UsersTileComponent,
     AddUserDialogComponent,
     AddUserTabComponent,
-    ImportUserTabComponent
+    ImportUserTabComponent,
   ]
 })
 export class UsersContentModule {}

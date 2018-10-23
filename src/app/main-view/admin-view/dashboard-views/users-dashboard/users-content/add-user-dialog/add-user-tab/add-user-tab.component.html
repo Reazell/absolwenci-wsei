@@ -43,7 +43,7 @@
       </mat-form-field>
     </div>
     <div id="button-container">
-      <button mat-button type="submit">
+      <button mat-button type="submit" [mat-dialog-close]="dialog.value">
         <div id="button">
           <span>Dodaj</span>
           <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>

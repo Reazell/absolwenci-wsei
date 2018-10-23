@@ -59,4 +59,18 @@ export class UserService {
         return data;
       });
   }
+  updateUserById(id: number, user: UnregisteredUserModel): Observable<any> {
+    return this.http
+      .put<any>(this.config.apiUrl + '/importfile/unregisteredUsers/' + id, {
+        Name: user.name,
+        Surname: user.surname,
+        Email: user.email,
+        Course: user.course,
+        TypeOfStudy: user.typeOfStudy,
+        DateOfCompletion: user.completionDate
+      })
+      .map(data => {
+        return data;
+      });
+  }
 }
