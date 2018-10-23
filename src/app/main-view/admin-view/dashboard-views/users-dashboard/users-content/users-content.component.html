@@ -4,5 +4,6 @@
     <app-dashboard-tile [item_tile]=item (tileClick)="see()">
         <app-users-tile [user]=item></app-users-tile>
     </app-dashboard-tile>
+    <app-icon-button [type]="'fas'" [icon]="'times'" (buttonClick)="openConfimDeleteDialog(item.id)"></app-icon-button>
   </ng-template>
 </app-dashboard-list>

@@ -17,20 +17,20 @@
         padding: 30px;
         #button-container {
           padding: 20px;
-          button {
-            background-color: $primary;
-            color: white;
-            #button {
-              display: flex;
-              span {
-                margin-right: 5px;
-              }
-              p-progressSpinner {
-                display: flex;
-                align-items: center;
-              }
-            }
-          }
+          // button {
+          //   background-color: $primary;
+          //   color: white;
+          //   #button {
+          //     display: flex;
+          //     span {
+          //       margin-right: 5px;
+          //     }
+          //     p-progressSpinner {
+          //       display: flex;
+          //       align-items: center;
+          //     }
+          //   }
+          // }
         }
       }
     }

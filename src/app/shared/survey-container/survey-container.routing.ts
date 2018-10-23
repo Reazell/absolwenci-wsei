@@ -5,6 +5,7 @@ import { ViewformGuard } from '../../auth/other/viewform.auth';
 import { SurveyCreatorResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-creator.resolver';
 import { SurveyResultResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-result.resolver';
 import { SurveyViewformResolver } from '../../main-view/admin-view/survey-container/resolvers/survey-viewform.resolver';
+import { SurveyCompletedComponent } from './../../survey-viewform/survey-completed/survey-completed.component';
 import { SurveyContainerComponent } from './survey-container.component';
 
 const surveyContainerRoutes: Routes = [
@@ -12,6 +13,12 @@ const surveyContainerRoutes: Routes = [
     path: '',
     component: SurveyContainerComponent,
     children: [
+      {
+        path: 'response/:id/:hash',
+        loadChildren:
+          './../../survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
+        // component: SurveyCompletedComponent
+      },
       {
         path: 'create/:id',
         loadChildren:
@@ -50,12 +57,6 @@ const surveyContainerRoutes: Routes = [
           cres: SurveyResultResolver
         },
         data: { preload: true, delay: false }
-      },
-      {
-        path: 'response',
-        loadChildren:
-          // './survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
-          './../../survey-viewform/survey-completed/survey-completed.module#SurveyCompletedModule'
       }
     ]
   }

@@ -6,14 +6,7 @@ import { SurveyViewformComponent } from './survey-viewform.component';
 const routes: Routes = [
   {
     path: '',
-    component: SurveyViewformComponent,
-    children: [
-      {
-        path: 'formResponse',
-        loadChildren:
-          './survey-completed/survey-completed.module#SurveyCompletedModule'
-      }
-    ]
+    component: SurveyViewformComponent
   }
 ];
 

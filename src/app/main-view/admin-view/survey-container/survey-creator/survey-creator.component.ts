@@ -14,7 +14,6 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/Observable';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
-import { SendSurveyDialog } from '../../../../data/shared.data';
 import { SharedService } from '../../../../services/shared.service';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import {
@@ -38,6 +37,7 @@ import {
   SurveyTemplate
 } from '../models/survey.model';
 import { SurveyService } from '../services/survey.services';
+import { SendSurveyDialogData } from './../../../../data/shared.data';
 import { MoveQuestionDialogComponent } from './move-question-dialog/move-question-dialog.component';
 // import { SendSurveyDialogComponent } from './send-survey-dialog/send-survey-dialog.component';
 
@@ -186,20 +186,40 @@ export class SurveyCreatorComponent
     this.showSurveyDialogSub = this.sharedService.showSurveyDialog.subscribe(
       data => {
         if (data === true) {
-          this.openSurveyDialog();
+          this.openSendSurveyDialog();
         }
       }
     );
   }
-  openSurveyDialog(): void {
-    // const dataModel: ConfirmDataDialog = {
-    //  dialogTitle:
-    // }
-    this.dialog.open(ConfirmDialogComponent, {
-      data: SendSurveyDialog
+  openSendSurveyDialog(/*question: FormGroup, arrayName: string*/): void {
+    this.openSurveyDialog().subscribe(res => {
+      if (res) {
+        this.sendSurveyToAll();
+      }
     });
   }
-
+  openSurveyDialog(): Observable<any> {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: new SendSurveyDialogData()
+    });
+    return dialogRef.afterClosed();
+  }
+  surveySendingLoading(x: boolean): void {
+    this.sharedService.isSurveySendingLoading(x);
+  }
+  sendSurveyToAll() {
+    this.surveySendingLoading(true);
+    this.surveyService.sendSpecificSurvey(this.id).subscribe(
+      data => {
+        console.log(data);
+        this.surveySendingLoading(false);
+      },
+      error => {
+        console.log(error);
+        this.surveySendingLoading(false);
+      }
+    );
+  }
   updateSurveySubject(x?) {
     this.updateToApi.next(x);
   }
@@ -787,5 +807,8 @@ export class SurveyCreatorComponent
     this.showSurveyDialogSub.unsubscribe();
     this.sharedService.showCreatorButton(false);
     this.sharedService.showBackButton(false);
+  }
+  see(x) {
+    console.log(x);
   }
 }

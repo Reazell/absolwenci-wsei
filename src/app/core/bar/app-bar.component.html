@@ -28,7 +28,8 @@
       <div id="survey-buttons">
         <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton === true" matTooltip="{{toolTipInfo.show}}"
           matTooltipPosition="below" (click)="showSurvey()"></fa-icon>
-        <button mat-button id="save" *ngIf="showCreatorButton === true" (click)="sendSurvey()">WYŚLIJ</button>
+        <!-- <button mat-button id="save" *ngIf="showCreatorButton === true" (click)="sendSurvey()">WYŚLIJ</button> -->
+        <app-progress-button *ngIf="showCreatorButton === true" [buttonText]="buttonText" [loader]=isLoading (buttonClick)=sendSurvey()></app-progress-button>
       </div>
     </div>
     <div id="userInfo" class="clickable" [matMenuTriggerFor]="userInfo" #menuTrigger="matMenuTrigger" *ngIf="showUserInfo === true">

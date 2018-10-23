@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { DeleteTemplateDialog } from '../../../../../data/shared.data';
 import { ConfirmDialogComponent } from '../../../../../shared/confirm-dialog/confirm-dialog.component';
 import {
   SurveyModel,
   SurveyTemplate
 } from '../../../survey-container/models/survey.model';
 import { SurveyService } from '../../../survey-container/services/survey.services';
+import { DeleteTemplateDialogData } from './../../../../../data/shared.data';
 
 @Component({
   selector: 'app-survey-content',
@@ -122,7 +122,7 @@ export class SurveyContentComponent implements OnInit, OnDestroy {
   openSurveyDialog(): Observable<boolean> {
     const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
       ConfirmDialogComponent,
-      { data: DeleteTemplateDialog }
+      { data: new DeleteTemplateDialogData() }
     );
     return dialogRef.afterClosed();
   }

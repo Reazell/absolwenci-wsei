@@ -20,50 +20,59 @@ export class SharedService {
   showAdminMenu: Subject<boolean> = new Subject<boolean>();
   showPreview: Subject<boolean> = new Subject<boolean>();
   showUserInfo: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
+  // states
+  surveySendingLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+  savedTitle: string;
   // input error variable
   controlArray: string[];
 
   constructor(private router: Router) {}
 
+  saveTitle(title: string): void {
+    this.savedTitle = title;
+  }
   // button clicked actions
-
-  showSurveyButton(x): void {
+  isSurveySendingLoading(x: boolean): void {
+    this.surveySendingLoading.next(x);
+  }
+  showSurveyButton(x: boolean): void {
     this.showButton.next(x);
   }
 
   // showing elements
-  showBackButton(x): void {
+  showBackButton(x: boolean): void {
     this.showBack.next(x);
   }
 
-  showToggleButton(x): void {
+  showToggleButton(x: boolean): void {
     this.showToggle.next(x);
   }
 
-  showCreatorButton(x): void {
+  showCreatorButton(x: boolean): void {
     this.showCreator.next(x);
   }
 
-  showSendButton(x): void {
+  showSendButton(x: boolean): void {
     this.showSend.next(x);
   }
 
-  showAdminMain(x): void {
+  showAdminMain(x: boolean): void {
     this.showAdminMenu.next(x);
   }
-  showPreviewDiv(x): void {
+  showPreviewDiv(x: boolean): void {
     this.showPreview.next(x);
   }
-  showSendSurveyDialog(x): void {
+  showSendSurveyDialog(x: boolean): void {
     this.showSurveyDialog.next(x);
   }
 
-  showUser(x): void {
+  showUser(x: boolean): void {
     this.showUserInfo.next(x);
   }
 
-  routeSwitch(role): void {
+  routeSwitch(role: string): void {
     switch (role) {
       case 'student':
         this.router.navigateByUrl('/app/student');
@@ -108,7 +117,7 @@ export class SharedService {
       }
     }
   }
-  controlNameAdjustSwitch(controlName) {
+  controlNameAdjustSwitch(controlName: string): string {
     switch (controlName) {
       case 'name':
         controlName = 'imię';
@@ -178,7 +187,7 @@ export class SharedService {
     this.controlArray = undefined;
   }
 
-  public toggleSideNav(x) {
+  public toggleSideNav(x: boolean): void {
     this.toggleSidebar.next(x);
   }
 }

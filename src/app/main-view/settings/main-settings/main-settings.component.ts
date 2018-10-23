@@ -2,12 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
-  NgForm,
   Validators
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import {
   ProfileDataStorage,
   UserProfile

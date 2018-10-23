@@ -40,7 +40,13 @@ const authRoutes: Routes = [
         path: 'password',
         loadChildren:
           './password-change/password-change.module#PasswordChangeModule',
-          canLoad: [AuthGuard]
+        canLoad: [AuthGuard]
+      },
+      {
+        path: 'add',
+        loadChildren:
+          './add-admin/add-admin.module#AddAdminModule',
+        canLoad: [AuthGuard]
       }
     ]
   }

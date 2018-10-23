@@ -6,7 +6,10 @@ import {
   UnregisteredUser
 } from '../../../../../models/user.model';
 import { UserService } from '../../../survey-container/services/user.services';
+import { DeleteTemplateDialogData } from './../../../../../data/shared.data';
+import { ConfirmDialogComponent } from './../../../../../shared/confirm-dialog/confirm-dialog.component';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
+import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab.component';
 
 @Component({
   selector: 'app-users-content',
@@ -36,9 +39,10 @@ export class UsersContentComponent implements OnInit {
     console.log('click');
   }
   getAllUsers() {
-    this.getAllUsersSub = this.userService.getAllUsers().subscribe(
+    this.saveUsersFromApi();
+    this.getAllUsersSub = this.userService.savedUnregisteredUsers.subscribe(
       (data: Array<RegisteredUser | UnregisteredUser>) => {
-        // console.log(data);
+        console.log(data);
         if (data) {
           this._items$.next(data);
         }
@@ -53,5 +57,51 @@ export class UsersContentComponent implements OnInit {
       AddUserDialogComponent
     );
     // return dialogRef.afterClosed();
+  }
+  openConfimDeleteDialog(id: number): void {
+    this.openSurveyDialog().subscribe((res: boolean) => {
+      if (res === true) {
+        this.deleteUnregisteredUser(id);
+      }
+    });
+  }
+  openUserUpdateDialog(survey): void {
+    console.log(survey);
+    this.openUpdateDialog(survey).subscribe((res: boolean) => {
+      if (res) {
+        this.updateUnregisteredUser(survey);
+      }
+    });
+  }
+  updateUnregisteredUser(survey) {}
+  deleteUnregisteredUser(id: number): void {
+    // console.log(id);
+    this.userService.deleteUserById(id).subscribe(
+      () => {
+        this.saveUsersFromApi();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  saveUsersFromApi() {
+    this.userService.saveUsersFromApi();
+  }
+  openSurveyDialog(): Observable<boolean> {
+    const dialogRef: MatDialogRef<ConfirmDialogComponent> = this.dialog.open(
+      ConfirmDialogComponent,
+      { data: new DeleteTemplateDialogData() }
+    );
+    return dialogRef.afterClosed();
+  }
+  openUpdateDialog(survey): Observable<boolean> {
+    const dialogRef: MatDialogRef<AddUserTabComponent> = this.dialog.open(
+      AddUserTabComponent,
+      {
+        data: survey
+      }
+    );
+    return dialogRef.afterClosed();
   }
 }

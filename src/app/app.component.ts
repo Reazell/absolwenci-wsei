@@ -31,6 +31,8 @@ export class AppComponent implements OnInit, OnDestroy {
   userInfoSub: Subscription = new Subscription();
   previewSub: Subscription = new Subscription();
   profileDataSub: Subscription = new Subscription();
+  surveySendingLoadingSub: Subscription = new Subscription();
+
   // subjects
   private _showAdminMenu$: BehaviorSubject<boolean> = new BehaviorSubject<
     boolean
@@ -62,7 +64,13 @@ export class AppComponent implements OnInit, OnDestroy {
   private _profileData$: BehaviorSubject<string> = new BehaviorSubject<string>(
     undefined
   );
+  private _isSurveySending$: BehaviorSubject<boolean> = new BehaviorSubject<
+    boolean
+  >(false);
   // subjects' getters
+  get isSurveySending$(): Observable<boolean> {
+    return this._isSurveySending$.asObservable();
+  }
   get profileData$(): Observable<string> {
     return this._profileData$.asObservable();
   }
@@ -100,7 +108,7 @@ export class AppComponent implements OnInit, OnDestroy {
   logoIMG = './../../../assets/logo-wsei.png';
   profileIMG = './../../../assets/profile-image.png';
   toolTipInfo: AppBarTooltip = new AppBarTooltip();
-
+  buttonText = 'Wyślij';
   constructor(
     private router: Router,
     private accountService: AccountService,
@@ -122,8 +130,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.showBack();
     this.checkIfPreviewed();
     this.getProfileData();
+    this.isSurveySendingLoading();
   }
-  getProfileData() {
+  getProfileData(): void {
     this.profileDataSub = this.accountService.profileData.subscribe(
       (user: UserProfile) => {
         if (user) {
@@ -131,6 +140,14 @@ export class AppComponent implements OnInit, OnDestroy {
           const name = user.firstName + ' ' + user.lastName;
           Promise.resolve(null).then(() => this._profileData$.next(name));
         }
+      }
+    );
+  }
+  isSurveySendingLoading(): void {
+    this.surveySendingLoadingSub = this.sharedService.surveySendingLoading.subscribe(
+      (data: boolean) => {
+        console.log(data);
+        Promise.resolve(null).then(() => this._isSurveySending$.next(data));
       }
     );
   }
@@ -206,8 +223,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   redirectTo(data: string): void {
     this.loadingOverlay = true;
-    console.log(data);
-    // const url: string = '/app/admin/d/' + data;
     this.router.navigateByUrl(data);
   }
 
@@ -232,10 +247,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authenticationService.logout();
   }
   routeSwitch(e: string): void {
-    // this.accountRole$.subscribe((data: string) => {
-    //   this.sharedService.routeSwitch(data);
-    // });
-    console.log('e', e);
     this.redirectTo(e);
   }
 
@@ -263,5 +274,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.backSub.unsubscribe();
     this.accountRoleSub.unsubscribe();
     this.userInfoSub.unsubscribe();
+    this.surveySendingLoadingSub.unsubscribe();
   }
 }

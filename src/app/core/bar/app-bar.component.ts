@@ -24,6 +24,7 @@ export class AppBarComponent {
   private _showToggleButton: boolean;
   private _isLogged: boolean;
   private _isPreview: boolean;
+  private _isLoading: boolean;
   private _accountRole: string;
   private _showCreatorButton: boolean;
   private _showAdminMenu: boolean;
@@ -32,6 +33,8 @@ export class AppBarComponent {
   // profileName = 'in progress';
   private _profileName: string;
   // inputs
+  @Input()
+  buttonText: string;
   @Input()
   toolTipInfo: AppBarTooltip;
   @Input()
@@ -47,6 +50,13 @@ export class AppBarComponent {
   }
   get isLogged() {
     return this._isLogged;
+  }
+  @Input()
+  set isLoading(isLoading) {
+    this._isLoading = isLoading;
+  }
+  get isLoading() {
+    return this._isLoading;
   }
   @Input()
   set isPreview(isPreview) {
@@ -133,15 +143,14 @@ export class AppBarComponent {
   @Output()
   redirectToButton: EventEmitter<string> = new EventEmitter<string>();
   @Output()
-  sendSurveyDialog: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output()
   backToButton: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   // child outputs
   @Output()
   logout: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
   routeSwitch: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  progressButton: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {}
 
@@ -155,9 +164,6 @@ export class AppBarComponent {
   showSurvey(): void {
     this.showSurveyButton.emit(true);
   }
-  sendSurvey(): void {
-    this.sendSurveyDialog.emit(true);
-  }
   openSidebar(): void {
     this.openSidebarButton.emit(true);
   }
@@ -169,5 +175,8 @@ export class AppBarComponent {
   }
   emitRouteSwitch(data: string) {
     this.routeSwitch.emit(data);
+  }
+  sendSurvey(): void {
+    this.progressButton.emit(true);
   }
 }
