@@ -7,6 +7,7 @@ import {
 } from '../../../../../models/user.model';
 import { UserService } from '../../../survey-container/services/user.services';
 import { DeleteTemplateDialogData } from './../../../../../data/shared.data';
+import { UnregisteredUserModel } from './../../../../../models/user.model';
 import { ConfirmDialogComponent } from './../../../../../shared/confirm-dialog/confirm-dialog.component';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab.component';
@@ -65,19 +66,21 @@ export class UsersContentComponent implements OnInit {
       }
     });
   }
-  openUserUpdateDialog(survey): void {
+  openUserUpdateDialog(user): void {
     // console.log(survey);
-    this.openUpdateDialog(survey).subscribe((res: any) => {
+    this.openUpdateDialog(user).subscribe((res: any) => {
       console.log(res);
       if (res) {
-        this.updateUnregisteredUser(survey.id, res);
+        this.updateUnregisteredUser(user.id, res);
       }
     });
   }
   updateUnregisteredUser(id, user) {
-    this.userService.updateUserById(id, user).subscribe(
+    const usermodel: UnregisteredUserModel = new UnregisteredUserModel(user);
+    this.userService.updateUserById(id, usermodel).subscribe(
       data => {
         console.log(data);
+        this.getAllUsers();
       },
       error => {
         console.log(error);
