@@ -25,7 +25,6 @@ export class AppComponent implements OnInit, OnDestroy {
   creatorSub: Subscription = new Subscription();
   sendSub: Subscription = new Subscription();
   adminMainSub: Subscription = new Subscription();
-  toggleSub: Subscription = new Subscription();
   backSub: Subscription = new Subscription();
   accountRoleSub: Subscription = new Subscription();
   userInfoSub: Subscription = new Subscription();
@@ -43,9 +42,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private _isPreview$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
-  private _showToggleButton$: BehaviorSubject<boolean> = new BehaviorSubject<
-    boolean
-  >(false);
   private _showUserInfo$: BehaviorSubject<boolean> = new BehaviorSubject<
     boolean
   >(false);
@@ -82,9 +78,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   get isPreview$(): Observable<boolean> {
     return this._isPreview$.asObservable();
-  }
-  get showToggleButton$(): Observable<boolean> {
-    return this._showToggleButton$.asObservable();
   }
   get showUserInfo$(): Observable<boolean> {
     return this._showUserInfo$.asObservable();
@@ -126,7 +119,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.showCreator();
     this.showSend();
     this.showingAdminMenu();
-    this.showToggle();
     this.showBack();
     this.checkIfPreviewed();
     this.getProfileData();
@@ -136,7 +128,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.profileDataSub = this.accountService.profileData.subscribe(
       (user: UserProfile) => {
         if (user) {
-          // console.log(user);
           const name = user.firstName + ' ' + user.lastName;
           Promise.resolve(null).then(() => this._profileData$.next(name));
         }
@@ -146,7 +137,6 @@ export class AppComponent implements OnInit, OnDestroy {
   isSurveySendingLoading(): void {
     this.surveySendingLoadingSub = this.sharedService.surveySendingLoading.subscribe(
       (data: boolean) => {
-        console.log(data);
         Promise.resolve(null).then(() => this._isSurveySending$.next(data));
       }
     );
@@ -175,13 +165,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.userInfoSub = this.sharedService.showUserInfo.subscribe(
       (data: boolean) => {
         Promise.resolve(null).then(() => this._showUserInfo$.next(data));
-      }
-    );
-  }
-  showToggle(): void {
-    this.toggleSub = this.sharedService.showToggle.subscribe(
-      (data: boolean) => {
-        Promise.resolve(null).then(() => this._showToggleButton$.next(data));
       }
     );
   }
@@ -216,9 +199,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   showSurvey(): void {
     this.sharedService.showSurveyButton(true);
-  }
-  openSidebar(): void {
-    this.sharedService.toggleSideNav(true);
   }
 
   redirectTo(data: string): void {
@@ -270,7 +250,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.creatorSub.unsubscribe();
     this.sendSub.unsubscribe();
     this.adminMainSub.unsubscribe();
-    this.toggleSub.unsubscribe();
     this.backSub.unsubscribe();
     this.accountRoleSub.unsubscribe();
     this.userInfoSub.unsubscribe();

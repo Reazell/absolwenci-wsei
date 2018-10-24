@@ -36,28 +36,18 @@ export class UsersContentComponent implements OnInit {
   ngOnInit() {
     this.getAllUsers();
   }
-  see() {
-    console.log('click');
-  }
   getAllUsers() {
     this.saveUsersFromApi();
     this.getAllUsersSub = this.userService.savedUnregisteredUsers.subscribe(
       (data: Array<RegisteredUser | UnregisteredUser>) => {
-        // console.log(data);
         if (data) {
           this._items$.next(data);
         }
-      },
-      error => {
-        console.log(error);
       }
     );
   }
   openAddUserDialog(): void {
-    const dialogRef: MatDialogRef<AddUserDialogComponent> = this.dialog.open(
-      AddUserDialogComponent
-    );
-    // return dialogRef.afterClosed();
+    this.dialog.open(AddUserDialogComponent);
   }
   openConfimDeleteDialog(id: number): void {
     this.openSurveyDialog().subscribe((res: boolean) => {
@@ -67,9 +57,7 @@ export class UsersContentComponent implements OnInit {
     });
   }
   openUserUpdateDialog(user): void {
-    // console.log(survey);
     this.openUpdateDialog(user).subscribe((res: any) => {
-      console.log(res);
       if (res) {
         this.updateUnregisteredUser(user.id, res);
       }
@@ -77,26 +65,14 @@ export class UsersContentComponent implements OnInit {
   }
   updateUnregisteredUser(id, user) {
     const usermodel: UnregisteredUserModel = new UnregisteredUserModel(user);
-    this.userService.updateUserById(id, usermodel).subscribe(
-      data => {
-        console.log(data);
-        this.getAllUsers();
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.userService.updateUserById(id, usermodel).subscribe(data => {
+      this.getAllUsers();
+    });
   }
   deleteUnregisteredUser(id: number): void {
-    // console.log(id);
-    this.userService.deleteUserById(id).subscribe(
-      () => {
-        this.saveUsersFromApi();
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.userService.deleteUserById(id).subscribe(() => {
+      this.saveUsersFromApi();
+    });
   }
   saveUsersFromApi() {
     this.userService.saveUsersFromApi();

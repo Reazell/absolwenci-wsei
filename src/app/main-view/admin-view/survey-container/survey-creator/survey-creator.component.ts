@@ -157,7 +157,6 @@ export class SurveyCreatorComponent
       (res: SurveyTemplate) => {
         this.surveyService.isCreatorLoading(false);
         if (res) {
-          console.log(res);
           this.id = res.id;
           if (res.questionTemplates.length === 0) {
             this.createQuestionData();
@@ -168,7 +167,6 @@ export class SurveyCreatorComponent
         }
       },
       error => {
-        console.log(error);
         this.surveyService.isCreatorLoading(false);
       }
     );
@@ -191,7 +189,7 @@ export class SurveyCreatorComponent
       }
     );
   }
-  openSendSurveyDialog(/*question: FormGroup, arrayName: string*/): void {
+  openSendSurveyDialog(): void {
     this.openSurveyDialog().subscribe(res => {
       if (res) {
         this.sendSurveyToAll();
@@ -211,11 +209,9 @@ export class SurveyCreatorComponent
     this.surveySendingLoading(true);
     this.surveyService.sendSpecificSurvey(this.id).subscribe(
       data => {
-        console.log(data);
         this.surveySendingLoading(false);
       },
       error => {
-        console.log(error);
         this.surveySendingLoading(false);
       }
     );
@@ -238,20 +234,10 @@ export class SurveyCreatorComponent
       QuestionTemplates: this.invoiceForm.getRawValue().questionTemplates,
       id: this.id
     };
-    // console.log(JSON.stringify(object));
-    // console.log('update');
-    // console.log(object);
     return this.surveyService.updateSurvey(object);
   }
   updateSurvey() {
-    this.updateSurveyObs().subscribe(
-      data => {
-        // console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.updateSurveyObs();
   }
 
   openMoveQuestionDialog(): void {
@@ -772,14 +758,6 @@ export class SurveyCreatorComponent
     }
     this.addGroup(fieldData, select, data);
   }
-  onSubmit(): void {
-    // console.log(JSON.stringify(this.invoiceForm.getRawValue()));
-    // if (this.id) {
-    //   this.updateSurvey();
-    // } else {
-    //   this.createSurvey();
-    // }
-  }
 
   setSelection(e) {
     e.target.select();
@@ -788,12 +766,9 @@ export class SurveyCreatorComponent
     this.createSurveySub = this.surveyService
       .createSurvey(this.invoiceForm.getRawValue())
       .subscribe(
-        data => {
+        () => {
           this.router.navigate(['/app/admin/d']);
         },
-        error => {
-          console.log(error);
-        }
       );
   }
 
@@ -807,8 +782,5 @@ export class SurveyCreatorComponent
     this.showSurveyDialogSub.unsubscribe();
     this.sharedService.showCreatorButton(false);
     this.sharedService.showBackButton(false);
-  }
-  see(x) {
-    console.log(x);
   }
 }

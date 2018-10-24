@@ -47,21 +47,10 @@ export class AddAdminComponent implements OnInit {
   onSubmit(form) {
     if (!form.valid) {
     } else {
-      console.log(this.regForm.value);
-      this.accountService.createNewAdmin(this.setUser()).subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+      this.accountService.createNewAdmin(this.setUser());
     }
   }
   setUser() {
-    // this.user.phoneNum = phoneNumString.startsWith('+')
-    // ? phoneNumString
-    // : '+48' + phoneNumString;
     const user: UserProfile = new UserProfile();
     user.firstName = this.name.value;
     user.lastName = this.surname.value;

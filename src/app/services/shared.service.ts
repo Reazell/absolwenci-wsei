@@ -6,12 +6,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable()
 export class SharedService {
   // button clicked Subjects
-  toggleSidebar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  // sendButton: Subject<boolean> = new Subject<boolean>();
   showButton: Subject<boolean> = new Subject<boolean>();
   // showing elements Subjects
   showBack: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  showToggle: Subject<boolean> = new Subject<boolean>();
   showSurveyDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
@@ -44,10 +41,6 @@ export class SharedService {
   // showing elements
   showBackButton(x: boolean): void {
     this.showBack.next(x);
-  }
-
-  showToggleButton(x: boolean): void {
-    this.showToggle.next(x);
   }
 
   showCreatorButton(x: boolean): void {
@@ -185,9 +178,5 @@ export class SharedService {
   }
   deleteControlArray() {
     this.controlArray = undefined;
-  }
-
-  public toggleSideNav(x: boolean): void {
-    this.toggleSidebar.next(x);
   }
 }

@@ -56,9 +56,7 @@ export class AddUserTabComponent implements OnInit {
 
   ngOnInit() {
     this.setForm();
-    console.log(this.data);
     if (this.data) {
-      console.log('dd');
       this.setValues();
     }
   }

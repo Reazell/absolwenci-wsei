@@ -21,7 +21,6 @@ export class AppBarComponent {
   private _url = '/app/admin/d/';
   private _showAdmin: boolean;
   private _showSendButton: boolean;
-  private _showToggleButton: boolean;
   private _isLogged: boolean;
   private _isPreview: boolean;
   private _isLoading: boolean;
@@ -101,14 +100,6 @@ export class AppBarComponent {
   }
   get showAdminMenu() {
     return this._showAdminMenu;
-  }
-
-  @Input()
-  set showToggleButton(showToggleButton) {
-    this._showToggleButton = showToggleButton;
-  }
-  get showToggleButton() {
-    return this._showToggleButton;
   }
 
   @Input()

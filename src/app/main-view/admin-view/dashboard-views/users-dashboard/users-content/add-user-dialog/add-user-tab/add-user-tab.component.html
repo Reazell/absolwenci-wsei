@@ -1,9 +1,5 @@
 <form #dialog="ngForm" (ngSubmit)=onSubmit(dialog) [formGroup]="dialogForm" *ngIf="dialogForm">
   <div id="form-container">
-
-    <!-- <mat-form-field>
-      <input matInput placeholder="Temat wiadomości" formControlName="subject">
-    </mat-form-field> -->
     <div class="group half">
       <mat-form-field>
         <input matInput placeholder="Imię" formControlName="name">

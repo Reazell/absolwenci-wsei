@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth.component';
 import { AuthGuard } from './other/guard.auth';
 import { GuidGuard } from './other/guid.auth';
-// import { AuthGuard } from './auth/guard.auth';
 
 const authRoutes: Routes = [
   {
@@ -11,10 +10,6 @@ const authRoutes: Routes = [
     component: AuthComponent,
     children: [
       { path: 'login', loadChildren: './login/login.module#LoginModule' },
-      {
-        path: 'register',
-        loadChildren: './register/register.module#RegisterModule'
-      },
       {
         path: 'activation/:token',
         loadChildren:
@@ -31,10 +26,6 @@ const authRoutes: Routes = [
         path: 'recovery',
         loadChildren:
           './login/password-recovery/password-recovery.module#PasswordRecoveryModule'
-      },
-      {
-        path: 'admin',
-        loadChildren: './admin/admin.module#AdminModule'
       },
       {
         path: 'password',
