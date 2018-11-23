@@ -12,22 +12,23 @@
     <session id="390057481">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="5" />
+          <entry key="cs" value="14" />
           <entry key="csproj" value="1" />
           <entry key="json" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="5" />
+          <entry key="C#" value="14" />
           <entry key="Csproj" value="1" />
           <entry key="JSON" value="6" />
         </counts>
@@ -49,15 +50,38 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/appsettings.Development.json">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/ProfileEdition/Certificate.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1542331897370" expanded="false" signature="6:59" ph="..." />
+                <marker date="1542331897370" expanded="true" signature="101:976" ph="{...}" />
+                <marker date="1542331897370" expanded="true" signature="132:974" ph="{...}" />
+                <marker date="1542331897370" expanded="true" signature="514:638" ph="{...}" />
+                <marker date="1542331897370" expanded="true" signature="689:744" ph="{...}" />
+                <marker date="1542331897370" expanded="true" signature="790:837" ph="{...}" />
+                <marker date="1542331897370" expanded="true" signature="903:968" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/appsettings.json">
+        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+            <state>
+              <folding>
+                <marker date="1542331896021" expanded="false" signature="6:301" ph="..." />
+                <marker date="1542331896021" expanded="true" signature="345:2607" ph="{...}" />
+                <marker date="1542331896021" expanded="true" signature="441:2605" ph="{...}" />
+                <marker date="1542331896021" expanded="true" signature="915:1145" ph="{...}" />
+                <marker date="1542331896021" expanded="true" signature="1263:1759" ph="{...}" />
+                <marker date="1542331896021" expanded="true" signature="1373:1643" ph="{...}" />
+                <marker date="1542331896021" expanded="true" signature="1675:1749" ph="{...}" />
+                <marker date="1542331896021" expanded="true" signature="1894:2599" ph="{...}" />
+                <marker date="1542331896021" expanded="true" signature="2004:2483" ph="{...}" />
+                <marker date="1542331896021" expanded="true" signature="2515:2589" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,8 +89,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/AuthController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+            <state relative-caret-position="720">
+              <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
               <folding>
                 <marker date="1542333954806" expanded="false" signature="6:880" ph="..." />
                 <marker date="1542333954806" expanded="true" signature="925:9169" ph="{...}" />
@@ -114,11 +138,23 @@
       <find>42</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/AuthController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/ProfileEdition/Certificate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/20181019081524_xyz.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddSkill.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddLanguage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddExperience.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/CareerMonitoringContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddCourse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddCertificate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddEducation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Startup.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -149,11 +185,13 @@
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="SolutionExplorer" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -168,22 +206,28 @@
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="absolwenci-wsei-front" type="9a108dff:SolutionExplorerFileNode" />
+              <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="CareerMonitoring.Core" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/absolwenci-wsei-front/package.json" />
+    <property name="last_opened_file_path" value="D:/Git/bin/git.exe" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -279,11 +323,12 @@
       <updated>1542332047786</updated>
       <workItem from="1542332050211" duration="220000" />
       <workItem from="1542332347206" duration="1698000" />
+      <workItem from="1542761270177" duration="252000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1918000" />
+    <option name="totallyTimeSpent" value="2170000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -297,10 +342,9 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="REST Client" weight="0.329718" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
@@ -316,6 +360,7 @@
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="14" weight="0.329718" />
+      <window_info anchor="bottom" id="REST Client" order="15" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -350,77 +395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-144">
           <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
-          <folding>
-            <marker date="1542331896158" expanded="false" signature="6:107" ph="..." />
-            <marker date="1542331896158" expanded="true" signature="150:41490" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="193:41488" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="269:38791" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="410:1742" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="1781:1881" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="2020:2433" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="2472:2577" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="2716:3201" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="3240:3345" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="3478:3818" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="3857:3956" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="4097:4437" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="4476:4583" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="4730:5140" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="5179:5292" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="5435:6119" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="6158:6267" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="6410:6893" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="6932:7363" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="7514:7990" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="8029:8476" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="8614:9027" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="9066:9487" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="9620:9954" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="9993:10404" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="10540:11160" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="11199:11616" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="11753:12438" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="12477:12896" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="13031:13937" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="13976:14394" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="14529:14935" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="14974:15389" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="15527:15864" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="15903:16324" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="16456:16789" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="16828:17238" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="17380:17934" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="17973:18422" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="18563:19190" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="19229:19676" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="19811:20359" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="20398:20809" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="20952:21508" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="21547:22006" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="22148:22628" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="22667:23126" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="23260:23667" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="23706:24147" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="24282:24890" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="24929:25348" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="25492:26108" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="26147:26616" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="26762:27247" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="27286:27756" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="27892:28305" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="28344:28793" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="28932:29411" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="29450:29879" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="30009:30416" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="30455:30866" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="31013:31500" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="31539:32018" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="32156:32571" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="32610:33071" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="33220:33699" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="33738:34190" ph="{...}" />
-            <marker date="1542331896158" expanded="true" signature="38864:41482" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -444,73 +418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-14463">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding>
-            <marker date="1542331896178" expanded="true" signature="28:275" ph="..." />
-            <marker date="1542331896178" expanded="true" signature="318:35040" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="440:35038" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="516:35032" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="928:2026" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="2117:2754" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="2852:3490" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="3575:4119" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="4199:4676" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="4759:5459" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="5543:6292" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="6393:7104" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="7186:8112" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="8194:8729" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="8814:9335" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="9414:9891" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="9985:10527" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="10628:11345" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="11444:11998" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="12092:12688" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="12779:13467" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="13557:14199" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="14284:14816" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="14904:15341" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="15443:15947" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="16054:16669" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="16773:17380" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="17483:18144" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="18242:18792" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="18902:19508" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="19609:20108" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="20218:20838" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="20945:21658" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="21764:22430" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="22531:23087" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="23191:23636" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="23722:23960" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="24042:24443" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="24525:24755" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="24836:25119" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="25210:25552" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="25650:26006" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="26091:26378" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="26458:26740" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="26823:27108" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="27192:27478" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="27560:27768" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="27850:28134" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="28219:28549" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="28628:28840" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="28934:29242" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="29343:29653" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="29747:30040" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="30131:30417" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="30507:30787" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="30872:31156" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="31263:31588" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="31692:32010" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="32113:32425" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="32523:32839" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="32949:33259" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="33369:33702" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="33809:34136" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="34242:34562" ph="{...}" />
-            <marker date="1542331896178" expanded="true" signature="34663:34987" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -518,40 +425,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding>
-            <marker date="1542331895801" expanded="true" signature="6:255" ph="..." />
-            <marker date="1542331895801" expanded="true" signature="287:608" ph="{...}" />
-            <marker date="1542331895801" expanded="true" signature="314:606" ph="{...}" />
-            <marker date="1542331895801" expanded="true" signature="367:425" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Startup.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1542331895826" expanded="false" signature="6:2720" ph="..." />
-            <marker date="1542331895826" expanded="true" signature="2753:12164" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="2780:12162" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="2836:2890" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="3115:11079" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="3153:3242" ph="{...}" />
-            <marker date="1542331895826" expanded="false" signature="3442:5496" ph="DbContextAndSettings" />
-            <marker date="1542331895826" expanded="true" signature="3974:4318" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="4062:4299" ph="{...}" />
-            <marker date="1542331895826" expanded="false" signature="5509:7891" ph="Repositories" />
-            <marker date="1542331895826" expanded="false" signature="7904:8927" ph="Services" />
-            <marker date="1542331895826" expanded="false" signature="8940:10654" ph="Validations" />
-            <marker date="1542331895826" expanded="false" signature="10667:11069" ph="Factories" />
-            <marker date="1542331895826" expanded="true" signature="11269:12156" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="11309:11374" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="11434:11956" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="11486:11936" ph="{...}" />
-            <marker date="1542331895826" expanded="true" signature="11714:11914" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/appsettings.Development.json">
       <provider selected="true" editor-type-id="text-editor" />
@@ -563,10 +441,103 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddCertificate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1542331898723" expanded="true" signature="81:219" ph="{...}" />
+            <marker date="1542331898723" expanded="true" signature="115:217" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddCourse.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1542331898742" expanded="true" signature="66:153" ph="{...}" />
+            <marker date="1542331898742" expanded="true" signature="95:151" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddEducation.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1542331898760" expanded="true" signature="66:336" ph="{...}" />
+            <marker date="1542331898760" expanded="true" signature="98:334" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddExperience.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1542331898780" expanded="true" signature="80:403" ph="{...}" />
+            <marker date="1542331898780" expanded="true" signature="113:401" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddLanguage.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1542331898799" expanded="true" signature="66:195" ph="{...}" />
+            <marker date="1542331898799" expanded="true" signature="97:193" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/ProfileEdition/AddSkill.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1542331898835" expanded="true" signature="66:144" ph="{...}" />
+            <marker date="1542331898835" expanded="true" signature="94:142" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/ProfileEdition/Certificate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1542331897370" expanded="false" signature="6:59" ph="..." />
+            <marker date="1542331897370" expanded="true" signature="101:976" ph="{...}" />
+            <marker date="1542331897370" expanded="true" signature="132:974" ph="{...}" />
+            <marker date="1542331897370" expanded="true" signature="514:638" ph="{...}" />
+            <marker date="1542331897370" expanded="true" signature="689:744" ph="{...}" />
+            <marker date="1542331897370" expanded="true" signature="790:837" ph="{...}" />
+            <marker date="1542331897370" expanded="true" signature="903:968" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1542331896021" expanded="false" signature="6:301" ph="..." />
+            <marker date="1542331896021" expanded="true" signature="345:2607" ph="{...}" />
+            <marker date="1542331896021" expanded="true" signature="441:2605" ph="{...}" />
+            <marker date="1542331896021" expanded="true" signature="915:1145" ph="{...}" />
+            <marker date="1542331896021" expanded="true" signature="1263:1759" ph="{...}" />
+            <marker date="1542331896021" expanded="true" signature="1373:1643" ph="{...}" />
+            <marker date="1542331896021" expanded="true" signature="1675:1749" ph="{...}" />
+            <marker date="1542331896021" expanded="true" signature="1894:2599" ph="{...}" />
+            <marker date="1542331896021" expanded="true" signature="2004:2483" ph="{...}" />
+            <marker date="1542331896021" expanded="true" signature="2515:2589" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/AuthController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+        <state relative-caret-position="720">
+          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
           <folding>
             <marker date="1542333954806" expanded="false" signature="6:880" ph="..." />
             <marker date="1542333954806" expanded="true" signature="925:9169" ph="{...}" />
