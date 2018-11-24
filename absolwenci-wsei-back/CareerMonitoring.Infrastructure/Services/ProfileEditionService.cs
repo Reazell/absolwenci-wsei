@@ -1,19 +1,40 @@
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Infrastructure.Extensions.ExceptionHandling;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using CareerMonitoring.Infrastructure.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace CareerMonitoring.Infrastructure.Services {
     public class ProfileEditionService : IProfileEditionService {
         private readonly IAccountRepository _accountRepository;
         private readonly ISkillRepository _skillRepository;
+        private readonly ILanguageRepository _languageRepository;
+        private readonly ICertificateRepository _certificateRepository;
+        private readonly ICourseRepository _courseRepository;
+        private readonly IEducationRepository _educationRepository;
+        private readonly IExperienceRepository _experienceRepository;
+        private readonly IProfileLinkRepository _profileLinkRepository;
 
-        public ProfileEditionService (IAccountRepository accountRepository,
-            ISkillRepository skillRepository) {
+        public ProfileEditionService (
+            IAccountRepository accountRepository,
+            ISkillRepository skillRepository,
+            ILanguageRepository languageRepository,
+            ICertificateRepository certificateRepository,
+            ICourseRepository courseRepository,
+            IEducationRepository educationRepository,
+            IExperienceRepository experienceRepository,
+            IProfileLinkRepository profileLinkRepository) {
             _accountRepository = accountRepository;
             _skillRepository = skillRepository;
+            _languageRepository = languageRepository;
+            _certificateRepository = certificateRepository;
+            _courseRepository = courseRepository;
+            _educationRepository = educationRepository;
+            _experienceRepository = experienceRepository;
+            _profileLinkRepository = profileLinkRepository;
         }
 
         public async Task AddCertificateAsync (int accountId, string title, DateTime dateOfReceived) {
@@ -26,6 +47,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
+        public async Task<IEnumerable<Certificate>> GetCertificates(int accountId)
+        {
+            return await _certificateRepository.GetAllByUserIdAsync(accountId);
+        }
+
         public async Task AddCourseAsync (int accountId, string name) {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
@@ -34,6 +60,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             } catch (Exception e) {
                 throw new InccorectRoleException (e.Message, e);
             }
+        }
+
+        public async Task<IEnumerable<Course>> GetCourses(int accountId)
+        {
+            return await _courseRepository.GetAllByUserIdAsync(accountId);
         }
 
         public async Task AddEducationAsync (int accountId, string course, int year, string specialization,
@@ -47,6 +78,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
+        public async Task<IEnumerable<Education>> GetEducations(int accountId)
+        {
+            return await _educationRepository.GetAllByUserIdAsync(accountId);
+        }
+
         public async Task AddExperienceAsync (int accountId, string position, string companyName, string location,
             DateTime from, DateTime to, bool isCurrentJob) {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
@@ -56,6 +92,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             } catch (Exception e) {
                 throw new InccorectRoleException (e.Message, e);
             }
+        }
+
+        public async Task<IEnumerable<Experience>> GetExperiences(int accountId)
+        {
+            return await _experienceRepository.GetAllByUserIdAsync(accountId);
         }
 
         public async Task AddLanguageAsync (int accountId, string name, string proficiency) {
@@ -68,6 +109,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
+        public async Task<IEnumerable<Language>> GetLanguages(int accountId)
+        {
+            return await _languageRepository.GetAllByUserIdAsync(accountId);
+        }
+
         public async Task AddProfileLinkAsync (int accountId, string content) {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
@@ -76,6 +122,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             } catch (Exception e) {
                 throw new InccorectRoleException (e.Message, e);
             }
+        }
+
+        public async Task<IEnumerable<ProfileLink>> GetProfileLinks(int accountId)
+        {
+            return await _profileLinkRepository.GetAllByUserIdAsync(accountId);
         }
 
         public async Task AddSkillAsync (int accountId, int skillId) {
@@ -87,6 +138,11 @@ namespace CareerMonitoring.Infrastructure.Services {
             } catch (Exception e) {
                 throw new InccorectRoleException (e.Message, e);
             }
+        }
+
+        public async Task<IEnumerable<Skill>> GetSkills(int accountId)
+        {
+            return await _skillRepository.GetAllByUserIdAsync(accountId);
         }
     }
 }

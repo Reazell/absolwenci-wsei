@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 
 namespace CareerMonitoring.Infrastructure.Services.Interfaces {
@@ -13,5 +16,6 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces {
         Task ChangePasswordByRestoringPassword (string accountEmail, Guid token, string newPassword);
         Task UpdateAsync(int id, string name, string surname, string email, string phoneNumber, string companyName,
             string location, string companyDescription);
+
     }
 }

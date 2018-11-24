@@ -24,5 +24,17 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .AsNoTracking ()
                 .SingleOrDefaultAsync (x => x.Id == id);
         }
+
+        public async Task<IEnumerable<Skill>> GetAllByUserIdAsync(int userId, bool isTracking = true)
+        {
+            if (isTracking){
+                return await Task.FromResult (_context.Skills
+                    .AsTracking ()
+                    .Where(x=>x.AccountId==userId));
+            }
+            return await Task.FromResult (_context.Skills
+                .AsNoTracking ()
+                .Where(x=>x.AccountId==userId));
+        }
     }
 }

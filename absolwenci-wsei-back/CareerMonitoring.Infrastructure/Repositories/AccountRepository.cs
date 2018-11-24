@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
@@ -26,15 +28,23 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public async Task<Account> GetByEmailAsync (string email, bool isTracking = true) {
+        public async Task<Account> GetByEmailAsync (string email, bool isTracking = true)
+        {
+            Account account;
+            ICollection<Language> languages = new List<Language>();
             if (isTracking) {
-                return await _context.Accounts
+                account = await _context.Accounts
                     .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
+
+                
+                
+                return account;
             }
-            return await _context.Accounts
+            account =  await _context.Accounts
                 .AsNoTracking ()
                 .SingleOrDefaultAsync (x => x.Email.ToLowerInvariant () == email.ToLowerInvariant ());
+            return account;
         }
 
         public async Task<Account> GetByActivationKeyAsync (Guid activationKey, bool isTracking = true) {

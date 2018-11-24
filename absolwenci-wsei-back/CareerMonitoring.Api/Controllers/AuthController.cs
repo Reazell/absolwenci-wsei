@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -25,13 +26,16 @@ namespace CareerMonitoring.Api.Controllers {
         private readonly IAuthService _authService;
         private readonly IJWTSettings _jwtSettings;
         private readonly IAccountService _accountService;
+        private readonly IProfileEditionService _profileEditionService;
 
         public AuthController (IAuthService authService,
             IJWTSettings jwtSettings,
-            IAccountService accountService) {
+            IAccountService accountService,
+            IProfileEditionService profileEditionService) {
             _authService = authService;
             _jwtSettings = jwtSettings;
             _accountService = accountService;
+            _profileEditionService = profileEditionService;
         }
 
         private async Task<string> GenerateToken (Account account, IJWTSettings jwtSettings) {
@@ -62,8 +66,42 @@ namespace CareerMonitoring.Api.Controllers {
             var token = new TokenDto {
                 Token = await GenerateToken (account, _jwtSettings)
             };
-            var loginResult = new { LoginData = token, account.Role, account.Name, account.Surname, account.Email, account.PhoneNumber};
-            return Json (loginResult);
+            if (account.Role == "student" || account.Role == "graduate")
+            {
+                IEnumerable<Certificate> certificates = await _profileEditionService.GetCertificates(account.Id);
+                IEnumerable<Course> courses = await _profileEditionService.GetCourses(account.Id);
+                IEnumerable<Education> educations = await _profileEditionService.GetEducations(account.Id);
+                IEnumerable<Experience> experiences = await _profileEditionService.GetExperiences(account.Id);
+                IEnumerable<Language> languages = await _profileEditionService.GetLanguages(account.Id);
+                IEnumerable<ProfileLink> profileLinks = await _profileEditionService.GetProfileLinks(account.Id);
+                IEnumerable<Skill> skills = await _profileEditionService.GetSkills(account.Id);
+                return Json(new
+                {
+                    LoginData = token,
+                    account.Role,
+                    account.Name,
+                    account.Surname,
+                    account.Email,
+                    account.PhoneNumber,
+                    certificates,
+                    courses,
+                    educations,
+                    experiences,
+                    languages,
+                    profileLinks,
+                    skills
+                });
+            }
+
+            return  Json(new
+            {
+                LoginData = token, 
+                account.Role, 
+                account.Name, 
+                account.Surname, 
+                account.Email, 
+                account.PhoneNumber
+            });
         }
 
         [HttpPost ("students")]

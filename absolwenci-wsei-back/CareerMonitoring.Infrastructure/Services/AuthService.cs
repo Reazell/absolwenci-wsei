@@ -50,6 +50,7 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
             if (!VerifyPasswordHash (password, account.PasswordHash, account.PasswordSalt))
                 return null;
+            
             return account;
         }
 

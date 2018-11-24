@@ -52,6 +52,17 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .AsEnumerable ());
         }
 
+        public async Task<IEnumerable<Language>> GetAllByUserIdAsync (int userId, bool isTracking = true) {
+            if (isTracking){
+                return await Task.FromResult (_context.Languages
+                    .AsTracking ()
+                    .Where(x=>x.AccountId==userId));
+            }
+            return await Task.FromResult (_context.Languages
+                .AsNoTracking ()
+                .Where(x=>x.AccountId==userId));
+        }
+
         public async Task UpdateAsync (Language language) {
             _context.Languages.Update (language);
             await _context.SaveChangesAsync ();

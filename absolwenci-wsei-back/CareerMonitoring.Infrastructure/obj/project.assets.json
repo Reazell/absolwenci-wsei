@@ -9765,11 +9765,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Mayhem\\Desktop\\master\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
       "projectName": "CareerMonitoring.Infrastructure",
-      "projectPath": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Mayhem\\Desktop\\master\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Mayhem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Mayhem\\Desktop\\master\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9788,8 +9788,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj": {
-              "projectPath": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj"
+            "C:\\Users\\Mayhem\\Desktop\\master\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj": {
+              "projectPath": "C:\\Users\\Mayhem\\Desktop\\master\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj"
             }
           }
         }

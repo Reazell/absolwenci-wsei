@@ -675,11 +675,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Mayhem\\Desktop\\master\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "projectName": "CareerMonitoring.Core",
-      "projectPath": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "projectPath": "C:\\Users\\Mayhem\\Desktop\\master\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "packagesPath": "C:\\Users\\Mayhem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
+      "outputPath": "C:\\Users\\Mayhem\\Desktop\\master\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

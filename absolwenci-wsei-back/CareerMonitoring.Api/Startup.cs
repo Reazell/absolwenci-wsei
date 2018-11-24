@@ -113,6 +113,11 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
             services.AddScoped<ILanguageRepository, LanguageRepository> ();
             services.AddScoped<ISkillRepository, SkillRepository> ();
+            services.AddScoped<ICertificateRepository, CertificateRepository> ();
+            services.AddScoped<ICourseRepository, CourseRepository> ();
+            services.AddScoped<IEducationRepository, EducationRepository> ();
+            services.AddScoped<IExperienceRepository, ExperienceRepository> ();
+            services.AddScoped<IProfileLinkRepository, ProfileLinkRepository> ();
             services.AddScoped<ISurveyRepository, SurveyRepository> ();
             services.AddScoped<IQuestionRepository, QuestionRepository> ();
             services.AddScoped<IFieldDataRepository, FieldDataRepository> ();

@@ -55,3 +55,12 @@ C:\Users\Mayhem\Desktop\absolwenci-wsei-workingmaster\absolwenci-wsei-back\Caree
 C:\Users\Mayhem\Desktop\absolwenci-wsei-workingmaster\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfo.cs
 C:\Users\Mayhem\Desktop\absolwenci-wsei-workingmaster\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
 C:\Users\Mayhem\Desktop\absolwenci-wsei-workingmaster\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.deps.json
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.csprojAssemblyReference.cache
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.csproj.CoreCompileInputs.cache
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfoInputs.cache
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfo.cs
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\Mayhem\Desktop\master\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
