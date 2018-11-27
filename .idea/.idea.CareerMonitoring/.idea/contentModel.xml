@@ -376,6 +376,54 @@
           <e p="UnregisteredUserServiceTest .cs" t="Include" />
         </e>
       </e>
+      <e p="absolwenci-wsei-front\node_modules" t="ExcludeRecursive">
+        <e p="@angular\animations" t="IncludeRecursive" />
+        <e p="@angular\cdk" t="IncludeRecursive" />
+        <e p="@angular\cli" t="IncludeRecursive" />
+        <e p="@angular\common" t="IncludeRecursive" />
+        <e p="@angular\compiler" t="IncludeRecursive" />
+        <e p="@angular\compiler-cli" t="IncludeRecursive" />
+        <e p="@angular\core" t="IncludeRecursive" />
+        <e p="@angular\forms" t="IncludeRecursive" />
+        <e p="@angular\http" t="IncludeRecursive" />
+        <e p="@angular\material" t="IncludeRecursive" />
+        <e p="@angular\material-moment-adapter" t="IncludeRecursive" />
+        <e p="@angular\platform-browser" t="IncludeRecursive" />
+        <e p="@angular\platform-browser-dynamic" t="IncludeRecursive" />
+        <e p="@angular\router" t="IncludeRecursive" />
+        <e p="@angular-devkit\build-angular" t="IncludeRecursive" />
+        <e p="@fortawesome\angular-fontawesome" t="IncludeRecursive" />
+        <e p="@fortawesome\fontawesome-svg-core" t="IncludeRecursive" />
+        <e p="@fortawesome\free-regular-svg-icons" t="IncludeRecursive" />
+        <e p="@fortawesome\free-solid-svg-icons" t="IncludeRecursive" />
+        <e p="@types" t="IncludeRecursive">
+          <e p="jasmine" t="IncludeRecursive" />
+          <e p="jasminewd2" t="IncludeRecursive" />
+          <e p="node" t="IncludeRecursive" />
+        </e>
+        <e p="angular-sortablejs" t="IncludeRecursive" />
+        <e p="auth0-js" t="IncludeRecursive" />
+        <e p="chart.js" t="IncludeRecursive" />
+        <e p="codelyzer" t="IncludeRecursive" />
+        <e p="core-js" t="IncludeRecursive" />
+        <e p="jasmine-core" t="IncludeRecursive" />
+        <e p="jasmine-spec-reporter" t="IncludeRecursive" />
+        <e p="karma" t="IncludeRecursive" />
+        <e p="karma-chrome-launcher" t="IncludeRecursive" />
+        <e p="karma-coverage-istanbul-reporter" t="IncludeRecursive" />
+        <e p="karma-jasmine" t="IncludeRecursive" />
+        <e p="karma-jasmine-html-reporter" t="IncludeRecursive" />
+        <e p="moment" t="IncludeRecursive" />
+        <e p="primeng" t="IncludeRecursive" />
+        <e p="protractor" t="IncludeRecursive" />
+        <e p="rxjs" t="IncludeRecursive" />
+        <e p="rxjs-compat" t="IncludeRecursive" />
+        <e p="sortablejs" t="IncludeRecursive" />
+        <e p="ts-node" t="IncludeRecursive" />
+        <e p="tslint" t="IncludeRecursive" />
+        <e p="tslint-config-prettier" t="IncludeRecursive" />
+        <e p="zone.js" t="IncludeRecursive" />
+      </e>
       <e p="CareerMonitoring.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
     </e>

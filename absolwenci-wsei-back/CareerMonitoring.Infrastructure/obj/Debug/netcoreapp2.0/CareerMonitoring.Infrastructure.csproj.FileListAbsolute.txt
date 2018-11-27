@@ -85,3 +85,17 @@ C:\Users\Mayhem\Desktop\absolwenci-wsei-workingmaster\absolwenci-wsei-back\Caree
 C:\Users\Mayhem\Desktop\absolwenci-wsei-workingmaster\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CopyComplete
 C:\Users\Mayhem\Desktop\absolwenci-wsei-workingmaster\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
 C:\Users\Mayhem\Desktop\absolwenci-wsei-workingmaster\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.deps.json
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.runtimeconfig.json
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.runtimeconfig.dev.json
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.AssemblyInfo.cs
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CopyComplete
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-master\absolwenci-wsei\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
