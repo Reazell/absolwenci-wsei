@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+    "projectUniqueName": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-master\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
     "projectName": "CareerMonitoring.Core",
-    "projectPath": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
-    "outputPath": "C:\\Users\\Mayhem\\Desktop\\absolwenci-wsei-workingmaster\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
+    "projectPath": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-master\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+    "outputPath": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-master\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
