@@ -144,6 +144,12 @@
             <e p="AddLanguage.cs" t="Include" />
             <e p="AddProfileLink.cs" t="Include" />
             <e p="AddSkill.cs" t="Include" />
+            <e p="DeleteCertificate.cs" t="Include" />
+            <e p="DeleteCourse.cs" t="Include" />
+            <e p="DeleteEducation.cs" t="Include" />
+            <e p="DeleteExperience.cs" t="Include" />
+            <e p="DeleteLanguage.cs" t="Include" />
+            <e p="DeleteSkill.cs" t="Include" />
           </e>
           <e p="Student" t="Include">
             <e p="RegisterStudent.cs" t="Include" />

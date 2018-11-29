@@ -15,7 +15,19 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public CourseRepository (CareerMonitoringContext context) {
             _context = context;
         }
-        
+
+        public async Task<Course> GetByIdAsync(int id, bool isTracking = true)
+        {
+            if (isTracking){
+                return await _context.Courses
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Courses
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
+        }
+
         public async Task<IEnumerable<Course>> GetAllByUserIdAsync(int userId, bool isTracking = true)
         {
             if (isTracking){

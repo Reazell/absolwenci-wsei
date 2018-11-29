@@ -15,7 +15,19 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public ExperienceRepository (CareerMonitoringContext context) {
             _context = context;
         }
-        
+
+        public async Task<Experience> GetByIdAsync(int id, bool isTracking = true)
+        {
+            if (isTracking){
+                return await _context.Experiences
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Experiences
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
+        }
+
         public async Task<IEnumerable<Experience>> GetAllByUserIdAsync(int userId, bool isTracking = true)
         {
             if (isTracking){

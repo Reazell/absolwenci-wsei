@@ -52,24 +52,24 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                return Json(await _profileEditionService.GetCertificates(UserId));
+                return Json(await _profileEditionService.GetCertificatesAsync(UserId));
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
         }
         
-//        [Authorize]
-//        [HttpDelete ("accounts/certificate")]
-//        public async Task<IActionResult> DeleteCertificate () {
-//            if (!ModelState.IsValid)
-//                return BadRequest (ModelState);
-//            try {
-//                await _profileEditionService.;
-//                return Ok ();
-//            } catch (Exception e) {
-//                return BadRequest (e.Message);
-//            }
-//        }
+        [Authorize]
+        [HttpDelete ("accounts/certificate")]
+        public async Task<IActionResult> DeleteCertificate ([FromBody] DeleteCertificate command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.DeleteCertificateAsync(UserId,command.Id);
+                return Ok();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
 
         [Authorize]
         [HttpPut ("accounts/courses")]
@@ -91,7 +91,20 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                return Json(await _profileEditionService.GetCourses(UserId));
+                return Json(await _profileEditionService.GetCoursesAsync(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpDelete ("accounts/courses")]
+        public async Task<IActionResult> DeleteCourse ([FromBody] DeleteCourse command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.DeleteCourseAsync(UserId,command.Id);
+                return Ok();
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
@@ -117,7 +130,20 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                return Json(await _profileEditionService.GetEducations(UserId));
+                return Json(await _profileEditionService.GetEducationsAsync(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpDelete ("accounts/educations")]
+        public async Task<IActionResult> DeleteEducation ([FromBody] DeleteEducation command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.DeleteEducationAsync(UserId,command.Id);
+                return Ok();
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
@@ -143,7 +169,20 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                return Json(await _profileEditionService.GetExperiences(UserId));
+                return Json(await _profileEditionService.GetExperiencesAsync(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpDelete ("accounts/experiences")]
+        public async Task<IActionResult> DeleteExperience ([FromBody] DeleteExperience command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.DeleteExperienceAsync(UserId,command.Id);
+                return Ok();
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
@@ -168,7 +207,20 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                return Json(await _profileEditionService.GetLanguages(UserId));
+                return Json(await _profileEditionService.GetLanguagesAsync(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpDelete ("accounts/languages")]
+        public async Task<IActionResult> DeleteLanguage ([FromBody] DeleteLanguage command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.DeleteLanguageAsync(UserId,command.Id);
+                return Ok();
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
@@ -193,7 +245,20 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                return Json(await _profileEditionService.GetProfileLinks(UserId));
+                return Json(await _profileEditionService.GetProfileLinksAsync(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpDelete ("accounts/profileLinks")]
+        public async Task<IActionResult> DeleteProfileLink () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.DeleteProfileLinkAsync(UserId);
+                return Ok();
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
@@ -218,7 +283,20 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                return Json(await _profileEditionService.GetSkills(UserId));
+                return Json(await _profileEditionService.GetSkillsAsync(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpDelete ("accounts/skills")]
+        public async Task<IActionResult> DeleteSkills ([FromBody] DeleteSkill command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.DeleteSkillAsync(UserId,command.Id);
+                return Ok();
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }

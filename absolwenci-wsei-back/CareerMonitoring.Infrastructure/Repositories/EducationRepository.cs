@@ -15,7 +15,19 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public EducationRepository (CareerMonitoringContext context) {
             _context = context;
         }
-        
+
+        public async Task<Education> GetByIdAsync(int id, bool isTracking = true)
+        {
+            if (isTracking){
+                return await _context.Educations
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Educations
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
+        }
+
         public async Task<IEnumerable<Education>> GetAllByUserIdAsync(int userId, bool isTracking = true)
         {
             if (isTracking){

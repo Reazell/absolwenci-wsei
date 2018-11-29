@@ -15,7 +15,19 @@ namespace CareerMonitoring.Infrastructure.Repositories
         public CertificateRepository (CareerMonitoringContext context) {
             _context = context;
         }
-        
+
+        public async Task<Certificate> GetByIdAsync(int id, bool isTracking = true)
+        {
+            if (isTracking){
+                return await _context.Certificates
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Id == id);
+            }
+            return await _context.Certificates
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Id == id);
+        }
+
         public async Task<IEnumerable<Certificate>> GetAllByUserIdAsync(int userId, bool isTracking = true)
         {
             if (isTracking){

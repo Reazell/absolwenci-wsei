@@ -105,9 +105,24 @@ namespace CareerMonitoring.Core.Domains.Abstract {
                 throw new Exception ("Inccorect role.");
         }
 
+        public void RemoveProfileLink ()
+        {
+            if (Role == "student" || Role == "graduate")
+                ProfileLink = null;
+            else
+                throw new Exception("Inccorect role.");
+        }
+
         public void AddEducation (Education education) {
             if (Role == "student" || Role == "graduate")
                 Educations.Add (education);
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
+        public void RemoveEducation (Education education) {
+            if (Role == "student" || Role == "graduate")
+                Educations.Remove(education);
             else
                 throw new Exception ("Inccorect role.");
         }
@@ -119,9 +134,23 @@ namespace CareerMonitoring.Core.Domains.Abstract {
                 throw new Exception ("Inccorect role.");
         }
 
+        public void RemoveExperience (Experience experience) {
+            if (Role == "student" || Role == "graduate")
+                Experiences.Remove(experience);
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
         public void AddCertificate (Certificate certificate) {
             if (Role == "student" || Role == "graduate")
                 Certificates.Add (certificate);
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
+        public void RemoveCertificate (Certificate certificate) {
+            if (Role == "student" || Role == "graduate")
+                Certificates.Remove(certificate);
             else
                 throw new Exception ("Inccorect role.");
         }
@@ -133,6 +162,13 @@ namespace CareerMonitoring.Core.Domains.Abstract {
                 throw new Exception ("Inccorect role.");
         }
 
+        public void RemoveSkill (Skill skill) {
+            if (Role == "student" || Role == "graduate")
+                Skills.Remove(skill);
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
         public void AddCourse (Course course) {
             if (Role == "student" || Role == "graduate")
                 Courses.Add (course);
@@ -140,9 +176,23 @@ namespace CareerMonitoring.Core.Domains.Abstract {
                 throw new Exception ("Inccorect role.");
         }
 
+        public void RemoveCourse (Course course) {
+            if (Role == "student" || Role == "graduate")
+                Courses.Remove(course);
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
         public void AddLanguage (Language language) {
             if (Role == "student" || Role == "graduate")
                 Languages.Add (language);
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
+        public void RemoveLanguage (Language language) {
+            if (Role == "student" || Role == "graduate")
+                Languages.Remove(language);
             else
                 throw new Exception ("Inccorect role.");
         }

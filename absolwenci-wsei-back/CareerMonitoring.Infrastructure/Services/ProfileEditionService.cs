@@ -47,9 +47,21 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task<IEnumerable<Certificate>> GetCertificates(int accountId)
+        public async Task<IEnumerable<Certificate>> GetCertificatesAsync (int accountId)
         {
             return await _certificateRepository.GetAllByUserIdAsync(accountId);
+        }
+
+        public async Task DeleteCertificateAsync(int accountId, int certificateId)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            var certificate = await _certificateRepository.GetByIdAsync(certificateId);
+            try {
+                account.RemoveCertificate(certificate);
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
         }
 
         public async Task AddCourseAsync (int accountId, string name) {
@@ -62,9 +74,21 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task<IEnumerable<Course>> GetCourses(int accountId)
+        public async Task<IEnumerable<Course>> GetCoursesAsync (int accountId)
         {
             return await _courseRepository.GetAllByUserIdAsync(accountId);
+        }
+
+        public async Task DeleteCourseAsync(int accountId, int courseId)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            var course = await _courseRepository.GetByIdAsync(courseId);
+            try {
+                account.RemoveCourse(course);
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
         }
 
         public async Task AddEducationAsync (int accountId, string course, int year, string specialization,
@@ -78,9 +102,21 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task<IEnumerable<Education>> GetEducations(int accountId)
+        public async Task<IEnumerable<Education>> GetEducationsAsync (int accountId)
         {
             return await _educationRepository.GetAllByUserIdAsync(accountId);
+        }
+
+        public async Task DeleteEducationAsync(int accountId, int educationId)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            var education = await _educationRepository.GetByIdAsync(educationId);
+            try {
+                account.RemoveEducation(education);
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
         }
 
         public async Task AddExperienceAsync (int accountId, string position, string companyName, string location,
@@ -94,9 +130,21 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task<IEnumerable<Experience>> GetExperiences(int accountId)
+        public async Task<IEnumerable<Experience>> GetExperiencesAsync (int accountId)
         {
             return await _experienceRepository.GetAllByUserIdAsync(accountId);
+        }
+
+        public async Task DeleteExperienceAsync(int accountId, int experienceId)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            var experience = await _experienceRepository.GetByIdAsync(experienceId);
+            try {
+                account.RemoveExperience(experience);
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
         }
 
         public async Task AddLanguageAsync (int accountId, string name, string proficiency) {
@@ -109,9 +157,21 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task<IEnumerable<Language>> GetLanguages(int accountId)
+        public async Task<IEnumerable<Language>> GetLanguagesAsync (int accountId)
         {
             return await _languageRepository.GetAllByUserIdAsync(accountId);
+        }
+
+        public async Task DeleteLanguageAsync(int accountId, int languageId)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            var language = await _languageRepository.GetByIdAsync(languageId);
+            try {
+                account.RemoveLanguage (language);
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
         }
 
         public async Task AddProfileLinkAsync (int accountId, string content) {
@@ -124,9 +184,20 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task<IEnumerable<ProfileLink>> GetProfileLinks(int accountId)
+        public async Task<IEnumerable<ProfileLink>> GetProfileLinksAsync (int accountId)
         {
             return await _profileLinkRepository.GetAllByUserIdAsync(accountId);
+        }
+
+        public async Task DeleteProfileLinkAsync(int accountId)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            try {
+                account.RemoveProfileLink();
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
         }
 
         public async Task AddSkillAsync (int accountId, int skillId) {
@@ -140,9 +211,21 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task<IEnumerable<Skill>> GetSkills(int accountId)
+        public async Task<IEnumerable<Skill>> GetSkillsAsync (int accountId)
         {
             return await _skillRepository.GetAllByUserIdAsync(accountId);
+        }
+
+        public async Task DeleteSkillAsync(int accountId, int skillId)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            var skill = await _skillRepository.GetByIdAsync(skillId);
+            try {
+                account.RemoveSkill(skill);
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
         }
     }
 }
