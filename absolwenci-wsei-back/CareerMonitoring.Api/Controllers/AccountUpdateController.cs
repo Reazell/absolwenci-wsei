@@ -19,6 +19,7 @@ namespace CareerMonitoring.Api.Controllers {
             _profileEditionService = profileEditionService;
         }
 
+        [Authorize]
         [HttpPut ("accounts")]
         public async Task<IActionResult> AccountUpdate ([FromBody] UpdateAccount command) {
             if (!ModelState.IsValid)
@@ -32,6 +33,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
+        [Authorize]
         [HttpPut ("accounts/certificate")]
         public async Task<IActionResult> AddCertificate ([FromBody] AddCertificate command) {
             if (!ModelState.IsValid)
@@ -43,6 +45,31 @@ namespace CareerMonitoring.Api.Controllers {
                 return BadRequest (e.Message);
             }
         }
+        
+        [Authorize]
+        [HttpGet ("accounts/certificate")]
+        public async Task<IActionResult> GetCertificate () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                return Json(await _profileEditionService.GetCertificates(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+//        [Authorize]
+//        [HttpDelete ("accounts/certificate")]
+//        public async Task<IActionResult> DeleteCertificate () {
+//            if (!ModelState.IsValid)
+//                return BadRequest (ModelState);
+//            try {
+//                await _profileEditionService.;
+//                return Ok ();
+//            } catch (Exception e) {
+//                return BadRequest (e.Message);
+//            }
+//        }
 
         [Authorize]
         [HttpPut ("accounts/courses")]
@@ -57,6 +84,18 @@ namespace CareerMonitoring.Api.Controllers {
             }
 
         }
+        
+        [Authorize]
+        [HttpGet ("accounts/courses")]
+        public async Task<IActionResult> GetCourse () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                return Json(await _profileEditionService.GetCourses(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
 
         [Authorize]
         [HttpPut ("accounts/educations")]
@@ -67,6 +106,18 @@ namespace CareerMonitoring.Api.Controllers {
                 await _profileEditionService.AddEducationAsync (UserId, command.Course, command.Year,
                     command.Specialization, command.NameOfUniversity, command.Graduated);
                 return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpGet ("accounts/educations")]
+        public async Task<IActionResult> GetEducation () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                return Json(await _profileEditionService.GetEducations(UserId));
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
@@ -85,6 +136,18 @@ namespace CareerMonitoring.Api.Controllers {
                 return BadRequest (e.Message);
             }
         }
+        
+        [Authorize]
+        [HttpGet ("accounts/experiences")]
+        public async Task<IActionResult> GetExperience () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                return Json(await _profileEditionService.GetExperiences(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
 
         [Authorize]
         [HttpPut ("accounts/languages")]
@@ -94,6 +157,18 @@ namespace CareerMonitoring.Api.Controllers {
             try {
                 await _profileEditionService.AddLanguageAsync (UserId, command.Name, command.Proficiency);
                 return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpGet ("accounts/languages")]
+        public async Task<IActionResult> GetLanguage () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                return Json(await _profileEditionService.GetLanguages(UserId));
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
@@ -111,6 +186,18 @@ namespace CareerMonitoring.Api.Controllers {
                 return BadRequest (e.Message);
             }
         }
+        
+        [Authorize]
+        [HttpGet ("accounts/profileLinks")]
+        public async Task<IActionResult> GetProfileLink () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                return Json(await _profileEditionService.GetProfileLinks(UserId));
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
 
         [Authorize]
         [HttpPut ("accounts/skills")]
@@ -120,6 +207,18 @@ namespace CareerMonitoring.Api.Controllers {
             try {
                 await _profileEditionService.AddSkillAsync (UserId, command.SkillId);
                 return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpGet ("accounts/skills")]
+        public async Task<IActionResult> GetSkills () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                return Json(await _profileEditionService.GetSkills(UserId));
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }

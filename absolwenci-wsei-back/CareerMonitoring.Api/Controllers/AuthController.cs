@@ -68,13 +68,13 @@ namespace CareerMonitoring.Api.Controllers {
             };
             if (account.Role == "student" || account.Role == "graduate")
             {
-                IEnumerable<Certificate> certificates = await _profileEditionService.GetCertificates(account.Id);
-                IEnumerable<Course> courses = await _profileEditionService.GetCourses(account.Id);
-                IEnumerable<Education> educations = await _profileEditionService.GetEducations(account.Id);
-                IEnumerable<Experience> experiences = await _profileEditionService.GetExperiences(account.Id);
-                IEnumerable<Language> languages = await _profileEditionService.GetLanguages(account.Id);
-                IEnumerable<ProfileLink> profileLinks = await _profileEditionService.GetProfileLinks(account.Id);
-                IEnumerable<Skill> skills = await _profileEditionService.GetSkills(account.Id);
+//                IEnumerable<Certificate> certificates = await _profileEditionService.GetCertificates(account.Id);
+//                IEnumerable<Course> courses = await _profileEditionService.GetCourses(account.Id);
+//                IEnumerable<Education> educations = await _profileEditionService.GetEducations(account.Id);
+//                IEnumerable<Experience> experiences = await _profileEditionService.GetExperiences(account.Id);
+//                IEnumerable<Language> languages = await _profileEditionService.GetLanguages(account.Id);
+//                IEnumerable<ProfileLink> profileLinks = await _profileEditionService.GetProfileLinks(account.Id);
+//                IEnumerable<Skill> skills = await _profileEditionService.GetSkills(account.Id);
                 return Json(new
                 {
                     LoginData = token,
@@ -82,14 +82,14 @@ namespace CareerMonitoring.Api.Controllers {
                     account.Name,
                     account.Surname,
                     account.Email,
-                    account.PhoneNumber,
-                    certificates,
-                    courses,
-                    educations,
-                    experiences,
-                    languages,
-                    profileLinks,
-                    skills
+                    account.PhoneNumber//,
+//                    certificates,
+//                    courses,
+//                    educations,
+//                    experiences,
+//                    languages,
+//                    profileLinks,
+//                    skills
                 });
             }
 
