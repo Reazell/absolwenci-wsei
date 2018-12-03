@@ -6,20 +6,27 @@ using CareerMonitoring.Core.Domains;
 namespace CareerMonitoring.Infrastructure.Services.Interfaces {
     public interface IProfileEditionService {
         Task AddCertificateAsync (int accountId, string title, DateTime dateOfReceived);
+        Task UpdateCertificateAsync (int accountId, int certificateId, string title, DateTime dateOfReceived);
         Task<IEnumerable<Certificate>> GetCertificatesAsync (int accountId);
         Task DeleteCertificateAsync (int accountId, int certificateId);
         Task AddCourseAsync (int accountId, string name);
+        Task UpdateCourseAsync (int accountId, int courseId, string name);
         Task<IEnumerable<Course>> GetCoursesAsync (int accountId);
         Task DeleteCourseAsync (int accountId, int courseId);
         Task AddEducationAsync (int accountId, string course, int year, string specialization,
+            string nameOfUniveristy, bool graduated);
+        Task UpdateEducationAsync (int accountId, int educationId, string course, int year, string specialization,
             string nameOfUniveristy, bool graduated);
         Task<IEnumerable<Education>> GetEducationsAsync (int accountId);
         Task DeleteEducationAsync (int accountId, int educationId);
         Task AddExperienceAsync (int accountId, string position, string companyName, string location,
             DateTime from, DateTime to, bool isCurrentJob);
+        Task UpdateExperienceAsync (int accountId, int experienceId, string position, string companyName, string location,
+            DateTime from, DateTime to, bool isCurrentJob);
         Task<IEnumerable<Experience>> GetExperiencesAsync (int accountId);
         Task DeleteExperienceAsync (int accountId, int experienceId);
         Task AddLanguageAsync (int accountId, string name, string proficiency);
+        Task UpdateLanguageAsync (int accountId, int languageId, string name, string proficiency);
         Task<IEnumerable<Language>> GetLanguagesAsync (int accountId);
         Task DeleteLanguageAsync (int accountId, int languageId);
         Task AddProfileLinkAsync (int accountId, string content);

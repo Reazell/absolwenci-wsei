@@ -47,6 +47,17 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
+        public async Task UpdateCertificateAsync(int accountId, int certificateId, string title, DateTime dateOfReceived)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            try {
+                account.UpdateCertificate (certificateId, new Certificate (accountId, title, dateOfReceived));
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
+        }
+
         public async Task<IEnumerable<Certificate>> GetCertificatesAsync (int accountId)
         {
             return await _certificateRepository.GetAllByUserIdAsync(accountId);
@@ -68,6 +79,17 @@ namespace CareerMonitoring.Infrastructure.Services {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
                 account.AddCourse (new Course (name));
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
+        }
+
+        public async Task UpdateCourseAsync(int accountId, int courseId, string name)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            try {
+                account.UpdateCourse (courseId, new Course (name));
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
                 throw new InccorectRoleException (e.Message, e);
@@ -102,6 +124,18 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
+        public async Task UpdateEducationAsync(int accountId, int educationId, string course, int year, string specialization,
+            string nameOfUniveristy, bool graduated)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            try {
+                account.UpdateEducation(educationId,new Education (course, year, specialization, nameOfUniveristy, graduated)); 
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
+        }
+
         public async Task<IEnumerable<Education>> GetEducationsAsync (int accountId)
         {
             return await _educationRepository.GetAllByUserIdAsync(accountId);
@@ -130,6 +164,19 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
+        public async Task UpdateExperienceAsync(int accountId, int experienceId, string position, string companyName, string location,
+            DateTime @from, DateTime to, bool isCurrentJob)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            try {
+                account.UpdateExperience(experienceId, new Experience (position, companyName, location, from, to, isCurrentJob));
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
+        }
+
+
         public async Task<IEnumerable<Experience>> GetExperiencesAsync (int accountId)
         {
             return await _experienceRepository.GetAllByUserIdAsync(accountId);
@@ -151,6 +198,17 @@ namespace CareerMonitoring.Infrastructure.Services {
             var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
             try {
                 account.AddLanguage (new Language (name, proficiency));
+                await _accountRepository.UpdateAsync (account);
+            } catch (Exception e) {
+                throw new InccorectRoleException (e.Message, e);
+            }
+        }
+
+        public async Task UpdateLanguageAsync(int accountId, int languageId, string name, string proficiency)
+        {
+            var account = await _accountRepository.GetWithProfileEditionByIdAsync (accountId);
+            try {
+                account.UpdateLanguage (languageId, new Language (name, proficiency));
                 await _accountRepository.UpdateAsync (account);
             } catch (Exception e) {
                 throw new InccorectRoleException (e.Message, e);

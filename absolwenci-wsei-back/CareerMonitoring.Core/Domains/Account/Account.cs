@@ -120,6 +120,21 @@ namespace CareerMonitoring.Core.Domains.Abstract {
                 throw new Exception ("Inccorect role.");
         }
 
+        public void UpdateEducation (int id, Education education) {
+            if (Role == "student" || Role == "graduate")
+                foreach (var c in Educations)
+                {
+                    if (c.Id == id)
+                    {
+                        RemoveEducation(c);
+                        AddEducation(education);
+                        return;
+                    }
+                }
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
         public void RemoveEducation (Education education) {
             if (Role == "student" || Role == "graduate")
                 Educations.Remove(education);
@@ -134,6 +149,21 @@ namespace CareerMonitoring.Core.Domains.Abstract {
                 throw new Exception ("Inccorect role.");
         }
 
+        public void UpdateExperience (int id, Experience experience) {
+            if (Role == "student" || Role == "graduate")
+                foreach (var c in Experiences)
+                {
+                    if (c.Id == id)
+                    {
+                        RemoveExperience(c);
+                        AddExperience(experience);
+                        return;
+                    }
+                }
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
         public void RemoveExperience (Experience experience) {
             if (Role == "student" || Role == "graduate")
                 Experiences.Remove(experience);
@@ -144,6 +174,21 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         public void AddCertificate (Certificate certificate) {
             if (Role == "student" || Role == "graduate")
                 Certificates.Add (certificate);
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
+        public void UpdateCertificate (int id, Certificate certificate) {
+            if (Role == "student" || Role == "graduate")
+                foreach (var c in Certificates)
+                {
+                    if (c.Id == id)
+                    {
+                        RemoveCertificate(c);
+                        AddCertificate(certificate);
+                        return;
+                    }
+                }
             else
                 throw new Exception ("Inccorect role.");
         }
@@ -176,6 +221,21 @@ namespace CareerMonitoring.Core.Domains.Abstract {
                 throw new Exception ("Inccorect role.");
         }
 
+        public void UpdateCourse (int id, Course course) {
+            if (Role == "student" || Role == "graduate")
+                foreach (var c in Courses)
+                {
+                    if (c.Id == id)
+                    {
+                        RemoveCourse(c);
+                        AddCourse(course);
+                        return;
+                    }
+                }
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
         public void RemoveCourse (Course course) {
             if (Role == "student" || Role == "graduate")
                 Courses.Remove(course);
@@ -186,6 +246,21 @@ namespace CareerMonitoring.Core.Domains.Abstract {
         public void AddLanguage (Language language) {
             if (Role == "student" || Role == "graduate")
                 Languages.Add (language);
+            else
+                throw new Exception ("Inccorect role.");
+        }
+
+        public void UpdateLanguage (int id, Language language) {
+            if (Role == "student" || Role == "graduate")
+                foreach (var c in Languages)
+                {
+                    if (c.Id == id)
+                    {
+                        RemoveLanguage(c);
+                        AddLanguage(language);
+                        return;
+                    }
+                }
             else
                 throw new Exception ("Inccorect role.");
         }

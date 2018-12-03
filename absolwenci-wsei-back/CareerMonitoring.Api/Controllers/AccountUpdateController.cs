@@ -34,12 +34,25 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [Authorize]
-        [HttpPut ("accounts/certificate")]
+        [HttpPost ("accounts/certificate")]
         public async Task<IActionResult> AddCertificate ([FromBody] AddCertificate command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
                 await _profileEditionService.AddCertificateAsync (UserId, command.Title, command.DateOfReceived);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut ("accounts/certificate")]
+        public async Task<IActionResult> UpdateCertificate ([FromBody] UpdateCertificate command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.UpdateCertificateAsync (UserId, command.Id, command.Title, command.DateOfReceived);
                 return Ok ();
             } catch (Exception e) {
                 return BadRequest (e.Message);
@@ -72,12 +85,26 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [Authorize]
-        [HttpPut ("accounts/courses")]
+        [HttpPost ("accounts/courses")]
         public async Task<IActionResult> AddCourse ([FromBody] AddCourse command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
                 await _profileEditionService.AddCourseAsync (UserId, command.Name);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+
+        }
+
+        [Authorize]
+        [HttpPut ("accounts/courses")]
+        public async Task<IActionResult> UpdateCourse ([FromBody] UpdateCourse command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.UpdateCourseAsync (UserId, command.Id, command.Name);
                 return Ok ();
             } catch (Exception e) {
                 return BadRequest (e.Message);
@@ -111,12 +138,26 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [Authorize]
-        [HttpPut ("accounts/educations")]
+        [HttpPost ("accounts/educations")]
         public async Task<IActionResult> AddEducation ([FromBody] AddEducation command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
                 await _profileEditionService.AddEducationAsync (UserId, command.Course, command.Year,
+                    command.Specialization, command.NameOfUniversity, command.Graduated);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut ("accounts/educations")]
+        public async Task<IActionResult> Updateducation ([FromBody] UpdateEducation command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.UpdateEducationAsync (UserId, command.Id, command.Course, command.Year,
                     command.Specialization, command.NameOfUniversity, command.Graduated);
                 return Ok ();
             } catch (Exception e) {
@@ -150,12 +191,26 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [Authorize]
-        [HttpPut ("accounts/experiences")]
+        [HttpPost ("accounts/experiences")]
         public async Task<IActionResult> AddExperience ([FromBody] AddExperience command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
                 await _profileEditionService.AddExperienceAsync (UserId, command.Position, command.CompanyName,
+                    command.Location, command.From, command.To, command.IsCurrentJob);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut ("accounts/experiences")]
+        public async Task<IActionResult> Updatexperience ([FromBody] UpdateExperience command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.UpdateExperienceAsync (UserId, command.Id, command.Position, command.CompanyName,
                     command.Location, command.From, command.To, command.IsCurrentJob);
                 return Ok ();
             } catch (Exception e) {
@@ -189,12 +244,25 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [Authorize]
-        [HttpPut ("accounts/languages")]
+        [HttpPost ("accounts/languages")]
         public async Task<IActionResult> AddLanguage ([FromBody] AddLanguage command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
                 await _profileEditionService.AddLanguageAsync (UserId, command.Name, command.Proficiency);
+                return Ok ();
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpPut ("accounts/languages")]
+        public async Task<IActionResult> UpdateLanguage ([FromBody] UpdateLanguage command) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _profileEditionService.UpdateLanguageAsync (UserId, command.Id, command.Name, command.Proficiency);
                 return Ok ();
             } catch (Exception e) {
                 return BadRequest (e.Message);
@@ -265,7 +333,7 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         [Authorize]
-        [HttpPut ("accounts/skills")]
+        [HttpPost ("accounts/skills")]
         public async Task<IActionResult> AddSkills ([FromBody] AddSkill command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
