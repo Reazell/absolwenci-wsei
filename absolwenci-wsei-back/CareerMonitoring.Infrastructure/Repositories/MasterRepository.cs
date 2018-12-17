@@ -1,44 +1,52 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CareerMonitoring.Infrastructure.Repositories {
-    public class GraduateRepository : IGraduateRepository {
+namespace CareerMonitoring.Infrastructure.Repositories
+{
+    public class MasterRepository:IMasterRepository
+    {
         private readonly CareerMonitoringContext _context;
 
-        public GraduateRepository (CareerMonitoringContext context) {
+        public MasterRepository (CareerMonitoringContext context) {
             _context = context;
         }
-
-        public async Task AddAsync (Graduate graduate) {
-            await _context.Graduates.AddAsync (graduate);
+        
+        public async Task AddAsync(Master master)
+        {
+            await _context.Masters.AddAsync (master);
             await _context.SaveChangesAsync ();
         }
 
-        public async Task<Graduate> GetByIdAsync (int id, bool isTracking = true) {
+        public async Task<Master> GetByIdAsync(int id, bool isTracking = true)
+        {
             if (isTracking) {
-                return await _context.Graduates
+                return await _context.Masters
                     .AsTracking ()
                     .SingleOrDefaultAsync (x => x.Id == id);
             }
-            return await _context.Graduates
+            return await _context.Masters
                 .AsNoTracking ()
                 .SingleOrDefaultAsync (x => x.Id == id);
         }
 
-        public async Task<Graduate> GetByEmailAsync (string email, bool isTracking = true) {
+        public async Task<Master> GetByEmailAsync(string email, bool isTracking = true)
+        {
             if (isTracking) {
-                return await _context.Graduates
+                return await _context.Masters
                     .AsTracking()
                     .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
             }
-            return await _context.Graduates
-                .AsNoTracking()
+            return await _context.Masters.AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
+        }
+
+        public async Task UpdateAsync(Master master)
+        {
+            _context.Masters.Update(master);
+            await _context.SaveChangesAsync();
         }
     }
 }

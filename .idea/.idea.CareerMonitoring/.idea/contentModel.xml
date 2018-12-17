@@ -29,6 +29,8 @@
         <e p="Migrations" t="Include">
           <e p="20181019081524_xyz.cs" t="Include" />
           <e p="20181019081524_xyz.Designer.cs" t="Include" />
+          <e p="20181209172340_master.cs" t="Include" />
+          <e p="20181209172340_master.Designer.cs" t="Include" />
           <e p="CareerMonitoringContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="nlog.config" t="Include" />
@@ -57,19 +59,7 @@
           </e>
           <e p="Profile" t="Include">
             <e p="CareerOffice.cs" t="Include" />
-            <e p="Employer.cs" t="Include" />
-            <e p="Graduate.cs" t="Include" />
-            <e p="Student.cs" t="Include" />
-          </e>
-          <e p="ProfileEdition" t="Include">
-            <e p="Certificate.cs" t="Include" />
-            <e p="Course.cs" t="Include" />
-            <e p="Education.cs" t="Include" />
-            <e p="Experience.cs" t="Include" />
-            <e p="JobOffer.cs" t="Include" />
-            <e p="Language.cs" t="Include" />
-            <e p="ProfileLink.cs" t="Include" />
-            <e p="Skill.cs" t="Include" />
+            <e p="Master.cs" t="Include" />
           </e>
           <e p="SurveyReport" t="Include">
             <e p="DataSet.cs" t="Include" />
@@ -125,39 +115,13 @@
           <e p="Email" t="Include">
             <e p="EmailToSend.cs" t="Include" />
           </e>
-          <e p="Employer" t="Include">
-            <e p="RegisterEmployer.cs" t="Include" />
-          </e>
-          <e p="Graduate" t="Include">
-            <e p="RegisterGraduate.cs" t="Include" />
-          </e>
           <e p="ImportFile" t="Include">
             <e p="AddUnregisteredUser.cs" t="Include" />
             <e p="ImportFile.cs" t="Include" />
             <e p="UpdateUnregisteredUser.cs" t="Include" />
           </e>
-          <e p="ProfileEdition" t="Include">
-            <e p="AddCertificate.cs" t="Include" />
-            <e p="AddCourse.cs" t="Include" />
-            <e p="AddEducation.cs" t="Include" />
-            <e p="AddExperience.cs" t="Include" />
-            <e p="AddLanguage.cs" t="Include" />
-            <e p="AddProfileLink.cs" t="Include" />
-            <e p="AddSkill.cs" t="Include" />
-            <e p="DeleteCertificate.cs" t="Include" />
-            <e p="DeleteCourse.cs" t="Include" />
-            <e p="DeleteEducation.cs" t="Include" />
-            <e p="DeleteExperience.cs" t="Include" />
-            <e p="DeleteLanguage.cs" t="Include" />
-            <e p="DeleteSkill.cs" t="Include" />
-            <e p="UpdateCertificate.cs" t="Include" />
-            <e p="UpdateCourse.cs" t="Include" />
-            <e p="UpdateEducation.cs" t="Include" />
-            <e p="UpdateExperience.cs" t="Include" />
-            <e p="UpdateLanguage.cs" t="Include" />
-          </e>
-          <e p="Student" t="Include">
-            <e p="RegisterStudent.cs" t="Include" />
+          <e p="Master" t="Include">
+            <e p="RegisterMaster.cs" t="Include" />
           </e>
           <e p="Survey" t="Include">
             <e p="ChoiceOptionToAdd.cs" t="Include" />
@@ -181,6 +145,7 @@
         </e>
         <e p="Data" t="Include">
           <e p="CareerMonitoringContext.cs" t="Include" />
+          <e p="MasterContext.cs" t="Include" />
         </e>
         <e p="DTO" t="Include">
           <e p="ImportFile" t="Include">
@@ -245,37 +210,24 @@
         <e p="Repositories" t="Include">
           <e p="AccountRepository.cs" t="Include" />
           <e p="CareerOfficeRepository.cs" t="Include" />
-          <e p="CertificateRepository.cs" t="Include" />
           <e p="ChoiceOptionAnswerRepository.cs" t="Include" />
           <e p="ChoiceOptionRepository.cs" t="Include" />
           <e p="ChoiceOptionTemplateRepository.cs" t="Include" />
-          <e p="CourseRepository.cs" t="Include" />
           <e p="DataSetRepository.cs" t="Include" />
-          <e p="EducationRepository.cs" t="Include" />
-          <e p="EmployerRepository.cs" t="Include" />
-          <e p="ExperienceRepository.cs" t="Include" />
           <e p="FieldDataAnswerRepository.cs" t="Include" />
           <e p="FieldDataRepository.cs" t="Include" />
           <e p="FieldDataTemplateRepository.cs" t="Include" />
-          <e p="GraduateRepository.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IAccountRepository.cs" t="Include" />
             <e p="ICareerOfficeRepository.cs" t="Include" />
-            <e p="ICertificateRepository.cs" t="Include" />
             <e p="IChoiceOptionAnswerRepository.cs" t="Include" />
             <e p="IChoiceOptionRepository.cs" t="Include" />
             <e p="IChoiceOptionTemplateRepository.cs" t="Include" />
-            <e p="ICourseRepository.cs" t="Include" />
             <e p="IDataSetRepository.cs" t="Include" />
-            <e p="IEducationRepository.cs" t="Include" />
-            <e p="IEmployerRepository.cs" t="Include" />
-            <e p="IExperienceRepository.cs" t="Include" />
             <e p="IFieldDataAnswerRepository.cs" t="Include" />
             <e p="IFieldDataRepository.cs" t="Include" />
             <e p="IFieldDataTemplateRepository.cs" t="Include" />
-            <e p="IGraduateRepository.cs" t="Include" />
-            <e p="ILanguageRepository.cs" t="Include" />
-            <e p="IProfileLinkRepository.cs" t="Include" />
+            <e p="IMasterRepository.cs" t="Include" />
             <e p="IQuestionAnswerRepository.cs" t="Include" />
             <e p="IQuestionReportRepository.cs" t="Include" />
             <e p="IQuestionRepository.cs" t="Include" />
@@ -284,8 +236,6 @@
             <e p="IRowChoiceOptionAnswerRepository.cs" t="Include" />
             <e p="IRowRepository.cs" t="Include" />
             <e p="IRowTemplateRepository.cs" t="Include" />
-            <e p="ISkillRepository.cs" t="Include" />
-            <e p="IStudentRepository.cs" t="Include" />
             <e p="ISurveyAnswerRepository.cs" t="Include" />
             <e p="ISurveyReportRepository.cs" t="Include" />
             <e p="ISurveyRepository.cs" t="Include" />
@@ -293,8 +243,7 @@
             <e p="ISurveyUserIdentifierRepository.cs" t="Include" />
             <e p="IUnregisteredUserRepository.cs" t="Include" />
           </e>
-          <e p="LanguageRepository.cs" t="Include" />
-          <e p="ProfileLinkRepository.cs" t="Include" />
+          <e p="MasterRepository.cs" t="Include" />
           <e p="QuestionAnswerRepository.cs" t="Include" />
           <e p="QuestionReportRepository.cs" t="Include" />
           <e p="QuestionRepository.cs" t="Include" />
@@ -303,8 +252,6 @@
           <e p="RowChoiceOptionAnswerRepository.cs" t="Include" />
           <e p="RowRepository.cs" t="Include" />
           <e p="RowTemplateRepository.cs" t="Include" />
-          <e p="SkillRepository.cs" t="Include" />
-          <e p="StudentRepository.cs" t="Include" />
           <e p="SurveyAnswerRepository.cs" t="Include" />
           <e p="SurveyReportRepository.cs" t="Include" />
           <e p="SurveyRepository.cs" t="Include" />
@@ -316,16 +263,11 @@
           <e p="AccountService.cs" t="Include" />
           <e p="AuthService.cs" t="Include" />
           <e p="CareerOfficeService.cs" t="Include" />
-          <e p="EmployerService.cs" t="Include" />
-          <e p="GraduateService.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IAccountService.cs" t="Include" />
             <e p="IAuthService.cs" t="Include" />
             <e p="ICareerOfficeService.cs" t="Include" />
-            <e p="IEmployerService.cs" t="Include" />
-            <e p="IGraduateService.cs" t="Include" />
-            <e p="IProfileEditionService.cs" t="Include" />
-            <e p="IStudentService.cs" t="Include" />
+            <e p="IMasterService.cs" t="Include" />
             <e p="ISurveyAnswerService.cs" t="Include" />
             <e p="ISurveyReportService.cs" t="Include" />
             <e p="ISurveyService.cs" t="Include" />
@@ -333,8 +275,7 @@
             <e p="ISurveyUserIdentifierService.cs" t="Include" />
             <e p="IUnregisteredUserService.cs" t="Include" />
           </e>
-          <e p="ProfileEditionService.cs" t="Include" />
-          <e p="StudentService.cs" t="Include" />
+          <e p="MasterService.cs" t="Include" />
           <e p="SurveyAnswerService.cs" t="Include" />
           <e p="SurveyReportService.cs" t="Include" />
           <e p="SurveyService.cs" t="Include" />
@@ -355,27 +296,9 @@
           <e p="Email" t="Include">
             <e p="EmailToSendValidator.cs" t="Include" />
           </e>
-          <e p="Employer" t="Include">
-            <e p="RegisterEmployerValidator.cs" t="Include" />
-          </e>
-          <e p="Graduate" t="Include">
-            <e p="RegisterGraduateValidator.cs" t="Include" />
-          </e>
           <e p="ImportFile" t="Include">
             <e p="AddUnregisteredUserValidator.cs" t="Include" />
             <e p="UpdateUnregisteredUserValidator.cs" t="Include" />
-          </e>
-          <e p="ProfileEdition" t="Include">
-            <e p="AddCertificateValidator.cs" t="Include" />
-            <e p="AddCourseValidator.cs" t="Include" />
-            <e p="AddEducationValidator.cs" t="Include" />
-            <e p="AddExperienceValidator.cs" t="Include" />
-            <e p="AddLanguageValidator.cs" t="Include" />
-            <e p="AddProfileLinkValidator.cs" t="Include" />
-            <e p="AddSkillValidator.cs" t="Include" />
-          </e>
-          <e p="Student" t="Include">
-            <e p="RegisterStudentValidator.cs" t="Include" />
           </e>
           <e p="Survey" t="Include">
             <e p="FieldDataValidator.cs" t="Include" />
@@ -396,6 +319,55 @@
         <e p="Services" t="Include">
           <e p="UnregisteredUserServiceTest .cs" t="Include" />
         </e>
+      </e>
+      <e p="absolwenci-wsei-front\node_modules" t="ExcludeRecursive">
+        <e p="@angular\animations" t="IncludeRecursive" />
+        <e p="@angular\cdk" t="IncludeRecursive" />
+        <e p="@angular\cli" t="IncludeRecursive" />
+        <e p="@angular\common" t="IncludeRecursive" />
+        <e p="@angular\compiler" t="IncludeRecursive" />
+        <e p="@angular\compiler-cli" t="IncludeRecursive" />
+        <e p="@angular\core" t="IncludeRecursive" />
+        <e p="@angular\forms" t="IncludeRecursive" />
+        <e p="@angular\http" t="IncludeRecursive" />
+        <e p="@angular\material" t="IncludeRecursive" />
+        <e p="@angular\material-moment-adapter" t="IncludeRecursive" />
+        <e p="@angular\platform-browser" t="IncludeRecursive" />
+        <e p="@angular\platform-browser-dynamic" t="IncludeRecursive" />
+        <e p="@angular\router" t="IncludeRecursive" />
+        <e p="@angular-devkit\build-angular" t="IncludeRecursive" />
+        <e p="@fortawesome\angular-fontawesome" t="IncludeRecursive" />
+        <e p="@fortawesome\fontawesome-svg-core" t="IncludeRecursive" />
+        <e p="@fortawesome\free-regular-svg-icons" t="IncludeRecursive" />
+        <e p="@fortawesome\free-solid-svg-icons" t="IncludeRecursive" />
+        <e p="@types" t="IncludeRecursive">
+          <e p="jasmine" t="IncludeRecursive" />
+          <e p="jasminewd2" t="IncludeRecursive" />
+          <e p="node" t="IncludeRecursive" />
+        </e>
+        <e p="angular-sortablejs" t="IncludeRecursive" />
+        <e p="auth0-js" t="IncludeRecursive" />
+        <e p="chart.js" t="IncludeRecursive" />
+        <e p="codelyzer" t="IncludeRecursive" />
+        <e p="core-js" t="IncludeRecursive" />
+        <e p="jasmine-core" t="IncludeRecursive" />
+        <e p="jasmine-spec-reporter" t="IncludeRecursive" />
+        <e p="karma" t="IncludeRecursive" />
+        <e p="karma-chrome-launcher" t="IncludeRecursive" />
+        <e p="karma-coverage-istanbul-reporter" t="IncludeRecursive" />
+        <e p="karma-jasmine" t="IncludeRecursive" />
+        <e p="karma-jasmine-html-reporter" t="IncludeRecursive" />
+        <e p="moment" t="IncludeRecursive" />
+        <e p="node-sass" t="IncludeRecursive" />
+        <e p="primeng" t="IncludeRecursive" />
+        <e p="protractor" t="IncludeRecursive" />
+        <e p="rxjs" t="IncludeRecursive" />
+        <e p="rxjs-compat" t="IncludeRecursive" />
+        <e p="sortablejs" t="IncludeRecursive" />
+        <e p="ts-node" t="IncludeRecursive" />
+        <e p="tslint" t="IncludeRecursive" />
+        <e p="tslint-config-prettier" t="IncludeRecursive" />
+        <e p="zone.js" t="IncludeRecursive" />
       </e>
       <e p="CareerMonitoring.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

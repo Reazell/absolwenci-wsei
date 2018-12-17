@@ -8,8 +8,7 @@ using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.CareerOffice;
-using CareerMonitoring.Infrastructure.Commands.Employer;
-using CareerMonitoring.Infrastructure.Commands.Graduate;
+using CareerMonitoring.Infrastructure.Commands.Master;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Extension.JWT;
 using CareerMonitoring.Infrastructure.Extension.JWT.Interfaces;
@@ -26,16 +25,13 @@ namespace CareerMonitoring.Api.Controllers {
         private readonly IAuthService _authService;
         private readonly IJWTSettings _jwtSettings;
         private readonly IAccountService _accountService;
-        private readonly IProfileEditionService _profileEditionService;
 
         public AuthController (IAuthService authService,
             IJWTSettings jwtSettings,
-            IAccountService accountService,
-            IProfileEditionService profileEditionService) {
+            IAccountService accountService) {
             _authService = authService;
             _jwtSettings = jwtSettings;
             _accountService = accountService;
-            _profileEditionService = profileEditionService;
         }
 
         private async Task<string> GenerateToken (Account account, IJWTSettings jwtSettings) {
@@ -66,33 +62,6 @@ namespace CareerMonitoring.Api.Controllers {
             var token = new TokenDto {
                 Token = await GenerateToken (account, _jwtSettings)
             };
-            if (account.Role == "student" || account.Role == "graduate")
-            {
-//                IEnumerable<Certificate> certificates = await _profileEditionService.GetCertificates(account.Id);
-//                IEnumerable<Course> courses = await _profileEditionService.GetCourses(account.Id);
-//                IEnumerable<Education> educations = await _profileEditionService.GetEducations(account.Id);
-//                IEnumerable<Experience> experiences = await _profileEditionService.GetExperiences(account.Id);
-//                IEnumerable<Language> languages = await _profileEditionService.GetLanguages(account.Id);
-//                IEnumerable<ProfileLink> profileLinks = await _profileEditionService.GetProfileLinks(account.Id);
-//                IEnumerable<Skill> skills = await _profileEditionService.GetSkills(account.Id);
-                return Json(new
-                {
-                    LoginData = token,
-                    account.Role,
-                    account.Name,
-                    account.Surname,
-                    account.Email,
-                    account.PhoneNumber//,
-//                    certificates,
-//                    courses,
-//                    educations,
-//                    experiences,
-//                    languages,
-//                    profileLinks,
-//                    skills
-                });
-            }
-
             return  Json(new
             {
                 LoginData = token, 
@@ -104,55 +73,6 @@ namespace CareerMonitoring.Api.Controllers {
             });
         }
 
-        [HttpPost ("students")]
-        public async Task<IActionResult> RegisterStudent ([FromBody] RegisterStudent command) {
-            command.Email = command.Email.ToLowerInvariant ();
-            if (await _accountService.ExistsByEmailAsync (command.Email))
-                ModelState.AddModelError ("Email", "Email is already taken.");
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
-            try {
-                await _authService.RegisterStudentAsync (command.Name, command.Surname, command.Email,
-                    command.IndexNumber, command.PhoneNumber, command.Password);
-                return StatusCode (201);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
-        }
-
-        [HttpPost ("employers")]
-        public async Task<IActionResult> RegisterEmployer ([FromBody] RegisterEmployer command) {
-            command.Email = command.Email.ToLowerInvariant ();
-            if (await _accountService.ExistsByEmailAsync (command.Email))
-                ModelState.AddModelError ("Email", "Email is already taken.");
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
-            try {
-                await _authService.RegisterEmployerAsync (command.Name, command.Surname, command.Email,
-                    command.PhoneNumber, command.Password,
-                    command.CompanyName, command.Location, command.CompanyDescription);
-                return StatusCode (201);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
-        }
-
-        [HttpPost ("graduates")]
-        public async Task<IActionResult> RegisterGraduate ([FromBody] RegisterGraduate command) {
-            command.Email = command.Email.ToLowerInvariant ();
-            if (await _accountService.ExistsByEmailAsync (command.Email))
-                ModelState.AddModelError ("Email", "Email is already taken.");
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
-            try {
-                await _authService.RegisterGraduateAsync (command.Name, command.Surname, command.Email,
-                    command.PhoneNumber, command.Password);
-                return StatusCode (201);
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
-        }
-
         [HttpPost ("careerOffices")]
         public async Task<IActionResult> RegisterCareerOffice ([FromBody] RegisterCareerOffice command) {
             command.Email = command.Email.ToLowerInvariant ();
@@ -162,6 +82,22 @@ namespace CareerMonitoring.Api.Controllers {
                 return BadRequest (ModelState);
             try {
                 await _authService.RegisterCareerOfficeAsync (command.Name, command.Surname, command.Email,
+                    command.PhoneNumber, command.Password);
+                return StatusCode (201);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpPost ("master")]
+        public async Task<IActionResult> RegisterMaster ([FromBody] RegisterMaster command) {
+            command.Email = command.Email.ToLowerInvariant ();
+            if (await _accountService.ExistsByEmailAsync (command.Email))
+                ModelState.AddModelError ("Email", "Email is already taken.");
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _authService.RegisterMasterAsync (command.Name, command.Surname, command.Email,
                     command.PhoneNumber, command.Password);
                 return StatusCode (201);
             } catch (Exception e) {

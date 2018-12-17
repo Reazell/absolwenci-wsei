@@ -3,12 +3,8 @@ using CareerMonitoring.Core.Domains.Abstract;
 
 namespace CareerMonitoring.Infrastructure.Services.Interfaces {
     public interface IAuthService {
-        Task RegisterStudentAsync(string name, string surname, string email,
-            string indexNumber, string phoneNumber, string password);
-        Task RegisterGraduateAsync (string name, string surname, string email, string phoneNumber, string password);
         Task RegisterCareerOfficeAsync (string name, string surname, string email, string phoneNumber, string password);
-        Task RegisterEmployerAsync (string name, string surname, string email, string phoneNumber, string password,
-            string companyName, string location, string companyDescription);
+        Task RegisterMasterAsync (string name, string surname, string email, string phoneNumber, string password);
         Task<Account> LoginAsync (string email, string password);
     }
 }

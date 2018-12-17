@@ -9,10 +9,7 @@ using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.Commands.Account;
 using CareerMonitoring.Infrastructure.Commands.CareerOffice;
 using CareerMonitoring.Infrastructure.Commands.Email;
-using CareerMonitoring.Infrastructure.Commands.Employer;
-using CareerMonitoring.Infrastructure.Commands.Graduate;
 using CareerMonitoring.Infrastructure.Commands.ImportFile;
-using CareerMonitoring.Infrastructure.Commands.ProfileEdition;
 using CareerMonitoring.Infrastructure.Commands.User;
 using CareerMonitoring.Infrastructure.Data;
 using CareerMonitoring.Infrastructure.Extension.JWT;
@@ -30,10 +27,7 @@ using CareerMonitoring.Infrastructure.Services.Interfaces;
 using CareerMonitoring.Infrastructure.Validators.Account;
 using CareerMonitoring.Infrastructure.Validators.CareerOffice;
 using CareerMonitoring.Infrastructure.Validators.Email;
-using CareerMonitoring.Infrastructure.Validators.Employer;
-using CareerMonitoring.Infrastructure.Validators.Graduate;
 using CareerMonitoring.Infrastructure.Validators.ImportFile;
-using CareerMonitoring.Infrastructure.Validators.ProfileEdition;
 using CareerMonitoring.Infrastructure.Validators.User;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -93,13 +87,10 @@ namespace CareerMonitoring.Api {
                 .Get<EmailConfiguration> ());
             services.AddSingleton<IURLSettings> (Configuration.GetSection ("Url").Get<URLSettings> ());
             services.AddSingleton (AutoMapperConfig.Initialize ());
-            services.AddAuthorization (options => options.AddPolicy ("student", policy => policy.RequireRole ("student")));
-            services.AddAuthorization (
-                options => options.AddPolicy ("graduate", policy => policy.RequireRole ("graduate")));
-            services.AddAuthorization (
-                options => options.AddPolicy ("employer", policy => policy.RequireRole ("employer")));
             services.AddAuthorization (options =>
                 options.AddPolicy ("careerOffice", policy => policy.RequireRole ("careerOffice")));
+            services.AddAuthorization (options =>
+                options.AddPolicy ("master", policy => policy.RequireRole ("master")));
             services.AddAuthorization (options =>
                 options.AddPolicy ("unregisteredUser", policy => policy.RequireRole ("unregisteredUser")));
 
@@ -107,17 +98,8 @@ namespace CareerMonitoring.Api {
             #region Repositories
 
             services.AddScoped<IAccountRepository, AccountRepository> ();
-            services.AddScoped<IStudentRepository, StudentRepository> ();
-            services.AddScoped<IGraduateRepository, GraduateRepository> ();
-            services.AddScoped<IEmployerRepository, EmployerRepository> ();
             services.AddScoped<ICareerOfficeRepository, CareerOfficeRepository> ();
-            services.AddScoped<ILanguageRepository, LanguageRepository> ();
-            services.AddScoped<ISkillRepository, SkillRepository> ();
-            services.AddScoped<ICertificateRepository, CertificateRepository> ();
-            services.AddScoped<ICourseRepository, CourseRepository> ();
-            services.AddScoped<IEducationRepository, EducationRepository> ();
-            services.AddScoped<IExperienceRepository, ExperienceRepository> ();
-            services.AddScoped<IProfileLinkRepository, ProfileLinkRepository> ();
+            services.AddScoped<IMasterRepository, MasterRepository> ();
             services.AddScoped<ISurveyRepository, SurveyRepository> ();
             services.AddScoped<IQuestionRepository, QuestionRepository> ();
             services.AddScoped<IFieldDataRepository, FieldDataRepository> ();
@@ -145,11 +127,8 @@ namespace CareerMonitoring.Api {
 
             services.AddScoped<IAccountService, AccountService> ();
             services.AddScoped<IAuthService, AuthService> ();
-            services.AddScoped<IStudentService, StudentService> ();
-            services.AddScoped<IGraduateService, GraduateService> ();
-            services.AddScoped<IEmployerService, EmployerService> ();
             services.AddScoped<ICareerOfficeService, CareerOfficeService> ();
-            services.AddScoped<IProfileEditionService, ProfileEditionService> ();
+            services.AddScoped<IMasterService, MasterService> ();
             services.AddScoped<ISurveyService, SurveyService> ();
             services.AddScoped<ISurveyTemplateService, SurveyTemplateService> ();
             services.AddScoped<ISurveyAnswerService, SurveyAnswerService> ();
@@ -161,21 +140,11 @@ namespace CareerMonitoring.Api {
             #region Validations
 
             services.AddTransient<IValidator<SignIn>, SignInValidator> ();
-            services.AddTransient<IValidator<RegisterStudent>, RegisterStudentValidator> ();
-            services.AddTransient<IValidator<RegisterGraduate>, RegisterGraduateValidator> ();
-            services.AddTransient<IValidator<RegisterEmployer>, RegisterEmployerValidator> ();
             services.AddTransient<IValidator<RegisterCareerOffice>, RegisterCareerOfficeValidator> ();
             services.AddTransient<IValidator<ChangePassword>, ChangePasswordValidator> ();
             services.AddTransient<IValidator<RestorePassword>, RestorePasswordValidator> ();
             services.AddTransient<IValidator<ChangePasswordByRestoringPassword>, ChangePasswordByRestoringPasswordValidator> ();
             services.AddTransient<IValidator<EmailToSend>, EmailToSendValidator> ();
-            services.AddTransient<IValidator<AddCertificate>, AddCertificateValidator> ();
-            services.AddTransient<IValidator<AddCourse>, AddCourseValidator> ();
-            services.AddTransient<IValidator<AddEducation>, AddEducationValidator> ();
-            services.AddTransient<IValidator<AddExperience>, AddExperienceValidator> ();
-            services.AddTransient<IValidator<AddLanguage>, AddLanguageValidator> ();
-            services.AddTransient<IValidator<AddProfileLink>, AddProfileLinkValidator> ();
-            services.AddTransient<IValidator<AddSkill>, AddSkillValidator> ();
             services.AddTransient<IValidator<AddUnregisteredUser>, AddUnregisteredUserValidator> ();
             services.AddTransient<IValidator<UpdateUnregisteredUser>, UpdateUnregisteredUserValidator> ();
 

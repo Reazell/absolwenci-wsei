@@ -101,94 +101,6 @@ namespace CareerMonitoring.Api.Migrations
                     b.ToTable("AccountRestoringPasswords");
                 });
 
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Certificate", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AccountId");
-
-                    b.Property<DateTime>("DateOfReceived");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Certificates");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AccountId");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Education", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AccountId");
-
-                    b.Property<string>("Course");
-
-                    b.Property<bool>("Graduated");
-
-                    b.Property<string>("NameOfUniversity");
-
-                    b.Property<string>("Specialization");
-
-                    b.Property<int>("Year");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Educations");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Experience", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AccountId");
-
-                    b.Property<string>("CompanyName");
-
-                    b.Property<DateTime>("From");
-
-                    b.Property<bool>("IsCurrentJob");
-
-                    b.Property<string>("Location");
-
-                    b.Property<string>("Position");
-
-                    b.Property<DateTime>("To");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Experiences");
-                });
-
             modelBuilder.Entity("CareerMonitoring.Core.Domains.ImportFile.UnregisteredUser", b =>
                 {
                     b.Property<int>("Id")
@@ -212,93 +124,6 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UnregisteredUsers");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.JobOffer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CompanyName");
-
-                    b.Property<string>("ContactPerson");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Email");
-
-                    b.Property<int?>("EmployerId");
-
-                    b.Property<string>("JobType");
-
-                    b.Property<string>("Location");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("Position");
-
-                    b.Property<string>("WebsiteAddress");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployerId");
-
-                    b.ToTable("JobOffers");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Language", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AccountId");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Proficiency");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Languages");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.ProfileLink", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AccountId");
-
-                    b.Property<string>("Content");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId")
-                        .IsUnique();
-
-                    b.ToTable("ProfileLinks");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Skill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AccountId");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("Skills");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyReport.DataSet", b =>
@@ -719,40 +544,14 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasDiscriminator().HasValue("CareerOffice");
                 });
 
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Employer", b =>
-                {
-                    b.HasBaseType("CareerMonitoring.Core.Domains.Abstract.Account");
-
-                    b.Property<string>("CompanyDescription");
-
-                    b.Property<string>("CompanyName");
-
-                    b.Property<string>("Location");
-
-                    b.ToTable("Employer");
-
-                    b.HasDiscriminator().HasValue("Employer");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Graduate", b =>
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Master", b =>
                 {
                     b.HasBaseType("CareerMonitoring.Core.Domains.Abstract.Account");
 
 
-                    b.ToTable("Graduate");
+                    b.ToTable("Master");
 
-                    b.HasDiscriminator().HasValue("Graduate");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Student", b =>
-                {
-                    b.HasBaseType("CareerMonitoring.Core.Domains.Abstract.Account");
-
-                    b.Property<string>("IndexNumber");
-
-                    b.ToTable("Student");
-
-                    b.HasDiscriminator().HasValue("Student");
+                    b.HasDiscriminator().HasValue("Master");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.AccountActivation", b =>
@@ -769,68 +568,6 @@ namespace CareerMonitoring.Api.Migrations
                         .WithOne("AccountRestoringPassword")
                         .HasForeignKey("CareerMonitoring.Core.Domains.AccountRestoringPassword", "AccountId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Certificate", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
-                        .WithMany("Certificates")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Course", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
-                        .WithMany("Courses")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Education", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
-                        .WithMany("Educations")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Experience", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
-                        .WithMany("Experiences")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.JobOffer", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Employer")
-                        .WithMany("JobOffers")
-                        .HasForeignKey("EmployerId");
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Language", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
-                        .WithMany("Languages")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.ProfileLink", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account", "Account")
-                        .WithOne("ProfileLink")
-                        .HasForeignKey("CareerMonitoring.Core.Domains.ProfileLink", "AccountId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CareerMonitoring.Core.Domains.Skill", b =>
-                {
-                    b.HasOne("CareerMonitoring.Core.Domains.Abstract.Account")
-                        .WithMany("Skills")
-                        .HasForeignKey("AccountId");
                 });
 
             modelBuilder.Entity("CareerMonitoring.Core.Domains.SurveyReport.DataSet", b =>

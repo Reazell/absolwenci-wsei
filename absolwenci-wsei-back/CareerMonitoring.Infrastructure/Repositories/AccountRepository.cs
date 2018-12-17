@@ -28,10 +28,21 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .SingleOrDefaultAsync (x => x.Id == id);
         }
 
+        public async Task<Account> GetByMasterAsync(bool isTracking = true)
+        {
+            if (isTracking) {
+                return await _context.Accounts
+                    .AsTracking ()
+                    .SingleOrDefaultAsync (x => x.Role == "master");
+            }
+            return await _context.Accounts
+                .AsNoTracking ()
+                .SingleOrDefaultAsync (x => x.Role == "master");
+        }
+
         public async Task<Account> GetByEmailAsync (string email, bool isTracking = true)
         {
             Account account;
-            ICollection<Language> languages = new List<Language>();
             if (isTracking) {
                 account = await _context.Accounts
                     .AsTracking ()
@@ -87,30 +98,7 @@ namespace CareerMonitoring.Infrastructure.Repositories {
                 .AsNoTracking ()
                 .SingleOrDefaultAsync (x => x.AccountRestoringPassword.Token == token);
         }
-
-        public async Task<Account> GetWithProfileEditionByIdAsync (int id, bool isTracking = true) {
-            if (isTracking) {
-                return await _context.Accounts
-                    .AsTracking ()
-                    .Include (x => x.Certificates)
-                    .Include (x => x.Courses)
-                    .Include (x => x.Educations)
-                    .Include (x => x.Experiences)
-                    .Include (x => x.Languages)
-                    .Include (x => x.ProfileLink)
-                    .Include (x => x.Skills)
-                    .SingleOrDefaultAsync (x => x.Id == id);
-            }
-            return await _context.Accounts.AsNoTracking ()
-                .Include (x => x.Certificates)
-                .Include (x => x.Courses)
-                .Include (x => x.Educations)
-                .Include (x => x.Experiences)
-                .Include (x => x.Languages)
-                .Include (x => x.ProfileLink)
-                .Include (x => x.Skills)
-                .SingleOrDefaultAsync (x => x.Id == id);
-        }
+        
 
         public async Task<IEnumerable<Account>> GetAllAsync (bool isTracking = true) {
             if (isTracking) {

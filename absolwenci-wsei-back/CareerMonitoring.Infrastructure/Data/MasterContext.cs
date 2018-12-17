@@ -7,8 +7,10 @@ using CareerMonitoring.Core.Domains.SurveysAnswers;
 using CareerMonitoring.Core.Domains.SurveyTemplates;
 using Microsoft.EntityFrameworkCore;
 
-namespace CareerMonitoring.Infrastructure.Data {
-    public class CareerMonitoringContext : DbContext {
+namespace CareerMonitoring.Infrastructure.Data
+{
+    public class MasterContext : DbContext
+    {
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<FieldData> FieldData { get; set; }
@@ -30,12 +32,11 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<QuestionReport> QuestionReports { get; set; }
         public DbSet<DataSet> DataSets { get; set; }
         public DbSet<Account> Accounts { get; set; }
-        public DbSet<CareerOffice> CareerOffices { get; set; }
         public DbSet<Master> Masters { get; set; }
         public DbSet<AccountRestoringPassword> AccountRestoringPasswords { get; set; }
         public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
 
-        public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
+        public MasterContext (DbContextOptions<MasterContext> options) : base (options) { }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             modelBuilder.Entity<Account> ()
