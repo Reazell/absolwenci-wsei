@@ -18,21 +18,6 @@ namespace CareerMonitoring.Infrastructure.Validators.ImportFile {
                 .WithMessage ("Surname should contain only letters with one space between words.")
                 .NotNull ()
                 .WithMessage ("Surname cannot be null.");
-            RuleFor (reg => reg.Course)
-                .MaximumLength (70)
-                .MinimumLength (3)
-                .WithMessage ("Course cannot be null or empty.")
-                .NotNull ()
-                .WithMessage ("Course cannot be null.");
-            RuleFor (reg => reg.DateOfCompletion)
-                .NotNull ()
-                .NotEmpty ()
-                .WithMessage ("Date of completion cannot be greater than current date.");
-            RuleFor (reg => reg.TypeOfStudy)
-                .MaximumLength (70)
-                .MinimumLength (3)
-                .NotNull ()
-                .WithMessage ("Type of study cannot be null.");
             RuleFor (reg => reg.Email)
                 .EmailAddress ()
                 .MinimumLength (5)

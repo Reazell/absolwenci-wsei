@@ -24,7 +24,7 @@ namespace CareerMonitoring.Api.Controllers {
                 var verification = await _surveyUserIdentifierService.VerifySurveyUser (email, command.SurveyId);
                 if (verification == "answered")
                     return BadRequest ("you already answered to that survey");
-                else if (verification == "unauthorized")
+                if (verification == "unauthorized")
                     return Unauthorized ();
                 await _surveyAnswerService.CreateSurveyAnswerAsync(command);
                 return StatusCode (201);

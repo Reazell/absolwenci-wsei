@@ -17,7 +17,7 @@ namespace CareerMonitoring.Tests.Services {
                 accountServiceMock.Object);
 
             //Act
-            await unregisteredUserService.CreateAsync ("john", "johnson", "Informatyka i ekonometria", "2018-01-01 00:00:00", "dzienne",
+            await unregisteredUserService.CreateAsync ("john", "johnson",
                 "john@gmail.com");
             //Assert
             unregisteredUserRepositoryMock.Verify (x => x.AddAsync (It.IsAny<UnregisteredUser> ()), Times.Once ());

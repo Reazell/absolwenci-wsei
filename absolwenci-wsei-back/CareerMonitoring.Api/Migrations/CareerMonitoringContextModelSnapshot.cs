@@ -107,10 +107,6 @@ namespace CareerMonitoring.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Course");
-
-                    b.Property<DateTime>("DateOfCompletion");
-
                     b.Property<string>("Email");
 
                     b.Property<string>("Name");
@@ -118,8 +114,6 @@ namespace CareerMonitoring.Api.Migrations
                     b.Property<string>("Role");
 
                     b.Property<string>("Surname");
-
-                    b.Property<string>("TypeOfStudy");
 
                     b.HasKey("Id");
 

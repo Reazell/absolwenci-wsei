@@ -28,7 +28,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate {
         }
 
         public async Task<string> UploadFileAndGetFullFileLocationAsync (IFormFile file) {
-            if (file == null && file.Length < 0)
+            if (file == null || file.Length < 0)
                 throw new Exception ("File not selected");
 
             if (!Directory.Exists ("wwwroot")) {
@@ -51,6 +51,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate {
 
         public async Task<IEnumerable<UnregisteredUserDto>> ImportExcelFileAndGetImportDataAsync (string fullFileLocation) {
             FileInfo fileInfo = new FileInfo (fullFileLocation);
+            
             List<UnregisteredUserDto> importDataListDto = new List<UnregisteredUserDto> ();
 
             using (ExcelPackage package = new ExcelPackage (fileInfo)) {
@@ -63,10 +64,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate {
                     var importData = new UnregisteredUser ();
                     importData.SetName (workSheet.Cells[i, 1].Value.ToString ());
                     importData.SetSurname (workSheet.Cells[i, 2].Value.ToString ());
-                    importData.SetCourse (workSheet.Cells[i, 3].Value.ToString ());
-                    importData.SetDateOfCompletion (Convert.ToDateTime (workSheet.Cells[i, 4].Value.ToString ()));
-                    importData.SetTypeOfStudy (workSheet.Cells[i, 5].Value.ToString ());
-                    importData.SetEmail (workSheet.Cells[i, 6].Value.ToString ().ToLowerInvariant ());
+                    importData.SetEmail (workSheet.Cells[i, 3].Value.ToString ().ToLowerInvariant ());
                     importDataList.Add (importData);
 
                     importDataListDto.Add (_mapper.Map<UnregisteredUserDto> (importData));

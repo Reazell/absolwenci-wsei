@@ -23,15 +23,10 @@ namespace CareerMonitoring.Infrastructure.Services {
         public async Task<bool> ExistByEmailAsync (string email) =>
             await _unregisteredUserRepository.GetByEmailAsync (email, false) != null;
 
-        public async Task CreateAsync (string name, string surname, string course,
-            string dateOfCompletion, string typeOfStudy, string email) {
+        public async Task CreateAsync (string name, string surname, string email) {
             if (await ExistByEmailAsync (email) || await _accountService.ExistsByEmailAsync (email))
                 throw new ObjectAlreadyExistException ($"User of given email: {email} already exist.");
-            DateTime dateTimeOfCompletion = DateTime.ParseExact (dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-            if (dateTimeOfCompletion > DateTime.UtcNow) {
-                throw new Exception ("Date of completion cannot be greater than current date.");
-            }
-            await _unregisteredUserRepository.AddAsync (new UnregisteredUser (name, surname, course, dateTimeOfCompletion, typeOfStudy, email));
+            await _unregisteredUserRepository.AddAsync (new UnregisteredUser (name, surname, email));
         }
 
         public async Task<IEnumerable<UnregisteredUser>> GetAllAsync () {
@@ -42,15 +37,10 @@ namespace CareerMonitoring.Infrastructure.Services {
             return await _unregisteredUserRepository.GetByIdAsync (id);
         }
 
-        public async Task UpdateAsync (int id, string name, string surname, string course,
-            string dateOfCompletion, string typeOfStudy, string email) {
+        public async Task UpdateAsync (int id, string name, string surname, string email) {
             var unregisteredUser = await _unregisteredUserRepository.GetByIdAsync (id);
-            DateTime dateTimeOfCompletion = DateTime.ParseExact (dateOfCompletion, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-            if (dateTimeOfCompletion > DateTime.UtcNow) {
-                throw new Exception ("Date of completion cannot be greater than current date.");
-            }
             Logger.Info ($"Updating unregistered user with Id {id}.");
-            unregisteredUser.Update (name, surname, course, dateTimeOfCompletion, typeOfStudy, email);
+            unregisteredUser.Update (name, surname, email);
             await _unregisteredUserRepository.UpdateAsync (unregisteredUser);
         }
 

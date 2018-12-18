@@ -17,7 +17,7 @@ namespace CareerMonitoring.Api.Controllers {
             _surveyReportService = surveyReportService;
         }
 
-        [Authorize (Policy = "careerOffice")]
+        [Authorize (Policy = "master")]
         [HttpGet ("{surveyId}")]
         public async Task<IActionResult> GetSurvey (int surveyId, string email) {
             try {
@@ -38,7 +38,7 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
-        [Authorize (Policy = "careerOffice")]
+        [Authorize (Policy = "master")]
         [HttpGet ("surveys")]
         public async Task<IActionResult> GetAllSurveys () {
             try {

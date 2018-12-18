@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 
 namespace CareerMonitoring.Api.Controllers {
-    [Authorize (Policy = "careerOffice")]
+    [Authorize (Policy = "master")]
     public class ImportFileController : ApiUserController {
         private readonly IImportFileAggregate _importFileFactory;
         private readonly IUnregisteredUserService _unregisteredUserService;
@@ -70,8 +70,7 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _unregisteredUserService.CreateAsync (command.Name, command.Surname, command.Course,
-                    command.DateOfCompletion, command.TypeOfStudy, command.Email);
+                await _unregisteredUserService.CreateAsync (command.Name, command.Surname, command.Email);
                 return StatusCode (201);
 
             } catch (Exception e) {
@@ -84,8 +83,7 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
-                await _unregisteredUserService.UpdateAsync (id, command.Name, command.Surname, command.Course,
-                    command.DateOfCompletion, command.TypeOfStudy, command.Email);
+                await _unregisteredUserService.UpdateAsync (id, command.Name, command.Surname, command.Email);
                 return StatusCode (200);
 
             } catch (Exception e) {
