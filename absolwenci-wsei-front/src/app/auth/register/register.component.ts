@@ -51,7 +51,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   registrationError = false;
   registrationErrorMessage: string[];
 
-  defaultProfile = 'Student';
+  // defaultProfile = 'Student';
+  defaultProfile = 'CareerOffice';
   // user object sent to API
   user: Graduate | Student | Employer;
   // loader

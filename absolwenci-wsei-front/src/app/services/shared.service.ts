@@ -84,7 +84,8 @@ export class SharedService {
         this.router.navigateByUrl('/app/graduate');
         break;
       case 'careerOffice':
-        this.router.navigateByUrl('/app/admin/d/survey/(s:a//m:a)');
+        // this.router.navigateByUrl('/app/admin/d/survey/(s:a//m:a)');
+        this.router.navigateByUrl('/app/admin/d/survey');
         break;
     }
   }

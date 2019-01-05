@@ -139,8 +139,6 @@ export class AppBarComponent {
   @Output()
   showSurveyButton: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
-  openSidebarButton: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output()
   redirectToButton: EventEmitter<string> = new EventEmitter<string>();
   @Output()
   backToButton: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -163,9 +161,6 @@ export class AppBarComponent {
   }
   showSurvey(): void {
     this.showSurveyButton.emit(true);
-  }
-  openSidebar(): void {
-    this.openSidebarButton.emit(true);
   }
 
   // emit child actions
