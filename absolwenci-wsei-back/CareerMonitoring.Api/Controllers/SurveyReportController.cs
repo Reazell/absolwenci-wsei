@@ -48,10 +48,7 @@ namespace CareerMonitoring.Api.Controllers {
                         return await _exportFileAggregate.ExportReportToPdf(surveyReport);
                     default:
                         return BadRequest("file type not supported");
-                        break;
                 }
-                
-                return Json (surveyReport);
             }
             catch(Exception e){
                 return BadRequest (e.Message);

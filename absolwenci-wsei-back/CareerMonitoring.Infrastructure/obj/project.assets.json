@@ -14,6 +14,15 @@
           "lib/netcoreapp2.0/AutoMapper.dll": {}
         }
       },
+      "DinkToPdfIncludesDependencies/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/DinkToPdf.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/DinkToPdf.dll": {}
+        }
+      },
       "EPPlus.Core/1.5.4": {
         "type": "package",
         "dependencies": {
@@ -3292,6 +3301,20 @@
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.pdb",
         "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "DinkToPdfIncludesDependencies/1.0.8": {
+      "sha512": "aePkaIYtZlMvKtOzjyHlAw5uxYGsSGnrfyUSBrKFH91oGs34cfX3v99WACIv7wk6GY1FDG6rl5dIbnbFuQbcSw==",
+      "type": "package",
+      "path": "dinktopdfincludesdependencies/1.0.8",
+      "files": [
+        ".signature.p7s",
+        "dinktopdfincludesdependencies.1.0.8.nupkg.sha512",
+        "dinktopdfincludesdependencies.nuspec",
+        "lib/netcoreapp2.0/DinkToPdf.dll",
+        "lib/netcoreapp2.0/libwkhtmltox.dll",
+        "lib/netcoreapp2.0/libwkhtmltox.dylib",
+        "lib/netcoreapp2.0/libwkhtmltox.so"
       ]
     },
     "EPPlus.Core/1.5.4": {
@@ -9764,6 +9787,7 @@
     ".NETCoreApp,Version=v2.0": [
       "AutoMapper >= 7.0.1",
       "CareerMonitoring.Core >= 1.0.0",
+      "DinkToPdfIncludesDependencies >= 1.0.8",
       "EPPlus.Core >= 1.5.4",
       "FluentValidation.AspNetCore >= 8.0.0",
       "MailKit >= 2.0.6",
@@ -9824,6 +9848,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[7.0.1, )"
+          },
+          "DinkToPdfIncludesDependencies": {
+            "target": "Package",
+            "version": "[1.0.8, )"
           },
           "EPPlus.Core": {
             "target": "Package",

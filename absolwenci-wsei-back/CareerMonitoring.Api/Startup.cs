@@ -48,6 +48,8 @@ using NLog.Extensions.Logging;
 using NLog.Web;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 
 namespace CareerMonitoring.Api {
     public class Startup {
@@ -87,6 +89,7 @@ namespace CareerMonitoring.Api {
                 .Get<EmailConfiguration> ());
             services.AddSingleton<IURLSettings> (Configuration.GetSection ("Url").Get<URLSettings> ());
             services.AddSingleton (AutoMapperConfig.Initialize ());
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             services.AddAuthorization (options =>
                 options.AddPolicy ("careerOffice", policy => policy.RequireRole ("careerOffice")));
             services.AddAuthorization (options =>

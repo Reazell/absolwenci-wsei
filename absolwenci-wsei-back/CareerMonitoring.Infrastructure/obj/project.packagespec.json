@@ -34,6 +34,10 @@
           "target": "Package",
           "version": "[7.0.1, )"
         },
+        "DinkToPdfIncludesDependencies": {
+          "target": "Package",
+          "version": "[1.0.8, )"
+        },
         "EPPlus.Core": {
           "target": "Package",
           "version": "[1.5.4, )"

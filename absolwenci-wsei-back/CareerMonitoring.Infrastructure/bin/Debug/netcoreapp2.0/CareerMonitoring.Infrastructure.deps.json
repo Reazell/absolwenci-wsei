@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "7cbfaf37cb0d6732a45e8526a3998e2dcd22bd0e"
+    "signature": "2bf428f47a46cd6e93d984b9ab515cb5b21f188b"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,6 +10,7 @@
         "dependencies": {
           "AutoMapper": "7.0.1",
           "CareerMonitoring.Core": "1.0.0",
+          "DinkToPdfIncludesDependencies": "1.0.8",
           "EPPlus.Core": "1.5.4",
           "FluentValidation.AspNetCore": "8.0.0",
           "MailKit": "2.0.6",
@@ -32,6 +33,14 @@
           "lib/netcoreapp2.0/AutoMapper.dll": {
             "assemblyVersion": "7.0.1.0",
             "fileVersion": "7.0.1.0"
+          }
+        }
+      },
+      "DinkToPdfIncludesDependencies/1.0.8": {
+        "runtime": {
+          "lib/netcoreapp2.0/DinkToPdf.dll": {
+            "assemblyVersion": "1.0.8.0",
+            "fileVersion": "1.0.8.0"
           }
         }
       },
@@ -2463,6 +2472,13 @@
       "sha512": "sha512-1qKMJ1WPs42VkgeQ5iXRDWf46+iUqYM/yColAvAeDQhUgQNsgzSxjMDHQc7dL2x/o0JY8TwG+obR7vbvgh+Y3g==",
       "path": "automapper/7.0.1",
       "hashPath": "automapper.7.0.1.nupkg.sha512"
+    },
+    "DinkToPdfIncludesDependencies/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aePkaIYtZlMvKtOzjyHlAw5uxYGsSGnrfyUSBrKFH91oGs34cfX3v99WACIv7wk6GY1FDG6rl5dIbnbFuQbcSw==",
+      "path": "dinktopdfincludesdependencies/1.0.8",
+      "hashPath": "dinktopdfincludesdependencies.1.0.8.nupkg.sha512"
     },
     "EPPlus.Core/1.5.4": {
       "type": "package",
