@@ -45,6 +45,17 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Startup.cs" t="Include" />
+        <e p="wwwroot" t="Include">
+          <e p="reports" t="Include">
+            <e p="1.txt" t="Include" />
+            <e p="2.txt" t="Include" />
+            <e p="3.txt" t="Include" />
+            <e p="4.txt" t="Include" />
+            <e p="5.csv" t="Include" />
+            <e p="5.txt" t="Include" />
+            <e p="5.xlsx" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="absolwenci-wsei-back\CareerMonitoring.Core" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -155,8 +166,10 @@
         </e>
         <e p="Extensions" t="Include">
           <e p="Aggregate" t="Include">
+            <e p="ExportFileAggregate.cs" t="Include" />
             <e p="ImportFileAggregate.cs" t="Include" />
             <e p="Interfaces" t="Include">
+              <e p="IExportFileAggregate.cs" t="Include" />
               <e p="IImportFileAggregate.cs" t="Include" />
             </e>
           </e>
