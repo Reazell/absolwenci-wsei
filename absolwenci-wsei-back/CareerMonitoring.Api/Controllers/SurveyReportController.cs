@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CareerMonitoring.Api.Controllers {
-    //[Authorize(Policy = "master")]
+    [Authorize(Policy = "master")]
     public class SurveyReportController : ApiUserController {
         private readonly ISurveyReportRepository _surveyReportRepository;
         private readonly IExportFileAggregate _exportFileAggregate;
