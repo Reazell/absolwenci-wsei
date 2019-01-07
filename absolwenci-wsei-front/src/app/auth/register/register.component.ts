@@ -97,8 +97,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     // reset login status
     this.authService.logout();
 
-    this.http.get(this.config.apiUrl+"/auth/master").subscribe((data)=>{
-      this.masterExists = data["result"];
+    this.http.get(this.config.apiUrl+"/auth/master").subscribe((data: Boolean)=>{
+      this.masterExists = data;
     });
 
     // form declaration

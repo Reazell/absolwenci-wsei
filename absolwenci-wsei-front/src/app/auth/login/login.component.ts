@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     
     this.http.get(this.config.apiUrl+"/auth/master").subscribe((data)=>{
-      if(!data["result"])
+      if(!data)
         this.router.navigateByUrl("/auth/register", {queryParams:{masterExists:false}});
     });
 

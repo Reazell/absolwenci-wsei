@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Infrastructure.Data;
@@ -41,6 +43,17 @@ namespace CareerMonitoring.Infrastructure.Repositories
             }
             return await _context.Masters.AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Email.ToLowerInvariant() == email.ToLowerInvariant());
+        }
+
+        public async Task<IEnumerable<Master>> GetAllAsync (bool isTracking = true) {
+            if (isTracking){
+                return await Task.FromResult (_context.Masters
+                    .AsTracking ()
+                    .AsEnumerable ());
+            }
+            return await Task.FromResult (_context.Masters
+                .AsNoTracking ()
+                .AsEnumerable ());
         }
 
         public async Task UpdateAsync(Master master)

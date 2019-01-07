@@ -25,13 +25,15 @@ namespace CareerMonitoring.Api.Controllers {
         private readonly IAuthService _authService;
         private readonly IJWTSettings _jwtSettings;
         private readonly IAccountService _accountService;
+        private readonly IMasterService _masterService;
 
-        public AuthController (IAuthService authService,
-            IJWTSettings jwtSettings,
-            IAccountService accountService) {
+
+        public AuthController(IAuthService authService, IJWTSettings jwtSettings, IAccountService accountService, IMasterService masterService)
+        {
             _authService = authService;
             _jwtSettings = jwtSettings;
             _accountService = accountService;
+            _masterService = masterService;
         }
 
         private async Task<string> GenerateToken (Account account, IJWTSettings jwtSettings) {
@@ -100,6 +102,18 @@ namespace CareerMonitoring.Api.Controllers {
                 await _authService.RegisterMasterAsync (command.Name, command.Surname, command.Email,
                     command.PhoneNumber, command.Password);
                 return StatusCode (201);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [HttpGet ("master")]
+        public async Task<IActionResult> ExistsMaster () {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try
+            {
+                return Json(await _masterService.ExistAsync());
             } catch (Exception e) {
                 return BadRequest (e.Message);
             }
