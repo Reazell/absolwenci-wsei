@@ -1,15 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from '../../../../services/shared.service';
 import { SurveyService } from '../services/survey.services';
+import { HttpClient } from '@angular/common/http';
+import { AppConfig } from '../../../../app.config';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-survey-result',
   templateUrl: './survey-result.component.html',
   styleUrls: ['./survey-result.component.scss']
 })
-export class SurveyResultComponent implements OnInit, OnDestroy {
+export class SurveyResultComponent implements OnInit, OnDestroy, AfterViewInit {
   loading = true;
   data;
   sth;
@@ -52,15 +55,22 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
     '#3366cc',
     '#dc3912'
   ];
+  @ViewChild("fileType") fileType: ElementRef;
   constructor(
     private surveyService: SurveyService,
     private sharedService: SharedService,
+    private appConf: AppConfig,
+    private http: HttpClient,
     private activatedRoute: ActivatedRoute
   ) {}
   ngOnInit() {
     this.getSurvey();
     this.sharedService.showBackButton(true);
   }
+  ngAfterViewInit() {
+   this.fileType.nativeElement.focus();
+
+ }
   getSurvey(): void {
     this.activatedRoute.data.map(data => data.cres).subscribe(
       res => {
@@ -171,5 +181,9 @@ export class SurveyResultComponent implements OnInit, OnDestroy {
   }
   see(x) {
     console.log(x);
+  }
+  getFile(){
+    let type = this.fileType.nativeElement.value;
+    this.surveyService.getSurveyReportFile(7, type).subscribe(data => saveAs(data, `report.` + type));
   }
 }

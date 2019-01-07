@@ -5,8 +5,8 @@
     <e p="C:\Users\tomzd\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
     <e p="C:\Users\tomzd\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="C:\Users\tomzd\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_CareerMonitoring.-173146079.00" t="ExcludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei" t="IncludeFlat">
+    <e p="C:\Users\tomzd\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_CareerMonitoring.1115223561.00" t="ExcludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy" t="IncludeFlat">
       <e p="absolwenci-wsei-back\CareerMonitoring.Api" t="IncludeRecursive">
         <e p="ActionFilters" t="Include">
           <e p="ValidatorActionFilter.cs" t="Include" />
@@ -55,6 +55,10 @@
             <e p="5.pdf" t="Include" />
             <e p="5.txt" t="Include" />
             <e p="5.xlsx" t="Include" />
+            <e p="7.csv" t="Include" />
+            <e p="7.pdf" t="Include" />
+            <e p="7.txt" t="Include" />
+            <e p="7.xlsx" t="Include" />
           </e>
         </e>
       </e>
@@ -374,6 +378,7 @@
         <e p="karma-jasmine-html-reporter" t="IncludeRecursive" />
         <e p="moment" t="IncludeRecursive" />
         <e p="node-sass" t="IncludeRecursive" />
+        <e p="postcss-loader" t="IncludeRecursive" />
         <e p="primeng" t="IncludeRecursive" />
         <e p="protractor" t="IncludeRecursive" />
         <e p="rxjs" t="IncludeRecursive" />

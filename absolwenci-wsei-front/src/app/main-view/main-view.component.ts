@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { UserProfile } from '../auth/other/user.model';
 import { AccountService } from '../auth/services/account.service';
 import { SharedService } from '../services/shared.service';
 

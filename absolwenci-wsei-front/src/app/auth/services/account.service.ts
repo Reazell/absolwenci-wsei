@@ -34,9 +34,8 @@ export class AccountService {
   }
   // create new user
 
-  createStudent(user) {
-    return this.http.post(this.config.apiUrl + '/auth/students', {
-      IndexNumber: user.albumID,
+  createMaster(user) {
+    return this.http.post(this.config.apiUrl + '/auth/master', {
       Email: user.email,
       Password: user.password,
       Name: user.firstName,
@@ -44,41 +43,51 @@ export class AccountService {
       PhoneNumber: user.phoneNum
     });
   }
-  createGraduate(user) {
-    return this.http.post(this.config.apiUrl + '/auth/graduates', {
-      Email: user.email,
-      Password: user.password,
-      Name: user.firstName,
-      Surname: user.lastName,
-      PhoneNumber: user.phoneNum
-    });
-  }
-  createEmployer(user) {
-    return this.http.post(this.config.apiUrl + '/auth/employers', {
-      IndexNumber: user.albumID,
-      Email: user.email,
-      Password: user.password,
-      Name: user.firstName,
-      Surname: user.lastName,
-      PhoneNumber: user.phoneNum,
-      CompanyName: user.companyName,
-      Location: user.location,
-      CompanyDescription: user.companyDescription
-    });
-  }
+  // createStudent(user) {
+  //   return this.http.post(this.config.apiUrl + '/auth/students', {
+  //     IndexNumber: user.albumID,
+  //     Email: user.email,
+  //     Password: user.password,
+  //     Name: user.firstName,
+  //     Surname: user.lastName,
+  //     PhoneNumber: user.phoneNum
+  //   });
+  // }
+  // createGraduate(user) {
+  //   return this.http.post(this.config.apiUrl + '/auth/graduates', {
+  //     Email: user.email,
+  //     Password: user.password,
+  //     Name: user.firstName,
+  //     Surname: user.lastName,
+  //     PhoneNumber: user.phoneNum
+  //   });
+  // }
+  // createEmployer(user) {
+  //   return this.http.post(this.config.apiUrl + '/auth/employers', {
+  //     IndexNumber: user.albumID,
+  //     Email: user.email,
+  //     Password: user.password,
+  //     Name: user.firstName,
+  //     Surname: user.lastName,
+  //     PhoneNumber: user.phoneNum,
+  //     CompanyName: user.companyName,
+  //     Location: user.location,
+  //     CompanyDescription: user.companyDescription
+  //   });
+  // }
 
-  createNewAdmin(user: UserProfile): Observable<any> {
-    return this.http
-      .post<any>(this.config.apiUrl + '/auth/careerOffices', {
-        Name: user.firstName,
-        Surname: user.lastName,
-        Email: user.email,
-        PhoneNumber: user.phoneNum
-      })
-      .map(data => {
-        return data;
-      });
-  }
+  // createNewAdmin(user: UserProfile): Observable<any> {
+  //   return this.http
+  //     .post<any>(this.config.apiUrl + '/auth/careerOffices', {
+  //       Name: user.firstName,
+  //       Surname: user.lastName,
+  //       Email: user.email,
+  //       PhoneNumber: user.phoneNum
+  //     })
+  //     .map(data => {
+  //       return data;
+  //     });
+  // }
   // change password
   changePassword(OldPassword, NewPassword) {
     return this.http.post(this.config.apiUrl + '/auth/changePassword', {

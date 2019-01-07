@@ -74,17 +74,18 @@ export class SharedService {
 
   routeSwitch(role: string): void {
     switch (role) {
-      case 'student':
-        this.router.navigateByUrl('/app/student');
-        break;
-      case 'employer':
-        this.router.navigateByUrl('/app/employer');
-        break;
-      case 'graduate':
-        this.router.navigateByUrl('/app/graduate');
-        break;
-      case 'careerOffice':
-        this.router.navigateByUrl('/app/admin/d/survey/(s:a//m:a)');
+      // case 'student':
+      //   this.router.navigateByUrl('/app/student');
+      //   break;
+      // case 'employer':
+      //   this.router.navigateByUrl('/app/employer');
+      //   break;
+      // case 'graduate':
+      //   this.router.navigateByUrl('/app/graduate');
+      //   break;
+      case 'master':
+        // this.router.navigateByUrl('/app/admin/d/survey/(s:a//m:a)');
+        this.router.navigateByUrl('/app/admin/d/survey');
         break;
     }
   }

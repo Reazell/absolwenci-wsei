@@ -48,7 +48,7 @@ export class AddAdminComponent implements OnInit {
     if (!form.valid) {
     } else {
       console.log(this.regForm.value);
-      this.accountService.createNewAdmin(this.setUser()).subscribe(
+      this.accountService.createMaster(this.setUser()).subscribe(
         data => {
           console.log(data);
         },

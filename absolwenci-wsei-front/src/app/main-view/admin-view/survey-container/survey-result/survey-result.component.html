@@ -58,4 +58,11 @@
       </span>
     </div>
   </div>
+  <select name="" id="fileType" #fileType>
+    <option value="txt">txt</option>
+    <option value="xlsx">xlsx</option>
+    <option value="csv">csv</option>
+    <option value="pdf">pdf</option>
+  </select>
+  <button (click)="getFile()">export</button>
 </div>

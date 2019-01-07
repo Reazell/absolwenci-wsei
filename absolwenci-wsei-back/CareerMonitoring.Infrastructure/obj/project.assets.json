@@ -9807,11 +9807,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei - Copy\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
       "projectName": "CareerMonitoring.Infrastructure",
-      "projectPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei - Copy\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\CareerMonitoring.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\tomzd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei - Copy\\absolwenci-wsei-back\\CareerMonitoring.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9830,8 +9830,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj": {
-              "projectPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj"
+            "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei - Copy\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj": {
+              "projectPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei - Copy\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj"
             }
           }
         }

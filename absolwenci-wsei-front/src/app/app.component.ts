@@ -105,7 +105,7 @@ export class AppComponent implements OnInit, OnDestroy {
   // inputs
   loading: boolean;
   loadingOverlay: boolean;
-  logoIMG = './../../../assets/logo-wsei.png';
+  logoIMG = './../../../assets/parktechnologiczny_logo.png';
   profileIMG = './../../../assets/profile-image.png';
   toolTipInfo: AppBarTooltip = new AppBarTooltip();
   buttonText = 'Wyślij';

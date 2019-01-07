@@ -11,6 +11,8 @@ import { SharedService } from '../../services/shared.service';
 import { UserProfile } from '../other/user.model';
 import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { HttpClient } from '@angular/common/http';
+import { AppConfig } from '../../app.config';
 
 /**
  * Sign in user.
@@ -49,6 +51,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private http: HttpClient,
+    private config: AppConfig,
     private authenticationService: AuthenticationService,
     private accountService: AccountService,
     private sharedService: SharedService
@@ -64,6 +68,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // reset login status
     this.authenticationService.logout();
+
+    
+    this.http.get(this.config.apiUrl+"/auth/master").subscribe((data)=>{
+      if(!data["result"])
+        this.router.navigateByUrl("/auth/register", {queryParams:{masterExists:false}});
+    });
 
     // form declaration
     this.logForm = this.fb.group({

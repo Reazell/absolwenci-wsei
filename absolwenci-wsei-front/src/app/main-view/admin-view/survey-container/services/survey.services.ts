@@ -136,6 +136,10 @@ export class SurveyService {
         return data;
       });
   }
+  getSurveyReportFile(id: number, type:string): Observable<any> {
+    return this.http
+      .get(this.config.apiUrl + '/surveyreport/surveyReports/' + id + "." + type, {responseType: "blob"});
+  }
   saveSurveysFromApi(): void {
     this.getAllSurveys().subscribe(data => {
       this.savedSurveys.next(data);
