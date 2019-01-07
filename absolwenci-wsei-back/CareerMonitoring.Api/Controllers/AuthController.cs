@@ -91,6 +91,22 @@ namespace CareerMonitoring.Api.Controllers {
             }
         }
 
+        [HttpPost ("firstMaster")]
+        public async Task<IActionResult> RegisterFirstMaster ([FromBody] RegisterMaster command) {
+            if(await _masterService.ExistAsync())
+                ModelState.AddModelError("exists","first master already exists");
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            try {
+                await _authService.RegisterMasterAsync (command.Name, command.Surname, command.Email,
+                    command.PhoneNumber, command.Password);
+                return StatusCode (201);
+            } catch (Exception e) {
+                return BadRequest (e.Message);
+            }
+        }
+
+        [Authorize (Policy = "master")]
         [HttpPost ("master")]
         public async Task<IActionResult> RegisterMaster ([FromBody] RegisterMaster command) {
             command.Email = command.Email.ToLowerInvariant ();

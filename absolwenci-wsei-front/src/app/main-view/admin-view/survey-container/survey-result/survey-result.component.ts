@@ -88,6 +88,7 @@ export class SurveyResultComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   createData(data) {
     this.data = {
+      id: data.id,
       surveyTitle: data.surveyTitle,
       answersNumber: data.answersNumber,
       questionReports: this.populateQuestionReports(data.questionsReports)
@@ -184,6 +185,6 @@ export class SurveyResultComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   getFile(){
     let type = this.fileType.nativeElement.value;
-    this.surveyService.getSurveyReportFile(7, type).subscribe(data => saveAs(data, `report.` + type));
+    this.surveyService.getSurveyReportFile(this.data.id, type).subscribe(data => saveAs(data, `report.` + type));
   }
 }

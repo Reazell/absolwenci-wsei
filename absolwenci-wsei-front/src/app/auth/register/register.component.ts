@@ -202,7 +202,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       console.log(this.profileName.value);
       switch (this.profileName.value) {
         case 'Master':
-          this.accountService.createMaster(this.user).subscribe(
+          this.accountService.createFirstMaster(this.user).subscribe(
             data => {
               this.router.navigateByUrl('/auth/login');
             },

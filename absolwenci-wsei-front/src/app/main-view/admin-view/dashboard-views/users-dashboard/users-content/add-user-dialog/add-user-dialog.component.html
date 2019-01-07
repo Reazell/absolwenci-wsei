@@ -5,7 +5,7 @@
     </div>
     <div id="content-container" mat-dialog-content>
       <mat-tab-group mat-stretch-tabs [selectedIndex]="selected">
-        <mat-tab label="Dodaj absolwenta">
+        <mat-tab label="Dodaj użytkownika">
           <ng-template matTabContent>
             <!-- Content 1 - Loaded: {{getTimeLoaded(1) | date:'medium'}} -->
             <app-add-user-tab [loader]=loader (submit)=onSubmit($event)></app-add-user-tab>

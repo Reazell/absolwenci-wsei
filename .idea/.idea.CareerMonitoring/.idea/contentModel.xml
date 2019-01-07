@@ -43,7 +43,21 @@
         <e p="Startup.cs" t="Include" />
         <e p="wwwroot" t="Include">
           <e p="reports" t="Include">
+            <e p="2.csv" t="Include" />
+            <e p="2.pdf" t="Include" />
+            <e p="2.txt" t="Include" />
+            <e p="2.xlsx" t="Include" />
+            <e p="6.csv" t="Include" />
+            <e p="6.txt" t="Include" />
+            <e p="6.xlsx" t="Include" />
+            <e p="7.csv" t="Include" />
+            <e p="7.pdf" t="Include" />
             <e p="7.txt" t="Include" />
+            <e p="7.xlsx" t="Include" />
+            <e p="9.csv" t="Include" />
+            <e p="9.pdf" t="Include" />
+            <e p="9.txt" t="Include" />
+            <e p="9.xlsx" t="Include" />
           </e>
         </e>
       </e>

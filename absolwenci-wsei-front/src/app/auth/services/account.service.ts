@@ -35,7 +35,25 @@ export class AccountService {
   // create new user
 
   createMaster(user) {
+    console.log({
+      Email: user.email,
+      Password: user.password,
+      Name: user.firstName,
+      Surname: user.lastName,
+      PhoneNumber: user.phoneNum
+    });
+    console.log(this.config.apiUrl + '/auth/master')
     return this.http.post(this.config.apiUrl + '/auth/master', {
+      Email: user.email,
+      Password: user.password,
+      Name: user.firstName,
+      Surname: user.lastName,
+      PhoneNumber: user.phoneNum
+    });
+  }
+
+  createFirstMaster(user) {
+    return this.http.post(this.config.apiUrl + '/auth/firstMaster', {
       Email: user.email,
       Password: user.password,
       Name: user.firstName,

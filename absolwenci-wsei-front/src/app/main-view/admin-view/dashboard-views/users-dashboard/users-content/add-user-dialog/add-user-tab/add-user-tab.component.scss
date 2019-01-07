@@ -19,6 +19,12 @@ form {
     }
     #button-container {
       padding: 20px;
+      input{
+        background-color: $primary;
+        color: white;
+        border: none;
+        padding: 10px;
+      }
       button {
         background-color: $primary;
         color: white;

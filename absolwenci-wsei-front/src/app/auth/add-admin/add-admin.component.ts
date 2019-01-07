@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { UserProfile } from '../other/user.model';
+import { UserProfile, Master } from '../other/user.model';
 import { SharedService } from './../../services/shared.service';
 import { AccountService } from './../services/account.service';
 
@@ -23,6 +23,8 @@ export class AddAdminComponent implements OnInit {
   surname: AbstractControl;
   email: AbstractControl;
   phoneNum: AbstractControl;
+  password: AbstractControl;
+  passwordConfirm: AbstractControl;
 
   // error strs
   nameErrorStr: string;
@@ -48,6 +50,7 @@ export class AddAdminComponent implements OnInit {
     if (!form.valid) {
     } else {
       console.log(this.regForm.value);
+      console.log(this.setUser());
       this.accountService.createMaster(this.setUser()).subscribe(
         data => {
           console.log(data);
@@ -62,10 +65,11 @@ export class AddAdminComponent implements OnInit {
     // this.user.phoneNum = phoneNumString.startsWith('+')
     // ? phoneNumString
     // : '+48' + phoneNumString;
-    const user: UserProfile = new UserProfile();
+    const user: Master = new Master();
     user.firstName = this.name.value;
     user.lastName = this.surname.value;
     user.email = this.email.value;
+    user.password = this.password.value;
     const phoneNumString: string = this.phoneNum.value;
     user.phoneNum = phoneNumString.startsWith('+')
       ? phoneNumString
@@ -104,6 +108,8 @@ export class AddAdminComponent implements OnInit {
     this.surname = this.regForm.controls['surname'];
     this.email = this.regForm.controls['email'];
     this.phoneNum = this.regForm.controls['phoneNum'];
+    this.password = this.regForm.controls['password'];
+    this.passwordConfirm = this.regForm.controls['passwordConfirm'];
   }
   inputError(control: AbstractControl): boolean {
     // get error message and control name in string

@@ -23,41 +23,41 @@ export class RegisteredUser extends User {
 }
 
 export class UnregisteredUser extends User {
-  course: string;
-  dateOfCompletion?: Moment | string;
-  typeOfStudy: string;
+  // course: string;
+  // dateOfCompletion?: Moment | string;
+  // typeOfStudy: string;
   constructor(
     name: string,
     surname: string,
     email: string,
-    course: string,
-    typeOfStudy: string,
-    dateOfCompletion?: Moment | string
+    // course: string,
+    // typeOfStudy: string,
+    // dateOfCompletion?: Moment | string
   ) {
     super(name, surname, email);
-    this.course = course;
-    this.typeOfStudy = typeOfStudy;
-    this.dateOfCompletion = dateOfCompletion;
+    // this.course = course;
+    // this.typeOfStudy = typeOfStudy;
+    // this.dateOfCompletion = dateOfCompletion;
   }
 }
 
 export class UnregisteredUserModel extends UnregisteredUser {
   // course: string;
-  completionDate: string;
+  // completionDate: string;
   // typeOfStudy: string;
   constructor(user: UnregisteredUser) {
-    super(user.name, user.surname, user.email, user.course, user.typeOfStudy);
-    const date: string = this.isDataString(user.dateOfCompletion)
-      ? (user.dateOfCompletion as string)
-      : _moment((user.dateOfCompletion as Moment).toISOString())['_i'];
-    const created_date: string = date
-      .split('T')[0]
-      .split('-')
-      .join('-');
-    const created_time: string = date.split('T')[1].split('.')[0];
-    this.completionDate = created_date + ' ' + created_time;
+    super(user.name, user.surname, user.email);
+    // const date: string = this.isDataString(user.dateOfCompletion)
+    //   ? (user.dateOfCompletion as string)
+    //   : _moment((user.dateOfCompletion as Moment).toISOString())['_i'];
+    // const created_date: string = date
+    //   .split('T')[0]
+    //   .split('-')
+    //   .join('-');
+    // const created_time: string = date.split('T')[1].split('.')[0];
+    // this.completionDate = created_date + ' ' + created_time;
   }
-  isDataString(data: string | Moment): data is string {
-    return typeof data === 'string';
-  }
+  // isDataString(data: string | Moment): data is string {
+  //   return typeof data === 'string';
+  // }
 }

@@ -30,17 +30,17 @@ export class AddUserTabComponent implements OnInit {
   name: AbstractControl;
   surname: AbstractControl;
   email: AbstractControl;
-  course: AbstractControl;
-  typeOfStudy: AbstractControl;
-  dateOfCompletion: AbstractControl;
+  // course: AbstractControl;
+  // typeOfStudy: AbstractControl;
+  // dateOfCompletion: AbstractControl;
 
   // error strs
   nameErrorStr: string;
   surnameErrorStr: string;
   emailErrorStr: string;
-  courseErrorStr: string;
-  typeOfStudyErrorStr: string;
-  dateOfCompletionErrorStr: string;
+  // courseErrorStr: string;
+  // typeOfStudyErrorStr: string;
+  // dateOfCompletionErrorStr: string;
 
   // tslint:disable-next-line:max-line-length
   emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -56,9 +56,9 @@ export class AddUserTabComponent implements OnInit {
 
   ngOnInit() {
     this.setForm();
-    console.log(this.data);
+    // console.log(this.data);
     if (this.data) {
-      console.log('dd');
+      // console.log('dd');
       this.setValues();
     }
   }
@@ -84,32 +84,33 @@ export class AddUserTabComponent implements OnInit {
           Validators.required,
           Validators.pattern(this.emailPattern)
         ])
-      ],
-      course: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(3)])
-      ],
-      typeOfStudy: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(3)])
-      ],
-      dateOfCompletion: ['', Validators.compose([Validators.required])]
+      ]//,
+      // course: [
+      //   '',
+      //   Validators.compose([Validators.required, Validators.minLength(3)])
+      // ],
+      // typeOfStudy: [
+      //   '',
+      //   Validators.compose([Validators.required, Validators.minLength(3)])
+      // ],
+      // dateOfCompletion: ['', Validators.compose([Validators.required])]
     });
     this.name = this.dialogForm.controls['name'];
     this.surname = this.dialogForm.controls['surname'];
     this.email = this.dialogForm.controls['email'];
-    this.course = this.dialogForm.controls['course'];
-    this.typeOfStudy = this.dialogForm.controls['typeOfStudy'];
-    this.dateOfCompletion = this.dialogForm.controls['dateOfCompletion'];
+    // this.course = this.dialogForm.controls['course'];
+    // this.typeOfStudy = this.dialogForm.controls['typeOfStudy'];
+    // this.dateOfCompletion = this.dialogForm.controls['dateOfCompletion'];
   }
   setValues() {
     this.name.setValue(this.data.name);
     this.surname.setValue(this.data.surname);
     this.email.setValue(this.data.email);
-    this.course.setValue(this.data.course);
-    this.typeOfStudy.setValue(this.data.typeOfStudy);
-    this.dateOfCompletion.setValue(this.data.dateOfCompletion);
+    // this.course.setValue(this.data.course);
+    // this.typeOfStudy.setValue(this.data.typeOfStudy);
+    // this.dateOfCompletion.setValue(this.data.dateOfCompletion);
   }
+  
   onSubmit(dialog) {
     this.submit.emit(dialog);
   }
@@ -129,15 +130,15 @@ export class AddUserTabComponent implements OnInit {
         case 'email':
           this.emailErrorStr = errorObj.errorStr;
           break;
-        case 'course':
-          this.courseErrorStr = errorObj.errorStr;
-          break;
-        case 'typeOfStudy':
-          this.typeOfStudyErrorStr = errorObj.errorStr;
-          break;
-        case 'dateOfCompletion':
-          this.dateOfCompletionErrorStr = errorObj.errorStr;
-          break;
+        // case 'course':
+        //   this.courseErrorStr = errorObj.errorStr;
+        //   break;
+        // case 'typeOfStudy':
+        //   this.typeOfStudyErrorStr = errorObj.errorStr;
+        //   break;
+        // case 'dateOfCompletion':
+        //   this.dateOfCompletionErrorStr = errorObj.errorStr;
+          // break;
       }
       return true;
     }

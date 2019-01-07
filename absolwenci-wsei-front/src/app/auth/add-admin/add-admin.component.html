@@ -32,6 +32,23 @@
         </mat-form-field>
       </div>
 
+      <div class="group half">
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password" id="password" formControlName="password" (focus)="onFocus(password)"
+            (blur)="onBlur(password)" (keydown)="clearPasswordConfirm()">
+          <mat-error *ngIf="inputError(password)">{{passwordErrorStr}}</mat-error>
+        </mat-form-field>
+      </div>
+      <!-- </div> -->
+      <!-- <div class="field"> -->
+      <div class="group half">
+        <mat-form-field>
+          <input matInput placeholder="Confirm password" type="password" id="passwordConfirm" formControlName="passwordConfirm"
+            (focus)="onFocus(passwordConfirm)" (blur)="onBlur(passwordConfirm)">
+          <mat-error *ngIf="passwordNoMatch(reg) || inputError(passwordConfirm)">{{passwordConfirmErrorStr}}</mat-error>
+        </mat-form-field>
+      </div>
+
       <div id="button-container">
         <button class="white" mat-raised-button color="accent" type="submit">Dodaj admina</button>
       </div>
