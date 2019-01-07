@@ -369,6 +369,7 @@
         <e p="chart.js" t="IncludeRecursive" />
         <e p="codelyzer" t="IncludeRecursive" />
         <e p="core-js" t="IncludeRecursive" />
+        <e p="file-saver" t="IncludeRecursive" />
         <e p="jasmine-core" t="IncludeRecursive" />
         <e p="jasmine-spec-reporter" t="IncludeRecursive" />
         <e p="karma" t="IncludeRecursive" />
