@@ -29,6 +29,8 @@
         <e p="Migrations" t="Include">
           <e p="20181019081524_xyz.cs" t="Include" />
           <e p="20181019081524_xyz.Designer.cs" t="Include" />
+          <e p="20190107105408_master.cs" t="Include" />
+          <e p="20190107105408_master.Designer.cs" t="Include" />
           <e p="CareerMonitoringContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="nlog.config" t="Include" />
@@ -43,6 +45,8 @@
         <e p="Startup.cs" t="Include" />
         <e p="wwwroot" t="Include">
           <e p="reports" t="Include">
+            <e p="1.pdf" t="Include" />
+            <e p="1.txt" t="Include" />
             <e p="2.csv" t="Include" />
             <e p="2.pdf" t="Include" />
             <e p="2.txt" t="Include" />

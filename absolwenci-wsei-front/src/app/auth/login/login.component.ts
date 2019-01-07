@@ -98,6 +98,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.email.markAsTouched();
       this.password.markAsTouched();
     } else {
+      console.log(this.email.value,this.password.value)
       this.loading = true;
       this.authenticationService
         // login with credentials from form

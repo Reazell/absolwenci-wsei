@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   passwordConfirm: AbstractControl;
   profileName: AbstractControl;
   // albumID: AbstractControl;
-  phoneNum: AbstractControl;
+  // phoneNum: AbstractControl;
   // companyName: AbstractControl;
   // location: AbstractControl;
   // companyDescription: AbstractControl;
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   passwordErrorStr: string;
   passwordConfirmErrorStr: string;
   // albumIDErrorStr: string;
-  phoneNumErrorStr: string;
+  // phoneNumErrorStr: string;
   // companyNameErrorStr: string;
   // locationErrorStr: string;
   // companyDescriptionErrorStr: string;
@@ -99,6 +99,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     this.http.get(this.config.apiUrl+"/auth/master").subscribe((data: Boolean)=>{
       this.masterExists = data;
+      if(data)
+        this.router.navigateByUrl("/auth/login", {queryParams:{masterExists:false}});
     });
 
     // form declaration
@@ -137,7 +139,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       ],
       profileName: ['Master', Validators.required],
       // albumID: ['', Validators.required],
-      phoneNum: ['', Validators.required]//,
+      // phoneNum: ['', Validators.required]//,
       // companyName: ['', Validators.required],
       // location: [''],
       // companyDescription: ['']
@@ -151,7 +153,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.passwordConfirm = this.regForm.controls['passwordConfirm'];
     this.profileName = this.regForm.controls['profileName'];
     // this.albumID = this.regForm.controls['albumID'];
-    this.phoneNum = this.regForm.controls['phoneNum'];
+    // this.phoneNum = this.regForm.controls['phoneNum'];
     // this.companyName = this.regForm.controls['companyName'];
     // this.location = this.regForm.controls['location'];
     // this.companyDescription = this.regForm.controls['companyDescription'];
@@ -284,10 +286,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.user.email = this.email.value;
     this.user.password = this.password.value;
     this.user.profileName = this.profileName.value;
-    const phoneNumString: string = this.phoneNum.value;
-    this.user.phoneNum = phoneNumString.startsWith('+')
-      ? phoneNumString
-      : '+48' + phoneNumString;
+    // const phoneNumString: string = this.phoneNum.value;
+    // this.user.phoneNum = phoneNumString.startsWith('+')
+    //   ? phoneNumString
+    //   : '+48' + phoneNumString;
   }
 
   setAllAsTouched(): void {
@@ -298,7 +300,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.passwordConfirm.markAsTouched();
     // this.albumID.markAsTouched();
     // this.companyName.markAsTouched();
-    this.phoneNum.markAsTouched();
+    // this.phoneNum.markAsTouched();
   }
   setAllAsUntouched(): void {
     this.name.markAsUntouched();
@@ -308,7 +310,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.passwordConfirm.markAsUntouched();
     // this.albumID.markAsUntouched();
     // this.companyName.markAsUntouched();
-    this.phoneNum.markAsUntouched();
+    // this.phoneNum.markAsUntouched();
   }
 
   onFocus(control: AbstractControl): void {
@@ -366,9 +368,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
         // case 'albumID':
         //   this.albumIDErrorStr = errorObj.errorStr;
         //   break;
-        case 'phone number':
-          this.phoneNumErrorStr = errorObj.errorStr;
-          break;
+        // case 'phone number':
+        //   this.phoneNumErrorStr = errorObj.errorStr;
+        //   break;
       }
       return true;
     }

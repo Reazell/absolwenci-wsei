@@ -442,6 +442,9 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate
                                         margin-top:50px;
                                         position:relative;
                                         page-break-inside: avoid;
+                                    } 
+                                    .question h2{
+                                        width:700px;
                                     }
                                     .odp{
                                         position:absolute;
@@ -453,7 +456,6 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate
                                         height:20px;
                                         background-color:#c2e697;
                                         position:relative;
-                                        margin-top:-20px;
                                     }
                                     .textAnswer{
                                         background-color:#8bc34a;
@@ -497,6 +499,8 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate
 
             foreach (var questionReport in surveyReport.QuestionsReports)
             {
+                
+                
                 sb.Append(@"<div class='question'>
                                 <h2>" + questionReport.Content + @"</h2><span class='odp'>Liczba odpowiedzi: "+questionReport.AnswersNumber+@"</span>");
 
@@ -509,8 +513,10 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate
                             foreach (var data in reportDataSet._data)
                             {
                                 if (data != "")
+                                {
                                     sb.Append(@"<div class='textAnswerHead'></div>");
                                     sb.Append(@"<div class='textAnswer'>" + data + @"</div>");
+                                }
                             }
                         }
                         break;

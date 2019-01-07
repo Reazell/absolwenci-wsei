@@ -34,7 +34,7 @@ namespace CareerMonitoring.Api.Controllers
                 return BadRequest(ModelState);
             try
             {
-                await _accountEmailFactory.SendEmailToAllAsync(command.Subject, command.Body);
+                //await _accountEmailFactory.SendEmailToAllAsync(command.Subject, command.Body);
                 await _accountEmailFactory.SendEmailToAllUnregisteredAsync(command.Subject, command.Body);
                 return StatusCode(201);
             }

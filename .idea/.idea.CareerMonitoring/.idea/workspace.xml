@@ -4,27 +4,25 @@
     <list default="true" id="f826742a-8e1e-4631-8f7f-0f0f0362e87e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyReportController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyReportController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/add-admin/add-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/add-admin/add-admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/add-admin/add-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/add-admin/add-admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ExportFileAggregate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ExportFileAggregate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/register/register.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/register/register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/services/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/auth/services/account.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/dashboard-views/users-dashboard/users-content/add-user-dialog/add-user-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/dashboard-views/users-dashboard/users-content/add-user-dialog/add-user-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/dashboard-views/users-dashboard/users-content/add-user-dialog/add-user-tab/add-user-tab.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/dashboard-views/users-dashboard/users-content/add-user-dialog/add-user-tab/add-user-tab.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/dashboard-views/users-dashboard/users-content/add-user-dialog/add-user-tab/add-user-tab.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/dashboard-views/users-dashboard/users-content/add-user-dialog/add-user-tab/add-user-tab.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/dashboard-views/users-dashboard/users-content/add-user-dialog/add-user-tab/add-user-tab.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/dashboard-views/users-dashboard/users-content/add-user-dialog/add-user-tab/add-user-tab.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/survey-container/services/user.services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/survey-container/services/user.services.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/survey-container/survey-result/survey-result.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/main-view/admin-view/survey-container/survey-result/survey-result.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/app/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/src/styles.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +130,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="291" />
+          <entry key="cs" value="295" />
           <entry key="json" value="7" />
           <entry key="ts" value="1" />
           <entry key="txt" value="1" />
@@ -140,7 +138,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="291" />
+          <entry key="C#" value="295" />
           <entry key="JSON" value="7" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="TypeScript" value="1" />
@@ -148,16 +146,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="7580" />
+          <entry key="cs" value="7657" />
           <entry key="json" value="16" />
-          <entry key="txt" value="66" />
+          <entry key="txt" value="78" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="7580" />
+          <entry key="C#" value="7657" />
           <entry key="JSON" value="16" />
-          <entry key="PLAIN_TEXT" value="66" />
+          <entry key="PLAIN_TEXT" value="78" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -233,22 +231,198 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+            <state relative-caret-position="480">
+              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
               <folding>
-                <marker date="1546847475402" expanded="false" signature="6:301" ph="..." />
-                <marker date="1546847475402" expanded="true" signature="345:2601" ph="{...}" />
-                <marker date="1546847475402" expanded="true" signature="435:2599" ph="{...}" />
-                <marker date="1546847475402" expanded="true" signature="909:1139" ph="{...}" />
-                <marker date="1546847475402" expanded="true" signature="1257:1753" ph="{...}" />
-                <marker date="1546847475402" expanded="true" signature="1367:1637" ph="{...}" />
-                <marker date="1546847475402" expanded="true" signature="1669:1743" ph="{...}" />
-                <marker date="1546847475402" expanded="true" signature="1888:2593" ph="{...}" />
-                <marker date="1546847475402" expanded="true" signature="1998:2477" ph="{...}" />
-                <marker date="1546847475402" expanded="true" signature="2509:2583" ph="{...}" />
+                <marker date="1546857297454" expanded="false" signature="6:301" ph="..." />
+                <marker date="1546857297454" expanded="true" signature="345:2603" ph="{...}" />
+                <marker date="1546857297454" expanded="true" signature="435:2601" ph="{...}" />
+                <marker date="1546857297454" expanded="true" signature="909:1139" ph="{...}" />
+                <marker date="1546857297454" expanded="true" signature="1257:1755" ph="{...}" />
+                <marker date="1546857297454" expanded="true" signature="1367:1639" ph="{...}" />
+                <marker date="1546857297454" expanded="true" signature="1671:1745" ph="{...}" />
+                <marker date="1546857297454" expanded="true" signature="1890:2595" ph="{...}" />
+                <marker date="1546857297454" expanded="true" signature="2000:2479" ph="{...}" />
+                <marker date="1546857297454" expanded="true" signature="2511:2585" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/ImportFileController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16">
+              <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+              <folding>
+                <marker date="1546840009562" expanded="false" signature="6:596" ph="..." />
+                <marker date="1546840009562" expanded="true" signature="641:4213" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="737:4211" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="1021:1148" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="1264:1759" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="1367:1666" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="1687:1749" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="1908:2273" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="2011:2180" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="2201:2263" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="2383:2731" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="2486:2638" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="2659:2721" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="2876:3236" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="2979:3143" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="3164:3226" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="3399:3763" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="3502:3670" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="3691:3753" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="3886:4204" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="3989:4111" ph="{...}" />
+                <marker date="1546840009562" expanded="true" signature="4132:4194" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyReportController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+              <folding>
+                <marker date="1546865388455" expanded="false" signature="6:319" ph="..." />
+                <marker date="1546865388455" expanded="true" signature="364:2349" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="463:2347" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="749:878" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="999:1274" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="1016:1171" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="1202:1264" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="1435:2341" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="1452:2238" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="1594:2224" ph="{...}" />
+                <marker date="1546865388455" expanded="true" signature="2269:2331" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ExportFileAggregate.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="457" column="58" selection-start-line="457" selection-start-column="58" selection-end-line="457" selection-end-column="58" />
+              <folding>
+                <marker date="1546865860346" expanded="true" signature="6:641" ph="..." />
+                <marker date="1546865860346" expanded="true" signature="705:27424" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="767:27422" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="977:1087" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="1177:5918" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="1236:1306" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="1429:1494" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="2081:5434" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="2347:5403" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="2525:2842" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="2621:2816" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="3195:3499" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="3301:3473" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="4057:4844" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="4160:4524" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="4274:4494" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="4557:4785" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="4923:5354" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="5108:5259" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="5526:5682" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="5844:5907" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="6010:11945" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="6068:6138" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="6261:6326" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="6650:11721" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="7420:11641" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="7922:11602" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="8117:8607" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="8254:8577" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="8988:9320" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="9102:9290" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="9403:9635" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="9943:10794" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="10054:10446" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="10176:10412" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="10483:10727" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="10870:11025" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="11136:11549" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="11343:11519" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="11870:11934" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="12035:17140" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="12094:12164" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="12287:12352" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="12908:16656" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="13291:16625" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="13469:13779" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="13565:13753" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="14132:14436" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="14238:14410" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="15020:15807" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="15123:15487" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="15237:15457" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="15520:15748" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="15890:16006" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="16150:16576" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="16330:16481" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="16748:16904" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="17066:17129" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="17230:19099" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="17288:17358" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="17481:17546" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="17812:18122" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="18190:18698" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="18760:18869" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="19025:19088" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="19169:27407" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="22675:27254" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="22975:27185" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="23153:23632" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="23249:23606" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="23327:23576" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="24027:24331" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="24133:24305" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="24508:24922" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="25281:26068" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="25384:25748" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="25498:25718" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="25781:26009" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="26277:26396" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="26545:27063" ph="{...}" />
+                <marker date="1546865860346" expanded="true" signature="26800:26987" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Account/Account.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1546840009609" expanded="false" signature="6:84" ph="..." />
+                <marker date="1546840009609" expanded="true" signature="135:3360" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="171:3358" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="1126:1456" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="1496:1534" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="1578:1614" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="1663:1705" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="1750:1788" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="1845:1895" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="1964:2160" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="2009:2150" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="2192:2330" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="2228:2320" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="2388:2486" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="2546:2789" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="2626:2779" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="2870:2932" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="2998:3120" ph="{...}" />
+                <marker date="1546840009609" expanded="true" signature="3222:3352" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -427,15 +601,15 @@
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyTemplateController.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/Interfaces/IExportFileAggregate.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Startup.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ExportFileAggregate.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyReportController.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/appsettings.json" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/MasterRepository.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/Interfaces/IMasterRepository.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/IMasterService.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/MasterService.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/AuthController.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyReportController.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ExportFileAggregate.cs" />
       </list>
     </option>
   </component>
@@ -487,20 +661,25 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="CareerMonitoring.Core" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="CareerMonitoring.Core" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Domains" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="CareerMonitoring.Core" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Domains" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Account" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
               <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Commands" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Commands" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="ImportFile" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -514,12 +693,6 @@
               <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Extensions" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Aggregate" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Services" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -551,7 +724,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Compound.CareerMonitoring">
+  <component name="RunManager" selected=".NET Project.Back">
     <configuration name="CareerMonitoring" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
       <toRun type="DotNetProject" name="Back" />
       <toRun type="DotNetProject" name="Front" />
@@ -671,7 +844,7 @@
       <workItem from="1546559948201" duration="27843000" />
       <workItem from="1546736900237" duration="1620000" />
       <workItem from="1546835564410" duration="2538000" />
-      <workItem from="1546840020530" duration="11124000" />
+      <workItem from="1546840020530" duration="17646000" />
     </task>
     <task id="LOCAL-00001" summary="profile edition data extraction">
       <created>1543462774769</created>
@@ -743,11 +916,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546841923464</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="unregistered">
+      <created>1546856974728</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1546856974728</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134432000" />
+    <option name="totallyTimeSpent" value="140954000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -760,14 +940,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31823027" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31823027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2635575" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2635575" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -836,7 +1015,8 @@
     <MESSAGE value="pdf export" />
     <MESSAGE value="pdf export clean" />
     <MESSAGE value="small fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="small fixes" />
+    <MESSAGE value="unregistered" />
+    <option name="LAST_COMMIT_MESSAGE" value="unregistered" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -849,9 +1029,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Account/ChangePassword.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/ImportFile/UnregisteredUser.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1003,13 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
           <caret line="91" column="97" selection-start-line="91" selection-start-column="97" selection-end-line="91" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyReportController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1166,37 +1336,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/ImportFileController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-640">
-          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-          <folding>
-            <marker date="1546840009562" expanded="false" signature="6:596" ph="..." />
-            <marker date="1546840009562" expanded="true" signature="641:4213" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="737:4211" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="1021:1148" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="1264:1759" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="1367:1666" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="1687:1749" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="1908:2273" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="2011:2180" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="2201:2263" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="2383:2731" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="2486:2638" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="2659:2721" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="2876:3236" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="2979:3143" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="3164:3226" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="3399:3763" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="3502:3670" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="3691:3753" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="3886:4204" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="3989:4111" ph="{...}" />
-            <marker date="1546840009562" expanded="true" signature="4132:4194" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1228,95 +1367,6 @@
             <marker date="1546840009560" expanded="true" signature="1424:1617" ph="{...}" />
             <marker date="1546840009560" expanded="true" signature="1556:1601" ph="{...}" />
             <marker date="1546840009560" expanded="true" signature="1638:1700" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ExportFileAggregate.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding>
-            <marker date="1546840009694" expanded="false" signature="6:641" ph="..." />
-            <marker date="1546840009694" expanded="true" signature="705:27238" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="767:27236" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="977:1087" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="1177:5918" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="1236:1306" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="1429:1494" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="2081:5434" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="2347:5403" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="2525:2842" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="2621:2816" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="3195:3499" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="3301:3473" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="4057:4844" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="4160:4524" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="4274:4494" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="4557:4785" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="4923:5354" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="5108:5259" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="5526:5682" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="5844:5907" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="6010:11945" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="6068:6138" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="6261:6326" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="6650:11721" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="7420:11641" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="7922:11602" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="8117:8607" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="8254:8577" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="8988:9320" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="9102:9290" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="9403:9635" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="9943:10794" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="10054:10446" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="10176:10412" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="10483:10727" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="10870:11025" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="11136:11549" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="11343:11519" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="11870:11934" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="12035:17140" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="12094:12164" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="12287:12352" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="12908:16656" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="13291:16625" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="13469:13779" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="13565:13753" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="14132:14436" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="14238:14410" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="15020:15807" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="15123:15487" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="15237:15457" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="15520:15748" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="15890:16006" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="16150:16576" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="16330:16481" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="16748:16904" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="17066:17129" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="17230:19099" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="17288:17358" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="17481:17546" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="17812:18122" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="18190:18698" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="18760:18869" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="19025:19088" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="19169:27221" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="22591:27068" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="22857:26999" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="23035:23446" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="23131:23420" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="23841:24145" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="23947:24119" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="24322:24736" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="25095:25882" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="25198:25562" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="25312:25532" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="25595:25823" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="26091:26210" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="26359:26877" ph="{...}" />
-            <marker date="1546840009694" expanded="true" signature="26614:26801" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1408,21 +1458,189 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Account/Account.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1546840009609" expanded="false" signature="6:84" ph="..." />
+            <marker date="1546840009609" expanded="true" signature="135:3360" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="171:3358" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="1126:1456" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="1496:1534" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="1578:1614" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="1663:1705" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="1750:1788" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="1845:1895" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="1964:2160" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="2009:2150" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="2192:2330" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="2228:2320" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="2388:2486" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="2546:2789" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="2626:2779" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="2870:2932" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="2998:3120" ph="{...}" />
+            <marker date="1546840009609" expanded="true" signature="3222:3352" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        <state relative-caret-position="480">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
           <folding>
-            <marker date="1546847475402" expanded="false" signature="6:301" ph="..." />
-            <marker date="1546847475402" expanded="true" signature="345:2601" ph="{...}" />
-            <marker date="1546847475402" expanded="true" signature="435:2599" ph="{...}" />
-            <marker date="1546847475402" expanded="true" signature="909:1139" ph="{...}" />
-            <marker date="1546847475402" expanded="true" signature="1257:1753" ph="{...}" />
-            <marker date="1546847475402" expanded="true" signature="1367:1637" ph="{...}" />
-            <marker date="1546847475402" expanded="true" signature="1669:1743" ph="{...}" />
-            <marker date="1546847475402" expanded="true" signature="1888:2593" ph="{...}" />
-            <marker date="1546847475402" expanded="true" signature="1998:2477" ph="{...}" />
-            <marker date="1546847475402" expanded="true" signature="2509:2583" ph="{...}" />
+            <marker date="1546857297454" expanded="false" signature="6:301" ph="..." />
+            <marker date="1546857297454" expanded="true" signature="345:2603" ph="{...}" />
+            <marker date="1546857297454" expanded="true" signature="435:2601" ph="{...}" />
+            <marker date="1546857297454" expanded="true" signature="909:1139" ph="{...}" />
+            <marker date="1546857297454" expanded="true" signature="1257:1755" ph="{...}" />
+            <marker date="1546857297454" expanded="true" signature="1367:1639" ph="{...}" />
+            <marker date="1546857297454" expanded="true" signature="1671:1745" ph="{...}" />
+            <marker date="1546857297454" expanded="true" signature="1890:2595" ph="{...}" />
+            <marker date="1546857297454" expanded="true" signature="2000:2479" ph="{...}" />
+            <marker date="1546857297454" expanded="true" signature="2511:2585" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/ImportFileController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+          <folding>
+            <marker date="1546840009562" expanded="false" signature="6:596" ph="..." />
+            <marker date="1546840009562" expanded="true" signature="641:4213" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="737:4211" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="1021:1148" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="1264:1759" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="1367:1666" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="1687:1749" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="1908:2273" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="2011:2180" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="2201:2263" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="2383:2731" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="2486:2638" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="2659:2721" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="2876:3236" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="2979:3143" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="3164:3226" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="3399:3763" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="3502:3670" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="3691:3753" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="3886:4204" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="3989:4111" ph="{...}" />
+            <marker date="1546840009562" expanded="true" signature="4132:4194" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyReportController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <marker date="1546865388455" expanded="false" signature="6:319" ph="..." />
+            <marker date="1546865388455" expanded="true" signature="364:2349" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="463:2347" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="749:878" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="999:1274" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="1016:1171" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="1202:1264" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="1435:2341" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="1452:2238" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="1594:2224" ph="{...}" />
+            <marker date="1546865388455" expanded="true" signature="2269:2331" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ExportFileAggregate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="457" column="58" selection-start-line="457" selection-start-column="58" selection-end-line="457" selection-end-column="58" />
+          <folding>
+            <marker date="1546865860346" expanded="true" signature="6:641" ph="..." />
+            <marker date="1546865860346" expanded="true" signature="705:27424" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="767:27422" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="977:1087" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="1177:5918" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="1236:1306" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="1429:1494" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="2081:5434" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="2347:5403" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="2525:2842" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="2621:2816" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="3195:3499" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="3301:3473" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="4057:4844" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="4160:4524" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="4274:4494" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="4557:4785" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="4923:5354" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="5108:5259" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="5526:5682" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="5844:5907" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="6010:11945" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="6068:6138" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="6261:6326" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="6650:11721" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="7420:11641" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="7922:11602" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="8117:8607" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="8254:8577" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="8988:9320" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="9102:9290" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="9403:9635" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="9943:10794" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="10054:10446" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="10176:10412" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="10483:10727" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="10870:11025" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="11136:11549" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="11343:11519" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="11870:11934" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="12035:17140" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="12094:12164" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="12287:12352" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="12908:16656" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="13291:16625" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="13469:13779" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="13565:13753" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="14132:14436" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="14238:14410" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="15020:15807" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="15123:15487" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="15237:15457" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="15520:15748" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="15890:16006" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="16150:16576" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="16330:16481" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="16748:16904" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="17066:17129" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="17230:19099" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="17288:17358" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="17481:17546" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="17812:18122" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="18190:18698" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="18760:18869" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="19025:19088" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="19169:27407" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="22675:27254" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="22975:27185" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="23153:23632" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="23249:23606" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="23327:23576" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="24027:24331" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="24133:24305" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="24508:24922" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="25281:26068" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="25384:25748" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="25498:25718" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="25781:26009" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="26277:26396" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="26545:27063" ph="{...}" />
+            <marker date="1546865860346" expanded="true" signature="26800:26987" ph="{...}" />
           </folding>
         </state>
       </provider>
