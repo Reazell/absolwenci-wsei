@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f826742a-8e1e-4631-8f7f-0f0f0362e87e" name="Default Changelist" comment="users working">
+    <list default="true" id="f826742a-8e1e-4631-8f7f-0f0f0362e87e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/20190111091358_asd.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/20190111091358_asd.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/CareerMonitoringContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/CareerMonitoringContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveysAnswers/SurveyAnswer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveysAnswers/SurveyAnswer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToUpdate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/SurveyAnswer/SurveyAnswerToAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/SurveyAnswer/SurveyAnswerToAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyAnswerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyAnswerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyReportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyReportService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyReportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyReportService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -152,22 +157,23 @@
         <counts>
           <entry key="cs" value="8293" />
           <entry key="json" value="16" />
-          <entry key="txt" value="98" />
+          <entry key="txt" value="114" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="C#" value="8293" />
           <entry key="JSON" value="16" />
-          <entry key="PLAIN_TEXT" value="98" />
+          <entry key="PLAIN_TEXT" value="114" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
+          <entry key="git.branch.checkout.local" value="1" />
           <entry key="git.branch.checkout.remote" value="1" />
           <entry key="git.branch.compare" value="2" />
-          <entry key="git.branch.create.new" value="1" />
-          <entry key="git.branch.merge" value="1" />
+          <entry key="git.branch.create.new" value="2" />
+          <entry key="git.branch.merge" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -214,7 +220,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
+            <state relative-caret-position="625">
               <caret line="55" column="97" selection-start-line="55" selection-start-column="97" selection-end-line="55" selection-end-column="97" />
               <folding>
                 <marker date="1547212007142" expanded="false" signature="6:301" ph="..." />
@@ -250,7 +256,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TZ01" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
   </component>
@@ -295,7 +301,6 @@
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/FieldDataRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/FieldDataAnswerRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/ChoiceOptionAnswerRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/20190111091358_asd.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Account/AccountRestoringPassword.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Account/AccountActivation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Account/Account.cs" root0="FORCE_HIGHLIGHTING" />
@@ -438,6 +443,7 @@
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -704,7 +710,7 @@
       <workItem from="1546840020530" duration="18596000" />
       <workItem from="1547197045342" duration="15000" />
       <workItem from="1547197470471" duration="2538000" />
-      <workItem from="1547210154957" duration="1878000" />
+      <workItem from="1547210154957" duration="2887000" />
     </task>
     <task id="LOCAL-00001" summary="profile edition data extraction">
       <created>1543462774769</created>
@@ -797,11 +803,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547198633177</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="description back">
+      <created>1547212095951</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1547212095951</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146335000" />
+    <option name="totallyTimeSpent" value="147344000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -816,12 +829,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32942432" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32942432" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2635575" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2635575" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -893,7 +906,8 @@
     <MESSAGE value="unregistered" />
     <MESSAGE value="pdf fix" />
     <MESSAGE value="users working" />
-    <option name="LAST_COMMIT_MESSAGE" value="users working" />
+    <MESSAGE value="description back" />
+    <option name="LAST_COMMIT_MESSAGE" value="description back" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1454,7 +1468,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
+        <state relative-caret-position="625">
           <caret line="55" column="97" selection-start-line="55" selection-start-column="97" selection-end-line="55" selection-end-column="97" />
           <folding>
             <marker date="1547212007142" expanded="false" signature="6:301" ph="..." />
