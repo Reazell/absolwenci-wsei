@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Migrations" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +36,26 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CareerMonitoring.Infrastructure\CareerMonitoring.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\reports\1.pdf" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\1.txt" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\2.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\2.pdf" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\2.txt" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\2.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\6.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\6.txt" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\6.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\7.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\7.pdf" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\7.txt" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\7.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\9.csv" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\9.pdf" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\9.txt" />
+    <_ContentIncludedByDefault Remove="wwwroot\reports\9.xlsx" />
   </ItemGroup>
 
 </Project>
