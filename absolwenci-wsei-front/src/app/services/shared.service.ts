@@ -12,9 +12,7 @@ export class SharedService {
   // showing elements Subjects
   showBack: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showToggle: Subject<boolean> = new Subject<boolean>();
-  showSurveyDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  showSurveyDialog: Subject<boolean> = new Subject<boolean>();
   showCreator: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showSend: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showAdminMenu: Subject<boolean> = new Subject<boolean>();
