@@ -61,6 +61,7 @@ export class SurveyCreatorComponent
   surveyIDSub: Subscription = new Subscription();
   showSurveyDialogSub: Subscription = new Subscription();
   viewChildrenSub: Subscription = new Subscription();
+  sthSub: Subscription = new Subscription();
 
   //
   private updateToApi = new Subject();
@@ -153,25 +154,27 @@ export class SurveyCreatorComponent
     this.sharedService.showCreatorButton(true);
   }
   getSurvey(): void {
-    this.activatedRoute.data.map(data => data.cres).subscribe(
-      (res: SurveyTemplate) => {
-        this.surveyService.isCreatorLoading(false);
-        if (res) {
-          console.log(res);
-          this.id = res.id;
-          if (res.questionTemplates.length === 0) {
-            this.createQuestionData();
-            this.updateSurveySubject();
-          } else if (res.questionTemplates.length > 0) {
-            this.createQuestionData(res);
+    this.activatedRoute.data
+      .map(data => data.cres)
+      .subscribe(
+        (res: SurveyTemplate) => {
+          this.surveyService.isCreatorLoading(false);
+          if (res) {
+            console.log(res);
+            this.id = res.id;
+            if (res.questionTemplates.length === 0) {
+              this.createQuestionData();
+              this.updateSurveySubject();
+            } else if (res.questionTemplates.length > 0) {
+              this.createQuestionData(res);
+            }
           }
+        },
+        error => {
+          console.log(error);
+          this.surveyService.isCreatorLoading(false);
         }
-      },
-      error => {
-        console.log(error);
-        this.surveyService.isCreatorLoading(false);
-      }
-    );
+      );
   }
 
   showBackButton(): void {
@@ -185,14 +188,14 @@ export class SurveyCreatorComponent
   showSurveyDialog(): void {
     this.showSurveyDialogSub = this.sharedService.showSurveyDialog.subscribe(
       data => {
-        if (data === true) {
+        if (data) {
           this.openSendSurveyDialog();
         }
       }
     );
   }
   openSendSurveyDialog(/*question: FormGroup, arrayName: string*/): void {
-    this.openSurveyDialog().subscribe(res => {
+    this.sthSub = this.openSurveyDialog().subscribe(res => {
       if (res) {
         this.sendSurveyToAll();
       }
@@ -805,6 +808,7 @@ export class SurveyCreatorComponent
   ngOnDestroy(): void {
     this.showSurveySub.unsubscribe();
     this.showSurveyDialogSub.unsubscribe();
+    this.sthSub.unsubscribe();
     this.sharedService.showCreatorButton(false);
     this.sharedService.showBackButton(false);
   }
