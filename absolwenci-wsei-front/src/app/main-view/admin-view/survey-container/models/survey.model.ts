@@ -3,6 +3,7 @@ class Survey {
   title: string;
   id: number;
   createdAt: string;
+  description: string;
   constructor(title: string, id: number, createdAt?: string) {
     this.title = title;
     this.id = id;

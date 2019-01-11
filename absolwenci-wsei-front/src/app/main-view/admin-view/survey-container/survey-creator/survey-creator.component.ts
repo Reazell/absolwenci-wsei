@@ -238,19 +238,19 @@ export class SurveyCreatorComponent
   updateSurveyObs() {
     const object: Update = {
       Title: this.invoiceForm.getRawValue().title,
+      Description: this.invoiceForm.getRawValue().description,
       QuestionTemplates: this.invoiceForm.getRawValue().questionTemplates,
       id: this.id
     };
     // console.log(JSON.stringify(object));
     // console.log('update');
-    // console.log(object);
+    //console.log(object);
     return this.surveyService.updateSurvey(object);
   }
   updateSurvey() {
     this.updateSurveyObs().subscribe(
       data => {
-        // console.log(data);
-      },
+       },
       error => {
         console.log(error);
       }
@@ -341,11 +341,13 @@ export class SurveyCreatorComponent
     if (form) {
       group = {
         title: form.title,
+        description: form.description,
         questionTemplates: this.fb.array([])
       };
     } else {
       group = {
         title: 'Formularz bez nazwy',
+        description: 'Brak opisu',
         questionTemplates: this.fb.array([])
       };
     }
