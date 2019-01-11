@@ -6,6 +6,7 @@ namespace CareerMonitoring.Infrastructure.Commands.Survey
     public class SurveyToAdd
     {
         public string Title { get; set; }
+        public string description { get; set; }
         public ICollection<QuestionToAdd> Questions { get; set; }
     }
 }
