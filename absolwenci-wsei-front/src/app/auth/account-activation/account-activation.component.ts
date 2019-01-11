@@ -16,6 +16,7 @@ export class AccountActivationComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.authenticationService.activateAccount(this.token).subscribe(() => {
       this.router.navigateByUrl('auth/login');
     },

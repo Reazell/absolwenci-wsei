@@ -69,10 +69,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     // reset login status
     this.authenticationService.logout();
 
-    
+
     this.http.get(this.config.apiUrl+"/auth/master").subscribe((data)=>{
-      if(!data)
-        this.router.navigateByUrl("/auth/register", {queryParams:{masterExists:false}});
+      if(!data) this.router.navigateByUrl("/auth/register", {queryParams:{masterExists:false}});
     });
 
     // form declaration
@@ -105,7 +104,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         .login(this.email.value, this.password.value)
         .subscribe(
           data => {
-            console.log(data);
+            //console.log(data);
             this.accountService.isLoggedNext(true);
             // if login is successful, redirect to app
             this.routeSwitch(data.role);
