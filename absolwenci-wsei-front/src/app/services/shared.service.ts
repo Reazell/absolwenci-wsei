@@ -23,6 +23,7 @@ export class SharedService {
     false
   );
   savedTitle: string;
+  savedDescription: string;
   // input error variable
   controlArray: string[];
 
@@ -31,6 +32,10 @@ export class SharedService {
   saveTitle(title: string): void {
     this.savedTitle = title;
   }
+  saveDescription(description: string): void {
+    this.savedDescription = description;
+  }
+
   // button clicked actions
   isSurveySendingLoading(x: boolean): void {
     this.surveySendingLoading.next(x);
