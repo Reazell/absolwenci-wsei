@@ -16,7 +16,7 @@ namespace CareerMonitoring.Core.Domains.SurveyTemplates
 
         public SurveyTemplate (string title, string description) {
             SetTitle(title);
-            
+            SetDescription(description);
             CreatedAt = DateTime.UtcNow;
         }
 
@@ -32,8 +32,9 @@ namespace CareerMonitoring.Core.Domains.SurveyTemplates
             QuestionTemplates.Add (questionTemplate);
         }
 
-        public void Update (string title) {
+        public void Update (string title, string description) {
             SetTitle(title);
+            SetDescription(description);
             CreatedAt = DateTime.UtcNow;
         }
     }

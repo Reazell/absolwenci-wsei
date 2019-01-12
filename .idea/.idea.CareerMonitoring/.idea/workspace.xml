@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f826742a-8e1e-4631-8f7f-0f0f0362e87e" name="Default Changelist" comment="pdf fix">
+    <list default="true" id="f826742a-8e1e-4631-8f7f-0f0f0362e87e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyTemplateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyTemplateController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/20190111091358_asd.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/20190111091358_asd.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/CareerMonitoringContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Migrations/CareerMonitoringContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/CareerMonitoring.Api.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveysAnswers/SurveyAnswer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveysAnswers/SurveyAnswer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/CareerMonitoring.Core.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/CareerMonitoring.Core.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/CareerMonitoring.Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/CareerMonitoring.Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToUpdate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/SurveyAnswer/SurveyAnswerToAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/SurveyAnswer/SurveyAnswerToAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/SurveyReport/CreateSurveyReport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/SurveyReport/CreateSurveyReport.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyAnswerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyAnswerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyReportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyReportService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/obj/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyReportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyReportService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/CareerMonitoring.Infrastructure.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/CareerMonitoring.Infrastructure.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/CareerMonitoring.Infrastructure.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/CareerMonitoring.Infrastructure.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/CareerMonitoring.Tests.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/CareerMonitoring.Tests.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/CareerMonitoring.Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/CareerMonitoring.Tests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/Debug/netcoreapp2.0/CareerMonitoring.Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/Debug/netcoreapp2.0/CareerMonitoring.Tests.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Tests/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-front/package-lock.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -234,269 +230,50 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="25" />
+          <entry key="cs" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="25" />
+          <entry key="C#" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="415" />
+          <entry key="cs" value="524" />
+          <entry key="txt" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="415" />
+          <entry key="C#" value="524" />
+          <entry key="PLAIN_TEXT" value="19" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
+          <entry key="git.branch.merge" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyAnswerService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="75" />
-              <folding>
-                <marker date="1547312367932" expanded="false" signature="6:176" ph="..." />
-                <marker date="1547312367932" expanded="true" signature="240:1182" ph="{...}" />
-                <marker date="1547312367932" expanded="true" signature="284:1180" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
-              <folding>
-                <marker date="1547312435454" expanded="false" signature="6:312" ph="..." />
-                <marker date="1547312435454" expanded="true" signature="365:17208" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="427:17206" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="1716:2313" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="2398:2916" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="2699:2871" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="3083:4286" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="3536:4276" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="4482:5079" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="4691:5069" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="4802:5055" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="5266:5744" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="5314:5734" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="5380:5720" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="5586:5702" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="5858:6243" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="5955:6195" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="6349:6686" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="6885:7610" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="7780:12405" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="8015:12395" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="8580:8961" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="8642:8790" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="9629:10010" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="9691:9839" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="12590:14436" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="13427:13844" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="13550:13678" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="13602:13660" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="13713:13830" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="13887:14426" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="13939:14412" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="14010:14394" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="14608:16554" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="15547:15967" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="15670:15801" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="15725:15783" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="15836:15953" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="16021:16544" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="16088:16530" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="16654:16966" ph="{...}" />
-                <marker date="1547312435454" expanded="true" signature="17027:17200" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyReportService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="5" column="89" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="89" />
-              <folding>
-                <marker date="1547312461193" expanded="false" signature="6:79" ph="..." />
-                <marker date="1547312461193" expanded="true" signature="143:288" ph="{...}" />
-                <marker date="1547312461193" expanded="true" signature="187:286" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyReportService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-703">
-              <caret line="23" column="89" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
-              <folding>
-                <marker date="1547312479055" expanded="false" signature="6:201" ph="..." />
-                <marker date="1547312479055" expanded="true" signature="254:6615" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="316:6613" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="843:1084" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="1190:6607" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="1494:6561" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="1841:6547" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="1894:6529" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="2394:2572" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="2800:2921" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="3301:3479" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="3698:3810" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="4206:4384" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="4638:4746" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="4833:5471" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="5247:5437" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="5747:5868" ph="{...}" />
-                <marker date="1547312479055" expanded="true" signature="6264:6442" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="9" column="63" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
-              <folding>
-                <marker date="1547312495282" expanded="false" signature="6:216" ph="..." />
-                <marker date="1547312495282" expanded="true" signature="280:1013" ph="{...}" />
-                <marker date="1547312495282" expanded="true" signature="318:1011" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyService.cs">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
-              <caret line="45" column="80" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+              <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
               <folding>
-                <marker date="1547312541824" expanded="false" signature="6:537" ph="..." />
-                <marker date="1547312541824" expanded="true" signature="590:9793" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="640:9791" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="1568:1997" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="2071:3048" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="2464:3009" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="2871:2995" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="3172:4016" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="3524:3696" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="4133:4529" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="4197:4519" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="4315:4505" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="4638:4898" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="4796:4888" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="4978:5132" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="5287:5668" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="5834:8661" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="5953:8651" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="8779:9078" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="9167:9398" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="9462:9596" ph="{...}" />
-                <marker date="1547312541824" expanded="true" signature="9660:9785" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyUserIdentifierService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <marker date="1547311010929" expanded="false" signature="6:96" ph="..." />
-                <marker date="1547311010929" expanded="true" signature="159:354" ph="{...}" />
-                <marker date="1547311010929" expanded="true" signature="211:352" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
-              <folding>
-                <marker date="1547312554132" expanded="true" signature="6:171" ph="..." />
-                <marker date="1547312554132" expanded="true" signature="234:1209" ph="{...}" />
-                <marker date="1547312554132" expanded="true" signature="280:1207" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="35" column="88" selection-start-line="35" selection-start-column="88" selection-end-line="35" selection-end-column="88" />
-              <folding>
-                <marker date="1547312595734" expanded="false" signature="6:412" ph="..." />
-                <marker date="1547312595734" expanded="true" signature="465:12240" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="531:12238" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="1363:1750" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="1823:2678" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="2096:2631" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="2493:2617" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="2749:3548" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="3019:3538" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="3408:3524" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="3677:4529" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="4037:4209" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="4643:5023" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="4699:5013" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="4809:4999" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="5129:5373" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="5271:5363" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="5453:5647" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="5810:6279" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="6453:9824" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="6604:9814" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="9950:10329" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="10426:10737" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="10809:10983" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="11063:11228" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="11310:11782" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="11520:11617" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="11845:12232" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="11863:12058" ph="{...}" />
-                <marker date="1547312595734" expanded="true" signature="12090:12222" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
-              <caret line="55" column="97" selection-start-line="55" selection-start-column="97" selection-end-line="55" selection-end-column="97" />
-              <folding>
-                <marker date="1547312612814" expanded="false" signature="6:301" ph="..." />
-                <marker date="1547312612814" expanded="true" signature="345:2623" ph="{...}" />
-                <marker date="1547312612814" expanded="true" signature="435:2621" ph="{...}" />
-                <marker date="1547312612814" expanded="true" signature="909:1139" ph="{...}" />
-                <marker date="1547312612814" expanded="true" signature="1257:1755" ph="{...}" />
-                <marker date="1547312612814" expanded="true" signature="1367:1639" ph="{...}" />
-                <marker date="1547312612814" expanded="true" signature="1671:1745" ph="{...}" />
-                <marker date="1547312612814" expanded="true" signature="1890:2615" ph="{...}" />
-                <marker date="1547312612814" expanded="true" signature="2000:2499" ph="{...}" />
-                <marker date="1547312612814" expanded="true" signature="2531:2605" ph="{...}" />
+                <marker date="1547315159823" expanded="false" signature="6:47" ph="..." />
+                <marker date="1547315159823" expanded="true" signature="97:1130" ph="{...}" />
+                <marker date="1547315159823" expanded="true" signature="123:1128" ph="{...}" />
+                <marker date="1547315159823" expanded="true" signature="514:636" ph="{...}" />
+                <marker date="1547315159823" expanded="true" signature="682:720" ph="{...}" />
+                <marker date="1547315159823" expanded="true" signature="778:833" ph="{...}" />
+                <marker date="1547315159823" expanded="true" signature="887:936" ph="{...}" />
+                <marker date="1547315159823" expanded="true" signature="1000:1122" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -520,7 +297,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TZ01" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
   </component>
@@ -532,6 +309,7 @@
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/ImportFile/UnregisteredUser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/QuestionReport.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/SurveyUserIdentifier.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Row.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Profile/CareerOffice.cs" root0="FORCE_HIGHLIGHTING" />
@@ -657,7 +435,6 @@
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/Interfaces/IImportFileAggregate.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ImportFileAggregate.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/DTO/ImportFile/UnregisteredUserDto.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyTemplateController.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/Interfaces/IExportFileAggregate.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Startup.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/appsettings.json" />
@@ -672,19 +449,20 @@
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToUpdate.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/SurveyAnswer/SurveyAnswerToAdd.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/SurveyReport/CreateSurveyReport.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveysAnswers/SurveyAnswer.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyAnswerService.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyReportService.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyReportService.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyService.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyService.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs" />
-        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs" />
         <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyTemplateController.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs" />
+        <option value="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs" />
       </list>
     </option>
   </component>
@@ -693,6 +471,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/absolwenci-wsei-front/node_modules" />
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
@@ -773,12 +554,6 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
               <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="CareerMonitoring" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="CareerMonitoring.Infrastructure" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Repositories" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -951,7 +726,7 @@
       <workItem from="1547197045342" duration="15000" />
       <workItem from="1547197470471" duration="984000" />
       <workItem from="1547311017669" duration="569000" />
-      <workItem from="1547311988772" duration="630000" />
+      <workItem from="1547311988772" duration="3171000" />
     </task>
     <task id="LOCAL-00001" summary="profile edition data extraction">
       <created>1543462774769</created>
@@ -1037,11 +812,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546866123765</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="description back">
+      <created>1547312758093</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1547312758093</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144102000" />
+    <option name="totallyTimeSpent" value="146643000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1056,12 +838,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33315566" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33315566" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2635575" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2635575" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1158,7 +940,8 @@
     <MESSAGE value="small fixes" />
     <MESSAGE value="unregistered" />
     <MESSAGE value="pdf fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="pdf fix" />
+    <MESSAGE value="description back" />
+    <option name="LAST_COMMIT_MESSAGE" value="description back" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1171,20 +954,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/DataSet.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/Interfaces/IExportFileAggregate.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ImportFileAggregate.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1349,28 +1118,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
-          <folding>
-            <marker date="1547311010799" expanded="false" signature="6:294" ph="..." />
-            <marker date="1547311010799" expanded="true" signature="395:2239" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="639:750" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="905:1144" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="923:1051" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="1072:1134" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="1262:1501" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="1280:1408" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="1429:1491" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="1631:1863" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="1649:1770" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="1791:1853" ph="{...}" />
-            <marker date="1547311010799" expanded="true" signature="1873:2233" ph="/* [HttpDelete (&quot;{surveyId}&quot;)] ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyReportController.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -1386,60 +1133,6 @@
             <marker date="1547311010799" expanded="true" signature="1450:2236" ph="{...}" />
             <marker date="1547311010799" expanded="true" signature="1592:2222" ph="{...}" />
             <marker date="1547311010799" expanded="true" signature="2267:2329" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyTemplateController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
-          <folding>
-            <marker date="1547311010801" expanded="false" signature="6:231" ph="..." />
-            <marker date="1547311010801" expanded="true" signature="275:3014" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="375:3012" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="542:613" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="728:983" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="745:881" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="912:973" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="1110:1365" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="1127:1263" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="1294:1355" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="1455:1703" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="1472:1601" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="1632:1693" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="1823:2194" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="1840:2092" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="2123:2184" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="2316:2658" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="2333:2556" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="2587:2648" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="2764:3006" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="2781:2904" ph="{...}" />
-            <marker date="1547311010801" expanded="true" signature="2935:2996" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToAdd.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="8" selection-end-column="47" />
-          <folding>
-            <marker date="1547312439947" expanded="true" signature="6:78" ph="..." />
-            <marker date="1547312439947" expanded="true" signature="137:338" ph="{...}" />
-            <marker date="1547312439947" expanded="true" signature="168:336" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToUpdate.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-          <folding>
-            <marker date="1547312465917" expanded="true" signature="92:338" ph="{...}" />
-            <marker date="1547312465917" expanded="true" signature="126:336" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1466,76 +1159,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-          <folding>
-            <marker date="1547312175123" expanded="false" signature="6:47" ph="..." />
-            <marker date="1547312175123" expanded="true" signature="101:1533" ph="{...}" />
-            <marker date="1547312175123" expanded="true" signature="133:1531" ph="{...}" />
-            <marker date="1547312175123" expanded="true" signature="693:868" ph="{...}" />
-            <marker date="1547312175123" expanded="true" signature="917:961" ph="{...}" />
-            <marker date="1547312175123" expanded="true" signature="1019:1069" ph="{...}" />
-            <marker date="1547312175123" expanded="true" signature="1139:1195" ph="{...}" />
-            <marker date="1547312175123" expanded="true" signature="1266:1336" ph="{...}" />
-            <marker date="1547312175123" expanded="true" signature="1369:1418" ph="{...}" />
-            <marker date="1547312175123" expanded="true" signature="1466:1525" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding>
-            <marker date="1547312232299" expanded="false" signature="6:47" ph="..." />
-            <marker date="1547312232299" expanded="true" signature="97:1028" ph="{...}" />
-            <marker date="1547312232299" expanded="true" signature="123:1026" ph="{...}" />
-            <marker date="1547312232299" expanded="true" signature="514:595" ph="{...}" />
-            <marker date="1547312232299" expanded="true" signature="641:679" ph="{...}" />
-            <marker date="1547312232299" expanded="true" signature="737:792" ph="{...}" />
-            <marker date="1547312232299" expanded="true" signature="846:895" ph="{...}" />
-            <marker date="1547312232299" expanded="true" signature="939:1020" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveysAnswers/SurveyAnswer.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
-          <folding>
-            <marker date="1547312287176" expanded="false" signature="6:47" ph="..." />
-            <marker date="1547312287176" expanded="true" signature="104:1269" ph="{...}" />
-            <marker date="1547312287176" expanded="true" signature="136:1267" ph="{...}" />
-            <marker date="1547312287176" expanded="true" signature="633:808" ph="{...}" />
-            <marker date="1547312287176" expanded="true" signature="866:916" ph="{...}" />
-            <marker date="1547312287176" expanded="true" signature="980:1035" ph="{...}" />
-            <marker date="1547312287176" expanded="true" signature="1084:1128" ph="{...}" />
-            <marker date="1547312287176" expanded="true" signature="1200:1261" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-          <folding>
-            <marker date="1547312335607" expanded="false" signature="6:92" ph="..." />
-            <marker date="1547312335607" expanded="true" signature="149:1186" ph="{...}" />
-            <marker date="1547312335607" expanded="true" signature="183:1184" ph="{...}" />
-            <marker date="1547312335607" expanded="true" signature="619:713" ph="{...}" />
-            <marker date="1547312335607" expanded="true" signature="759:797" ph="{...}" />
-            <marker date="1547312335607" expanded="true" signature="855:910" ph="{...}" />
-            <marker date="1547312335607" expanded="true" signature="988:1053" ph="{...}" />
-            <marker date="1547312335607" expanded="true" signature="1097:1178" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyAnswerService.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1544,57 +1167,6 @@
             <marker date="1547312367932" expanded="false" signature="6:176" ph="..." />
             <marker date="1547312367932" expanded="true" signature="240:1182" ph="{...}" />
             <marker date="1547312367932" expanded="true" signature="284:1180" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
-          <folding>
-            <marker date="1547312435454" expanded="false" signature="6:312" ph="..." />
-            <marker date="1547312435454" expanded="true" signature="365:17208" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="427:17206" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="1716:2313" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="2398:2916" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="2699:2871" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="3083:4286" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="3536:4276" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="4482:5079" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="4691:5069" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="4802:5055" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="5266:5744" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="5314:5734" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="5380:5720" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="5586:5702" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="5858:6243" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="5955:6195" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="6349:6686" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="6885:7610" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="7780:12405" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="8015:12395" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="8580:8961" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="8642:8790" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="9629:10010" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="9691:9839" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="12590:14436" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="13427:13844" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="13550:13678" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="13602:13660" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="13713:13830" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="13887:14426" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="13939:14412" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="14010:14394" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="14608:16554" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="15547:15967" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="15670:15801" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="15725:15783" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="15836:15953" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="16021:16544" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="16088:16530" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="16654:16966" ph="{...}" />
-            <marker date="1547312435454" expanded="true" signature="17027:17200" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1650,6 +1222,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyAnswerService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="36" column="61" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+          <folding>
+            <marker date="1547312435454" expanded="false" signature="6:312" ph="..." />
+            <marker date="1547312435454" expanded="true" signature="365:17208" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="427:17206" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="1716:2313" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="2398:2916" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="2699:2871" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="3083:4286" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="3536:4276" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="4482:5079" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="4691:5069" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="4802:5055" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="5266:5744" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="5314:5734" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="5380:5720" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="5586:5702" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="5858:6243" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="5955:6195" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="6349:6686" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="6885:7610" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="7780:12405" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="8015:12395" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="8580:8961" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="8642:8790" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="9629:10010" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="9691:9839" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="12590:14436" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="13427:13844" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="13550:13678" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="13602:13660" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="13713:13830" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="13887:14426" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="13939:14412" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="14010:14394" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="14608:16554" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="15547:15967" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="15670:15801" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="15725:15783" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="15836:15953" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="16021:16544" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="16088:16530" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="16654:16966" ph="{...}" />
+            <marker date="1547312435454" expanded="true" signature="17027:17200" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyService.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -1692,61 +1315,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
-          <folding>
-            <marker date="1547312554132" expanded="true" signature="6:171" ph="..." />
-            <marker date="1547312554132" expanded="true" signature="234:1209" ph="{...}" />
-            <marker date="1547312554132" expanded="true" signature="280:1207" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="35" column="88" selection-start-line="35" selection-start-column="88" selection-end-line="35" selection-end-column="88" />
-          <folding>
-            <marker date="1547312595734" expanded="false" signature="6:412" ph="..." />
-            <marker date="1547312595734" expanded="true" signature="465:12240" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="531:12238" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="1363:1750" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="1823:2678" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="2096:2631" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="2493:2617" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="2749:3548" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="3019:3538" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="3408:3524" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="3677:4529" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="4037:4209" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="4643:5023" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="4699:5013" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="4809:4999" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="5129:5373" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="5271:5363" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="5453:5647" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="5810:6279" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="6453:9824" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="6604:9814" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="9950:10329" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="10426:10737" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="10809:10983" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="11063:11228" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="11310:11782" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="11520:11617" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="11845:12232" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="11863:12058" ph="{...}" />
-            <marker date="1547312595734" expanded="true" signature="12090:12222" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/EmailController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="55" column="97" selection-start-line="55" selection-start-column="97" selection-end-line="55" selection-end-column="97" />
+        <state relative-caret-position="-178">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
           <folding>
             <marker date="1547312612814" expanded="false" signature="6:301" ph="..." />
             <marker date="1547312612814" expanded="true" signature="345:2623" ph="{...}" />
@@ -1758,6 +1330,229 @@
             <marker date="1547312612814" expanded="true" signature="1890:2615" ph="{...}" />
             <marker date="1547312612814" expanded="true" signature="2000:2499" ph="{...}" />
             <marker date="1547312612814" expanded="true" signature="2531:2605" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+          <folding>
+            <marker date="1547311010799" expanded="false" signature="6:294" ph="..." />
+            <marker date="1547311010799" expanded="true" signature="339:2241" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="395:2239" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="639:750" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="905:1144" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="923:1051" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="1072:1134" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="1262:1501" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="1280:1408" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="1429:1491" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="1631:1863" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="1649:1770" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="1791:1853" ph="{...}" />
+            <marker date="1547311010799" expanded="true" signature="1873:2233" ph="/* [HttpDelete (&quot;{surveyId}&quot;)] ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/QuestionToAdd.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1547311010883" expanded="true" signature="92:388" ph="{...}" />
+            <marker date="1547311010883" expanded="true" signature="125:386" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToUpdate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <folding>
+            <marker date="1547312465917" expanded="true" signature="92:338" ph="{...}" />
+            <marker date="1547312465917" expanded="true" signature="126:336" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/ISurveyTemplateService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="85" selection-start-line="18" selection-start-column="85" selection-end-line="18" selection-end-column="85" />
+          <folding>
+            <marker date="1547314915961" expanded="false" signature="6:171" ph="..." />
+            <marker date="1547314915961" expanded="true" signature="234:1229" ph="{...}" />
+            <marker date="1547314915961" expanded="true" signature="280:1227" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/SurveyUserIdentifier.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1547311010851" expanded="false" signature="6:54" ph="..." />
+            <marker date="1547311010851" expanded="true" signature="103:1143" ph="{...}" />
+            <marker date="1547311010851" expanded="true" signature="143:1141" ph="{...}" />
+            <marker date="1547311010851" expanded="true" signature="466:578" ph="{...}" />
+            <marker date="1547311010851" expanded="true" signature="616:665" ph="{...}" />
+            <marker date="1547311010851" expanded="true" signature="721:1135" ph="{...}" />
+            <marker date="1547311010851" expanded="true" signature="1007:1089" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyReport/SurveyReport.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
+          <folding>
+            <marker date="1547314811848" expanded="false" signature="6:47" ph="..." />
+            <marker date="1547314811848" expanded="true" signature="101:1597" ph="{...}" />
+            <marker date="1547314811848" expanded="true" signature="133:1595" ph="{...}" />
+            <marker date="1547314811848" expanded="true" signature="693:868" ph="{...}" />
+            <marker date="1547314811848" expanded="true" signature="917:961" ph="{...}" />
+            <marker date="1547314811848" expanded="true" signature="1019:1069" ph="{...}" />
+            <marker date="1547314811848" expanded="true" signature="1139:1195" ph="{...}" />
+            <marker date="1547314811848" expanded="true" signature="1266:1336" ph="{...}" />
+            <marker date="1547314811848" expanded="true" signature="1369:1418" ph="{...}" />
+            <marker date="1547314811848" expanded="true" signature="1486:1589" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/SurveyTemplateController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="75" column="13" selection-start-line="65" selection-start-column="8" selection-end-line="75" selection-end-column="13" />
+          <folding>
+            <marker date="1547314356193" expanded="false" signature="6:231" ph="..." />
+            <marker date="1547314356193" expanded="true" signature="275:3031" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="375:3029" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="542:613" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="728:983" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="745:881" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="912:973" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="1110:1365" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="1127:1263" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="1294:1355" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="1455:1703" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="1472:1601" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="1632:1693" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="1823:2211" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="1840:2109" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="2140:2201" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="2333:2675" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="2350:2573" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="2604:2665" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="2781:3023" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="2798:2921" ph="{...}" />
+            <marker date="1547314356193" expanded="true" signature="2952:3013" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/SurveyTemplateService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="51" column="106" selection-start-line="51" selection-start-column="106" selection-end-line="51" selection-end-column="106" />
+          <folding>
+            <marker date="1547314894074" expanded="false" signature="6:412" ph="..." />
+            <marker date="1547314894074" expanded="true" signature="465:12294" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="531:12292" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="1363:1750" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="1823:2678" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="2096:2631" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="2493:2617" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="2749:3569" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="3040:3559" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="3429:3545" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="3698:4550" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="4058:4230" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="4664:5044" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="4720:5034" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="4830:5020" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="5150:5394" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="5292:5384" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="5474:5668" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="5831:6300" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="6474:9845" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="6625:9835" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="9971:10350" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="10447:10758" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="10830:11004" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="11084:11249" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="11351:11836" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="11561:11658" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="11899:12286" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="11917:12112" ph="{...}" />
+            <marker date="1547314894074" expanded="true" signature="12144:12276" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveyTemplates/SurveyTemplate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <marker date="1547314771448" expanded="false" signature="6:92" ph="..." />
+            <marker date="1547314771448" expanded="true" signature="149:1275" ph="{...}" />
+            <marker date="1547314771448" expanded="true" signature="183:1273" ph="{...}" />
+            <marker date="1547314771448" expanded="true" signature="619:741" ph="{...}" />
+            <marker date="1547314771448" expanded="true" signature="787:825" ph="{...}" />
+            <marker date="1547314771448" expanded="true" signature="883:938" ph="{...}" />
+            <marker date="1547314771448" expanded="true" signature="1016:1081" ph="{...}" />
+            <marker date="1547314771448" expanded="true" signature="1145:1267" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/SurveysAnswers/SurveyAnswer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding>
+            <marker date="1547312287176" expanded="false" signature="6:47" ph="..." />
+            <marker date="1547312287176" expanded="true" signature="104:1269" ph="{...}" />
+            <marker date="1547312287176" expanded="true" signature="136:1267" ph="{...}" />
+            <marker date="1547312287176" expanded="true" signature="633:808" ph="{...}" />
+            <marker date="1547312287176" expanded="true" signature="866:916" ph="{...}" />
+            <marker date="1547312287176" expanded="true" signature="980:1035" ph="{...}" />
+            <marker date="1547312287176" expanded="true" signature="1084:1128" ph="{...}" />
+            <marker date="1547312287176" expanded="true" signature="1200:1261" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Commands/Survey/SurveyToAdd.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <marker date="1547312439947" expanded="false" signature="6:78" ph="..." />
+            <marker date="1547312439947" expanded="true" signature="137:338" ph="{...}" />
+            <marker date="1547312439947" expanded="true" signature="168:336" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Core/Domains/Surveys/Survey.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+          <folding>
+            <marker date="1547315159823" expanded="false" signature="6:47" ph="..." />
+            <marker date="1547315159823" expanded="true" signature="97:1130" ph="{...}" />
+            <marker date="1547315159823" expanded="true" signature="123:1128" ph="{...}" />
+            <marker date="1547315159823" expanded="true" signature="514:636" ph="{...}" />
+            <marker date="1547315159823" expanded="true" signature="682:720" ph="{...}" />
+            <marker date="1547315159823" expanded="true" signature="778:833" ph="{...}" />
+            <marker date="1547315159823" expanded="true" signature="887:936" ph="{...}" />
+            <marker date="1547315159823" expanded="true" signature="1000:1122" ph="{...}" />
           </folding>
         </state>
       </provider>

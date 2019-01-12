@@ -49,7 +49,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task UpdateSurveyAsync (SurveyToUpdate command) {
-            var surveyTemplateId = await UpdateAsync (command.SurveyId, command.Title);
+            var surveyTemplateId = await UpdateAsync (command.SurveyId, command.Title, command.Description);
             if (command.Questions == null)
                 throw new NullReferenceException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
@@ -204,12 +204,12 @@ namespace CareerMonitoring.Infrastructure.Services {
             return surveyTemplate;
         }
 
-        public async Task<int> UpdateAsync (int surveyTemplateId, string title) {
+        public async Task<int> UpdateAsync (int surveyTemplateId, string title, string description) {
             var surveyTemplate = await _surveyTemplateRepository.GetByIdWithQuestionTemplatesAsync (surveyTemplateId);
             foreach (var questionTemplate in surveyTemplate.QuestionTemplates.ToList ()) {
                 await _questionTemplateRepository.DeleteAsync (questionTemplate);
             }
-            surveyTemplate.Update (title);
+            surveyTemplate.Update (title, description);
             await _surveyTemplateRepository.UpdateAsync (surveyTemplate);
             return surveyTemplate.Id;
         }
