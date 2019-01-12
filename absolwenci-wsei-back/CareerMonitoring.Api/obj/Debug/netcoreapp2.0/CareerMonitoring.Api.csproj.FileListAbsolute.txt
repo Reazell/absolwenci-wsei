@@ -172,3 +172,22 @@ C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy\absolwenci-wsei-back\CareerM
 C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.csproj.CopyComplete
 C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.dll
 C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.pdb
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Api.deps.json
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Api.runtimeconfig.json
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Api.runtimeconfig.dev.json
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Api.dll
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Api.pdb
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.csprojAssemblyReference.cache
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.csproj.CoreCompileInputs.cache
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.RazorAssemblyInfo.cache
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.RazorAssemblyInfo.cs
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.AssemblyInfoInputs.cache
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.AssemblyInfo.cs
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.RazorTargetAssemblyInfo.cache
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.csproj.CopyComplete
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.dll
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Api\obj\Debug\netcoreapp2.0\CareerMonitoring.Api.pdb

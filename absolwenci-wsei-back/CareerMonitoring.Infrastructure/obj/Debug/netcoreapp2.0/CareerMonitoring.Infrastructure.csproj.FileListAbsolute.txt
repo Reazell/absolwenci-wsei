@@ -127,3 +127,17 @@ C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy\absolwenci-wsei-back\CareerM
 C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CopyComplete
 C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
 C:\Users\tomzd\RiderProjects\absolwenci-wsei - Copy\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.deps.json
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.runtimeconfig.json
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.runtimeconfig.dev.json
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csprojAssemblyReference.cache
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.AssemblyInfo.cs
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.csproj.CopyComplete
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.dll
+C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Infrastructure\obj\Debug\netcoreapp2.0\CareerMonitoring.Infrastructure.pdb

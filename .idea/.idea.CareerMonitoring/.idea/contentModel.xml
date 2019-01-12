@@ -5,8 +5,44 @@
     <e p="C:\Users\tomzd\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
     <e p="C:\Users\tomzd\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="C:\Users\tomzd\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_CareerMonitoring.-173146079.00" t="ExcludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei" t="IncludeFlat">
+    <e p="C:\Users\tomzd\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_CareerMonitoring.1721655743.00" t="ExcludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.dom.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.dom.iterable.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.collection.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.core.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.generator.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.iterable.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.promise.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.proxy.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.reflect.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.symbol.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.symbol.wellknown.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2016.array.include.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2016.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2016.full.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.full.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.intl.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.object.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.sharedmemory.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.string.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.typedarrays.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.full.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.intl.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.promise.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.regexp.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es5.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es6.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.esnext.array.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.esnext.asynciterable.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.esnext.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.esnext.full.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.scripthost.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.webworker.d.ts" t="IncludeRecursive" />
+    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei2" t="IncludeFlat">
       <e p="absolwenci-wsei-back\CareerMonitoring.Api" t="IncludeRecursive">
         <e p="ActionFilters" t="Include">
           <e p="ValidatorActionFilter.cs" t="Include" />
@@ -41,12 +77,6 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Startup.cs" t="Include" />
-        <e p="wwwroot" t="Include">
-          <e p="reports" t="Include">
-            <e p="2.pdf" t="Include" />
-            <e p="2.txt" t="Include" />
-          </e>
-        </e>
       </e>
       <e p="absolwenci-wsei-back\CareerMonitoring.Core" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -324,93 +354,6 @@
         <e p="Services" t="Include">
           <e p="UnregisteredUserServiceTest .cs" t="Include" />
         </e>
-      </e>
-      <e p="absolwenci-wsei-front\node_modules" t="ExcludeRecursive">
-        <e p="@angular\animations" t="IncludeRecursive" />
-        <e p="@angular\cdk" t="IncludeRecursive" />
-        <e p="@angular\cli" t="IncludeRecursive" />
-        <e p="@angular\common" t="IncludeRecursive" />
-        <e p="@angular\compiler" t="IncludeRecursive" />
-        <e p="@angular\compiler-cli" t="IncludeRecursive" />
-        <e p="@angular\core" t="IncludeRecursive" />
-        <e p="@angular\forms" t="IncludeRecursive" />
-        <e p="@angular\http" t="IncludeRecursive" />
-        <e p="@angular\material" t="IncludeRecursive" />
-        <e p="@angular\material-moment-adapter" t="IncludeRecursive" />
-        <e p="@angular\platform-browser" t="IncludeRecursive" />
-        <e p="@angular\platform-browser-dynamic" t="IncludeRecursive" />
-        <e p="@angular\router" t="IncludeRecursive" />
-        <e p="@angular-devkit\build-angular" t="IncludeRecursive" />
-        <e p="@fortawesome\angular-fontawesome" t="IncludeRecursive" />
-        <e p="@fortawesome\fontawesome-svg-core" t="IncludeRecursive" />
-        <e p="@fortawesome\free-regular-svg-icons" t="IncludeRecursive" />
-        <e p="@fortawesome\free-solid-svg-icons" t="IncludeRecursive" />
-        <e p="@types" t="IncludeRecursive">
-          <e p="jasmine" t="IncludeRecursive" />
-          <e p="jasminewd2" t="IncludeRecursive" />
-          <e p="node" t="IncludeRecursive" />
-        </e>
-        <e p="angular-sortablejs" t="IncludeRecursive" />
-        <e p="auth0-js" t="IncludeRecursive" />
-        <e p="chart.js" t="IncludeRecursive" />
-        <e p="codelyzer" t="IncludeRecursive" />
-        <e p="core-js" t="IncludeRecursive" />
-        <e p="file-saver" t="IncludeRecursive" />
-        <e p="jasmine-core" t="IncludeRecursive" />
-        <e p="jasmine-spec-reporter" t="IncludeRecursive" />
-        <e p="karma" t="IncludeRecursive" />
-        <e p="karma-chrome-launcher" t="IncludeRecursive" />
-        <e p="karma-coverage-istanbul-reporter" t="IncludeRecursive" />
-        <e p="karma-jasmine" t="IncludeRecursive" />
-        <e p="karma-jasmine-html-reporter" t="IncludeRecursive" />
-        <e p="moment" t="IncludeRecursive" />
-        <e p="node-sass" t="IncludeRecursive" />
-        <e p="postcss-loader" t="IncludeRecursive" />
-        <e p="primeng" t="IncludeRecursive" />
-        <e p="protractor" t="IncludeRecursive" />
-        <e p="rxjs" t="IncludeRecursive" />
-        <e p="rxjs-compat" t="IncludeRecursive" />
-        <e p="sortablejs" t="IncludeRecursive" />
-        <e p="ts-node" t="IncludeRecursive" />
-        <e p="tslint" t="IncludeRecursive" />
-        <e p="tslint-config-prettier" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.dom.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.dom.iterable.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.collection.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.core.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.generator.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.iterable.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.promise.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.proxy.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.reflect.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.symbol.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2015.symbol.wellknown.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2016.array.include.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2016.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2016.full.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2017.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2017.full.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2017.intl.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2017.object.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2017.sharedmemory.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2017.string.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2017.typedarrays.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2018.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2018.full.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2018.intl.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2018.promise.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es2018.regexp.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es5.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.es6.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.esnext.array.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.esnext.asynciterable.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.esnext.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.esnext.full.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.scripthost.d.ts" t="IncludeRecursive" />
-        <e p="typescript\lib\lib.webworker.d.ts" t="IncludeRecursive" />
-        <e p="zone.js" t="IncludeRecursive" />
       </e>
       <e p="CareerMonitoring.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

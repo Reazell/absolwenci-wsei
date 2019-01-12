@@ -6,7 +6,7 @@ using CareerMonitoring.Infrastructure.Commands.SurveyAnswer;
 namespace CareerMonitoring.Infrastructure.Services.Interfaces {
     public interface ISurveyAnswerService {
         Task<int> CreateSurveyAnswerAsync (SurveyAnswerToAdd command);
-        Task<int> CreateAsync (string surveyTitle, int surveyId);
+        Task<int> CreateAsync (string surveyTitle, string surveyDescription, int surveyId);
         Task<int> AddQuestionAnswerToSurveyAnswerAsync (int surveyId, int surveyAnswerId, int questionPosition,
             string content, string select, bool isRequired);
         Task<int> AddFieldDataAnswerToQuestionAnswerAsync (int surveyId, int questionAnswerId, string input,
