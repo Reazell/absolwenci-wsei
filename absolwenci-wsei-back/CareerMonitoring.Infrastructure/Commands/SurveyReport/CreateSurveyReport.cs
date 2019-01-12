@@ -6,5 +6,6 @@ namespace CareerMonitoring.Infrastructure.Commands.SurveyReport
     {
         public int SurveyId { get; set; }
         public string SurveyTitle { get; set; }
+        public string Description { get; set; }
     }
 }

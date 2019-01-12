@@ -33,7 +33,7 @@ namespace CareerMonitoring.Infrastructure.Services {
         }
 
         public async Task<int> CreateSurveyAsync (SurveyToAdd command) {
-            var surveyTemplateId = await CreateAsync (command.Title);
+            var surveyTemplateId = await CreateAsync (command.Title, command.Description);
             if (command.Questions == null)
                 throw new NullReferenceException ("Cannot create empty survey");
             foreach (var question in command.Questions) {
@@ -98,8 +98,8 @@ namespace CareerMonitoring.Infrastructure.Services {
             }
         }
 
-        public async Task<int> CreateAsync (string title) {
-            var surveyTemplate = new SurveyTemplate (title);
+        public async Task<int> CreateAsync (string title, string description) {
+            var surveyTemplate = new SurveyTemplate (title, description);
             await _surveyTemplateRepository.AddAsync (surveyTemplate);
             return surveyTemplate.Id;
         }

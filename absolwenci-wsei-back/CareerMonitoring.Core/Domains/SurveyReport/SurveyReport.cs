@@ -7,6 +7,7 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
     {
         public int Id { get; private set; }
         public string SurveyTitle { get; private set; }
+        public string description { get; private set; }
         public int AnswersNumber { get; private set; } = 0;
         public int SurveyId { get; private set; }
         public DateTime CreatedAt { get; private set; }
@@ -14,9 +15,10 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
 
         private SurveyReport () {}
 
-        public SurveyReport (int surveyId, string surveyTitle){
+        public SurveyReport (int surveyId, string surveyTitle, string description){
             SetSurveyId(surveyId);
             SetSurveyTitle(surveyTitle);
+            SetSurveyDescription(description);
             CreatedAt = DateTime.UtcNow;
         }
 
@@ -26,6 +28,10 @@ namespace CareerMonitoring.Core.Domains.SurveyReport
 
         public void SetSurveyTitle (string surveyTitle) {
             SurveyTitle = surveyTitle;
+        }
+
+        public void SetSurveyDescription (string surveyDescription) {
+            description = surveyDescription;
         }
 
         public void AddQuestionReport (QuestionReport questionReport)
