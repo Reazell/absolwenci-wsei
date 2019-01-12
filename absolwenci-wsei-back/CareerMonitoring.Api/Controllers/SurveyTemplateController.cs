@@ -55,6 +55,7 @@ namespace CareerMonitoring.Api.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest (ModelState);
                 var surveyTemplateId = await _surveyTemplateService.CreateSurveyAsync (command);
+                
                 return Json(surveyTemplateId);
             }
             catch(Exception e){

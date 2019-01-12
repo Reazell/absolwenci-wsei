@@ -19,7 +19,6 @@
       <ul class="menu" *ngIf="showAdmin === true">
         <li class="menu-item" [matMenuTriggerFor]="surveyInfo" #surveyTrigger="matMenuTrigger">Ankiety</li>
         <li class="menu-item" (click)="redirectTo('users')">Użytkownicy</li>
-        <li class="menu-item" (click)="redirectTo('dashboard')">Dashboard</li>
       </ul>
       <div id="survey-buttons">
         <fa-icon [icon]="['far', 'eye']" *ngIf="showCreatorButton === true" matTooltip="{{toolTipInfo.show}}"

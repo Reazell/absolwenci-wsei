@@ -31,6 +31,7 @@ export class SurveyService {
     return this.http
       .post<any>(this.config.apiUrl + '/surveyanswer/' + hash, {
         SurveyTitle: survey.title,
+        SurveyDescription: survey.description,
         SurveyId: id,
         Questions: survey.questions
       })
@@ -64,6 +65,7 @@ export class SurveyService {
     return this.http
       .post<any>(this.config.apiUrl + '/surveytemplate/surveys', {
         Title: survey.title,
+        Description: survey.description,
         Questions: survey.questions
       })
       .map(data => {
@@ -81,6 +83,7 @@ export class SurveyService {
       .put<Update>(this.config.apiUrl + '/surveytemplate/surveys', {
         surveyId: object.id,
         Title: object.Title,
+        Description: object.Description,
         Questions: object.QuestionTemplates
       })
       .map(data => {
@@ -136,9 +139,9 @@ export class SurveyService {
         return data;
       });
   }
-  getSurveyReportFile(id: number, type:string): Observable<any> {
+  getSurveyReportFile(id: number, type: string): Observable<any> {
     return this.http
-      .get(this.config.apiUrl + '/surveyreport/surveyReports/' + id + "." + type, {responseType: "blob"});
+      .get(this.config.apiUrl + '/surveyreport/surveyReports/' + id + '.' + type, {responseType: 'blob'});
   }
   saveSurveysFromApi(): void {
     this.getAllSurveys().subscribe(data => {

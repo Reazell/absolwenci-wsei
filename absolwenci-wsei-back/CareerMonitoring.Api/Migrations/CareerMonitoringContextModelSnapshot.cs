@@ -178,6 +178,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<string>("SurveyTitle");
 
+                    b.Property<string>("description");
+
                     b.HasKey("Id");
 
                     b.ToTable("SurveyReports");
@@ -280,6 +282,8 @@ namespace CareerMonitoring.Api.Migrations
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Title");
+
+                    b.Property<string>("description");
 
                     b.HasKey("Id");
 
@@ -420,6 +424,8 @@ namespace CareerMonitoring.Api.Migrations
 
                     b.Property<string>("SurveyTitle");
 
+                    b.Property<string>("description");
+
                     b.HasKey("Id");
 
                     b.ToTable("SurveyAnswers");
@@ -522,6 +528,8 @@ namespace CareerMonitoring.Api.Migrations
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Title");
+
+                    b.Property<string>("description");
 
                     b.HasKey("Id");
 

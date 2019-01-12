@@ -8,13 +8,15 @@ namespace CareerMonitoring.Core.Domains.SurveyTemplates
     {
         public int Id { get; private set; }
         public string Title { get; private set; }
+        public string description { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public ICollection<QuestionTemplate> QuestionTemplates { get; private set; } = new List<QuestionTemplate> ();
 
         private SurveyTemplate () { }
 
-        public SurveyTemplate (string title) {
+        public SurveyTemplate (string title, string description) {
             SetTitle(title);
+            SetDescription(description);
             CreatedAt = DateTime.UtcNow;
         }
 
@@ -22,12 +24,17 @@ namespace CareerMonitoring.Core.Domains.SurveyTemplates
             Title = title;
         }
 
+        public void SetDescription (string description) {
+            this.description = description;
+        }
+
         public void AddQuestionTemplate (QuestionTemplate questionTemplate) {
             QuestionTemplates.Add (questionTemplate);
         }
 
-        public void Update (string title) {
+        public void Update (string title, string description) {
             SetTitle(title);
+            SetDescription(description);
             CreatedAt = DateTime.UtcNow;
         }
     }

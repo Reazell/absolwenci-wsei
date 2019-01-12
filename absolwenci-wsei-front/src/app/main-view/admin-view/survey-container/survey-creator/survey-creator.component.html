@@ -19,11 +19,12 @@
       <input matInput placeholder="Nazwa formularza" formControlName="title" autofocus (keyup)="updateSurveySubject()"
         (focus)="setSelection($event)" (keydown)="updateSurveySubject()">
     </mat-form-field>
-    <!-- <mat-form-field appearance="standard" id="description">
+    <mat-form-field appearance="standard" id="description">
       <textarea matInput [rows]="1" matTextareaAutosize matAutosizeMaxRows=15 type="text" maxLength="1500" placeholder="Opis formularza"
         (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" formControlName="description"></textarea>
-    </mat-form-field> -->
+    </mat-form-field>
   </div>
+
   <div id="questions-container" formArrayName="questionTemplates">
     <div *ngFor="let question of invoiceForm.controls['questionTemplates'].controls; let i = index" [formGroupName]="i"
       class="question-field">
