@@ -54,8 +54,28 @@ namespace CareerMonitoring.Api.Controllers
                 var surveyId = _surveyService.CreateSurveyAsync(surveyTemplateId).Result;
                 var survey = await _surveyService.GetByIdAsync(surveyId);
                 await _surveyReportService.CreateAsync(surveyId, survey.Title, survey.description);
-                await _surveyEmailFactory.SendSurveyEmailAsync(surveyId);
+//                await _surveyEmailFactory.SendSurveyEmailAsync(surveyId);
                 await _surveyEmailFactory.SendSurveyEmailToUnregisteredUsersAsync(surveyId);
+                return StatusCode(200);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("survey-emails/{surveyTemplateId}/{groupId}")]
+        public async Task<IActionResult> SendSurveyGroupEmail(int surveyTemplateId, int groupId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            try
+            {
+                var surveyId = _surveyService.CreateSurveyAsync(surveyTemplateId).Result;
+                var survey = await _surveyService.GetByIdAsync(surveyId);
+                await _surveyReportService.CreateAsync(surveyId, survey.Title, survey.description);
+//                await _surveyEmailFactory.SendSurveyEmailAsync(surveyId);
+                await _surveyEmailFactory.SendSurveyEmailToGroupAsync(surveyId,groupId);
                 return StatusCode(200);
             }
             catch (Exception e)

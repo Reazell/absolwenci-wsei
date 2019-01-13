@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.Abstract;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Core.Domains.Surveys;
@@ -19,40 +20,65 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
         private readonly ISurveyUserIdentifierService _surveyUserIdentifierService;
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
         private readonly IEmailContent _emailContent;
+        private readonly IGroupService _groupService;
 
-        public SurveyEmailFactory (IEmailConfiguration emailConfiguration,
-            IEmailFactory emailFactory,
-            IAccountRepository accountRepository,
-            ISurveyUserIdentifierService surveyUserIdentifierService,
-            IUnregisteredUserRepository unregisteredUserRepository,
-            IEmailContent emailContent) {
-            _surveyUserIdentifierService = surveyUserIdentifierService;
+        public SurveyEmailFactory(IEmailConfiguration emailConfiguration, IEmailFactory emailFactory, IAccountRepository accountRepository, ISurveyUserIdentifierService surveyUserIdentifierService, IUnregisteredUserRepository unregisteredUserRepository, IEmailContent emailContent, IGroupService groupService)
+        {
             _emailConfiguration = emailConfiguration;
             _emailFactory = emailFactory;
             _accountRepository = accountRepository;
+            _surveyUserIdentifierService = surveyUserIdentifierService;
             _unregisteredUserRepository = unregisteredUserRepository;
             _emailContent = emailContent;
+            _groupService = groupService;
         }
 
-        public async Task SendSurveyEmailAsync (int surveyId) {
-            var accounts = await _accountRepository.GetAllAsync ();
-            List<Account> accountsToIdentify = new List<Account> ();
-            foreach (var account in accounts) {
-                if (account.Role != "careerOffice") {
-                    accountsToIdentify.Add (account);
+
+//        public async Task SendSurveyEmailAsync (int surveyId) {
+//            var accounts = await _accountRepository.GetAllAsync ();
+//            List<Account> accountsToIdentify = new List<Account> ();
+//            foreach (var account in accounts) {
+//                if (account.Role != "master") {
+//                    accountsToIdentify.Add (account);
+//                    var message = new MimeMessage ();
+//                    message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
+//                    message.To.Add (new MailboxAddress (account.Name, account.Email));
+//                    message.Subject = "Monitorowanie karier - ankieta";
+//                    message.Body = new TextPart ("html") {
+//                        Text = _emailContent.SurveyEmail (surveyId, CalculateEmailHash(account.Email))
+//                    };
+//                    await _emailFactory.SendEmailAsync (message);
+//                }
+//            }
+//            foreach (var accountToIdentify in accountsToIdentify)
+//            {
+//                await _surveyUserIdentifierService.CreateAsync(accountToIdentify.Email, surveyId);
+//            }
+//        }
+
+        public async Task SendSurveyEmailToGroupAsync(int surveyId, int groupId)
+        {
+            Group group = await _groupService.GetByIdAsync(groupId);
+            var unregisteredUsers = group.Users;
+            List<UnregisteredUser> unregisteredUsersToIdentify = new List<UnregisteredUser> ();
+            foreach (var userGroup in unregisteredUsers)
+            {
+                var unregisteredUser = userGroup.User;
+                if (unregisteredUser.Role != "master") {
+                    unregisteredUsersToIdentify.Add (unregisteredUser);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
-                    message.To.Add (new MailboxAddress (account.Name, account.Email));
+                    message.To.Add (new MailboxAddress (unregisteredUser.Name, unregisteredUser.Email));
                     message.Subject = "Monitorowanie karier - ankieta";
                     message.Body = new TextPart ("html") {
-                        Text = _emailContent.SurveyEmail (surveyId, CalculateEmailHash(account.Email))
+                        Text = _emailContent.SurveyEmail (surveyId, CalculateEmailHash(unregisteredUser.Email))
                     };
                     await _emailFactory.SendEmailAsync (message);
                 }
             }
-            foreach (var accountToIdentify in accountsToIdentify)
+            foreach (var unregisteredUserToIdentify in unregisteredUsersToIdentify)
             {
-                await _surveyUserIdentifierService.CreateAsync(accountToIdentify.Email, surveyId);
+                await _surveyUserIdentifierService.CreateAsync(unregisteredUserToIdentify.Email, surveyId);
             }
         }
 
@@ -60,7 +86,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Factories {
             var unregisteredUsers = await _unregisteredUserRepository.GetAllAsync ();
             List<UnregisteredUser> unregisteredUsersToIdentify = new List<UnregisteredUser> ();
             foreach (var unregisteredUser in unregisteredUsers) {
-                if (unregisteredUser.Role != "careerOffice") {
+                if (unregisteredUser.Role != "master") {
                     unregisteredUsersToIdentify.Add (unregisteredUser);
                     var message = new MimeMessage ();
                     message.From.Add (new MailboxAddress (_emailConfiguration.Name, _emailConfiguration.SmtpUsername));
