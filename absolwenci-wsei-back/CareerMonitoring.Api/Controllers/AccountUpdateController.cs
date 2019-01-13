@@ -30,20 +30,20 @@ namespace CareerMonitoring.Api.Controllers {
         }
 
         
-        [HttpGet ("accounts")]
-        public async Task<IActionResult> GetAccounts () {
-            if (!ModelState.IsValid)
-                return BadRequest (ModelState);
-            try
-            {
-                bool exist = await _accountService.ExistsByMaster();
-                return Json(new
-                {
-                    exist
-                });
-            } catch (Exception e) {
-                return BadRequest (e.Message);
-            }
-        }
+//        [HttpGet ("accounts")]
+//        public async Task<IActionResult> GetAccounts () {
+//            if (!ModelState.IsValid)
+//                return BadRequest (ModelState);
+//            try
+//            {
+//                bool exist = await _accountService.ExistsByMaster();
+//                return Json(new
+//                {
+//                    exist
+//                });
+//            } catch (Exception e) {
+//                return BadRequest (e.Message);
+//            }
+//        }
     }
 }

@@ -101,6 +101,19 @@ namespace CareerMonitoring.Api.Migrations
                     b.ToTable("AccountRestoringPasswords");
                 });
 
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("CareerMonitoring.Core.Domains.ImportFile.UnregisteredUser", b =>
                 {
                     b.Property<int>("Id")
@@ -536,6 +549,19 @@ namespace CareerMonitoring.Api.Migrations
                     b.ToTable("SurveyTemplates");
                 });
 
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.UserGroup", b =>
+                {
+                    b.Property<int>("UserId");
+
+                    b.Property<int>("GroupId");
+
+                    b.HasKey("UserId", "GroupId");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("UserGroups");
+                });
+
             modelBuilder.Entity("CareerMonitoring.Core.Domains.CareerOffice", b =>
                 {
                     b.HasBaseType("CareerMonitoring.Core.Domains.Abstract.Account");
@@ -689,6 +715,19 @@ namespace CareerMonitoring.Api.Migrations
                     b.HasOne("CareerMonitoring.Core.Domains.SurveyTemplates.FieldDataTemplate", "FieldDataTemplate")
                         .WithMany("RowTemplates")
                         .HasForeignKey("FieldDataTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CareerMonitoring.Core.Domains.UserGroup", b =>
+                {
+                    b.HasOne("CareerMonitoring.Core.Domains.Group", "Group")
+                        .WithMany("Users")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CareerMonitoring.Core.Domains.ImportFile.UnregisteredUser", "User")
+                        .WithMany("Groups")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

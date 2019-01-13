@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
 using CareerMonitoring.Core.Domains.Surveys;
 
 namespace CareerMonitoring.Core.Domains.ImportFile {
@@ -8,6 +10,7 @@ namespace CareerMonitoring.Core.Domains.ImportFile {
         public string Surname { get; private set; }
         public string Email { get; private set; }
         public string Role { get; private set; }
+        public ICollection<UserGroup> Groups { get; private set; } = new List<UserGroup>();
 
         public UnregisteredUser () {
             Role = "unregisteredUser";

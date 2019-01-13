@@ -6,42 +6,6 @@
     <e p="C:\Users\tomzd\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="C:\Users\tomzd\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\tomzd\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_CareerMonitoring.1721655743.00" t="ExcludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.dom.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.dom.iterable.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.collection.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.core.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.generator.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.iterable.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.promise.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.proxy.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.reflect.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.symbol.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2015.symbol.wellknown.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2016.array.include.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2016.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2016.full.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.full.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.intl.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.object.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.sharedmemory.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.string.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2017.typedarrays.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.full.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.intl.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.promise.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es2018.regexp.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es5.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.es6.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.esnext.array.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.esnext.asynciterable.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.esnext.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.esnext.full.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.scripthost.d.ts" t="IncludeRecursive" />
-    <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei\absolwenci-wsei-front\node_modules\typescript\lib\lib.webworker.d.ts" t="IncludeRecursive" />
     <e p="C:\Users\tomzd\RiderProjects\absolwenci-wsei2" t="IncludeFlat">
       <e p="absolwenci-wsei-back\CareerMonitoring.Api" t="IncludeRecursive">
         <e p="ActionFilters" t="Include">
@@ -56,6 +20,7 @@
           <e p="ApiUserController.cs" t="Include" />
           <e p="AuthController.cs" t="Include" />
           <e p="EmailController.cs" t="Include" />
+          <e p="GroupController.cs" t="Include" />
           <e p="ImportFileController.cs" t="Include" />
           <e p="SurveyAnswerController.cs" t="Include" />
           <e p="SurveyController.cs" t="Include" />
@@ -63,8 +28,8 @@
           <e p="SurveyTemplateController.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20190112171031_new.cs" t="Include" />
-          <e p="20190112171031_new.Designer.cs" t="Include" />
+          <e p="20190112230029_asd.cs" t="Include" />
+          <e p="20190112230029_asd.Designer.cs" t="Include" />
           <e p="CareerMonitoringContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="nlog.config" t="Include" />
@@ -77,6 +42,12 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Startup.cs" t="Include" />
+        <e p="wwwroot" t="Include">
+          <e p="reports" t="Include">
+            <e p="10.txt" t="Include" />
+            <e p="11.txt" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="absolwenci-wsei-back\CareerMonitoring.Core" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -88,7 +59,9 @@
             <e p="AccountRestoringPassword.cs" t="Include" />
           </e>
           <e p="ImportFile" t="Include">
+            <e p="Group.cs" t="Include" />
             <e p="UnregisteredUser.cs" t="Include" />
+            <e p="UserGroup.cs" t="Include" />
           </e>
           <e p="Profile" t="Include">
             <e p="CareerOffice.cs" t="Include" />
@@ -138,6 +111,7 @@
           <e p="Account" t="Include">
             <e p="ChangePassword.cs" t="Include" />
             <e p="ChangePasswordByRestoringPassword.cs" t="Include" />
+            <e p="CreateGroup.cs" t="Include" />
             <e p="RestorePassword.cs" t="Include" />
             <e p="SignIn.cs" t="Include" />
             <e p="UpdateAccount.cs" t="Include" />
@@ -178,7 +152,6 @@
         </e>
         <e p="Data" t="Include">
           <e p="CareerMonitoringContext.cs" t="Include" />
-          <e p="MasterContext.cs" t="Include" />
         </e>
         <e p="DTO" t="Include">
           <e p="ImportFile" t="Include">
@@ -252,6 +225,7 @@
           <e p="FieldDataAnswerRepository.cs" t="Include" />
           <e p="FieldDataRepository.cs" t="Include" />
           <e p="FieldDataTemplateRepository.cs" t="Include" />
+          <e p="GroupRepository.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IAccountRepository.cs" t="Include" />
             <e p="ICareerOfficeRepository.cs" t="Include" />
@@ -262,6 +236,7 @@
             <e p="IFieldDataAnswerRepository.cs" t="Include" />
             <e p="IFieldDataRepository.cs" t="Include" />
             <e p="IFieldDataTemplateRepository.cs" t="Include" />
+            <e p="IGroupRepository.cs" t="Include" />
             <e p="IMasterRepository.cs" t="Include" />
             <e p="IQuestionAnswerRepository.cs" t="Include" />
             <e p="IQuestionReportRepository.cs" t="Include" />
@@ -277,6 +252,7 @@
             <e p="ISurveyTemplateRepository.cs" t="Include" />
             <e p="ISurveyUserIdentifierRepository.cs" t="Include" />
             <e p="IUnregisteredUserRepository.cs" t="Include" />
+            <e p="IUserGroupRepository.cs" t="Include" />
           </e>
           <e p="MasterRepository.cs" t="Include" />
           <e p="QuestionAnswerRepository.cs" t="Include" />
@@ -293,15 +269,18 @@
           <e p="SurveyTemplateRepository.cs" t="Include" />
           <e p="SurveyUserIdentifierRepository.cs" t="Include" />
           <e p="UnregisteredUserRepository.cs" t="Include" />
+          <e p="UserGroupRepository.cs" t="Include" />
         </e>
         <e p="Services" t="Include">
           <e p="AccountService.cs" t="Include" />
           <e p="AuthService.cs" t="Include" />
           <e p="CareerOfficeService.cs" t="Include" />
+          <e p="GroupService.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IAccountService.cs" t="Include" />
             <e p="IAuthService.cs" t="Include" />
             <e p="ICareerOfficeService.cs" t="Include" />
+            <e p="IGroupService.cs" t="Include" />
             <e p="IMasterService.cs" t="Include" />
             <e p="ISurveyAnswerService.cs" t="Include" />
             <e p="ISurveyReportService.cs" t="Include" />

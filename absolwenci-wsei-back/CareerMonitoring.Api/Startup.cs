@@ -124,6 +124,8 @@ namespace CareerMonitoring.Api {
             services.AddScoped<IDataSetRepository, DataSetRepository> ();
             services.AddScoped<ISurveyUserIdentifierRepository, SurveyUserIdentifierRepository>();
             services.AddScoped<IUnregisteredUserRepository, UnregisteredUserRepository> ();
+            services.AddScoped<IGroupRepository, GroupRepository> ();
+            services.AddScoped<IUserGroupRepository, UserGroupRepository> ();
 
             #endregion
             #region Services
@@ -138,6 +140,7 @@ namespace CareerMonitoring.Api {
             services.AddScoped<ISurveyReportService, SurveyReportService> ();
             services.AddScoped<ISurveyUserIdentifierService, SurveyUserIdentifierService> ();
             services.AddScoped<IUnregisteredUserService, UnregisteredUserService> ();
+            services.AddScoped<IGroupService, GroupService> ();
 
             #endregion
             #region Validations

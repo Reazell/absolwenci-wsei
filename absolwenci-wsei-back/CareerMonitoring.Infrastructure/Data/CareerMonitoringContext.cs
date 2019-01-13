@@ -32,8 +32,10 @@ namespace CareerMonitoring.Infrastructure.Data {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<CareerOffice> CareerOffices { get; set; }
         public DbSet<Master> Masters { get; set; }
+        public DbSet<Group> Groups { get; set; }
         public DbSet<AccountRestoringPassword> AccountRestoringPasswords { get; set; }
         public DbSet<UnregisteredUser> UnregisteredUsers { get; set; }
+        public DbSet<UserGroup> UserGroups { get; set; }
 
         public CareerMonitoringContext (DbContextOptions<CareerMonitoringContext> options) : base (options) { }
 
@@ -110,6 +112,16 @@ namespace CareerMonitoring.Infrastructure.Data {
                 .HasMany (a => a.DataSets)
                 .WithOne (b => b.QuestionReport)
                 .HasForeignKey (s => s.QuestionReportId);
+            modelBuilder.Entity<UserGroup>()
+                .HasKey(t => new { t.UserId, t.GroupId });
+            modelBuilder.Entity<UserGroup>()
+                .HasOne(pt => pt.Group)
+                .WithMany(p => p.Users)
+                .HasForeignKey(pt => pt.GroupId);
+            modelBuilder.Entity<UserGroup>()
+                .HasOne(pt => pt.User)
+                .WithMany(t => t.Groups)
+                .HasForeignKey(pt => pt.UserId);
         }
     }
 }
