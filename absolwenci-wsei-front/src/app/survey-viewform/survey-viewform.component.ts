@@ -40,6 +40,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
   hash: string;
   isPreviewed: boolean;
   title: string;
+  description: string;
   defaultError = 'Odpowiedź jest wymagana';
   singleGridError = 'To pytanie wymaga jednej odpowiedzi w każdym wierszu';
   multipleGridError =
@@ -90,6 +91,8 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
           this.createQuestionData(res);
           this.title = res['title'];
           this.sharedService.saveTitle = res['title'];
+          this.description = res['description'];
+          this.sharedService.saveDescription = res['description'];
           this.surveyService.isCreatorLoading(false);
           if (!this.hash) {
             this.showBackButton(true);
@@ -187,6 +190,7 @@ export class SurveyViewformComponent implements OnInit, OnDestroy {
     let propertyName;
     this.invoiceForm = this.fb.group({
       title: [data.title],
+      description: [data.description],
       // Created_Date: [data.Created_Date],
       // Created_Time: [data.Created_Time],
       questions: this.fb.array([])

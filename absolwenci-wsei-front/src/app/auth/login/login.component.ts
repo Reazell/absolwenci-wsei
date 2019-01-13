@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -7,12 +8,11 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppConfig } from '../../app.config';
 import { SharedService } from '../../services/shared.service';
 import { UserProfile } from '../other/user.model';
 import { AccountService } from '../services/account.service';
 import { AuthenticationService } from '../services/authentication.service';
-import { HttpClient } from '@angular/common/http';
-import { AppConfig } from '../../app.config';
 
 /**
  * Sign in user.
@@ -70,8 +70,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authenticationService.logout();
 
 
-    this.http.get(this.config.apiUrl+"/auth/master").subscribe((data)=>{
-      if(!data) this.router.navigateByUrl("/auth/register", {queryParams:{masterExists:false}});
+    this.http.get(this.config.apiUrl + '/auth/master').subscribe((data) => {
+      if (!data) {
+          this.router.navigateByUrl( '/auth/register', {queryParams: {masterExists: false}});
+      }
     });
 
     // form declaration
@@ -97,14 +99,14 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.email.markAsTouched();
       this.password.markAsTouched();
     } else {
-      console.log(this.email.value,this.password.value)
+      // console.log(this.email.value,this.password.value)
       this.loading = true;
       this.authenticationService
         // login with credentials from form
         .login(this.email.value, this.password.value)
         .subscribe(
           data => {
-            //console.log(data);
+            // console.log(data);
             this.accountService.isLoggedNext(true);
             // if login is successful, redirect to app
             this.routeSwitch(data.role);

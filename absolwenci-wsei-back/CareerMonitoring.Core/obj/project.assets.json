@@ -671,23 +671,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tomzd\\.nuget\\packages\\": {},
+    "C:\\Users\\Krzysztof\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei2\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-2\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
       "projectName": "CareerMonitoring.Core",
-      "projectPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei2\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
-      "packagesPath": "C:\\Users\\tomzd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei2\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
+      "projectPath": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-2\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+      "packagesPath": "C:\\Users\\Krzysztof\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-2\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\tomzd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Krzysztof\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
