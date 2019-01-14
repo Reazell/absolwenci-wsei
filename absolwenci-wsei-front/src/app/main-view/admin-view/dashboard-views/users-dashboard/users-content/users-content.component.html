@@ -1,9 +1,20 @@
 <app-dashboard-bar [groupTitle]=groupTitle [buttonDets]=buttonDets (buttonClick)="openAddUserDialog()"></app-dashboard-bar>
-<app-dashboard-list [itemArr]=" items$ | async"  [emptyListInfo]=emptyListInfo>
-  <ng-template let-item>
-    <app-dashboard-tile [item_tile]=item (tileClick)="openUserUpdateDialog(item)">
-        <app-users-tile [user]=item></app-users-tile>
-    </app-dashboard-tile>
-    <app-icon-button [type]="'fas'" [icon]="'times'" (buttonClick)="openConfimDeleteDialog(item.id)"></app-icon-button>
-  </ng-template>
-</app-dashboard-list>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let group of groups$">
+      <mat-expansion-panel-header>
+        {{group.name}}
+      </mat-expansion-panel-header>
+      <app-dashboard-list [itemArr]=" group.users"  [emptyListInfo]=emptyListInfo>
+          <ng-template let-item>
+            <app-dashboard-tile [item_tile]=item.user (tileClick)="openUserUpdateDialog(item.user)">
+                <app-users-tile [user]=item.user></app-users-tile>
+            </app-dashboard-tile>
+            <app-icon-button [type]="'fas'" [icon]="'times'" (buttonClick)="openConfimDeleteDialog(item.user.id)"></app-icon-button>
+          </ng-template>
+        </app-dashboard-list>
+        <mat-action-row>
+            <button mat-button color="primary" (click)="deleteGroup(group.id)">Usuń grupę</button>
+          </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+

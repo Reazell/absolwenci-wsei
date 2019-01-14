@@ -16,24 +16,25 @@
         <mat-error *ngIf="inputError(surname)">{{surnameErrorStr}}</mat-error>
       </mat-form-field>
     </div>
-    <div class="group full">
+    <div class="group half">
       <mat-form-field>
         <input matInput placeholder="E-mail" formControlName="email">
         <mat-error *ngIf="inputError(email)">{{emailErrorStr}}</mat-error>
       </mat-form-field>
     </div>
-    <!-- <div class="group half">
+    <div class="group half">
       <mat-form-field>
-        <input matInput placeholder="Kierunek studiów" formControlName="course">
-        <mat-error *ngIf="inputError(course)">{{courseErrorStr}}</mat-error>
+        <mat-select [(value)]="selectedGroup" placeholder="Grupa" formControlName="selectedGroup">
+          <mat-option *ngFor="let group of groups$" [value]="group.id">{{group.name}}</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
-    <div class="group half">
+    <!-- <div class="group half">
       <mat-form-field>
         <input matInput placeholder="Specjalizacja" formControlName="typeOfStudy">
         <mat-error *ngIf="inputError(typeOfStudy)">{{typeOfStudyErrorStr}}</mat-error>
       </mat-form-field>
-    </div> -->
+    </div> --> -->
     <!-- <div class="group half">
       <mat-form-field color="primary">
         <input matInput placeholder="Wybierz datę zakończenia studiów" [matDatepicker]="picker" formControlName="dateOfCompletion">

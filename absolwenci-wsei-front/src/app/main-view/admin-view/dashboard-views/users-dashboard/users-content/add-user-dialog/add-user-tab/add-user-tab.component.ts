@@ -15,6 +15,8 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { SharedService } from '../../../../../../../services/shared.service';
+import { Select } from './../../../../../survey-container/models/survey-creator.models';
+import { UserService } from './../../../../../survey-container/services/user.services';
 
 @Component({
   selector: 'app-add-user-tab',
@@ -30,6 +32,7 @@ export class AddUserTabComponent implements OnInit {
   name: AbstractControl;
   surname: AbstractControl;
   email: AbstractControl;
+  selectedGroup: AbstractControl;
   // course: AbstractControl;
   // typeOfStudy: AbstractControl;
   // dateOfCompletion: AbstractControl;
@@ -49,12 +52,15 @@ export class AddUserTabComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private sharedService: SharedService,
+    private userService: UserService,
     @Optional()
     @Inject(MAT_DIALOG_DATA)
     public data: any
   ) {}
 
+  groups$: object;
   ngOnInit() {
+    this.getGroups();
     this.setForm();
     // console.log(this.data);
     if (this.data) {
@@ -62,6 +68,11 @@ export class AddUserTabComponent implements OnInit {
       this.setValues();
     }
   }
+  getGroups() {
+    this.userService.getGroups().subscribe(data => this.groups$ = data);
+    console.log(this.groups$);
+  }
+
   setForm() {
     this.dialogForm = this.fb.group({
       name: [
@@ -84,11 +95,11 @@ export class AddUserTabComponent implements OnInit {
           Validators.required,
           Validators.pattern(this.emailPattern)
         ])
-      ]//,
-      // course: [
-      //   '',
-      //   Validators.compose([Validators.required, Validators.minLength(3)])
-      // ],
+      ],
+      selectedGroup: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(3)])
+      ],
       // typeOfStudy: [
       //   '',
       //   Validators.compose([Validators.required, Validators.minLength(3)])
@@ -98,6 +109,7 @@ export class AddUserTabComponent implements OnInit {
     this.name = this.dialogForm.controls['name'];
     this.surname = this.dialogForm.controls['surname'];
     this.email = this.dialogForm.controls['email'];
+    this.selectedGroup = this.dialogForm.controls['selectedGroup'];
     // this.course = this.dialogForm.controls['course'];
     // this.typeOfStudy = this.dialogForm.controls['typeOfStudy'];
     // this.dateOfCompletion = this.dialogForm.controls['dateOfCompletion'];
@@ -106,13 +118,15 @@ export class AddUserTabComponent implements OnInit {
     this.name.setValue(this.data.name);
     this.surname.setValue(this.data.surname);
     this.email.setValue(this.data.email);
+    this.selectedGroup.setValue(this.data.selectedGroup);
     // this.course.setValue(this.data.course);
     // this.typeOfStudy.setValue(this.data.typeOfStudy);
     // this.dateOfCompletion.setValue(this.data.dateOfCompletion);
   }
-  
+
   onSubmit(dialog) {
     this.submit.emit(dialog);
+    console.log( 'dialog: ' + dialog);
   }
   inputError(control: AbstractControl): boolean {
     // get error message and control name in string

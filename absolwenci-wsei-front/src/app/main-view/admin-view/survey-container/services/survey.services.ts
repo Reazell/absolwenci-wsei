@@ -56,6 +56,11 @@ export class SurveyService {
         return data;
       });
   }
+  sendSpecificSurveyToGroup(id: number, groupId: number): Observable<any> {
+    return this.http.post<any>(this.config.apiUrl + + '/email/survey-emails/' + id + '/' + groupId, {}).map(data => {
+      return data;
+    });
+  }
   createSurvey(survey) {
     // const obj = {
     //   Title: survey.title,

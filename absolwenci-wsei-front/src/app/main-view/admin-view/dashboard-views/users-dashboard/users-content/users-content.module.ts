@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material';
+import { MatAccordion, MatExpansionModule, MatTabsModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,7 +37,8 @@ export const routes: Routes = [{ path: '', component: UsersContentComponent }];
     FontAwesomeModule,
     MatProgressSpinnerModule,
     IconButtonModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MatExpansionModule,
   ],
   entryComponents: [ConfirmDialogComponent, AddUserDialogComponent, AddUserTabComponent],
   declarations: [

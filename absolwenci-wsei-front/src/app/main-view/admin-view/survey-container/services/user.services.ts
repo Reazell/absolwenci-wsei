@@ -42,7 +42,7 @@ export class UserService {
       .post<any>(this.config.apiUrl + '/importfile/unregisteredUsers', {
         Name: user.name,
         Surname: user.surname,
-        Email: user.email//,
+        Email: user.email// ,
         // Course: user.course,
         // TypeOfStudy: user.typeOfStudy,
         // DateOfCompletion: user.completionDate
@@ -51,7 +51,24 @@ export class UserService {
         return data;
       });
   }
-
+  getGroups() {
+    return this.http.get(this.config.apiUrl + '/group/groups/');
+  }
+  assignUserToGroup(userid: number, groupid: number) {
+    return this.http.put( this.config.apiUrl + '/group/groups/' + groupid + '/user/' + userid, {
+        userId: userid,
+        groupId: groupid,
+    } );
+  }
+  deleteGroup(groupId: number){
+    return this.http.delete(this.config.apiUrl + '/group/groups/' + groupId, {
+    });
+  }
+  addGroup(groupName: string) {
+    return this.http.post(this.config.apiUrl + '/group/groups/', {
+      name : groupName
+    });
+  }
   deleteUserById(id: number): Observable<any> {
     return this.http
       .delete<any>(this.config.apiUrl + '/importfile/unregisteredUsers/' + id)
@@ -64,7 +81,7 @@ export class UserService {
       .put<any>(this.config.apiUrl + '/importfile/unregisteredUsers/' + id, {
         Name: user.name,
         Surname: user.surname,
-        Email: user.email//,
+        Email: user.email// ,
         // Course: user.course,
         // TypeOfStudy: user.typeOfStudy,
         // DateOfCompletion: user.completionDate

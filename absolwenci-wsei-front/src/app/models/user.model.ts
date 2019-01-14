@@ -22,6 +22,7 @@ export class RegisteredUser extends User {
   password: string;
 }
 
+
 export class UnregisteredUser extends User {
   // course: string;
   // dateOfCompletion?: Moment | string;
@@ -60,4 +61,7 @@ export class UnregisteredUserModel extends UnregisteredUser {
   // isDataString(data: string | Moment): data is string {
   //   return typeof data === 'string';
   // }
+}
+export class UserGroup {
+  name: string;
 }

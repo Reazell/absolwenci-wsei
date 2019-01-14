@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MaterialsModule } from '../../../../../../../materials/materials.module';
 import { AddUserTabComponent } from './add-user-tab.component';
@@ -12,7 +13,8 @@ import { AddUserTabComponent } from './add-user-tab.component';
     MaterialsModule,
     ReactiveFormsModule,
     ProgressSpinnerModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSelectModule
   ],
   declarations: [AddUserTabComponent]
 })

@@ -18,8 +18,8 @@ import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab
   styleUrls: ['./users-content.component.scss']
 })
 export class UsersContentComponent implements OnInit {
-  groupTitle = 'Grupa użytkowników 1';
-  buttonDets = 'Dodaj nowego użytkownika';
+  groupTitle = 'Użytkownicy i grupy';
+  buttonDets = 'Dodaj';
   emptyListInfo = 'Brak niezarejestrowanych użytkowników';
   // tslint:disable-next-line:max-line-length
   private _items$: BehaviorSubject<
@@ -28,6 +28,7 @@ export class UsersContentComponent implements OnInit {
   get items$(): Observable<Array<RegisteredUser | UnregisteredUser>> {
     return this._items$.asObservable();
   }
+  groups$: object;
 
   // subs
   getAllUsersSub: Subscription = new Subscription();
@@ -35,9 +36,19 @@ export class UsersContentComponent implements OnInit {
 
   ngOnInit() {
     this.getAllUsers();
+    this.getAllGroups();
   }
   see() {
     console.log('click');
+  }
+  addUserToGroup(userId, groupId) {
+    this.userService.assignUserToGroup(userId, groupId).subscribe(data => console.log(data));
+  }
+  addNewGroup(name) {
+    this.userService.addGroup(name).subscribe(data => console.log(data));
+  }
+  getAllGroups() {
+    this.userService.getGroups().subscribe(data => this.groups$ = data);
   }
   getAllUsers() {
     this.saveUsersFromApi();
@@ -53,11 +64,19 @@ export class UsersContentComponent implements OnInit {
       }
     );
   }
-  openAddUserDialog(): void {
+  deleteGroup(groupId){
+    this.userService.deleteGroup(groupId).subscribe(data => console.log('deleted'));
+    this.getAllGroups();
+  }
+  openAddUserDialog(groupID): void {
     const dialogRef: MatDialogRef<AddUserDialogComponent> = this.dialog.open(
-      AddUserDialogComponent
+      AddUserDialogComponent,
     );
-    // return dialogRef.afterClosed();
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('DialogClosed');
+      this.getAllGroups();
+
+    });
   }
   openConfimDeleteDialog(id: number): void {
     this.openSurveyDialog().subscribe((res: boolean) => {
@@ -92,6 +111,7 @@ export class UsersContentComponent implements OnInit {
     this.userService.deleteUserById(id).subscribe(
       () => {
         this.saveUsersFromApi();
+        this.getAllGroups();
       },
       error => {
         console.log(error);
