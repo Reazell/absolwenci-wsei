@@ -29,7 +29,8 @@ namespace CareerMonitoring.Api.Controllers {
         public async Task<IActionResult> ImportFile ([FromForm] ImportFile command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            try {
+            try
+            {
                 var fullFileLocation = await _importFileFactory.UploadFileAndGetFullFileLocationAsync (command.File);
                 var importDataList = await _importFileFactory.ImportExcelFileAndGetImportDataAsync (fullFileLocation);
                 return Json (importDataList);

@@ -42,12 +42,6 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Startup.cs" t="Include" />
-        <e p="wwwroot" t="Include">
-          <e p="reports" t="Include">
-            <e p="10.txt" t="Include" />
-            <e p="11.txt" t="Include" />
-          </e>
-        </e>
       </e>
       <e p="absolwenci-wsei-back\CareerMonitoring.Core" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
