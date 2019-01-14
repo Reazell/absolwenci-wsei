@@ -91,3 +91,12 @@ C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitor
 C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfo.cs
 C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
 C:\Users\tomzd\RiderProjects\absolwenci-wsei2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.deps.json
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\bin\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.csprojAssemblyReference.cache
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.csproj.CoreCompileInputs.cache
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfoInputs.cache
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.AssemblyInfo.cs
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.dll
+C:\Users\Krzysztof\Desktop\WSEI-PT\biuro-karier\absolwenci-wsei-2\absolwenci-wsei-back\CareerMonitoring.Core\obj\Debug\netcoreapp2.0\CareerMonitoring.Core.pdb

@@ -3,6 +3,10 @@
   <div id="form-title">
     <span>{{title}}</span>
   </div>
+  <div id="form-description">
+      <p>{{description}}</p>
+  </div>
+
   <div id="questions-container" formArrayName="questions">
     <div *ngFor="let question of invoiceForm.controls['questions'].controls; let i = index" [formGroupName]="i"
       [ngClass]="controlError(question, i) ? 'question-field error-background': 'question-field'">

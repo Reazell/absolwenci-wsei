@@ -21,7 +21,7 @@
     </mat-form-field>
     <mat-form-field appearance="standard" id="description">
       <textarea matInput [rows]="1" matTextareaAutosize matAutosizeMaxRows=15 type="text" maxLength="1500" placeholder="Opis formularza"
-        (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" formControlName="description"></textarea>
+        (keyup)="updateSurveySubject()" (keydown)="updateSurveySubject()" (focus)="setSelection($event)" formControlName="description"></textarea>
     </mat-form-field>
   </div>
 

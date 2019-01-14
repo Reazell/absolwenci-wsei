@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei2\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+    "projectUniqueName": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-2\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
     "projectName": "CareerMonitoring.Core",
-    "projectPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei2\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
-    "outputPath": "C:\\Users\\tomzd\\RiderProjects\\absolwenci-wsei2\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
+    "projectPath": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-2\\absolwenci-wsei-back\\CareerMonitoring.Core\\CareerMonitoring.Core.csproj",
+    "outputPath": "C:\\Users\\Krzysztof\\Desktop\\WSEI-PT\\biuro-karier\\absolwenci-wsei-2\\absolwenci-wsei-back\\CareerMonitoring.Core\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

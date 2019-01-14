@@ -244,7 +244,7 @@ export class SurveyCreatorComponent
     };
     // console.log(JSON.stringify(object));
     // console.log('update');
-    //console.log(object);
+    // console.log(object);
     return this.surveyService.updateSurvey(object);
   }
   updateSurvey() {
