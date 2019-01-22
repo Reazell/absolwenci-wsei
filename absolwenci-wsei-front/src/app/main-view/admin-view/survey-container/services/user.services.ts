@@ -60,7 +60,7 @@ export class UserService {
         groupId: groupid,
     } );
   }
-  deleteGroup(groupId: number){
+  deleteGroup(groupId: number) {
     return this.http.delete(this.config.apiUrl + '/group/groups/' + groupId, {
     });
   }

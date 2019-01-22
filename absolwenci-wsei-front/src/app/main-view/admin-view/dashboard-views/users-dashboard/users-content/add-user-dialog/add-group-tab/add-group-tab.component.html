@@ -1,0 +1,23 @@
+<form #dialog="ngForm" (ngSubmit)=onGroupSubmit(dialog) [formGroup]="dialogForm" *ngIf="dialogForm">
+  <div id="form-container">
+
+    <!-- <mat-form-field>
+      <input matInput placeholder="Temat wiadomości" formControlName="subject">
+    </mat-form-field> -->
+    <div class="group half">
+      <mat-form-field>
+        <input matInput placeholder="Nazwa grupy" formControlName="selectedGroup">
+        <mat-error *ngIf="inputError(selectedGroup)">{{ groupSelectErrorString }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div id="button-container">
+      <button *ngIf="this.data" mat-button type="submit" [mat-dialog-close]="dialog.value">
+        <div id="button">
+          <span>Zapisz</span>
+          <p-progressSpinner [style]="{width: '15px', height: '15px'}" strokeWidth="8" *ngIf="loader === true"></p-progressSpinner>
+        </div>
+      </button>
+      <input *ngIf="!this.data" type="submit" value="Dodaj">
+    </div>
+  </div>
+</form>

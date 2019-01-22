@@ -64,7 +64,7 @@ export class UsersContentComponent implements OnInit {
       }
     );
   }
-  deleteGroup(groupId){
+  deleteGroup(groupId) {
     this.userService.deleteGroup(groupId).subscribe(data => console.log('deleted'));
     this.getAllGroups();
   }

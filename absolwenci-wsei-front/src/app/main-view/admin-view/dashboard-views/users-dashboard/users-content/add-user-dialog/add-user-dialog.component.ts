@@ -3,9 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import {
   UnregisteredUser,
-  UnregisteredUserModel
+  UnregisteredUserModel,
+  UserGroup
 } from '../../../../../../models/user.model';
 import { UserService } from '../../../../survey-container/services/user.services';
+import { Select } from './../../../../survey-container/models/survey-creator.models';
 
 @Component({
   selector: 'app-add-user-dialog',
@@ -21,6 +23,22 @@ export class AddUserDialogComponent implements OnInit {
   constructor(private fb: FormBuilder, private userService: UserService, public dialogRef: MatDialogRef<AddUserDialogComponent>) {}
 
   ngOnInit() {
+  }
+  onGroupSubmit(form) {
+    if (form.valid) {
+      const value: UserGroup = form.value;
+      console.log(form.value);
+      this.loader = true;
+      const newGroup: UserGroup = new UserGroup(form.value.selectedGroup);
+      console.log(newGroup);
+      this.userService.addGroup(newGroup.name).subscribe(
+        data => {
+          console.log( data );
+        }
+      );
+      this.loader = false;
+      this.dialogRef.close();
+    }
   }
   onSubmit(form) {
     if (form.valid) {

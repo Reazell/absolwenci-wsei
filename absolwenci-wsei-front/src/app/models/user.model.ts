@@ -64,4 +64,7 @@ export class UnregisteredUserModel extends UnregisteredUser {
 }
 export class UserGroup {
   name: string;
+  constructor(name: string){
+    this.name = name;
+  }
 }

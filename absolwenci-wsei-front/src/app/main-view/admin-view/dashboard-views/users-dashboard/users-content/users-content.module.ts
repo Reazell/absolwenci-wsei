@@ -19,6 +19,7 @@ import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab
 import { ImportUserTabComponent } from './add-user-dialog/import-user-tab/import-user-tab.component';
 import { UsersContentComponent } from './users-content.component';
 import { UsersTileComponent } from './users-tile/users-tile.component';
+import { AddGroupTabComponent } from './add-user-dialog/add-group-tab/add-group-tab.component';
 
 export const routes: Routes = [{ path: '', component: UsersContentComponent }];
 
@@ -47,6 +48,7 @@ export const routes: Routes = [{ path: '', component: UsersContentComponent }];
     AddUserDialogComponent,
     AddUserTabComponent,
     ImportUserTabComponent,
+    AddGroupTabComponent,
   ]
 })
 export class UsersContentModule {}
