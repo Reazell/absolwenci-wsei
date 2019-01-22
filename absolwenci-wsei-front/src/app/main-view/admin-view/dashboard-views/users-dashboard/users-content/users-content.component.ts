@@ -65,8 +65,11 @@ export class UsersContentComponent implements OnInit {
     );
   }
   deleteGroup(groupId) {
-    this.userService.deleteGroup(groupId).subscribe(data => console.log('deleted'));
-    this.getAllGroups();
+    this.userService.deleteGroup(groupId).subscribe(data =>{
+      console.log('deleted');
+      this.getAllGroups();
+    }
+    );
   }
   openAddUserDialog(groupID): void {
     const dialogRef: MatDialogRef<AddUserDialogComponent> = this.dialog.open(
@@ -75,7 +78,6 @@ export class UsersContentComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('DialogClosed');
       this.getAllGroups();
-
     });
   }
   openConfimDeleteDialog(id: number): void {

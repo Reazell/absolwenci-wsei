@@ -70,7 +70,6 @@ export class AddUserTabComponent implements OnInit {
   }
   getGroups() {
     this.userService.getGroups().subscribe(data => this.groups$ = data);
-    console.log(this.groups$);
   }
 
   setForm() {

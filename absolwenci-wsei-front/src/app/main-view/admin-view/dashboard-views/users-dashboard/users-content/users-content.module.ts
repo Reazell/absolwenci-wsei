@@ -14,12 +14,12 @@ import { DashboardBarModule } from '../../../../../shared/dashboard/dashboard-ba
 import { DashboardListModule } from '../../../../../shared/dashboard/dashboard-list/dashboard-list.module';
 import { IconButtonModule } from './../../../../../shared/buttons/icon-button/icon-button.module';
 import { ConfirmDialogModule } from './../../../../../shared/confirm-dialog/confirm-dialog.module';
+import { AddGroupTabComponent } from './add-user-dialog/add-group-tab/add-group-tab.component';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { AddUserTabComponent } from './add-user-dialog/add-user-tab/add-user-tab.component';
 import { ImportUserTabComponent } from './add-user-dialog/import-user-tab/import-user-tab.component';
 import { UsersContentComponent } from './users-content.component';
 import { UsersTileComponent } from './users-tile/users-tile.component';
-import { AddGroupTabComponent } from './add-user-dialog/add-group-tab/add-group-tab.component';
 
 export const routes: Routes = [{ path: '', component: UsersContentComponent }];
 
