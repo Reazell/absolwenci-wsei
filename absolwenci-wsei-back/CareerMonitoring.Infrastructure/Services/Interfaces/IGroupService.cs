@@ -7,6 +7,7 @@ namespace CareerMonitoring.Infrastructure.Services.Interfaces
     public interface IGroupService
     {
         Task<int> CreateAsync(string name);
+        Task<bool> ExistsByNameAsync(string name);
         Task AddUserAsync(int groupId, int userId);
         Task RemoveUserAsync(int groupId, int userId);
         Task<Group> GetByIdAsync(int id);

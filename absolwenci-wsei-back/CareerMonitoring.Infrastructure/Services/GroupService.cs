@@ -29,6 +29,11 @@ namespace CareerMonitoring.Infrastructure.Services
             return group.Id;
         }
 
+        public async Task<bool> ExistsByNameAsync(string name)
+        {
+            return await _groupRepository.ExistsByNameAsync(name);
+        }
+
         public async Task AddUserAsync(int groupId, int userId)
         {
             UnregisteredUser user = await _unregisteredUserRepository.GetByIdAsync(userId);

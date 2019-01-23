@@ -22,6 +22,15 @@ namespace CareerMonitoring.Infrastructure.Repositories
             await _context.SaveChangesAsync ();
         }
 
+        public async Task<bool> ExistsByNameAsync(string name, bool isTracking = true)
+        {
+            if (isTracking)
+            {
+                return _context.Groups.AsTracking().Any(x => x.Name == name);
+            }
+            return _context.Groups.AsNoTracking().Any(x => x.Name == name);
+        }
+
         public async Task<Group> GetByIdAsync(int id, bool isTracking = true)
         {
             if (isTracking) {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using CareerMonitoring.Core.Domains;
 using CareerMonitoring.Core.Domains.ImportFile;
 using CareerMonitoring.Infrastructure.DTO.ImportFile;
 using CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces;
@@ -16,15 +17,19 @@ using OfficeOpenXml;
 namespace CareerMonitoring.Infrastructure.Extensions.Aggregate {
     public class ImportFileAggregate : IImportFileAggregate {
         private readonly IUnregisteredUserRepository _unregisteredUserRepository;
+        private readonly IUserGroupRepository _userGroupRepository;
+        private readonly IGroupRepository _groupRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IMapper _mapper;
 
         public ImportFileAggregate (IUnregisteredUserRepository unregisteredUserRepository,
             IHostingEnvironment hostingEnvironment,
-            IMapper mapper) {
+            IMapper mapper, IUserGroupRepository userGroupRepository, IGroupRepository groupRepository) {
             _unregisteredUserRepository = unregisteredUserRepository;
             _hostingEnvironment = hostingEnvironment;
             _mapper = mapper;
+            _userGroupRepository = userGroupRepository;
+            _groupRepository = groupRepository;
         }
 
         public async Task<string> UploadFileAndGetFullFileLocationAsync (IFormFile file) {
@@ -76,5 +81,38 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate {
             return importDataListDto;
         }
 
+        public async Task<IEnumerable<UnregisteredUserDto>> ImportExcelFileToGroupAndGetImportDataAsync(string fullFileLocation, int groupId)
+        {
+            FileInfo fileInfo = new FileInfo (fullFileLocation);
+            
+            List<UnregisteredUserDto> importDataListDto = new List<UnregisteredUserDto> ();
+
+            using (ExcelPackage package = new ExcelPackage (fileInfo)) {
+                var workSheet = package.Workbook.Worksheets[1];
+                int totalRows = workSheet.Dimension.Rows;
+
+                List<UnregisteredUser> importDataList = new List<UnregisteredUser> ();
+
+                for (int i = 2; i <= totalRows; i++) {
+                    var importData = new UnregisteredUser ();
+                    importData.SetName (workSheet.Cells[i, 1].Value.ToString ());
+                    importData.SetSurname (workSheet.Cells[i, 2].Value.ToString ());
+                    importData.SetEmail (workSheet.Cells[i, 3].Value.ToString ().ToLowerInvariant ());
+                    importDataList.Add (importData);
+
+                    importDataListDto.Add (_mapper.Map<UnregisteredUserDto> (importData));
+                }
+
+                await _unregisteredUserRepository.AddAllAsync (importDataList);
+
+                Group group = await _groupRepository.GetByIdAsync(groupId);
+                foreach (var user in importDataList)
+                {
+                    await _userGroupRepository.AddUserAsync(new UserGroup{User = user,Group = group});
+                }
+            }
+            Directory.Delete (fileInfo.DirectoryName, true);
+            return importDataListDto;
+        }
     }
 }

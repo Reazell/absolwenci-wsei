@@ -9,5 +9,7 @@ namespace CareerMonitoring.Infrastructure.Extensions.Aggregate.Interfaces {
     public interface IImportFileAggregate {
         Task<string> UploadFileAndGetFullFileLocationAsync (IFormFile file);
         Task<IEnumerable<UnregisteredUserDto>> ImportExcelFileAndGetImportDataAsync (string fullFileLocation);
+        Task<IEnumerable<UnregisteredUserDto>> ImportExcelFileToGroupAndGetImportDataAsync (string fullFileLocation, int groupId);
+        
     }
 }
