@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f826742a-8e1e-4631-8f7f-0f0f0362e87e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CareerMonitoring/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/Controllers/GroupController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
@@ -11,12 +10,6 @@
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Api/obj/Debug/netcoreapp2.0/CareerMonitoring.Api.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ImportFileAggregate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ImportFileAggregate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/Interfaces/IImportFileAggregate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/Interfaces/IImportFileAggregate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/GroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/GroupRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/Interfaces/IGroupRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Repositories/Interfaces/IGroupRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/GroupService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/GroupService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/IGroupService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Services/Interfaces/IGroupService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/bin/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/obj/Debug/netcoreapp2.0/CareerMonitoring.Infrastructure.dll" afterDir="false" />
@@ -148,14 +141,14 @@
         <counts>
           <entry key="cs" value="8022" />
           <entry key="json" value="31" />
-          <entry key="txt" value="143" />
+          <entry key="txt" value="186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="C#" value="8022" />
           <entry key="JSON" value="31" />
-          <entry key="PLAIN_TEXT" value="143" />
+          <entry key="PLAIN_TEXT" value="186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -252,7 +245,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ImportFileAggregate.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-370">
+            <state relative-caret-position="-751">
               <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
               <folding>
                 <marker date="1548206013194" expanded="false" signature="6:513" ph="..." />
@@ -610,7 +603,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Compound.CareerMonitoring">
+  <component name="RunManager" selected=".NET Project.Front">
     <configuration name="CareerMonitoring" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
       <toRun type="DotNetProject" name="Back" />
       <toRun type="DotNetProject" name="Front" />
@@ -659,7 +652,6 @@
       <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.0" />
       <browser url="http://localhost:5000" />
       <method v="2">
-        <option name="LaunchBrowser.Before.Run" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" url="http://localhost:4200" />
         <option name="NpmBeforeRunTask" enabled="true">
           <package-json value="$PROJECT_DIR$/absolwenci-wsei-front/package.json" />
           <command value="start" />
@@ -849,11 +841,18 @@
       <option name="project" value="LOCAL" />
       <updated>1548204155717</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="import from file to group back">
+      <created>1548206085163</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1548206085163</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177948000" />
+    <option name="totallyTimeSpent" value="178985000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -866,6 +865,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.336887" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -973,7 +973,8 @@
     <MESSAGE value="working desc merge" />
     <MESSAGE value="working back groups" />
     <MESSAGE value="single user in group manipulation merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="single user in group manipulation merge" />
+    <MESSAGE value="import from file to group back" />
+    <option name="LAST_COMMIT_MESSAGE" value="import from file to group back" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1395,7 +1396,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/absolwenci-wsei-back/CareerMonitoring.Infrastructure/Extensions/Aggregate/ImportFileAggregate.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-370">
+        <state relative-caret-position="-751">
           <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
           <folding>
             <marker date="1548206013194" expanded="false" signature="6:513" ph="..." />
