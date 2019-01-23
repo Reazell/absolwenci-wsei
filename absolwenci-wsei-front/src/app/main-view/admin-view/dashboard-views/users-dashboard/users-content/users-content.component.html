@@ -9,7 +9,7 @@
             <app-dashboard-tile [item_tile]=item.user (tileClick)="openUserUpdateDialog(item.user)">
                 <app-users-tile [user]=item.user></app-users-tile>
             </app-dashboard-tile>
-            <app-icon-button [type]="'fas'" [icon]="'times'" (buttonClick)="openConfimDeleteDialog(item.user.id)"></app-icon-button>
+            <app-icon-button [type]="'fas'" [icon]="'times'" (buttonClick)="openConfimDeleteDialog(item.user.id,group.id)"></app-icon-button>
           </ng-template>
         </app-dashboard-list>
         <mat-action-row>

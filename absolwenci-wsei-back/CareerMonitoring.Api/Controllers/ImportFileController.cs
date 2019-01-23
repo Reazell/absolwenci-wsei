@@ -70,6 +70,10 @@ namespace CareerMonitoring.Api.Controllers {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {
+                if (await _unregisteredUserService.ExistByEmailAsync(command.Email))
+                {
+                    return StatusCode (201);
+                }
                 await _unregisteredUserService.CreateAsync (command.Name, command.Surname, command.Email);
                 return StatusCode (201);
 

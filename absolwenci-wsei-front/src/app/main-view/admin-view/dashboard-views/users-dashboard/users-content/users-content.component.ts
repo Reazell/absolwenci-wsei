@@ -44,6 +44,17 @@ export class UsersContentComponent implements OnInit {
   addUserToGroup(userId, groupId) {
     this.userService.assignUserToGroup(userId, groupId).subscribe(data => console.log(data));
   }
+  removeUserFromGroup(userId, groupId) {
+    this.userService.removeUserFromGroup(userId, groupId).subscribe(
+      () => {
+        this.saveUsersFromApi();
+        this.getAllGroups();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   addNewGroup(name) {
     this.userService.addGroup(name).subscribe(data => console.log(data));
   }
@@ -80,10 +91,17 @@ export class UsersContentComponent implements OnInit {
       this.getAllGroups();
     });
   }
-  openConfimDeleteDialog(id: number): void {
+  // openConfimDeleteDialog(id: number): void {
+  //   this.openSurveyDialog().subscribe((res: boolean) => {
+  //     if (res === true) {
+  //       this.deleteUnregisteredUser(id);
+  //     }
+  //   });
+  // }
+  openConfimDeleteDialog(userId: number, groupId: number): void {
     this.openSurveyDialog().subscribe((res: boolean) => {
       if (res === true) {
-        this.deleteUnregisteredUser(id);
+        this.removeUserFromGroup(userId,groupId);
       }
     });
   }
